@@ -1,0 +1,151 @@
+body {
+	background-color: white;
+	font-family: Lucida Calligraphy, Cursive;
+}
+
+#bg {
+	background-image: url('../images/background.png');
+	background-repeat: no-repeat;
+	height: 600px;
+	width: 1000px;
+	margin: -12px auto;
+}
+
+#loginform {
+	position: absolute;
+	width: 320px;
+	height: 210px;
+	margin: 300px 620px;
+	background-image: url('../images/loginform.png');
+	background-repeat: no-repeat;
+}
+
+#loginform p {
+	font-family: Lucida Calligraphy, Cursive;
+}
+
+#loginform p label {
+	font-size: 18px;
+}
+
+.input_areas {
+	font-size: 16px;
+	font-family: Cursive;
+	font-style: italic;
+	background-color: #ebe9eb;
+}
+
+#loginform p input:focus {
+	border: 2px solid #acabac;
+	background-color: white;
+}
+
+#name_text {
+	position: absolute;
+	margin: 20px 100px;
+}
+
+#name_area {
+	position: absolute;
+	margin: 46px 99px;
+}
+
+#pass_text {
+	position: absolute;
+	margin: 80px 100px;
+}
+
+#pass_area {
+	position: absolute;
+	margin: 106px 99px;
+}
+
+.button {
+	margin: 158px 180px;
+	border-top: 1px solid #fcefc7;
+	background: #e8dfd0;
+	padding: 6px 18px;
+	border-radius: 7px;
+	color: #363636;
+	font-size: 14px;
+	font-family: Lucida Calligraphy, Cursive;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.button:hover {
+	border-top-color: #fce9ca;
+	background: #fce9ca;
+	color: #5e5e5e;
+}
+
+.button:active {
+	border-top-color: #e8cea9;
+	background: #e8cea9;
+}
+
+
+#register {
+	position: absolute;
+	margin: 155px 40px;
+}
+
+#register:hover {
+	background-image: url('../images/register_hover.png');
+}
+
+#dialog_text {
+	width: 150px;
+	position: absolute;
+	margin: 190px 502px;
+	color: black;
+	font-size: 16px;
+	font-family: Lucida Calligraphy, Cursive;
+}
+
+#splats {
+	position: absolute;
+	margin: 140px 502px;
+}
+
+#language_bar {
+	position: absolute;
+	background-image: url('../images/language_bar.png');
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 165px;
+	margin: 10px 750px;
+}
+
+#language_ua {
+	position: absolute;
+	margin: 15px 28px;
+}
+
+#language_ua:hover {
+	position: absolute;
+	margin: 13px 26px;
+	border: 2px solid gray;
+}
+
+#language_ru {
+	position: absolute;
+	margin: 15px 68px;
+}
+
+#language_ru:hover {
+	position: absolute;
+	margin: 13px 66px;
+	border: 2px solid gray;
+}
+
+#language_us {
+	position: absolute;
+	margin: 15px 108px;
+}
+
+#language_us:hover {
+	position: absolute;
+	margin: 13px 106px;
+	border: 2px solid gray;
+}
