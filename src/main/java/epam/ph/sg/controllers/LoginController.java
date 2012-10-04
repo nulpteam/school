@@ -26,11 +26,11 @@ public class LoginController {
 		User user = UserCheck.check(name, pass);
 		if (user != null && user.getId() != null) {
 			model.addAttribute(user);
-			log.debug(user.getName() + "Session: created");
+			log.debug(user.getName() + " Session: created");
 			return "index";
 		} else {
 			log.debug("Login/Pass is not correct: Login->" + name + " Pass->"
-					+ pass + " host->" + request.getHeader("host"));
+					+ pass + " host-> " + request.getHeader("host"));
 			return "notReg";
 		}
 	}
