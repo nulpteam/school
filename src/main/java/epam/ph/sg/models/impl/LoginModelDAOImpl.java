@@ -49,19 +49,21 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 	public User auth(String sql) {
 		User user = jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
 
-			@Override
 			public User extractData(ResultSet rs) throws SQLException,
 					DataAccessException {
-				User user = new User();
+				User user = null;
 				if (rs.next()) {
+					user = new User();
 					user.setId(rs.getString(1));
 					user.setName(rs.getString(2));
 					user.setPass(rs.getString(3));
+					
 				}
 				return user;
 
 			}
 		});
+		if(user!=null)
 		log.debug(user.getId() + " + " + user.getName() + " + "
 				+ user.getPass());
 		return user;

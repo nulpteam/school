@@ -24,7 +24,7 @@ public class LoginController {
 			@RequestParam("password") String pass, HttpServletRequest request,  Model model) {
 		User user = UserCheck.check(name, pass);
 		
-		if (user.getId() != null) {
+		if (user != null && user.getId()!=null ) {
 			
 			model.addAttribute(user);
 			log.debug(user.getName()+"Session: created");
