@@ -34,7 +34,4 @@ public class LoginController {
 			return "notReg";
 		}
 	}
-
 }
-/*This is a test of the git branches*/
-/*And this to*/
