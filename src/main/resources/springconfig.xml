@@ -16,7 +16,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="JDBC" class="epam.ph.sg.models.impl.LoginModelDAOImpl">
+	<bean id="loginModelDAOImpl" class="epam.ph.sg.models.impl.LoginModelDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 </beans>

@@ -1,9 +1,11 @@
 package epam.ph.sg.models;
 
-import java.util.List;
-
 public interface LoginModelDAO {
-	List<User> getFromDB(String sql);
-
-	String getTitle();
+	/**
+	 * Витягує юзера з бази
+	 * 
+	 * @param sql - sql запит
+	 * @return Екземпляр User, або null якщо його нема в БД
+	 */
+	User auth(String sql);
 }

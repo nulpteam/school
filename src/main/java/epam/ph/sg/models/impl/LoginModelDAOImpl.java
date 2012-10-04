@@ -2,11 +2,11 @@ package epam.ph.sg.models.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.ResultSetExtractor;
 
 import epam.ph.sg.models.LoginModelDAO;
 import epam.ph.sg.models.User;
@@ -24,22 +24,33 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public String getTitle() {
-		log.info("Title is called");
-		return "Who_are_you ???????????";
-	}
+	
+	/**
+	 * Витягує юзера з бази
+	 * 
+	 * @param sql - sql запит
+	 * @return Екземпляр User, або null якщо його нема в БД
+	 */
+	public User auth(String sql) {
+		User user = jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
 
-	public List<User> getFromDB(String sql) {
-		List<User> userList = jdbcTemplate.query(sql, new RowMapper<User>() {
+			public User extractData(ResultSet rs) throws SQLException,
+					DataAccessException {
+				User user = null;
+				if (rs.next()) {
+					user = new User();
+					user.setId(rs.getString(1));
+					user.setName(rs.getString(2));
+					user.setPass(rs.getString(3));
 
-			public User mapRow(ResultSet rs, int arg1) throws SQLException {
-				User user = new User();
-				user.setId(rs.getString(1));
-				user.setName(rs.getString(2));
-				user.setPass(rs.getString(3));
+				}
 				return user;
+
 			}
 		});
-		return userList;
+		if(user!=null)
+		log.debug(user.getId() + " + " + user.getName() + " + "
+				+ user.getPass());
+		return user;
 	}
 }
