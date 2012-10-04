@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<%@ page import="epam.ph.sg.models.User" %>
-<%! User u;   %>
+	
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,13 +14,13 @@
 </head>
 <body>
 <div style="color:red">
-<% u  = (User)request.getSession().getAttribute("user"); %>
-	<c:out value="${user.name}" />
+
+	<%-- <c:out value="${user.name}" /> --%>
 </div>
 	<div id="bg">
 		<div id="loginform">
 			<div id="register">
-				<img src="images/register.png" onclick="register()">
+				<img src="images/register.png">
 			</div>
 			<form action="Login.html" method="POST">
 				<p id="name_text">
@@ -48,9 +48,9 @@
 			</p>
 		</div>
 		<div id="language_bar">
-			<img id="language_ua" src="images/flag_ua.png" name="ua" onclick="register()">
-			<img id="language_ru" src="images/flag_ru.png" name="ru" onclick="register()">
-			<img id="language_us" src="images/flag_us.png" name="us" onclick="register()">
+			<img id="language_ua" src="images/flag_ua.png" name="ua" >
+			<img id="language_ru" src="images/flag_ru.png" name="ru" >
+			<img id="language_us" src="images/flag_us.png" name="us" >
 		</div>
 		<div>
 			<img id="splats" src="images/splats.png">

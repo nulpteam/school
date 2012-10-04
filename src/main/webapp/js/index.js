@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	$('#reg_img').click(function() {
-		location.replace("Register");
+	$('#register').click(function() {
+		document.location.href="Register.html";
 	});
 	$('#language_ua').click(function() {
 		alert("UKR");
