@@ -63,6 +63,17 @@
     		<artifactId>tomcat-servlet-api</artifactId>
     		<version>7.0.29</version>
     	</dependency>
+    	<dependency>
+    		<groupId>javax.servlet.jsp.jstl</groupId>
+    		<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+    		<version>1.2.1</version>
+    	</dependency>
+    	
+    	<dependency>
+  			<groupId>taglibs</groupId>
+ 			 <artifactId>standard</artifactId>
+  			<version>1.1.2</version>
+		</dependency>
     
     	
 		
