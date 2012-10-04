@@ -35,4 +35,4 @@ public class LoginController {
 		}
 	}
 }
-/*HI this is a coment from git*/
+/*HI this is a comment from git*/
