@@ -1,27 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript">
-	function register() {
-		alert("ghdfg");
-		windows.location.href("login");
-	}
-	
-	function language() {
-		windows.location.href("language");
-	}
-</script>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/index.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>School Games</title>
 <link href="css/index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<div id="bg">
 		<div id="loginform">
 			<div id="register">
-				<img src="images/register.png" onclick="register()">
+				<img id="reg_img" src="images/register.png">
 			</div>
 			<form action="Login.html" method="POST">
 				<p id="name_text">
@@ -49,9 +41,9 @@
 			</p>
 		</div>
 		<div id="language_bar">
-			<img id="language_ua" src="images/flag_ua.png" name="ua" onclick="register()">
-			<img id="language_ru" src="images/flag_ru.png" name="ru" onclick="register()">
-			<img id="language_us" src="images/flag_us.png" name="us" onclick="register()">
+			<img id="language_ua" src="images/flag_ua.png" name="ua">
+			<img id="language_ru" src="images/flag_ru.png" name="ru">
+			<img id="language_us" src="images/flag_us.png" name="us">
 		</div>
 		<div>
 			<img id="splats" src="images/splats.png">

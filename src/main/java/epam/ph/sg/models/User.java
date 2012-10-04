@@ -28,5 +28,4 @@ public class User {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-
 }
