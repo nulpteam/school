@@ -7,10 +7,10 @@
 <html>
 <head>
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/index.js" type="text/javascript"></script>
+<script src="js/Login.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>School Games</title>
-<link href="css/index.css" type="text/css" rel="stylesheet">
+<link href="css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div style="color:red">
@@ -19,7 +19,7 @@
 </div>
 	<div id="bg">
 		<div id="loginform">
-			<div id="register">
+			<div id="register" onclick=register();>
 				<img src="images/register.png">
 			</div>
 			<form action="Login.html" method="POST">
@@ -48,9 +48,9 @@
 			</p>
 		</div>
 		<div id="language_bar">
-			<img id="language_ua" src="images/flag_ua.png" name="ua" >
-			<img id="language_ru" src="images/flag_ru.png" name="ru" >
-			<img id="language_us" src="images/flag_us.png" name="us" >
+			<img id="UKR" src="images/flag_ua.png" name="ua" onclick=language(this);>
+			<img id="RUS" src="images/flag_ru.png" name="ru" onclick=language(this);>
+			<img id="USA" src="images/flag_us.png" name="us" onclick=language(this);>
 		</div>
 		<div>
 			<img id="splats" src="images/splats.png">
