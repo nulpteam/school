@@ -17,5 +17,4 @@ public class HomeController {
 		}
 	}
 	
-}/*ghjkl;gh;fjh;df*/
-/*77777777*/
+}
