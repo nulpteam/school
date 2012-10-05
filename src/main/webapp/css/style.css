@@ -117,34 +117,34 @@ body {
 	margin: 10px 750px;
 }
 
-#language_ua {
+#UKR {
 	position: absolute;
 	margin: 15px 28px;
 }
 
-#language_ua:hover {
+#UKR:hover {
 	position: absolute;
 	margin: 13px 26px;
 	border: 2px solid gray;
 }
 
-#language_ru {
+#RUS {
 	position: absolute;
 	margin: 15px 68px;
 }
 
-#language_ru:hover {
+#RUS:hover {
 	position: absolute;
 	margin: 13px 66px;
 	border: 2px solid gray;
 }
 
-#language_us {
+#USA {
 	position: absolute;
 	margin: 15px 108px;
 }
 
-#language_us:hover {
+#USA:hover {
 	position: absolute;
 	margin: 13px 106px;
 	border: 2px solid gray;
