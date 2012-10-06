@@ -1,2 +1,2 @@
-Paul Michael T.
-1. В файлі src/main/resources/springconfig.xml наконфігати базу (url, username, password).
+Paul Michael T./
+1. пїЅ пїЅпїЅпїЅпїЅ src/main/resources/springconfig.xml пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (url, username, password).
