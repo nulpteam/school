@@ -38,12 +38,8 @@
 				<div id="pass_area_div">
 					<input id="pass_area_input" class="input_areas required" type="password" name="password"
 						maxlength="20" size="15">
-<<<<<<< HEAD
-				</p>
-				<div style="clear:both"></div>
-=======
 				</div>
->>>>>>> refs/remotes/origin/master
+
 				<div>
 					<input class="button" type="submit" value="Enter">
 				</div>
