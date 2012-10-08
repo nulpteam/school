@@ -39,6 +39,7 @@
 					<input class="input_areas required" type="password" name="password"
 						maxlength="20" size="15">
 				</p>
+				<div style="clear:both"></div>
 				<div>
 					<input class="button" type="submit" value="Enter">
 				</div>
