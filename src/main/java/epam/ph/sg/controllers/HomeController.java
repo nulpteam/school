@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import epam.ph.sg.models.LangModelDAO;
 
 @Controller
-@SessionAttributes("lang")
+
 public class HomeController {
 
 	@RequestMapping("/index.html")
-	public String index(Model model, HttpSession session) {
+	public String index(HttpSession session) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"springconfig.xml");
 		LangModelDAO lang = (LangModelDAO)ctx.getBean("defaultLang");
-		model.addAttribute(lang.lang());
+		//Мова аплікухи в сесії
+		session.setAttribute("lang", lang);
 		if (session.getAttribute("user") == null) {
 			return "Login";
 		} else {
