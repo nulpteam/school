@@ -6,37 +6,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Login.js" type="text/javascript"></script>
+
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/Login.js" type="text/javascript"></script>
+	<script language="JavaScript" type="text/javascript" src="js/jquery.validate.js" ></script>
+	<script language="JavaScript" type="text/javascript" src="js/messages_<c:out value="${lang.lang}"/>.js" ></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>School Games</title>
 <link href="css/login.css" type="text/css" rel="stylesheet">
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<div style="color:red">
 
-	<%-- <c:out value="${user.name}" /> --%>
-</div>
 	<div id="bg">
 		<div id="loginform">
 			<div id="register" onclick=register();>
 				<img src="images/register.png">
 			</div>
-			<form action="Login.html" method="POST">
+			<form action="Login.html" method="POST" id="myform">
 				<p id="name_text">
 					<label>User name:</label>
 				</p>
 				<p id="name_area">
-					<input class="input_areas" type="text" name="user_name"
-						maxlength="25" size="15" title="Enter username">
+					<input class="input_areas required" type="text" name="user_name"
+					maxlength="25" size="15">
 				</p>
 				<p id="pass_text">
 					<label>Password:</label>
 				</p>
 				<p id="pass_area">
-					<input class="input_areas" type="password" name="password"
-						maxlength="20" size="15" title="Enter password">
+					<input class="input_areas required" type="password" name="password"
+						maxlength="20" size="15">
 				</p>
 				<div>
 					<input class="button" type="submit" value="Enter">
@@ -57,5 +58,8 @@
 			<img id="splats" src="images/splats.png">
 		</div>
 	</div>
+	<script language="JavaScript" type="text/javascript">
+		$(function () {$('#myform').validate();});
+	</script>
 </body>
 </html>

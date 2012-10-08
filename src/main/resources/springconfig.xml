@@ -19,4 +19,15 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="loginModelDAOImpl" class="epam.ph.sg.models.impl.LoginModelDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+	
+	
+	<bean id="defaultLang" class="epam.ph.sg.models.impl.Lang">
+	    <property name="lang" value="us"/>
+	 </bean>
+	 
+	<bean id="lang" class="epam.ph.sg.controllers.LoginController">
+	    <property name="lang" ref="defaultLang"/>
+	 </bean>
+	 
+	
 </beans>

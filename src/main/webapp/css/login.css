@@ -139,3 +139,4 @@
 	margin: 13px 106px;
 	border: 2px solid gray;
 }
+#name_area .error {color:red; font-size: 8px;}
