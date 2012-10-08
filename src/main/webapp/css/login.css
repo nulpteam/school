@@ -33,22 +33,40 @@
 
 #name_text {
 	position: absolute;
-	margin: 20px 100px;
+	margin: 20px 81px;
 }
 
-#name_area {
+#name_area_div {
 	position: absolute;
-	margin: 46px 99px;
+	margin: 46px 80px;
+}
+
+#name_area_input {
+	position: absolute;
+	margin: 0px 0px;
+	font-size: 16px;
 }
 
 #pass_text {
 	position: absolute;
-	margin: 80px 100px;
+	margin: 80px 81px;
 }
 
-#pass_area {
+#pass_area_div {
 	position: absolute;
-	margin: 106px 99px;
+	margin: 106px 80px;
+}
+
+#pass_area_input {
+	position: absolute;
+	margin: 0px 0px;
+	font-size: 16px;
+}
+
+.error {
+	position: absolute;
+	margin: 0px 140px;
+	font-size: 10px;
 }
 
 .button {
@@ -74,7 +92,6 @@
 	border-top-color: #e8cea9;
 	background: #e8cea9;
 }
-
 
 #register {
 	position: absolute;
@@ -139,4 +156,3 @@
 	margin: 13px 106px;
 	border: 2px solid gray;
 }
-#name_area .error {color:red; font-size: 8px;}
