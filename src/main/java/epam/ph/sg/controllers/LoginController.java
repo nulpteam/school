@@ -1,6 +1,7 @@
 package epam.ph.sg.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,15 @@ public class LoginController {
 	@RequestMapping(value = { "/Login.html", "/Login" }, method = RequestMethod.POST)
 	public String login(@RequestParam("user_name") String name,
 			@RequestParam("password") String pass, HttpServletRequest request,
-			Model model) {
+			Model model,HttpSession session) {
 
 		User user = UserCheck.check(name, pass);
 		if (user != null && user.getId() != null) {
 			model.addAttribute(user);
+			if(session.getAttribute("lang")==null)
+			{
+				session.setAttribute("lang", "en");
+			}
 
 			log.debug(user.getName() + " Session: created");
 			return "index";

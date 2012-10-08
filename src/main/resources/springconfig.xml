@@ -23,7 +23,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	
 	<bean id="defaultLang" class="epam.ph.sg.models.impl.LangModelDAOImpl">
 	    <property name="lang" value="ru"/>
-	 </bean>
+	</bean>
 	 
 	
 	 
