@@ -21,12 +21,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	</bean>
 	
 	
-	<bean id="defaultLang" class="epam.ph.sg.models.impl.Lang">
+	<bean id="defaultLang" class="epam.ph.sg.models.impl.LangModelDAOImpl">
 	    <property name="lang" value="us"/>
 	 </bean>
 	 
-	<bean id="lang" class="epam.ph.sg.controllers.LoginController">
-	    <property name="servletLang" ref="defaultLang"/>
-	 </bean>
 	
+	 
 </beans>
