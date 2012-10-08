@@ -42,8 +42,8 @@ public class LoginController {
 		//log.error("lang======================="+servletLang.getLang());
 		
 		//Lang lang = new Lang("ru");
-		
-		User user = UserCheck.check(name, pass);
+		UserCheck us_check = new UserCheck();
+		User user = us_check.check(name, pass);
 		if (user != null && user.getId() != null) {
 			model.addAttribute(user);
 			model.addAttribute(servletLang);

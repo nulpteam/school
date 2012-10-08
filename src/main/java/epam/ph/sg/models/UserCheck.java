@@ -14,7 +14,7 @@ public class UserCheck {
 	 * @param pass - пароль користувача
 	 * @return Екземпляр User, або null якщо його нема в БД
 	 */
-	public static User check(String name, String pass) {
+	public User check(String name, String pass) {
 		LoginModelDAO loginDAO = (LoginModelDAO) ctx.getBean("loginModelDAOImpl");
 		User user = loginDAO.auth("select id, name, pass from users" +
 				" where name='"+name+"' and pass='"+pass+"'");
