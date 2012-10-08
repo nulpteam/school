@@ -26,7 +26,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	 </bean>
 	 
 	<bean id="lang" class="epam.ph.sg.controllers.LoginController">
-	    <property name="lang" ref="defaultLang"/>
+	    <property name="servletLang" ref="defaultLang"/>
 	 </bean>
 	 
 	

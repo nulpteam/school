@@ -17,23 +17,26 @@ import epam.ph.sg.models.UserCheck;
 import epam.ph.sg.models.impl.Lang;
 
 @Controller
-@SessionAttributes({"user","lang"})
+@SessionAttributes({"user","servletLang"})
 public class LoginController {
 	private static Logger log = Logger.getLogger(LoginController.class);
-	//private static ApplicationContext ctx = new ClassPathXmlApplicationContext(
-		//	"springconfig.xml");
-	private Lang lang;
+	private static ApplicationContext ctx = new ClassPathXmlApplicationContext(
+			"springconfig.xml");
+	private Lang servletLang = (Lang)ctx.getBean("lang");
+	
+	
 	@RequestMapping(value = { "/Login.html", "/Login" }, method = RequestMethod.POST)
 	public String login(@RequestParam("user_name") String name,
 			@RequestParam("password") String pass, HttpServletRequest request,
 			Model model) {
+		log.error("lang======================="+servletLang.getLang());
 		
 		//Lang lang = new Lang("ru");
 		
 		User user = UserCheck.check(name, pass);
 		if (user != null && user.getId() != null) {
 			model.addAttribute(user);
-			model.addAttribute(lang);
+			model.addAttribute(servletLang);
 			log.debug(user.getName() + " Session: created");
 			return "index";
 		} else {
