@@ -28,18 +28,22 @@
 				<p id="name_text">
 					<label>User name:</label>
 				</p>
-				<p id="name_area">
-					<input class="input_areas required" type="text" name="user_name"
+				<div id="name_area_div">
+					<input id="name_area_input" class="input_areas required" type="text" name="user_name"
 					maxlength="25" size="15">
-				</p>
+				</div>
 				<p id="pass_text">
 					<label>Password:</label>
 				</p>
-				<p id="pass_area">
-					<input class="input_areas required" type="password" name="password"
+				<div id="pass_area_div">
+					<input id="pass_area_input" class="input_areas required" type="password" name="password"
 						maxlength="20" size="15">
+<<<<<<< HEAD
 				</p>
 				<div style="clear:both"></div>
+=======
+				</div>
+>>>>>>> refs/remotes/origin/master
 				<div>
 					<input class="button" type="submit" value="Enter">
 				</div>
@@ -47,7 +51,6 @@
 		</div>
 		<div id="dialog_text">
 			<p>
-	
 			</p>
 		</div>
 		<div id="language_bar">
