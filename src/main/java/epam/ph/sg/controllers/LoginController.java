@@ -46,7 +46,7 @@ public class LoginController {
 		User user = UserCheck.check(name, pass);
 		if (user != null && user.getId() != null) {
 			model.addAttribute(user);
-			//model.addAttribute(servletLang);
+			model.addAttribute(servletLang);
 			log.debug(user.getName() + " Session: created");
 			return "index";
 		} else {
