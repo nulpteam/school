@@ -26,10 +26,10 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 
 	
 	/**
-	 * Витягує юзера з бази
+	 * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	 * 
-	 * @param sql - sql запит
-	 * @return Екземпляр User, або null якщо його нема в БД
+	 * @param sql - sql пїЅпїЅпїЅпїЅпїЅ
+	 * @return пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ User, пїЅпїЅпїЅ null пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 	 */
 	public User auth(String sql) {
 		User user = jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
@@ -48,9 +48,16 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 
 			}
 		});
+		//Р›РѕРіСѓРІР°РЅРЅСЏ РїРѕРґС–С—
 		if(user!=null)
-		log.debug(user.getId() + " + " + user.getName() + " + "
-				+ user.getPass());
+		{
+			log.debug(user.getId() + " + " + user.getName() + " + "+ user.getPass());
+		}
+		else
+		{
+			log.debug("No such user found in DB");
+		}
+				
 		return user;
 	}
 }

@@ -8,11 +8,11 @@ public class UserCheck {
 			"springconfig.xml");
 
 	/**
-	 * Перевіряє чи є користувач з таким іменем і паролем в БД
+	 * РџРµСЂРµРІС–СЂСЏС” С‡Рё С” РєРѕСЂРёСЃС‚СѓРІР°С‡ Р· С‚Р°РєРёРј С–РјРµРЅРµРј С– РїР°СЂРѕР»РµРј РІ Р‘Р”
 	 * 
-	 * @param name - ім'я користувача
-	 * @param pass - пароль користувача
-	 * @return Екземпляр User, або null якщо його нема в БД
+	 * @param name - С–Рј'СЏ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
+	 * @param pass - РїР°СЂРѕР»СЊ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
+	 * @return Р•РєР·РµРјРїР»СЏСЂ User, Р°Р±Рѕ null СЏРєС‰Рѕ Р№РѕРіРѕ РЅРµРјР° РІ Р‘Р”
 	 */
 	public static User check(String name, String pass) {
 		LoginModelDAO loginDAO = (LoginModelDAO) ctx.getBean("loginModelDAOImpl");

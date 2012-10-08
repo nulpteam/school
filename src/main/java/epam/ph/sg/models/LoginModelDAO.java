@@ -2,10 +2,10 @@ package epam.ph.sg.models;
 
 public interface LoginModelDAO {
 	/**
-	 * Витягує юзера з бази
+	 * Р’РёС‚СЏРіСѓС” СЋР·РµСЂР° Р· Р±Р°Р·Рё
 	 * 
-	 * @param sql - sql запит
-	 * @return Екземпляр User, або null якщо його нема в БД
+	 * @param sql - sql Р·Р°РїРёС‚
+	 * @return Р•РєР·РµРјРїР»СЏСЂ User, Р°Р±Рѕ null СЏРєС‰Рѕ Р№РѕРіРѕ РЅРµРјР° РІ Р‘Р”
 	 */
 	User auth(String sql);
 }
