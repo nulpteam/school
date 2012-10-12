@@ -45,7 +45,7 @@ public class XOController {
 			String serverId = user.getId();
 			XOPlayer xo = XOConnector.create(serverId);
 			session.setAttribute("xo", xo);
-			return "XO/XOGame";
+			return "XO/XOServer";
 		}
 	}
 
@@ -59,7 +59,7 @@ public class XOController {
 			String clientId = user.getId();
 			XOPlayer xo = XOConnector.connect(serverId, clientId);
 			session.setAttribute("xo", xo);
-			return "XO/XOGame";
+			return "XO/XOClient";
 		}
 	}
 	

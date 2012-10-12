@@ -1,16 +1,15 @@
 var end = false;
 
 function createServer() {
-	location.href = "XOGameServer.html";
-//	var inter1 = setInterval(check, 1000);
-//	function check() {
-//		$.post("XOAGetClient.html", function(response) {
-//			if (response != -3) {
-//				clearInterval(inter1);
-//				alert("Client connected");
-//			}
-//		});
-//	}
+	var inter1 = setInterval(check, 1000);
+	function check() {
+		$.post("XOAGetClient.html", function(response) {
+			if (response != -3) {
+				clearInterval(inter1);
+				alert("Client connected");
+			}
+		});
+	}
 }
 
 function connect(id) {

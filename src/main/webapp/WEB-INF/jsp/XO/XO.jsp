@@ -9,6 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/XO.js" type="text/javascript"></script>
 <script type="text/javascript">
+function createLink(){
+	location.href = "XOGameServer.html";
+}
 function conectLink(){
 	location.href = "XOServerList.html";
 }
@@ -18,7 +21,7 @@ function conectLink(){
 <body>
 	<div>
 		<h2>Хрестики нолики</h2>
-		<button onclick=createServer();>Створити гру</button>
+		<button onclick=createLink();>Створити гру</button>
 		<button onclick=conectLink();>Підключитись</button>
 	</div>
 </body>
