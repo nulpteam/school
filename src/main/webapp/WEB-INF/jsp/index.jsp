@@ -14,7 +14,7 @@
 		<h2>Welcome <c:out value="${user.name}"/>, you are logged in :)</h2>
 		<h2>Тут в нас буде парта з іграми</h2>
 		<a href="XO.html">Хрестики нолики</a>
-		<a href="BS.html">Морський бій</a>
+		<a href="Sb.html">Морський бій</a>
 		<a href="Reversy.html">Реверсі</a>
 		<a href="Points.html">Крапки</a>
 	</div>

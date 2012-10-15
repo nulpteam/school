@@ -37,7 +37,7 @@ public class LoginController {
 		} else {
 			log.debug("Login/Pass is not correct: Login->" + name + " Pass->"
 					+ pass + " host-> " + request.getHeader("host"));
-			return "notReg";
+			return "Login";
 		}
 	}
 }
