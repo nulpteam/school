@@ -6,12 +6,16 @@
 		</dir>
 		<dir name="C:/Users/Bobik/git/school/target/test-classes">
 		</dir>
+		<dir name="C:/Users/Bobik/git/school/src/main/resources"/>
 	</classpath>
 
 	<web>
 		<link target="/">
-			<dir name="C:/Users/Bobik/git/school/src/main/webapp">
+			<dir name="c:\apache-tomcat-7.0.29\webapps\School\WEB-INF\classes">
 			</dir>
+				<link target="/jsp">
+    		 		 <dir name="c:\apache-tomcat-7.0.29\webapps\School\WEB-INF\jsp"/>
+   				 </link>
 		</link>
 	</web>
 

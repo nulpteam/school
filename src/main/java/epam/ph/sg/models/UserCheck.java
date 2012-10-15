@@ -1,11 +1,8 @@
 package epam.ph.sg.models;
 
 import org.apache.log4j.Logger;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import epam.ph.sg.models.impl.LoginModelDAOImpl;
 
 public class UserCheck {
 	private static Logger log = Logger.getLogger(UserCheck.class);
@@ -21,11 +18,9 @@ public class UserCheck {
 	 * @return Екземпляр User, або null якщо його нема в БД
 	 */
 	public static User check(String name, String pass) {
-		//name = name.replaceAll("\\\\", "");
-		//String n = name.replaceAll("\\", "");
-		//pass = pass.replaceAll("\\\\", "");
-		//String p = pass.replaceAll("\\", "");
-		log.debug("name ="+name+" ||| pass ="+pass);
+		/*При введені імені і.або паролю з слешами - SQL-запит вилітає.
+		 * Тре доробити екранування від слешів*/
+		log.debug("name ="+name+" -----+++++-----+++++ pass ="+pass);
 		LoginModelDAO loginDAO = (LoginModelDAO) ctx.getBean("loginModelDAOImpl");
 		User user = loginDAO.auth("select id, name, pass from users" +
 				" where name='"+name+"' and pass='"+pass+"'");

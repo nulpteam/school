@@ -6,18 +6,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="js/jquery.js" type="text/javascript"></script>
+<link href="css/SB.css" type="text/css" rel="stylesheet">
+
 <title><c:out value="${sbGame.title}" /></title>
 </head>
 <body>
-Hallo Sea Battle!
+<div class="content">
+zxcv
+</div>
+
+
+
+
 <%
 Enumeration<String> en = request.getAttributeNames();
 while (en.hasMoreElements())
 {
 	out.println(en.nextElement());
 }
-
-
 
 %>
 </body>
