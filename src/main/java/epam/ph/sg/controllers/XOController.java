@@ -42,22 +42,20 @@ public class XOController {
 		if (user == null) {
 			return "Login";
 		} else {
-			String serverId = user.getId();
-			XOPlayer xo = XOConnector.create(serverId);
+			XOPlayer xo = XOConnector.create(user);
 			session.setAttribute("xo", xo);
 			return "XO/XOServer";
 		}
 	}
 
 	@RequestMapping(value = "/XOGameClient.html", method = RequestMethod.POST)
-	public String connect(@RequestParam("id") String serverId,
+	public String connect(@RequestParam("id") String serverID,
 			HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			return "Login";
 		} else {
-			String clientId = user.getId();
-			XOPlayer xo = XOConnector.connect(serverId, clientId);
+			XOPlayer xo = XOConnector.connect(serverID, user);
 			session.setAttribute("xo", xo);
 			return "XO/XOClient";
 		}
@@ -65,17 +63,18 @@ public class XOController {
 	
 	@RequestMapping(value = "/XOAGetClient.html")
 	public @ResponseBody
-	int getClient(HttpSession session) {
+	User getClient(HttpSession session) {
 		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
-		return xo.getClient();
+		return xo.getGame().getClient();
 	}
 
 	@RequestMapping(value = "/XOAction.html", method = RequestMethod.POST)
 	public @ResponseBody
 	int put(@RequestParam("xy") String xy, HttpSession session) {
 		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
-		int x = Integer.parseInt(xy.substring(0, 1));
-		int y = Integer.parseInt(xy.substring(1));
+		int indexY = xy.indexOf('Y');
+		int x = Integer.parseInt(xy.substring(1, indexY));
+		int y = Integer.parseInt(xy.substring(indexY+1));
 		return xo.put(x, y);
 	}
 

@@ -13,7 +13,7 @@
 <body>
 	<div align="center">
 		<c:forEach var="server" items="${serverMap}" varStatus="i">
-			<button id="${server.key}" onclick=connect(this.id);>Сервер ID: <c:out value="${server.key}"/></button>
+			<button id="${server.key}" onclick=connect(this.id);>Сервер Name: <c:out value="${server.value.game.server.name}"/></button>
 		</c:forEach>
 	</div>
 </body>

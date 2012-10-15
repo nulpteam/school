@@ -1,5 +1,7 @@
 package epam.ph.sg.models.xo;
 
+import epam.ph.sg.models.User;
+
 /**
  * @author Paul Michael T.
  */
@@ -8,6 +10,8 @@ public class XOGame {
 	private int status = XO.WITHOUT_CLIENT;
 	private XOBox lastBox = null;
 	private XOAI ai = new XOAI(xoFields);
+	private User server = null;
+	private User client = null;
 
 	/**
 	 * AI getter
@@ -36,5 +40,21 @@ public class XOGame {
 
 	public void setLastBox(XOBox lastBox) {
 		this.lastBox = lastBox;
+	}
+
+	public User getServer() {
+		return server;
+	}
+
+	public void setServer(User server) {
+		this.server = server;
+	}
+
+	public User getClient() {
+		return client;
+	}
+
+	public void setClient(User client) {
+		this.client = client;
 	}
 }

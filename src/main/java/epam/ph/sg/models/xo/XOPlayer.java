@@ -63,15 +63,6 @@ public class XOPlayer {
 	}
 
 	/**
-	 * Client id getter
-	 * 
-	 * @return Client id
-	 */
-	public int getClient() {
-		return game.getStatus();
-	}
-
-	/**
 	 * Fields getter
 	 * 
 	 * @return List<List<XOBox>>
