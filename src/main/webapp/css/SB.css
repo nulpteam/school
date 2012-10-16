@@ -18,16 +18,17 @@ body {
 }
 
 .caption {
-	padding-top: 20px;
+	padding-top: 14px;
 	/* 	padding-left: 133px; */
 	border: 1px solid red;
-	width: 318px;
+	/* 	width: 318px; */
 	float: left;
+	margin-left: 12px;
 }
 
 .deco_sheep {
-	width: 210px;
-	padding-left: 50px;
+	width: 220px;
+	/* 	padding-left: 50px; */
 	padding-top: 20px;
 	border: 1px solid red;
 	margin-left: 301px;
@@ -41,22 +42,70 @@ body {
 	border: 1px solid red;
 	width: 200px;
 	height: 200px;
-	margin-top: 24px;
-	margin-left: 159px;
+	margin-top: 29px;
+	margin-left: 179px;
+}
+
+.field1 .h_markers {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: -28px;
+}
+
+.field1 .h_markers .a {
+	padding-left: 0px;
+}
+
+.v_markers .a {
+	padding-left: 0px;
+}
+
+.field1 div {
+	float: left;
+	padding-left: 6px;
+}
+
+.field2 div {
+	float: left;
+	padding-left: 6px;
+}
+
+.v_markers {
+	font-size: 12px;
+	font-weight: bold;
+	margin-left: -29px;
+	width: 50px;
+}
+
+.v_markers .last10 {
+	margin-left: -7px;
+}
+
+.v_markers div {
+	float: none;
+}
+
+.field2 .h_markers {
+	margin-left: -7px;
+}
+
+.field2 .v_markers {
+	width: 50px;
+	margin-left: -35px;
+	margin-top: -4px;
 }
 
 .ammo {
 	border: 1px solid;
 	width: 100px;
-	height: 197px;
+	height: 199px;
 	float: left;
-	margin-top: 25px;
+	margin-top: 30px;
 }
 
 .field2 {
 	border: 1px solid red;
-	width: 200px;
+	width: 193px;
 	height: 200px;
-	margin-top: 40px;
-	margin-left: 159px;
+	margin-top: 36px;
 }
