@@ -25,6 +25,18 @@ body {
 	float: left;
 }
 
+.deco_sheep {
+	width: 210px;
+	padding-left: 50px;
+	padding-top: 20px;
+	border: 1px solid red;
+	margin-left: 301px;
+}
+
+.deco_sheep img {
+	width: 210px;
+}
+
 .field1 {
 	border: 1px solid red;
 	width: 200px;

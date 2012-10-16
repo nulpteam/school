@@ -15,7 +15,7 @@
 	<div class="content">
 		<div class="caption">Морський бій</div>
 		<div class="deco_sheep">
-			<img alt="sheep" src="image/sheep_deco.png">
+			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
 		<div class=clear></div>
 		<div class="ammo"></div>
