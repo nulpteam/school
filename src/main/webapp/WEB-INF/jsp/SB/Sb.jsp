@@ -5,8 +5,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<c:forEach items="${sbGame.scripts}" var="script">
+	<script src="<c:out value="${script}"/>" type="text/javascript"></script>
+</c:forEach>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="js/jquery.js" type="text/javascript"></script>
 
 <link href="css/SB.css" type="text/css" rel="stylesheet">
 
@@ -19,7 +24,14 @@
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
 		<div class=clear></div>
-		<div class="ammo"></div>
+		<div id="draggable" class="ammo">
+			
+		
+		
+		
+		
+		
+		</div>
 		<div class="field1">
 			<div class="h_markers">
 				<div class="a">a</div>
@@ -44,6 +56,148 @@
 				<div class="8">8</div>
 				<div class="9">9</div>
 				<div class="last10">10</div>
+			
+				
+				
+				<table id="table" align="center" cellpadding="0" cellspacing="0">
+
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+
+				</table>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -77,14 +231,15 @@
 
 
 
+<div class=debug>
+<%-- 	<% --%>
+<!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->
+<!-- // // 	while (en.hasMoreElements()) -->
+<!-- // // 	 {  -->
+<!-- // // 		out.println(en.nextElement()); -->
+<!-- // // 	} -->
 
-	<%-- <% --%>
-	<!-- Enumeration<String> en = request.getAttributeNames(); -->
-	<!-- while (en.hasMoreElements()) -->
-	<!-- { -->
-	<!-- 	out.println(en.nextElement()); -->
-	<!-- } -->
-
-	<!-- %> -->
+<%-- 	 %>  --%>
+</div>
 </body>
 </html>

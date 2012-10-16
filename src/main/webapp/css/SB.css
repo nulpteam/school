@@ -20,7 +20,7 @@ body {
 .caption {
 	padding-top: 14px;
 	/* 	padding-left: 133px; */
-/* 	border: 1px solid red; */
+	/* 	border: 1px solid red; */
 	/* 	width: 318px; */
 	float: left;
 	margin-left: 12px;
@@ -30,7 +30,7 @@ body {
 	width: 220px;
 	/* 	padding-left: 50px; */
 	padding-top: 20px;
-/* 	border: 1px solid red; */
+	/* 	border: 1px solid red; */
 	margin-left: 301px;
 }
 
@@ -38,13 +38,12 @@ body {
 	width: 210px;
 }
 
-.field1 {
-	/*border: 1px solid red;*/
+.field1 { /*border: 1px solid red;*/
 	background: url('../images/SB/field_background.png') no-repeat;
-width: 207px;
-height: 208px;
-margin-top: 28px;
-margin-left: 179px;
+	width: 207px;
+	height: 208px;
+	margin-top: 28px;
+	margin-left: 179px;
 }
 
 .field1 .h_markers {
@@ -89,14 +88,14 @@ margin-left: 179px;
 .field2 .h_markers {
 	margin-left: -9px;
 	font-size: 20px;
-font-weight: bold;
-margin-top: -28px;
+	font-weight: bold;
+	margin-top: -28px;
 }
 
 .field2 .v_markers {
 	width: 50px;
 	margin-left: -32px;
-/* 	margin-top: -4px; */
+	/* 	margin-top: -4px; */
 }
 
 .ammo {
@@ -107,11 +106,29 @@ margin-top: -28px;
 	margin-top: 32px;
 }
 
-.field2 {
+.field2 { /* 	border: 1px solid red; */
+	background: url('../images/SB/field_background.png') no-repeat;
+	width: 209px;
+	height: 208px;
+	margin-top: 33px;
+	margin-left: 179px;
+}
+
+.debug {
+	font-size: 15px;
+	font-family: sans;
+	color: #056109;
+}
+
+table {
+	margin-top: -199px;
+	margin-left: 24px;
 /* 	border: 1px solid red; */
-background: url('../images/SB/field_background.png') no-repeat;
-width: 209px;
-height: 208px;
-margin-top: 33px;
-margin-left: 179px;
+	width: 200px;
+table-layout: fixed;
+}
+tr td
+{
+	text-align: center;
+	height: 20px;
 }

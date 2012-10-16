@@ -15,7 +15,7 @@ public class SbGame {
 
 	public void addScript(String script)
 	{
-		/*доробити*/
+		scripts.add("js/"+script+".js");
 	}
 
 	public String getTitle() {

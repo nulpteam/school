@@ -1,7 +1,12 @@
 package epam.ph.sg.controllers;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +18,7 @@ import epam.ph.sg.models.sb.SbGame;
 @Controller
 @SessionAttributes("sbGame")
 public class SBController {
-	
+	private static Logger log = Logger.getLogger(SBController.class);
 	@RequestMapping(value = { "/Sb.html", "/Sb" }, method = RequestMethod.GET)
 	public String SbGame(Model model, HttpSession session)
 	{
@@ -22,6 +27,9 @@ public class SBController {
 			return "Login";
 		}
 		SbGame sbGame = new SbGame();
+		sbGame.addScript("jquery");
+		sbGame.addScript("jquery-ui-1.9.0");
+		log.debug("-------------------Added JavaScripts-------------------");
 		model.addAttribute(sbGame);
 		return "SB/Sb";
 	}
