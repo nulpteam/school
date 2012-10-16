@@ -18,6 +18,7 @@ public class SBController {
 	public String SbGame(Model model, HttpSession session)
 	{
 		if (session.getAttribute("user") == null) {
+			new HomeController().index(session);
 			return "Login";
 		}
 		SbGame sbGame = new SbGame();

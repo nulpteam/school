@@ -1,3 +1,50 @@
-.content{
+body {
+	font-family: LC Chalk;
+	font-size: 35px;
+	color: #5B2FCE;
+}
+
+.clear {
+	clear: both;
+}
+
+.content {
 	background: url('../images/SB/game_sheet2.png') no-repeat;
+	width: 620px;
+	height: 725px;
+	/* 	border: 1px solid red; */
+	/* 	margin-top: 20px; */
+	margin: 50px auto;
+}
+
+.caption {
+	padding-top: 20px;
+	/* 	padding-left: 133px; */
+	border: 1px solid red;
+	width: 318px;
+	float: left;
+}
+
+.field1 {
+	border: 1px solid red;
+	width: 200px;
+	height: 200px;
+	margin-top: 24px;
+	margin-left: 159px;
+}
+
+.ammo {
+	border: 1px solid;
+	width: 100px;
+	height: 197px;
+	float: left;
+	margin-top: 25px;
+}
+
+.field2 {
+	border: 1px solid red;
+	width: 200px;
+	height: 200px;
+	margin-top: 40px;
+	margin-left: 159px;
 }
