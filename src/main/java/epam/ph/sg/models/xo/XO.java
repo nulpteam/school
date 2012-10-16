@@ -16,6 +16,6 @@ public class XO {
 	public static final int WIN = -5;
 	public static final int TO_WIN = 5;
 
-	public static final int X_SIZE = 16;
-	public static final int Y_SIZE = 16;
+	public static final int X_SIZE = 20;
+	public static final int Y_SIZE = 20;
 }

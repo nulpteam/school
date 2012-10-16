@@ -1,4 +1,4 @@
-#back {
+#paperList {
 	background-image: url('../images/XO/list.png');
 	background-repeat: no-repeat;
 	height: 840px;
@@ -6,14 +6,26 @@
 	margin: -8px auto;
 }
 
-#text {
+#outText {
 	position: absolute;
 	margin-top: 70px;
 	margin-left: 160px;
 }
 
+#myName {
+	position: absolute;
+	margin-top: 15px;
+	margin-left: 100px;
+}
+
+#opName {
+	position: absolute;
+	margin-top: 15px;
+	margin-left: 420px;
+}
+
 #XO {
 	position: absolute;
-	margin-top: 175px;
-	margin-left: 50px;
+	margin-top: 160px;
+	margin-left: 80px;
 }

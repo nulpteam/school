@@ -13,7 +13,13 @@
 <body>
 	<div align="center">
 		<c:forEach var="server" items="${serverMap}" varStatus="i">
-			<button id="${server.key}" onclick=connect(this.id);>Сервер Name: <c:out value="${server.value.game.server.name}"/></button>
+			<%-- <button id="${server.key}" onclick=connect(this.id);>
+					Сервер Name:<c:out value="${server.value.game.server.name}" />
+			</button> --%>
+			<form action="XOGameClient.html" method="POST">
+				<input name="serverID" value="${server.key}" type="hidden">
+				<input class="button" type="submit" value="${server.value.game.server.name}">
+			</form>
 		</c:forEach>
 	</div>
 </body>

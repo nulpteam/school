@@ -1,28 +1,29 @@
 var end = false;
 
 function createServer() {
-	$('#text').text('Чекайте на підключення');
+	$('#outText').text('Чекайте на підключення');
 	var inter1 = setInterval(check, 1000);
 	function check() {
 		$.post("XOAGetClient.html", function(response) {
 			if (response != "") {
 				clearInterval(inter1);
-				$('#text').text('Клієнт ' + response.name + ' підключився');
+				$('#outText').text('Клієнт ' + response.name + ' підключився');
+				$('#opName').text(response.name);
 			}
 		});
 	}
 }
 
-function connect(id) {
-	$.post("XOGameClient.html", {
-		id : id
-	}, function(resp) {
-		$('#text').text('Чекайте на хід суперника');
-		$('#table').remove();
-		document.write(resp);
-	});
-	checker();
-}
+//function connect(id) {
+//	$.post("XOGameClient.html", {
+//		serverID : id
+//	}, function(resp) {
+//		$('#outText').text('Чекайте на хід суперника');
+//		$('#table').remove();
+//		document.write(resp);
+//	});
+//	checker();
+//}
 
 function put(img) {
 	if (end)
@@ -33,7 +34,7 @@ function put(img) {
 		if (response == -5) {
 			setImg(img, status);
 			end = true;
-			$('#text').text('Ви перемогли !!!');
+			$('#outText').text('Ви перемогли !!!');
 			// location.href = "XO.html";
 		} else if (response == -3) {
 		} else if (response == -2) {
@@ -43,7 +44,7 @@ function put(img) {
 		} else {
 			status = response;
 			setImg(img, response);
-			$('#text').text('Чекайте на хід суперника');
+			$('#outText').text('Чекайте на хід суперника');
 			checker();
 		}
 	});
@@ -57,12 +58,12 @@ function checker() {
 				clearInterval(inter);
 				change();
 				end = true;
-				$('#text').text('Ви програли !!!');
+				$('#outText').text('Ви програли !!!');
 				// location.href = "XO.html";
 			} else if (response != 0) {
 				clearInterval(inter);
 				change();
-				$('#text').text('Ваш хід');
+				$('#outText').text('Ваш хід');
 			}
 		});
 	}
