@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import epam.ph.sg.models.User;
 import epam.ph.sg.models.xo.XOBox;
@@ -49,15 +50,15 @@ public class XOController {
 	}
 
 	@RequestMapping(value = "/XOGameClient.html", method = RequestMethod.POST)
-	public String connect(@RequestParam("id") String serverID,
+	public ModelAndView connect(@RequestParam("serverID") String serverID,
 			HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			return "Login";
+			return new ModelAndView("Login");
 		} else {
 			XOPlayer xo = XOConnector.connect(serverID, user);
 			session.setAttribute("xo", xo);
-			return "XO/XOClient";
+			return new ModelAndView("XO/XOClient");
 		}
 	}
 	

@@ -9,31 +9,17 @@
 <link href="css/XO.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO.js" type="text/javascript"></script>
+<script type="text/javascript">
+var serverName = "${xo.game.server.name}";
+$(document).ready(function(){
+	$('#opName').text(serverName);
+	$('#outText').text('Чекайте на хід суперника');
+	checker();
+});
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="back">
-	<div><h2 id="text"></h2></div>
-		<div id="XO">
-			<table id="table" align="center" cellpadding="0" cellspacing="0">
-				<c:forEach var="lines" items="${xo.fields}" varStatus="i">
-					<tr>
-						<c:forEach var="box" items="${lines}" varStatus="j">
-							<td><c:if test="${box.status == 0}">
-									<img id="X${j.count-1}Y${i.count-1}" src="images/XO/0.png"
-										onclick=put(this);>
-								</c:if> <c:if test="${box.status == -8}">
-									<img id="X${j.count-1}Y${i.count-1}" src="images/XO/X.png"
-										onclick=put(this);>
-								</c:if> <c:if test="${box.status == -9}">
-									<img id="X${j.count-1}Y${i.count-1}" src="images/XO/O.png"
-										onclick=put(this);>
-								</c:if></td>
-						</c:forEach>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div>
+	<c:import url="Game.jsp"></c:import>
 </body>
 </html>
