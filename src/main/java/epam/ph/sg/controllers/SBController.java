@@ -28,6 +28,7 @@ public class SBController {
 		SbGame sbGame = new SbGame();
 		sbGame.addScript("jquery");
 		sbGame.addScript("jquery-ui-1.9.0");
+		sbGame.addScript("SB");
 		
 		log.debug("-------------------Added JavaScriptss-------------------");
 		model.addAttribute(sbGame);

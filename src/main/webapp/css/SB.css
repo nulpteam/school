@@ -166,3 +166,9 @@ tr td {
 {
 	padding-bottom: 19px;
 }
+.test_dr
+{
+	border: 1px solid red;
+width: 100px;
+height: 50px;
+}
