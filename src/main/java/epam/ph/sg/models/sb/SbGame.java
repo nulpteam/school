@@ -20,7 +20,7 @@ public class SbGame {
 
 	public String getTitle() {
 		
-		return "lang"+title;
+		return "title";
 	}
 
 }

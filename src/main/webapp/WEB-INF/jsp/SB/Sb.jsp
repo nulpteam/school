@@ -24,14 +24,20 @@
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
 		<div class=clear></div>
-		<div id="draggable" class="ammo">
-			
-		
-		
-		
-		
-		
+		<div  class="ammo">
+			<!-- Тут мають бути розташовані кораблі для розставляння на полі-->
+			<div class="sheep_cont">
+				<img id="sheep_4" src="images/SB/4.png" alt="4"/>
+					<div class="clear"></div>
+				<img id="sheep_3" src="images/SB/3.png" alt="3"/>
+					<div class="clear"></div>
+				<img id="sheep_2" src="images/SB/2.png" alt="2"/>
+					<div class="clear"></div>
+				<img id="sheep_1" src="images/SB/1.png" alt="1"/>
+					<div class="clear"></div>
+			</div>
 		</div>
+		
 		<div class="field1">
 			<div class="h_markers">
 				<div class="a">a</div>
@@ -57,147 +63,15 @@
 				<div class="9">9</div>
 				<div class="last10">10</div>
 			
-				
-				
-				<table id="table" align="center" cellpadding="0" cellspacing="0">
-
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-
+				<table id="table1" align="center" cellpadding="0" cellspacing="0">
+					<c:forEach begin="0" end="9" step="1" varStatus="chirik">
+						<tr>
+							<c:forEach begin="0" end="9" step="1" varStatus="bobik">
+								<td id="X<c:out value="${bobik.index}"/>_Y<c:out value="${chirik.index}"/>"></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
 				</table>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -225,6 +99,19 @@
 				<div class="8">8</div>
 				<div class="9">9</div>
 				<div class="last10">10</div>
+				
+				
+				<table id="table2" align="center" cellpadding="0" cellspacing="0">
+					<c:forEach begin="0" end="9" step="1" varStatus="chirik">
+						<tr>
+							<c:forEach begin="0" end="9" step="1" varStatus="bobik">
+								<td id="X<c:out value="${bobik.index}"/>_Y<c:out value="${chirik.index}"/>"></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</table>
+				
+				
 			</div>
 		</div>
 	</div>

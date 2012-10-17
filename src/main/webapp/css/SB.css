@@ -43,7 +43,7 @@ body {
 	width: 207px;
 	height: 208px;
 	margin-top: 28px;
-	margin-left: 179px;
+	margin-left: 219px;
 }
 
 .field1 .h_markers {
@@ -99,11 +99,12 @@ body {
 }
 
 .ammo {
-	border: 1px solid;
+/* 	border: 1px solid; */
 	width: 140px;
 	height: 199px;
 	float: left;
 	margin-top: 32px;
+	margin-left: 20px;
 }
 
 .field2 { /* 	border: 1px solid red; */
@@ -111,7 +112,7 @@ body {
 	width: 209px;
 	height: 208px;
 	margin-top: 33px;
-	margin-left: 179px;
+	margin-left: 219px;
 }
 
 .debug {
@@ -120,15 +121,48 @@ body {
 	color: #056109;
 }
 
-table {
+.field1 table {
 	margin-top: -199px;
 	margin-left: 24px;
-/* 	border: 1px solid red; */
+	/* 	border: 1px solid red; */
 	width: 200px;
-table-layout: fixed;
+	table-layout: fixed;
 }
-tr td
-{
+
+.field2 table {
+	margin-top: -201px;
+	margin-left: 27px;
+	width: 200px;
+	table-layout: fixed;
+}
+
+tr td {
 	text-align: center;
 	height: 20px;
+}
+
+
+#sheep_4
+{
+	width:80px;
+	float: left;
+}
+#sheep_3
+{
+	width:60px;
+	float: left;
+}
+#sheep_2
+{
+	width:40px;
+	float: left;
+}
+#sheep_1
+{
+	width:20px;
+	float: left;
+}
+.sheep_cont img
+{
+	padding-bottom: 19px;
 }
