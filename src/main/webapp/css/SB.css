@@ -181,6 +181,13 @@ float: left;
 height: 14px;
 width: 72px;
 }
+.test_sheep2
+{
+	border: 1px solid red;
+height: 72px;
+width: 14px;
+}
+
 .test_sheep .p1, .p2, .p3, .p4
 {
 	border: 1px solid green;

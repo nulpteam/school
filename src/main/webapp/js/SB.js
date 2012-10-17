@@ -1,9 +1,10 @@
 $(function() {
-       $( ".p1" ).draggable({ disabled: false });
-       $( ".p2" ).draggable({ disabled: false });
-       $( ".p3" ).draggable({ disabled: false });
-       $( ".p4" ).draggable({ disabled: false });
+//       $( ".p1" ).draggable({ disabled: false });
+//       $( ".p2" ).draggable({ disabled: false });
+//       $( ".p3" ).draggable({ disabled: false });
+//       $( ".p4" ).draggable({ disabled: false });
        $( ".test_sheep" ).draggable();
+       $( ".test_sheep2" ).draggable();
         
        
        $( ".test_dr" ).droppable({
