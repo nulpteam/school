@@ -171,4 +171,20 @@ tr td {
 	border: 1px solid red;
 width: 100px;
 height: 50px;
+width: 18px;
+height: 18px;
+float: left;
+}
+.test_sheep
+{
+	border: 1px solid red;
+height: 14px;
+width: 72px;
+}
+.test_sheep .p1, .p2, .p3, .p4
+{
+	border: 1px solid green;
+width: 18px;
+height: 18px;
+float:left;
 }
