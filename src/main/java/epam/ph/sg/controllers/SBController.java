@@ -1,9 +1,8 @@
 package epam.ph.sg.controllers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
+/**
+ * @author Hutey_Bohdan
+ */
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -29,7 +28,8 @@ public class SBController {
 		SbGame sbGame = new SbGame();
 		sbGame.addScript("jquery");
 		sbGame.addScript("jquery-ui-1.9.0");
-		log.debug("-------------------Added JavaScripts-------------------");
+		
+		log.debug("-------------------Added JavaScriptss-------------------");
 		model.addAttribute(sbGame);
 		return "SB/Sb";
 	}

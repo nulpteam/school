@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SbGame {
 
-	private String title;
+	private String title="title";
 	private List<String> scripts = new ArrayList<String>();
 
 	public List<String> getScripts() {
@@ -20,7 +20,7 @@ public class SbGame {
 
 	public String getTitle() {
 		
-		return "title";
+		return title;
 	}
 
 }
