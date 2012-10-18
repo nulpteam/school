@@ -3,32 +3,21 @@ $(function() {
 		//матриця розташування кораблів(XY) координати
 		var Mat  = createMatrix();
 		console.log(Mat);
-      
+       
+		//кораблі
 		$( ".test_sheep" ).draggable();
-       $( ".test_sheep2" ).draggable();
-        /*TO DO*/
-       /* При перетягування корабля з однієї позиції на іншу*/
-       /* встановлювати координати старої позиції в нуль "0"  */
+		$( ".test_sheep2" ).draggable();
       
-       
-       /*del later*/
-       $( ".test_dr" ).droppable({
-        	tolerance : "touch",
-            drop: function( event, ui ) {
-
-            	console.log(event);
-            	console.log(ui);
-            	alert("droped");
-            }
-        });
-       
+      
+		//this.id - ідентифікатор комірки
+     	//ui.draggable.context.id - тип корабля (витягується з id корабля)
        /*+++++++-Y0-+++++++*/
        $( "#X0_Y0" ).droppable({
        	tolerance : "touch",
        		drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           alert("droped into "+this.id);
+//           alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -42,7 +31,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -55,9 +44,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
-             	//this.id - ідентифікатор комірки
-             	//ui.draggable.context.id - тип корабля (витягується з id корабля)
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -70,7 +57,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -83,7 +70,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -96,7 +83,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -109,7 +96,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -122,7 +109,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -135,7 +122,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -148,7 +135,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -163,7 +150,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -177,7 +164,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -190,7 +177,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -203,7 +190,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -216,7 +203,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -229,7 +216,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -242,7 +229,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -255,7 +242,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -268,7 +255,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -281,7 +268,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -296,7 +283,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -310,7 +297,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -323,7 +310,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -336,7 +323,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -349,7 +336,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -362,7 +349,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -375,7 +362,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -388,7 +375,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -401,7 +388,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -414,7 +401,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -428,7 +415,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -442,7 +429,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -455,7 +442,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -468,7 +455,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -481,7 +468,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -494,7 +481,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -507,7 +494,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -520,7 +507,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -533,7 +520,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -546,7 +533,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -560,7 +547,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -574,7 +561,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -587,7 +574,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -600,7 +587,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -613,7 +600,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -626,7 +613,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -639,7 +626,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -652,7 +639,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -665,7 +652,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -678,7 +665,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -692,7 +679,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -706,7 +693,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -719,7 +706,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -732,7 +719,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -745,7 +732,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -758,7 +745,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -771,7 +758,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -784,7 +771,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -797,7 +784,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -810,7 +797,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -824,7 +811,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -838,7 +825,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -851,7 +838,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -864,7 +851,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -877,7 +864,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -890,7 +877,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -903,7 +890,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -916,7 +903,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -929,7 +916,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -942,7 +929,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -956,7 +943,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -970,7 +957,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -983,7 +970,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -996,7 +983,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1009,7 +996,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1022,7 +1009,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1035,7 +1022,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1048,7 +1035,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1061,7 +1048,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1074,7 +1061,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -1088,7 +1075,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -1102,7 +1089,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -1115,7 +1102,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1128,7 +1115,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1141,7 +1128,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1154,7 +1141,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1167,7 +1154,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1180,7 +1167,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1193,7 +1180,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1206,7 +1193,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
@@ -1220,7 +1207,7 @@ $(function() {
            drop: function( event, ui ) {
         	   console.log(event);
            	console.log(ui);
-           	alert("droped into "+this.id);
+//           	alert("droped into "+this.id);
            	saveCoords(this.id, ui.draggable.context.id);
            },
    			out: function(event, ui)
@@ -1234,7 +1221,7 @@ $(function() {
               drop: function( event, ui ) {
             	  console.log(event);
               	console.log(ui);
-              	alert("droped into "+this.id);
+//              	alert("droped into "+this.id);
               	saveCoords(this.id, ui.draggable.context.id);
               },
      			out: function(event, ui)
@@ -1247,7 +1234,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1260,7 +1247,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1273,7 +1260,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1286,7 +1273,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1299,7 +1286,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1312,7 +1299,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1325,7 +1312,7 @@ $(function() {
              drop: function( event, ui ) {
             	 console.log(event);
              	console.log(ui);
-             	alert("droped into "+this.id);
+//             	alert("droped into "+this.id);
              	saveCoords(this.id, ui.draggable.context.id);
              },
     			out: function(event, ui)
@@ -1338,7 +1325,7 @@ $(function() {
             drop: function( event, ui ) {
             	console.log(event);
             	console.log(ui);
-            	alert("droped into "+this.id);
+//            	alert("droped into "+this.id);
             	saveCoords(this.id, ui.draggable.context.id);
             },
    			out: function(event, ui)
