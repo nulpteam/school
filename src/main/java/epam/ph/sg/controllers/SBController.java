@@ -48,6 +48,8 @@ public class SBController {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
+			//new HomeController().index(session);
+			
 		}
 		log.debug("sheeps"+sheeps);
 		JsonParser jp = new JsonParser();

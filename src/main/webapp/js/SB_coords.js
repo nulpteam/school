@@ -72,6 +72,12 @@ function sendM()
 		  }
 		});
 	
-	
-	
+}
+
+
+function clearOldCoordsInM(coords, type)
+{
+	//alert("coords"+coords+"   ---   "+type);
+	var saveCoordenates= parseCoords(coords,type);
+	M[saveCoordenates.x][saveCoordenates.y]="00";
 }
