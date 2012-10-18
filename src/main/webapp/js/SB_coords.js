@@ -41,13 +41,28 @@ function saveCoords(coords,t)
 function sendM()
 {
 	console.log(M);
-	var Send = JSON.stringify(M);
+	
+	var j = {
+			"a":M[0],
+			"b":M[1],
+			"c":M[2],
+			"d":M[3],
+			"e":M[4],
+			"f":M[5],
+			"g":M[6],
+			"h":M[7],
+			"i":M[8],
+			"j":M[9]			
+	};
+	console.log(j);
+	var Send = JSON.stringify(j);
 	console.log(Send);
 	
 	$.ajax({
 		  url: 'init_sheeps.html',
 		  type: 'POST',
 		  data: {sheeps : Send},
+		  dataType :'json',
 		  success: function(data) {
 		    alert(data);
 		  },

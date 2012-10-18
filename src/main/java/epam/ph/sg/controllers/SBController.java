@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import epam.ph.sg.models.sb.JsonParser;
 import epam.ph.sg.models.sb.SbGame;
+import epam.ph.sg.models.sb.Sheeps_coords;
 
 @Controller
 @SessionAttributes("sbGame")
@@ -48,8 +50,8 @@ public class SBController {
 			return "Login";
 		}
 		log.debug("sheeps"+sheeps);
-		
-		
+		JsonParser jp = new JsonParser();
+		Sheeps_coords sc = jp.parseJsonSheepsCoordenates(sheeps);
 		return "OK";
 	}
 	

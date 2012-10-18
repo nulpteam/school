@@ -8,6 +8,7 @@ public class SbGame {
 
 	private String title="title";
 	private List<String> scripts = new ArrayList<String>();
+		
 
 	public List<String> getScripts() {
 		return scripts;
