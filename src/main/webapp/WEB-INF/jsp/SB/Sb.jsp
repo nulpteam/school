@@ -132,6 +132,7 @@
 
 
 <div class=debug>
+<input type="button" value="GetM" onClick="getM();"/>
 <%-- 	<% --%>
 <!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->
 <!-- // // 	while (en.hasMoreElements()) -->

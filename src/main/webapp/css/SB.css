@@ -178,14 +178,15 @@ float: left;
 .test_sheep
 {
 	border: 1px solid red;
-height: 14px;
-width: 72px;
+height: 8px;
+width: 62px;
+background: url('../images/SB/4.png') no-repeat; 
 }
 .test_sheep2
 {
 	border: 1px solid red;
-height: 72px;
-width: 14px;
+height: 62px;
+width: 8px;
 }
 
 .test_sheep .p1, .p2, .p3, .p4

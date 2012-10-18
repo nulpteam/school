@@ -29,6 +29,7 @@ public class SBController {
 		sbGame.addScript("jquery");
 		sbGame.addScript("jquery-ui-1.9.0");
 		sbGame.addScript("SB");
+		sbGame.addScript("SB_coords");
 		
 		log.debug("-------------------Added JavaScriptss-------------------");
 		model.addAttribute(sbGame);
