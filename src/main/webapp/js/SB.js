@@ -29,7 +29,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -39,7 +39,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y0" ).droppable({
@@ -48,7 +48,9 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	//this.id - ідентифікатор комірки
+             	//ui.draggable.context.id - тип корабля (витягується з id корабля)
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y0" ).droppable({
@@ -57,7 +59,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y0" ).droppable({
@@ -66,7 +68,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y0" ).droppable({
@@ -75,7 +77,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y0" ).droppable({
@@ -84,7 +86,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y0" ).droppable({
@@ -93,7 +95,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y0" ).droppable({
@@ -102,7 +104,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y0" ).droppable({
@@ -111,7 +113,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        
@@ -122,7 +124,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -132,7 +134,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y1" ).droppable({
@@ -141,7 +143,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y1" ).droppable({
@@ -150,7 +152,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y1" ).droppable({
@@ -159,7 +161,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y1" ).droppable({
@@ -168,7 +170,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y1" ).droppable({
@@ -177,7 +179,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y1" ).droppable({
@@ -186,7 +188,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y1" ).droppable({
@@ -195,7 +197,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y1" ).droppable({
@@ -204,7 +206,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        
@@ -215,7 +217,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -225,7 +227,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y2" ).droppable({
@@ -234,7 +236,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y2" ).droppable({
@@ -243,7 +245,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y2" ).droppable({
@@ -252,7 +254,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y2" ).droppable({
@@ -261,7 +263,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y2" ).droppable({
@@ -270,7 +272,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y2" ).droppable({
@@ -279,7 +281,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y2" ).droppable({
@@ -288,7 +290,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y2" ).droppable({
@@ -297,7 +299,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        /*+++++++-Y3-+++++++*/
@@ -307,7 +309,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -317,7 +319,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y3" ).droppable({
@@ -326,7 +328,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y3" ).droppable({
@@ -335,7 +337,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y3" ).droppable({
@@ -344,7 +346,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y3" ).droppable({
@@ -353,7 +355,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y3" ).droppable({
@@ -362,7 +364,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y3" ).droppable({
@@ -371,7 +373,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y3" ).droppable({
@@ -380,7 +382,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y3" ).droppable({
@@ -389,7 +391,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        /*+++++++-Y4-+++++++*/
@@ -399,7 +401,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -409,7 +411,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y4" ).droppable({
@@ -418,7 +420,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y4" ).droppable({
@@ -427,7 +429,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y4" ).droppable({
@@ -436,7 +438,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y4" ).droppable({
@@ -445,7 +447,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y4" ).droppable({
@@ -454,7 +456,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y4" ).droppable({
@@ -463,7 +465,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y4" ).droppable({
@@ -472,7 +474,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y4" ).droppable({
@@ -481,7 +483,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        /*+++++++-Y5-+++++++*/
@@ -491,7 +493,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -501,7 +503,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y5" ).droppable({
@@ -510,7 +512,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y5" ).droppable({
@@ -519,7 +521,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y5" ).droppable({
@@ -528,7 +530,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y5" ).droppable({
@@ -537,7 +539,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y5" ).droppable({
@@ -546,7 +548,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y5" ).droppable({
@@ -555,7 +557,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y5" ).droppable({
@@ -564,7 +566,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y5" ).droppable({
@@ -573,7 +575,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        /*+++++++-Y6-+++++++*/
@@ -583,7 +585,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -593,7 +595,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y6" ).droppable({
@@ -602,7 +604,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y6" ).droppable({
@@ -611,7 +613,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y6" ).droppable({
@@ -620,7 +622,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y6" ).droppable({
@@ -629,7 +631,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y6" ).droppable({
@@ -638,7 +640,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y6" ).droppable({
@@ -647,7 +649,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y6" ).droppable({
@@ -656,7 +658,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y6" ).droppable({
@@ -665,7 +667,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        /*+++++++-Y7-+++++++*/
@@ -675,7 +677,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -685,7 +687,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y7" ).droppable({
@@ -694,7 +696,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y7" ).droppable({
@@ -703,7 +705,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y7" ).droppable({
@@ -712,7 +714,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y7" ).droppable({
@@ -721,7 +723,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y7" ).droppable({
@@ -730,7 +732,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y7" ).droppable({
@@ -739,7 +741,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y7" ).droppable({
@@ -748,7 +750,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y7" ).droppable({
@@ -757,7 +759,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        /*+++++++-Y8-+++++++*/
@@ -767,7 +769,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -777,7 +779,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y8" ).droppable({
@@ -786,7 +788,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y8" ).droppable({
@@ -795,7 +797,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y8" ).droppable({
@@ -804,7 +806,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y8" ).droppable({
@@ -813,7 +815,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y8" ).droppable({
@@ -822,7 +824,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y8" ).droppable({
@@ -831,7 +833,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y8" ).droppable({
@@ -840,7 +842,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y8" ).droppable({
@@ -849,7 +851,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
        /*+++++++-Y9-+++++++*/
@@ -859,7 +861,7 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
            	alert("droped into "+this.id);
-           	saveCoords(this.id);
+           	saveCoords(this.id, ui.draggable.context.id);
            }
        });
        
@@ -869,7 +871,7 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
               	alert("droped into "+this.id);
-              	saveCoords(this.id);
+              	saveCoords(this.id, ui.draggable.context.id);
               }
           });
        $( "#X2_Y9" ).droppable({
@@ -878,7 +880,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X3_Y9" ).droppable({
@@ -887,7 +889,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X4_Y9" ).droppable({
@@ -896,7 +898,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X5_Y9" ).droppable({
@@ -905,7 +907,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X6_Y9" ).droppable({
@@ -914,7 +916,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X7_Y9" ).droppable({
@@ -923,7 +925,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X8_Y9" ).droppable({
@@ -932,7 +934,7 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
              	alert("droped into "+this.id);
-             	saveCoords(this.id);
+             	saveCoords(this.id, ui.draggable.context.id);
              }
          });
        $( "#X9_Y9" ).droppable({
@@ -941,7 +943,7 @@ $(function() {
             	console.log(event);
             	console.log(ui);
             	alert("droped into "+this.id);
-            	saveCoords(this.id);
+            	saveCoords(this.id, ui.draggable.context.id);
             }
         });
     });

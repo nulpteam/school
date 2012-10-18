@@ -35,13 +35,13 @@
 					<div class="clear"></div>
 				<img id="sheep_1" src="images/SB/1.png" alt="1"/>
 					<div class="clear"></div>
-					<div id="t1" class="test_sheep">
+					<div id="t4" class="test_sheep">
 <!-- 						<div id="p1" class="p1"></div> -->
 <!-- 						<div id="p2" class="p2"></div> -->
 <!-- 						<div id="p3" class="p3"></div> -->
 <!-- 						<div id="p4" class="p4"></div> -->
 					</div>
-					<div id="t2" class="test_sheep2">
+					<div id="t4" class="test_sheep2">
 					</div>
 					<div class="clear"></div>
 			</div>
@@ -133,6 +133,7 @@
 
 <div class=debug>
 <input type="button" value="GetM" onClick="getM();"/>
+<input type="button" value="SendM" onClick="sendM();"/>
 <%-- 	<% --%>
 <!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->
 <!-- // // 	while (en.hasMoreElements()) -->

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import epam.ph.sg.models.sb.SbGame;
@@ -30,10 +32,26 @@ public class SBController {
 		sbGame.addScript("jquery-ui-1.9.0");
 		sbGame.addScript("SB");
 		sbGame.addScript("SB_coords");
+		sbGame.addScript("js_stringify");
 		
 		log.debug("-------------------Added JavaScriptss-------------------");
 		model.addAttribute(sbGame);
 		return "SB/Sb";
 	}
 
+	@RequestMapping(value = { "/init_sheeps.html"}, method = RequestMethod.POST)
+	public @ResponseBody String sheeps_init(@RequestParam("sheeps") String sheeps,
+			Model model, HttpSession session)
+	{
+		if (session.getAttribute("user") == null) {
+			new HomeController().index(session);
+			return "Login";
+		}
+		log.debug("sheeps"+sheeps);
+		
+		
+		return "OK";
+	}
+	
+	
 }
