@@ -2,7 +2,7 @@
 var M;
 function createMatrix()
 {
-	alert("createMatrix");
+	//alert("createMatrix");
 	M = new Array();
 	for(var i=0;i<10;i++)
 	{

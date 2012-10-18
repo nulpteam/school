@@ -50,6 +50,7 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 	margin-top: -28px;
+	margin-left: -4px;
 }
 
 .field1 .h_markers .a {
@@ -62,7 +63,7 @@ body {
 
 .field1 div {
 	float: left;
-	padding-left: 6px;
+	padding-left: 7px;
 }
 
 .field2 div {
@@ -86,7 +87,7 @@ body {
 }
 
 .field2 .h_markers {
-	margin-left: -9px;
+	margin-left: -11px;
 	font-size: 20px;
 	font-weight: bold;
 	margin-top: -28px;
