@@ -8,18 +8,18 @@
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 <link href="css/XO.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/XO.js" type="text/javascript"></script>
+<script src="js/XO/XOGame.js" type="text/javascript"></script>
 <script type="text/javascript">
-var serverName = "${xo.game.server.name}";
-$(document).ready(function(){
-	$('#opName').text(serverName);
-	$('#outText').text('Чекайте на хід суперника');
-	checker();
-});
+	$(document).ready(function() {
+		$('#outText').text('Чекайте');
+		checker();
+		chatStart();
+	});
 </script>
 <title>Insert title here</title>
 </head>
 <body>
+	<c:import url="../Chat.jsp"></c:import>
 	<c:import url="Game.jsp"></c:import>
 </body>
 </html>

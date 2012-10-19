@@ -1,31 +1,52 @@
 #paperList {
 	background-image: url('../images/XO/list.png');
 	background-repeat: no-repeat;
-	height: 840px;
-	width: 720px;
+	height: 734px;
+	width: 675px;
 	margin: -8px auto;
+	font-family: LC Chalk;
+	font-size: 16px;
+	color: #5B2FCE;
 }
 
 #outText {
 	position: absolute;
 	margin-top: 70px;
-	margin-left: 160px;
+	margin-left: 200px;
 }
 
 #myName {
 	position: absolute;
 	margin-top: 15px;
-	margin-left: 100px;
+	margin-left: 115px;
 }
 
 #opName {
 	position: absolute;
 	margin-top: 15px;
-	margin-left: 420px;
+	margin-left: 440px;
+}
+
+#tick {
+	position: absolute;
+	margin-top: 0px;
+	margin-left: 525px;
+}
+
+#home {
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 305px;
+}
+
+#win {
+	position: absolute;
+	margin-top: 250px;
+	margin-left: 200px;
 }
 
 #XO {
 	position: absolute;
 	margin-top: 160px;
-	margin-left: 80px;
+	margin-left: 127px;
 }

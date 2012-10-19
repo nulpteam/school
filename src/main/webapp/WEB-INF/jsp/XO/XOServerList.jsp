@@ -7,19 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/XO.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/XO.js" type="text/javascript"></script>
+<script src="js/XO/XOMenu.js" type="text/javascript"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<div align="center">
 		<c:forEach var="server" items="${serverMap}" varStatus="i">
-			<%-- <button id="${server.key}" onclick=connect(this.id);>
+			<button id="${server.key}" onclick=connect(this.id);>
 					Сервер Name:<c:out value="${server.value.game.server.name}" />
-			</button> --%>
-			<form action="XOGameClient.html" method="POST">
-				<input name="serverID" value="${server.key}" type="hidden">
-				<input class="button" type="submit" value="${server.value.game.server.name}">
-			</form>
+			</button>
 		</c:forEach>
 	</div>
 </body>

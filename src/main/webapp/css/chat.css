@@ -1,0 +1,35 @@
+#chat {
+	position: fixed;
+	background-image: url('../images/chat.png');
+	background-repeat: no-repeat;
+	height: 500px;
+	width: 444px;
+	margin-top: 50px;
+	margin-left: -420px;
+	font-family: Segoe Print;
+	font-size: 20;
+	color: #0000;
+	z-index: 1;
+}
+
+#chatOutText { /*	border: 1px solid red;*/
+	overflow: auto;
+	height: 420px;
+	width: 390px;
+	margin: 15px 20px;
+}
+
+.time {
+	width: 50px;
+	color: blue;
+}
+
+.sender {
+	color: red;
+}
+
+#chatInText {
+	height: 20px;
+	width: 400px;
+	margin: 0px 15px;
+}

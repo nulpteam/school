@@ -26,27 +26,33 @@ public class XOPlayer {
 	 * @return XO.NOT_YOUR_TURN, XO.NOT_EMPTY, XO.WIN or status of changed box
 	 */
 	public int put(int x, int y) {
-		if (id == game.getStatus()) {
+		if (game.getStatus() == id) {
 			return XO.NOT_YOUR_TURN;
 		} else if (game.getStatus() == XO.WITHOUT_CLIENT) {
 			return XO.WITHOUT_CLIENT;
+		} else if (game.getStatus() == XO.LOSE) {
+			return XO.LOSE;
 		} else {
 			XOBox box = game.getXoFields().getBox(x, y);
 			int result = box.setStatus(status);
 			if (result == XO.NOT_EMPTY) {
 				return XO.NOT_EMPTY;
 			} else {
-				result = game.getAi().checkout(box);
-				if (result == XO.WIN) {
-					game.setStatus(XO.WIN);
-					game.setLastBox(box);
-					return XO.WIN;
-				} else {
-					game.setStatus(id);
-					game.setLastBox(box);
-					return result;
-				}
+				return checkAI(box);
 			}
+		}
+	}
+
+	private int checkAI(XOBox box) {
+		int result = game.getAi().checkout(box);
+		if (result == XO.WIN) {
+			game.setStatus(XO.WIN);
+			game.setLastBox(box);
+			return XO.WIN;
+		} else {
+			game.setStatus(id);
+			game.setLastBox(box);
+			return result;
 		}
 	}
 
@@ -77,10 +83,6 @@ public class XOPlayer {
 
 	public int getStatus() {
 		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 	public XOGame getGame() {

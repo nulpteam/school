@@ -9,10 +9,21 @@
 		</h2>
 	</div>
 	<div>
-		<h2 id="opName"></h2>
+		<h2 id="opName">
+			<c:out value="${oponent.name}" />
+		</h2>
 	</div>
 	<div>
-		<h2 id="outText"></h2>
+		<h2 id="outText" align="center"></h2>
+	</div>
+	<div>
+		<img id="tick" src="images/XO/tick.png">
+	</div>
+	<div>
+		<img id="home" src="images/XO/home.png" onclick=returnToXO();>
+	</div>
+	<div id="win">
+		<img src="images/XO/win.png">
 	</div>
 	<div id="XO">
 		<table id="table" align="center" cellpadding="0" cellspacing="0">
@@ -23,10 +34,10 @@
 								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/0.png"
 									onclick=put(this);>
 							</c:if> <c:if test="${box.status == -8}">
-								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/X.png"
+								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/X0.png"
 									onclick=put(this);>
 							</c:if> <c:if test="${box.status == -9}">
-								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/O.png"
+								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/O0.png"
 									onclick=put(this);>
 							</c:if></td>
 					</c:forEach>
