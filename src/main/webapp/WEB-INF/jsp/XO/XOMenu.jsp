@@ -7,18 +7,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/styles.css" type="text/css" rel="stylesheet">
+<link href="css/XOMenu.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/XOMenu.js" type="text/javascript"></script>
 <script type="text/javascript">
-function connectLink(){location.href = "XOServerList.html";}
+	$(document).ready(function() {
+		chatStart();
+	});
+	function connectLink() {
+		location.href = "XOServerList.html";
+	}
 </script>
 <title>School Games</title>
 </head>
 <body>
-	<div>
-		<h2>Хрестики нолики</h2>
-		<button onclick=createServer();>Створити гру</button>
-		<button onclick=connectLink();>Підключитись</button>
+	<c:import url="../Chat.jsp"></c:import>
+	<div id="paperList">
+		<h2 id="title" align="center">Хрестики нолики</h2>
+		<div id="menu">
+			<div onclick=createServer(); class="button">
+				<p class="text">Створити гру</p>
+			</div>
+			<div onclick=connectLink(); class="button">
+				<p class="text">Підключитись</p>
+			</div>
+		</div>
+		<div id="rulles">Правила: Гравці по черзі ставлять на вільні
+			квадрати поля свої фігури (хрестики або ноліки). Виграє той хто
+			поставить рядом по вертикалі, горизонталі або діагоналі 5 своїх
+			фігур.</div>
 	</div>
 </body>
 </html>

@@ -14,7 +14,7 @@
 		</h2>
 	</div>
 	<div>
-		<h2 id="outText" align="center"></h2>
+		<h2 id="outText"></h2>
 	</div>
 	<div>
 		<img id="tick" src="images/XO/tick.png">
