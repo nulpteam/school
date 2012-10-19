@@ -1,5 +1,5 @@
 #bg {
-	background-image: url('../images/background.png');
+	background-image: url('../images/background1.png');
 	background-repeat: no-repeat;
 	height: 600px;
 	width: 1000px;
@@ -10,8 +10,8 @@
 	position: absolute;
 	width: 320px;
 	height: 210px;
-	margin: 300px 620px;
-	background-image: url('../images/loginform.png');
+	margin: 230px 50px;
+	/*background-image: url('../images/loginform.png');*/
 	background-repeat: no-repeat;
 }
 
@@ -21,14 +21,20 @@
 
 .input_areas {
 	font-size: 16px;
-	font-family: Cursive;
-	font-style: italic;
-	background-color: #ebe9eb;
+	font-family: Comic Sans MS;
+	/*background-color: #ebe9eb;*/
 }
 
 #loginform p input:focus {
-	border: 2px solid #acabac;
-	background-color: white;
+	/*border: 2px solid #acabac;*/
+	/*background-color: white;*/
+}
+
+#login_title {
+	position:absolute;
+	font-family: LC Chalk;
+	font-size: 40px;
+	margin :158px 130px;
 }
 
 #name_text {
@@ -38,7 +44,7 @@
 
 #name_area_div {
 	position: absolute;
-	margin: 46px 80px;
+	margin: 48px 80px;
 }
 
 #name_area_input {
@@ -49,18 +55,31 @@
 
 #pass_text {
 	position: absolute;
-	margin: 80px 81px;
+	margin: 84px 81px;
 }
 
 #pass_area_div {
 	position: absolute;
-	margin: 106px 80px;
+	margin: 114px 80px;
 }
 
 #pass_area_input {
 	position: absolute;
 	margin: 0px 0px;
 	font-size: 16px;
+}
+
+#login_button {
+	position: absolute;
+	margin: 160px 80px;
+	width: 123px;
+}
+
+#register_button {
+	font-family: Arial ;
+	position: absolute;
+	margin: 220px 80px;
+	
 }
 
 .error {
@@ -70,27 +89,42 @@
 }
 
 .button {
-	margin: 158px 180px;
-	border-top: 1px solid #fcefc7;
-	background: #e8dfd0;
-	padding: 6px 18px;
-	border-radius: 7px;
-	color: #363636;
-	font-size: 14px;
-	font-family: Lucida Calligraphy, Cursive;
-	text-decoration: none;
-	vertical-align: middle;
+   background-image: -webkit-linear-gradient(top, rgba(255,162,2,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:    -moz-linear-gradient(top, rgba(255,162,2,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:     -ms-linear-gradient(top, rgba(255,162,2,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:      -o-linear-gradient(top, rgba(255,162,2,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:         linear-gradient(top, rgba(255,162,2,1) 0%,rgba(255,112,2,1) 100%);
+   -webkit-box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.57)inset, 0px 20px 0px 0px rgba(255,255,255,0.18)inset, 0px 5px 0px 0px rgba(213,96,0,1), 0px -1px 0px 0px rgba(255,255,255,0.07)inset, 0px 5px 2px 0px rgba(0,0,0,0.46);
+      -moz-box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.57)inset, 0px 20px 0px 0px rgba(255,255,255,0.18)inset, 0px 5px 0px 0px rgba(213,96,0,1), 0px -1px 0px 0px rgba(255,255,255,0.07)inset, 0px 5px 2px 0px rgba(0,0,0,0.46);
+           box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.57)inset, 0px 20px 0px 0px rgba(255,255,255,0.18)inset, 0px 5px 0px 0px rgba(213,96,0,1), 0px -1px 0px 0px rgba(255,255,255,0.07)inset, 0px 5px 2px 0px rgba(0,0,0,0.46);
+   border: solid 1px rgba(255,120,2,1);
+   -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+           border-radius: 4px;
+   padding: 10px 30px 10px 30px;
+   display: inline-block;
+   -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+           transition: all 0.1s linear;
+   font-size: 15px;
+   color: rgba(255,255,255,1);
+   font-weight: bold;
+   text-shadow: 0px -1px 0px rgba(0,0,0,0.53)
 }
-
 .button:hover {
-	border-top-color: #fce9ca;
-	background: #fce9ca;
-	color: #5e5e5e;
+   background-image: -webkit-linear-gradient(top, rgba(255,175,3,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:    -moz-linear-gradient(top, rgba(255,175,3,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:     -ms-linear-gradient(top, rgba(255,175,3,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:      -o-linear-gradient(top, rgba(255,175,3,1) 0%,rgba(255,112,2,1) 100%);
+   background-image:         linear-gradient(top, rgba(255,175,3,1) 0%,rgba(255,112,2,1) 100%);
 }
-
 .button:active {
-	border-top-color: #e8cea9;
-	background: #e8cea9;
+   -webkit-box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.57)inset, 0px 20px 0px 0px rgba(255,255,255,0.18)inset, 0px 1px 0px 0px rgba(213,96,0,1), 0px -1px 0px 0px rgba(255,255,255,0.07)inset, 0px 1px 2px 0px rgba(0,0,0,0.1);
+      -moz-box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.57)inset, 0px 20px 0px 0px rgba(255,255,255,0.18)inset, 0px 1px 0px 0px rgba(213,96,0,1), 0px -1px 0px 0px rgba(255,255,255,0.07)inset, 0px 1px 2px 0px rgba(0,0,0,0.1);
+           box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.57)inset, 0px 20px 0px 0px rgba(255,255,255,0.18)inset, 0px 1px 0px 0px rgba(213,96,0,1), 0px -1px 0px 0px rgba(255,255,255,0.07)inset, 0px 1px 2px 0px rgba(0,0,0,0.1);
+   -webkit-transform: translateY(3px);
+      -moz-transform: translateY(3px);
+           transform: translateY(3px);
 }
 
 #register {
