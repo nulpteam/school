@@ -26,7 +26,7 @@ function parseCoords(coords,t)
 	var x,y,type;
 	x = parseInt(coords[1]);
 	y =  parseInt(coords[4]);
-	type = parseInt(t[1]);
+	type = parseInt(t[6]);
 	var co = {"t" : type,
 					"x" : x, 
 					"y" : y };

@@ -35,14 +35,16 @@
 					<div class="clear"></div>
 				<img id="sheep_1" src="images/SB/1.png" alt="1"/>
 					<div class="clear"></div>
-					<div id="t4" class="test_sheep">
-<!-- 						<div id="p1" class="p1"></div> -->
-<!-- 						<div id="p2" class="p2"></div> -->
-<!-- 						<div id="p3" class="p3"></div> -->
-<!-- 						<div id="p4" class="p4"></div> -->
-					</div>
-					<div id="t4" class="test_sheep2">
-					</div>
+<!-- 					<div id="s41" class="init_pos"></div> -->
+<!-- 					<div id="s31" class="init_pos"></div> -->
+<!-- 					<div id="s32" class="init_pos"></div> -->
+<!-- 					<div id="s21" class="init_pos"></div> -->
+<!-- 					<div id="s22" class="init_pos"></div> -->
+<!-- 					<div id="s23" class="init_pos"></div> -->
+<!-- 					<div id="s11" class="init_pos"></div> -->
+<!-- 					<div id="s12" class="init_pos"></div> -->
+<!-- 					<div id="s13" class="init_pos"></div> -->
+<!-- 					<div id="s14" class="init_pos"></div> -->
 					<div class="clear"></div>
 			</div>
 		</div>

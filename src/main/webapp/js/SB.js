@@ -5,8 +5,10 @@ $(function() {
 		console.log(Mat);
        
 		//кораблі
-		$( ".test_sheep" ).draggable();
-		$( ".test_sheep2" ).draggable();
+		$( "#sheep_1" ).draggable();
+		$( "#sheep_2" ).draggable();
+		$( "#sheep_3" ).draggable();
+		$( "#sheep_4" ).draggable();
       
       
 		//this.id - ідентифікатор комірки
