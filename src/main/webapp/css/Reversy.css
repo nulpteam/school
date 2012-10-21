@@ -1,0 +1,17 @@
+/**
+ * 	@author SergiyManko
+ * */
+
+@CHARSET "UTF-8";
+body {
+	font-family: LC Chalk;
+	font-size: 20px;
+	color: #505050;
+}
+
+.game {
+	background: url('../images/Reversy/reversy_background.png') no-repeat;
+	width: 620px;
+	height: 725px;
+	margin: 50px auto;
+}
