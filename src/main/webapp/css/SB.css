@@ -144,25 +144,29 @@ tr td {
 #sheep_4 {
 	width: 80px;
 	float: left;
+	height: 20px;
 }
 
 #sheep_3 {
 	width: 60px;
 	float: left;
+	height: 20px;
 }
 
 #sheep_2 {
 	width: 40px;
 	float: left;
+	height: 20px;
 }
 
 #sheep_1 {
 	width: 20px;
 	float: left;
+	height: 20px;
 }
 
 .sheep_cont img {
-	margin-bottom: 19px;
+	margin-bottom: 20px;
 }
 /* .test_dr */
 /* { */
