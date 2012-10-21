@@ -8,7 +8,7 @@
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/Reversy.css" type="text/css" rel="stylesheet">
-<title>Insert title here</title>
+<title>Reversy</title>
 </head>
 <body>
 	<div class="game">
