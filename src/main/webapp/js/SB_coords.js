@@ -124,21 +124,22 @@ function saveCoords(coords,t,c)
 //Доробити!!!!!!!!!!!!!!!!!!!!!!!
 function disableDroppables(obj)
 {
-	//всі зайняті
-	$('#X'+obj.x+'_Y'+obj.y).droppable( 'option', 'disabled', true);
-	
-	//периметр
-	if(obj.r==='H')
-	{
-		
-	}
-	else if(obj.r==='V')
-	{
-		
-	}
-	$('#X'+(obj.x+1)+'_Y'+obj.y).droppable( 'option', 'disabled', true);
-	$('#X'+obj.x+'_Y'+(obj.y+1)).droppable( 'option', 'disabled', true);
-	
+	console.log(obj);
+//	//ВСІ ЗАЙНЯТІ
+//	$('#X'+OBJ.X+'_Y'+OBJ.Y).DROPPABLE( 'OPTION', 'DISABLED', TRUE);
+//	
+//	//ПЕРИМЕТР
+//	IF(OBJ.R==='H')
+//	{
+//		
+//	}
+//	ELSE IF(OBJ.R==='V')
+//	{
+//		
+//	}
+//	$('#X'+(OBJ.X+1)+'_Y'+OBJ.Y).DROPPABLE( 'OPTION', 'DISABLED', TRUE);
+//	$('#X'+OBJ.X+'_Y'+(OBJ.Y+1)).DROPPABLE( 'OPTION', 'DISABLED', TRUE);
+//	
 	
 	
 //	$('#X'+(obj.x-1)+'_Y'+obj.y).droppable( 'option', 'disabled', true);
