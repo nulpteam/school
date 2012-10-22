@@ -16,7 +16,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>School Games</title>
-<link href="css/login.css" type="text/css" rel="stylesheet">
+<link href="css/menu.css" type="text/css" rel="stylesheet">
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -27,7 +27,7 @@
 			<b>REGISTRATION</br>&nbsp;&nbsp;&nbsp;&nbsp;PAGE</b>
 		</div>
 		<div id="reg_title2">
-			<b>Enter a password and user name</br>for your user account</b>
+			<b>Enter a password and user name</br>for your account</b>
 		</div>
 		<div id="regform">
 

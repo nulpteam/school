@@ -16,7 +16,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>School Games</title>
-<link href="css/login.css" type="text/css" rel="stylesheet">
+<link href="css/menu.css" type="text/css" rel="stylesheet">
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>

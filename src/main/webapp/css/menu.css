@@ -6,12 +6,20 @@
 	margin: -12px auto;
 }
 
+#bg_menu {
+	background-image: url('../images/menu.png');
+	background-repeat: no-repeat;
+	height: 600px;
+	width: 1000px;
+	margin: -12px auto;
+	font-family: Arial;
+}
+
 #loginform {
 	position: absolute;
 	width: 320px;
 	height: 210px;
 	margin: 230px 50px;
-	/*background-image: url('../images/loginform.png');*/
 	background-repeat: no-repeat;
 }
 
@@ -103,6 +111,39 @@
 	position: absolute;
 	margin: 220px 80px;
 }
+
+#gomoku_button {
+    position: absolute;
+    margin : 210px 420px;
+    width: 106px;
+}
+#battleship_button{
+    position: absolute;
+    margin : 265px 420px;
+}
+#reversi_button{
+    position: absolute;
+    margin : 320px 420px;
+    width: 106px;
+}
+#storerooom_button{
+    position: absolute;
+    margin : 375px 420px;
+    width: 106px;
+}
+#halloffame_button{
+    position: absolute;
+    margin : 430px 420px;
+    width: 106px;
+}
+
+.welcome_message {
+    position: absolute;
+    margin : 35px 200px;
+    color :white;
+    font-size:15px;
+}
+
 
 .error {
 	position: absolute;
