@@ -142,31 +142,38 @@ tr td {
 }
 
 #sheep_4 {
-	width: 80px;
+	width: 18px;
 	float: left;
-	height: 20px;
+	height: 78px;
 }
 
 #sheep_3 {
-	width: 60px;
+	width: 58px;
 	float: left;
-	height: 20px;
+	height: 18px;
 }
 
 #sheep_2 {
-	width: 40px;
+	width: 38px;
 	float: left;
-	height: 20px;
+	height: 18px;
 }
 
 #sheep_1 {
-	width: 20px;
+	width: 18px;
 	float: left;
-	height: 20px;
+	height: 18px;
 }
 
 .sheep_cont img {
 	margin-bottom: 20px;
+	margin-top: 0px;
+	margin-left: 1px;
+}
+
+.hover
+{
+	background-color: rgba(88, 187, 11, 0.34);;
 }
 /* .test_dr */
 /* { */

@@ -25,26 +25,15 @@
 		</div>
 		<div class=clear></div>
 		<div  class="ammo">
-			<!-- Тут мають бути розташовані кораблі для розставляння на полі-->
+			<!-- Кораблі для розставляння на полі-->
 			<div class="sheep_cont">
-				<img id="sheep_4" src="images/SB/4.png" alt="4"/>
+				<img id="sheep_4" class="V" src="images/SB/4.png" alt="4" ondblclick="rotate(this);"/>
 					<div class="clear"></div>
-				<img id="sheep_3" src="images/SB/3.png" alt="3"/>
+				<img id="sheep_3"  class="H" src="images/SB/3.png" alt="3" ondblclick="rotate(this);"/>
 					<div class="clear"></div>
-				<img id="sheep_2" src="images/SB/2.png" alt="2"/>
+				<img id="sheep_2"  class="H" src="images/SB/2.png" alt="2" ondblclick="rotate(this);"/>
 					<div class="clear"></div>
 				<img id="sheep_1" src="images/SB/1.png" alt="1"/>
-					<div class="clear"></div>
-<!-- 					<div id="s41" class="init_pos"></div> -->
-<!-- 					<div id="s31" class="init_pos"></div> -->
-<!-- 					<div id="s32" class="init_pos"></div> -->
-<!-- 					<div id="s21" class="init_pos"></div> -->
-<!-- 					<div id="s22" class="init_pos"></div> -->
-<!-- 					<div id="s23" class="init_pos"></div> -->
-<!-- 					<div id="s11" class="init_pos"></div> -->
-<!-- 					<div id="s12" class="init_pos"></div> -->
-<!-- 					<div id="s13" class="init_pos"></div> -->
-<!-- 					<div id="s14" class="init_pos"></div> -->
 					<div class="clear"></div>
 			</div>
 		</div>
@@ -125,14 +114,7 @@
 				
 			</div>
 		</div>
-<!-- 		<div class="test_dr"></div> -->
-<!-- 		<div class="test_dr"></div> -->
-<!-- 		<div class="test_dr"></div> -->
-<!-- 		<div class="test_dr"></div> -->
-<!-- 	</div> -->
-
-
-
+	</div>
 <div class=debug>
 <input type="button" value="GetM" onClick="getM();"/>
 <input type="button" value="SendM" onClick="sendM();"/>

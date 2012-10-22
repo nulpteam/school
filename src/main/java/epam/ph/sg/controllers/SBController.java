@@ -35,6 +35,7 @@ public class SBController {
 		sbGame.addScript("SB");
 		sbGame.addScript("SB_coords");
 		sbGame.addScript("js_stringify");
+		sbGame.addScript("jQueryRotate");
 		
 		log.debug("-------------------Added JavaScriptss-------------------");
 		model.addAttribute(sbGame);
