@@ -79,16 +79,13 @@ function getM()
  */
 function parseCoords(coords,t,c)
 {
-	if (c != undefined) {
-//	alert(coords);
-//	alert(c);
-//	alert(t);
+	if (c !== undefined) {
 		var x,y,type;
 		
 		x = parseInt(coords[1]);
 		y =  parseInt(coords[4]);
 		type = parseInt(t[6]);
-		var co = {"t" : type,
+		var co = {		"t" : type,
 						"r" : c[0],
 						"x" : x, 
 						"y" : y };
@@ -312,6 +309,8 @@ function sendM()
  */
 function clearOldCoordsInM(coords, type)
 {
-	var saveCoordenates= parseCoords(coords,type);
-	M[saveCoordenates.x][saveCoordenates.y]="00";
+	var saveCoordenates = parseCoords(coords,type);
+	if (saveCoordenates !== undefined) {
+		M[saveCoordenates.x][saveCoordenates.y]="00";
+	}
 }

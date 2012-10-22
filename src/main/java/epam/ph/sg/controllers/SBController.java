@@ -22,7 +22,7 @@ import epam.ph.sg.models.sb.Sheeps_coords;
 @SessionAttributes("sbGame")
 public class SBController {
 	private static Logger log = Logger.getLogger(SBController.class);
-	@RequestMapping(value = { "/Sb.html", "/Sb" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/BS.html", "/Sb" }, method = RequestMethod.GET)
 	public String SbGame(Model model, HttpSession session)
 	{
 		if (session.getAttribute("user") == null) {
