@@ -1,2 +1,8 @@
-Paul Michael T./
-1. пїЅ пїЅпїЅпїЅпїЅ src/main/resources/springconfig.xml пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (url, username, password).
+Shool Games
+АВТОРИ:
+
+Косован Костя
+Маков'як Роман
+Талаш Павло
+Гутей Богдан
+Манько Сергій
