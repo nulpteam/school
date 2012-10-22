@@ -45,9 +45,9 @@ function rotate(obj)
 	}
 }
 
-//матриця розташування кораблів
+// матриця розташування кораблів
 var M;
-//Створює пусту матрицю
+// Створює пусту матрицю
 function createMatrix()
 {
 	M = new Array();
@@ -72,42 +72,45 @@ function getM()
 
 
 
-//Створює обєкт
+// Створює обєкт
 /**
- * t= тип корабля
- * r = горизонтальне/вертикальне положення
- * x\y = координати положення корабля на полі
- * Доробити положення горизонтальне/вертикальне
- * */
+ * t= тип корабля r = горизонтальне/вертикальне положення x\y = координати
+ * положення корабля на полі Доробити положення горизонтальне/вертикальне
+ */
 function parseCoords(coords,t,c)
 {
-	var x,y,type;
-	
-	x = parseInt(coords[1]);
-	y =  parseInt(coords[4]);
-	type = parseInt(t[6]);
-	var co = {"t" : type,
-					"r" : c[0],
-					"x" : x, 
-					"y" : y };
-	console.log(co);
-	return co;
+	if (c != undefined) {
+//	alert(coords);
+//	alert(c);
+//	alert(t);
+		var x,y,type;
+		
+		x = parseInt(coords[1]);
+		y =  parseInt(coords[4]);
+		type = parseInt(t[6]);
+		var co = {"t" : type,
+						"r" : c[0],
+						"x" : x, 
+						"y" : y };
+		console.log(co);
+		return co;
+	}
 }
 
 /**
- * Зберігає положення корабля в матрицю 
- * Доробити положення горизонтальне/вертикальне
+ * Зберігає положення корабля в матрицю Доробити положення
+ * горизонтальне/вертикальне
  * 
- * */
+ */
 var i=0;
 function saveCoords(coords,t,c)
 {
 	
 	var saveCoordenates = parseCoords(coords,t,c);
 	console.log(coords,t,c);
-	//Деактивовуємо дроппабли в які вже встановлено кораблик
+	// Деактивовуємо дроппабли в які вже встановлено кораблик
 	disableDroppables(saveCoordenates);
-	//зберігає
+	// зберігає
 	M[saveCoordenates.x][saveCoordenates.y]=saveCoordenates.t+"1";
 	i++;
 	if(i==saveCoordenates.t)
@@ -120,74 +123,142 @@ function saveCoords(coords,t,c)
 
 
 
-//Деактивовує елементи droppable за координатами
-//Доробити!!!!!!!!!!!!!!!!!!!!!!!
+// Деактивовує елементи droppable за координатами
+// Доробити!!!!!!!!!!!!!!!!!!!!!!!
 function disableDroppables(obj)
 {
-// if (!('#X'+obj.x+'_Y'+obj.y).droppable('option', 'disabled')) {}
-// alert(('#X'+obj.x+'_Y'+obj.y).droppable('option', 'disabled'));
-// console.log(('#X'+obj.x+'_Y'+obj.y).option(dropable));
- 
+	console.log(obj);
  var x0 = obj.x - 1;
  var x1 = obj.x + 1;
- var y0 = obj.x - 1;
- var y1 = obj.x + 1;
+ var x2 = obj.x;
+ var x3 = obj.x + 2;
+ var x4 = obj.x + 3;
+ var x5 = obj.x + 4;
+ var y0 = obj.y - 1;
+ var y1 = obj.y + 1;
+ var y2 = obj.y;
+ var y3 = obj.y + 2;
+ var y4 = obj.y + 3;
+ var y5 = obj.y + 4;
  
- 
-// if (!$('#X'+obj.x+'_Y'+obj.y).droppable('option', 'disabled')) {$('#X'+obj.x+'_Y'+obj.y).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+x0+'_Y'+y0).droppable('option', 'disabled')) {$('#X'+x0+'_Y'+y0).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+x0+'_Y'+obj.y).droppable('option', 'disabled')) {$('#X'+x0+'_Y'+obj.y).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+x0+'_Y'+y1).droppable('option', 'disabled')) {$('#X'+x0+'_Y'+y1).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+obj.x+'_Y'+y0).droppable('option', 'disabled')) {$('#X'+obj.x+'_Y'+y0).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+obj.x+'_Y'+y1).droppable('option', 'disabled')) {$('#X'+obj.x+'_Y'+y1).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+x1+'_Y'+y0).droppable('option', 'disabled')) {$('#X'+x1+'_Y'+y0).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+x1+'_Y'+obj.y).droppable('option', 'disabled')) {$('#X'+x1+'_Y'+obj.y).droppable( 'option', 'disabled', true);alert("+");}
-// if (!$('#X'+x1+'_Y'+y1).droppable('option', 'disabled')) {$('#X'+x1+'_Y'+y1).droppable( 'option', 'disabled', true);alert("+");}
- 
- 
- if (!$('#X'+obj.x+'_Y'+obj.y).droppable('option', 'disabled'))   {$('#X'+obj.x+'_Y'+obj.y).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+x0+'_Y'+y0).droppable('option', 'disabled'))    {$('#X'+x0+'_Y'+y0).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+x0+'_Y'+obj.y).droppable('option', 'disabled'))   {$('#X'+x0+'_Y'+obj.y).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+x0+'_Y'+y1).droppable('option', 'disabled'))   {$('#X'+x0+'_Y'+y1).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+obj.x+'_Y'+y0).droppable('option', 'disabled'))   {$('#X'+obj.x+'_Y'+y0).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+obj.x+'_Y'+y1).droppable('option', 'disabled'))   {$('#X'+obj.x+'_Y'+y1).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+x1+'_Y'+y0).droppable('option', 'disabled'))    {$('#X'+x1+'_Y'+y0).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+x1+'_Y'+obj.y).droppable('option', 'disabled'))   {$('#X'+x1+'_Y'+obj.y).droppable( 'option', 'disabled', true);alert("+");}
- if (!$('#X'+x1+'_Y'+y1).droppable('option', 'disabled'))    {$('#X'+x1+'_Y'+y1).droppable( 'option', 'disabled', true);alert("+");}
- 
- 
- 
- 
-
- 
- 
-// $('#X'+(obj.x-1)+'_Y'+obj.y).droppable( 'option', 'disabled', true);
- 
-// $('#X'+obj.x+'_Y'+(obj.y-1)).droppable( 'option', 'disabled', true);
-// $('#X'+(obj.x+1)+'_Y'+(obj.y+1)).droppable( 'option', 'disabled', true);
-// $('#X'+(obj.x-1)+'_Y'+(obj.y-1)).droppable( 'option', 'disabled', true);
- // //ВСІ ЗАЙНЯТІ
-// $('#X'+OBJ.X+'_Y'+OBJ.Y).DROPPABLE( 'OPTION', 'DISABLED', TRUE);
-// 
-// //ПЕРИМЕТР
-// IF(OBJ.R==='H')
-// {
-//  
-// }
-// ELSE IF(OBJ.R==='V')
-// {
-//  
-// }
-// $('#X'+(OBJ.X+1)+'_Y'+OBJ.Y).DROPPABLE( 'OPTION', 'DISABLED', TRUE);
-// $('#X'+OBJ.X+'_Y'+(OBJ.Y+1)).DROPPABLE( 'OPTION', 'DISABLED', TRUE);
-// 
- 
- 
-// $('#X'+(obj.x-1)+'_Y'+obj.y).droppable( 'option', 'disabled', true);
- 
-// $('#X'+obj.x+'_Y'+(obj.y-1)).droppable( 'option', 'disabled', true);
-// $('#X'+(obj.x+1)+'_Y'+(obj.y+1)).droppable( 'option', 'disabled', true);
-// $('#X'+(obj.x-1)+'_Y'+(obj.y-1)).droppable( 'option', 'disabled', true);
+	if (obj.r == "u") {
+		$("#X"+x0+"_Y"+y0).droppable( "option", "disabled", true);
+		$("#X"+x0+"_Y"+y2).droppable( "option", "disabled", true);
+		$("#X"+x0+"_Y"+y1).droppable( "option", "disabled", true);
+		$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+		$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
+		$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+		$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
+		$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+		$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
+	}
+	
+	if (obj.r == "H") {
+		if (obj.t == "2") {
+			$("#X"+x0+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y1).droppable( "option", "disabled", true);
+		}
+		if (obj.t == "3") {
+			$("#X"+x0+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x4+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x4+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x4+"_Y"+y1).droppable( "option", "disabled", true);
+		}
+		if (obj.t == "4") {
+			$("#X"+x0+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x4+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x4+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x4+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x5+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x5+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x5+"_Y"+y1).droppable( "option", "disabled", true);
+		}
+	}
+	if (obj.r == "V") {
+		if (obj.t == "2") {
+			$("#X"+x0+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y3).droppable( "option", "disabled", true);
+		}
+		if (obj.t == "3") {
+			$("#X"+x0+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y4).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y4).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y4).droppable( "option", "disabled", true);
+		}
+		if (obj.t == "4") {
+			$("#X"+x0+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y4).droppable( "option", "disabled", true);
+			$("#X"+x0+"_Y"+y5).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y4).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y5).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y4).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y5).droppable( "option", "disabled", true);
+		}
+	}
 }
 
 
@@ -198,7 +269,7 @@ function disableDroppables(obj)
 /**
  * Відсилає матрицю на сервер
  * 
- * */
+ */
 function sendM()
 {
 	console.log(M);
