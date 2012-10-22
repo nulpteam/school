@@ -124,8 +124,8 @@ function saveCoords(coords,t,c)
 //Доробити!!!!!!!!!!!!!!!!!!!!!!!
 function disableDroppables(obj)
 {
-	console.log(obj);
-//	//ВСІ ЗАЙНЯТІ
+	
+	//	//ВСІ ЗАЙНЯТІ
 //	$('#X'+OBJ.X+'_Y'+OBJ.Y).DROPPABLE( 'OPTION', 'DISABLED', TRUE);
 //	
 //	//ПЕРИМЕТР
