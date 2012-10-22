@@ -1,5 +1,5 @@
 function register() {
-	alert("REGISTER");
+	window.location.href = "Reg.html";
 }
 
 function language(node) {
