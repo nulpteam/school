@@ -79,7 +79,7 @@ function getM()
  */
 function parseCoords(coords,t,c)
 {
-	if (c !== undefined) {
+	//if (c !== undefined) {
 		var x,y,type;
 		
 		x = parseInt(coords[1]);
@@ -91,7 +91,7 @@ function parseCoords(coords,t,c)
 						"y" : y };
 		console.log(co);
 		return co;
-	}
+	//}
 }
 
 /**
@@ -104,18 +104,21 @@ function saveCoords(coords,t,c)
 {
 	
 	var saveCoordenates = parseCoords(coords,t,c);
-	console.log(coords,t,c);
 	// Деактивовуємо дроппабли в які вже встановлено кораблик
 	disableDroppables(saveCoordenates);
 	// зберігає
 	M[saveCoordenates.x][saveCoordenates.y]=saveCoordenates.t+"1";
 	i++;
+	alert(i);
+	alert(saveCoordenates.t);
+	
 	if(i==saveCoordenates.t)
-	{		
-		// посилаємо на сервер
+	{		alert('SEND');
+	// посилаємо на сервер
 		sendM();
 		i=0;
 	}
+	
 }
 
 
