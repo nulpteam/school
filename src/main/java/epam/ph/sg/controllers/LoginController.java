@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import epam.ph.sg.models.User;
@@ -22,17 +23,17 @@ public class LoginController {
 	@RequestMapping(value = { "/Login.html", "/Login" }, method = RequestMethod.POST)
 	public String login(@RequestParam("user_name") String name,
 			@RequestParam("password") String pass, HttpServletRequest request,
-			Model model,HttpSession session) {
+			Model model, HttpSession session) {
 
 		User user = UserCheck.check(name, pass);
 		if (user != null && user.getId() != null) {
 			model.addAttribute(user);
-			if(session.getAttribute("lang")==null)
-			{
-				session.setAttribute("lang", "en");
-			}
+//			//
+//			if (session.getAttribute("lang") == null) {
+//				session.setAttribute("lang", "ua");
+//			}
 
-			log.debug(user.getName() + " Session: created");
+			log.debug(user.getName() + " object added to session");
 			return "index";
 		} else {
 			log.debug("Login/Pass is not correct: Login->" + name + " Pass->"
@@ -40,4 +41,14 @@ public class LoginController {
 			return "Login";
 		}
 	}
+	
+	@RequestMapping(value = "/chLang.html", method = RequestMethod.POST)
+	public @ResponseBody String chLang(@RequestParam("lang") String lang,
+			HttpServletRequest request, HttpSession session) {
+			session.setAttribute("lang",lang);
+			
+
+	return lang;		
+	}
+
 }

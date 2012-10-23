@@ -251,34 +251,34 @@
 	margin: -35px 750px;
 }
 
-#UKR {
+#ua {
 	position: absolute;
 	margin: 15px 28px;
 }
 
-#UKR:hover {
+#ua:hover {
 	position: absolute;
 	margin: 13px 26px;
 	border: 2px solid gray;
 }
 
-#RUS {
+#ru {
 	position: absolute;
 	margin: 15px 68px;
 }
 
-#RUS:hover {
+#ru:hover {
 	position: absolute;
 	margin: 13px 66px;
 	border: 2px solid gray;
 }
 
-#USA {
+#us {
 	position: absolute;
 	margin: 15px 108px;
 }
 
-#USA:hover {
+#us:hover {
 	position: absolute;
 	margin: 13px 106px;
 	border: 2px solid gray;

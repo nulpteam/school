@@ -4,10 +4,13 @@ function register() {
 
 function language(node) {
 	var lang = node.id;
-	$.post("Language.html", {
-		lang : lang
+	$.post("chLang.html", {
+		lang : lang},
+	function(data)
+	{
+		alert(data);
+		location.reload();
 	});
-	alert(lang);
 }
 
 $(document).ready(function() {

@@ -12,7 +12,7 @@
 <script language="JavaScript" type="text/javascript"
 	src="js/jquery.validate.js"></script>
 <script language="JavaScript" type="text/javascript"
-	src="js/messages_<c:out value="${lang.lang}"/>.js"></script>
+	src="js/messages_<c:out value="${lang}"/>.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>School Games</title>
@@ -55,10 +55,9 @@
 			<p></p>
 		</div>
 		<div id="language_bar">
-			<img id="UKR" src="images/flag_ua.png" name="ua"
-				onclick=language(this);> <img id="RUS"
-				src="images/flag_ru.png" name="ru" onclick=language(this);> <img
-				id="USA" src="images/flag_us.png" name="us" onclick=language(this);>
+			<img id="ua" src="images/flag_ua.png" name="ua" onclick=language(this);>
+			<img id="ru"	src="images/flag_ru.png" name="ru" onclick=language(this);>
+			<img id="us" src="images/flag_us.png" name="us" onclick=language(this);>
 		</div>
 		<!div>
 		<!img id="splats" src="images/splats.png">
