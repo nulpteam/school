@@ -44,11 +44,11 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping(value = "/chLang.html", method = RequestMethod.POST)
-	public @ResponseBody String chLang(@RequestParam("lang") String lang,
-			HttpServletRequest request, HttpSession session) {
-			session.setAttribute("lang",lang);
-	return lang;		
-	}
+//	@RequestMapping(value = "/chLang.html", method = RequestMethod.POST)
+//	public @ResponseBody String chLang(@RequestParam("lang") String lang,
+//			HttpServletRequest request, HttpSession session) {
+//			session.setAttribute("lang",lang);
+//	return lang;		
+//	}
 
 }

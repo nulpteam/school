@@ -5,6 +5,7 @@ package epam.ph.sg.controllers;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -12,6 +13,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,6 +55,15 @@ public class HomeController {
 		} else {
 			return new ModelAndView("index");
 		}
+	}
+	
+	
+	
+	@RequestMapping(value = "/chLang.html", method = RequestMethod.POST)
+	public @ResponseBody String chLang(@RequestParam("lang") String lang,
+			HttpServletRequest request, HttpSession session) {
+			session.setAttribute("lang",lang);
+	return lang;		
 	}
 
 }
