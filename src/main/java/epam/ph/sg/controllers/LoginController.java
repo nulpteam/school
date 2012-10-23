@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import epam.ph.sg.models.LangModel;
 import epam.ph.sg.models.User;
 import epam.ph.sg.models.UserCheck;
+import epam.ph.sg.models.impl.LangModelImpl;
 
 @Controller
 @SessionAttributes("user")
@@ -46,8 +48,6 @@ public class LoginController {
 	public @ResponseBody String chLang(@RequestParam("lang") String lang,
 			HttpServletRequest request, HttpSession session) {
 			session.setAttribute("lang",lang);
-			
-
 	return lang;		
 	}
 

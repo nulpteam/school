@@ -8,7 +8,6 @@ function language(node) {
 		lang : lang},
 	function(data)
 	{
-		alert(data);
 		location.reload();
 	});
 }

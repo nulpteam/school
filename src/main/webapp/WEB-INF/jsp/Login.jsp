@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@page import="java.util.Enumeration"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,32 +24,31 @@
 	<div id="bg">
 
 		<div id="login_title">
-			<b>LOGIN PAGE</b>
+			<b><c:out value="${hashMap['Who_are_you']}"/></b>
 		</div>
 		<div id="loginform">
 
-			<div class="button"  id="register_button" onclick=register();>Register</div>
+			
 			<form action="Login.html" method="POST" id="myform">
 				<p id="name_text">
-					<b><label>USER NAME:</label></b>
+					<b><label><c:out value="${hashMap['Name']}"/></label></b>
 				</p>
 				<div id="name_area_div">
 					<input id="name_area_input" class="input_areas required"
 						type="text" name="user_name" maxlength="25" size="15">
 				</div>
 				<p id="pass_text">
-					<b><label>PASSWORD:</label></b>
+					<b><label><c:out value="${hashMap['Password']}"/></label></b>
 				</p>
 				<div id="pass_area_div">
 					<input id="pass_area_input" class="input_areas required"
 						type="password" name="password" maxlength="20" size="15">
 				</div>
 				<div>
-					<input id="login_button" class="button" type="submit" value="Login">				
+					<input id="login_button" class="button" type="submit" value="<c:out value="${hashMap['Login']}"/>">				
 				</div>
-
 			</form>
-
+	<div class="button"  id="register_button" onclick=register();><c:out value="${hashMap['Register']}"/></div>
 		</div>
 		<div id="dialog_text">
 			<p></p>
@@ -59,10 +58,20 @@
 			<img id="ru"	src="images/flag_ru.png" name="ru" onclick=language(this);>
 			<img id="us" src="images/flag_us.png" name="us" onclick=language(this);>
 		</div>
-		<!div>
-		<!img id="splats" src="images/splats.png">
-		<!/div>
+		
+<!-- 		<!div> -->
+<!-- 		<!img id="splats" src="images/splats.png"> -->
+<!-- 		<!/div> -->
 	</div>
+		<%
+//  	 Enumeration<String> en = request.getAttributeNames(); 
+//  	while (en.hasMoreElements()) 
+//  	 { 
+//  		out.println(en.nextElement()); 
+// 	}
+ %>
+ 
+	
 	<script language="JavaScript" type="text/javascript">
 		$(function () {$('#myform').validate();});
 	</script>

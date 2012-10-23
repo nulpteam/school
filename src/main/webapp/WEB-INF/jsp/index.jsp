@@ -12,7 +12,7 @@
 <script language="JavaScript" type="text/javascript"
 	src="js/jquery.validate.js"></script>
 <script language="JavaScript" type="text/javascript"
-	src="js/messages_<c:out value="${lang.lang}"/>.js"></script>
+	src="js/messages_<c:out value="${lang}"/>.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>School Games</title>

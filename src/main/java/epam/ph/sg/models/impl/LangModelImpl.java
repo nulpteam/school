@@ -1,16 +1,14 @@
 package epam.ph.sg.models.impl;
 
-import java.util.ResourceBundle;
-
 import org.apache.log4j.Logger;
 
 import epam.ph.sg.models.LangModel;
 
 public class LangModelImpl implements LangModel {
-	private String lang;
+	private  String lang;
 	private static Logger log = Logger.getLogger(LangModelImpl.class);
-	// private ResourceBundle rb;
-
+	
+	
 	public String getLang() {
 		return lang;
 	}
@@ -25,11 +23,18 @@ public class LangModelImpl implements LangModel {
 		return lang;
 	}
 
-	public ResourceBundle getRb() {
-		ResourceBundle rb = ResourceBundle.getBundle("lang_"
-				+ this.getLang() + ".properties");
-		log.debug("sent "+this.getLang()+" rb");
-		return rb;
-	}
-
+//	public Map<String, String> getRb() {
+//		ResourceBundle rb = ResourceBundle.getBundle("lang_"
+//				+ this.getLang());
+//		log.debug("+++++++++++++++++++++++++test of RB= "+rb.getString("test")+" from lang_"+ this.getLang()+"+++++++++++");
+//		Enumeration<String> keys = rb.getKeys();
+//		Map<String,String> rbl = new HashMap<String,String>();
+//		while(keys.hasMoreElements())
+//		{
+//			String key = keys.nextElement();
+//			rbl.put(key, rb.getString(key));
+//		}
+//		log.debug("sent "+this.getLang()+" rb");
+//		return rbl;
+//	}
 }
