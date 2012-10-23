@@ -1,3 +1,6 @@
+/**
+ * @author Bogdan Gutey
+ */
 package epam.ph.sg.models.impl;
 
 import java.sql.ResultSet;

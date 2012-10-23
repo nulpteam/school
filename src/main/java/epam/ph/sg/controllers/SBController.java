@@ -1,7 +1,7 @@
 package epam.ph.sg.controllers;
 
 /**
- * @author Hutey_Bohdan
+ * @author Gutey Bogdan
  */
 import javax.servlet.http.HttpSession;
 

@@ -41,6 +41,9 @@ public class HomeController {
 			model = new ModelAndView("Login");
 			Map<String, String> rbl = new LangSelector().getRb((String) session
 					.getAttribute("lang"));
+			/*
+			 * Доробити кукіси
+			 */
 			model.addObject(rbl);
 			log.debug("Language map" + session.getAttribute("lang")
 					+ " added to model");
