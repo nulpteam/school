@@ -20,16 +20,22 @@
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <h5 class="welcome_message">Welcome <c:out value="${user.name}"/>, you are logged in :)</h5>
+	<h5 class="welcome_message">
+		Welcome
+		<c:out value="${user.name}" />
+		, you are logged in :)
+	</h5>
 	<div id="bg_menu">
-		<div id="gomoku_button" class="button" onclick=XO();>Play
-			Gomoku</div>
+		<div id="gomoku_button" class="button" onclick=XO();>Play Gomoku</div>
 		<div id="battleship_button" class="button" onclick=BS();>Play
 			Battleship</div>
 		<div id="reversi_button" class="button" onclick=reversi();>Play
 			Reversi</div>
+		<div id="points_button" class="button unselect" onclick=points();>Play
+			Points</div>
 		<div id="storerooom_button" class="button" onclick=storeRoom();>Storeroom</div>
-		<div id="halloffame_button" class="button" onclick=hallOfFame();> Hall Of Fame</div>
+		<div id="halloffame_button" class="button" onclick=hallOfFame();>
+			Hall Of Fame</div>
 	</div>
 
 
