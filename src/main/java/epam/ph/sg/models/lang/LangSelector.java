@@ -14,7 +14,7 @@ public class LangSelector {
 	private static Logger log = Logger.getLogger(LangSelector.class);
 
 	public Map<String, String> getRb(String lang) {
-		ResourceBundle rb = ResourceBundle.getBundle("lang_" + lang);
+		ResourceBundle rb = ResourceBundle.getBundle("lang_" + lang, new UTF8Control());
 		Enumeration<String> keys = rb.getKeys();
 		Map<String, String> rbl = new HashMap<String, String>();
 		while (keys.hasMoreElements()) {

@@ -20,7 +20,6 @@
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-
 	<div id="bg">
 
 		<div id="login_title">
