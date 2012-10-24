@@ -9,6 +9,8 @@
 <link href="css/XO.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/XOMenu.js" type="text/javascript"></script>
+<script src="js/XO/XOLang_<c:out value="${lang}"/>.js"
+	type="text/javascript"></script>
 <script type="text/javascript">
 	var myID = "${user.id}";
 	
@@ -16,14 +18,16 @@
 		chatStart();
 	});
 </script>
-<title>Insert title here</title>
+<title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
 	<c:import url="../Chat.jsp"></c:import>
 
 	<div class="paperList">
 		<div class="title">
-			<p align="center">Список серверів</p>
+			<p align="center">
+				<c:out value="${langPack['XO_SL_title']}" />
+			</p>
 		</div>
 		<div id="home" onclick=returnToMenu();>
 			<img src="images/XO/home.png">

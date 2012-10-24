@@ -23,31 +23,31 @@
 	<div id="bg">
 
 		<div id="login_title">
-			<b><c:out value="${hashMap['Who_are_you']}"/></b>
+			<b><c:out value="${langPack['Who_are_you']}"/></b>
 		</div>
 		<div id="loginform">
 
 			
 			<form action="Login.html" method="POST" id="myform">
 				<p id="name_text">
-					<b><label><c:out value="${hashMap['Name']}"/></label></b>
+					<b><label><c:out value="${langPack['Name']}"/></label></b>
 				</p>
 				<div id="name_area_div">
 					<input id="name_area_input" class="input_areas required"
 						type="text" name="user_name" maxlength="25" size="15">
 				</div>
 				<p id="pass_text">
-					<b><label><c:out value="${hashMap['Password']}"/></label></b>
+					<b><label><c:out value="${langPack['Password']}"/></label></b>
 				</p>
 				<div id="pass_area_div">
 					<input id="pass_area_input" class="input_areas required"
 						type="password" name="password" maxlength="20" size="15">
 				</div>
 				<div>
-					<input id="login_button" class="button" type="submit" value="<c:out value="${hashMap['Login']}"/>">				
+					<input id="login_button" class="button" type="submit" value="<c:out value="${langPack['Login']}"/>">				
 				</div>
 			</form>
-	<div class="button"  id="register_button" onclick=register();><c:out value="${hashMap['Register']}"/></div>
+	<div class="button"  id="register_button" onclick=register();><c:out value="${langPack['Register']}"/></div>
 		</div>
 		<div id="dialog_text">
 			<p></p>

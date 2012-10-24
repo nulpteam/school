@@ -10,7 +10,7 @@ function serverListPage() {
 
 function connect(id) {
 	if (id == myID) {
-		alert('Ви не можете підключитись до себе');
+		alert(msg1);
 	} else {
 		$.post("XOClear.html", function(response) {
 			location.href = "XOGameClient.html?serverID=" + id;

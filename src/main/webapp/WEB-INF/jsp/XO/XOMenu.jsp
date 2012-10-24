@@ -16,27 +16,32 @@
 		chatStart();
 	});
 </script>
-<title>School Games</title>
+<title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
 	<c:import url="../Chat.jsp"></c:import>
-	
+
 	<div class="paperList">
 		<div class="title">
-			<p align="center">Хрестики нолики</p>
+			<p align="center">
+				<c:out value="${langPack['XO_title']}" />
+			</p>
 		</div>
 		<div id="menu" align="center">
 			<div class="button" onclick=createServer();>
-				<p class="buttonText">Створити гру</p>
+				<p class="buttonText">
+					<c:out value="${langPack['XO_button_create']}" />
+				</p>
 			</div>
 			<div class="button" onclick=serverListPage();>
-				<p class="buttonText">Підключитись</p>
+				<p class="buttonText">
+					<c:out value="${langPack['XO_button_connect']}" />
+				</p>
 			</div>
 		</div>
-		<div id="rulles">Правила: Гравці по черзі ставлять на вільні
-			квадрати поля свої фігури (хрестики або ноліки). Виграє той хто
-			поставить рядом по вертикалі, горизонталі або діагоналі 5 своїх
-			фігур.</div>
+		<div id="rulles">
+			<c:out value="${langPack['XO_rules']}" />
+		</div>
 	</div>
 </body>
 </html>

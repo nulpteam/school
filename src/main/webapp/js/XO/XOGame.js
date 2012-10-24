@@ -9,7 +9,7 @@ function returnToMenu() {
 	if (end) {
 		location.href = "XO.html";
 	} else {
-		var bool = confirm('Якщо ви вийдете, ви автоматично програєте!!!');
+		var bool = confirm(msg2);
 		if (bool) {
 			$.post("XOLose.html", function(response) {
 				location.href = "XO.html";
@@ -20,13 +20,13 @@ function returnToMenu() {
 
 function getClient() {
 	end = true;
-	$('#outText').text('Чекайте на підключення');
+	$('#outText').text(msg3);
 	var inter1 = setInterval(check, 1000);
 	function check() {
 		$.post("XOGetClient.html", function(response) {
 			if (response != "") {
 				clearInterval(inter1);
-				$('#outText').text(response.name + ' підключився');
+				$('#outText').text(response.name + msg4);
 				$('#opNameText').text(response.name);
 				$('#tick').animate({
 					marginLeft : tickX1
@@ -48,24 +48,24 @@ function put(img) {
 			lock = true;
 			end = true;
 			setImg(img, status);
-			$('#outText').text('Перемога :)');
+			$('#outText').text(msg5);
 			$('#win').css({
 				zIndex : 1
 			});
 		} else if (response == -4) {
 			lock = true;
 			end = true;
-			$('#outText').text($('#opName').text() + ' вийшов');
+			$('#outText').text($('#opName').text() + msg6);
 		} else if (response == -3) {
 		} else if (response == -2) {
-			alert('Клітинка зайнята !!!');
+			alert(msg7);
 		} else if (response == -1) {
-			alert('Не ваша черга!!!');
+			alert(msg8);
 		} else {
 			lock = true;
 			status = response;
 			setImg(img, status);
-			$('#outText').text('Чекайте');
+			$('#outText').text(msg9);
 			$('#tick').animate({
 				marginLeft : tickX2
 			}, 1000);
@@ -82,17 +82,17 @@ function checker() {
 				end = true;
 				clearInterval(inter);
 				change();
-				$('#outText').text('Програш :(');
+				$('#outText').text(msg10);
 			} else if (response == -4) {
 				end = true;
-				$('#outText').text($('#opName').text() + ' вийшов');
+				$('#outText').text($('#opName').text() + msg6);
 			} else if (response == -3) {
 				clearInterval(inter);
 				getClient();
 			} else if (response != 0) {
 				clearInterval(inter);
 				change();
-				$('#outText').text('Ваш хід');
+				$('#outText').text(msg11);
 				lock = false;
 				$('#tick').animate({
 					marginLeft : tickX1

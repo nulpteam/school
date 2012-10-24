@@ -10,18 +10,20 @@
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/XOMenu.js" type="text/javascript"></script>
 <script src="js/XO/XOGame.js" type="text/javascript"></script>
+<script src="js/XO/XOLang_<c:out value="${lang}"/>.js"
+	type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#outText').text('Чекайте');
+		$('#outText').text(msg9);
 		checker();
 		chatStart();
 	});
 </script>
-<title>Insert title here</title>
+<title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
 	<c:import url="../Chat.jsp"></c:import>
-	
+
 	<div class="paperList">
 		<div id="myName" class="namespace">
 			<p class="name">
@@ -34,7 +36,7 @@
 			</p>
 		</div>
 		<div>
-			<p id="outText" align="center" class="title">Хрестики нолики</p>
+			<p id="outText" align="center" class="title"></p>
 		</div>
 		<div id="tick">
 			<img src="images/XO/tick.png">

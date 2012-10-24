@@ -48,7 +48,8 @@ public class HomeController {
 			/*
 			 * Доробити кукіси
 			 */
-			model.addObject(rbl);
+			session.setAttribute("langPack", rbl);
+//			model.addObject(rbl);
 			log.debug("Language map" + session.getAttribute("lang")
 					+ " added to model");
 			return model;
