@@ -1,0 +1,40 @@
+body {
+	font-family: LC Chalk;
+	font-size: 10px;
+	color: #5B2FCE;
+}
+
+#bg {
+	background: url('../images/Points/background.png') no-repeat;
+	width: 620px;
+	height: 725px;
+	margin: 50px auto;
+}
+
+#player_label_1 {
+	position: absolute;
+	margin: 20px 45px;
+	
+}
+
+#player_label_2 {
+	position: absolute;
+	margin: 20px 330px;
+}
+
+#table {
+	position: absolute;
+	margin: 130px 50px;
+}
+
+#table tr td {
+	width:20px;
+}
+
+#table tr {
+	height:20px;
+}
+
+.point:hover {
+	background-image: url('../images/Points/point_hover.png');
+}
