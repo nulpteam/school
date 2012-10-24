@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<link href="css/Points/Points.css" type="text/css" rel="stylesheet">
+<link href="css/Points/PointsGame.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/Points/Points.js" type="text/javascript"></script>
 
