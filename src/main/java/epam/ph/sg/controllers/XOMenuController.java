@@ -23,7 +23,7 @@ public class XOMenuController {
 	public String xo(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			return "Login";
+			return "redirect:/index.html";
 		} else
 			return "XO/XOMenu";
 	}
@@ -32,7 +32,7 @@ public class XOMenuController {
 	public String serverList(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			return "Login";
+			return "redirect:/index.html";
 		} else {
 			model.addAttribute("serverMap", XOConnector.getServerMap());
 			return "XO/XOServerList";
@@ -43,7 +43,7 @@ public class XOMenuController {
 	public String create(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			return "Login";
+			return "redirect:/index.html";
 		} else {
 			if (session.getAttribute("xo") == null) {
 				XOPlayer xo = XOConnector.create(user);
@@ -61,7 +61,7 @@ public class XOMenuController {
 			HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			return "Login";
+			return "redirect:/index.html";
 		} else {
 			if (session.getAttribute("xo") == null) {
 				XOPlayer xo = XOConnector.connect(serverID, user);
