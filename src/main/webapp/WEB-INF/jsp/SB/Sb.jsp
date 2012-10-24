@@ -27,7 +27,7 @@
 		<div  class="ammo">
 			<!-- Кораблі для розставляння на полі-->
 			<div class="sheep_cont">
-				<img id="sheep_4" class="V" src="images/SB/4.png" alt="4" ondblclick="rotate(this);"/>
+				<img id="sheep_4" class="H" src="images/SB/4.png" alt="4" ondblclick="rotate(this);"/>
 					<div class="clear"></div>
 				<img id="sheep_3"  class="H" src="images/SB/3.png" alt="3" ondblclick="rotate(this);"/>
 					<div class="clear"></div>

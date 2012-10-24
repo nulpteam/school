@@ -5,11 +5,63 @@ $(function() {
 		console.log(Mat);
        
 		//кораблі
-		$( "#sheep_1" ).draggable();
-		$( "#sheep_2" ).draggable();
-		$( "#sheep_3" ).draggable();
-		$( "#sheep_4" ).draggable();
-      
+		$( "#sheep_1" ).draggable({
+			revert: true,
+			revertDuration: 500
+		});
+		$( "#sheep_2" ).draggable({
+			revert: true,
+			revertDuration: 500
+		});
+		$( "#sheep_3" ).draggable({
+			revert: true,
+			revertDuration: 500
+		});
+		$( "#sheep_4" ).draggable({
+			revert: true,
+			revertDuration: 500
+		});
+		
+		
+//		//ТРЕБА ПОДУМАТИ)
+//		for (var i = 0; i < "10"; i++) {
+//			for (var j = "0"; i < "10"; j++) {
+//			$( "#X"+i+"_Y"+j ).droppable({
+//		       	tolerance : "touch",
+//		       	hoverClass: 'hover',
+//		       		drop: function( event, ui ) {
+//		        	   console.log(event);
+//		           	console.log(ui);
+//		           	alert("droped into " + "#X"+i+"_Y"+j);
+//		           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
+//		           	$("#"+ui.draggable.context.id).draggable('disable');
+//		           },
+//		   			out: function(event, ui)
+//		   	        {
+//		   				clearOldCoordsInM("#X"+i+"_Y"+j, ui.draggable.context.id);
+//		   	        }
+//			});
+//			}
+//		}
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
       
 		//this.id - ідентифікатор комірки
      	//ui.draggable.context.id - тип корабля (витягується з id корабля)

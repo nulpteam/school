@@ -110,12 +110,6 @@ function saveCoords(coords,t,c)
 	disableDroppables(saveCoordenates);
 	// зберігає
 	
-	
-	alert("t="+saveCoordenates.t);
-	alert("c="+c);
-	console.log(c);
-	
-	
 	M[saveCoordenates.x][saveCoordenates.y]=saveCoordenates.t+"1";
 	
 	if (saveCoordenates.t > 1) {
