@@ -5,7 +5,7 @@ body {
 }
 
 #bg {
-	background: url('../images/Points/background.png') no-repeat;
+	background-image: url('../../images/Points/background.png');
 	width: 620px;
 	height: 725px;
 	margin: 50px auto;
@@ -36,5 +36,5 @@ body {
 }
 
 .point:hover {
-	background-image: url('../images/Points/point_hover.png');
+	background-image: url('../../images/Points/point_hover.png');
 }

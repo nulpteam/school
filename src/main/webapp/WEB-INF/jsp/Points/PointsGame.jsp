@@ -8,7 +8,7 @@
 
 <link href="css/Points/PointsGame.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Points/Points.js" type="text/javascript"></script>
+<script src="js/Points/PointsGame.js" type="text/javascript"></script>
 
 <title>School Games</title>
 </head>
