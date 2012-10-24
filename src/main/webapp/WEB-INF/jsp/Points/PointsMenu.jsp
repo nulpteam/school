@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Points/Points.js" type="text/javascript"></script>
+<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 <title>School Games</title>
 </head>
 <body>
-	<input type="button" value="Create game">
-	<input type="button" value="Connect">
+	<input type="button" value="Create game" id="create" onClick=create()>
+	<input type="button" value="Connect" id="connect">
 </body>
 </html>
