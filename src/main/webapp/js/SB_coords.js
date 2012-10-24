@@ -79,7 +79,7 @@ function getM()
  */
 function parseCoords(coords,t,c)
 {
-	//if (c !== undefined) {
+	if (c !== undefined) {
 		var x,y,type;
 		
 		x = parseInt(coords[1]);
@@ -91,7 +91,7 @@ function parseCoords(coords,t,c)
 						"y" : y };
 		console.log(co);
 		return co;
-	//}
+	}
 }
 
 /**
@@ -102,15 +102,56 @@ function parseCoords(coords,t,c)
 var i=0;
 function saveCoords(coords,t,c)
 {
-	
+//	coords - координати
+//	t - кількість палуб
+//	с - положення
 	var saveCoordenates = parseCoords(coords,t,c);
 	// Деактивовуємо дроппабли в які вже встановлено кораблик
 	disableDroppables(saveCoordenates);
 	// зберігає
+	
+	
+	alert("t="+saveCoordenates.t);
+	alert("c="+c);
+	console.log(c);
+	
+	
 	M[saveCoordenates.x][saveCoordenates.y]=saveCoordenates.t+"1";
-	i++;
-	alert(i);
-	alert(saveCoordenates.t);
+	
+	if (saveCoordenates.t > 1) {
+		
+		if (c == "H ui-draggable ui-draggable-dragging") {
+			M[saveCoordenates.x + 1][saveCoordenates.y]=saveCoordenates.t + "1";
+		}
+		if (c == "V ui-draggable ui-draggable-dragging") {
+			M[saveCoordenates.x][saveCoordenates.y + 1]=saveCoordenates.t + "1";
+		}
+		if (saveCoordenates.t > 2) {
+			
+			if (c == "H ui-draggable ui-draggable-dragging") {
+				M[saveCoordenates.x + 2][saveCoordenates.y]=saveCoordenates.t + "1";
+			}
+			if (c == "V ui-draggable ui-draggable-dragging") {
+				M[saveCoordenates.x][saveCoordenates.y + 2]=saveCoordenates.t + "1";
+			}
+			if (saveCoordenates.t > 3) {
+				
+				if (c == "H ui-draggable ui-draggable-dragging") {
+					M[saveCoordenates.x + 3][saveCoordenates.y]=saveCoordenates.t + "1";
+				}
+				if (c == "V ui-draggable ui-draggable-dragging") {
+					M[saveCoordenates.x][saveCoordenates.y + 3]=saveCoordenates.t + "1";
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	
+	
+	
 	
 	if(i==saveCoordenates.t)
 	{		alert('SEND');
@@ -124,7 +165,6 @@ function saveCoords(coords,t,c)
 
 
 // Деактивовує елементи droppable за координатами
-// Доробити!!!!!!!!!!!!!!!!!!!!!!!
 function disableDroppables(obj)
 {
 	console.log(obj);
@@ -163,6 +203,7 @@ function disableDroppables(obj)
 			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).removeClass("hover");
 			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x3+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x3+"_Y"+y2).droppable( "option", "disabled", true);
@@ -177,9 +218,11 @@ function disableDroppables(obj)
 			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).removeClass("hover");
 			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x3+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x3+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y2).removeClass("hover");
 			$("#X"+x3+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x4+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x4+"_Y"+y2).droppable( "option", "disabled", true);
@@ -194,12 +237,15 @@ function disableDroppables(obj)
 			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x1+"_Y"+y2).removeClass("hover");
 			$("#X"+x1+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x3+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x3+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x3+"_Y"+y2).removeClass("hover");
 			$("#X"+x3+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x4+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x4+"_Y"+y2).droppable( "option", "disabled", true);
+			$("#X"+x4+"_Y"+y2).removeClass("hover");
 			$("#X"+x4+"_Y"+y1).droppable( "option", "disabled", true);
 			$("#X"+x5+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x5+"_Y"+y2).droppable( "option", "disabled", true);
@@ -215,6 +261,7 @@ function disableDroppables(obj)
 			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
 			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).removeClass("hover");
 			$("#X"+x2+"_Y"+y3).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
@@ -230,7 +277,9 @@ function disableDroppables(obj)
 			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
 			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).removeClass("hover");
 			$("#X"+x2+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y3).removeClass("hover");
 			$("#X"+x2+"_Y"+y4).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);
@@ -246,10 +295,14 @@ function disableDroppables(obj)
 			$("#X"+x0+"_Y"+y4).droppable( "option", "disabled", true);
 			$("#X"+x0+"_Y"+y5).droppable( "option", "disabled", true);
 			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x2+"_Y"+y2).droppable( "option", "disabled", true);
 			$("#X"+x2+"_Y"+y1).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y1).removeClass("hover");
 			$("#X"+x2+"_Y"+y3).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y3).removeClass("hover");
 			$("#X"+x2+"_Y"+y4).droppable( "option", "disabled", true);
+			$("#X"+x2+"_Y"+y4).removeClass("hover");
 			$("#X"+x2+"_Y"+y5).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y0).droppable( "option", "disabled", true);
 			$("#X"+x1+"_Y"+y2).droppable( "option", "disabled", true);

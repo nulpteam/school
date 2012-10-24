@@ -12,7 +12,7 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
 <link href="css/SB.css" type="text/css" rel="stylesheet">
 
 <title><c:out value="${sbGame.title}" /></title>
