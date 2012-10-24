@@ -13,6 +13,9 @@
 	width: 1000px;
 	margin: -12px auto;
 	font-family: Arial;
+	unselectable
+	=
+	"on"
 }
 
 #loginform {
@@ -68,6 +71,22 @@
 	margin: 256px 130px;
 }
 
+#error_title {
+	position: absolute;
+	font-family: LC Chalk;
+	font-size: 40px;
+	margin: 158px 130px;
+	color: red;
+}
+
+#error_text {
+	position: absolute;
+	font-family: LC Chalk;
+	font-size: 30px;
+	margin: 256px 130px;
+	color: red;
+}
+
 #name_text {
 	position: absolute;
 	margin: 20px 81px;
@@ -103,7 +122,7 @@
 #login_button {
 	position: absolute;
 	margin: 160px 80px;
-	width: 185px;
+	width: 123px;
 }
 
 #register_button {
@@ -113,37 +132,47 @@
 }
 
 #gomoku_button {
-    position: absolute;
-    margin : 210px 420px;
-    width: 106px;
+	position: absolute;
+	margin: 210px 420px;
+	width: 106px;
 }
-#battleship_button{
-    position: absolute;
-    margin : 265px 420px;
+
+#battleship_button {
+	position: absolute;
+	margin: 265px 420px;
+	width: 106px;
 }
-#reversi_button{
-    position: absolute;
-    margin : 320px 420px;
-    width: 106px;
+
+#reversi_button {
+	position: absolute;
+	margin: 320px 420px;
+	width: 106px;
 }
-#storerooom_button{
-    position: absolute;
-    margin : 375px 420px;
-    width: 106px;
+
+#points_button {
+	position: absolute;
+	margin: 375px 420px;
+	width: 106px;
 }
-#halloffame_button{
-    position: absolute;
-    margin : 430px 420px;
-    width: 106px;
+
+#storerooom_button {
+	position: absolute;
+	margin: 430px 420px;
+	width: 106px;
+}
+
+#halloffame_button {
+	position: absolute;
+	margin: 485px 420px;
+	width: 106px;
 }
 
 .welcome_message {
-    position: absolute;
-    margin : 35px 200px;
-    color :white;
-    font-size:15px;
+	position: absolute;
+	margin: 35px 200px;
+	color: white;
+	font-size: 15px;
 }
-
 
 .error {
 	position: absolute;
@@ -200,6 +229,7 @@
 		rgba(255, 112, 2, 1) 100% );
 	background-image: linear-gradient(top, rgba(255, 175, 3, 1) 0%,
 		rgba(255, 112, 2, 1) 100% );
+	cursor: default;
 }
 
 .button:active {
@@ -251,35 +281,36 @@
 	margin: -35px 750px;
 }
 
-#ua {
+#UKR {
 	position: absolute;
 	margin: 15px 28px;
 }
 
-#ua:hover {
+#UKR:hover {
 	position: absolute;
 	margin: 13px 26px;
 	border: 2px solid gray;
 }
 
-#ru {
+#RUS {
 	position: absolute;
 	margin: 15px 68px;
 }
 
-#ru:hover {
+#RUS:hover {
 	position: absolute;
 	margin: 13px 66px;
 	border: 2px solid gray;
 }
 
-#us {
+#USA {
 	position: absolute;
 	margin: 15px 108px;
 }
 
-#us:hover {
+#USA:hover {
 	position: absolute;
 	margin: 13px 106px;
 	border: 2px solid gray;
 }
+
