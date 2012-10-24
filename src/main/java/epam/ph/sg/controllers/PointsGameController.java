@@ -14,11 +14,12 @@ public class PointsGameController {
 
 	private static Logger log = Logger.getLogger(PointsGameController.class);
 
-	@RequestMapping(value = "/Points.html")
+	@RequestMapping(value = "/PointsGame.html")
 	public String pointsGame(HttpSession session) {
+		
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
-			return "Login";
+			return "redirect:/index.html";
 		}
 	
 		return "Points/PointsGame";
@@ -27,6 +28,11 @@ public class PointsGameController {
 	@RequestMapping(value = "/PointsCheck.html", method = RequestMethod.POST)
 	public @ResponseBody 
 	String put(@RequestParam("point_xy") String xy, HttpSession session) {
+		return "\'../images/Points/point_hover.png\'";
+	}
+	
+	@RequestMapping(value = "/PointsGetChanges.html", method = RequestMethod.GET)
+	public @ResponseBody String getChanges(HttpSession session) {
 		return "\'../images/Points/point_hover.png\'";
 	}
 

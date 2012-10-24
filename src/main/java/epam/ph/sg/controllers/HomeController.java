@@ -64,6 +64,9 @@ public class HomeController {
 	public @ResponseBody String chLang(@RequestParam("lang") String lang,
 			HttpServletRequest request, HttpSession session) {
 			session.setAttribute("lang",lang);
+			Map<String, String> rbl = new LangSelector().getRb((String) session
+					.getAttribute("lang"));
+			session.setAttribute("langPack", rbl);
 	return lang;		
 	}
 
