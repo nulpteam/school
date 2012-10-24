@@ -1,42 +1,71 @@
-#paperList {
+.paperList {
 	background-image: url('../images/XO/list.png');
 	background-repeat: no-repeat;
 	height: 734px;
 	width: 675px;
 	margin: -8px auto;
-	font-family: LC Chalk;
-	font-size: 16px;
 	color: #5B2FCE;
+}
+
+.title {
+	position: absolute;
+	height: 30px;
+	width: 675px;
+	font-size: 30px;
+}
+
+.button {
+	background-image: url('../images/XO/button.png');
+	background-repeat: no-repeat;
+	height: 35px;
+	width: 270px;
+	cursor: pointer;
+}
+
+.buttonText {
+	font-size: 18px;
+	color: #FFF;
+}
+
+.namespace {
+	background-image: url('../images/XO/namespace.png');
+	background-repeat: no-repeat;
+	height: 30px;
+	width: 193px;
+}
+
+.name {
+	margin: 5px 20px;
+}
+
+#myName {
+	position: absolute;
+	margin-top: 30px;
+	margin-left: 110px;
+}
+
+#opName {
+	position: absolute;
+	margin-top: 30px;
+	margin-left: 350px;
+}
+
+#tick {
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 475px;
+}
+
+#home {
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 580px;
+	cursor: pointer;
 }
 
 #outText {
 	position: absolute;
 	margin-top: 70px;
-	margin-left: 200px;
-}
-
-#myName {
-	position: absolute;
-	margin-top: 15px;
-	margin-left: 115px;
-}
-
-#opName {
-	position: absolute;
-	margin-top: 15px;
-	margin-left: 440px;
-}
-
-#tick {
-	position: absolute;
-	margin-top: 0px;
-	margin-left: 525px;
-}
-
-#home {
-	position: absolute;
-	margin-top: 5px;
-	margin-left: 305px;
 }
 
 #win {
@@ -45,8 +74,25 @@
 	margin-left: 200px;
 }
 
-#XO {
+#menu {
+	position: absolute;
+	margin: 100px 200px;
+}
+
+#rulles {
+	position: absolute;
+	width: 400px;
+	margin-top: 400px;
+	margin-left: 150px;
+}
+
+#field {
 	position: absolute;
 	margin-top: 160px;
 	margin-left: 127px;
+}
+
+#border {
+	position: absolute;
+	margin: 149px 115px;
 }

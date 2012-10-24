@@ -5,18 +5,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/styles.css" type="text/css" rel="stylesheet">
 <link href="css/XO.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/XOMenu.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var myID = "${user.id}";
+	
+	$(document).ready(function() {
+		chatStart();
+	});
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-		<c:forEach var="server" items="${serverMap}" varStatus="i">
-			<button id="${server.key}" onclick=connect(this.id);>
-					Сервер Name:<c:out value="${server.value.game.server.name}" />
-			</button>
-		</c:forEach>
+	<c:import url="../Chat.jsp"></c:import>
+
+	<div class="paperList">
+		<div class="title">
+			<p align="center">Список серверів</p>
+		</div>
+		<div id="home" onclick=returnToMenu();>
+			<img src="images/XO/home.png">
+		</div>
+		<div id="menu" align="center">
+			<c:forEach var="server" items="${serverMap}" varStatus="i">
+				<div class="button" id="${server.key}" onclick=connect(this.id);>
+					<p class="buttonText">
+						<c:out value="${server.value.game.server.name}" />
+					</p>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 </body>
 </html>

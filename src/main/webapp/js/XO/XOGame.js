@@ -1,7 +1,11 @@
 var lock = true;
 var end = false;
 
-function returnToXO() {
+// Координати
+var tickX1 = '235px';
+var tickX2 = '475px';
+
+function returnToMenu() {
 	if (end) {
 		location.href = "XO.html";
 	} else {
@@ -13,6 +17,7 @@ function returnToXO() {
 		}
 	}
 }
+
 function getClient() {
 	end = true;
 	$('#outText').text('Чекайте на підключення');
@@ -22,9 +27,9 @@ function getClient() {
 			if (response != "") {
 				clearInterval(inter1);
 				$('#outText').text(response.name + ' підключився');
-				$('#opName').text(response.name);
+				$('#opNameText').text(response.name);
 				$('#tick').animate({
-					marginLeft : '200px'
+					marginLeft : tickX1
 				}, 1000);
 				end = false;
 				lock = false;
@@ -44,7 +49,9 @@ function put(img) {
 			end = true;
 			setImg(img, status);
 			$('#outText').text('Перемога :)');
-			$('#win').css({zIndex: 1});
+			$('#win').css({
+				zIndex : 1
+			});
 		} else if (response == -4) {
 			lock = true;
 			end = true;
@@ -60,7 +67,7 @@ function put(img) {
 			setImg(img, status);
 			$('#outText').text('Чекайте');
 			$('#tick').animate({
-				marginLeft : '525px'
+				marginLeft : tickX2
 			}, 1000);
 			checker();
 		}
@@ -88,7 +95,7 @@ function checker() {
 				$('#outText').text('Ваш хід');
 				lock = false;
 				$('#tick').animate({
-					marginLeft : '200px'
+					marginLeft : tickX1
 				}, 1000);
 			}
 		});

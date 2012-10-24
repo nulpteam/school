@@ -8,29 +8,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/styles.css" type="text/css" rel="stylesheet">
-<link href="css/XOMenu.css" type="text/css" rel="stylesheet">
+<link href="css/XO.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/XOMenu.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		chatStart();
 	});
-	function connectLink() {
-		location.href = "XOServerList.html";
-	}
 </script>
 <title>School Games</title>
 </head>
 <body>
 	<c:import url="../Chat.jsp"></c:import>
-	<div id="paperList">
-		<h2 id="title" align="center">Хрестики нолики</h2>
-		<div id="menu">
-			<div onclick=createServer(); class="button">
-				<p class="text">Створити гру</p>
+	
+	<div class="paperList">
+		<div class="title">
+			<p align="center">Хрестики нолики</p>
+		</div>
+		<div id="menu" align="center">
+			<div class="button" onclick=createServer();>
+				<p class="buttonText">Створити гру</p>
 			</div>
-			<div onclick=connectLink(); class="button">
-				<p class="text">Підключитись</p>
+			<div class="button" onclick=serverListPage();>
+				<p class="buttonText">Підключитись</p>
 			</div>
 		</div>
 		<div id="rulles">Правила: Гравці по черзі ставлять на вільні
