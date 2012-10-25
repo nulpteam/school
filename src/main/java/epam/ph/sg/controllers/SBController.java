@@ -58,4 +58,25 @@ public class SBController {
 	}
 	
 	
+	@RequestMapping(value = { "/fire.html"}, method = RequestMethod.POST)
+	public @ResponseBody String fireReciever(@RequestParam("firePoint") String firePoint,
+			Model model, HttpSession session)
+	{
+		if (session.getAttribute("user") == null) {
+			new HomeController().index(session);
+			return "Login";
+		}
+		if(firePoint.equals("00"))
+		{
+			return "Server says: Fire recieved in point "+firePoint+" ! ;-)";
+		}
+		return "OK";
+		
+	}
+	
+	
+	
+	
+	
+	
 }
