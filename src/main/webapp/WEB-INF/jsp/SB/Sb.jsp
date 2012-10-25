@@ -117,7 +117,7 @@
 					<c:forEach begin="0" end="9" step="1" varStatus="chirik">
 						<tr>
 							<c:forEach begin="0" end="9" step="1" varStatus="bobik">
-								<td id="X<c:out value="${bobik.index}"/>_Y<c:out value="${chirik.index}"/>"></td>
+								<td id="X<c:out value="${bobik.index}"/>_Y<c:out value="${chirik.index}"/>" class="firePoint" onclick="fire(this)"></td>
 							</c:forEach>
 						</tr>
 					</c:forEach>

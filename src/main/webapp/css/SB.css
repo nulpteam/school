@@ -177,7 +177,7 @@ tr {
 }
 
 .hover {
-	background-color: rgba(88, 187, 11, 0.34);;
+	background-color: rgba(88, 187, 11, 0.34);
 }
 
 .dn {
@@ -186,4 +186,9 @@ tr {
 	top: 0px;
 	left: 0px;
 }
+.firePoint:hover{
+	background-color: rgba(255, 0, 0, 0.32);;
+}
+#table2:hover{
+	cursor: url('../images/SB/shoot_cursor3.ico'), pointer;
 }

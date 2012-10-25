@@ -31,10 +31,10 @@ public class SBController {
 		}
 		SbGame sbGame = new SbGame();
 		sbGame.addScript("jquery");
-		sbGame.addScript("jquery-ui-1.9.0");
-		sbGame.addScript("SB");
-		sbGame.addScript("SB_coords");
-		sbGame.addScript("js_stringify");
+		sbGame.addScript("SB/jquery-ui-1.9.0");
+		sbGame.addScript("SB/SB");
+		sbGame.addScript("SB/SB_coords");
+		sbGame.addScript("SB/js_stringify");
 		
 		log.debug("-------------------Added JavaScriptss-------------------");
 		model.addAttribute(sbGame);
