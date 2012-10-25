@@ -1,34 +1,43 @@
 #chat {
-	background-image: url('../images/chat.png');
+	background-image: url('../images/tab.png');
 	background-repeat: no-repeat;
-	height: 500px;
-	width: 444px;
-	font-family: Segoe Print;
-	font-size: 20;
-	color: #0000;
-	position: fixed;
-	margin-top: 50px;
-	margin-left: -420px;
+	height: 633px;
+	width: 400px;
+	font-family: Tahoma;
+	position: absolute;
+	margin: 0px 150px;
+	z-index: 1;
 }
 
-#chatOutText { /*	border: 1px solid red;*/
+#chatOutText {
+	border: 1px solid red;
 	overflow: auto;
-	height: 420px;
-	width: 390px;
-	margin: 15px 20px;
+	height: 390px;
+	width: 300px;
+	margin: 100px 50px;
+}
+
+#chatTable {
+	width: 300px;
+}
+
+tr.collor td {
+	background-color: #e7f1f5;
 }
 
 .time {
-	width: 50px;
-	color: blue;
+	width: 30px;
+	color: gray;
 }
 
 .sender {
-	color: red;
+	color: #009AEE;
 }
 
 #chatInText {
-	height: 20px;
-	width: 400px;
-	margin: 0px 15px;
+	border: inherit;
+	background: initial;
+	height: 40px;
+	width: 285px;
+	margin: -90px 57px;
 }

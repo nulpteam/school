@@ -3,7 +3,8 @@
 	background-repeat: no-repeat;
 	height: 734px;
 	width: 675px;
-	margin: -8px auto;
+	position: absolute;
+	margin: -8px 550px;
 	color: #5B2FCE;
 }
 
@@ -89,10 +90,10 @@
 #field {
 	position: absolute;
 	margin-top: 160px;
-	margin-left: 127px;
+	margin-left: 116px;
 }
 
 #border {
 	position: absolute;
-	margin: 149px 115px;
+	margin: 150px 105px;
 }
