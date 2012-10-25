@@ -6,20 +6,24 @@ $(function() {
        
 		//кораблі
 		$( "#sheep_1" ).draggable({
-			revert: true,
-			revertDuration: 500
+			//revert: true,
+			helper: "clone",
+			//revertDuration: 500
 		});
 		$( "#sheep_2" ).draggable({
-			revert: true,
-			revertDuration: 500
+			//revert: true,
+			helper: "clone",
+			//revertDuration: 500
 		});
 		$( "#sheep_3" ).draggable({
-			revert: true,
-			revertDuration: 500
+			//revert: true,
+			helper: "clone",
+			//revertDuration: 500
 		});
 		$( "#sheep_4" ).draggable({
-			revert: true,
-			revertDuration: 500
+			//revert: true,
+			helper: "clone",
+			//revertDuration: 500
 		});
 		
 		
@@ -33,8 +37,8 @@ $(function() {
 //		        	   console.log(event);
 //		           	console.log(ui);
 //		           	alert("droped into " + "#X"+i+"_Y"+j);
-//		           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-//		           	$("#"+ui.draggable.context.id).draggable('disable');
+//		           	saveCoords(parseCoords(this.id, ui));
+//		           	//$("#"+ui.draggable.context.id).draggable('disable');
 //		           },
 //		   			out: function(event, ui)
 //		   	        {
@@ -44,21 +48,6 @@ $(function() {
 //			}
 //		}
 		 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -73,8 +62,10 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           //$("#"+ui.draggable.context.id).draggable('disable');
+           	//$("#"+ui.draggable.context.id).draggable('enable');
+           
            },
    			out: function(event, ui)
    	        {
@@ -89,8 +80,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -104,8 +95,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -119,8 +110,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -134,8 +125,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -149,8 +140,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -164,8 +155,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -179,8 +170,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -194,8 +185,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -209,8 +200,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -226,8 +217,9 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -242,8 +234,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -257,8 +249,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -272,8 +264,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -287,8 +279,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -302,8 +294,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -317,8 +309,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -332,8 +324,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -347,8 +339,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -362,8 +354,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -379,8 +371,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -395,8 +387,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -410,8 +402,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -425,8 +417,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -440,8 +432,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -455,8 +447,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -470,8 +462,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -485,8 +477,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -500,8 +492,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -515,8 +507,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -531,8 +523,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -547,8 +539,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -562,8 +554,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -577,8 +569,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -592,8 +584,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -607,8 +599,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -622,8 +614,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -637,8 +629,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -652,8 +644,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -667,8 +659,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -683,8 +675,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -699,8 +691,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -714,8 +706,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -729,8 +721,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -744,8 +736,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -759,8 +751,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -774,8 +766,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -789,8 +781,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -804,8 +796,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -819,8 +811,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -835,8 +827,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -851,8 +843,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -866,8 +858,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -881,8 +873,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -896,8 +888,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -911,8 +903,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -926,8 +918,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -941,8 +933,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -956,8 +948,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -971,8 +963,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -987,8 +979,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -1003,8 +995,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -1018,8 +1010,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1033,8 +1025,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1048,8 +1040,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1063,8 +1055,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1078,8 +1070,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1093,8 +1085,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1108,8 +1100,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1123,8 +1115,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -1139,8 +1131,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -1155,8 +1147,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -1170,8 +1162,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1185,8 +1177,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1200,8 +1192,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1215,8 +1207,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1230,8 +1222,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1245,8 +1237,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1260,8 +1252,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1275,8 +1267,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -1291,8 +1283,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -1307,8 +1299,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -1322,8 +1314,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1337,8 +1329,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1352,8 +1344,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1367,8 +1359,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1382,8 +1374,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1397,8 +1389,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1412,8 +1404,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1427,8 +1419,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {
@@ -1443,8 +1435,8 @@ $(function() {
         	   console.log(event);
            	console.log(ui);
 //           	alert("droped into "+this.id);
-           	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-           	$("#"+ui.draggable.context.id).draggable('disable');
+           	saveCoords(parseCoords(this.id, ui));
+           	//$("#"+ui.draggable.context.id).draggable('disable');
            },
    			out: function(event, ui)
    	        {
@@ -1459,8 +1451,8 @@ $(function() {
             	  console.log(event);
               	console.log(ui);
 //              	alert("droped into "+this.id);
-              	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-              	$("#"+ui.draggable.context.id).draggable('disable');
+              	saveCoords(parseCoords(this.id, ui));
+              	//$("#"+ui.draggable.context.id).draggable('disable');
               },
      			out: function(event, ui)
        	        {
@@ -1474,8 +1466,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1489,8 +1481,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1504,8 +1496,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1519,8 +1511,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1534,8 +1526,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1549,8 +1541,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1564,8 +1556,8 @@ $(function() {
             	 console.log(event);
              	console.log(ui);
 //             	alert("droped into "+this.id);
-             	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-             	$("#"+ui.draggable.context.id).draggable('disable');
+             	saveCoords(parseCoords(this.id, ui));
+             	//$("#"+ui.draggable.context.id).draggable('disable');
              },
     			out: function(event, ui)
        	        {
@@ -1579,8 +1571,8 @@ $(function() {
             	console.log(event);
             	console.log(ui);
 //            	alert("droped into "+this.id);
-            	saveCoords(this.id, ui.draggable.context.id,ui.draggable.context.className);
-            	$("#"+ui.draggable.context.id).draggable('disable');
+            	saveCoords(parseCoords(this.id, ui));
+            	//$("#"+ui.draggable.context.id).draggable('disable');
             },
    			out: function(event, ui)
    	        {

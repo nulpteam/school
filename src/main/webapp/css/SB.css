@@ -126,6 +126,7 @@ body {
 	margin-left: 24px;
 	/* 	border: 1px solid red; */
 	width: 200px;
+	height: 200px;
 	table-layout: fixed;
 }
 
@@ -139,30 +140,33 @@ body {
 tr td {
 	text-align: center;
 	height: 20px;
+	width: 20px;
 }
 
-#sheep_4 {
-	width: 77px;
-	float: left;
-	height: 17px;
+tr {
+	height: 20px;
+	width: 20px;
+	text-align: center;
 }
 
-#sheep_3 {
-	width: 57px;
+#sheep_4 { /*width: 77px;*/
 	float: left;
-	height: 17px;
+	/*height: 17px;*/
 }
 
-#sheep_2 {
-	width: 37px;
+#sheep_3 { /*width: 57px;*/
 	float: left;
-	height: 17px;
+	/*height: 17px;*/
 }
 
-#sheep_1 {
-	width: 17px;
+#sheep_2 { /*width: 37px;*/
 	float: left;
-	height: 17px;
+	/*height: 17px;*/
+}
+
+#sheep_1 { /*width: 17px;*/
+	float: left;
+	/*height: 17px;*/
 }
 
 .sheep_cont img {
@@ -171,10 +175,17 @@ tr td {
 	margin-left: 1px;
 }
 
-.hover
-{
+.hover {
 	background-color: rgba(88, 187, 11, 0.34);;
 }
+
+.dn {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
 /* .test_dr */
 /* { */
 /* 	border: 1px solid red; */

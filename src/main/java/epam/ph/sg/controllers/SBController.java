@@ -35,7 +35,6 @@ public class SBController {
 		sbGame.addScript("SB");
 		sbGame.addScript("SB_coords");
 		sbGame.addScript("js_stringify");
-		sbGame.addScript("jQueryRotate");
 		
 		log.debug("-------------------Added JavaScriptss-------------------");
 		model.addAttribute(sbGame);
@@ -55,7 +54,7 @@ public class SBController {
 		log.debug("sheeps"+sheeps);
 		JsonParser jp = new JsonParser();
 		Sheeps_coords sc = jp.parseJsonSheepsCoordenates(sheeps);
-		return "OK";
+		return "Server says: array recieved! ;-)";
 	}
 	
 	

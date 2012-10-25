@@ -27,15 +27,25 @@
 		<div  class="ammo">
 			<!-- Кораблі для розставляння на полі-->
 			<div class="sheep_cont">
-				<img id="sheep_4" class="H" src="images/SB/4.png" alt="4" ondblclick="rotate(this);"/>
+				<img id="sheep_4" class="H" src="images/SB/04.png" alt="4" ondblclick="rotate(this);"/>
 					<div class="clear"></div>
-				<img id="sheep_3"  class="H" src="images/SB/3.png" alt="3" ondblclick="rotate(this);"/>
+				<img id="sheep_3"  class="H" src="images/SB/03.png" alt="3" ondblclick="rotate(this);"/>
 					<div class="clear"></div>
-				<img id="sheep_2"  class="H" src="images/SB/2.png" alt="2" ondblclick="rotate(this);"/>
+				<img id="sheep_2"  class="H" src="images/SB/02.png" alt="2" ondblclick="rotate(this);"/>
 					<div class="clear"></div>
-				<img id="sheep_1" src="images/SB/1.png" alt="1"/>
+				<img id="sheep_1" src="images/SB/01.png" alt="1"/>
 					<div class="clear"></div>
 			</div>
+			<div id="sp11" class="dn"></div>
+			<div id="sp12" class="dn"></div>
+			<div id="sp13" class="dn"></div>
+			<div id="sp14" class="dn"></div>
+			<div id="sp21" class="dn"></div>
+			<div id="sp22" class="dn"></div>
+			<div id="sp23" class="dn"></div>
+			<div id="sp31" class="dn"></div>
+			<div id="sp32" class="dn"></div>
+			<div id="sp41" class="dn"></div>
 		</div>
 		
 		<div class="field1">
@@ -118,6 +128,7 @@
 <div class=debug>
 <input type="button" value="GetM" onClick="getM();"/>
 <input type="button" value="SendM" onClick="sendM();"/>
+<div id="IH"></div>
 <%-- 	<% --%>
 <!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->
 <!-- // // 	while (en.hasMoreElements()) -->
