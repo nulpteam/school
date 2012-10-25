@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
+
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 <title>School Games</title>

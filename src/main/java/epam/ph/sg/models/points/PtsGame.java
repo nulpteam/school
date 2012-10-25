@@ -5,11 +5,11 @@ public class PtsGame {
 	private PtsPlayer server, client;
 	private PtsBoard board;
 	private static int gamesNumber = 0;
-	private int id;
+	private String id;
 	
 	public PtsGame() {
 		board = new PtsBoard();
-		id = gamesNumber++;
+		id = new Integer(gamesNumber++).toString();
 	}
 	
 	public boolean setServer(PtsPlayer server) {
@@ -34,11 +34,20 @@ public class PtsGame {
 		return client;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
 	public void reduceGamesNUmber() {
 		gamesNumber--;
 	}
+	
+	public void putPoint(String xy, String user) {
+		board.putPoint(xy, user);
+	}
+	
+	public PtsLastChanges getLasthangesInBoard() {
+		return board.getLastChanges();
+	}
+	
 }

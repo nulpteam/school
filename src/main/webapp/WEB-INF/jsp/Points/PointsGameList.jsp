@@ -5,15 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
+
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<div align="center">
-		<c:forEach var="game" items="${pointGames}" varStatus="i">
-			<button id="${game.id}" onclick=connect(this.id);>
-					Server Name:<c:out value="${game.id}" />
+		<c:forEach var="game" items="${pointGamesMap}" varStatus="i">
+			<button id="${game.key}" onclick=connect(this.id);>
+					Server Name:<c:out value="${game.key}" />
 			</button>
 		</c:forEach>
 	</div>

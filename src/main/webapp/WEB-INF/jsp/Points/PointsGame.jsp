@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
+
 <link href="css/Points/PointsGame.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/Points/PointsGame.js" type="text/javascript"></script>
