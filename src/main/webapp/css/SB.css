@@ -100,6 +100,7 @@ body {
 }
 
 .ammo { /* 	border: 1px solid; */
+	position: relative;
 	width: 140px;
 	height: 199px;
 	float: left;
@@ -185,42 +186,4 @@ tr {
 	top: 0px;
 	left: 0px;
 }
-
-/* .test_dr */
-/* { */
-/* 	border: 1px solid red; */
-/* width: 100px; */
-/* height: 50px; */
-/* width: 18px; */
-/* height: 18px; */
-/* float: left; */
-/* } */
-/* #s41 { */
-/* 	border: 1px solid red; */
-/* 	height: 8px; */
-/* 	width: 62px; */
-/* 	background: url('../images/SB/4.png') no-repeat; */
-/* } */
-
-/* #s31,#s32 { */
-/* 	border: 1px solid red; */
-/* 	height: 8px; */
-/* 	width: 44px; */
-/* } */
-/* #s21,#s22,#s23 { */
-/* 	border: 1px solid red; */
-/* 	height: 8px; */
-/* 	width: 44px; */
-/* } */
-/* #s11, #s12, #s13, #s14 { */
-/* 	border: 1px solid red; */
-/* 	height: 8px; */
-/* 	width: 44px; */
-/* } */
-
-/* .init_pos { */
-/* 	margin-bottom: 11px; */
-/* 	margin-left: 8px; */
-/* 	margin-top: 5px; */
-/* } */
 }

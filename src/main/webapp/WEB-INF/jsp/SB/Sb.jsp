@@ -27,14 +27,16 @@
 		<div  class="ammo">
 			<!-- Кораблі для розставляння на полі-->
 			<div class="sheep_cont">
-				<img id="sheep_4" class="H" src="images/SB/04.png" alt="4" ondblclick="rotate(this);"/>
+				<img id="sheep_4" class="H" src="images/SB/04.png" alt="4" ondblclick="rotate(this);" />
 					<div class="clear"></div>
-				<img id="sheep_3"  class="H" src="images/SB/03.png" alt="3" ondblclick="rotate(this);"/>
+				<img id="sheep_3"  class="H" src="images/SB/03.png" alt="3" ondblclick="rotate(this);" style="display:none;"/>
 					<div class="clear"></div>
-				<img id="sheep_2"  class="H" src="images/SB/02.png" alt="2" ondblclick="rotate(this);"/>
+				<img id="sheep_2"  class="H" src="images/SB/02.png" alt="2" ondblclick="rotate(this);" style="display:none;"/>
 					<div class="clear"></div>
-				<img id="sheep_1" src="images/SB/01.png" alt="1"/>
+				<img id="sheep_1" src="images/SB/01.png" alt="1" style="display:none;"/>
 					<div class="clear"></div>
+			</div>
+			<div>
 			</div>
 			<div id="sp11" class="dn"></div>
 			<div id="sp12" class="dn"></div>
@@ -52,9 +54,9 @@
 			<div class="h_markers">
 				<div class="a">a</div>
 				<div class="b">b</div>
-				<div class="c">	c</div>
+				<div class="c">c</div>
 				<div class="d">d</div>
-				<div class="e">	e</div>
+				<div class="e">e</div>
 				<div class="f">f</div>
 				<div class="g">g</div>
 				<div class="h">h</div>

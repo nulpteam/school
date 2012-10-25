@@ -363,13 +363,26 @@ sheepCount.div1 = function() {
 	return --sheepCount.sheep1;
 };
 sheepCount.div2 = function() {
-	return --sheepCount.sheep2;
+	--sheepCount.sheep2;
+	if (sheepCount.sheep2 == 0) {
+		$("#sheep_1").css("display", "inline");
+	}
+	return sheepCount.sheep2;
+	
 };
 sheepCount.div3 = function() {
-	return --sheepCount.sheep3;
+	--sheepCount.sheep3;
+	if (sheepCount.sheep3 == 0) {
+		$("#sheep_2").css("display", "inline");
+	}
+	return sheepCount.sheep3;
 };
 sheepCount.div4 = function() {
-	return --sheepCount.sheep4;
+	--sheepCount.sheep4;
+	if (sheepCount.sheep4 == 0) {
+		$("#sheep_3").css("display", "inline");
+	}
+	return sheepCount.sheep4;
 };
 
 //ф-ія зменшує к-ть кораблів на 1 в залежності від типу 
