@@ -426,6 +426,9 @@ function fire(point)
 	  });
 }
 
-
+function createSbGame()
+{
+	location.href="BsGame.html";
+}
 
 
