@@ -40,7 +40,16 @@ public class PointsMenuController {
 
 		User user;
 		PtsPlayer server;
-		PtsGame game;
+		PtsGame oldGame, game;
+		
+		oldGame = (PtsGame) session.getAttribute("ptsgame");
+		if (oldGame != null) {
+			System.out.println("old");
+			System.out.println(oldGame.getId());
+			return true;
+		} else {
+			System.out.println("new");
+		}
 
 		user = (User) session.getAttribute("user");
 		server = new PtsPlayer(user.getName());
@@ -49,22 +58,33 @@ public class PointsMenuController {
 
 		PtsGameMap.addGame(game);
 		session.setAttribute("pointGamesMap", PtsGameMap.getGames());
-		session.setAttribute("gameId", game.getId());
-		session.setAttribute("userType", "server");
+		session.setAttribute("ptsgame", game);
+		session.setAttribute("ptsUserType", "server");
+		System.out.println(game.getId());
 		return true;
 	}
 
 	@RequestMapping(value = "/PointsConnectList.html", method = RequestMethod.GET)
 	public String getGameList(HttpSession session) {
 
+		PtsGame oldGame;
+		
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "redirect:/index.html";
 		}
+		
+		oldGame = (PtsGame) session.getAttribute("ptsgame");
+		if (oldGame != null) {
+			return "redirect:/PointsGame.html";
+		} else {
+			return "Points/PointsGameList";
+		}
 
-		return "Points/PointsGameList";
 	}
 
+	
+	
 	@RequestMapping(value = "/PointsConnect.html", method = RequestMethod.POST)
 	public @ResponseBody
 	boolean connectToGame(@RequestParam("gameId") String gameId,
@@ -78,9 +98,10 @@ public class PointsMenuController {
 		client = new PtsPlayer(user.getName());
 		game = PtsGameMap.getGames().get(gameId);
 		game.setClient(client);
-		session.setAttribute("gameId", game.getId());
-		session.setAttribute("userType", "client");
+		session.setAttribute("ptsUserType", "client");
+		session.setAttribute("ptsgame", game);
 
 		return true;
 	}
+	
 }

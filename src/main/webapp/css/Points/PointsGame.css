@@ -1,6 +1,6 @@
 body {
 	font-family: LC Chalk;
-	font-size: 10px;
+	font-size: 22px;
 	color: #5B2FCE;
 }
 
@@ -14,12 +14,15 @@ body {
 #player_label_1 {
 	position: absolute;
 	margin: 20px 45px;
-	
+	width: 160px;
+	text-align: center;
 }
 
 #player_label_2 {
 	position: absolute;
 	margin: 20px 330px;
+	width: 160px;
+	text-align: center;
 }
 
 #table {

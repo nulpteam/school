@@ -16,7 +16,7 @@
 	<div align="center">
 		<c:forEach var="game" items="${pointGamesMap}" varStatus="i">
 			<button id="${game.key}" onclick=connect(this.id);>
-					Server Name:<c:out value="${game.key}" />
+					Server Name:<c:out value="${game.value.server.name}" />
 			</button>
 		</c:forEach>
 	</div>

@@ -18,18 +18,18 @@
 
 	<div id="bg">
 		<div id="player_label_1">
-			<label>player1</label>
+			<label>${ptsgame.server.name}</label>
 		</div>
 		<div id="player_label_2">
-			<label>player2</label>
+			<label>${ptsgame.client.name}</label>
 		</div>
-		<div id="div_table">
+		<div id="div_table" type="${ptsUserType}">
 			<table id="table" align="center" cellpadding="0" cellspacing="0">
 				<c:forEach begin="0" end="25" step="1" varStatus="i">
 					<tr>
 						<c:forEach begin="0" end="21" step="1" varStatus="j">
 							<td class="point" id="X${j.count-1}Y${i.count-1}" onClick=putPoint(this)>
-								<img src="images/Points/square.png" onclick=put(this);>
+								<img src="images/Points/square.png">
 							</td>
 						</c:forEach>
 					</tr>

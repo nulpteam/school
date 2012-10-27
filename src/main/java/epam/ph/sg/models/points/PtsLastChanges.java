@@ -5,10 +5,11 @@ public class PtsLastChanges {
 	private String userThatChanged;
 	private String coordsOfChanges;
 
+
 	public PtsLastChanges() {
 		coordsOfChanges = "none";
 	}
-	
+
 	public String getUserThatChanged() {
 		return userThatChanged;
 	}
@@ -25,6 +26,7 @@ public class PtsLastChanges {
 		this.coordsOfChanges = coordsOfChnages;
 	}
 
-	
+
+
 
 }

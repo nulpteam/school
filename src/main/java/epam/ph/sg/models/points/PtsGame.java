@@ -6,10 +6,12 @@ public class PtsGame {
 	private PtsBoard board;
 	private static int gamesNumber = 0;
 	private String id;
+	private String nextUserToMove;
 	
 	public PtsGame() {
 		board = new PtsBoard();
 		id = new Integer(gamesNumber++).toString();
+		nextUserToMove = "server";
 	}
 	
 	public boolean setServer(PtsPlayer server) {
@@ -44,10 +46,27 @@ public class PtsGame {
 	
 	public void putPoint(String xy, String user) {
 		board.putPoint(xy, user);
+		if (user.equals("server")) {
+			nextUserToMove = "client";
+		} else {
+			nextUserToMove = "server";
+		}
 	}
 	
-	public PtsLastChanges getLasthangesInBoard() {
-		return board.getLastChanges();
+	public PtsLastChanges getLasthangesInBoard(String user) {
+		if (nextUserToMove.equals(user)) {
+			return board.getLastChanges();
+		} else {
+			return new PtsLastChanges();
+		}
+	}
+	
+	
+	public boolean isUserMove(String userType) {
+		if (userType.equals(nextUserToMove)) {
+			return true;
+		}
+		return false;
 	}
 	
 }

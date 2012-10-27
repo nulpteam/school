@@ -25,7 +25,7 @@ public class PointsGameController {
 			new HomeController().index(session);
 			return "redirect:/index.html";
 		}
-
+		
 		return "Points/PointsGame";
 	}
 
@@ -33,9 +33,8 @@ public class PointsGameController {
 	public @ResponseBody
 	String putPoint(@RequestParam("point_xy") String xy, HttpSession session) {
 
-		String gameId = session.getAttribute("gameId").toString();
-		String userType = session.getAttribute("userType").toString();
-		PtsGame game = PtsGameMap.getGames().get(gameId); 
+		String userType = session.getAttribute("ptsUserType").toString();
+		PtsGame game = (PtsGame) session.getAttribute("ptsgame"); 
 		
 		game.putPoint(xy, userType);
 		
@@ -48,17 +47,38 @@ public class PointsGameController {
 		return "String";
 	}
 	
+	@RequestMapping(value = "/PointCheckMove.html", method = RequestMethod.GET)
+	public @ResponseBody
+		boolean checkMove(HttpSession session) {
+		
+		PtsGame game =  (PtsGame) session.getAttribute("ptsgame");
+		String userType = session.getAttribute("ptsUserType").toString();
+		if (game.getClient() == null) {
+			return false;
+		}
+		return game.isUserMove(userType);
+	}
+	
 
 	@RequestMapping(value = "/PointsGetChanges.html", method = RequestMethod.GET)
 	public @ResponseBody
 	PtsLastChanges put(HttpSession session) {
+
+		PtsGame game = (PtsGame) session.getAttribute("ptsgame");
+		String userType = session.getAttribute("ptsUserType").toString();
 		
-		String gameId = session.getAttribute("gameId").toString();
-		PtsGame game = PtsGameMap.getGames().get(gameId); 
+		return game.getLasthangesInBoard(userType);
+	}
+	
+	@RequestMapping(value = "/WaitingForClient.html", method = RequestMethod.GET)
+	public @ResponseBody
+	String getClient(HttpSession session) {
+
+		PtsGame game = (PtsGame) session.getAttribute("ptsgame");
+		if(game.getClient() == null)
+			return "";
 		
-		System.out.println(game.getLasthangesInBoard().getCoordsOfChanges());
-		System.out.println(game.getLasthangesInBoard().getUserThatChanged());
-		return game.getLasthangesInBoard();
+		return game.getClient().getName();
 	}
 
 }
