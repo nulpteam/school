@@ -1,4 +1,7 @@
-/*author Gutey Bogdan*/
+/*
+ * @author Gutey Bogdan
+ * 
+ */
 
 //Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
@@ -7,9 +10,8 @@ function rotate(obj) {
 	isDisabled = $('#' + id).draggable('option', 'disabled');
 	if (!isDisabled) {
 		var c = $(obj).attr("class");
-
-		var orientation = c[0];
-		var newOrientation = 'H';
+			orientation = c[0];
+			newOrientation = 'H';
 
 		if (orientation === 'H') {
 			newOrientation = 'V';
@@ -118,7 +120,7 @@ function saveCoords(saveCoordenates) {
 	}
 	img = saveCoordenates.img;
 	console.log(img);
-	count = counter(saveCoordenates)+1;
+	count = counter(saveCoordenates) + 1;
 	if (saveCoordenates.r === "H" || saveCoordenates.r === "u") {
 		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
@@ -140,13 +142,12 @@ function saveCoords(saveCoordenates) {
 				saveCoordenates.ui.position.left + "px");
 		$('#sp' + saveCoordenates.t + count).css("display", "block");
 	}
-	
-	if (count-1==0)
-		{
-			
-			$("#"+saveCoordenates.ui.draggable.context.id).draggable('disable');
-			$('#'+saveCoordenates.ui.draggable.context.id).hide(1000);
-		}
+
+	if (count - 1 == 0) {
+
+		$("#" + saveCoordenates.ui.draggable.context.id).draggable('disable');
+		$('#' + saveCoordenates.ui.draggable.context.id).hide(1000);
+	}
 	// посилаємо на сервер
 	sendM();
 }
@@ -155,17 +156,17 @@ function saveCoords(saveCoordenates) {
 function disableDroppables(obj) {
 	// console.log(obj);
 	var x0 = obj.x - 1;
-	var x1 = obj.x + 1;
-	var x2 = obj.x;
-	var x3 = obj.x + 2;
-	var x4 = obj.x + 3;
-	var x5 = obj.x + 4;
-	var y0 = obj.y - 1;
-	var y1 = obj.y + 1;
-	var y2 = obj.y;
-	var y3 = obj.y + 2;
-	var y4 = obj.y + 3;
-	var y5 = obj.y + 4;
+		x1 = obj.x + 1;
+		x2 = obj.x;
+		x3 = obj.x + 2;
+		x4 = obj.x + 3;
+		x5 = obj.x + 4;
+		y0 = obj.y - 1;
+		y1 = obj.y + 1;
+		y2 = obj.y;
+		y3 = obj.y + 2;
+		y4 = obj.y + 3;
+		y5 = obj.y + 4;
 
 	if (obj.r == "u") {
 		$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
@@ -351,7 +352,7 @@ function clearOldCoordsInM(coords, type) {
 	 */
 }
 
-//обєкт кількості кораблів
+// обєкт кількості кораблів
 var sheepCount = {
 	"sheep4" : 1,
 	"sheep3" : 2,
@@ -368,7 +369,7 @@ sheepCount.div2 = function() {
 		$("#sheep_1").css("display", "inline");
 	}
 	return sheepCount.sheep2;
-	
+
 };
 sheepCount.div3 = function() {
 	--sheepCount.sheep3;
@@ -385,50 +386,47 @@ sheepCount.div4 = function() {
 	return sheepCount.sheep4;
 };
 
-//ф-ія зменшує к-ть кораблів на 1 в залежності від типу 
+// ф-ія зменшує к-ть кораблів на 1 в залежності від типу
 function counter(obj) {
-	
+
 	switch (obj.t) {
-		case 1: {
-			return sheepCount.div1();
-		}	
-		case 2: {
-			return sheepCount.div2();
-		}	
-		case 3: {
-			return sheepCount.div3();
-		}	
-		case 4: {
-			return sheepCount.div4();
-		}
+	case 1: {
+		return sheepCount.div1();
+	}
+	case 2: {
+		return sheepCount.div2();
+	}
+	case 3: {
+		return sheepCount.div3();
+	}
+	case 4: {
+		return sheepCount.div4();
+	}
 	}
 }
 
+function fire(point) {
+	// console.log(point);
 
-function fire(point)
-{
-	//console.log(point);
-	
 	p = $(point).attr('id');
-	
+
 	console.log(p);
-	p = p[1]+''+p[4];
-	
-	rand = Math.floor((Math.random()*5)+1);
-	$(point).html("<img id='fireP"+p+"' src='images/SB/firePoint"+rand+".png'>");
-	//$('#fireP84').attr('src','images/SB/01.png');
-	$.post("fire.html", { firePoint: p },
-			function(data){
-	    if(data==='OK')
-	    	{
-	    		alert("server says OK");
-	    	}
-	  });
+	p = p[1] + '' + p[4];
+
+	rand = Math.floor((Math.random() * 5) + 1);
+	$(point).html(
+			"<img id='fireP" + p + "' src='images/SB/firePoint" + rand
+					+ ".png'>");
+	// $('#fireP84').attr('src','images/SB/01.png');
+	$.post("fire.html", {
+		firePoint : p
+	}, function(data) {
+		if (data === 'OK') {
+			alert("server says OK");
+		}
+	});
 }
 
-function createSbGame()
-{
-	location.href="BsGame.html";
+function createSbGame() {
+	location.href = "BsGame.html";
 }
-
-

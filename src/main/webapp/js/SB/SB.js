@@ -1,12 +1,17 @@
+/*
+ * @author Gutey Bogdan
+ * 
+ */
+
 var store = null;
 
 $(function() {
 
-	//матриця розташування кораблів(XY) координати
+	// матриця розташування кораблів(XY) координати
 	var Mat = createMatrix();
 	console.log(Mat);
 
-	//кораблі
+	// кораблі
 	$("#sheep_1").draggable({
 		revert : "invalid",
 		helper : "clone",
@@ -44,48 +49,6 @@ $(function() {
 		}
 	});
 
-	//this.id - ідентифікатор комірки
-	//ui.draggable.context.id - тип корабля (витягується з id корабля)
-	/*+++++++-Y0-+++++++*/
-	//	$("#X0_Y0").droppable({
-	//		over : function(event, ui) {
-	//			console.log($("#sheep_4"));
-	//			console.log(parseCoords(this.id, ui).r);
-	//			console.log(parseCoords(this.id, ui).t);
-	//			console.log(this);
-	//			console.log(((parseCoords(this.id, ui).t == 3)&&(parseCoords(this.id, ui).r === "H")&&(($("#X1_Y0").droppable("option", "disabled"))||($("#X3_Y0").droppable("option", "disabled"))||($("#X2_Y0").droppable("option", "disabled")))));
-	//			var removed = false;
-	//			if ((parseCoords(this.id, ui).t == 3)&&(parseCoords(this.id, ui).r === "H")&&(($("#X1_Y0").droppable("option", "disabled"))||($("#X3_Y0").droppable("option", "disabled"))||($("#X2_Y0").droppable("option", "disabled")))) {
-	//				
-	//				$("#X0_Y0").removeClass("hover");
-	//				$("#X0_Y0").droppable("option", "disabled", true);
-	//				removed = true;
-	//				console.log("disabled");
-	//				return removed;
-	//			};
-	//			if (removed){
-	//				$("#X0_Y0").droppable("option", "disabled", false);
-	//				console.log("enabled");
-	//			};
-	//		},
-	//		out : function() {
-	//			console.log("out");
-	//			console.log($("#X0_Y0").droppable().over());
-	//		},
-	//		activate : function() {
-	//			console.log("activate");
-	//		},
-	//		deactivate : function() {
-	//			console.log("deactivate");
-	//		},
-	//		tolerance : "pointer",
-	//		hoverClass : 'hover',
-	//		drop : function(event, ui) {
-	//			console.log(event);
-	//			console.log(ui);
-	//			saveCoords(parseCoords(this.id, ui));
-	//		}
-	//	});
 	function lock(str) {
 		$("#" + str).droppable("option", "disabled", true);
 		store = ("#" + str);
@@ -97,10 +60,13 @@ $(function() {
 	}
 
 	function fDrop(event, ui, id) {
-		console.log("drop");
-		console.log(event);
-		console.log(ui);
+//		console.log(event);
+//		console.log(ui);
 		saveCoords(parseCoords(id, ui));
+		var c = ui.position.left;
+        	d = ui.position.top;
+        console.log(c);
+        console.log(d);
 	}
 
 	function fOut(id1, id2) {
@@ -108,60 +74,84 @@ $(function() {
 	}
 
 	function fOver(event, ui, coordinate) {
-		console.log("over");
 		var x = coordinate.charAt(1);
 		var x1 = ++x;
 		var x2 = ++x;
 		var x3 = ++x;
 		x = 0;
-		console.log(coordinate.charAt(1), x, x1, x2, x3);
 		var y = coordinate.charAt(4);
 		var y1 = ++y;
 		var y2 = ++y;
 		var y3 = ++y;
 		y = 0;
-		console.log(coordinate.charAt(4), y, y1, y2, y3);
 		if ((store != null) && (store != ("#" + coordinate))) {
 			unlock(store);
-			console.log("unlocked");
 		}
 		
-//		(parseCoords(coordinate, ui).r === "H")
-//		&& (($("#X" + x1 + "_Y" + y).droppable("option", "disabled"))
-//				|| ($("#X" + x2 + "_Y" + y).droppable("option",
-//						"disabled")) || ($("#X" + x3 + "_Y" + y)
-//				.droppable("option", "disabled")))
-		
-//		(parseCoords(coordinate, ui).r === "V")
-//		&& (($("#X" + x + "_Y" + y1).droppable("option", "disabled"))
-//				|| ($("#X" + x + "_Y" + y2).droppable("option",
-//						"disabled")) || ($("#X" + x + "_Y" + y3)
-//				.droppable("option", "disabled")))
-		
-		
-		console.log(parseCoords(coordinate, ui).r === "H");
-		console.log(parseCoords(coordinate, ui).r === "V");
-		if (parseCoords(coordinate, ui).t == 4){
+		if (parseCoords(coordinate, ui).t == 4) {
 			if (parseCoords(coordinate, ui).r === "H") {
-				console.log("4 - H");
-				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable("option", "disabled")){
-					console.log(("#X" + x1 + "_Y" + coordinate.charAt(4)));
-//					lock(coordinate);
-//					$("#" + coordinate).removeClass("hover");
-//					console.log("locked");
+				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable(
+						"option", "disabled")
+						|| ($("#X" + x2 + "_Y" + coordinate.charAt(4))
+								.droppable("option", "disabled"))
+						|| ($("#X" + x3 + "_Y" + coordinate.charAt(4))
+								.droppable("option", "disabled"))) {
+					lock(coordinate);
+					$("#" + coordinate).removeClass("hover");
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
-				console.log("4 - V");
-				if (($("#X" + coordinate.charAt(1) + "_Y" + y1).droppable("option", "disabled"))||($("#X" + coordinate.charAt(1) + "_Y" + y2).droppable("option", "disabled"))||($("#X" + coordinate.charAt(1) + "_Y" + y3).droppable("option", "disabled"))){
-					console.log(("#X" + coordinate.charAt(1) + "_Y" + coordinate.charAt(4)));
-//				lock(coordinate);
-//				$("#" + coordinate).removeClass("hover");
-//				console.log("locked");
+				if (($("#X" + coordinate.charAt(1) + "_Y" + y1).droppable(
+						"option", "disabled"))
+						|| ($("#X" + coordinate.charAt(1) + "_Y" + y2)
+								.droppable("option", "disabled"))
+						|| ($("#X" + coordinate.charAt(1) + "_Y" + y3)
+								.droppable("option", "disabled"))) {
+					lock(coordinate);
+					$("#" + coordinate).removeClass("hover");
 				};
 			};
 		};
-	}
+		
+		if (parseCoords(coordinate, ui).t == 3) {
+			if (parseCoords(coordinate, ui).r === "H") {
+				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable(
+						"option", "disabled")
+						|| ($("#X" + x2 + "_Y" + coordinate.charAt(4))
+								.droppable("option", "disabled"))) {
+					lock(coordinate);
+					$("#" + coordinate).removeClass("hover");
+				};
+			};
+			if (parseCoords(coordinate, ui).r === "V") {
+				if (($("#X" + coordinate.charAt(1) + "_Y" + y1).droppable(
+						"option", "disabled"))
+						|| ($("#X" + coordinate.charAt(1) + "_Y" + y2)
+								.droppable("option", "disabled"))) {
+					lock(coordinate);
+					$("#" + coordinate).removeClass("hover");
+				};
+			};
+		};
+		
+		if (parseCoords(coordinate, ui).t == 2) {
+			if (parseCoords(coordinate, ui).r === "H") {
+				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable(
+						"option", "disabled")) {
+					lock(coordinate);
+					$("#" + coordinate).removeClass("hover");
+				};
+			};
+			if (parseCoords(coordinate, ui).r === "V") {
+				if ($("#X" + coordinate.charAt(1) + "_Y" + y1).droppable(
+						"option", "disabled")) {
+					lock(coordinate);
+					$("#" + coordinate).removeClass("hover");
+				};
+			};
+		};
+		
+	};
 
 	$("#X0_Y0").droppable({
 		tolerance : "pointer",
@@ -294,7 +284,7 @@ $(function() {
 		}
 	});
 
-	/*+++++++-Y1-+++++++*/
+	/* +++++++-Y1-+++++++ */
 	$("#X0_Y1").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -427,7 +417,7 @@ $(function() {
 		}
 	});
 
-	/*+++++++-Y2-+++++++*/
+	/* +++++++-Y2-+++++++ */
 	$("#X0_Y2").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -559,7 +549,7 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
-	/*+++++++-Y3-+++++++*/
+	/* +++++++-Y3-+++++++ */
 	$("#X0_Y3").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -691,7 +681,7 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
-	/*+++++++-Y4-+++++++*/
+	/* +++++++-Y4-+++++++ */
 	$("#X0_Y4").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -823,7 +813,7 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
-	/*+++++++-Y5-+++++++*/
+	/* +++++++-Y5-+++++++ */
 	$("#X0_Y5").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -955,7 +945,7 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
-	/*+++++++-Y6-+++++++*/
+	/* +++++++-Y6-+++++++ */
 	$("#X0_Y6").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -1087,7 +1077,7 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
-	/*+++++++-Y7-+++++++*/
+	/* +++++++-Y7-+++++++ */
 	$("#X0_Y7").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -1219,7 +1209,7 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
-	/*+++++++-Y8-+++++++*/
+	/* +++++++-Y8-+++++++ */
 	$("#X0_Y8").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
@@ -1351,7 +1341,7 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
-	/*+++++++-Y9-+++++++*/
+	/* +++++++-Y9-+++++++ */
 	$("#X0_Y9").droppable({
 		tolerance : "pointer",
 		hoverClass : 'hover',
