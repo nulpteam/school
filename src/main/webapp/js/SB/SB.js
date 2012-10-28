@@ -66,7 +66,7 @@ $(function() {
 		store = null;
 	};
 	
-	function addHover(str1, str2, str3) {
+	function addHover() {
 		if(str1 != null) {
 			$(str1).addClass("hover");
 		};
@@ -78,7 +78,8 @@ $(function() {
 		};
 		console.log("addHover", str1, str2, str3);
 	};
-	function remHover(str1, str2, str3) {
+	function remHover() {
+		console.log("remHover", str1, str2, str3);
 		if(str1 != null) {
 			$(str1).removeClass("hover");
 			str1 = null;
@@ -91,7 +92,6 @@ $(function() {
 			$(str3).removeClass("hover");
 			str3 = null;
 		};
-		console.log("remHover", str1, str2, str3);
 	};
 
 	function fDrop(event, ui, id) {
@@ -105,12 +105,14 @@ $(function() {
 	}
 
 	function fOut(id1, id2) {
-		remHover(str1, str2, str3);
+		console.log("out");
+		remHover();
 		clearOldCoordsInM(id1, id2);
 	}
 
 	function fOver(event, ui, coordinate) {
-		remHover(str1, str2, str3);
+		console.log("over");
+		remHover();
 		var x = coordinate.charAt(1);
 		var x1 = ++x;
 		var x2 = ++x;
@@ -127,7 +129,6 @@ $(function() {
 		
 		if (parseCoords(coordinate, ui).t == 4) {
 			if (parseCoords(coordinate, ui).r === "H") {
-				console.log("4 - H");
 				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable(
 						"option", "disabled")
 						|| ($("#X" + x2 + "_Y" + coordinate.charAt(4))
@@ -140,7 +141,7 @@ $(function() {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
 					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
 					str3 = "#X" + x3 + "_Y" + coordinate.charAt(4);
-					addHover(str1, str2, str3);
+					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -156,7 +157,7 @@ $(function() {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
 					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
 					str3 = "#X" + coordinate.charAt(1) + "_Y" + y3;
-					addHover(str1, str2, str3);
+					addHover();
 				};
 			};
 		};
@@ -172,7 +173,7 @@ $(function() {
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
 					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
-					addHover(str1, str2, str3);
+					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -185,7 +186,7 @@ $(function() {
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
 					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
-					addHover(str1, str2, str3);
+					addHover();
 				};
 			};
 		};
@@ -198,7 +199,7 @@ $(function() {
 					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
-					addHover(str1, str2, str3);
+					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -208,8 +209,7 @@ $(function() {
 					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
-					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
-					addHover(str1, str2, str3);
+					addHover();
 				};
 			};
 		};
