@@ -17,36 +17,40 @@ $(function() {
 		helper : "clone",
 		revertDuration : 500,
 		cursorAt : {
-			top : 9,
-			left : 9
-		}
+			top : 10,
+			left : 10
+		},
+		snap:".ui-droppable"
 	});
 	$("#sheep_2").draggable({
 		revert : "invalid",
 		helper : "clone",
 		revertDuration : 500,
 		cursorAt : {
-			top : 9,
-			left : 9
-		}
+			top : 10,
+			left : 10
+		},
+		snap:".ui-droppable"
 	});
 	$("#sheep_3").draggable({
 		revert : "invalid",
 		helper : "clone",
 		revertDuration : 500,
 		cursorAt : {
-			top : 9,
-			left : 9
-		}
+			top : 10,
+			left : 10
+		},
+		snap:".ui-droppable"
 	});
 	$("#sheep_4").draggable({
 		revert : "invalid",
 		helper : "clone",
 		revertDuration : 500,
 		cursorAt : {
-			top : 9,
-			left : 9
-		}
+			top : 10,
+			left : 10
+		},
+		snap:".ui-droppable"
 	});
 
 	function lock(str) {
@@ -67,6 +71,7 @@ $(function() {
         	d = ui.position.top;
         console.log(c);
         console.log(d);
+//        $("#sheep4").css.css({"margin-top":"50px", "margin-left":"50"});
 	}
 
 	function fOut(id1, id2) {
