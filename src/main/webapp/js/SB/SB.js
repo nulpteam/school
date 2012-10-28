@@ -106,7 +106,7 @@ $(function() {
 
 	function fOut(id1, id2) {
 		console.log("out");
-		remHover();
+//		remHover();
 		clearOldCoordsInM(id1, id2);
 	}
 
