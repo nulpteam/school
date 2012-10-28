@@ -4,6 +4,9 @@
  */
 
 var store = null;
+var str1 = null;
+var str2 = null;
+var str3 = null;
 
 $(function() {
 
@@ -56,12 +59,40 @@ $(function() {
 	function lock(str) {
 		$("#" + str).droppable("option", "disabled", true);
 		store = ("#" + str);
-	}
+	};
 
 	function unlock(str) {
 		$(str).droppable("option", "disabled", false);
 		store = null;
-	}
+	};
+	
+	function addHover(str1, str2, str3) {
+		if(str1 != null) {
+			$(str1).addClass("hover");
+		};
+		if(str2 != null) {
+			$(str2).addClass("hover");
+		};
+		if(str3 != null) {
+			$(str3).addClass("hover");
+		};
+		console.log("addHover", str1, str2, str3);
+	};
+	function remHover(str1, str2, str3) {
+		if(str1 != null) {
+			$(str1).removeClass("hover");
+			str1 = null;
+		};
+		if(str2 != null) {
+			$(str2).removeClass("hover");
+			str2 = null;
+		};
+		if(str3 != null) {
+			$(str3).removeClass("hover");
+			str3 = null;
+		};
+		console.log("remHover", str1, str2, str3);
+	};
 
 	function fDrop(event, ui, id) {
 //		console.log(event);
@@ -71,14 +102,15 @@ $(function() {
         	d = ui.position.top;
         console.log(c);
         console.log(d);
-//        $("#sheep4").css.css({"margin-top":"50px", "margin-left":"50"});
 	}
 
 	function fOut(id1, id2) {
+		remHover(str1, str2, str3);
 		clearOldCoordsInM(id1, id2);
 	}
 
 	function fOver(event, ui, coordinate) {
+		remHover(str1, str2, str3);
 		var x = coordinate.charAt(1);
 		var x1 = ++x;
 		var x2 = ++x;
@@ -95,6 +127,7 @@ $(function() {
 		
 		if (parseCoords(coordinate, ui).t == 4) {
 			if (parseCoords(coordinate, ui).r === "H") {
+				console.log("4 - H");
 				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable(
 						"option", "disabled")
 						|| ($("#X" + x2 + "_Y" + coordinate.charAt(4))
@@ -103,6 +136,11 @@ $(function() {
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
 					$("#" + coordinate).removeClass("hover");
+				} else {
+					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
+					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
+					str3 = "#X" + x3 + "_Y" + coordinate.charAt(4);
+					addHover(str1, str2, str3);
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -114,6 +152,11 @@ $(function() {
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
 					$("#" + coordinate).removeClass("hover");
+				} else {
+					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
+					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
+					str3 = "#X" + coordinate.charAt(1) + "_Y" + y3;
+					addHover(str1, str2, str3);
 				};
 			};
 		};
@@ -126,6 +169,10 @@ $(function() {
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
 					$("#" + coordinate).removeClass("hover");
+				} else {
+					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
+					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
+					addHover(str1, str2, str3);
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -135,6 +182,10 @@ $(function() {
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
 					$("#" + coordinate).removeClass("hover");
+				} else {
+					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
+					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
+					addHover(str1, str2, str3);
 				};
 			};
 		};
@@ -145,6 +196,9 @@ $(function() {
 						"option", "disabled")) {
 					lock(coordinate);
 					$("#" + coordinate).removeClass("hover");
+				} else {
+					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
+					addHover(str1, str2, str3);
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -152,6 +206,10 @@ $(function() {
 						"option", "disabled")) {
 					lock(coordinate);
 					$("#" + coordinate).removeClass("hover");
+				} else {
+					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
+					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
+					addHover(str1, str2, str3);
 				};
 			};
 		};
