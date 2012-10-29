@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/Reversy.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Reversy/Reversy_main.js" type="text/javascript"></script>
+<script src="js/Reversy/Reversy_menu.js" type="text/javascript"></script>
 <title>Reversy</title>
 </head>
 <body>

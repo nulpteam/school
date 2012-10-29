@@ -15,3 +15,21 @@ body {
 	height: 725px;
 	margin: 50px auto;
 }
+td {
+	height: 40px;
+	width: 40px;
+	text-align: center;
+}
+.board {
+	background-image: url("../images/Reversy/empty.png");
+	background-repeat: no-repeat;
+	
+}
+.x {
+	background-image: url("../images/Reversy/X.gif");
+	background-repeat: no-repeat;
+}
+.o {
+	background-image: url("../images/Reversy/O.gif");
+	background-repeat: no-repeat;
+}
