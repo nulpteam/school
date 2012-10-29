@@ -1,9 +1,12 @@
 var changes;
 var waitingForClient;
+var socket;
 
 //TODO таски 1.замутити промальовку гри при рефреші
 //			2.логіка самої гри!!!!!!!!!!!!!!
 //
+
+alert("hello");
 
 $(document).ready(function() {
 	waitingForClient = setInterval(waitForClient, 1000);

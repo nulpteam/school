@@ -53,12 +53,12 @@ public class PtsGame {
 		}
 	}
 	
-	public PtsLastChanges getLasthangesInBoard(String user) {
-		if (nextUserToMove.equals(user)) {
+	public PtsLastChanges getLasthangesInBoard() {
+		//if (nextUserToMove.equals(user)) {
 			return board.getLastChanges();
-		} else {
-			return new PtsLastChanges();
-		}
+		//} else {
+		//	return new PtsLastChanges();
+		//}
 	}
 	
 	
