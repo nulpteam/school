@@ -430,3 +430,7 @@ function fire(point) {
 function createSbGame() {
 	location.href = "BsGame.html";
 }
+
+function connectSbGame() {
+	location.href = "BsConectGame.html";
+}

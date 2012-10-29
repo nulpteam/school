@@ -22,41 +22,31 @@ import epam.ph.sg.models.sb.Sheeps_coords;
 @SessionAttributes("sbGame")
 public class SBController {
 	private static Logger log = Logger.getLogger(SBController.class);
-	
-	@RequestMapping(value = { "/BS.html", "/Sb" }, method = RequestMethod.GET)
-	public String SbMenu(Model model, HttpSession session)
-	{
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
-		SbGame sbGame = new SbGame();
-		sbGame.addScript("jquery");
-		sbGame.addScript("SB/SB_coords");
-		
-		
-		log.debug("-------------------Added JavaScriptss-------------------");
-		model.addAttribute(sbGame);
-		return "SB/SbMenu";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+//	@RequestMapping(value = { "/BS.html", "/Sb" }, method = RequestMethod.GET)
+//	public String SbMenu(Model model, HttpSession session) {
+//		if (session.getAttribute("user") == null) {
+//			new HomeController().index(session);
+//			return "Login";
+//		}
+//		SbGame sbGame = new SbGame();
+//		sbGame.addScript("jquery");
+//		sbGame.addScript("SB/SB_coords");
+//
+//		log.debug("-------------------Added JavaScriptss-------------------");
+//		model.addAttribute(sbGame);
+//		return "SB/SbMenu";
+//	}
+
 	@RequestMapping(value = { "/BsGame.html", "/Bs" }, method = RequestMethod.GET)
-	public String SbGame(Model model, HttpSession session)
-	{
+	public String SbGame(Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
 		}
 
 		log.debug("-------------------Added JavaScriptss-------------------");
-		SbGame sbGame = (SbGame)session.getAttribute("sbGame");
+		SbGame sbGame = (SbGame) session.getAttribute("sbGame");
 		sbGame.addScript("SB/jquery-ui-1.9.0");
 		sbGame.addScript("SB/SB");
 		sbGame.addScript("SB/js_stringify");
@@ -64,49 +54,36 @@ public class SBController {
 		return "SB/Sb";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	@RequestMapping(value = { "/init_sheeps.html"}, method = RequestMethod.POST)
-	public @ResponseBody String sheeps_init(@RequestParam("sheeps") String sheeps,
-			Model model, HttpSession session)
-	{
+	@RequestMapping(value = { "/init_sheeps.html" }, method = RequestMethod.POST)
+	public @ResponseBody
+	String sheeps_init(@RequestParam("sheeps") String sheeps, Model model,
+			HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
-			//new HomeController().index(session);
-			
+			// new HomeController().index(session);
+
 		}
-		log.debug("sheeps"+sheeps);
+		log.debug("sheeps" + sheeps);
 		JsonParser jp = new JsonParser();
 		Sheeps_coords sc = jp.parseJsonSheepsCoordenates(sheeps);
 		return "Server says: array recieved! ;-)";
 	}
-	
-	
-	@RequestMapping(value = { "/fire.html"}, method = RequestMethod.POST)
-	public @ResponseBody String fireReciever(@RequestParam("firePoint") String firePoint,
-			Model model, HttpSession session)
-	{
+
+	@RequestMapping(value = { "/fire.html" }, method = RequestMethod.POST)
+	public @ResponseBody
+	String fireReciever(@RequestParam("firePoint") String firePoint,
+			Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
 		}
-		if(firePoint.equals("00"))
-		{
-			return "Server says: Fire recieved in point "+firePoint+" ! ;-)";
+		if (firePoint.equals("00")) {
+			return "Server says: Fire recieved in point " + firePoint
+					+ " ! ;-)";
 		}
 		return "OK";
-		
+
 	}
-	
-	
-	
-	
-	
-	
+
 }
