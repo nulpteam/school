@@ -18,6 +18,16 @@ function returnToMenu() {
 	}
 }
 
+function statShow(id) {
+	$('#outText').hide();
+	$('#'+id+'Stat').show();
+}
+
+function statHide(id) {
+	$('#outText').show();
+	$('#' + id).hide();
+}
+
 function getClient() {
 	end = true;
 	$('#outText').text(msg3);
@@ -26,6 +36,7 @@ function getClient() {
 		$.post("XOGetClient.html", function(response) {
 			if (response != "") {
 				clearInterval(inter1);
+				getClientStat(response.id);
 				$('#outText').text(response.name + msg4);
 				$('#opNameText').text(response.name);
 				$('#tick').animate({
@@ -36,6 +47,12 @@ function getClient() {
 			}
 		});
 	}
+}
+
+function getClientStat(id) {
+	$.post("XOGetClientStat.html", { id : id }, function(response) {
+		$('#opNameStat').html('<table class="statTable"><tr><td>Wins:</td><td>'+response.wins+'</td></tr><tr><td>Losses:</td><td>'+response.losses+'</td></tr><tr><td>Total:</td><td>'+response.total+'</td></tr></table>');
+	});
 }
 
 function put(img) {

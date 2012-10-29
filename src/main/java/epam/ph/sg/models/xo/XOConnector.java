@@ -6,26 +6,31 @@ package epam.ph.sg.models.xo;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import epam.ph.sg.models.User;
 
 public class XOConnector {
-	private static Map<String, XOPlayer> serverMap = new HashMap<String, XOPlayer>();
+	private static Logger log = Logger.getLogger(XOConnector.class);
+
+	private static Map<Integer, XOPlayer> serverMap = new HashMap<Integer, XOPlayer>();
 
 	/**
 	 * Create game
 	 * 
-	 * @param id
-	 *            - id of creator
+	 * @param server
+	 *            - User instance
 	 * 
 	 * @return XOPlayer instance of creator
 	 */
-	public static XOPlayer create(User user) {
-		XOGame game = new XOGame();
-		XOPlayer server = new XOPlayer(user.getId(), XO.X);
-		server.setGame(game);
-		server.getGame().setServer(user);
-		serverMap.put(user.getId(), server);
-		return server;
+	public static XOPlayer create(User server) {
+		XOPlayer serverPlayer = new XOPlayer(server.getId(), XO.X, new XOGame());
+		serverPlayer.getGame().setServer(server);
+		serverMap.put(server.getId(), serverPlayer);
+
+		log.info(server.getName() + "(id=" + server.getId()
+				+ ") created the game");
+		return serverPlayer;
 	}
 
 	/**
@@ -33,19 +38,23 @@ public class XOConnector {
 	 * 
 	 * @param serverId
 	 *            - id of server
-	 * @param clientId
-	 *            - id of client
+	 * @param client
+	 *            - User instance
 	 * 
 	 * @return XOPlayer instance of client
 	 */
-	public static XOPlayer connect(String serverID, User client) {
-		XOPlayer serverP = serverMap.get(serverID);
-		XOPlayer clientP = new XOPlayer(client.getId(), XO.O);
-		clientP.setGame(serverP.getGame());
-		clientP.getGame().setClient(client);
-		clientP.getGame().setStatus(Integer.parseInt(client.getId()));
+	public static XOPlayer connect(int serverID, User client) {
+		XOPlayer serverPlayer = serverMap.get(serverID);
+		XOPlayer clientPlayer = new XOPlayer(client.getId(), XO.O,
+				serverPlayer.getGame());
+		clientPlayer.getGame().setClient(client);
+		clientPlayer.getGame().setStatus(client.getId());
 		serverMap.remove(serverID);
-		return clientP;
+
+		User server = clientPlayer.getGame().getServer();
+		log.info(client.getName() + "(id=" + client.getId() + ") connected to "
+				+ server.getName() + "(id=" + server.getId() + ")");
+		return clientPlayer;
 	}
 
 	/**
@@ -53,7 +62,7 @@ public class XOConnector {
 	 * 
 	 * @return Map of servers (key String, value XOPlayer)
 	 */
-	public static Map<String, XOPlayer> getServerMap() {
+	public static Map<Integer, XOPlayer> getServerMap() {
 		return serverMap;
 	}
 }

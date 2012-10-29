@@ -35,9 +35,9 @@ public class XOFields {
 	/**
 	 * List of box getter
 	 * 
-	 * @return List<List<XOBox>>
+	 * @return List of Lists of XOBox
 	 */
-	public List<List<XOBox>> getBoxList() {
+	public List<List<XOBox>> getAllBox() {
 		List<List<XOBox>> fields = new ArrayList<List<XOBox>>();
 		ArrayList<XOBox> line;
 		for (int y = 0; y < XO.Y_SIZE; y++) {

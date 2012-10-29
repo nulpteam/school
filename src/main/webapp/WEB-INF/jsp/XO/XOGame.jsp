@@ -14,6 +14,8 @@
 	type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('#myNameStat').hide();
+		$('#opNameStat').hide();
 		$('#outText').text(msg9);
 		checker();
 		chatStart();
@@ -25,15 +27,47 @@
 	<c:import url="../Chat.jsp"></c:import>
 
 	<div class="paperList">
-		<div id="myName" class="namespace">
+		<div id="myName" class="namespace" onclick=statShow(this.id);>
 			<p class="name">
 				<c:out value="${user.name}" />
 			</p>
 		</div>
-		<div id="opName" class="namespace">
+		<div id="opName" class="namespace" onclick=statShow(this.id);>
 			<p class="name" id="opNameText">
 				<c:out value="${oponent.name}" />
 			</p>
+		</div>
+		<div id="myNameStat" class="statistics" onclick=statHide(this.id);>
+			<table class="statTable">
+				<tr>
+					<td>Wins:</td>
+					<td><c:out value="${myStat.wins}" /></td>
+				</tr>
+				<tr>
+					<td>Losses:</td>
+					<td><c:out value="${myStat.losses}" /></td>
+				</tr>
+				<tr>
+					<td>Total:</td>
+					<td><c:out value="${myStat.total}" /></td>
+				</tr>
+			</table>
+		</div>
+		<div id="opNameStat" class="statistics" onclick=statHide(this.id);>
+			<table class="statTable">
+				<tr>
+					<td>Wins:</td>
+					<td><c:out value="${opStat.wins}" /></td>
+				</tr>
+				<tr>
+					<td>Losses:</td>
+					<td><c:out value="${opStat.losses}" /></td>
+				</tr>
+				<tr>
+					<td>Total:</td>
+					<td><c:out value="${opStat.total}" /></td>
+				</tr>
+			</table>
 		</div>
 		<div>
 			<p id="outText" align="center" class="title"></p>
