@@ -25,7 +25,6 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 	public void onMessage(String arg0) {
 		log.debug("++++++++++++Recieved message++++++++++++++");
 		log.debug(arg0);
-		
 	}
 
 }

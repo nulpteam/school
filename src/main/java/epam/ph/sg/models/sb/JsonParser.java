@@ -12,11 +12,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 public class JsonParser {
 	private ObjectMapper mapper = new ObjectMapper();
 
-	public  Sheeps_coords parseJsonSheepsCoordenates(String json) {
-		Sheeps_coords d=null;
+	public Sheeps_coords parseJsonSheepsCoordenates(String json) {
+		Sheeps_coords d = null;
 		try {
 			d = mapper.readValue(json, Sheeps_coords.class);
-			
+
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
