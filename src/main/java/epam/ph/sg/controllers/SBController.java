@@ -60,6 +60,7 @@ public class SBController {
 		sbGame.addScript("SB/jquery-ui-1.9.0");
 		sbGame.addScript("SB/SB");
 		sbGame.addScript("SB/js_stringify");
+		sbGame.addScript("SB/WebSocket");
 		return "SB/Sb";
 	}
 

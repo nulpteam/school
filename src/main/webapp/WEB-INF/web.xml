@@ -9,4 +9,8 @@
     <servlet-name>dispatcher</servlet-name>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>epam.ph.sg.models.sb.JettyContext</listener-class>
+</listener>
+  
 </web-app>

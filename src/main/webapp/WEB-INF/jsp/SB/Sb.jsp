@@ -17,7 +17,7 @@
 
 <title><c:out value="${sbGame.title}" /></title>
 </head>
-<body>
+<body onload=go();>
 	<div class="content">
 		<div class="caption">Морський бій</div>
 		<div class="deco_sheep">
@@ -130,6 +130,7 @@
 <div class=debug>
 <input type="button" value="GetM" onClick="getM();"/>
 <input type="button" value="SendM" onClick="sendM();"/>
+<input type="button" value="TestWebSocket" onClick="wtest('My String');"/>
 <div id="IH"></div>
 <%-- 	<% --%>
 <!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->
