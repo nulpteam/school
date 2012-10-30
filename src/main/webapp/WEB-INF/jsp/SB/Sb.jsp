@@ -15,11 +15,11 @@
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
 <link href="css/SB.css" type="text/css" rel="stylesheet">
 
-<title><c:out value="${sbJSLoader.title}" /></title>
+<title><c:out value="${langPack['Sb_title']}" /></title>
 </head>
 <body onload=go();>
 	<div class="content">
-		<div class="caption">Морський бій</div>
+		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
