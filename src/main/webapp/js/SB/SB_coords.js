@@ -421,9 +421,9 @@ function fire(point) {
 	$.post("fire.html", {
 		firePoint : p
 	}, function(data) {
-		if (data === 'OK') {
-			alert("server says OK");
-		}
+		
+	alert("server says "+data);
+		
 	});
 }
 

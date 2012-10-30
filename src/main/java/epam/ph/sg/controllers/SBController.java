@@ -78,11 +78,9 @@ public class SBController {
 			new HomeController().index(session);
 			return "Login";
 		}
-		if (firePoint.equals("00")) {
-			return "Server says: Fire recieved in point " + firePoint
-					+ " ! ;-)";
-		}
-		return "OK";
+		
+			return  firePoint;
+		
 
 	}
 
