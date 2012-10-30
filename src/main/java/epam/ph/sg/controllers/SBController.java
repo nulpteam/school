@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import epam.ph.sg.models.sb.JsonParser;
-import epam.ph.sg.models.sb.SbGame;
+import epam.ph.sg.models.sb.SbJSLoader;
 import epam.ph.sg.models.sb.Sheeps_coords;
 
 @Controller
@@ -46,7 +46,7 @@ public class SBController {
 		}
 
 		log.debug("-------------------Added JavaScriptss-------------------");
-		SbGame sbGame = (SbGame) session.getAttribute("sbGame");
+		SbJSLoader sbGame = (SbJSLoader) session.getAttribute("sbGame");
 		sbGame.addScript("SB/jquery-ui-1.9.0");
 		sbGame.addScript("SB/SB");
 		sbGame.addScript("SB/js_stringify");

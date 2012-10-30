@@ -1,11 +1,31 @@
 package epam.ph.sg.models.sb;
 
+import org.eclipse.jetty.websocket.WebSocket.Connection;
+
 public class BSGame {
 	private int id;
 	private BSPlayer player1;
 	private BSPlayer player2;
 	private BSBoard board1;
 	private BSBoard board2;
+	private Connection connection1;
+	private Connection connection2;
+
+	public Connection getConnection1() {
+		return connection1;
+	}
+
+	public void setConnection1(Connection connection1) {
+		this.connection1 = connection1;
+	}
+
+	public Connection getConnection2() {
+		return connection2;
+	}
+
+	public void setConnection2(Connection connection2) {
+		this.connection2 = connection2;
+	}
 
 	public BSGame(int id) {
 		// TODO Auto-generated constructor stub

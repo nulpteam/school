@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SbGame {
+public class SbJSLoader {
 
 	private String title="title";
 	private List<String> scripts = new ArrayList<String>();

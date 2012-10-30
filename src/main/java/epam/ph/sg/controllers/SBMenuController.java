@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import epam.ph.sg.models.sb.SbGame;
+import epam.ph.sg.models.sb.SbJSLoader;
 
 @Controller
 @SessionAttributes("sbGame")
@@ -27,7 +27,7 @@ public class SBMenuController {
 			new HomeController().index(session);
 			return "Login";
 		}
-		SbGame sbGame = new SbGame();
+		SbJSLoader sbGame = new SbJSLoader();
 		sbGame.addScript("jquery");
 		sbGame.addScript("SB/SB_coords");
 
