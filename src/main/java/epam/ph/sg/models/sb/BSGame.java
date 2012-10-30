@@ -30,8 +30,8 @@ public class BSGame {
 	public BSGame(int id) {
 		// TODO Auto-generated constructor stub
 		this.id = id;
-		setPlayer1(new BSPlayer());
-		setPlayer2(new BSPlayer());
+//		setPlayer1(new BSPlayer());
+//		setPlayer2(new BSPlayer());
 		setBoard1(new BSBoard());
 		setBoard2(new BSBoard());
 	}
