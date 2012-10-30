@@ -67,7 +67,7 @@ public class PointsGameController {
 		PtsGame game = (PtsGame) session.getAttribute("ptsgame");
 		String userType = session.getAttribute("ptsUserType").toString();
 		
-		return game.getLasthangesInBoard(userType);
+		return game.getLasthangesInBoard();
 	}
 	
 	@RequestMapping(value = "/WaitingForClient.html", method = RequestMethod.GET)

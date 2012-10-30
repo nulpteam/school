@@ -1,23 +1,21 @@
-/**
- * @author Bogdan Gutey
- */
-package epam.ph.sg.models.sb;
+package epam.ph.sg.models.points;
 
 import java.io.IOException;
 
-import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
-public class JsonParser {
+public class PtsJsonParser {
 	private ObjectMapper mapper = new ObjectMapper();
+	private JsonGenerator jsonGenerator;
 
-	public Sheeps_coords parseJsonSheepsCoordenates(String json) {
-		Sheeps_coords d = null;
+	public String parseObjectToJsonString(Object object) {
+		String jsonValue = "none";
 		try {
-			d = mapper.readValue(json, Sheeps_coords.class);
-
-		} catch (JsonParseException e) {
+			jsonValue = mapper.writeValueAsString(object);
+		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
@@ -27,6 +25,6 @@ public class JsonParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return d;
+		return jsonValue;
 	}
 }

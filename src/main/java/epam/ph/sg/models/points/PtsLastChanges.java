@@ -8,6 +8,7 @@ public class PtsLastChanges {
 
 	public PtsLastChanges() {
 		coordsOfChanges = "none";
+		userThatChanged = "none";
 	}
 
 	public String getUserThatChanged() {

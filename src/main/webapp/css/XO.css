@@ -29,6 +29,7 @@
 }
 
 .namespace {
+	position: absolute;
 	background-image: url('../images/XO/namespace.png');
 	background-repeat: no-repeat;
 	height: 30px;
@@ -39,16 +40,33 @@
 	margin: 5px 20px;
 }
 
-#myName {
+.statistics {
 	position: absolute;
-	margin-top: 30px;
-	margin-left: 110px;
+	background-image: url('../images/XO/namespace2.png');
+	background-repeat: no-repeat;
+	height: 120px;
+	width: 193px;
+	z-index: 2;
+}
+
+.statTable {
+	margin: 30px 10px;
+}
+
+#myName {
+	margin: 30px 110px;
 }
 
 #opName {
-	position: absolute;
-	margin-top: 30px;
-	margin-left: 350px;
+	margin: 30px 350px;
+}
+
+#myNameStat {
+	margin: 30px 110px;
+}
+
+#opNameStat {
+	margin: 30px 350px;
 }
 
 #tick {

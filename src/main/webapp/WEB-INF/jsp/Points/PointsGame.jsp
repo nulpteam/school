@@ -9,8 +9,10 @@
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
 
 <link href="css/Points/PointsGame.css" type="text/css" rel="stylesheet">
+
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Points/PointsGame.js" type="text/javascript"></script>
+<script src="js/Points/PointsGameWebSocket.js" type="text/javascript"></script>
+
 
 <title>School Games</title>
 </head>
@@ -23,12 +25,12 @@
 		<div id="player_label_2">
 			<label>${ptsgame.client.name}</label>
 		</div>
-		<div id="div_table" type="${ptsUserType}">
+		<div id="game_table" userType="${ptsUserType}" gameId="${ptsGameId}">
 			<table id="table" align="center" cellpadding="0" cellspacing="0">
 				<c:forEach begin="0" end="25" step="1" varStatus="i">
 					<tr>
 						<c:forEach begin="0" end="21" step="1" varStatus="j">
-							<td class="point" id="X${j.count-1}Y${i.count-1}" onClick=putPoint(this)>
+							<td class="point" id="X${j.count-1}Y${i.count-1}" onClick=sendMessage()>
 								<img src="images/Points/square.png">
 							</td>
 						</c:forEach>

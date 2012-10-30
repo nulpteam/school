@@ -19,13 +19,13 @@ public class XOAI {
 	 */
 	public int checkout(XOBox box) {
 		if (check1(box) >= XO.TO_WIN) {
-			return XO.WIN;
+			return XO.GAME_OVER;
 		} else if (check2(box) >= XO.TO_WIN) {
-			return XO.WIN;
+			return XO.GAME_OVER;
 		} else if (check3(box) >= XO.TO_WIN) {
-			return XO.WIN;
+			return XO.GAME_OVER;
 		} else if (check4(box) >= XO.TO_WIN) {
-			return XO.WIN;
+			return XO.GAME_OVER;
 		} else
 			return box.getStatus();
 	}

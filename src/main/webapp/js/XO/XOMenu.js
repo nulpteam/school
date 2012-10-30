@@ -1,6 +1,10 @@
 function createServer() {
-	$.post("XOClear.html", function(response) {
-		location.href = "XOGameServer.html";
+	$.post("XOCreate.html", function(response) {
+		if (response) {
+			location.href = "XOGame.html";
+		} else {
+			location.href = "index.html";
+		}
 	});
 }
 
@@ -12,8 +16,14 @@ function connect(id) {
 	if (id == myID) {
 		alert(msg1);
 	} else {
-		$.post("XOClear.html", function(response) {
-			location.href = "XOGameClient.html?serverID=" + id;
+		$.post("XOConnect.html", {
+			serverID : id
+		}, function(response) {
+			if (response) {
+				location.href = "XOGame.html";
+			} else {
+				location.href = "index.html";
+			}
 		});
 	}
 }

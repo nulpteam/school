@@ -14,8 +14,8 @@ public class XO {
 
 	public static final int WITHOUT_CLIENT = -3;
 	public static final int NO_CHANGES = 0;
-	public static final int LOSE = -4;
-	public static final int WIN = -5;
+	public static final int OUT = -4;
+	public static final int GAME_OVER = -5;
 	public static final int TO_WIN = 5;
 
 	public static final int X_SIZE = 20;

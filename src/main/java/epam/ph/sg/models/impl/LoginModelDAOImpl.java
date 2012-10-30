@@ -42,10 +42,9 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 				User user = null;
 				if (rs.next()) {
 					user = new User();
-					user.setId(rs.getString(1));
+					user.setId(rs.getInt(1));
 					user.setName(rs.getString(2));
 					user.setPass(rs.getString(3));
-
 				}
 				return user;
 

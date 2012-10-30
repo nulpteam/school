@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.models.xo.XO;
 import epam.ph.sg.models.xo.XOBox;
 import epam.ph.sg.models.xo.XOPlayer;
+import epam.ph.sg.models.xo.XOStatistics;
 
 @Controller
 public class XOGameController {
@@ -25,6 +25,12 @@ public class XOGameController {
 		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
 		return xo.getGame().getClient();
 	}
+	
+	@RequestMapping(value = "/XOGetClientStat.html", method = RequestMethod.POST)
+	public @ResponseBody
+	XOStatistics getClientStat(@RequestParam("id") int id) {
+		return XOStatistics.getUserStatistics(id);
+	}
 
 	@RequestMapping(value = "/XOPut.html", method = RequestMethod.POST)
 	public @ResponseBody
@@ -33,7 +39,7 @@ public class XOGameController {
 		int indexY = xy.indexOf('Y');
 		int x = Integer.parseInt(xy.substring(1, indexY));
 		int y = Integer.parseInt(xy.substring(indexY + 1));
-		return xo.put(x, y);
+		return xo.tryToPut(x, y);
 	}
 
 	@RequestMapping(value = "/XOCheck.html")
@@ -54,8 +60,7 @@ public class XOGameController {
 	public @ResponseBody
 	boolean lose(HttpSession session) {
 		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
-		xo.getGame().setStatus(XO.LOSE);
+		xo.getGame().out(xo.getId());
 		return true;
 	}
-
 }

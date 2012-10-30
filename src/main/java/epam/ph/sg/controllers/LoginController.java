@@ -28,7 +28,7 @@ public class LoginController {
 			Model model, HttpSession session) {
 
 		User user = UserCheck.check(name, pass);
-		if (user != null && user.getId() != null) {
+		if (user != null) {
 			model.addAttribute(user);
 //			//
 //			if (session.getAttribute("lang") == null) {
