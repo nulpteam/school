@@ -14,8 +14,12 @@ function points() {
 	window.location.href = "Points.html";
 }
 
-function storeRoom() {
-	alert("«робити: стор≥нку шопу");
+function infection() {
+	window.location.href = "Infection.html";
+}
+
+function cabinet() {
+	alert("Cabinet page");
 	//window.location.href = "storeRoom.html";
 }
 

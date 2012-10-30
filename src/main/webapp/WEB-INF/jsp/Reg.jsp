@@ -24,31 +24,31 @@
 	<div id="bg">
 
 		<div id="reg_title">
-			<b>REGISTRATION</br>&nbsp;&nbsp;&nbsp;&nbsp;PAGE</b>
+			<b><c:out value="${langPack['Register_page_title']}" /></b>
 		</div>
 		<div id="reg_title2">
-			<b>Enter a password and user name</br>for your account</b>
+			<b><c:out value="${langPack['Register_page_title2']}" /></b>
 		</div>
 		<div id="regform">
 
 			
 			<form action="Login.html" method="POST" id="myform">
 				<p id="name_text">
-					<b>USER NAME:</b>
+					<b><c:out value="${langPack['Name']}" /></b>
 				</p>
 				<div id="name_area_div">
 					<input id="name_area_input" class="input_areas required"
 						type="text" name="user_name" maxlength="25" size="15">
 				</div>
 				<p id="pass_text">
-					<b>PASSWORD:</b>
+					<b><c:out value="${langPack['Password']}" /></b>
 				</p>
 				<div id="pass_area_div">
 					<input id="pass_area_input" class="input_areas required"
 						type="password" name="password" maxlength="20" size="15">
 				</div>
 				<div>
-					<input id="login_button" class="button" type="submit" value="Submit">				
+					<input id="login_button" class="button" type="submit" value="<c:out value="${langPack['Ready']}"/>">				
 				</div>
 
 			</form>
@@ -58,10 +58,9 @@
 			<p></p>
 		</div>
 		<div id="language_bar">
-			<img id="UKR" src="images/flag_ua.png" name="ua"
-				onclick=language(this);> <img id="RUS"
-				src="images/flag_ru.png" name="ru" onclick=language(this);> <img
-				id="USA" src="images/flag_us.png" name="us" onclick=language(this);>
+			<img id="ua" src="images/flag_ua.png" name="ua"onclick=language(this);>
+		    <img id="ru" src="images/flag_ru.png" name="ru" onclick=language(this);>
+		    <img id="us" src="images/flag_us.png" name="us" onclick=language(this);>
 		</div>
 		<!div>
 		<!img id="splats" src="images/splats.png">

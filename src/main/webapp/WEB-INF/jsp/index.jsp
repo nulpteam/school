@@ -26,16 +26,38 @@
 		, you are logged in :)
 	</h5>
 	<div id="bg_menu">
-		<div id="gomoku_button" class="button" onclick=XO();>Play Gomoku</div>
-		<div id="battleship_button" class="button" onclick=BS();>Play
-			Battleship</div>
-		<div id="reversi_button" class="button" onclick=reversi();>Play
-			Reversi</div>
-		<div id="points_button" class="button unselect" onclick=points();>Play
-			Points</div>
-		<div id="storerooom_button" class="button" onclick=storeRoom();>Storeroom</div>
-		<div id="halloffame_button" class="button" onclick=hallOfFame();>
-			Hall Of Fame</div>
+		<div id="gomoku_button" class="button" onclick=XO();>
+			<center>
+				<c:out value="${langPack['Gomoku']}" />
+			</center>
+		</div>
+		<div id="battleship_button" class="button" onclick=BS();>
+			<center>
+				<c:out value="${langPack['Battleship']}" />
+			</center>
+		</div>
+		<div id="reversi_button" class="button" onclick=reversi();>
+			<center>
+				<c:out value="${langPack['Reversi']}" />
+			</center>
+		</div>
+		<div id="points_button" class="button unselect" onclick=points();>
+			<center>
+				<c:out value="${langPack['Points']}" />
+			</center>
+		</div>
+		<div id="infection_button" class="button unselect"
+			onclick=infection();>
+			<center>
+				<c:out value="${langPack['Infection']}" />
+			</center>
+		</div>
+		<div id="storerooom_button" class="button" onclick=cabinet();>
+			<center>
+				<c:out value="${langPack['Cabinet']}" />
+			</center>
+		</div>
+
 	</div>
 
 

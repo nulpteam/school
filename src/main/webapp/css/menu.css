@@ -122,13 +122,14 @@
 #login_button {
 	position: absolute;
 	margin: 160px 80px;
-	width: 123px;
+	width: 203px;
 }
 
 #register_button {
 	font-family: Arial;
 	position: absolute;
 	margin: 220px 80px;
+	width: 142px;
 }
 
 #gomoku_button {
@@ -155,23 +156,30 @@
 	width: 106px;
 }
 
-#storerooom_button {
+#infection_button {
 	position: absolute;
 	margin: 430px 420px;
 	width: 106px;
 }
 
-#halloffame_button {
+#storerooom_button {
 	position: absolute;
 	margin: 485px 420px;
 	width: 106px;
 }
 
+#halloffame_button {
+	position: absolute;
+	margin: 540px 420px;
+	width: 106px;
+}
+
 .welcome_message {
 	position: absolute;
-	margin: 35px 200px;
+	margin: 40px 505px;
 	color: white;
 	font-size: 15px;
+	width:450px;
 }
 
 .error {
@@ -281,34 +289,34 @@
 	margin: -35px 750px;
 }
 
-#UKR {
+#ua{
 	position: absolute;
 	margin: 15px 28px;
 }
 
-#UKR:hover {
+#ua:hover {
 	position: absolute;
 	margin: 13px 26px;
 	border: 2px solid gray;
 }
 
-#RUS {
+#ru {
 	position: absolute;
 	margin: 15px 68px;
 }
 
-#RUS:hover {
+#ru:hover {
 	position: absolute;
 	margin: 13px 66px;
 	border: 2px solid gray;
 }
 
-#USA {
+#us {
 	position: absolute;
 	margin: 15px 108px;
 }
 
-#USA:hover {
+#us:hover {
 	position: absolute;
 	margin: 13px 106px;
 	border: 2px solid gray;
