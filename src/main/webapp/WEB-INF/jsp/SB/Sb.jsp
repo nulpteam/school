@@ -6,7 +6,7 @@
 <html>
 <head>
 
-<c:forEach items="${sbGame.scripts}" var="script">
+<c:forEach items="${sbJSLoader.scripts}" var="script">
 	<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 </c:forEach>
 
@@ -15,7 +15,7 @@
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
 <link href="css/SB.css" type="text/css" rel="stylesheet">
 
-<title><c:out value="${sbGame.title}" /></title>
+<title><c:out value="${sbJSLoader.title}" /></title>
 </head>
 <body onload=go();>
 	<div class="content">
