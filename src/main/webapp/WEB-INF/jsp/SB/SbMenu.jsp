@@ -8,7 +8,7 @@
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
 
-<c:forEach items="${sbGame.scripts}" var="script">
+<c:forEach items="${sbJSLoader.scripts}" var="script">
 	<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 </c:forEach>
 <title>Морський бій</title>

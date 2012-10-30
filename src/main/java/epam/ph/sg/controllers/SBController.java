@@ -19,7 +19,7 @@ import epam.ph.sg.models.sb.SbJSLoader;
 import epam.ph.sg.models.sb.Sheeps_coords;
 
 @Controller
-@SessionAttributes("sbGame")
+@SessionAttributes("sbJSLoader")
 public class SBController {
 	private static Logger log = Logger.getLogger(SBController.class);
 
@@ -46,11 +46,11 @@ public class SBController {
 		}
 
 		log.debug("-------------------Added JavaScriptss-------------------");
-		SbJSLoader sbGame = (SbJSLoader) session.getAttribute("sbGame");
-		sbGame.addScript("SB/jquery-ui-1.9.0");
-		sbGame.addScript("SB/SB");
-		sbGame.addScript("SB/js_stringify");
-		sbGame.addScript("SB/WebSocket");
+		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
+		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
+		sbJSLoader.addScript("SB/SB");
+		sbJSLoader.addScript("SB/js_stringify");
+		sbJSLoader.addScript("SB/WebSocket");
 		return "SB/Sb";
 	}
 

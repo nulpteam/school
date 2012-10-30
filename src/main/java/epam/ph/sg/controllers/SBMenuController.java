@@ -18,21 +18,23 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import epam.ph.sg.models.sb.SbJSLoader;
 
 @Controller
-@SessionAttributes("sbGame")
+//@SessionAttributes("sbJSLoader")
 public class SBMenuController {
 	private static Logger log = Logger.getLogger(SBMenuController.class);
-	@RequestMapping(value = { "/BS.html", "/Sb" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/Sb.html" , method = RequestMethod.GET)
 	public String SbMenu(Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
 		}
-		SbJSLoader sbGame = new SbJSLoader();
-		sbGame.addScript("jquery");
-		sbGame.addScript("SB/SB_coords");
+		SbJSLoader sbJSLoader = new SbJSLoader();
+		
+		sbJSLoader.addScript("jquery");
+		sbJSLoader.addScript("SB/SB_coords");
+		log.debug("****************"+sbJSLoader.getScripts());
 
 		log.debug("-------------------Added JavaScriptss-------------------");
-		model.addAttribute(sbGame);
+		session.setAttribute("sbJSLoader", sbJSLoader);
 		return "SB/SbMenu";
 	}
 	
