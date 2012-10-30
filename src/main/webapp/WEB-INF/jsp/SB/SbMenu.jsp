@@ -18,5 +18,8 @@
 	<br>
 	<input type="button" value="Підєднатись до гри"
 		onclick="connectSbGame();">
+	<br>
+	<input type="button" value="Гра (debugOnly)"
+		onclick="sbGame();">
 </body>
 </html>

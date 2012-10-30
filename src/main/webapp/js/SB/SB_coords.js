@@ -427,8 +427,12 @@ function fire(point) {
 	});
 }
 
-function createSbGame() {
+function sbGame() {
 	location.href = "BsGame.html";
+}
+
+function createSbGame() {
+	location.href = "BsCreateGame.html";
 }
 
 function connectSbGame() {
