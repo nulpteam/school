@@ -20,11 +20,11 @@
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<h5 class="welcome_message">
-		Welcome
-		<c:out value="${user.name}" />
-		, you are logged in :)
-	</h5>
+	<div class="welcome_message">
+		<c:out value="${langPack['Welcome']}" />,
+		<c:out value="${user.name}" />,
+		<c:out value="${langPack['You_logged_in']}" />
+	</div>
 	<div id="bg_menu">
 		<div id="gomoku_button" class="button" onclick=XO();>
 			<center>
