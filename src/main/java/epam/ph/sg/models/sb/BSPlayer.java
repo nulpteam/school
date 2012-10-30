@@ -7,9 +7,14 @@ package epam.ph.sg.models.sb;
  */
 
 public class BSPlayer {
-	public String name;
+	private String name;
 	public BSPlayer() {
-		// TODO Auto-generated constructor stub
-		name = "Unknown Player";
+		setName("Unknown Player");
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

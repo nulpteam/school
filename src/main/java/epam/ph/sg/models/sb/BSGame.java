@@ -3,12 +3,19 @@ package epam.ph.sg.models.sb;
 import org.eclipse.jetty.websocket.WebSocket.Connection;
 
 public class BSGame {
+	// ідентифікатор гри
 	private int id;
+	// гравець 1
 	private BSPlayer player1;
+	// гравець 2
 	private BSPlayer player2;
+	// поле кораблів гравця1
 	private BSBoard board1;
+	// поле кораблів гравця1
 	private BSBoard board2;
+	// WebSocket зєднання гравця 1
 	private Connection connection1;
+	// WebSocket зєднання гравця 2
 	private Connection connection2;
 
 	public Connection getConnection1() {
@@ -30,8 +37,8 @@ public class BSGame {
 	public BSGame(int id) {
 		// TODO Auto-generated constructor stub
 		this.id = id;
-//		setPlayer1(new BSPlayer());
-//		setPlayer2(new BSPlayer());
+		// setPlayer1(new BSPlayer());
+		// setPlayer2(new BSPlayer());
 		setBoard1(new BSBoard());
 		setBoard2(new BSBoard());
 	}
@@ -71,5 +78,5 @@ public class BSGame {
 	public int getId() {
 		return id;
 	}
-	
+
 }

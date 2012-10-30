@@ -6,7 +6,7 @@
 
 package epam.ph.sg.controllers;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,32 +20,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import epam.ph.sg.models.User;
 import epam.ph.sg.models.sb.BSGame;
 import epam.ph.sg.models.sb.BSPlayer;
+import epam.ph.sg.models.sb.GamesList;
 import epam.ph.sg.models.sb.SbJSLoader;
 
 @Controller
 @SessionAttributes("sbJSLoader")
 public class SBMenuController {
-	
-	private static HashMap<Integer, BSGame> gameListBS;
-	private static Integer gameID;
-	
-	public SBMenuController() {
-		gameID = 0;
-		gameListBS = new HashMap<Integer, BSGame>();
-	}
-	public static HashMap<Integer, BSGame> getGameListBS() {
-		return gameListBS;
-	}
-
-	public static Integer addGameToListBS() {
-		gameID++;
-		gameListBS.put(gameID, new BSGame(gameID.intValue()));
-		return gameID;
-	}
-	public static void removeGameFromListBS(Integer id) {
-		gameListBS.remove(id);
-	}
-
 	private static Logger log = Logger.getLogger(SBMenuController.class);
 	
 	@RequestMapping(value = "/Sb.html" , method = RequestMethod.GET)
@@ -58,8 +38,6 @@ public class SBMenuController {
 		
 		sbJSLoader.addScript("jquery");
 		sbJSLoader.addScript("SB/SB_coords");
-		log.debug("****************"+sbJSLoader.getScripts());
-
 		log.debug("-------------------Added JavaScriptss-------------------");
 		session.setAttribute("sbJSLoader", sbJSLoader);
 		return "SB/SbMenu";
@@ -79,16 +57,18 @@ public class SBMenuController {
 		sbJSLoader.addScript("SB/js_stringify");
 		sbJSLoader.addScript("SB/WebSocket");
 		if (session.getAttribute("BSGame") == null) {
-			addGameToListBS();
-			BSGame game = gameListBS.get(gameID);
+			
+			int gameID = GamesList.addGameToListBS();
+			BSGame game = GamesList.getGameListBS().get(gameID);
+			//BSGame game = gameListBS.get(gameID);
 			BSPlayer player1 = new BSPlayer();
-			player1.name = ((User)session.getAttribute("user")).getName();
+			player1.setName(((User)session.getAttribute("user")).getName());
 			game.setPlayer1(player1);
 			session.setAttribute("BSGame", game);
 			//TODO
 			System.out.println(game);
 			System.out.println(game.getId());
-			System.out.println(game.getPlayer1().name);
+			System.out.println(game.getPlayer1().getName());
 			// TODO
 		}
 		System.out.println("YOU HAVE BS-GAME");
@@ -96,7 +76,7 @@ public class SBMenuController {
 	}
 	
 	@RequestMapping(value = {"/BsConectGame.html"}, method = RequestMethod.GET)
-	public String SbMenuConnection(HttpSession session) {
+	public String SbMenuConnection(HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
@@ -105,6 +85,12 @@ public class SBMenuController {
 			return "SB/Sb";
 		}
 		log.debug("<--Test-->");
+		Map<Integer, BSGame> serversMap = GamesList.getGameListBS();
+		for (Map.Entry<Integer, BSGame> entry : serversMap.entrySet())
+		{
+		    System.out.println(entry.getKey() + "/" + entry.getValue());
+		}
+		model.addAttribute("serverMap", serversMap);
 		return "SB/SbGameList";
 	}
 }

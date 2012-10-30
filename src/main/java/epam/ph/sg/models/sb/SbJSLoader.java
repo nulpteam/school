@@ -9,10 +9,9 @@ import java.util.List;
 
 public class SbJSLoader {
 
-	private String title="title";
+	//Ліст скріптів
 	private List<String> scripts = new ArrayList<String>();
-		
-
+	
 	public List<String> getScripts() {
 		return scripts;
 	}
@@ -21,10 +20,4 @@ public class SbJSLoader {
 	{
 		scripts.add("js/"+script+".js");
 	}
-
-	public String getTitle() {
-		
-		return title;
-	}
-
 }

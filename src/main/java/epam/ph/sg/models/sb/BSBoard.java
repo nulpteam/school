@@ -25,7 +25,6 @@ public class BSBoard {
 	public List<String> j = new ArrayList<String>(10);
 
 	public BSBoard() {
-		// TODO Auto-generated constructor stub
 		for (int x = 0; x < 10; x++) {
 			a.add("00");
 			b.add("00");
