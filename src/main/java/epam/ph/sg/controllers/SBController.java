@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import epam.ph.sg.models.sb.BSBoard;
 import epam.ph.sg.models.sb.JsonParser;
 import epam.ph.sg.models.sb.SbJSLoader;
-import epam.ph.sg.models.sb.Sheeps_coords;
 
 @Controller
 @SessionAttributes("sbJSLoader")
@@ -66,8 +66,8 @@ public class SBController {
 		}
 		log.debug("sheeps" + sheeps);
 		JsonParser jp = new JsonParser();
-		Sheeps_coords sc = jp.parseJsonSheepsCoordenates(sheeps);
-		return "Server says: array recieved! ;-)";
+		BSBoard sc = jp.parseJsonSheepsCoordenates(sheeps);
+		return "Server says: array recieved! ;-)"+sc ;
 	}
 
 	@RequestMapping(value = { "/fire.html" }, method = RequestMethod.POST)

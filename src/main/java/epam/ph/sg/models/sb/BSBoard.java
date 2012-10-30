@@ -9,6 +9,9 @@ package epam.ph.sg.models.sb;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.annotate.JsonAutoDetect.Visibility;
+@JsonAutoDetect(fieldVisibility = Visibility.ANY, getterVisibility = Visibility.NONE, isGetterVisibility = Visibility.NONE)
 public class BSBoard {
 	public List<String> a = new ArrayList<String>(10);
 	public List<String> b = new ArrayList<String>(10);
@@ -34,6 +37,11 @@ public class BSBoard {
 			h.add("00");
 			i.add("00");
 			j.add("00");
-		};
-	};
-};
+		}
+	}
+	
+	public String toString()
+	{
+		return a.get(0)+"test of BSBoard";
+	}
+}
