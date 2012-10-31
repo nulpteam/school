@@ -122,6 +122,9 @@
 						</tr>
 					</c:forEach>
 				</table>
+				<div class="oponentName">
+					Опонент: Імя, к-ть вцілілих кораблів, ...
+				</div>
 				
 				
 			</div>

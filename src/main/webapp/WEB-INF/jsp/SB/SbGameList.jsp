@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Підєднатися до гри</title>
+<title><c:out value="${langPack['Sb_ConnectToGame']}"/></title>
 </head>
 <body>
 	ТУТ Є СПИСОК ДОСТУПНИХ ІГР "МОРСЬКОГО БОЮ"!!
+	<c:out value="${langPack['Sb_ExistsGames']}"/>
 	<div>
 	<c:forEach items="${serverMap}" var="server">
 			<div>

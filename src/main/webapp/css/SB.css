@@ -186,9 +186,20 @@ tr {
 	top: 0px;
 	left: 0px;
 }
-.firePoint:hover{
+
+.firePoint:hover {
 	background-color: rgba(255, 0, 0, 0.32);;
 }
-#table2:hover{
+
+#table2:hover {
 	cursor: url('../images/SB/shoot_cursor3.ico'), pointer;
+}
+
+.oponentName {
+	position: relative;
+	left: 240px;
+	top: -200px;
+	border: 1px dashed;
+	width: 70px;
+	font-size: 15px;
 }
