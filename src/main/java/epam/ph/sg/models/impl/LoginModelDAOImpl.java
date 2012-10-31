@@ -27,7 +27,7 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	
+
 	/**
 	 * ������ ����� � ����
 	 * 
@@ -38,7 +38,7 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 		User user = jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
 
 			public User extractData(ResultSet rs) throws SQLException,
-					DataAccessException {
+			DataAccessException {
 				User user = null;
 				if (rs.next()) {
 					user = new User();
@@ -59,7 +59,7 @@ public class LoginModelDAOImpl implements LoginModelDAO {
 		{
 			log.debug("No such user found in DB");
 		}
-				
+
 		return user;
 	}
 }

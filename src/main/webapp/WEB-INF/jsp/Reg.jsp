@@ -32,7 +32,7 @@
 		<div id="regform">
 
 			
-			<form action="Login.html" method="POST" id="myform">
+			<form action="Reg.html" method="POST" id="myform">
 				<p id="name_text">
 					<b><c:out value="${langPack['Name']}" /></b>
 				</p>
