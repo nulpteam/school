@@ -5,15 +5,16 @@ var socket;
 
 
 $(document).ready(function(){
+	console.log("WEBSOCKET");
 	userName = $("#userName").attr("class");
-	gameId = $('#gameID').attr("class");
+	gameId = $("#gameID").attr("class");
 	
 	console.log(userName);
 	console.log(gameId);
 	
 	socket = new WebSocket("ws://localhost:8081");
 	socket.onopen = function () {
-		  socket.send(gameId+"&" + userName);
+		  socket.send(gameId + "&" + userName);
 		  console.log("------------------------------Соединение открылось-----------------------------");
 		};
 		socket.onmessage = function (event) {

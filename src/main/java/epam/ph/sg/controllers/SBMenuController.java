@@ -60,7 +60,6 @@ public class SBMenuController {
 			
 			int gameID = GamesList.addGameToListBS();
 			BSGame game = GamesList.getGameListBS().get(gameID);
-			//BSGame game = gameListBS.get(gameID);
 			BSPlayer player1 = new BSPlayer();
 			player1.setName(((User)session.getAttribute("user")).getName());
 			game.setPlayer1(player1);

@@ -46,8 +46,6 @@ public class SBController {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
-			// new HomeController().index(session);
-
 		}
 		log.debug("sheeps" + sheeps);
 		JsonParser jp = new JsonParser();
@@ -63,10 +61,7 @@ public class SBController {
 			new HomeController().index(session);
 			return "Login";
 		}
-		
 			return  firePoint;
-		
-
 	}
 
 }
