@@ -4,7 +4,10 @@ import java.util.HashMap;
 
 public class GamesList {
 	private static HashMap<Integer, BSGame> gameListBS = new HashMap<Integer, BSGame>();
-	private static Integer gameID=0;
+	public static void setGameListBS(HashMap<Integer, BSGame> gameListBS) {
+		GamesList.gameListBS = gameListBS;
+	}
+	private static Integer gameID = 0;
 	
 	/*public GamesList() {
 		gameID = 0;

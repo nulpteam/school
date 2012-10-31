@@ -1,14 +1,24 @@
 var socket;
+var userName;
+var gameId;
+var socket;
+
+
 $(document).ready(function(){
-//	socket = new WebSocket("ws://localhost:8081");
-//	socket.onopen = function () {
-//		  console.log("------------------------------Соединение открылось-----------------------------");
-//		  socked.send("connection created)");
-//		};
-//		socket.onmessage = function (event) {
-//			  console.log ("Пришло сообщение с содержанием:", event.data);
-//		};
-	alert("ready");
+	userName = $("#userName").attr("class");
+	gameId = $('#gameID').attr("class");
+	
+	console.log(userName);
+	console.log(gameId);
+	
+	socket = new WebSocket("ws://localhost:8081");
+	socket.onopen = function () {
+		  socket.send(gameID + "&" + userName);
+		  console.log("------------------------------Соединение открылось-----------------------------");
+		};
+		socket.onmessage = function (event) {
+			  console.log ("Пришло сообщение с содержанием:", event.data);
+		};
 });
 	
 

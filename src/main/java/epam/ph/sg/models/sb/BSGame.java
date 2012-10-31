@@ -17,6 +17,7 @@ public class BSGame {
 	private Connection connection1;
 	// WebSocket зєднання гравця 2
 	private Connection connection2;
+	private String nextMove;
 
 	public Connection getConnection1() {
 		return connection1;
@@ -77,6 +78,14 @@ public class BSGame {
 
 	public int getId() {
 		return id;
+	}
+
+	public String getNextMove() {
+		return nextMove;
+	}
+
+	public void setNextMove(String nextMove) {
+		this.nextMove = nextMove;
 	}
 
 }
