@@ -1,4 +1,4 @@
-<%@page import="java.util.Enumeration"%>
+<%@ page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -17,7 +17,7 @@
 
 <title><c:out value="${langPack['Sb_title']}" /></title>
 </head>
-<body onload=go();>
+<body>
 	<div class="content">
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">

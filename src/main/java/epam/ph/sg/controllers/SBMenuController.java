@@ -84,6 +84,12 @@ public class SBMenuController {
 		if (session.getAttribute("BSGame") != null) {
 			return "SB/Sb";
 		}
+		log.debug("-------------------Added JavaScriptss-------------------");
+		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
+		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
+		sbJSLoader.addScript("SB/SB");
+		sbJSLoader.addScript("SB/js_stringify");
+		sbJSLoader.addScript("SB/WebSocket");
 		log.debug("<--Test-->");
 		Map<Integer, BSGame> serversMap = GamesList.getGameListBS();
 		for (Map.Entry<Integer, BSGame> entry : serversMap.entrySet())
