@@ -1,17 +1,39 @@
 package epam.ph.sg.models.points;
 
-public class PtsLastChanges {
+public class PtsClientMessage {
 
 	private String type;
 	private String userType;
 	private String gameId;
 	private String coords;
+	private String clientName;
+	private String serverName;
+	private String lock;
 
-	public PtsLastChanges() {
-		type = "lastChanges";
+	public PtsClientMessage() {
+		type = "none";
 		userType = "none";
 		gameId = "none";
 		coords = "none";
+		clientName = "none";
+		serverName = "none";
+		lock = "none";
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
+	public String getServerName() {
+		return serverName;
+	}
+
+	public void setServerName(String serverName) {
+		this.serverName = serverName;
 	}
 
 	public String getType() {
@@ -45,5 +67,12 @@ public class PtsLastChanges {
 	public void setCoords(String coords) {
 		this.coords = coords;
 	}
+	
+	public String getLock() {
+		return lock;
+	}
 
+	public void setLock(String lock) {
+		this.lock = lock;
+	}
 }
