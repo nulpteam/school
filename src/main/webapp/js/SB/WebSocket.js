@@ -13,7 +13,7 @@ $(document).ready(function(){
 	
 	socket = new WebSocket("ws://localhost:8081");
 	socket.onopen = function () {
-		  socket.send("777"+"&" + userName);
+		  socket.send(gameId+"&" + userName);
 		  console.log("------------------------------Соединение открылось-----------------------------");
 		};
 		socket.onmessage = function (event) {
