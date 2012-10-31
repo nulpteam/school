@@ -3,16 +3,16 @@
  */
 package epam.ph.sg.models.sb;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 public class SbJSLoader {
 
 	//Ліст скріптів
-	private List<String> scripts = new ArrayList<String>();
+	private Set<String> scripts = new LinkedHashSet<String>();
 	
-	public List<String> getScripts() {
+	public Set<String> getScripts() {
 		return scripts;
 	}
 

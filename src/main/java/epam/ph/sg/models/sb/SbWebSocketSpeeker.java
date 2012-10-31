@@ -28,18 +28,31 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 
 	@Override
 	public void onMessage(String message) {
+		
 		String[] temporary = message.split("&");
 		Integer gameID = Integer.parseInt(temporary[0]);
 		String userName = temporary[1];
 		BSPlayer player = new BSPlayer();
 		player.setName(userName);
-		if (GamesList.getGameListBS().get(gameID).getPlayer1() != null) {
-			GamesList.getGameListBS().get(gameID).setPlayer2(player);
-			GamesList.getGameListBS().get(gameID).setConnection2(conn);
-		} else {
-			GamesList.getGameListBS().get(gameID).setPlayer1(player);
-			GamesList.getGameListBS().get(gameID).setConnection1(conn);
-		}
+		log.debug("++++++++++++message++++++++++++++");
+		log.debug(message);
+		log.debug(gameID);
+		log.debug(userName);
+		log.debug("player name= "+player.getName());
+		log.debug("++++++++++++message++++++++++++++");
+		log.debug("++++++++++++error supposed++++++++++++++");
+		log.debug(GamesList.getGameListBS().get(gameID).getPlayer1().getName());
+		log.debug("++++++++++++error supposed++++++++++++++");
+		
+//		if (GamesList.getGameListBS().get(gameID).getPlayer1() != null) {
+//			log.debug("++++++++++++In if++++++++++++++");
+//			GamesList.getGameListBS().get(gameID).setPlayer2(player);
+//			GamesList.getGameListBS().get(gameID).setConnection2(conn);
+//		} else {
+//			log.debug("++++++++++++In else++++++++++++++");
+//			GamesList.getGameListBS().get(gameID).setPlayer1(player);
+//			GamesList.getGameListBS().get(gameID).setConnection1(conn);
+//		}
 		
 		log.debug("++++++++++++Recieved message++++++++++++++");
 		log.debug(message);
