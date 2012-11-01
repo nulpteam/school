@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import epam.ph.sg.models.User;
@@ -85,10 +87,8 @@ public class SBMenuController {
 		}
 		log.debug("-------------------Added JavaScriptss-------------------");
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
-		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
-		sbJSLoader.addScript("SB/SB");
-		sbJSLoader.addScript("SB/js_stringify");
-		sbJSLoader.addScript("SB/WebSocket");
+		sbJSLoader.addScript("jquery");
+		sbJSLoader.addScript("SB/SbGameList");
 		log.debug("<--Test-->");
 		Map<Integer, BSGame> serversMap = GamesList.getGameListBS();
 		for (Map.Entry<Integer, BSGame> entry : serversMap.entrySet())
@@ -98,4 +98,39 @@ public class SBMenuController {
 		model.addAttribute("serverMap", serversMap);
 		return "SB/SbGameList";
 	}
+	
+	
+	
+	/*БРЄД*/
+	@RequestMapping(value = {"/SbGameSelected.html"}, method = RequestMethod.POST)
+	public @ResponseBody String SbGameSelected(@RequestParam("gameID") int gameID,
+	HttpSession session, Model model) {
+		if (session.getAttribute("user") == null) {
+			new HomeController().index(session);
+			return "Login";
+		}
+		log.debug("*/*/*/*/*/*/*/*  GAME ID ="+gameID+"  /*/*/*/*/*/*/*/");
+		BSGame selectedGame = GamesList.getGameListBS().get(gameID);
+				
+		BSPlayer player2 = new BSPlayer();
+		player2.setName(((User)session.getAttribute("user")).getName());
+		selectedGame.setPlayer2(player2);
+		session.setAttribute("BSGame", selectedGame);
+		log.debug("---  START ---");
+		log.debug("--- selectedGame id= "+ selectedGame.getId() +"  ---");
+		log.debug("--- selectedGame player2 name= "+ selectedGame.getPlayer2().getName() +"  ---");
+		log.debug("---   ---");
+		log.debug("---   ---");
+		log.debug("---   ---");
+		log.debug("---   ---");
+		log.debug("---   ---");
+		log.debug("---   ---");
+		log.debug("--- STOP  ---");
+		return "OK";
+	}
+	
+	
+	
+	
+	
 }

@@ -8,7 +8,16 @@ $(document).ready(function(){
 	console.log("SBGAMELISTJS");
 });
 
-function connect(arg) {
-	alert("Game ID = " + arg);
-	location.href = "BsGame.html";
+function connect(ID) {
+	alert("Game ID = " + ID);
+	$.post("SbGameSelected.html", 
+			{ gameID: ID },
+			function(response) {
+				if (response === "OK") {
+					location.href = "BsGame.html";
+				} else {
+					location.href = "index.html";
+				}
+		}
+	);
 };
