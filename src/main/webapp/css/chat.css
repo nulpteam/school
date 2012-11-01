@@ -11,9 +11,11 @@
 
 #chatOutText {
 	border: 1px solid red;
-	overflow: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	height: 390px;
 	width: 300px;
+	position: absolute;
 	margin: 100px 50px;
 }
 
@@ -34,10 +36,15 @@ tr.collor td {
 	color: #009AEE;
 }
 
+.msg {
+	width: 300px;
+}
+
 #chatInText {
 	border: inherit;
 	background: initial;
 	height: 40px;
 	width: 285px;
-	margin: -90px 57px;
+	position: absolute;
+	margin: 501px 58px;
 }
