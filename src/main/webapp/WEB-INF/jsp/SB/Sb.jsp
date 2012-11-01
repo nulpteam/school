@@ -137,6 +137,7 @@
 <input type="button" value="GetM" onClick="getM();"/>
 <input type="button" value="SendM" onClick="sendM();"/>
 <input type="button" value="TestWebSocket" onClick="wtest('999&My String');"/>
+<input type="button" value="Test1" onClick="testWS();"/>
 <div id="IH"></div>
 <%-- 	<% --%>
 <!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->

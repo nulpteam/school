@@ -28,7 +28,7 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 	public void onMessage(String message) {
 
 		String[] temporary = message.split("&");
-		Integer gameID = Integer.parseInt(temporary[0]);
+		Integer gameID = 7;//Integer.parseInt(temporary[0]);
 		String userName = temporary[1];
 		BSPlayer player = new BSPlayer();
 		player.setName(userName);

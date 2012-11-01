@@ -6,6 +6,7 @@
 
 package epam.ph.sg.controllers;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -124,11 +125,33 @@ public class SBMenuController {
 		log.debug("---   ---");
 		log.debug("---   ---");
 		log.debug("---   ---");
-		log.debug("---   ---");
 		log.debug("--- STOP  ---");
 		return "OK";
 	}
 	
+	
+	
+	
+	@RequestMapping(value = {"/Test.html"}, method = RequestMethod.GET)
+	public @ResponseBody String test(HttpSession session, Model model) {
+		if (session.getAttribute("user") == null) {
+			new HomeController().index(session);
+			return "Login";
+		}
+		
+		
+	log.debug("---Sending Websoc to player 2   ---");
+	try {
+		BSGame game = (BSGame)session.getAttribute("BSGame");
+		log.debug("---"+game.getConnection1().hashCode()+"---");
+		log.debug("---"+game.getConnection2().hashCode()+"---");
+		game.getConnection1().sendMessage("Привіт плейер 1");
+		game.getConnection2().sendMessage("Привіт плейер 2");
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	return "OK";
+	}
 	
 	
 	

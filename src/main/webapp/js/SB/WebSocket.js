@@ -26,3 +26,10 @@ $(document).ready(function(){
 function wtest(message) {
 	socket.send(message);
 };
+
+
+function testWS()
+{
+	$.get("Test.html"); 
+}
+
