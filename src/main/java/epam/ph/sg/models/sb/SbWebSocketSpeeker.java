@@ -1,5 +1,7 @@
 package epam.ph.sg.models.sb;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 
@@ -33,7 +35,7 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 		BSPlayer player = new BSPlayer();
 		player.setName(userName);
 
-		if (GamesList.getGameListBS().get(gameID).getPlayer1() != null) {
+		if ((GamesList.getGameListBS().get(gameID).getPlayer1() != null)&&(!GamesList.getGameListBS().get(gameID).getPlayer1().getName().equals(userName))) {
 			GamesList.getGameListBS().get(gameID).setPlayer2(player);
 			GamesList.getGameListBS().get(gameID).setConnection2(conn);
 		} else {
@@ -43,5 +45,12 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 
 		log.debug("++++++++++++Recieved message++++++++++++++");
 		log.debug(message);
+		
+		try {
+			conn.sendMessage("Hello " + userName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
