@@ -39,8 +39,37 @@ public class BSBoard {
 		}
 	}
 	
+	private String[][] BoardtoArray()
+	{
+		String arr[][] = new String[10][10];
+		for(int i=0;i<10;i++)
+		{
+			arr[0][i] = a.get(i);
+			arr[1][i] = b.get(i);
+			arr[2][i] = c.get(i);
+			arr[3][i] = d.get(i);
+			arr[4][i] = e.get(i);
+			arr[5][i] = f.get(i);
+			arr[6][i] = g.get(i);
+			arr[7][i] = h.get(i);
+			arr[8][i] = this.i.get(i);
+			arr[9][i] = j.get(i);
+		}
+		return arr;
+	}
+	
 	public String toString()
 	{
-		return a.get(0)+"test of BSBoard";
+		
+		String[][] arr = BoardtoArray();
+		StringBuilder sb  = new StringBuilder();
+		for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<10;j++)
+			{
+				sb.append(arr[i][j]);
+			}
+		}
+		return sb.toString();
 	}
 }

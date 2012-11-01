@@ -68,7 +68,7 @@ public class SBMenuController {
 			game.setPlayer1(player1);
 			session.setAttribute("BSGame", game);
 			//TODO
-			System.out.println(game);
+			//System.out.println(game);
 			System.out.println(game.getId());
 			System.out.println(game.getPlayer1().getName());
 			// TODO
@@ -92,10 +92,10 @@ public class SBMenuController {
 		sbJSLoader.addScript("SB/SbGameList");
 		log.debug("<--Test-->");
 		Map<Integer, BSGame> serversMap = GamesList.getGameListBS();
-		for (Map.Entry<Integer, BSGame> entry : serversMap.entrySet())
+		/*for (Map.Entry<Integer, BSGame> entry : serversMap.entrySet())
 		{
 		    System.out.println(entry.getKey() + "/" + entry.getValue());
-		}
+		}*/
 		model.addAttribute("serverMap", serversMap);
 		return "SB/SbGameList";
 	}
@@ -118,12 +118,7 @@ public class SBMenuController {
 		selectedGame.setPlayer2(player2);
 		session.setAttribute("BSGame", selectedGame);
 		log.debug("---  START ---");
-		log.debug("--- selectedGame id= "+ selectedGame.getId() +"  ---");
-		log.debug("--- selectedGame player2 name= "+ selectedGame.getPlayer2().getName() +"  ---");
-		log.debug("---   ---");
-		log.debug("---   ---");
-		log.debug("---   ---");
-		log.debug("---   ---");
+		log.debug("--- "+selectedGame+"  ---");
 		log.debug("---   ---");
 		log.debug("--- STOP  ---");
 		return "OK";
@@ -141,15 +136,9 @@ public class SBMenuController {
 		
 		
 	log.debug("---Sending Websoc to player 2   ---");
-	try {
-		BSGame game = (BSGame)session.getAttribute("BSGame");
-		log.debug("---"+game.getConnection1().hashCode()+"---");
-		log.debug("---"+game.getConnection2().hashCode()+"---");
-		game.getConnection1().sendMessage("Привіт плейер 1");
-		game.getConnection2().sendMessage("Привіт плейер 2");
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
+	
+		BSGame game = (BSGame)session.getAttribute("BSGame");	
+	log.debug(game);
 	return "OK";
 	}
 	
