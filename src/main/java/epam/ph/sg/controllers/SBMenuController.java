@@ -6,7 +6,6 @@
 
 package epam.ph.sg.controllers;
 
-import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -139,14 +138,15 @@ public class SBMenuController {
 	
 		BSGame game = (BSGame)session.getAttribute("BSGame");	
 	log.debug(game);
-	log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + game.getConnection2().getProtocol());
+	log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + game.getConnection1());
+	log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + game.getConnection2());
 	
-	try {
-		game.getConnection1().sendMessage("conn1");
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+//	try {
+//		game.getConnection1().sendMessage("conn1");
+//	} catch (IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
 	
 	return "OK";
 	}

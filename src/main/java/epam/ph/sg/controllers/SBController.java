@@ -50,10 +50,12 @@ public class SBController {
 		log.debug("sheeps" + sheeps);
 		JsonParser jp = new JsonParser();
 		BSBoard sc = jp.parseJsonSheepsCoordenates(sheeps);
+		session.getAttribute("BSGame");
+		log.debug(session.getAttribute("BSGame"));
 		return "Server says: array recieved! ;-)"+sc ;
 	}
 
-	@RequestMapping(value = { "/fire.html" }, method = RequestMethod.POST)
+	@RequestMapping(value = {"/fire.html"}, method = RequestMethod.POST)
 	public @ResponseBody
 	String fireReciever(@RequestParam("firePoint") String firePoint,
 			Model model, HttpSession session) {

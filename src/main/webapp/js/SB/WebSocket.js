@@ -18,7 +18,7 @@ $(document).ready(function(){
 		  console.log("------------------------------Соединение открылось-----------------------------");
 		};
 		socket.onmessage = function (event) {
-			  console.log ("Пришло сообщение с содержанием:", event.data);
+			  alert("Пришло сообщение с содержанием: " + event.data);
 		};
 });
 	
