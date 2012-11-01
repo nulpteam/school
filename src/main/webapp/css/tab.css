@@ -1,0 +1,10 @@
+#tab {
+	background-image: url('../images/tab.png');
+	background-repeat: no-repeat;
+	height: 570px;
+	width: 360px;
+	font-family: Tahoma;
+	position: absolute;
+	margin: 0px 150px;
+	z-index: 1;
+}
