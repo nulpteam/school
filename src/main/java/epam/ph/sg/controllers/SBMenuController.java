@@ -139,6 +139,13 @@ public class SBMenuController {
 	
 		BSGame game = (BSGame)session.getAttribute("BSGame");	
 	log.debug(game);
+//	try {
+//		game.getConnection1().sendMessage("conn1");
+//	} catch (IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+	
 	return "OK";
 	}
 	
