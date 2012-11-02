@@ -1,0 +1,48 @@
+#chat {
+	background-image: url('../images/chat.png');
+	background-repeat: no-repeat;
+	height: 439px;
+	width: 271px;
+	font-family: Tahoma;
+	position: absolute;
+	margin: 56px 45px;
+}
+
+#chatOutText {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 350px;
+	width: 271px;
+	position: absolute;
+	margin: 36px 0px;
+}
+
+#chatTable {
+	width: 254px;
+}
+
+tr.collor td {
+	background-color: #e7f1f5;
+}
+
+.time {
+	width: 30px;
+	color: gray;
+}
+
+.sender {
+	color: #009AEE;
+}
+
+.msg {
+	width: 254spx;
+}
+
+#chatInText {
+	border: none;
+	background: initial;
+	height: 35px;
+	width: 255px;
+	position: absolute;
+	margin: 395px 8px;
+}

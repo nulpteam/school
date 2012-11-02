@@ -36,7 +36,7 @@ public class PointsGameController {
 		String userType = session.getAttribute("ptsUserType").toString();
 		PtsGame game = (PtsGame) session.getAttribute("ptsgame"); 
 		
-		game.putPoint(xy, userType);
+		//game.putPoint(xy, userType);
 		
 		return userType;
 	}
@@ -56,19 +56,19 @@ public class PointsGameController {
 		if (game.getClient() == null) {
 			return false;
 		}
-		return game.isUserMove(userType);
+		return false;//game.isUserMove(userType);
 	}
 	
 
-	@RequestMapping(value = "/PointsGetChanges.html", method = RequestMethod.GET)
-	public @ResponseBody
-	PtsLastChanges put(HttpSession session) {
-
-		PtsGame game = (PtsGame) session.getAttribute("ptsgame");
-		String userType = session.getAttribute("ptsUserType").toString();
-		
-		return game.getLasthangesInBoard();
-	}
+//	@RequestMapping(value = "/PointsGetChanges.html", method = RequestMethod.GET)
+//	public @ResponseBody
+//	PtsLastChanges put(HttpSession session) {
+//
+//		PtsGame game = (PtsGame) session.getAttribute("ptsgame");
+//		String userType = session.getAttribute("ptsUserType").toString();
+//		
+//		return game.getLasthangesInBoard();
+//	}
 	
 	@RequestMapping(value = "/WaitingForClient.html", method = RequestMethod.GET)
 	public @ResponseBody

@@ -1,17 +1,40 @@
+/**
+ * @author Gutey Bogdan
+ * 
+ */
+var userName;
+var gameId;
 var socket;
+
+
 $(document).ready(function(){
-//	socket = new WebSocket("ws://localhost:8081");
-//	socket.onopen = function () {
-//		  console.log("------------------------------Соединение открылось-----------------------------");
-//		  socked.send("connection created)");
-//		};
-//		socket.onmessage = function (event) {
-//			  console.log ("Пришло сообщение с содержанием:", event.data);
-//		};
-	alert("ready");
+	console.log("WEBSOCKET");
+	userName = $("#userName").attr("class");
+	gameId = $("#gameID").attr("class");
+	connectionType = $("#ConnectionType").attr("class");
+	
+	console.log(userName);
+	console.log(gameId);
+	console.log(connectionType);
+	
+	socket = new WebSocket("ws://localhost:8081");
+	socket.onopen = function () {
+		  socket.send(gameId + "&" + userName+"&"+connectionType);
+		  console.log("------------------------------Соединение открылось-----------------------------");
+		};
+		socket.onmessage = function (event) {
+			  alert("Пришло сообщение с содержанием: " + event.data);
+		};
 });
 	
 
 function wtest(message) {
 	socket.send(message);
 };
+
+
+function testWS()
+{
+	$.get("Test.html"); 
+}
+

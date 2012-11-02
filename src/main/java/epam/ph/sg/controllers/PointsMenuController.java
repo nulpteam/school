@@ -49,8 +49,8 @@ public class PointsMenuController {
 		}
 
 		user = (User) session.getAttribute("user");
-		server = new PtsPlayer(user.getName());
 		game = new PtsGame();
+		server = new PtsPlayer(user.getName(), game.getId());
 		game.setServer(server);
 
 		PtsGameMap.addGame(game);
@@ -92,8 +92,8 @@ public class PointsMenuController {
 		PtsGame game;
 
 		user = (User) session.getAttribute("user");
-		client = new PtsPlayer(user.getName());
 		game = PtsGameMap.getGames().get(gameId);
+		client = new PtsPlayer(user.getName(), game.getId());
 		game.setClient(client);
 		session.setAttribute("ptsUserType", "client");
 		session.setAttribute("ptsGameId", game.getId());

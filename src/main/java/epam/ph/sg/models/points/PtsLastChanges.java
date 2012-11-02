@@ -2,32 +2,48 @@ package epam.ph.sg.models.points;
 
 public class PtsLastChanges {
 
-	private String userThatChanged;
-	private String coordsOfChanges;
-
+	private String type;
+	private String userType;
+	private String gameId;
+	private String coords;
 
 	public PtsLastChanges() {
-		coordsOfChanges = "none";
-		userThatChanged = "none";
+		type = "lastChanges";
+		userType = "none";
+		gameId = "none";
+		coords = "none";
 	}
 
-	public String getUserThatChanged() {
-		return userThatChanged;
+	public String getType() {
+		return type;
 	}
 
-	public void setUserThatChanged(String userThatChanged) {
-		this.userThatChanged = userThatChanged;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getCoordsOfChanges() {
-		return coordsOfChanges;
+	public String getUserType() {
+		return userType;
 	}
 
-	public void setCoordsOfChanges(String coordsOfChnages) {
-		this.coordsOfChanges = coordsOfChnages;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
+	public String getGameId() {
+		return gameId;
+	}
 
+	public void setGameId(String gameId) {
+		this.gameId = gameId;
+	}
 
+	public String getCoords() {
+		return coords;
+	}
+
+	public void setCoords(String coords) {
+		this.coords = coords;
+	}
 
 }

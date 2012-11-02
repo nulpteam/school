@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import epam.ph.sg.models.sb.ActiveGames;
 import epam.ph.sg.models.sb.BSBoard;
+import epam.ph.sg.models.sb.BSGame;
+import epam.ph.sg.models.sb.Game;
 import epam.ph.sg.models.sb.JsonParser;
 import epam.ph.sg.models.sb.SbJSLoader;
 
@@ -23,50 +26,51 @@ import epam.ph.sg.models.sb.SbJSLoader;
 public class SBController {
 	private static Logger log = Logger.getLogger(SBController.class);
 
-	@RequestMapping(value = "/BsGame.html", method = RequestMethod.GET)
-	public String SbGame(Model model, HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
-
-		log.debug("-------------------Added JavaScriptss-------------------");
-		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
-		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
-		sbJSLoader.addScript("SB/SB");
-		sbJSLoader.addScript("SB/js_stringify");
-		sbJSLoader.addScript("SB/WebSocket");
-		return "SB/Sb";
-	}
+	
 
 	@RequestMapping(value = { "/init_sheeps.html" }, method = RequestMethod.POST)
 	public @ResponseBody
-	String sheeps_init(@RequestParam("sheeps") String sheeps, Model model,
-			HttpSession session) {
+	String sheeps_init(@RequestParam("sheeps") String sheeps,
+			@RequestParam("connectionType") String connectionType,
+			@RequestParam("gameID") int gameID,
+			Model model,	HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
-			// new HomeController().index(session);
-
 		}
 		log.debug("sheeps" + sheeps);
+		log.debug("connectionType " + connectionType);
 		JsonParser jp = new JsonParser();
 		BSBoard sc = jp.parseJsonSheepsCoordenates(sheeps);
+		if(connectionType.equalsIgnoreCase("server"))
+		{
+			ActiveGames.getGame(gameID).getServer().setGameBoard(sc);
+		}
+		if(connectionType.equalsIgnoreCase("client"))
+		{
+			ActiveGames.getGame(gameID).getClient().setGameBoard(sc);
+		}
+		
 		return "Server says: array recieved! ;-)"+sc ;
 	}
 
-	@RequestMapping(value = { "/fire.html" }, method = RequestMethod.POST)
+	
+	
+	
+	
+	
+	@RequestMapping(value = {"/fire.html"}, method = RequestMethod.POST)
 	public @ResponseBody
 	String fireReciever(@RequestParam("firePoint") String firePoint,
+			@RequestParam("connectionType") String connectionType,
+			@RequestParam("gameID") int gameID,
 			Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
 		}
-		
-			return  firePoint;
-		
-
+		String fp = Game.fireCheck(gameID, connectionType, firePoint);
+			return  fp;
 	}
 
 }

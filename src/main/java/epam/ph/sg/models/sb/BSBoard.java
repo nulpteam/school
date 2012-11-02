@@ -39,8 +39,85 @@ public class BSBoard {
 		}
 	}
 	
+	public String[][] BoardtoArray()
+	{
+		String arr[][] = new String[10][10];
+		for(int i=0;i<10;i++)
+		{
+			arr[0][i] = a.get(i);
+			arr[1][i] = b.get(i);
+			arr[2][i] = c.get(i);
+			arr[3][i] = d.get(i);
+			arr[4][i] = e.get(i);
+			arr[5][i] = f.get(i);
+			arr[6][i] = g.get(i);
+			arr[7][i] = h.get(i);
+			arr[8][i] = this.i.get(i);
+			arr[9][i] = j.get(i);
+		}
+		return arr;
+	}
+	
 	public String toString()
 	{
-		return a.get(0)+"test of BSBoard";
+		
+		String[][] arr = BoardtoArray();
+		StringBuilder sb  = new StringBuilder();
+		sb.append("a=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[0][i]).append("?");
+			
+//			for(int j=0;j<10;j++)
+//			{
+//				sb.append(arr[i][j]).append("?");
+//			}
+		}
+		sb.append("\nb=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[1][i]).append("?");		
+		}
+		sb.append("\nc=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[2][i]).append("?");		
+		}
+		sb.append("\nd=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[3][i]).append("?");		
+		}
+		sb.append("\ne=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[4][i]).append("?");		
+		}
+		sb.append("\nf=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[5][i]).append("?");		
+		}
+		sb.append("\ng=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[6][i]).append("?");		
+		}
+		sb.append("\nh=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[7][i]).append("?");		
+		}
+		sb.append("\ni=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[8][i]).append("?");		
+		}
+		sb.append("\nj=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[9][i]).append("?");		
+		}
+		return sb.toString();
 	}
 }

@@ -24,7 +24,7 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
-	<c:import url="../Chat.jsp"></c:import>
+	<c:import url="../Tab/Tab.jsp"></c:import>
 
 	<div class="paperList">
 		<div id="myName" class="namespace" onclick=statShow(this.id);>
@@ -40,15 +40,15 @@
 		<div id="myNameStat" class="statistics" onclick=statHide(this.id);>
 			<table class="statTable">
 				<tr>
-					<td>Wins:</td>
+					<td>${langPack['XO_stat_wins']}</td>
 					<td><c:out value="${myStat.wins}" /></td>
 				</tr>
 				<tr>
-					<td>Losses:</td>
+					<td>${langPack['XO_stat_losses']}</td>
 					<td><c:out value="${myStat.losses}" /></td>
 				</tr>
 				<tr>
-					<td>Total:</td>
+					<td>${langPack['XO_stat_total']}</td>
 					<td><c:out value="${myStat.total}" /></td>
 				</tr>
 			</table>
@@ -56,15 +56,15 @@
 		<div id="opNameStat" class="statistics" onclick=statHide(this.id);>
 			<table class="statTable">
 				<tr>
-					<td>Wins:</td>
+					<td>${langPack['XO_stat_wins']}</td>
 					<td><c:out value="${opStat.wins}" /></td>
 				</tr>
 				<tr>
-					<td>Losses:</td>
+					<td>${langPack['XO_stat_losses']}</td>
 					<td><c:out value="${opStat.losses}" /></td>
 				</tr>
 				<tr>
-					<td>Total:</td>
+					<td>${langPack['XO_stat_total']}</td>
 					<td><c:out value="${opStat.total}" /></td>
 				</tr>
 			</table>

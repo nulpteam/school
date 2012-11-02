@@ -11,6 +11,5 @@
   </servlet-mapping>
   <listener>
     <listener-class>epam.ph.sg.models.sb.JettyContext</listener-class>
-</listener>
-  
+  </listener>
 </web-app>
