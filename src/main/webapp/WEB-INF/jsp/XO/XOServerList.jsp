@@ -21,7 +21,7 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
-	<c:import url="../Chat.jsp"></c:import>
+	<c:import url="../Tab/Tab.jsp"></c:import>
 
 	<div class="paperList">
 		<div class="title">

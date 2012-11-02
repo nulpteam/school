@@ -28,6 +28,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
+	<bean id="personalPageDAOimpl" class="epam.ph.sg.dao.impl.PersonalPageDAOimpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
 	<bean id="defaultLang" class="epam.ph.sg.models.impl.LangModelImpl">
 	    <property name="lang" value="ua"/>
 	</bean>

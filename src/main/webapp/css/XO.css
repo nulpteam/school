@@ -8,14 +8,14 @@
 	color: #5B2FCE;
 }
 
-.title {
+.paperList .title {
 	position: absolute;
 	height: 30px;
 	width: 675px;
 	font-size: 30px;
 }
 
-.button {
+.paperList .button {
 	background-image: url('../images/XO/button.png');
 	background-repeat: no-repeat;
 	height: 35px;
@@ -23,12 +23,12 @@
 	cursor: pointer;
 }
 
-.buttonText {
+.paperList .buttonText {
 	font-size: 18px;
 	color: #FFF;
 }
 
-.namespace {
+.paperList .namespace {
 	position: absolute;
 	background-image: url('../images/XO/namespace.png');
 	background-repeat: no-repeat;
@@ -36,11 +36,11 @@
 	width: 193px;
 }
 
-.name {
+.paperList .name {
 	margin: 5px 20px;
 }
 
-.statistics {
+.paperList .statistics {
 	position: absolute;
 	background-image: url('../images/XO/namespace2.png');
 	background-repeat: no-repeat;
@@ -49,69 +49,69 @@
 	z-index: 2;
 }
 
-.statTable {
+.paperList .statTable {
 	margin: 30px 10px;
 }
 
-#myName {
+.paperList #myName {
 	margin: 30px 110px;
 }
 
-#opName {
+.paperList #opName {
 	margin: 30px 350px;
 }
 
-#myNameStat {
+.paperList #myNameStat {
 	margin: 30px 110px;
 }
 
-#opNameStat {
+.paperList #opNameStat {
 	margin: 30px 350px;
 }
 
-#tick {
+.paperList #tick {
 	position: absolute;
 	margin-top: 5px;
 	margin-left: 475px;
 }
 
-#home {
+.paperList #home {
 	position: absolute;
 	margin-top: 10px;
 	margin-left: 580px;
 	cursor: pointer;
 }
 
-#outText {
+.paperList #outText {
 	position: absolute;
 	margin-top: 70px;
 }
 
-#win {
+.paperList #win {
 	position: absolute;
 	margin-top: 250px;
 	margin-left: 200px;
 }
 
-#menu {
+.paperList #menu {
 	position: absolute;
 	margin: 100px 200px;
 }
 
-#rulles {
+.paperList #rulles {
 	position: absolute;
 	width: 400px;
 	margin-top: 400px;
 	margin-left: 150px;
 }
 
-#field {
+.paperList #field {
 	position: absolute;
 	margin-top: 160px;
 	margin-left: 116px;
 }
 
-#border {
+.paperList #border {
 	position: absolute;
 	margin: 150px 105px;
 }
