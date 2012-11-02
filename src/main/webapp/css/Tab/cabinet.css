@@ -1,0 +1,33 @@
+#cabinet {
+	overflow: auto;
+	height: 439px;
+	width: 271px;
+	position: absolute;
+	margin: 56px 45px;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+#cabinetTable {
+	width: 271px;
+	margin: 0px 0px;
+}
+
+#cabinetTable .param {
+	width: 60px;
+	color: red;
+}
+
+#cabinetTable .button {
+	width: 50px;
+}
+
+#cabinetTable .input {
+	width: 200px;
+}
