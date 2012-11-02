@@ -1,4 +1,7 @@
-
+/**
+ * @author Gutey Bogdan
+ * 
+ */
 var userName;
 var gameId;
 var socket;

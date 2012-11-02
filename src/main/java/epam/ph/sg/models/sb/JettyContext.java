@@ -1,3 +1,7 @@
+/**
+ * @author Gutey Bogdan
+ * 
+ */
 package epam.ph.sg.models.sb;
 
 import javax.servlet.ServletContextEvent;

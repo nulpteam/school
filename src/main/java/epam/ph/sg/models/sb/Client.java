@@ -1,3 +1,7 @@
+/**
+ * @author Gutey Bogdan
+ * 
+ */
 package epam.ph.sg.models.sb;
 
 import org.eclipse.jetty.websocket.WebSocket.Connection;

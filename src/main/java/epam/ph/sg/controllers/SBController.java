@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import epam.ph.sg.models.sb.ActiveGames;
 import epam.ph.sg.models.sb.BSBoard;
 import epam.ph.sg.models.sb.BSGame;
+import epam.ph.sg.models.sb.Game;
 import epam.ph.sg.models.sb.JsonParser;
 import epam.ph.sg.models.sb.SbJSLoader;
 
@@ -50,9 +51,6 @@ public class SBController {
 			ActiveGames.getGame(gameID).getClient().setGameBoard(sc);
 		}
 		
-		/*BSGame game = (BSGame)session.getAttribute("BSGame");
-		game.setBoard1(sc);*/
-		//log.debug("/-/-/-/-/-/-/-/-/-/-/-/-/-/-"+game.getBoard1());
 		return "Server says: array recieved! ;-)"+sc ;
 	}
 
@@ -64,12 +62,15 @@ public class SBController {
 	@RequestMapping(value = {"/fire.html"}, method = RequestMethod.POST)
 	public @ResponseBody
 	String fireReciever(@RequestParam("firePoint") String firePoint,
+			@RequestParam("connectionType") String connectionType,
+			@RequestParam("gameID") int gameID,
 			Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
 		}
-			return  firePoint;
+		String fp = Game.fireCheck(gameID, connectionType, firePoint);
+			return  fp;
 	}
 
 }

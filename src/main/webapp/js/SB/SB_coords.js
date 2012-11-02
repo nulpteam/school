@@ -415,18 +415,34 @@ function fire(point) {
 	console.log(p);
 	p = p[1] + '' + p[4];
 
-	rand = Math.floor((Math.random() * 5) + 1);
-	$(point).html(
-			"<img id='fireP" + p + "' src='images/SB/firePoint" + rand
-					+ ".png'>");
-	// $('#fireP84').attr('src','images/SB/01.png');
 	$.post("fire.html", {
-		firePoint : p
+		firePoint : p,
+		gameID : $("#gameID").attr("class"),
+		connectionType : $("#ConnectionType").attr("class")
 	}, function(data) {
-		
-	alert("server says "+data);
+		if(data==="00")
+			{
+				rand = Math.floor((Math.random() * 5) + 1);
+				$(point).html(
+						"<img id='fireP" + p + "' src='images/SB/missPoint" + rand
+								+ ".png'>");
+				}
+		else
+			{
+				rand = Math.floor((Math.random() * 5) + 1);
+				$(point).html(
+						"<img id='fireP" + p + "' src='images/SB/firePoint" + rand
+								+ ".png'>");
+			}
+	
 		
 	});
+	
+	
+	
+	
+	// $('#fireP84').attr('src','images/SB/01.png');
+	
 }
 
 function sbGame() {

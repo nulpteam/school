@@ -1,3 +1,7 @@
+/**
+ * @author Gutey Bogdan
+ * 
+ */
 package epam.ph.sg.models.sb;
 
 import org.eclipse.jetty.websocket.WebSocket.Connection;
@@ -30,8 +34,8 @@ public class Server {
 	public void setGameBoard(BSBoard gameBoard) {
 		this.gameBoard = gameBoard;
 	}
-	public String toString()
-	{
-		return player+"\n"+gameBoard;
+
+	public String toString() {
+		return player + "\n" + gameBoard;
 	}
 }

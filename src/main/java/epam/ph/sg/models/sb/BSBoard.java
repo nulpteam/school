@@ -39,7 +39,7 @@ public class BSBoard {
 		}
 	}
 	
-	private String[][] BoardtoArray()
+	public String[][] BoardtoArray()
 	{
 		String arr[][] = new String[10][10];
 		for(int i=0;i<10;i++)

@@ -214,7 +214,7 @@ public class SBMenuController {
 			return "Login";
 		}
 		
-		
+		//!
 		Game game = ActiveGames.getGame(1);
 		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 				+ game.getServer().getConn());
