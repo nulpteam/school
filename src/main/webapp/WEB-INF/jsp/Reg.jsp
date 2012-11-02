@@ -22,12 +22,18 @@
 <body>
 
 	<div id="bg">
-
+        
 		<div id="reg_title">
 			<b><c:out value="${langPack['Register_page_title']}" /></b>
 		</div>
 		<div id="reg_title2">
 			<b><c:out value="${langPack['Register_page_title2']}" /></b>
+		</div>
+		<div id="warn_message">
+		    <c:if test="${msg.alreadyReg=='true'}">
+		        <b><c:out value="${langPack['User_exist']}" /></b>
+		    </c:if>
+		    
 		</div>
 		<div id="regform">
 

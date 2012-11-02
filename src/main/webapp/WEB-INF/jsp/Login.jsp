@@ -25,9 +25,12 @@
 		<div id="login_title">
 			<b><c:out value="${langPack['Who_are_you']}" /></b>
 		</div>
+		<div id="logpage_warn_message">
+		    <c:if test="${msg.noUserFound=='true'}">
+            <b><c:out value="${langPack['User_not_found']}" /></b>
+            </c:if>
+        </div>
 		<div id="loginform">
-
-
 			<form action="Login.html" method="POST" id="myform">
 				<p id="name_text">
 					<b><label><c:out value="${langPack['Name']}" /></label></b>
@@ -48,17 +51,20 @@
 						value="<c:out value="${langPack['Login']}"/>">
 				</div>
 			</form>
-			<div class="button" id="register_button" onclick=register();><center>
-				<c:out value="${langPack['Register']}" /></center>
+			<div class="button" id="register_button" onclick=register();>
+				<center>
+					<c:out value="${langPack['Register']}" />
+				</center>
 			</div>
 		</div>
 		<div id="dialog_text">
 			<p></p>
 		</div>
 		<div id="language_bar">
-			<img id="ua" src="images/flag_ua.png" name="ua" onclick=language(this);>
-			<img id="ru" src="images/flag_ru.png" name="ru" onclick=language(this);> 
-			<img id="us" src="images/flag_us.png" name="us" onclick=language(this);>
+			<img id="ua" src="images/flag_ua.png" name="ua"
+				onclick=language(this);> <img id="ru" src="images/flag_ru.png"
+				name="ru" onclick=language(this);> <img id="us"
+				src="images/flag_us.png" name="us" onclick=language(this);>
 		</div>
 
 		<!-- 		<!div> -->

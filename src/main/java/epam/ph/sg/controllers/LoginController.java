@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import epam.ph.sg.models.LangModel;
+import epam.ph.sg.models.Message;
 import epam.ph.sg.models.User;
 import epam.ph.sg.models.UserCheck;
 import epam.ph.sg.models.impl.LangModelImpl;
@@ -27,6 +28,9 @@ public class LoginController {
 			@RequestParam("password") String pass, HttpServletRequest request,
 			Model model, HttpSession session) {
 
+		session.removeAttribute("msg");
+		
+		
 		User user = UserCheck.check(name, pass);
 		if (user != null) {
 			model.addAttribute(user);
@@ -40,6 +44,9 @@ public class LoginController {
 		} else {
 			log.debug("Login/Pass is not correct: Login->" + name + " Pass->"
 					+ pass + " host-> " + request.getHeader("host"));
+			Message msg = new Message();
+			msg.setNoUserFound(true);
+			session.setAttribute("msg", msg);
 			return "Login";
 		}
 	}
