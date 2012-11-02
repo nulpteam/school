@@ -63,12 +63,60 @@ public class BSBoard {
 		
 		String[][] arr = BoardtoArray();
 		StringBuilder sb  = new StringBuilder();
+		sb.append("a=");
 		for(int i=0;i<10;i++)
 		{
-			for(int j=0;j<10;j++)
-			{
-				sb.append(arr[i][j]);
-			}
+			sb.append(arr[0][i]).append("?");
+			
+//			for(int j=0;j<10;j++)
+//			{
+//				sb.append(arr[i][j]).append("?");
+//			}
+		}
+		sb.append("\nb=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[1][i]).append("?");		
+		}
+		sb.append("\nc=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[2][i]).append("?");		
+		}
+		sb.append("\nd=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[3][i]).append("?");		
+		}
+		sb.append("\ne=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[4][i]).append("?");		
+		}
+		sb.append("\nf=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[5][i]).append("?");		
+		}
+		sb.append("\ng=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[6][i]).append("?");		
+		}
+		sb.append("\nh=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[7][i]).append("?");		
+		}
+		sb.append("\ni=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[8][i]).append("?");		
+		}
+		sb.append("\nj=");
+		for(int i=0;i<10;i++)
+		{
+			sb.append(arr[9][i]).append("?");		
 		}
 		return sb.toString();
 	}

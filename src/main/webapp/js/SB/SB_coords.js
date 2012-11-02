@@ -328,9 +328,11 @@ function sendM() {
 		url : 'init_sheeps.html',
 		type : 'POST',
 		data : {
-			sheeps : Send
+			sheeps : Send,
+			connectionType: $('#ConnectionType').attr('class'),
+			gameID: $('#gameID').attr('class')
 		},
-		dataType : 'json',
+		//dataType : 'json',
 		success : function(data) {
 			// alert(data);
 		},

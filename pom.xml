@@ -5,7 +5,7 @@
 	<artifactId>School</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mvn_jsp Maven Webapp</name>
+	<name>SchoolGames</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>

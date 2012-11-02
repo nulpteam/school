@@ -11,14 +11,14 @@
 <title><c:out value="${langPack['Sb_ConnectToGame']}"/></title>
 </head>
 <body>
-	<div id="gameID" class="${BSGame.id}"></div>
+	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	ТУТ Є СПИСОК ДОСТУПНИХ ІГР "МОРСЬКОГО БОЮ"!!
 	<c:out value="${langPack['Sb_ExistsGames']}"/>
 	<div>
 	<c:forEach items="${serverMap}" var="server">
 			<div>
-				<input type="button" value="<c:out value="${server.value.player1.name}"/>" onclick="connect(<c:out value="${server.key}"/>);">
+				<input type="button" value="<c:out value="${game.server.player.name}"/>" onclick="connect(<c:out value="${server.key}"/>);">
 			</div>
 	</c:forEach>
 	<b>Тут треба переробити!!!!! <br>При створенні гри, вона назавжди залишається в мапі створених ігор. (тому шо мапа статична).<br>

@@ -19,8 +19,9 @@
 <title><c:out value="${langPack['Sb_title']}" /></title>
 </head>
 <body>
-	<div id="gameID" class="${BSGame.id}"></div>
+	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
+	<div id="ConnectionType" class="${connectionType}"></div>
 	<div class="content">
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
@@ -136,7 +137,7 @@
 <div class=debug>
 <input type="button" value="GetM" onClick="getM();"/>
 <input type="button" value="SendM" onClick="sendM();"/>
-<input type="button" value="TestWebSocket" onClick="wtest('999&My String');"/>
+<input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/>
 <input type="button" value="Test1" onClick="testWS();"/>
 <div id="IH"></div>
 <%-- 	<% --%>
