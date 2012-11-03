@@ -36,7 +36,7 @@
 				<c:out value="${langPack['Battleship']}" />
 			</center>
 		</div>
-		<div id="reversi_button" class="button" onclick=reversi();>
+		<div id="reversi_button" class="button" onclick=reversy();>
 			<center>
 				<c:out value="${langPack['Reversi']}" />
 			</center>

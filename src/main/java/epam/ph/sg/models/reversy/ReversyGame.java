@@ -7,9 +7,19 @@ package epam.ph.sg.models.reversy;
  */
 
 public class ReversyGame {
+	private int id;
 	private ReversyPlayer player1;
 	private ReversyPlayer player2;
 	private ReversyBoard board;
+	private String playerNameToMove;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public ReversyPlayer getPlayer1() {
 		return player1;
@@ -33,6 +43,14 @@ public class ReversyGame {
 
 	public void setBoard(ReversyBoard board) {
 		this.board = board;
+	}
+
+	public String getPlayerNameToMove() {
+		return playerNameToMove;
+	}
+
+	public void setPlayerNameToMove(String playerNameToMove) {
+		this.playerNameToMove = playerNameToMove;
 	}
 
 }

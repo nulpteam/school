@@ -6,9 +6,11 @@ package epam.ph.sg.controllers;
  *
  */
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class ReversyMenuController {
+	private static Logger log = Logger.getLogger(ReversyController.class);
 
 }

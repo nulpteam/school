@@ -6,8 +6,8 @@ function BS() {
 	window.location.href = "Sb.html";
 }
 
-function reversi() {
-	window.location.href = "Reversy.html";
+function reversy() {
+	window.location.href = "ReversyMenu.html";
 }
 
 function points() {
