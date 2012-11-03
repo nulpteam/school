@@ -8,7 +8,7 @@ public class PtsClientMessage {
 	private String coords;
 	private String clientName;
 	private String serverName;
-	private String lock;
+	private boolean lock;
 
 	public PtsClientMessage() {
 		type = "none";
@@ -17,7 +17,7 @@ public class PtsClientMessage {
 		coords = "none";
 		clientName = "none";
 		serverName = "none";
-		lock = "none";
+		lock = false;
 	}
 
 	public String getClientName() {
@@ -68,11 +68,11 @@ public class PtsClientMessage {
 		this.coords = coords;
 	}
 	
-	public String getLock() {
+	public boolean getLock() {
 		return lock;
 	}
 
-	public void setLock(String lock) {
+	public void setLock(boolean lock) {
 		this.lock = lock;
 	}
 }

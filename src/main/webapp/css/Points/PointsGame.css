@@ -6,8 +6,8 @@ body {
 
 #bg {
 	background-image: url('../../images/Points/background.png');
-	width: 620px;
-	height: 725px;
+	width: 605px;
+	height: 705px;
 	margin: 50px auto;
 }
 
@@ -25,16 +25,21 @@ body {
 	text-align: center;
 }
 
-#table {
+#game_table {
 	position: absolute;
 	margin: 130px 50px;
 }
 
-#table tr td {
+#canvas {
+	position: absolute;
+	margin: 130px 50px;
+}
+
+#table1 tr td {
 	width:20px;
 }
 
-#table tr {
+#table1 tr {
 	height:20px;
 }
 

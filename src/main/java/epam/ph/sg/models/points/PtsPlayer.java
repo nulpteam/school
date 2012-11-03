@@ -7,16 +7,29 @@ public class PtsPlayer {
 	private String name;
 	private Connection conn;
 	private String gameId;
+	private boolean lock;
 	
+	
+
 	public PtsPlayer() {
-		name = "undefined";
+		name = "";
 		conn = null;
 		gameId = "undefined";
+		lock = true;
 	}
 
 	public PtsPlayer(String name, String gameId) {
 		this.name = name;
 		this.gameId = gameId;
+		lock = true;
+	}
+	
+	public boolean isLock() {
+		return lock;
+	}
+
+	public void setLock(boolean lock) {
+		this.lock = lock;
 	}
 
 	public Connection getConn() {

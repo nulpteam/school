@@ -22,7 +22,6 @@ public class PtsWebSocketSpeeker implements WebSocket.OnTextMessage {
 	public void onOpen(Connection conn) {
 		log.debug("Socket created");
 		this.conn = conn;
-		System.out.println(this.conn);
 
 	}
 
