@@ -36,7 +36,7 @@
 						
 							<td class="chip" id="X${j.count-1}Y${i.count-1}"
 								onClick=putPoint(this)><img
-								src="images/Infection/empty_cell.png"></td>
+								src=""></td>
 						</c:forEach>
 					</tr>
 				</c:forEach>
