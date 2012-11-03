@@ -9,6 +9,7 @@
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/Login.js" type="text/javascript"></script>
+<script src="js/menu.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript"
 	src="js/jquery.validate.js"></script>
 <script language="JavaScript" type="text/javascript"
@@ -25,6 +26,9 @@
         
 		<div id="reg_title">
 			<b><c:out value="${langPack['Register_page_title']}" /></b>
+		</div>
+		<div>
+		    <img id="back_button" src="images/back_button.png" name="back_button" onclick=loginRedirect()>
 		</div>
 		<div id="reg_title2">
 			<b><c:out value="${langPack['Register_page_title2']}" /></b>

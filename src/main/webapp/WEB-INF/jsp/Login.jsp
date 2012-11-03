@@ -26,10 +26,10 @@
 			<b><c:out value="${langPack['Who_are_you']}" /></b>
 		</div>
 		<div id="logpage_warn_message">
-		    <c:if test="${msg.noUserFound=='true'}">
-            <b><c:out value="${langPack['User_not_found']}" /></b>
-            </c:if>
-        </div>
+			<c:if test="${msg.noUserFound=='true'}">
+				<b><c:out value="${langPack['User_not_found']}" /></b>
+			</c:if>
+		</div>
 		<div id="loginform">
 			<form action="Login.html" method="POST" id="myform">
 				<p id="name_text">

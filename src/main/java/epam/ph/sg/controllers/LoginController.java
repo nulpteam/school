@@ -22,6 +22,12 @@ import epam.ph.sg.models.impl.LangModelImpl;
 @SessionAttributes("user")
 public class LoginController {
 	private static Logger log = Logger.getLogger(LoginController.class);
+	
+	@RequestMapping(value ="/Login.html")
+	public String loginpage(HttpServletRequest request,
+			Model model, HttpSession session) {
+		return "Login";
+	}
 
 	@RequestMapping(value = { "/Login.html", "/Login" }, method = RequestMethod.POST)
 	public String login(@RequestParam("user_name") String name,

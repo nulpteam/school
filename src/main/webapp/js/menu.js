@@ -23,6 +23,9 @@ function cabinet() {
 	//window.location.href = "storeRoom.html";
 }
 
+function loginRedirect(){
+	window.location.href = "Login.html";
+}
 
 
 function hallOfFame() {
