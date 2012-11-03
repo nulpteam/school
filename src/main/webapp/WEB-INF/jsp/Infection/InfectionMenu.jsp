@@ -8,10 +8,11 @@
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
 
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
+<script src="js/Infection/InfectionMenu.js" type="text/javascript"></script>
 <title>School Games</title>
 </head>
 <body>
-	INFECTION GAME MENU
+    Infection Menu
+	<input type="button" value="New Game" id="create" onClick=create()>
 </body>
 </html>

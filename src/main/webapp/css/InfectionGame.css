@@ -1,0 +1,46 @@
+#bg {
+	background-image: url('../images//Infection/infection_game_background.png');
+	background-repeat: no-repeat;
+	width: 600px;
+	height: 700px;
+	margin: 25px auto;
+	
+	box-shadow: 0 0 5px black; /* Параметры тени */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Safari и Chrome */
+	
+}
+
+#infection_title{
+	font-size: 35px;
+	color:#0000FF;
+	position:absolute;
+	margin:40px 160px;
+}
+
+#table tr td {
+	width:40px;
+}
+
+#table tr {
+	height:40px;
+}
+
+.chip {
+	background-image: url('../images//images/Infection/empty_cell.png');
+} 
+.chip:hover{
+	background-image: url('../images//Infection/hover_cell.png');
+}
+
+#game_table {
+	position:absolute;
+	margin:155px 116px;
+	width:280px;
+	height:280px;
+	box-shadow: 0 0 5px black; /* Параметры тени */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Safari и Chrome */
+}

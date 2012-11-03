@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class InfectionController {
 
 	@RequestMapping("Infection.html")
-	public String log() {
+	public String menu() {
 		return "Infection/InfectionMenu";
+	}
+	
+	@RequestMapping("InfectionGame.html")
+	public String game() {
+		return "Infection/InfectionGame";
 	}
 }

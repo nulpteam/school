@@ -351,7 +351,7 @@
 	position: absolute;
 	background-image: url('../images/back_button.png');
 	margin: 167px 420px;
-	border: 2px solid grey;
+	border: 2px solid #CD853F;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 5px;
 	-khtml-border-radius: 10px;
