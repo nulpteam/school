@@ -52,6 +52,25 @@ public class PtsJsonParser {
 		return jsonValue;
 	}
 	
+public String convertGameInfoMessageToJson(PtsGameInfoMessage message) {
+		
+		String jsonValue = null;
+		
+		try {
+			
+			jsonValue = mapper.writeValueAsString(message);
+			
+		} catch (JsonGenerationException e) {
+			 logger.error(e.getMessage());
+		} catch (JsonMappingException e) {
+			logger.error(e.getMessage());
+		} catch (IOException e) {
+			logger.error(e.getMessage());
+		}
+		
+		return jsonValue;
+	}
+	
 	/**Можливо знадобиться
 	 * TODO
 	 */
