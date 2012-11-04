@@ -1,10 +1,13 @@
 #cabinet {
+	background: black;
 	overflow: auto;
 	height: 439px;
 	width: 271px;
 	position: absolute;
 	margin: 56px 45px;
 	cursor: pointer;
+	font-size: 16px;
+	color: white;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -14,20 +17,30 @@
 	user-select: none;
 }
 
-#cabinetTable {
-	width: 271px;
-	margin: 0px 0px;
+#tab .text {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-#cabinetTable .param {
-	width: 60px;
-	color: red;
-}
-
-#cabinetTable .button {
-	width: 50px;
-}
-
-#cabinetTable .input {
+#tab .input {
+	margin-left: 20px;
 	width: 200px;
+	border-color: chartreuse;
+	background: initial;
+}
+
+#tab .button {
+	height: 40px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: solid 3px;
+	border-radius: 10px;
+	border-color: chartreuse;
+	background-color: 
+}
+
+#tab #stat #list{
+	margin-left: 10px;
+	margin-right: 10px;
 }

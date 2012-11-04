@@ -1,5 +1,7 @@
 package epam.ph.sg.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.cabinet.Cabinet;
 import epam.ph.sg.models.User;
+import epam.ph.sg.models.xo.XOStatistics;
 
 @Controller
 public class CabinetController {
@@ -35,5 +38,15 @@ public class CabinetController {
 		} else {
 			return false;
 		}
+	}
+	
+	@RequestMapping(value = "/GetXOStatistics.html", method = RequestMethod.POST)
+	public @ResponseBody XOStatistics[] getXOstat(){
+		List<XOStatistics> list = XOStatistics.getAllStatistics();
+		XOStatistics[] array = new XOStatistics[list.size()];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = list.get(i);
+		}
+		return array;
 	}
 }

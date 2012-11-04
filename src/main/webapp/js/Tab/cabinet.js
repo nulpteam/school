@@ -1,21 +1,83 @@
+var xoStatSize;
 function chatStart() {
-	$('#cabinetTable #name').hide();
-	$('#cabinetTable #oldPass').hide();
-	$('#cabinetTable #newPass').hide();
-	$('#cabinetTable #pass').hide();
+	$('#tab #name #edit').hide();
+	$('#tab #pass #edit').hide();
+	$('#tab #stat #list').hide();
+	$.post('GetXOStatistics.html', function(resp) {
+		var start = '<tr><td>';
+		var midl = '</td><td>';
+		var end = '</td></tr>';
+		xoStatSize = resp.length;
+		for ( var i = 0; i < resp.length; i++) {
+			$('#tab #stat #list').append(
+					start + resp[i].name + midl + resp[i].wins + midl
+							+ resp[i].losses + midl + resp[i].total + end);
+		}
+	});
 }
 
-var nameVisible = false;
-function nameButton() {
-	if (nameVisible) {
-		$('#cabinetTable #name').hide();
-		nameVisible = false;
+function buttonOver(id) {
+	$('#tab #' + id).css({
+		borderColor : "cornflowerBlue"
+	});
+}
+
+function buttonOut(id) {
+	$('#tab #' + id).css({
+		borderColor : "chartreuse"
+	});
+}
+
+var nameEditable = false;
+function nameEdit() {
+	if (nameEditable) {
+		$('#tab #name').animate({
+			height : "40px"
+		}, 500);
+		$('#tab #name #edit').hide();
+		nameEditable = false;
 	} else {
-		$('#cabinetTable #name').show();
-		nameVisible = true;
+		$('#tab #name').animate({
+			height : "100px"
+		}, 500);
+		$('#tab #name #edit').show();
+		nameEditable = true;
 	}
 }
 
+var passEditable = false;
+function passEdit() {
+	if (passEditable) {
+		$('#tab #pass').animate({
+			height : "40px"
+		}, 500);
+		$('#tab #pass #edit').hide();
+		passEditable = false;
+	} else {
+		$('#tab #pass').animate({
+			height : "165px"
+		}, 500);
+		$('#tab #pass #edit').show();
+		passEditable = true;
+	}
+}
+
+var statVisible = false;
+function statShowHide() {
+	if (statVisible) {
+		$('#tab #stat').animate({
+			height : "40px"
+		}, 500);
+		$('#tab #stat #list').hide();
+		statVisible = false;
+	} else {
+		$('#tab #stat').animate({
+			height : 70 + xoStatSize * 23 + "px"
+		}, 500);
+		$('#tab #stat #list').show();
+		statVisible = true;
+	}
+}
 function nameButtonDo() {
 	var name = $('#name input').val();
 	$.post("ChangeName.html", {
@@ -26,28 +88,13 @@ function nameButtonDo() {
 	nameButton();
 }
 
-var passVisible = false;
-function passButton() {
-	if (passVisible) {
-		$('#cabinetTable #oldPass').hide();
-		$('#cabinetTable #newPass').hide();
-		$('#cabinetTable #pass').hide();
-		passVisible = false;
-	} else {
-		$('#cabinetTable #oldPass').show();
-		$('#cabinetTable #newPass').show();
-		$('#cabinetTable #pass').show();
-		passVisible = true;
-	}
-}
-
 function passButtonDo() {
 	var oldPass = $('#oldPass input').val();
 	var newPass = $('#newPass input').val();
 	$.post("ChangePass.html", {
 		oldPass : oldPass,
 		newPass : newPass
-	}, function(resp){
+	}, function(resp) {
 		if (resp) {
 			alert('пароль змінено з ' + oldPass + ' на ' + newPass);
 			passButton();

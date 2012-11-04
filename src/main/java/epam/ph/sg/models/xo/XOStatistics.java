@@ -1,5 +1,7 @@
 package epam.ph.sg.models.xo;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -20,18 +22,24 @@ public class XOStatistics {
 	public static void lose(int id) {
 		dao.lose(id);
 	}
-	
+
 	public static XOStatistics getUserStatistics(int id) {
 		return dao.getUserStatistics(id);
 	}
-	
-	public static void main(String[] args) {
-		XOStatistics stat = getUserStatistics(2);
-		System.out.println(stat.getLosses()+" "+stat.getWins());
-	}
-	
+
 	public static List<XOStatistics> getAllStatistics() {
-		return dao.getAllStatistics();
+		List<XOStatistics> list = dao.getAllStatistics();
+		Collections.sort(list, new Comparator<XOStatistics>() {
+			@Override
+			public int compare(XOStatistics o1, XOStatistics o2) {
+				if (o1.getTotal() > o2.getTotal())
+					return -1;
+				if (o1.getTotal() < o2.getTotal())
+					return 1;
+				return 0;
+			}
+		});
+		return list;
 	}
 
 	private String name;
