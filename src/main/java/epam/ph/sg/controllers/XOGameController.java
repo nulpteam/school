@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
+import epam.ph.sg.models.xo.XO;
 import epam.ph.sg.models.xo.XOBox;
 import epam.ph.sg.models.xo.XOPlayer;
 import epam.ph.sg.models.xo.XOStatistics;
@@ -46,7 +47,10 @@ public class XOGameController {
 	public @ResponseBody
 	int check(HttpSession session) {
 		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
-		return xo.check();
+		if (xo.getId() == xo.getGame().getStatus()) {
+			return XO.NO_CHANGES;
+		} else
+			return xo.getGame().getStatus();
 	}
 
 	@RequestMapping(value = "/XOGet.html")

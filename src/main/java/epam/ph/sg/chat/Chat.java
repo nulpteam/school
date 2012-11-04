@@ -1,4 +1,4 @@
-package epam.ph.sg.models.chat;
+package epam.ph.sg.chat;
 
 /**
  * @author Paul Michael T.

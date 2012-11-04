@@ -28,13 +28,8 @@ public class XOBox {
 	 * @param status
 	 *            - XO.EMPTY, XO.X or XO.O
 	 */
-	public int setStatus(int status) {
-		if (this.status == XO.EMPTY) {
-			this.status = status;
-			return XO.DONE;
-		} else {
-			return XO.NOT_EMPTY;
-		}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	/**

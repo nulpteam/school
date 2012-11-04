@@ -35,6 +35,8 @@ public class XOPlayer {
 			return XO.WITHOUT_CLIENT;
 		} else if (game.getStatus() == XO.OUT) {
 			return XO.OUT;
+		} else if (game.getXoFields().getBox(x, y).getStatus() != XO.EMPTY){
+			return XO.NOT_EMPTY;
 		} else {
 			return put(x, y);
 		}
@@ -42,15 +44,7 @@ public class XOPlayer {
 
 	private int put(int x, int y) {
 		XOBox box = game.getXoFields().getBox(x, y);
-		int result = box.setStatus(status);
-		if (result == XO.NOT_EMPTY) {
-			return XO.NOT_EMPTY;
-		} else {
-			return checkAI(box);
-		}
-	}
-
-	private int checkAI(XOBox box) {
+		box.setStatus(status);
 		int result = game.getAi().checkout(box);
 		if (result == XO.GAME_OVER) {
 			game.gameOver(id);
@@ -61,18 +55,6 @@ public class XOPlayer {
 			game.setLastBox(box);
 			return result;
 		}
-	}
-
-	/**
-	 * Status of the game checker
-	 * 
-	 * @return Game Status
-	 */
-	public int check() {
-		if (id == game.getStatus()) {
-			return XO.NO_CHANGES;
-		} else
-			return game.getStatus();
 	}
 
 	/**

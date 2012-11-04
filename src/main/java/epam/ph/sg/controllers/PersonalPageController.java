@@ -1,5 +1,8 @@
 package epam.ph.sg.controllers;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,18 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import epam.ph.sg.cabinet.Cabinet;
 import epam.ph.sg.models.User;
 import epam.ph.sg.models.xo.XOStatistics;
+import epam.ph.sg.pp.PersonalPage;
 
 @Controller
-public class CabinetController {
+public class PersonalPageController {
 
 	@RequestMapping(value = "/ChangeName.html", method = RequestMethod.POST)
 	public @ResponseBody
 	boolean changeName(@RequestParam("name") String name, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		Cabinet.changeName(user.getId(), name);
+		PersonalPage.changeName(user.getId(), name);
 		user.setName(name);
 		return true;
 	}
@@ -32,7 +35,7 @@ public class CabinetController {
 			@RequestParam("newPass") String newPass, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user.getPass().equals(oldPass)) {
-			Cabinet.changePass(user.getId(), newPass);
+			PersonalPage.changePass(user.getId(), newPass);
 			user.setPass(newPass);
 			return true;
 		} else {

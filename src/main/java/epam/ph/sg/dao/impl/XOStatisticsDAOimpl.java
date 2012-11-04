@@ -1,5 +1,8 @@
 package epam.ph.sg.dao.impl;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;

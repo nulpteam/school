@@ -1,12 +1,12 @@
 package epam.ph.sg.dao;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.util.List;
 
 import epam.ph.sg.models.xo.XOStatistics;
 
-/**
- * @author Paul Michael T.
- */
 public interface XOStatisticsDAO {
 	/**
 	 * Record winning in the DB

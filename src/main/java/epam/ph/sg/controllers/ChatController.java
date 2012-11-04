@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import epam.ph.sg.chat.Chat;
+import epam.ph.sg.chat.ChatUser;
+import epam.ph.sg.chat.Message;
 import epam.ph.sg.models.User;
-import epam.ph.sg.models.chat.Chat;
-import epam.ph.sg.models.chat.ChatUser;
-import epam.ph.sg.models.chat.Message;
 
 @Controller
 public class ChatController {

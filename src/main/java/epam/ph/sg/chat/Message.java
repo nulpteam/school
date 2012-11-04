@@ -1,4 +1,4 @@
-package epam.ph.sg.models.chat;
+package epam.ph.sg.chat;
 
 /**
  * @author Paul Michael T.
@@ -37,9 +37,5 @@ public class Message {
 
 	public String getText() {
 		return text;
-	}
-
-	public static void main(String[] args) {
-		System.out.println(new Message(null, null).getTime());
 	}
 }

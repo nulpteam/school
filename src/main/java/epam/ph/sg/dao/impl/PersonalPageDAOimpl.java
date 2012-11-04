@@ -1,5 +1,8 @@
 package epam.ph.sg.dao.impl;
 
+/**
+ * @author Paul Michael T.
+ */
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import epam.ph.sg.dao.PersonalPageDAO;

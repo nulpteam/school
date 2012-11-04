@@ -1,11 +1,14 @@
-package epam.ph.sg.cabinet;
+package epam.ph.sg.pp;
 
+/**
+ * @author Paul Michael T.
+ */
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import epam.ph.sg.dao.PersonalPageDAO;
 
-public class Cabinet {
+public class PersonalPage {
 	private static ApplicationContext ctx = new ClassPathXmlApplicationContext(
 			"springconfig.xml");
 	private static PersonalPageDAO dao = (PersonalPageDAO) ctx

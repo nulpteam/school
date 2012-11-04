@@ -7,7 +7,6 @@ public class XO {
 	public static final int X = -8;
 	public static final int O = -9;
 	public static final int EMPTY = 0;
-	public static final int DONE = 0;
 
 	public static final int NOT_YOUR_TURN = -1;
 	public static final int NOT_EMPTY = -2;

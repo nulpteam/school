@@ -23,48 +23,31 @@ public class XOMenuController {
 
 	@RequestMapping(value = "/XO.html")
 	public String xo(HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			return "redirect:/index.html";
-		} else
-			return "XO/XOMenu";
+		return "XO/XOMenu";
 	}
 
 	@RequestMapping(value = "/XOServerList.html")
 	public String serverList(HttpSession session, Model model) {
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			return "redirect:/index.html";
-		} else {
-			model.addAttribute("serverMap", XOConnector.getServerMap());
-			return "XO/XOServerList";
-		}
+		model.addAttribute("serverMap", XOConnector.getServerMap());
+		return "XO/XOServerList";
 	}
 
 	@RequestMapping(value = "XOCreate.html", method = RequestMethod.POST)
 	public @ResponseBody
 	boolean create(HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			return false;
-		} else {
-			XOPlayer xo = XOConnector.create(user);
-			session.setAttribute("xo", xo);
-			return true;
-		}
+		XOPlayer xo = XOConnector.create(user);
+		session.setAttribute("xo", xo);
+		return true;
 	}
 
 	@RequestMapping(value = "XOConnect.html", method = RequestMethod.POST)
 	public @ResponseBody
 	boolean connect(@RequestParam("serverID") int serverID, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			return false;
-		} else {
-			XOPlayer xo = XOConnector.connect(serverID, user);
-			session.setAttribute("xo", xo);
-			return true;
-		}
+		XOPlayer xo = XOConnector.connect(serverID, user);
+		session.setAttribute("xo", xo);
+		return true;
 	}
 
 	@RequestMapping(value = "/XOGame.html")
