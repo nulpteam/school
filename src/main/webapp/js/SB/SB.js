@@ -137,53 +137,29 @@ $(function() {
 		co = parseCoords(id, ui);
 		saveCoords(co);
 		if (i == 1) {
-			if (co.r == "H") {
-				img01 = ("images/SB/0" + co.t + ".png");
-				console.log(img01);
-			}
-			if (co.r == "V") {
-				img01 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img01);
-			}
+			img01 = ("images/SB/0" + co.t + ".png");
+			console.log(img01);
 			img01x = ui.position.left;
 			img01y = ui.position.top;
 			i--;
 		}
 		if (i == 2) {
-			if (co.r == "H") {
-				img02 = ("images/SB/0" + co.t + ".png");
-				console.log(img02);
-			}
-			if (co.r == "V") {
-				img02 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img02);
-			}
+			img02 = ("images/SB/0" + co.t + ".png");
+			console.log(img02);
 			img02x = ui.position.left;
 			img02y = ui.position.top;
 			i--;
 		}
 		if (i == 3) {
-			if (co.r == "H") {
-				img03 = ("images/SB/0" + co.t + ".png");
-				console.log(img03);
-			}
-			if (co.r == "V") {
-				img03 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img03);
-			}
+			img03 = ("images/SB/0" + co.t + ".png");
+			console.log(img03);
 			img03x = ui.position.left;
 			img03y = ui.position.top;
 			i--;
 		}
 		if (i == 4) {
-			if (co.r == "H") {
-				img04 = ("images/SB/0" + co.t + ".png");
-				console.log(img04);
-			}
-			if (co.r == "V") {
-				img04 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img04);
-			}
+			img04 = ("images/SB/0" + co.t + ".png");
+			console.log(img04);
 			img04x = ui.position.left;
 			img04y = ui.position.top;
 			i--;
