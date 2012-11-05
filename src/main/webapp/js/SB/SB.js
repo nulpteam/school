@@ -43,6 +43,8 @@ var img10y = null;
 
 var i = 10;
 
+
+
 $(function() {
 
 	// матриця розташування кораблів(XY) координати
@@ -135,53 +137,29 @@ $(function() {
 		co = parseCoords(id, ui);
 		saveCoords(co);
 		if (i == 1) {
-			if (co.r == "H") {
-				img01 = ("images/SB/0" + co.t + ".png");
-				console.log(img01);
-			}
-			if (co.r == "V") {
-				img01 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img01);
-			}
+			img01 = ("images/SB/0" + co.t + ".png");
+			console.log(img01);
 			img01x = ui.position.left;
 			img01y = ui.position.top;
 			i--;
 		}
 		if (i == 2) {
-			if (co.r == "H") {
-				img02 = ("images/SB/0" + co.t + ".png");
-				console.log(img02);
-			}
-			if (co.r == "V") {
-				img02 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img02);
-			}
+			img02 = ("images/SB/0" + co.t + ".png");
+			console.log(img02);
 			img02x = ui.position.left;
 			img02y = ui.position.top;
 			i--;
 		}
 		if (i == 3) {
-			if (co.r == "H") {
-				img03 = ("images/SB/0" + co.t + ".png");
-				console.log(img03);
-			}
-			if (co.r == "V") {
-				img03 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img03);
-			}
+			img03 = ("images/SB/0" + co.t + ".png");
+			console.log(img03);
 			img03x = ui.position.left;
 			img03y = ui.position.top;
 			i--;
 		}
 		if (i == 4) {
-			if (co.r == "H") {
-				img04 = ("images/SB/0" + co.t + ".png");
-				console.log(img04);
-			}
-			if (co.r == "V") {
-				img04 = ("images/SB/0" + co.t + "_90.png");
-				console.log(img04);
-			}
+			img04 = ("images/SB/0" + co.t + ".png");
+			console.log(img04);
 			img04x = ui.position.left;
 			img04y = ui.position.top;
 			i--;
@@ -263,7 +241,6 @@ $(function() {
 			img10x = ui.position.left;
 			img10y = ui.position.top;
 			i--;
-			// TODO
 		}
 	}
 
@@ -1710,5 +1687,69 @@ $(function() {
 
 
 function start() {
-	location.href="BsGameStart.html";
-}
+	sheep01 = {
+		"img" : img01,
+		"x" : img01x,
+		"y" : img01y
+	};
+	sheep02 = {
+			"img" : img02,
+			"x" : img02x,
+			"y" : img02y
+		};
+	sheep03 = {
+			"img" : img03,
+			"x" : img03x,
+			"y" : img03y
+		};
+	sheep04 = {
+				"img" : img04,
+				"x" : img04x,
+				"y" : img04y
+			};
+	sheep05 = {
+			"img" : img05,
+			"x" : img05x,
+			"y" : img05y
+		};
+	sheep06 = {
+			"img" : img06,
+			"x" : img06x,
+			"y" : img06y
+		};
+	sheep07 = {
+			"img" : img07,
+			"x" : img07x,
+			"y" : img07y
+		};
+	sheep08 = {
+			"img" : img08,
+			"x" : img08x,
+			"y" : img08y
+		};
+	sheep09 = {
+			"img" : img09,
+			"x" : img09x,
+			"y" : img09y
+		};
+	sheep10 = {
+			"img" : img10,
+			"x" : img10x,
+			"y" : img10y
+		};
+	sheeps = {
+			"sheep01" : sheep01,
+			"sheep02" : sheep02,
+			"sheep03" : sheep03,
+			"sheep04" : sheep04,
+			"sheep05" : sheep05,
+			"sheep06" : sheep06,
+			"sheep07" : sheep07,
+			"sheep08" : sheep08,
+			"sheep09" : sheep09,
+			"sheep10" : sheep10
+	};
+	stringa = JSON.stringify(sheeps);
+	console.log(stringa);
+	$.post("sheepsReady.html", {sheepsReady : stringa});
+};
