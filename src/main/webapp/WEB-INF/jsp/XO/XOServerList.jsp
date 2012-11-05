@@ -21,25 +21,27 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
-	<c:import url="../Tab/Tab.jsp"></c:import>
+	<div class="page">
+		<c:import url="../Tab/Tab.jsp"></c:import>
 
-	<div class="paperList">
-		<div class="title">
-			<p align="center">
-				<c:out value="${langPack['XO_SL_title']}" />
-			</p>
-		</div>
-		<div id="home" onclick=returnToMenu();>
-			<img src="images/XO/home.png">
-		</div>
-		<div id="menu" align="center">
-			<c:forEach var="server" items="${serverMap}" varStatus="i">
-				<div class="button" id="${server.key}" onclick=connect(this.id);>
-					<p class="buttonText">
-						<c:out value="${server.value.game.server.name}" />
-					</p>
-				</div>
-			</c:forEach>
+		<div class="paperList">
+			<div class="title">
+				<p align="center">
+					<c:out value="${langPack['XO_SL_title']}" />
+				</p>
+			</div>
+			<div id="home" onclick=returnToMenu();>
+				<img src="images/XO/home.png">
+			</div>
+			<div id="menu" align="center">
+				<c:forEach var="server" items="${serverMap}" varStatus="i">
+					<div class="button" id="${server.key}" onclick=connect(this.id);>
+						<p class="buttonText">
+							<c:out value="${server.value.game.server.name}" />
+						</p>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
 	</div>
 </body>

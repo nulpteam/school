@@ -24,85 +24,87 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
-	<c:import url="../Tab/Tab.jsp"></c:import>
+	<div class="page">
+		<c:import url="../Tab/Tab.jsp"></c:import>
 
-	<div class="paperList">
-		<div id="myName" class="namespace" onclick=statShow(this.id);>
-			<p class="name">
-				<c:out value="${user.name}" />
-			</p>
-		</div>
-		<div id="opName" class="namespace" onclick=statShow(this.id);>
-			<p class="name" id="opNameText">
-				<c:out value="${oponent.name}" />
-			</p>
-		</div>
-		<div id="myNameStat" class="statistics" onclick=statHide(this.id);>
-			<table class="statTable">
-				<tr>
-					<td>${langPack['XO_stat_wins']}</td>
-					<td><c:out value="${myStat.wins}" /></td>
-				</tr>
-				<tr>
-					<td>${langPack['XO_stat_losses']}</td>
-					<td><c:out value="${myStat.losses}" /></td>
-				</tr>
-				<tr>
-					<td>${langPack['XO_stat_total']}</td>
-					<td><c:out value="${myStat.total}" /></td>
-				</tr>
-			</table>
-		</div>
-		<div id="opNameStat" class="statistics" onclick=statHide(this.id);>
-			<table class="statTable">
-				<tr>
-					<td>${langPack['XO_stat_wins']}</td>
-					<td><c:out value="${opStat.wins}" /></td>
-				</tr>
-				<tr>
-					<td>${langPack['XO_stat_losses']}</td>
-					<td><c:out value="${opStat.losses}" /></td>
-				</tr>
-				<tr>
-					<td>${langPack['XO_stat_total']}</td>
-					<td><c:out value="${opStat.total}" /></td>
-				</tr>
-			</table>
-		</div>
-		<div>
-			<p id="outText" align="center" class="title"></p>
-		</div>
-		<div id="tick">
-			<img src="images/XO/tick.png">
-		</div>
-		<div id="home" onclick=returnToMenu();>
-			<img src="images/XO/home.png">
-		</div>
-		<div id="win">
-			<img src="images/XO/win.png">
-		</div>
-		<div id="border">
-			<img src="images/XO/border.png">
-		</div>
-		<div id="field">
-			<table id="table" align="center" cellpadding="0" cellspacing="0">
-				<c:forEach var="lines" items="${xo.fields}" varStatus="i">
+		<div class="paperList">
+			<div id="myName" class="namespace" onclick=statShow(this.id);>
+				<p class="name">
+					<c:out value="${user.name}" />
+				</p>
+			</div>
+			<div id="opName" class="namespace" onclick=statShow(this.id);>
+				<p class="name" id="opNameText">
+					<c:out value="${oponent.name}" />
+				</p>
+			</div>
+			<div id="myNameStat" class="statistics" onclick=statHide(this.id);>
+				<table class="statTable">
 					<tr>
-						<c:forEach var="box" items="${lines}" varStatus="j">
-							<td><c:if test="${box.status == 0}">
-									<img id="X${j.count-1}Y${i.count-1}" src="images/XO/0.png"
-										onclick=put(this);>
-								</c:if> <c:if test="${box.status == -8}">
-									<img id="X${j.count-1}Y${i.count-1}" src="images/XO/X0.png"
-										onclick=put(this);>
-								</c:if> <c:if test="${box.status == -9}">
-									<img id="X${j.count-1}Y${i.count-1}" src="images/XO/O0.png"
-										onclick=put(this);>
-								</c:if></td>
-						</c:forEach>
+						<td>${langPack['XO_stat_wins']}</td>
+						<td><c:out value="${myStat.wins}" /></td>
 					</tr>
-				</c:forEach>
-			</table>
+					<tr>
+						<td>${langPack['XO_stat_losses']}</td>
+						<td><c:out value="${myStat.losses}" /></td>
+					</tr>
+					<tr>
+						<td>${langPack['XO_stat_total']}</td>
+						<td><c:out value="${myStat.total}" /></td>
+					</tr>
+				</table>
+			</div>
+			<div id="opNameStat" class="statistics" onclick=statHide(this.id);>
+				<table class="statTable">
+					<tr>
+						<td>${langPack['XO_stat_wins']}</td>
+						<td><c:out value="${opStat.wins}" /></td>
+					</tr>
+					<tr>
+						<td>${langPack['XO_stat_losses']}</td>
+						<td><c:out value="${opStat.losses}" /></td>
+					</tr>
+					<tr>
+						<td>${langPack['XO_stat_total']}</td>
+						<td><c:out value="${opStat.total}" /></td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<p id="outText" align="center" class="title"></p>
+			</div>
+			<div id="tick">
+				<img src="images/XO/tick.png">
+			</div>
+			<div id="home" onclick=returnToMenu();>
+				<img src="images/XO/home.png">
+			</div>
+			<div id="win">
+				<img src="images/XO/win.png">
+			</div>
+			<div id="border">
+				<img src="images/XO/border.png">
+			</div>
+			<div id="field">
+				<table id="table" align="center" cellpadding="0" cellspacing="0">
+					<c:forEach var="lines" items="${xo.fields}" varStatus="i">
+						<tr>
+							<c:forEach var="box" items="${lines}" varStatus="j">
+								<td><c:if test="${box.status == 0}">
+										<img id="X${j.count-1}Y${i.count-1}" src="images/XO/0.png"
+											onclick=put(this);>
+									</c:if> <c:if test="${box.status == -8}">
+										<img id="X${j.count-1}Y${i.count-1}" src="images/XO/X0.png"
+											onclick=put(this);>
+									</c:if> <c:if test="${box.status == -9}">
+										<img id="X${j.count-1}Y${i.count-1}" src="images/XO/O0.png"
+											onclick=put(this);>
+									</c:if></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>

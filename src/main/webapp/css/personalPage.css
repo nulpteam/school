@@ -1,0 +1,26 @@
+body {
+	background-image: url('../images/parta2.jpg');
+	background-repeat: repeat;
+}
+
+.page {
+	width: 675px;
+	margin: 0 auto;
+}
+
+.paperList {
+	background-image: url('../images/XO/list.png');
+	background-repeat: no-repeat;
+	height: 734px;
+	width: 675px;
+	color: #5B2FCE;
+	float: left;
+}
+
+.paperList form {
+	margin-left: 200px;
+}
+
+.paperList form div {
+	margin-top: 20px;
+}

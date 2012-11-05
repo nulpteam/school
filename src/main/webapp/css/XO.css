@@ -1,11 +1,21 @@
+body {
+	background-image: url('../images/parta2.jpg');
+	background-repeat: repeat;
+}
+
+.page {
+	width: 1050px;
+	margin: 0 auto;
+}
+
 .paperList {
 	background-image: url('../images/XO/list.png');
 	background-repeat: no-repeat;
 	height: 734px;
 	width: 675px;
-	position: absolute;
-	margin: -8px 550px;
+	margin-left: 15px;
 	color: #5B2FCE;
+	float: left;
 }
 
 .paperList .title {
@@ -25,6 +35,7 @@
 
 .paperList .buttonText {
 	font-size: 18px;
+	font-weight: bold;
 	color: #FFF;
 }
 

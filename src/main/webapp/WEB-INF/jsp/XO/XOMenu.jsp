@@ -19,28 +19,30 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
-	<c:import url="../Tab/Tab.jsp"></c:import>
+	<div class="page">
+		<c:import url="../Tab/Tab.jsp"></c:import>
 
-	<div class="paperList">
-		<div class="title">
-			<p align="center">
-				<c:out value="${langPack['XO_title']}" />
-			</p>
-		</div>
-		<div id="menu" align="center">
-			<div class="button" onclick=createServer();>
-				<p class="buttonText">
-					<c:out value="${langPack['XO_button_create']}" />
+		<div class="paperList">
+			<div class="title">
+				<p align="center">
+					<c:out value="${langPack['XO_title']}" />
 				</p>
 			</div>
-			<div class="button" onclick=serverListPage();>
-				<p class="buttonText">
-					<c:out value="${langPack['XO_button_connect']}" />
-				</p>
+			<div id="menu" align="center">
+				<div class="button" onclick=createServer();>
+					<p class="buttonText">
+						<c:out value="${langPack['XO_button_create']}" />
+					</p>
+				</div>
+				<div class="button" onclick=serverListPage();>
+					<p class="buttonText">
+						<c:out value="${langPack['XO_button_connect']}" />
+					</p>
+				</div>
 			</div>
-		</div>
-		<div id="rulles">
-			<c:out value="${langPack['XO_rules']}" />
+			<div id="rulles">
+				<c:out value="${langPack['XO_rules']}" />
+			</div>
 		</div>
 	</div>
 </body>

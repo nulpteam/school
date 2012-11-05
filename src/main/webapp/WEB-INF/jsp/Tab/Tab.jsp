@@ -2,6 +2,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="css/Tab/tab.css" type="text/css" rel="stylesheet">
 <div id="tab">
-	<%-- <c:import url="../Tab/Chat.jsp"></c:import> --%>
-	<c:import url="../Tab/Cabinet.jsp"></c:import>
+	<c:import url="../Tab/Chat.jsp"></c:import>
 </div>

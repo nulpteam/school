@@ -19,8 +19,7 @@ function infection() {
 }
 
 function cabinet() {
-	alert("Cabinet page");
-	//window.location.href = "storeRoom.html";
+	window.location.href = "PersonalPage.html";
 }
 
 function loginRedirect(){

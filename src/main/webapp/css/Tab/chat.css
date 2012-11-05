@@ -1,5 +1,5 @@
-#chat {
-	background-image: url('../images/chat.png');
+.chat {
+	background-image: url('../../images/chat.png');
 	background-repeat: no-repeat;
 	height: 439px;
 	width: 271px;
@@ -8,41 +8,43 @@
 	margin: 56px 45px;
 }
 
-#chatOutText {
+.chat #chatOutText {
 	overflow-y: scroll;
 	overflow-x: hidden;
-	height: 350px;
+	height: 360px;
 	width: 271px;
 	position: absolute;
 	margin: 36px 0px;
 }
 
-#chatTable {
+.chat #chatOutText #chatTable {
 	width: 254px;
 }
 
-tr.collor td {
+.chat #chatOutText tr.collor td {
 	background-color: #e7f1f5;
 }
 
-.time {
+.chat #chatOutText .time {
 	width: 30px;
 	color: gray;
 }
 
-.sender {
+.chat #chatOutText .sender {
 	color: #009AEE;
 }
 
-.msg {
+.chat #chatOutText .msg {
 	width: 254spx;
 }
 
-#chatInText {
-	border: none;
-	background: initial;
-	height: 35px;
-	width: 255px;
+.chat #chatInText {
+	border: solid 2px;
+	border-color: aquamarine;
+	background: white;
+	height: 30px;
+	width: 258px;
 	position: absolute;
-	margin: 395px 8px;
+	margin: 400px 5px;
+}
 }

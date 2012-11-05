@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,13 @@ import epam.ph.sg.pp.PersonalPage;
 
 @Controller
 public class PersonalPageController {
+
+	@RequestMapping("/PersonalPage.html")
+	public String personalPage(HttpSession session, Model model) {
+		model.addAttribute("xoStat",
+				XOStatistics.getAllStatistics());
+		return "PersonalPage";
+	}
 
 	@RequestMapping(value = "/ChangeName.html", method = RequestMethod.POST)
 	public @ResponseBody
@@ -42,9 +50,10 @@ public class PersonalPageController {
 			return false;
 		}
 	}
-	
+
 	@RequestMapping(value = "/GetXOStatistics.html", method = RequestMethod.POST)
-	public @ResponseBody XOStatistics[] getXOstat(){
+	public @ResponseBody
+	XOStatistics[] getXOstat() {
 		List<XOStatistics> list = XOStatistics.getAllStatistics();
 		XOStatistics[] array = new XOStatistics[list.size()];
 		for (int i = 0; i < array.length; i++) {
