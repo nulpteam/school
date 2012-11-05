@@ -43,6 +43,8 @@ var img10y = null;
 
 var i = 10;
 
+
+
 $(function() {
 
 	// матриця розташування кораблів(XY) координати
@@ -263,7 +265,6 @@ $(function() {
 			img10x = ui.position.left;
 			img10y = ui.position.top;
 			i--;
-			// TODO
 		}
 	}
 
@@ -1710,5 +1711,68 @@ $(function() {
 
 
 function start() {
-	location.href="BsGameStart.html";
-}
+	sheep01 = {
+		"img" : img01,
+		"x" : img01x,
+		"y" : img01y
+	};
+	sheep02 = {
+			"img" : img02,
+			"x" : img02x,
+			"y" : img02y
+		};
+	sheep03 = {
+			"img" : img03,
+			"x" : img03x,
+			"y" : img03y
+		};
+	sheep04 = {
+				"img" : img04,
+				"x" : img04x,
+				"y" : img04y
+			};
+	sheep05 = {
+			"img" : img05,
+			"x" : img05x,
+			"y" : img05y
+		};
+	sheep06 = {
+			"img" : img06,
+			"x" : img06x,
+			"y" : img06y
+		};
+	sheep07 = {
+			"img" : img07,
+			"x" : img07x,
+			"y" : img07y
+		};
+	sheep08 = {
+			"img" : img08,
+			"x" : img08x,
+			"y" : img08y
+		};
+	sheep09 = {
+			"img" : img09,
+			"x" : img09x,
+			"y" : img09y
+		};
+	sheep10 = {
+			"img" : img10,
+			"x" : img10x,
+			"y" : img10y
+		};
+	sheeps = {
+			"sheep01" : sheep01,
+			"sheep02" : sheep02,
+			"sheep03" : sheep03,
+			"sheep04" : sheep04,
+			"sheep05" : sheep05,
+			"sheep06" : sheep06,
+			"sheep07" : sheep07,
+			"sheep08" : sheep08,
+			"sheep09" : sheep09,
+			"sheep10" : sheep10
+	};
+	stringa = JSON.stringify(sheeps);
+	$.post("sheepsReady.html", {sheepsReady : stringa});
+};
