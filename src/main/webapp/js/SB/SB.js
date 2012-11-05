@@ -8,6 +8,41 @@ var str1 = null;
 var str2 = null;
 var str3 = null;
 
+var img01 = null;
+var img02 = null;
+var img03 = null;
+var img04 = null;
+var img05 = null;
+var img06 = null;
+var img07 = null;
+var img08 = null;
+var img09 = null;
+var img10 = null;
+
+var img01x = null;
+var img02x = null;
+var img03x = null;
+var img04x = null;
+var img05x = null;
+var img06x = null;
+var img07x = null;
+var img08x = null;
+var img09x = null;
+var img10x = null;
+
+var img01y = null;
+var img02y = null;
+var img03y = null;
+var img04y = null;
+var img05y = null;
+var img06y = null;
+var img07y = null;
+var img08y = null;
+var img09y = null;
+var img10y = null;
+
+var i = 10;
+
 $(function() {
 
 	// матриця розташування кораблів(XY) координати
@@ -97,11 +132,139 @@ $(function() {
 	function fDrop(event, ui, id) {
 //		console.log(event);
 //		console.log(ui);
-		saveCoords(parseCoords(id, ui));
-		var c = ui.position.left;
-        	d = ui.position.top;
-        console.log(c);
-        console.log(d);
+		co = parseCoords(id, ui);
+		saveCoords(co);
+		if (i == 1) {
+			if (co.r == "H") {
+				img01 = ("images/SB/0" + co.t + ".png");
+				console.log(img01);
+			}
+			if (co.r == "V") {
+				img01 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img01);
+			}
+			img01x = ui.position.left;
+			img01y = ui.position.top;
+			i--;
+		}
+		if (i == 2) {
+			if (co.r == "H") {
+				img02 = ("images/SB/0" + co.t + ".png");
+				console.log(img02);
+			}
+			if (co.r == "V") {
+				img02 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img02);
+			}
+			img02x = ui.position.left;
+			img02y = ui.position.top;
+			i--;
+		}
+		if (i == 3) {
+			if (co.r == "H") {
+				img03 = ("images/SB/0" + co.t + ".png");
+				console.log(img03);
+			}
+			if (co.r == "V") {
+				img03 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img03);
+			}
+			img03x = ui.position.left;
+			img03y = ui.position.top;
+			i--;
+		}
+		if (i == 4) {
+			if (co.r == "H") {
+				img04 = ("images/SB/0" + co.t + ".png");
+				console.log(img04);
+			}
+			if (co.r == "V") {
+				img04 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img04);
+			}
+			img04x = ui.position.left;
+			img04y = ui.position.top;
+			i--;
+		}
+		if (i == 5) {
+			if (co.r == "H") {
+				img05 = ("images/SB/0" + co.t + ".png");
+				console.log(img05);
+			}
+			if (co.r == "V") {
+				img05 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img05);
+			}
+			img05x = ui.position.left;
+			img05y = ui.position.top;
+			i--;
+		}
+		if (i == 6) {
+			if (co.r == "H") {
+				img06 = ("images/SB/0" + co.t + ".png");
+				console.log(img06);
+			}
+			if (co.r == "V") {
+				img06 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img06);
+			}
+			img06x = ui.position.left;
+			img06y = ui.position.top;
+			i--;
+		}
+		if (i == 7) {
+			if (co.r == "H") {
+				img07 = ("images/SB/0" + co.t + ".png");
+				console.log(img07);
+			}
+			if (co.r == "V") {
+				img07 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img07);
+			}
+			img07x = ui.position.left;
+			img07y = ui.position.top;
+			i--;
+		}
+		if (i == 8) {
+			if (co.r == "H") {
+				img08 = ("images/SB/0" + co.t + ".png");
+				console.log(img08);
+			}
+			if (co.r == "V") {
+				img08 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img08);
+			}
+			img08x = ui.position.left;
+			img08y = ui.position.top;
+			i--;
+		}
+		if (i == 9) {
+			if (co.r == "H") {
+				img09 = ("images/SB/0" + co.t + ".png");
+				console.log(img09);
+			}
+			if (co.r == "V") {
+				img09 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img09);
+			}
+			img09x = ui.position.left;
+			img09y = ui.position.top;
+			i--;
+		}
+		if (i == 10) {
+			if (co.r == "H") {
+				img10 = ("images/SB/0" + co.t + ".png");
+				console.log(img10);
+			}
+			if (co.r == "V") {
+				img10 = ("images/SB/0" + co.t + "_90.png");
+				console.log(img10);
+			}
+			img10x = ui.position.left;
+			img10y = ui.position.top;
+			i--;
+			// TODO
+		}
 	}
 
 	function fOut(id1, id2) {
@@ -1536,4 +1699,16 @@ $(function() {
 			fOut(event, ui);
 		}
 	});
+	
+	$(".img01").attr("src", img01);
+	$(".img01").css("position", "absolute");
+	$(".img01").attr("top", img01y);
+	$(".img01").attr("left", img01x);
+	
 });
+
+
+
+function start() {
+	location.href="BsGameStart.html";
+}

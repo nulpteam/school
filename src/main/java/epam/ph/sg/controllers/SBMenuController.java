@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import epam.ph.sg.models.User;
 import epam.ph.sg.models.sb.ActiveGames;
 import epam.ph.sg.models.sb.BSBoard;
-import epam.ph.sg.models.sb.BSGame;
 import epam.ph.sg.models.sb.BSPlayer;
 import epam.ph.sg.models.sb.Client;
 import epam.ph.sg.models.sb.Game;
@@ -178,6 +177,22 @@ public class SBMenuController {
 		
 		model.addAttribute("connectionType", "client");
 		return "SB/Sb";
+	}
+	
+	@RequestMapping(value = "/BsGameStart.html", method = RequestMethod.GET)
+	public String SbGameStart(Model model, HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			new HomeController().index(session);
+			return "Login";
+		}
+		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
+		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
+		sbJSLoader.addScript("SB/SB");
+		sbJSLoader.addScript("SB/SB_coords");
+		sbJSLoader.addScript("SB/SbGameList");	
+		sbJSLoader.addScript("SB/WebSocket");
+		
+		return "SB/SbStart";
 	}
 	
 	

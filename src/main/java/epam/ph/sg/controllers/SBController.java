@@ -73,4 +73,17 @@ public class SBController {
 			return  fp;
 	}
 
+	
+	@RequestMapping(value = {"/sheepsReady.html"}, method = RequestMethod.POST)
+	public String SheepsReady(@RequestParam("sheepsReady") String sheepsReady,
+			Model model, HttpSession session) {
+//		if (session.getAttribute("user") == null) {
+//			new HomeController().index(session);
+//			return "Login";
+//		}
+		log.debug("777---------------------------777");
+		log.debug("sheepsReady");
+			return "SB/SbStart";
+	}
+	
 }
