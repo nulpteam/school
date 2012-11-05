@@ -1774,5 +1774,6 @@ function start() {
 			"sheep10" : sheep10
 	};
 	stringa = JSON.stringify(sheeps);
+	console.log(stringa);
 	$.post("sheepsReady.html", {sheepsReady : stringa});
 };

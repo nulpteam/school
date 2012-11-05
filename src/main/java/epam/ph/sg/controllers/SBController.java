@@ -82,7 +82,7 @@ public class SBController {
 //			return "Login";
 //		}
 		log.debug("777---------------------------777");
-		log.debug("sheepsReady");
+		log.debug(sheepsReady);
 			return "SB/SbStart";
 	}
 	
