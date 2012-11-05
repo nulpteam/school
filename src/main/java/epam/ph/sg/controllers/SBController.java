@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import epam.ph.sg.models.sb.ActiveGames;
 import epam.ph.sg.models.sb.BSBoard;
-import epam.ph.sg.models.sb.BSGame;
+import epam.ph.sg.models.sb.BSSheeps;
 import epam.ph.sg.models.sb.Game;
 import epam.ph.sg.models.sb.JsonParser;
-import epam.ph.sg.models.sb.SbJSLoader;
 
 @Controller
 @SessionAttributes("sbJSLoader")
@@ -81,8 +80,11 @@ public class SBController {
 //			new HomeController().index(session);
 //			return "Login";
 //		}
-		log.debug("777---------------------------777");
-		log.debug(sheepsReady);
+		
+		JsonParser jp = new JsonParser();
+		BSSheeps sheeps = jp.parseJsonSheepsReady(sheepsReady);
+		log.debug("ttteeesssttt  "+sheeps);
+		session.setAttribute("Sheeps", sheeps);
 			return "SB/SbStart";
 	}
 	
