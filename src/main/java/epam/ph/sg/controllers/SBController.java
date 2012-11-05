@@ -54,20 +54,12 @@ public class SBController {
 	}
 
 	
-	
-	
-	
-	
 	@RequestMapping(value = {"/fire.html"}, method = RequestMethod.POST)
 	public @ResponseBody
 	String fireReciever(@RequestParam("firePoint") String firePoint,
 			@RequestParam("connectionType") String connectionType,
 			@RequestParam("gameID") int gameID,
 			Model model, HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
 		String fp = Game.fireCheck(gameID, connectionType, firePoint);
 			return  fp;
 	}
@@ -76,16 +68,12 @@ public class SBController {
 	@RequestMapping(value = {"/sheepsReady.html"}, method = RequestMethod.POST)
 	public String SheepsReady(@RequestParam("sheepsReady") String sheepsReady,
 			Model model, HttpSession session) {
-//		if (session.getAttribute("user") == null) {
-//			new HomeController().index(session);
-//			return "Login";
-//		}
 		
 		JsonParser jp = new JsonParser();
 		BSSheeps sheeps = jp.parseJsonSheepsReady(sheepsReady);
 		log.debug("ttteeesssttt  "+sheeps);
 		session.setAttribute("Sheeps", sheeps);
-			return "SB/SbStart";
+		return "SB/SbStart";
 	}
 	
 }

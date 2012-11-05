@@ -10,8 +10,6 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import epam.ph.sg.controllers.SBController;
-
 public class JsonParser {
 	private ObjectMapper mapper = new ObjectMapper();
 	private static Logger log = Logger.getLogger(JsonParser.class);

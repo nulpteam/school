@@ -54,32 +54,16 @@ public class SBMenuController {
 	// Створення нового сервера гри
 	@RequestMapping(value = { "/BsCreateGame.html" }, method = RequestMethod.GET)
 	public String SbMenuCreation(HttpSession session, Model model) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
-
+		
 		log.debug("-------------------Added JavaScriptss-------------------");
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");
 		sbJSLoader.addScript("SB/js_stringify");
 		sbJSLoader.addScript("SB/WebSocket");
-		/*if (session.getAttribute("BSGame") == null) {
-
-			int gameID = GamesList.addGameToListBS();
-			BSGame game = GamesList.getGameListBS().get(gameID);
-			BSPlayer player1 = new BSPlayer();
-			player1.setName(((User) session.getAttribute("user")).getName());
-			game.setPlayer1(player1);
-			session.setAttribute("BSGame", game);
-			// TODO
-			// System.out.println(game);
-			System.out.println(game.getId());
-			System.out.println(game.getPlayer1().getName());
-			// TODO*/
+		
 			
-			//BOBIK
+		//BOBIK
 		if (session.getAttribute("Game") == null)
 		{
 			Game game = GamesList.addGameToListBS();
@@ -119,10 +103,6 @@ public class SBMenuController {
 		sbJSLoader.addScript("SB/SbGameList");
 		log.debug("<--Test-->");
 		Map<Integer, Game> serversMap = GamesList.getGameListBS();
-		/*
-		 * for (Map.Entry<Integer, BSGame> entry : serversMap.entrySet()) {
-		 * System.out.println(entry.getKey() + "/" + entry.getValue()); }
-		 */
 		model.addAttribute("serverMap", serversMap);
 		return "SB/SbGameList";
 	}
@@ -194,25 +174,6 @@ public class SBMenuController {
 		
 		return "SB/SbStart";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
