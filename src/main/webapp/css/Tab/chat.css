@@ -10,7 +10,7 @@
 
 .chat #chatOutText {
 	overflow-y: scroll;
-	overflow-x: hidden;
+	scrollTop: 271px;
 	height: 360px;
 	width: 271px;
 	position: absolute;
@@ -46,5 +46,4 @@
 	width: 258px;
 	position: absolute;
 	margin: 400px 5px;
-}
 }
