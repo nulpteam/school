@@ -28,33 +28,9 @@
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
 		<div class=clear></div>
-		<div  class="ammo">
-			<!-- Кораблі для розставляння на полі-->
-			<div class="sheep_cont">
-				<img id="sheep_4" class="H" src="images/SB/04.png" alt="4" ondblclick="rotate(this);" />
-					<div class="clear"></div>
-				<img id="sheep_3"  class="H" src="images/SB/03.png" alt="3" ondblclick="rotate(this);" style="display:none;"/>
-					<div class="clear"></div>
-				<img id="sheep_2"  class="H" src="images/SB/02.png" alt="2" ondblclick="rotate(this);" style="display:none;"/>
-					<div class="clear"></div>
-				<img id="sheep_1" src="images/SB/01.png" alt="1" style="display:none;"/>
-					<div class="clear"></div>
-			</div>
-			<div>
-			</div>
-			<div id="sp11" class="dn"></div>
-			<div id="sp12" class="dn"></div>
-			<div id="sp13" class="dn"></div>
-			<div id="sp14" class="dn"></div>
-			<div id="sp21" class="dn"></div>
-			<div id="sp22" class="dn"></div>
-			<div id="sp23" class="dn"></div>
-			<div id="sp31" class="dn"></div>
-			<div id="sp32" class="dn"></div>
-			<div id="sp41" class="dn"></div>
-		</div>
 		
-		<div class="field1">
+		
+		<div class="field">
 			<div class="h_markers">
 				<div class="a">a</div>
 				<div class="b">b</div>
@@ -78,43 +54,59 @@
 				<div class="8">8</div>
 				<div class="9">9</div>
 				<div class="last10">10</div>
-			
-				<table id="table1" align="center" cellpadding="0" cellspacing="0">
-					<c:forEach begin="0" end="9" step="1" varStatus="chirik">
-						<tr>
-							<c:forEach begin="0" end="9" step="1" varStatus="bobik">
-								<td id="X<c:out value="${bobik.index}"/>_Y<c:out value="${chirik.index}"/>"></td>
-							</c:forEach>
-						</tr>
-					</c:forEach>
-				</table>
 			</div>
+					<img class="img01"/>
+					<img class="img02"/>
+					<img class="img03"/>
+					<img class="img04"/>
+					<img class="img05"/>
+					<img class="img06"/>
+					<img class="img07"/>
+					<img class="img08"/>
+					<img class="img09"/>
+					<img class="img10"/>
 			<div class="clear"></div>
 		</div>
 		<div class="field2">
 			<div class="h_markers">
-				<div>a</div>
-				<div>b</div>
-				<div>c</div>
-				<div>d</div>
-				<div>e</div>
-				<div>f</div>
-				<div>g</div>
-				<div>h</div>
-				<div>i</div>
-				<div>j</div>
+				<div class="a">a</div>
+				<div class="b">b</div>
+				<div class="c">c</div>
+				<div class="d">d</div>
+				<div class="e">e</div>
+				<div class="f">f</div>
+				<div class="g">g</div>
+				<div class="h">h</div>
+				<div class="i">i</div>
+				<div class="j">j</div>
 			</div>
 			<div class="v_markers">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-				<div>4</div>
-				<div>5</div>
-				<div>6</div>
-				<div>7</div>
-				<div>8</div>
-				<div>9</div>
-				<div>10</div>
+				<div class="1">1</div>
+				<div class="2">2</div>
+				<div class="3">3</div>
+				<div class="4">4</div>
+				<div class="5">5</div>
+				<div class="6">6</div>
+				<div class="7">7</div>
+				<div class="8">8</div>
+				<div class="9">9</div>
+				<div class="last10">10</div>
+				
+				
+				<table id="table2" align="center" cellpadding="0" cellspacing="0">
+					<c:forEach begin="0" end="9" step="1" varStatus="chirik">
+						<tr>
+							<c:forEach begin="0" end="9" step="1" varStatus="bobik">
+								<td id="X<c:out value="${bobik.index}"/>_Y<c:out value="${chirik.index}"/>" class="firePoint" onclick="fire(this)"></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</table>
+				<div class="oponentName">
+					Опонент: Імя, к-ть вцілілих кораблів, ...
+				</div>
+				
+				
 			</div>
 		</div>
 	</div>
@@ -123,8 +115,6 @@
 <input type="button" value="SendM" onClick="sendM();"/>
 <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/>
 <input type="button" value="Test1" onClick="testWS();"/>
-<input type="button" value="Start!" onClick="start();"/>
-
 <div id="IH"></div>
 <%-- 	<% --%>
 <!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->

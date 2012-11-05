@@ -75,7 +75,7 @@ body {
 	font-size: 12px;
 	font-weight: bold;
 	margin-left: -29px;
-	width: 50px;
+	width: 31px;
 }
 
 .v_markers .last10 {
@@ -202,4 +202,29 @@ tr {
 	border: 1px dashed;
 	width: 70px;
 	font-size: 15px;
+}
+.field {
+	background: url('../images/SB/field_background.png') no-repeat;
+	width: 207px;
+	height: 208px;
+	margin-top: 28px;
+	margin-left: 219px;
+}
+.field div {
+	float: left;
+	padding-left: 7px;
+}
+.field .h_markers {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: -28px;
+	margin-left: -4px;
+}
+
+.field .h_markers .a {
+	padding-left: 0px;
+}
+
+.v_markers .a {
+	padding-left: 0px;
 }
