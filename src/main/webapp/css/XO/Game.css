@@ -1,0 +1,77 @@
+.paperList .namespace {
+	background-image: url('../images/XO/namespace.png');
+	background-repeat: no-repeat;
+	height: 30px;
+	width: 193px;
+}
+
+.paperList .namespace p {
+	font-weight: bold;
+	margin: 5px 20px;
+}
+
+.paperList #myName {
+	position: absolute;
+	margin: 30px 85px;
+}
+
+.paperList #opName {
+	position: absolute;
+	margin: 30px 335px;
+}
+
+.paperList .playerStat {
+	background-image: url('../images/XO/namespace2.png');
+	background-repeat: no-repeat;
+	height: 120px;
+	width: 193px;
+	z-index: 2;
+}
+
+.paperList .playerStat table {
+	margin: 30px 10px;
+}
+
+.paperList #myNameStat {
+	position: absolute;
+	margin: 30px 85px;
+}
+
+.paperList #opNameStat {
+	position: absolute;
+	margin: 30px 335px;
+}
+
+.paperList #tick {
+	background-image: url('../images/XO/tick.png');
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 460px;
+}
+
+.paperList #outText {
+	margin-top: 75px;
+}
+
+.paperList #win {
+	position: absolute;
+	margin-top: 250px;
+	margin-left: 200px;
+}
+
+.paperList #border {
+	background-image: url('../images/XO/border.png');
+	background-repeat: no-repeat;
+	width: 427px;
+	height: 419px;
+	position: absolute;
+	margin: 150px 94px;
+}
+
+.paperList #field {
+	position: absolute;
+	margin: 160px 107px;
+}

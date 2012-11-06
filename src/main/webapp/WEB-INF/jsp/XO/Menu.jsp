@@ -7,10 +7,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/styles.css" type="text/css" rel="stylesheet">
-<link href="css/XO.css" type="text/css" rel="stylesheet">
+<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
+<link href="css/XO/XO.css" type="text/css" rel="stylesheet">
+
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/XO/XOMenu.js" type="text/javascript"></script>
+<script src="js/XO/Menu.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		chatStart();
@@ -29,14 +30,19 @@
 				</p>
 			</div>
 			<div id="menu" align="center">
-				<div class="button" onclick=createServer();>
+				<div class="button" onclick=buttonCreateServer();>
 					<p class="buttonText">
 						<c:out value="${langPack['XO_button_create']}" />
 					</p>
 				</div>
-				<div class="button" onclick=serverListPage();>
+				<div class="button" onclick=buttonServerList();>
 					<p class="buttonText">
 						<c:out value="${langPack['XO_button_connect']}" />
+					</p>
+				</div>
+				<div class="button" onclick=buttonStatistics();>
+					<p class="buttonText">
+						Статистика <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 					</p>
 				</div>
 			</div>

@@ -1,18 +1,27 @@
 var lock = true;
 var end = false;
 
-// Координати
-var tickX1 = '235px';
-var tickX2 = '475px';
+// Tick Position
+var tickX1 = '210px';
+var tickX2 = '460px';
 
-function returnToMenu() {
+function gameStart() {
+	$('#myNameStat').hide();
+	$('#opNameStat').hide();
+	$('#outText').text(msg9);
+	checker();
+}
+
+function gameHomeButton() {
 	if (end) {
-		location.href = "XO.html";
+		$.post('XOClear.html', function(response) {
+			location.href = 'XO.html';
+		});
 	} else {
 		var bool = confirm(msg2);
 		if (bool) {
-			$.post("XOLose.html", function(response) {
-				location.href = "XO.html";
+			$.post('XOLose.html', function(response) {
+				location.href = 'XO.html';
 			});
 		}
 	}
@@ -20,7 +29,7 @@ function returnToMenu() {
 
 function statShow(id) {
 	$('#outText').hide();
-	$('#'+id+'Stat').show();
+	$('#' + id + 'Stat').show();
 }
 
 function statHide(id) {
@@ -28,37 +37,10 @@ function statHide(id) {
 	$('#' + id).hide();
 }
 
-function getClient() {
-	end = true;
-	$('#outText').text(msg3);
-	var inter1 = setInterval(check, 1000);
-	function check() {
-		$.post("XOGetClient.html", function(response) {
-			if (response != "") {
-				clearInterval(inter1);
-				getClientStat(response.id);
-				$('#outText').text(response.name + msg4);
-				$('#opNameText').text(response.name);
-				$('#tick').animate({
-					marginLeft : tickX1
-				}, 1000);
-				end = false;
-				lock = false;
-			}
-		});
-	}
-}
-
-function getClientStat(id) {
-	$.post("XOGetClientStat.html", { id : id }, function(response) {
-		$('#opNameStat').html('<table class="statTable"><tr><td>Wins:</td><td>'+response.wins+'</td></tr><tr><td>Losses:</td><td>'+response.losses+'</td></tr><tr><td>Total:</td><td>'+response.total+'</td></tr></table>');
-	});
-}
-
 function put(img) {
 	if (lock)
 		return;
-	$.post("XOPut.html", {
+	$.post('XOPut.html', {
 		xy : img.id
 	}, function(response) {
 		if (response == -5) {
@@ -94,7 +76,7 @@ function put(img) {
 function checker() {
 	var inter = setInterval(check, 1000);
 	function check() {
-		$.post("XOCheck.html", function(response) {
+		$.post('XOCheck.html', function(response) {
 			if (response == -5) {
 				end = true;
 				clearInterval(inter);
@@ -104,8 +86,6 @@ function checker() {
 				end = true;
 				$('#outText').text($('#opName').text() + msg6);
 			} else if (response == -3) {
-				clearInterval(inter);
-				getClient();
 			} else if (response != 0) {
 				clearInterval(inter);
 				change();
@@ -120,7 +100,7 @@ function checker() {
 }
 
 function change() {
-	$.post("XOGet.html", function(box) {
+	$.post('XOGet.html', function(box) {
 		var id = "X" + box.x + "Y" + box.y;
 		var img = document.getElementById(id);
 		setImg(img, box.status);

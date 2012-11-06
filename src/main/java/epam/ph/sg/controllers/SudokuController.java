@@ -18,9 +18,26 @@ public class SudokuController {
 	@RequestMapping("/Sudoku.html")
 	public String sudoku(HttpSession session) {
 		if (session.getAttribute("sudoku") == null) {
-			session.setAttribute("sudoku", new SudokuGame());
+			session.setAttribute("sudoku", SudokuGame.getGame());
 		}
 		return "Sudoku";
+	}
+
+	@RequestMapping("/SudokuNewGame.html")
+	public @ResponseBody
+	int[] newGame(HttpSession session) {
+		SudokuGame game = SudokuGame.getGame();
+		session.setAttribute("sudoku", game);
+		int[] values1 = new int[81];
+		int[][] values2 = game.getStaticValues();
+		int x = 0;
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				values1[x] = values2[i][j];
+				x++;
+			}
+		}
+		return values1;
 	}
 
 	@RequestMapping("/SudokuPut.html")
