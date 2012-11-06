@@ -1,0 +1,19 @@
+.page {
+	background-image: url('../images/XO/list.png');
+	background-repeat: no-repeat;
+	width: 675px;
+	height: 745px;
+}
+
+#sudoku {
+	border: solid 1px;
+	position: absolute;
+	margin: 219px 235px;
+}
+
+#sudoku .box {
+	background-image: url('../images/XO/0.png');
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+}
