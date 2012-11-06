@@ -66,14 +66,14 @@ public class SBController {
 
 	
 	@RequestMapping(value = {"/sheepsReady.html"}, method = RequestMethod.POST)
-	public String SheepsReady(@RequestParam("sheepsReady") String sheepsReady,
+	public @ResponseBody String SheepsReady(@RequestParam("sheepsReady") String sheepsReady,
 			Model model, HttpSession session) {
 		
 		JsonParser jp = new JsonParser();
 		BSSheeps sheeps = jp.parseJsonSheepsReady(sheepsReady);
 		log.debug("ttteeesssttt  "+sheeps);
 		session.setAttribute("Sheeps", sheeps);
-		return "SB/SbStart";
+		return "OK";
 	}
 	
 }
