@@ -1684,8 +1684,6 @@ $(function() {
 	
 });
 
-
-
 function start() {
 	sheep01 = {
 		"img" : img01,

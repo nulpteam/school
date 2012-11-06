@@ -22,6 +22,12 @@
 	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>
+	
+<!-- 	<embed src="sound/Shoot.mp3" autostart="true" hidden="true"> -->
+<!-- 		<source src="sound/Shoot.wav"/> -->
+<!-- 		<source src="sound/Shoot.mp3"/> -->
+		
+<!-- 	</embed> -->
 	<div class="content">
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
