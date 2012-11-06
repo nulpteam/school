@@ -407,11 +407,10 @@ function counter(obj) {
 }
 
 function fire(point) {
-	// console.log(point);
+	 //console.log(point);
 
 	p = $(point).attr('id');
-
-	console.log(p);
+	
 	p = p[1] + '' + p[4];
 
 	$.post("fire.html", {

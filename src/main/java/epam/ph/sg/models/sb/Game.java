@@ -49,7 +49,7 @@ public class Game {
 			String fp = board[x][y];
 
 			try {
-				game.getClient().getConn().sendMessage("fp= " + fp);
+				game.getClient().getConn().sendMessage("sheep|fail= " + fp+" point= "+point);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -62,7 +62,7 @@ public class Game {
 			String fp = board[x][y];
 
 			try {
-				game.getServer().getConn().sendMessage("fp= " + fp);
+				game.getServer().getConn().sendMessage("sheep|fail= " + fp+" point= "+point);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
