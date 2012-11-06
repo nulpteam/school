@@ -2,6 +2,11 @@
  * @author Gutey Bogdan
  * 
  */
+var userAgent;
+$(document).ready(function() 
+{
+	userAgent = navigator.userAgent;
+});
 
 //Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
@@ -77,7 +82,6 @@ function parseCoords(coords, ui) {
  * горизонтальне/вертикальне
  * 
  */
-
 function saveCoords(saveCoordenates) {
 
 	// Деактивовуємо дроппабли в які вже встановлено кораблик
@@ -320,7 +324,6 @@ function sendM() {
 		"i" : M[8],
 		"j" : M[9]
 	};
-	// console.log(j);
 	var Send = JSON.stringify(j);
 	console.log(Send);
 
@@ -328,29 +331,14 @@ function sendM() {
 		url : 'init_sheeps.html',
 		type : 'POST',
 		data : {
-			sheeps : Send,
-			//gameID: $('#gameID').attr('class')
+			sheeps : Send
 		},
-		//dataType : 'json',
 		success : function(data) {
-			// alert(data);
 		},
 		error : function() {
 			alert("ERROR");
 		}
 	});
-
-}
-
-/**
- * Видалає з матриці старі координати
- * 
- */
-function clearOldCoordsInM(coords, type) {
-	/*
-	 * var saveCoordenates = parseCoords(coords,type); if (saveCoordenates !==
-	 * undefined) { M[saveCoordenates.x][saveCoordenates.y]="00"; }
-	 */
 }
 
 // обєкт кількості кораблів
@@ -407,12 +395,22 @@ function counter(obj) {
 }
 
 function fire(point) {
-	 //console.log(point);
+	if( userAgent.indexOf("Chrome")!=-1 )
+	{
+		sound = new Audio;
+		sound.src = "sound/Shoot01.mp3";
+		sound.play();
+	}
+	
+	if( userAgent.indexOf("Firefox")!=-1)
+	{
+		sound = new Audio;
+		sound.src = "sound/Shoot01.wav";
+		sound.play();
+	}
 
 	p = $(point).attr('id');
-	
 	p = p[1] + '' + p[4];
-
 	$.post("fire.html", {
 		firePoint : p
 	}, function(data) {
@@ -430,25 +428,16 @@ function fire(point) {
 						"<img id='fireP" + p + "' src='images/SB/firePoint" + rand
 								+ ".png'>");
 			}
-	
-		
 	});
-	
-	
-	
-	
-	// $('#fireP84').attr('src','images/SB/01.png');
-	
 }
+
 
 function sbGame() {
 	location.href = "BsGame.html";
 }
-
 function createSbGame() {
 	location.href = "BsCreateGame.html";
 }
-
 function connectSbGame() {
 	location.href = "BsConectGame.html";
 }
