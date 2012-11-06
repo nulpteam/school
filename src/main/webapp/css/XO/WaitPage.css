@@ -1,0 +1,9 @@
+.paperList #startButton {
+	position: absolute;
+	margin: 170px 170px;
+}
+
+.paperList #sudoku {
+	margin: 200px 125px;
+	position: absolute;
+}

@@ -5,19 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/styles.css" type="text/css" rel="stylesheet">
-<link href="css/XO.css" type="text/css" rel="stylesheet">
+<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
+<link href="css/XO/XO.css" type="text/css" rel="stylesheet">
+<link href="css/XO/Game.css" type="text/css" rel="stylesheet">
+
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/XO/XOMenu.js" type="text/javascript"></script>
-<script src="js/XO/XOGame.js" type="text/javascript"></script>
-<script src="js/XO/XOLang_<c:out value="${lang}"/>.js"
+<script src="js/XO/Menu.js" type="text/javascript"></script>
+<script src="js/XO/Game.js" type="text/javascript"></script>
+<script src="js/XO/Lang_<c:out value="${lang}"/>.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#myNameStat').hide();
-		$('#opNameStat').hide();
-		$('#outText').text(msg9);
-		checker();
+		gameStart();
 		chatStart();
 	});
 </script>
@@ -28,18 +27,21 @@
 		<c:import url="../Tab/Tab.jsp"></c:import>
 
 		<div class="paperList">
+			<div class="homeButton" onmouseover=homeButtonOver(this);
+				onmouseout=homeButtonOut(this); onclick=gameHomeButton();>
+			</div>
 			<div id="myName" class="namespace" onclick=statShow(this.id);>
-				<p class="name">
+				<p>
 					<c:out value="${user.name}" />
 				</p>
 			</div>
 			<div id="opName" class="namespace" onclick=statShow(this.id);>
-				<p class="name" id="opNameText">
+				<p>
 					<c:out value="${oponent.name}" />
 				</p>
 			</div>
-			<div id="myNameStat" class="statistics" onclick=statHide(this.id);>
-				<table class="statTable">
+			<div id="myNameStat" class="playerStat" onclick=statHide(this.id);>
+				<table>
 					<tr>
 						<td>${langPack['XO_stat_wins']}</td>
 						<td><c:out value="${myStat.wins}" /></td>
@@ -54,8 +56,8 @@
 					</tr>
 				</table>
 			</div>
-			<div id="opNameStat" class="statistics" onclick=statHide(this.id);>
-				<table class="statTable">
+			<div id="opNameStat" class="playerStat" onclick=statHide(this.id);>
+				<table>
 					<tr>
 						<td>${langPack['XO_stat_wins']}</td>
 						<td><c:out value="${opStat.wins}" /></td>
@@ -70,21 +72,14 @@
 					</tr>
 				</table>
 			</div>
+			<div id="tick"></div>
 			<div>
 				<p id="outText" align="center" class="title"></p>
-			</div>
-			<div id="tick">
-				<img src="images/XO/tick.png">
-			</div>
-			<div id="home" onclick=returnToMenu();>
-				<img src="images/XO/home.png">
 			</div>
 			<div id="win">
 				<img src="images/XO/win.png">
 			</div>
-			<div id="border">
-				<img src="images/XO/border.png">
-			</div>
+			<div id="border"></div>
 			<div id="field">
 				<table id="table" align="center" cellpadding="0" cellspacing="0">
 					<c:forEach var="lines" items="${xo.fields}" varStatus="i">

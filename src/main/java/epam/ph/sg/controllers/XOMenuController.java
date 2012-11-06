@@ -17,31 +17,38 @@ import epam.ph.sg.models.xo.XO;
 import epam.ph.sg.models.xo.XOConnector;
 import epam.ph.sg.models.xo.XOPlayer;
 import epam.ph.sg.models.xo.XOStatistics;
+import epam.ph.sg.sudoku.SudokuGame;
 
 @Controller
 public class XOMenuController {
 
-	@RequestMapping(value = "/XO.html")
-	public String xo(HttpSession session) {
-		return "XO/XOMenu";
+	@RequestMapping("/XO.html")
+	public String xo() {
+		return "XO/Menu";
 	}
 
-	@RequestMapping(value = "/XOServerList.html")
-	public String serverList(HttpSession session, Model model) {
+	@RequestMapping("/XOServerList.html")
+	public String serverList(Model model) {
 		model.addAttribute("serverMap", XOConnector.getServerMap());
-		return "XO/XOServerList";
+		return "XO/ServerList";
+	}
+	
+	@RequestMapping("/XOStatistics.html")
+	public String statistics(Model model) {
+		model.addAttribute("xoStatList", XOStatistics.getAllStatistics());
+		return "XO/Statistics";
 	}
 
-	@RequestMapping(value = "XOCreate.html", method = RequestMethod.POST)
-	public @ResponseBody
-	boolean create(HttpSession session) {
+	@RequestMapping("/XOCreate.html")
+	public String create(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		XOPlayer xo = XOConnector.create(user);
+		session.setAttribute("sudoku", SudokuGame.getGame());
 		session.setAttribute("xo", xo);
-		return true;
+		return "XO/WaitPage";
 	}
 
-	@RequestMapping(value = "XOConnect.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/XOConnect.html", method = RequestMethod.POST)
 	public @ResponseBody
 	boolean connect(@RequestParam("serverID") int serverID, HttpSession session) {
 		User user = (User) session.getAttribute("user");
@@ -69,13 +76,15 @@ public class XOMenuController {
 			model.addAttribute("opStat",
 					XOStatistics.getUserStatistics(server.getId()));
 		}
-		return "XO/XOGame";
+		return "XO/Game";
 	}
 
-	@RequestMapping(value = "/XOClear.html", method = RequestMethod.POST)
+	@RequestMapping("/XOClear.html")
 	public @ResponseBody
 	boolean clear(HttpSession session) {
+		User user = (User) session.getAttribute("user");
 		session.removeAttribute("xo");
+		XOConnector.getServerMap().remove(user.getId());
 		return true;
 	}
 

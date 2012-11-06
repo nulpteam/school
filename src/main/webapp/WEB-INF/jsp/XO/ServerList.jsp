@@ -6,10 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/styles.css" type="text/css" rel="stylesheet">
-<link href="css/XO.css" type="text/css" rel="stylesheet">
+<link href="css/XO/XO.css" type="text/css" rel="stylesheet">
+
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/XO/XOMenu.js" type="text/javascript"></script>
-<script src="js/XO/XOLang_<c:out value="${lang}"/>.js"
+<script src="js/XO/Menu.js" type="text/javascript"></script>
+<script src="js/XO/Lang_<c:out value="${lang}"/>.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
 	var myID = "${user.id}";
@@ -30,9 +31,8 @@
 					<c:out value="${langPack['XO_SL_title']}" />
 				</p>
 			</div>
-			<div id="home" onclick=returnToMenu();>
-				<img src="images/XO/home.png">
-			</div>
+			<div class="homeButton" onmouseover=homeButtonOver(this);
+				onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
 			<div id="menu" align="center">
 				<c:forEach var="server" items="${serverMap}" varStatus="i">
 					<div class="button" id="${server.key}" onclick=connect(this.id);>

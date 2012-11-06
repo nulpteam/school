@@ -1,0 +1,24 @@
+#sudoku #value {
+	border: solid 2px;
+	border-color: black;
+	background-color: white;
+	width: 65px;
+	height: 120px;
+	cursor: pointer;
+	position: absolute;
+	z-index: 2;
+	display: none;
+}
+
+#sudoku #field table {
+	border: solid 1px;
+}
+
+#sudoku .box {
+	width: 40px;
+	height: 40px;
+	font-size: 30px;
+	font-weight : bold;
+	color: blue;
+	cursor: pointer;
+}

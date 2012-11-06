@@ -24,7 +24,23 @@ public class Message {
 		}
 
 		this.sender = sender;
-		this.text = text;
+		this.text = msgPrepare(text);
+	}
+
+	private static String msgPrepare(String text) {
+		int wordlenght = 20;
+		String preparedText = "";
+		String[] words = text.split(" ");
+		for (int i = 0; i < words.length; i++) {
+			if (words[i].length() > wordlenght) {
+				String newWord = words[i].substring(0, wordlenght);
+				newWord = newWord.concat("...");
+				preparedText += " " + newWord;
+			} else {
+				preparedText += " " + words[i];
+			}
+		}
+		return preparedText.trim();
 	}
 
 	public String getTime() {

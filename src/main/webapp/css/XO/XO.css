@@ -1,0 +1,72 @@
+body {
+	background-image: url('../../images/parta2.jpg');
+	background-repeat: repeat;
+}
+
+.page {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.paperList {
+	background-image: url('../../images/XO/list.png');
+	background-repeat: no-repeat;
+	height: 734px;
+	width: 635px;
+	margin-left: 5px;
+	font-family: LC Chalk;
+	font-size: 16px;
+	float: left;
+	color: #5B2FCE;
+}
+
+.paperList .title {
+	position: absolute;
+	width: 635px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.paperList .homeButton {
+	background-image: url('../../images/XO/home.png');
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	margin: 10px 545px;
+	cursor: pointer;
+}
+
+.paperList #menu {
+	position: absolute;
+	margin: 150px 180px;
+}
+
+.paperList .button {
+	background-image: url('../../images/XO/button.png');
+	background-repeat: no-repeat;
+	height: 35px;
+	width: 270px;
+	cursor: pointer;
+}
+
+.paperList .buttonText {
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
+
+.paperList #rulles {
+	position: absolute;
+	width: 400px;
+	margin: 400px 110px;
+}
+
+.paperList #statistics table {
+	margin: 100px 180px;
+	padding: 10px;
+}
+
+.paperList #statistics table .iam {
+	color: red;
+}

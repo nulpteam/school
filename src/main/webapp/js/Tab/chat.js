@@ -1,34 +1,18 @@
 function chatStart() {
-	// $('#chat').hover(mouseover, mouseout);
-	// var chatVisible = false;
-	// function mouseover() {
-	// if (chatVisible)
-	// return;
-	// $(this).animate({
-	// 'marginLeft' : '-15px'
-	// }, 100);
-	// chatVisible = true;
-	// }
-	// function mouseout() {
-	// if (!chatVisible)
-	// return;
-	// $(this).animate({
-	// 'marginLeft' : '-420px'
-	// }, 100);
-	// chatVisible = false;
-	// }
 	$('#chatForm').submit(function(eo) {
 		eo.preventDefault();
-		$.post("Send.html", {
-			msg : $('#chatInText').val()
-		}, function(resp) {
-			$('#chatInText').val('');
-			add(resp);
-		});
+		var msg = $('#chatInText');
+		if (msg.val() != '') {
+			$.post("Send.html", {
+				msg : msg.val()
+			}, function(resp) {
+				msg.val('');
+				add(resp);
+			});
+		}
 	});
 
 	$.post("StartChat.html");
-
 	refresh();
 	msgScanner();
 };
@@ -44,17 +28,15 @@ function refresh() {
 		}
 	});
 }
-
+var open = '<tr><td class="sender">';
+var openC = '<tr class="collor"><td class="sender">';
+var mid1 = ':</td><td class="time">';
+var mid2 = '</td></tr><tr><td colspan="2" class="msg">';
+var mid2C = '</td></tr><tr class="collor"><td colspan="2" class="msg">';
+var close = '</td></tr>';
 var collor = false;
-
+var tag;
 function add(msgArray) {
-	var open = '<tr><td class="sender">';
-	var openC = '<tr class="collor"><td class="sender">';
-	var mid1 = ':</td><td class="time">';
-	var mid2 = '</td></tr><tr><td colspan="2" class="msg">';
-	var mid2C = '</td></tr><tr class="collor"><td colspan="2" class="msg">';
-	var close = '</td></tr>';
-	var tag;
 	for ( var i = 0; i < msgArray.length; i++) {
 		if (collor) {
 			tag = openC + msgArray[i].sender.name + mid1 + msgArray[i].time
@@ -67,5 +49,8 @@ function add(msgArray) {
 		}
 
 		$('#chatTable').append(tag);
+	}
+	if (msgArray.length > 0){
+		$('#chatOutText').animate({scrollTop: 99999}, 500);
 	}
 }
