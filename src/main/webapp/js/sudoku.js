@@ -1,9 +1,5 @@
 var id;
 
-function startSudoku() {
-	getFailed();
-}
-
 function newGame() {
 	$.post('SudokuNewGame.html', function(resp) {
 		var i = 0;
@@ -35,7 +31,7 @@ function valueClick(value) {
 		id : id,
 		value : value
 	}, function(resp) {
-		if (resp) {
+		if (resp == true) {
 			if (value == 0) {
 				$('#sudoku #' + id).text('');
 			} else {

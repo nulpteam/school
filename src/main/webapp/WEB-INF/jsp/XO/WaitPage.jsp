@@ -17,8 +17,7 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#startButton').hide();
-	startSudoku();
+	chatStart();
 	waitClient();
 });
 </script>
@@ -42,6 +41,12 @@ $(document).ready(function(){
 				</div>
 			</div>
 			
+			<div id="msg" class="title">
+				<p align="center">
+					Можете зіграти судоку поки очікуєте
+					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				</p>
+			</div>
 			<c:import url="../Sudoku.jsp"></c:import>
 		</div>
 	</div>
