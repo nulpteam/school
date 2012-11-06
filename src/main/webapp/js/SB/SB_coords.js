@@ -329,8 +329,7 @@ function sendM() {
 		type : 'POST',
 		data : {
 			sheeps : Send,
-			connectionType: $('#ConnectionType').attr('class'),
-			gameID: $('#gameID').attr('class')
+			//gameID: $('#gameID').attr('class')
 		},
 		//dataType : 'json',
 		success : function(data) {
@@ -416,9 +415,7 @@ function fire(point) {
 	p = p[1] + '' + p[4];
 
 	$.post("fire.html", {
-		firePoint : p,
-		gameID : $("#gameID").attr("class"),
-		connectionType : $("#ConnectionType").attr("class")
+		firePoint : p
 	}, function(data) {
 		if(data==="00")
 			{
