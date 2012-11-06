@@ -1751,5 +1751,13 @@ function start() {
 	};
 	stringa = JSON.stringify(sheeps);
 	console.log(stringa);
-	$.post("sheepsReady.html", {sheepsReady : stringa});
+	$.post("sheepsReady.html", 
+			{sheepsReady : stringa},
+			function(data)
+			{
+				if(data=="OK")
+					{
+						location.href="BsGameStart.html";
+					}
+			});
 };

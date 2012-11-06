@@ -79,9 +79,10 @@ public class SBMenuController {
 			game.setServer(server);
 			ActiveGames.addGame(game);
 			session.setAttribute("Game",game);
+			session.setAttribute("ConnectionType","server");
 			
 		}
-		model.addAttribute("connectionType", "server");
+		//model.addAttribute("connectionType", "server");
 		System.out.println("YOU HAVE BS-GAME");
 		return "SB/Sb";
 	}
@@ -90,10 +91,10 @@ public class SBMenuController {
 	// Список ігор
 	@RequestMapping(value = { "/BsConectGame.html" }, method = RequestMethod.GET)
 	public String SbMenuConnection(HttpSession session, Model model) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
+//		if (session.getAttribute("user") == null) {
+//			new HomeController().index(session);
+//			return "Login";
+//		}
 		if (session.getAttribute("Game") != null) {
 			return "SB/Sb";
 		}
@@ -115,10 +116,10 @@ public class SBMenuController {
 	public @ResponseBody
 	String SbGameSelected(@RequestParam("gameID") int gameID,
 			HttpSession session, Model model) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
+//		if (session.getAttribute("user") == null) {
+//			new HomeController().index(session);
+//			return "Login";
+//		}
 		log.debug("*/*/*/*/*/*/*/*  GAME ID =" + gameID + "  /*/*/*/*/*/*/*/");
 		Game selectedGame = GamesList.getGameListBS().get(gameID);
 		Client client = new Client();
@@ -128,13 +129,12 @@ public class SBMenuController {
 		client.setPlayer(player);
 		client.setGameBoard(board);
 		selectedGame.setClient(client);
+		
 		ActiveGames.getGame(gameID).setClient(client);
-		model.addAttribute("connectionType", "client");
-		
-		
-		
+		//model.addAttribute("connectionType", "client");
 		
 		session.setAttribute("Game", selectedGame);
+		session.setAttribute("ConnectionType","client");
 		log.debug("---  START ---");
 		log.debug("--- " + selectedGame + "  ---");
 		log.debug("--- STOP  ---");
@@ -161,10 +161,10 @@ public class SBMenuController {
 	
 	@RequestMapping(value = "/BsGameStart.html", method = RequestMethod.GET)
 	public String SbGameStart(Model model, HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
+//		if (session.getAttribute("user") == null) {
+//			new HomeController().index(session);
+//			return "Login";
+//		}
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");

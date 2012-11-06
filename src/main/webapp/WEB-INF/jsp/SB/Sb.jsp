@@ -19,9 +19,9 @@
 <title><c:out value="${langPack['Sb_title']}" /></title>
 </head>
 <body>
-	<div id="gameID" class="${Game.id}"></div>
-	<div id="userName" class="${user.name}"></div>
-	<div id="ConnectionType" class="${connectionType}"></div>
+<%-- 	<div id="gameID" class="${Game.id}"></div> --%>
+<%-- 	<div id="userName" class="${user.name}"></div> --%>
+<%-- 	<div id="ConnectionType" class="${connectionType}"></div> --%>
 	<div class="content">
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
