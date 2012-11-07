@@ -6,14 +6,12 @@ var tickX1 = '210px';
 var tickX2 = '460px';
 
 function gameStart() {
-	$('#myNameStat').hide();
-	$('#opNameStat').hide();
 	$('#outText').text(msg9);
 	checker();
 }
 
 function gameHomeButton() {
-	if (end) {
+	if (end == true) {
 		$.post('XOClear.html', function(response) {
 			location.href = 'XO.html';
 		});
@@ -38,7 +36,7 @@ function statHide(id) {
 }
 
 function put(img) {
-	if (lock)
+	if (lock == true)
 		return;
 	$.post('XOPut.html', {
 		xy : img.id
