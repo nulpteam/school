@@ -3,10 +3,53 @@
  * 
  */
 var userAgent;
+var bsound;
+//матриця розташування кораблів
+var M;
+
+
 $(document).ready(function() 
 {
 	userAgent = navigator.userAgent;
+	//
+	bsound = new Audio;
+	if( userAgent.indexOf("Chrome")!=-1 )
+	{
+		bsound.src = "sound/More1.mp3";
+	}
+	
+	if( userAgent.indexOf("Firefox")!=-1)
+	{
+		bsound.src = "sound/More13.wav";
+	}
+	bsound.loop=true;
+	startbsound();
 });
+function stopbsound()
+{
+	bsound.pause();
+}
+function startbsound()
+{
+	bsound.volume=0.3;
+	bsound.play();
+}
+function chSound()
+{
+	id = $('.sound img').attr('id');
+	if(id=="s_on")
+		{
+			s_off = '<img id="s_off" src="images/SB/s_off.png" onclick="chSound();">';
+			$('.sound').html(s_off);
+			stopbsound();
+		}else
+	if(id=="s_off")
+	{
+		s_on = '<img id="s_on" src="images/SB/s_on.png" onclick="chSound();">';
+		$('.sound').html(s_on);
+		 startbsound();
+	}
+}
 
 //Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
@@ -33,8 +76,7 @@ function rotate(obj) {
 	}
 }
 
-// матриця розташування кораблів
-var M;
+
 // Створює пусту матрицю
 function createMatrix() {
 	M = new Array();
@@ -331,7 +373,7 @@ function sendM() {
 		url : 'init_sheeps.html',
 		type : 'POST',
 		data : {
-			sheeps : Send
+			sheeps : Send,
 		},
 		success : function(data) {
 		},
