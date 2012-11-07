@@ -5,7 +5,7 @@ function waitClient() {
 	var inter1 = setInterval(check, 1000);
 	function check() {
 		$.post('XOGetClient.html', function(response) {
-			if (response != "") {
+			if (response.id != null) {
 				clearInterval(inter1);
 				$('#outText p').text(response.name + msg4);
 				$('#startButton').show();

@@ -23,7 +23,7 @@ function msgScanner() {
 
 function refresh() {
 	$.post("Refresh.html", function(resp) {
-		if (resp != "") {
+		if (resp.length != 0) {
 			add(resp);
 		}
 	});

@@ -15,7 +15,6 @@ import epam.ph.sg.models.User;
 import epam.ph.sg.models.xo.XO;
 import epam.ph.sg.models.xo.XOBox;
 import epam.ph.sg.models.xo.XOPlayer;
-import epam.ph.sg.models.xo.XOStatistics;
 
 @Controller
 public class XOGameController {
@@ -25,12 +24,6 @@ public class XOGameController {
 	User getClient(HttpSession session) {
 		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
 		return xo.getGame().getClient();
-	}
-	
-	@RequestMapping(value = "/XOGetClientStat.html", method = RequestMethod.POST)
-	public @ResponseBody
-	XOStatistics getClientStat(@RequestParam("id") int id) {
-		return XOStatistics.getUserStatistics(id);
 	}
 
 	@RequestMapping(value = "/XOPut.html", method = RequestMethod.POST)

@@ -26,6 +26,6 @@ public class ChatUser {
 			setLoadedMsg(all);
 			return msgArray;
 		} else
-			return null;
+			return new Message[0];
 	}
 }
