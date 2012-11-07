@@ -5,8 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- <script src="js/jquery.js" type="text/javascript"></script> -->
-<!-- <script src="js/SB/SbGameList.js" type="text/javascript"></script> -->
 <c:forEach items="${sbJSLoader.scripts}" var="script">
 	<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 </c:forEach>
@@ -19,6 +17,9 @@
 <title><c:out value="${langPack['Sb_title']}" /></title>
 </head>
 <body>
+<div id="gameID" class="${Game.id}"></div>
+	<div id="userName" class="${user.name}"></div>
+	<div id="ConnectionType" class="${ConnectionType}"></div>
 	<div class="content">
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
