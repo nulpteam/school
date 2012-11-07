@@ -17,7 +17,7 @@ import epam.ph.sg.models.points.PtsPlayer;
 @Controller
 public class PointsMenuController {
 
-	private static Logger log = Logger.getLogger(PointsGameController.class);
+	private static Logger logger = Logger.getLogger(PointsGameController.class);
 
 	@RequestMapping(value = "/Points.html")
 	public String pointsMenu(HttpSession session) {
@@ -32,6 +32,17 @@ public class PointsMenuController {
 		}
 
 		return "Points/PointsMenu";
+	}
+	
+	@RequestMapping(value = "/PointsGame.html")
+	public String pointsGame(HttpSession session) {
+
+		if (session.getAttribute("user") == null) {
+			new HomeController().index(session);
+			return "redirect:/index.html";
+		}
+		
+		return "Points/PointsGame";
 	}
 
 	@RequestMapping(value = "/PointsCreateGame.html", method = RequestMethod.GET)

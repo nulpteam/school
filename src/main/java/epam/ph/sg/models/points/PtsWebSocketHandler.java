@@ -9,7 +9,7 @@ public class PtsWebSocketHandler extends WebSocketHandler {
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest arg0, String arg1) {
-		// TODO Auto-generated method stub
+
 		return new PtsWebSocketSpeeker();
 	}
 

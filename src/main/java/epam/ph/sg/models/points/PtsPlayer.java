@@ -14,7 +14,7 @@ public class PtsPlayer {
 	public PtsPlayer() {
 		name = "";
 		conn = null;
-		gameId = "undefined";
+		gameId = "";
 		lock = true;
 	}
 
