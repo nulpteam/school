@@ -1,13 +1,13 @@
-var id;
-
 function newGame() {
 	$.post('SudokuNewGame.html', function(resp) {
 		var i = 0;
-		$('#field .box').each(function() {
+		$('#sudoku #field td div').each(function() {
 			if (resp[i] == 0) {
 				$(this).text('');
+				$(this).attr('class', 'unlockedBox');
 			} else {
 				$(this).text(resp[i]);
+				$(this).attr('class', 'lockedBox');
 			}
 			i++;
 		});
@@ -15,27 +15,47 @@ function newGame() {
 	});
 }
 
+var box;
 function boxClick(elem) {
-	this.id = elem.id;
-	var position = $('#sudoku #' + elem.id).position();
-	// alert('top=' + position.top + ' left=' + position.left + ' id=' +
-	// elem.id);
-	$('#sudoku #value').css({
-		marginTop : position.top + 30,
-		marginLeft : position.left + 30
-	}).show();
+	if ($(elem).attr('class') == 'lockedBox') {
+		$('#sudoku #value').hide();
+	} else {
+		this.box = elem;
+		var position = $(elem).position();
+		$('#sudoku #value').css({
+			marginTop : position.top + 30,
+			marginLeft : position.left + 30
+		}).show();
+	}
+}
+
+function boxOver(elem) {
+//	var id = elem.id.charAt(0);
+//	$('#sudoku #field td[id^=' + id + ']').css({
+//		backgroundColor: 'lawnGreen'
+//	});
+//	id = elem.id.charAt(1);
+//	$('#sudoku #field td[id$=' + id + ']').css({
+//		backgroundColor: 'lawnGreen'
+//	});
+}
+
+function boxOut(elem) {
+//	$('#sudoku #field td').css({
+//		backgroundColor: 'inherit'
+//	});
 }
 
 function valueClick(value) {
 	$.post('SudokuPut.html', {
-		id : id,
+		id : box.id,
 		value : value
 	}, function(resp) {
 		if (resp == true) {
 			if (value == 0) {
-				$('#sudoku #' + id).text('');
+				$(box).text('');
 			} else {
-				$('#sudoku #' + id).text(value);
+				$(box).text(value);
 			}
 			getFailed();
 		}
@@ -57,12 +77,15 @@ function valueOut(elem) {
 
 function getFailed() {
 	$.post('SudokuGetFailed.html', function(resp) {
-		$('#sudoku .box').css({
-			color : 'blue'
+		$('#sudoku #field .lockedBox').css({
+			color : 'black'
+		});
+		$('#sudoku #field .unlockedBox').css({
+			color : 'inherit'
 		});
 		for ( var i = 0; i < resp.length; i++) {
 			var id = "" + resp[i].line + resp[i].colum;
-			$('#sudoku #' + id).css({
+			$('#sudoku $field #' + id).css({
 				color : 'red'
 			});
 		}

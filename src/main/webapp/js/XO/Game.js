@@ -13,6 +13,21 @@ function gameStart() {
 function gameHomeButton() {
 	if (end == true) {
 		$.post('XOClear.html', function(response) {
+			location.href = 'index.html';
+		});
+	} else {
+		var bool = confirm(msg2);
+		if (bool) {
+			$.post('XOLose.html', function(response) {
+				location.href = 'index.html';
+			});
+		}
+	}
+}
+
+function gameBackButton() {
+	if (end == true) {
+		$.post('XOClear.html', function(response) {
 			location.href = 'XO.html';
 		});
 	} else {

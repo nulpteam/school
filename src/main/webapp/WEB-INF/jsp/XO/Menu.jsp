@@ -7,17 +7,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><c:out value="${langPack['XO_title']}" /></title>
+
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
 <link href="css/XO/XO.css" type="text/css" rel="stylesheet">
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/Menu.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		chatStart();
 	});
 </script>
-<title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
 	<div class="page">
@@ -29,21 +31,23 @@
 					<c:out value="${langPack['XO_title']}" />
 				</p>
 			</div>
+			<div class="homeButton" onmouseover=homeButtonOver(this);
+				onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
+			<div class="refreshButton" onmouseover=refreshButtonOver(this);
+				onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
 			<div id="menu" align="center">
-				<div class="button" onclick=buttonCreateServer();>
+				<div class="button" onclick=createServerButton();>
 					<p class="buttonText">
 						<c:out value="${langPack['XO_button_create']}" />
 					</p>
 				</div>
-				<div class="button" onclick=buttonServerList();>
+				<div class="button" onclick=serverListButton();>
 					<p class="buttonText">
 						<c:out value="${langPack['XO_button_connect']}" />
 					</p>
 				</div>
-				<div class="button" onclick=buttonStatistics();>
-					<p class="buttonText">
-						Статистика <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-					</p>
+				<div class="button" onclick=statisticsButton();>
+					<p class="buttonText">${langPack['XO_stat_title']}</p>
 				</div>
 			</div>
 			<div id="rulles">

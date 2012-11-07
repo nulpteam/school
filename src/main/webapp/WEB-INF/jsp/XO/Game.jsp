@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><c:out value="${langPack['XO_title']}" /></title>
+
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
 <link href="css/XO/XO.css" type="text/css" rel="stylesheet">
 <link href="css/XO/Game.css" type="text/css" rel="stylesheet">
@@ -14,13 +16,13 @@
 <script src="js/XO/Game.js" type="text/javascript"></script>
 <script src="js/XO/Lang_<c:out value="${lang}"/>.js"
 	type="text/javascript"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		gameStart();
 		chatStart();
 	});
 </script>
-<title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
 	<div class="page">
@@ -28,8 +30,11 @@
 
 		<div class="paperList">
 			<div class="homeButton" onmouseover=homeButtonOver(this);
-				onmouseout=homeButtonOut(this); onclick=gameHomeButton();>
-			</div>
+				onmouseout=homeButtonOut(this); onclick=gameHomeButton();></div>
+			<div class="backButton" onmouseover=backButtonOver(this);
+				onmouseout=backButtonOut(this); onclick=gameBackButton();></div>
+			<div class="refreshButton" onmouseover=refreshButtonOver(this);
+				onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
 			<div id="myName" class="namespace" onclick=statShow(this.id);>
 				<p>
 					<c:out value="${user.name}" />

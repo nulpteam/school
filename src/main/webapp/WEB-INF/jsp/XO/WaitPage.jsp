@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><c:out value="${langPack['XO_title']}" /></title>
+
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
 <link href="css/XO/XO.css" type="text/css" rel="stylesheet">
 <link href="css/XO/WaitPage.css" type="text/css" rel="stylesheet">
@@ -14,7 +16,7 @@
 <script src="js/XO/WaitPage.js" type="text/javascript"></script>
 <script src="js/XO/Lang_<c:out value="${lang}"/>.js"
 	type="text/javascript"></script>
-<title><c:out value="${langPack['XO_title']}" /></title>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		chatStart();
@@ -28,13 +30,14 @@
 
 		<div class="paperList">
 			<div id="outText" class="title">
-				<p align="center">
-					Чекайте на клієнта
-					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-				</p>
+				<p align="center"></p>
 			</div>
 			<div class="homeButton" onmouseover=homeButtonOver(this);
 				onmouseout=homeButtonOut(this); onclick=waitPageHomeButton();></div>
+			<div class="backButton" onmouseover=backButtonOver(this);
+				onmouseout=backButtonOut(this); onclick=waitPageBackButton();></div>
+			<div class="refreshButton" onmouseover=refreshButtonOver(this);
+				onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
 			<div id="startButton" align="center">
 				<div class="button" onclick=startButtonClick();>
 					<p class="buttonText">Start Game</p>
@@ -42,10 +45,7 @@
 			</div>
 
 			<div id="msg" class="title">
-				<p align="center">
-					Можете зіграти судоку поки очікуєте
-					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-				</p>
+				<p align="center">${langPack['XO_WP_msg']}</p>
 			</div>
 			<c:import url="../Sudoku.jsp"></c:import>
 		</div>

@@ -1,6 +1,6 @@
 var msg1 = 'You can not connect to yourself!';
 var msg2 = 'If you leave, you will lose!';
-var msg3 = 'Wait for connection';
+var msg3 = 'Wait for opponent';
 var msg4 = ' connected';
 var msg5 = 'Victory :)';
 var msg6 = ' out';

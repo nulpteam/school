@@ -22,7 +22,8 @@ body {
 
 .paperList .title {
 	position: absolute;
-	width: 635px;
+	width: 450px;
+	margin-left: 80px;
 	font-size: 30px;
 	font-weight: bold;
 }
@@ -33,7 +34,27 @@ body {
 	width: 50px;
 	height: 50px;
 	position: absolute;
-	margin: 10px 545px;
+	margin: 20px 540px;
+	cursor: pointer;
+}
+
+.paperList .refreshButton {
+	background-image: url('../../images/XO/refresh.png');
+	background-repeat: no-repeat;
+	width: 60px;
+	height: 40px;
+	position: absolute;
+	margin: 80px 540px;
+	cursor: pointer;
+}
+
+.paperList .backButton {
+	background-image: url('../../images/XO/back.png');
+	background-repeat: no-repeat;
+	width: 60px;
+	height: 40px;
+	position: absolute;
+	margin: 135px 540px;
 	cursor: pointer;
 }
 
@@ -60,13 +81,4 @@ body {
 	position: absolute;
 	width: 400px;
 	margin: 400px 110px;
-}
-
-.paperList #statistics table {
-	margin: 100px 180px;
-	padding: 10px;
-}
-
-.paperList #statistics table .iam {
-	color: red;
 }

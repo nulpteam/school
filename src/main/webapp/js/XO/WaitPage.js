@@ -1,6 +1,7 @@
 var started = false;
 
 function waitClient() {
+	$('#outText p').text(msg3);
 	var inter1 = setInterval(check, 1000);
 	function check() {
 		$.post('XOGetClient.html', function(response) {
@@ -19,6 +20,21 @@ function startButtonClick() {
 }
 
 function waitPageHomeButton() {
+	if (started) {
+		var bool = confirm(msg2);
+		if (bool) {
+			$.post('XOLose.html', function(response) {
+				location.href = 'index.html';
+			});
+		}
+	} else {
+		$.post('XOClear.html', function(response) {
+			location.href = 'index.html';
+		});
+	}
+}
+
+function waitPageBackButton() {
 	if (started) {
 		var bool = confirm(msg2);
 		if (bool) {

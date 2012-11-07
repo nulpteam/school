@@ -3,7 +3,7 @@
 <link href="css/sudoku.css" type="text/css" rel="stylesheet">
 <script src="js/sudoku.js" type="text/javascript"></script>
 <div id="sudoku">
-	<div id="field">
+	<div>
 		<table id="value">
 			<tr>
 				<td></td>
@@ -36,21 +36,30 @@
 						onclick=valueClick(9)>9</div></td>
 			</tr>
 		</table>
-		<table cellpadding="0" cellspacing="0" rules="all">
+		<table id="field">
 			<c:forEach var="line" items="${sudoku.field}" varStatus="lineNumber">
 				<tr>
 					<c:forEach var="box" items="${line}" varStatus="columNumber">
-						<td><div class="box"
-								id="${lineNumber.count-1}${columNumber.count-1}"
-								onclick=boxClick(this)>
-								<c:if test="${box.value != 0}">
+						<td id="${lineNumber.count-1}${columNumber.count-1}"><c:if
+								test="${box.locked}">
+								<div class="lockedBox"
+									id="${lineNumber.count-1}${columNumber.count-1}"
+									onmouseover=boxOver(this); onmouseout=boxOut(this);
+									onclick=boxClick(this)>${box.value}</div>
+							</c:if> <c:if test="${!box.locked}">
+								<div class="unlockedBox"
+									id="${lineNumber.count-1}${columNumber.count-1}"
+									onmouseover=boxOver(this); onmouseout=boxOut(this);
+									onclick=boxClick(this)>
+									<c:if test="${box.value != 0}">
 											${box.value}
 										</c:if>
-							</div></td>
+								</div>
+							</c:if></td>
 					</c:forEach>
 				</tr>
 			</c:forEach>
 		</table>
-		<button onclick=newGame();>New game</button>
 	</div>
+	<button onclick=newGame();>New game</button>
 </div>

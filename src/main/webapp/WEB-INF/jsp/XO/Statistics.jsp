@@ -7,17 +7,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><c:out value="${langPack['XO_title']}" /></title>
+
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
 <link href="css/XO/XO.css" type="text/css" rel="stylesheet">
+<link href="css/XO/Statistics.css" type="text/css" rel="stylesheet">
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/Menu.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		chatStart();
 	});
 </script>
-<title><c:out value="${langPack['XO_title']}" /></title>
 </head>
 <body>
 	<div class="page">
@@ -25,22 +28,23 @@
 
 		<div class="paperList">
 			<div class="title">
-				<p align="center">
-					Статистика
-					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-				</p>
+				<p align="center">${langPack['XO_stat_title']}</p>
 			</div>
 			<div class="homeButton" onmouseover=homeButtonOver(this);
 				onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
+			<div class="backButton" onmouseover=backButtonOver(this);
+				onmouseout=backButtonOut(this); onclick=backButtonClick();></div>
+			<div class="refreshButton" onmouseover=refreshButtonOver(this);
+				onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
 			<div id="statistics">
 				<table>
 					<thead>
 						<tr>
-							<th></th>
-							<th>Name:</th>
-							<th>Wins:</th>
-							<th>Losses:</th>
-							<th>Total:</th>
+							<th class="number"></th>
+							<th class="name">${langPack['XO_stat_name']}</th>
+							<th class="wins">${langPack['XO_stat_wins']}</th>
+							<th class="losses">${langPack['XO_stat_losses']}</th>
+							<th class="total">${langPack['XO_stat_total']}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -56,11 +60,11 @@
 							</c:if>
 							<c:if test="${user.name != player.name}">
 								<tr>
-									<td>${number.count}</td>
-									<td>${player.name}</td>
-									<td>${player.wins}</td>
-									<td>${player.losses}</td>
-									<td>${player.total}</td>
+									<td class="number">${number.count}</td>
+									<td class="name">${player.name}</td>
+									<td class="wins">${player.wins}</td>
+									<td class="losses">${player.losses}</td>
+									<td class="total">${player.total}</td>
 								</tr>
 							</c:if>
 						</c:forEach>
