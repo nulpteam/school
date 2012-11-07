@@ -7,9 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/styles.css" type="text/css" rel="stylesheet">
-<link href="css/personalPage.css" type="text/css" rel="stylesheet">
-<script src="js/personalPage.js" type="text/javascript"></script>
+
+<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
+<link href="css/PersonalPage.css" type="text/css" rel="stylesheet">
+<script src="js/PersonalPage.js" type="text/javascript"></script>
 <title>Personal Page</title>
 </head>
 <body>
@@ -21,7 +22,8 @@
 			<form action="PersonalPage.html" method="POST">
 				<div id="name">
 					<p>
-						<b><c:out value="${langPack['Name']}" /> <c:out value="${user.name}" /></b>
+						<b><c:out value="${langPack['Name']}" /> <c:out
+								value="${user.name}" /></b>
 					</p>
 					<input class="input_areas required" type="text" name="user_name">
 				</div>
@@ -33,10 +35,37 @@
 				</div>
 				<div id="xoStat">
 					<table>
-						<tr><th>Name:</th><th>Wins:</th><th>Losses:</th><th>Total:</th></tr>
-						<c:forEach var="player" items="${xoStat}" varStatus="i">
-							<tr><th>${player.name}</th><th>${player.wins}</th><th>${player.losses}</th><th>${player.total}</th></tr>
-						</c:forEach>
+						<thead>
+							<tr>
+								<th></th>
+								<th>Name:</th>
+								<th>Wins:</th>
+								<th>Losses:</th>
+								<th>Total:</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="player" items="${xoStatList}" varStatus="i">
+								<c:if test="${user.name == player.name}">
+									<tr>
+										<td class="iam">${number.count}</td>
+										<td class="iam">${player.name}</td>
+										<td class="iam">${player.wins}</td>
+										<td class="iam">${player.losses}</td>
+										<td class="iam">${player.total}</td>
+									</tr>
+								</c:if>
+								<c:if test="${user.name != player.name}">
+									<tr>
+										<td>${number.count}</td>
+										<td>${player.name}</td>
+										<td>${player.wins}</td>
+										<td>${player.losses}</td>
+										<td>${player.total}</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+						</tbody>
 					</table>
 				</div>
 			</form>

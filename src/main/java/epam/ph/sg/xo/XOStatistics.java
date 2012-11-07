@@ -1,4 +1,4 @@
-package epam.ph.sg.models.xo;
+package epam.ph.sg.xo;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,6 +15,10 @@ public class XOStatistics {
 	private static XOStatisticsDAO dao = (XOStatisticsDAO) ctx
 			.getBean("xoStatisticsDAOimpl");
 
+	public static void insert(int id) {
+		dao.insert(id);
+	}
+	
 	public static void win(int id) {
 		dao.win(id);
 	}

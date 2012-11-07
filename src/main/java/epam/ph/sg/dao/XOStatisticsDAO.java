@@ -5,7 +5,7 @@ package epam.ph.sg.dao;
  */
 import java.util.List;
 
-import epam.ph.sg.models.xo.XOStatistics;
+import epam.ph.sg.xo.XOStatistics;
 
 public interface XOStatisticsDAO {
 	/**

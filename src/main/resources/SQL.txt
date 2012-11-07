@@ -1,0 +1,40 @@
+delimiter $$
+CREATE DATABASE `sgdb` /*!40100 DEFAULT CHARACTER SET utf8 */$$
+
+delimiter $$
+CREATE TABLE `sgdb`.`users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(30) DEFAULT NULL,
+  `Pass` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8$$
+
+delimiter $$
+CREATE TABLE `sgdb` . `xostatistics` (
+  `id` int(11) NOT NULL,
+  `Wins` int(11) DEFAULT 0,
+  `Losses` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
+INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (1, 'paul', '1');$$
+delimiter $$
+INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (2, 'bobik', '1');$$
+delimiter $$
+INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (3, 'kostya', '1');$$
+delimiter $$
+INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (4, 'sergiy', '1');$$
+delimiter $$
+INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (5, 'roman', '1');$$
+
+delimiter $$
+insert into `sgdb`.`xostatistics`(id) values(1);$$
+delimiter $$
+insert into `sgdb`.`xostatistics`(id) values(2);$$
+delimiter $$
+insert into `sgdb`.`xostatistics`(id) values(3);$$
+delimiter $$
+insert into `sgdb`.`xostatistics`(id) values(4);$$
+delimiter $$
+insert into `sgdb`.`xostatistics`(id) values(5);$$

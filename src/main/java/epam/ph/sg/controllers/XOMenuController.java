@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.models.xo.XO;
-import epam.ph.sg.models.xo.XOConnector;
-import epam.ph.sg.models.xo.XOPlayer;
-import epam.ph.sg.models.xo.XOStatistics;
 import epam.ph.sg.sudoku.SudokuGame;
+import epam.ph.sg.xo.XO;
+import epam.ph.sg.xo.XOConnector;
+import epam.ph.sg.xo.XOPlayer;
+import epam.ph.sg.xo.XOStatistics;
 
 @Controller
 public class XOMenuController {

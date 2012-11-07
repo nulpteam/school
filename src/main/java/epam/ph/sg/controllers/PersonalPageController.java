@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.models.xo.XOStatistics;
-import epam.ph.sg.pp.PersonalPage;
+import epam.ph.sg.personal.PersonalPage;
+import epam.ph.sg.xo.XOStatistics;
 
 @Controller
 public class PersonalPageController {
 
 	@RequestMapping("/PersonalPage.html")
 	public String personalPage(HttpSession session, Model model) {
-		model.addAttribute("xoStat",
+		model.addAttribute("xoStatList",
 				XOStatistics.getAllStatistics());
 		return "PersonalPage";
 	}

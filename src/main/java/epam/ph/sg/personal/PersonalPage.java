@@ -1,4 +1,4 @@
-package epam.ph.sg.pp;
+package epam.ph.sg.personal;
 
 /**
  * @author Paul Michael T.

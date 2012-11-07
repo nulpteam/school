@@ -1,4 +1,4 @@
-package epam.ph.sg.models.xo;
+package epam.ph.sg.xo;
 
 import epam.ph.sg.models.User;
 

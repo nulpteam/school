@@ -85,7 +85,7 @@ function getFailed() {
 		});
 		for ( var i = 0; i < resp.length; i++) {
 			var id = "" + resp[i].line + resp[i].colum;
-			$('#sudoku $field #' + id).css({
+			$('#sudoku #field td #' + id).css({
 				color : 'red'
 			});
 		}

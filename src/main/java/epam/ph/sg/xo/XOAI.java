@@ -1,4 +1,4 @@
-package epam.ph.sg.models.xo;
+package epam.ph.sg.xo;
 
 /**
  * @author Paul Michael T.
