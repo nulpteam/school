@@ -5,8 +5,6 @@ import java.util.List;
 
 public class PtsGameInfoMessage {
 
-	private int COUNT_Y = 26;
-	private int COUNT_X = 22;
 	private String type;
 	private String clientName;
 	private String serverName;
@@ -71,7 +69,7 @@ public class PtsGameInfoMessage {
 		matrix.add(b24);
 		matrix.add(b25);
 		
-		type = "initialize";
+		type = PtsResources.getProperty("user.message.type.initialize");
 		clientName = "none";
 		serverName = "none";
 		serverLock = true;
@@ -81,8 +79,8 @@ public class PtsGameInfoMessage {
 	
 
 	public void initializeBoard(int[][] board) {
-		for (int i = 0; i < COUNT_Y; i++) {
-			for (int j = 0; j < COUNT_X; j++) {
+		for (int i = 0; i < Pts.Y_LENGTH; i++) {
+			for (int j = 0; j < Pts.X_LENGTH; j++) {
 				matrix.get(i).add(board[i][j]);
 			}
 		}

@@ -9,10 +9,13 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 public class PtsJsonParser {
 
-	private static Logger logger = Logger.getLogger(PtsJsonParser.class);
-	private ObjectMapper mapper = new ObjectMapper();
-
-
+	private Logger logger;
+	private ObjectMapper mapper;
+	
+	public PtsJsonParser() {
+		logger = Logger.getLogger(PtsJsonParser.class);
+		mapper = new ObjectMapper();
+	}
 
 	public PtsClientMessage parseJsonMessage(String json) {
 

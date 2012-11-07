@@ -10,36 +10,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.points.PtsGame;
-import epam.ph.sg.models.points.PtsGameMap;
-import epam.ph.sg.models.points.PtsLastChanges;
 
 @Controller
 public class PointsGameController {
 
 	private static Logger log = Logger.getLogger(PointsGameController.class);
 
-	@RequestMapping(value = "/PointsGame.html")
-	public String pointsGame(HttpSession session) {
+	
 
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "redirect:/index.html";
-		}
-		
-		return "Points/PointsGame";
-	}
-
-	@RequestMapping(value = "/PointPut.html", method = RequestMethod.POST)
-	public @ResponseBody
-	String putPoint(@RequestParam("point_xy") String xy, HttpSession session) {
-
-		String userType = session.getAttribute("ptsUserType").toString();
-		PtsGame game = (PtsGame) session.getAttribute("ptsgame"); 
-		
-		//game.putPoint(xy, userType);
-		
-		return userType;
-	}
+//	@RequestMapping(value = "/PointPut.html", method = RequestMethod.POST)
+//	public @ResponseBody
+//	String putPoint(@RequestParam("point_xy") String xy, HttpSession session) {
+//
+//		String userType = session.getAttribute("ptsUserType").toString();
+//		PtsGame game = (PtsGame) session.getAttribute("ptsgame"); 
+//		
+//		//game.putPoint(xy, userType);
+//		
+//		return userType;
+//	}
 
 	@RequestMapping(value = "/PointsCheck.html", method = RequestMethod.GET)
 	public @ResponseBody

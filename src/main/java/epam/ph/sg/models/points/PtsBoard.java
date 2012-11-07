@@ -4,13 +4,14 @@ import org.apache.log4j.Logger;
 
 public class PtsBoard {
 
-	private static Logger logger = Logger.getLogger(PtsBoard.class);
+	private Logger logger;
 	private int board[][];
-	private final int X_LENGTH = 22;
-	private final int Y_LENGTH = 26;
+	private int lastX;
+	private int lastY;
 
 	public PtsBoard() {
-		board = new int[Y_LENGTH][X_LENGTH];
+		logger = Logger.getLogger(PtsBoard.class);
+		board = new int[Pts.Y_LENGTH][Pts.X_LENGTH];
 		init();
 	}
 
@@ -18,28 +19,46 @@ public class PtsBoard {
 		int indexY = xy.indexOf('Y');
 		int x = Integer.parseInt(xy.substring(1, indexY));
 		int y = Integer.parseInt(xy.substring(indexY + 1));
-		if (userType.equals("server"))
+		lastX = x;
+		lastY = y;
+		if (userType.equals(PtsResources.getProperty("user.type.server")))
 			board[y][x] = 1;
-		else if (userType.equals("client"))
+		else if (userType.equals(PtsResources.getProperty("user.type.client")))
 			board[y][x] = 2;
 		else 
-			logger.error("errro in user type! no such userType :" + userType);
+			logger.error(PtsResources.getProperty("error.user_type.don't_exist") + userType);
 	} 
 	
 	public  int[][] getBoard() {
 		return board;
 	}
 	
-//	public PtsLastChanges getLastChanges() {
-//		return lastChanges;
-//	}
+	public int getLastX() {
+		return lastX;
+	}
+	
+	public int getLastY() {
+		return lastY;
+	}
 
 	private void init() {
-		for (int i = 0; i < Y_LENGTH; i++) {
-			for (int j = 0; j < X_LENGTH; j++) {
+		for (int i = 0; i < Pts.Y_LENGTH; i++) {
+			for (int j = 0; j < Pts.X_LENGTH; j++) {
 				board[i][j] = 0;
 			}
 		}
 	}
+	
+	//TODO delete this method
+	public void printBoard() {
+		
+		for (int i = 0 ; i< Pts.Y_LENGTH; i++) {
+			for (int j = 0 ; j< Pts.X_LENGTH; j++) {
+				System.out.printf("%3s", board[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
 	
 }

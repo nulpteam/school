@@ -11,12 +11,12 @@ public class PtsClientMessage {
 	private boolean lock;
 
 	public PtsClientMessage() {
-		type = "none";
-		userType = "none";
-		gameId = "none";
-		coords = "none";
-		clientName = "none";
-		serverName = "none";
+		type = "";
+		userType = "";
+		gameId = "";
+		coords = "";
+		clientName = "";
+		serverName = "";
 		lock = false;
 	}
 
