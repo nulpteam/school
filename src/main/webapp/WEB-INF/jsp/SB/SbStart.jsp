@@ -19,20 +19,14 @@
 <title><c:out value="${langPack['Sb_title']}" /></title>
 </head>
 <body>
-	<div id="gameID" class="${Game.id}"></div>
-	<div id="userName" class="${user.name}"></div>
-	<div id="ConnectionType" class="${ConnectionType}"></div>
-	
-<!-- 	<embed src="sound/Shoot.mp3" autostart="true" hidden="true"> -->
-<!-- 		<source src="sound/Shoot.wav"/> -->
-<!-- 		<source src="sound/Shoot.mp3"/> -->
-		
-<!-- 	</embed> -->
 	<div class="content">
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
+		<div class="sound">
+				<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
+			</div>
 		<div class=clear></div>
 		
 		
@@ -121,15 +115,9 @@
 <input type="button" value="SendM" onClick="sendM();"/>
 <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/>
 <input type="button" value="Test1" onClick="testWS();"/>
-<div id="IH"></div>
-<%-- 	<% --%>
-<!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->
-<!-- // // 	while (en.hasMoreElements()) -->
-<!-- // // 	 {  -->
-<!-- // // 		out.println(en.nextElement()); -->
-<!-- // // 	} -->
 
-<%-- 	 %>  --%>
+<div id="IH"></div>
+
 </div>
 </body>
 </html>

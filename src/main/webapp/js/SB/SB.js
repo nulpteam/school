@@ -247,7 +247,7 @@ $(function() {
 	function fOut(id1, id2) {
 		console.log("out");
 //		remHover();
-		clearOldCoordsInM(id1, id2);
+		//clearOldCoordsInM(id1, id2);
 	}
 
 	function fOver(event, ui, coordinate) {
