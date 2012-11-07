@@ -16,10 +16,10 @@
 	type="text/javascript"></script>
 <title><c:out value="${langPack['XO_title']}" /></title>
 <script type="text/javascript">
-$(document).ready(function(){
-	chatStart();
-	waitClient();
-});
+	$(document).ready(function(){
+		chatStart();
+		waitClient();
+	});
 </script>
 </head>
 <body>
@@ -40,7 +40,7 @@ $(document).ready(function(){
 					<p class="buttonText">Start Game</p>
 				</div>
 			</div>
-			
+
 			<div id="msg" class="title">
 				<p align="center">
 					Можете зіграти судоку поки очікуєте

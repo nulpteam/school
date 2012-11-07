@@ -9,6 +9,13 @@ import epam.ph.sg.models.xo.XOStatistics;
 
 public interface XOStatisticsDAO {
 	/**
+	 * Insert new user in the DB
+	 * 
+	 * @param id
+	 *            - User ID
+	 */
+	void insert(int id);
+	/**
 	 * Record winning in the DB
 	 * 
 	 * @param id

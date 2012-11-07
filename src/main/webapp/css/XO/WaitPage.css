@@ -1,15 +1,15 @@
 .paperList #startButton {
 	position: absolute;
-	margin: 130px 170px;
+	margin: 70px 170px;
 	display: none;
 }
 
 .paperList #msg {
-	margin-top: 100px;
+	margin-top: 150px;
 	font-size: 20px;
 }
 
 .paperList #sudoku {
-	margin: 200px 125px;
+	margin: 220px 125px;
 	position: absolute;
 }

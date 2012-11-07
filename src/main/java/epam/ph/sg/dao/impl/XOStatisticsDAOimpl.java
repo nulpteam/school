@@ -30,6 +30,12 @@ public class XOStatisticsDAOimpl implements XOStatisticsDAO {
 	}
 
 	@Override
+	public void insert(int id) {
+		String sql = "insert into `sgdb`.`xostatistics`(id) values(" + id + ")";
+		jdbcTemplate.execute(sql);
+	}
+
+	@Override
 	public void win(int id) {
 		String sql = "update `sgdb` . `XOstatistics` set wins=wins+1 where id="
 				+ id;
