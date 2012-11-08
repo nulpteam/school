@@ -112,7 +112,7 @@
 				<div>7</div>
 				<div>8</div>
 				<div>9</div>
-				<div>10</div>
+				<div class="last10">10</div>
 			</div>
 		</div>
 	</div>
