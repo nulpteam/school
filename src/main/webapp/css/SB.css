@@ -77,7 +77,7 @@ body {
 	margin-left: -30px;
 	width: 31px;
 	position: absolute;
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
 .v_markers .last10 {
@@ -98,7 +98,7 @@ body {
 
 .field2 .v_markers {
 	width: 50px;
-	margin-left: -30px;
+	margin-left: -32px;
 	position: absolute;
 	margin-top: 4px;
 }
