@@ -47,7 +47,6 @@
 			<div id="msg" class="title">
 				<p align="center">${langPack['XO_WP_msg']}</p>
 			</div>
-			<c:import url="../Sudoku.jsp"></c:import>
 		</div>
 	</div>
 </body>

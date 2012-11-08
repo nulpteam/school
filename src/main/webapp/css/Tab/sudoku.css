@@ -1,3 +1,12 @@
+#sudoku {
+	position: absolute;
+	height: 439px;
+	width: 271px;
+	margin: 56px 45px;
+	font-family: Tahoma;
+	height: 439px;
+}
+
 #sudoku #value {
 	border: solid 2px;
 	border-color: black;
@@ -18,10 +27,15 @@
 }
 
 #sudoku #field div {
-	width: 30px;
-	height: 30px;
-	font-size: 20px;
-	font-weight : bold;
+	border: solid 1px;
+	width: 25px;
+	height: 25px;
+	font-size: 16px;
+	font-weight: bold;
 	color: black;
 	cursor: pointer;
+}
+
+.area0, .area2, .area4, .area6, .area8 {
+	background-color: lightgray;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="css/sudoku.css" type="text/css" rel="stylesheet">
-<script src="js/sudoku.js" type="text/javascript"></script>
+<link href="css/Tab/sudoku.css" type="text/css" rel="stylesheet">
+<script src="js/Tab/sudoku.js" type="text/javascript"></script>
 <div id="sudoku">
 	<div>
 		<table id="value">
@@ -36,20 +36,19 @@
 						onclick=valueClick(9)>9</div></td>
 			</tr>
 		</table>
-		<table id="field">
+		<table id="field" onmouseout=fieldOut();>
 			<c:forEach var="line" items="${sudoku.field}" varStatus="lineNumber">
 				<tr>
 					<c:forEach var="box" items="${line}" varStatus="columNumber">
-						<td id="${lineNumber.count-1}${columNumber.count-1}"><c:if
+						<td id="${lineNumber.count-1}${columNumber.count-1}" class="area${box.boxArea}"
+							onmouseover=boxOver(this);><c:if
 								test="${box.locked}">
 								<div class="lockedBox"
 									id="${lineNumber.count-1}${columNumber.count-1}"
-									onmouseover=boxOver(this); onmouseout=boxOut(this);
 									onclick=boxClick(this)>${box.value}</div>
 							</c:if> <c:if test="${!box.locked}">
 								<div class="unlockedBox"
 									id="${lineNumber.count-1}${columNumber.count-1}"
-									onmouseover=boxOver(this); onmouseout=boxOut(this);
 									onclick=boxClick(this)>
 									<c:if test="${box.value != 0}">
 											${box.value}
