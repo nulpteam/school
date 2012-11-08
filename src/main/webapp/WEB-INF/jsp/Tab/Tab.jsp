@@ -3,4 +3,5 @@
 <link href="css/Tab/tab.css" type="text/css" rel="stylesheet">
 <div id="tab">
 	<c:import url="../Tab/Chat.jsp"></c:import>
+	<c:import url="../Tab/Sudoku.jsp"></c:import>
 </div>
