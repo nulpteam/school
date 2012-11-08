@@ -18,6 +18,15 @@ CREATE TABLE `sgdb` . `xostatistics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
 
 delimiter $$
+CREATE TABLE `sgdb` . `userAddInfo` (
+  `id` int(11) NOT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `birthday` varchar(30) DEFAULT NULL,
+  `about` varchar(999) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
 INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (1, 'paul', '1');$$
 delimiter $$
 INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (2, 'bobik', '1');$$
@@ -38,3 +47,14 @@ delimiter $$
 insert into `sgdb`.`xostatistics`(id) values(4);$$
 delimiter $$
 insert into `sgdb`.`xostatistics`(id) values(5);$$
+
+delimiter $$
+insert into `sgdb`.`useraddinfo`(id) values(1);$$
+delimiter $$
+insert into `sgdb`.`useraddinfo`(id) values(2);$$
+delimiter $$
+insert into `sgdb`.`useraddinfo`(id) values(3);$$
+delimiter $$
+insert into `sgdb`.`useraddinfo`(id) values(4);$$
+delimiter $$
+insert into `sgdb`.`useraddinfo`(id) values(5);$$

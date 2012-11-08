@@ -1,0 +1,55 @@
+body {
+	background-image: url('../../images/parta2.jpg');
+	background-repeat: repeat;
+}
+
+.page {
+	width: 635px;
+	margin: 0 auto;
+}
+
+.paperList {
+	background-image: url('../../images/XO/list.png');
+	background-repeat: no-repeat;
+	height: 734px;
+	width: 635px;
+	font-family: LC Chalk;
+	font-size: 16px;
+	color: #5B2FCE;
+}
+
+#personalPage .title{
+	position: absolute;
+	width: 450px;
+	margin-left: 80px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#personalPage table {
+	position: absolute;
+	width: 450px;
+	margin: 80px 80px;
+	font-weight: bold;
+}
+
+#personalPage table .param {
+	width: 150px;
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+#personalPage table .value {
+	width: 250px;
+	vertical-align: top;
+}
+
+#personalPage table .button {
+	width: 50px;
+	vertical-align: top;
+	text-align: right;
+}
+
+#personalPage table .edit {
+	display: none;
+}

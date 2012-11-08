@@ -3,8 +3,6 @@ package epam.ph.sg.controllers;
 /**
  * @author Paul Michael T.
  */
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -16,15 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
 import epam.ph.sg.personal.PersonalPage;
-import epam.ph.sg.xo.XOStatistics;
 
 @Controller
 public class PersonalPageController {
 
 	@RequestMapping("/PersonalPage.html")
 	public String personalPage(HttpSession session, Model model) {
-		model.addAttribute("xoStatList",
-				XOStatistics.getAllStatistics());
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("userAddInfo",
+				PersonalPage.getUserAddIngo(user.getId()));
 		return "PersonalPage";
 	}
 
@@ -34,6 +32,30 @@ public class PersonalPageController {
 		User user = (User) session.getAttribute("user");
 		PersonalPage.changeName(user.getId(), name);
 		user.setName(name);
+		return true;
+	}
+
+	@RequestMapping(value = "/ChangeEmail.html", method = RequestMethod.POST)
+	public @ResponseBody
+	boolean changeEmail(@RequestParam("email") String email, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		PersonalPage.changeEmail(user.getId(), email);
+		return true;
+	}
+
+	@RequestMapping(value = "/ChangeBirthday.html", method = RequestMethod.POST)
+	public @ResponseBody
+	boolean changeBirthday(@RequestParam("birthday") String birthday, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		PersonalPage.changeBirthday(user.getId(), birthday);
+		return true;
+	}
+
+	@RequestMapping(value = "/ChangeAbout.html", method = RequestMethod.POST)
+	public @ResponseBody
+	boolean changeAbout(@RequestParam("about") String about, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		PersonalPage.changeAbout(user.getId(), about);
 		return true;
 	}
 
@@ -49,16 +71,5 @@ public class PersonalPageController {
 		} else {
 			return false;
 		}
-	}
-
-	@RequestMapping(value = "/GetXOStatistics.html", method = RequestMethod.POST)
-	public @ResponseBody
-	XOStatistics[] getXOstat() {
-		List<XOStatistics> list = XOStatistics.getAllStatistics();
-		XOStatistics[] array = new XOStatistics[list.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = list.get(i);
-		}
-		return array;
 	}
 }

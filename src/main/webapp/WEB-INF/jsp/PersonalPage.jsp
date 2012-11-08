@@ -7,68 +7,77 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Personal Page</title>
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
-<link href="css/PersonalPage.css" type="text/css" rel="stylesheet">
-<script src="js/PersonalPage.js" type="text/javascript"></script>
-<title>Personal Page</title>
+<link href="css/Personal/PP.css" type="text/css" rel="stylesheet">
+<link href="css/Personal/jquery-ui-datepicker.css" type="text/css"
+	rel="stylesheet">
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/Personal/PP.js" type="text/javascript"></script>
+<script src="js/Personal/jquery-ui-datepicker.js" type="text/javascript"></script>
+<script src="js/Personal/jquery.ui.datepicker-${lang}.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#date').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd M, yy',
+        yearRange: '1980:2012'
+    });
+});
+</script>
 </head>
 <body>
 	<div class="page">
-		<div class="paperList">
+		<div id="personalPage" class="paperList">
 			<div class="title">
 				<p align="center">Personal Page</p>
 			</div>
-			<form action="PersonalPage.html" method="POST">
-				<div id="name">
-					<p>
-						<b><c:out value="${langPack['Name']}" /> <c:out
-								value="${user.name}" /></b>
-					</p>
-					<input class="input_areas required" type="text" name="user_name">
-				</div>
-				<div id="pass">
-					<p>
-						<b><c:out value="${langPack['Password']}" /></b>
-					</p>
-					<input class="input_areas required" type="text" name="user_pass">
-				</div>
-				<div id="xoStat">
-					<table>
-						<thead>
-							<tr>
-								<th></th>
-								<th>Name:</th>
-								<th>Wins:</th>
-								<th>Losses:</th>
-								<th>Total:</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="player" items="${xoStatList}" varStatus="i">
-								<c:if test="${user.name == player.name}">
-									<tr>
-										<td class="iam">${number.count}</td>
-										<td class="iam">${player.name}</td>
-										<td class="iam">${player.wins}</td>
-										<td class="iam">${player.losses}</td>
-										<td class="iam">${player.total}</td>
-									</tr>
-								</c:if>
-								<c:if test="${user.name != player.name}">
-									<tr>
-										<td>${number.count}</td>
-										<td>${player.name}</td>
-										<td>${player.wins}</td>
-										<td>${player.losses}</td>
-										<td>${player.total}</td>
-									</tr>
-								</c:if>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</form>
+			<table>
+				<tr id="name">
+					<td class="param">${langPack['Name']}</td>
+					<td class="value">${user.name}</td>
+					<td class="button"><button onclick=editName();>Edit</button></td>
+				</tr>
+				<tr class="edit">
+					<td></td>
+					<td><input></td>
+					<td class="button"><button onclick=saveName();>Save</button></td>
+				</tr>
+				<tr id="email">
+					<td class="param">Email:</td>
+					<td class="value">${userAddInfo.email}</td>
+					<td class="button"><button onclick=editEmail();>Edit</button></td>
+				</tr>
+				<tr class="edit">
+					<td></td>
+					<td><input></td>
+					<td class="button"><button onclick=saveEmail();>Save</button></td>
+				</tr>
+				<tr id="birthday">
+					<td class="param">Дата народження:</td>
+					<td class="value">${userAddInfo.birthday}</td>
+					<td class="button"><button onclick=editBirthday();>Edit</button></td>
+				</tr>
+				<tr class="edit">
+					<td></td>
+					<td><input id="date"></td>
+					<td class="button"><button onclick=saveBirthday();>Save</button></td>
+				</tr>
+				<tr id="about">
+					<td class="param">Про себе:</td>
+					<td class="value">${userAddInfo.about}</td>
+					<td class="button"><button onclick=editAbout();>Edit</button></td>
+				</tr>
+				<tr class="edit">
+					<td></td>
+					<td><input></td>
+					<td class="button"><button onclick=saveAbout();>Save</button></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </body>

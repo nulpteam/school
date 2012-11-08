@@ -27,7 +27,9 @@ public class UserFilter implements Filter {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		if (session.getAttribute("user") == null) {
 			String requestAdr = ((HttpServletRequest) request).getServletPath();
-			if (requestAdr.equals("/Login.html") || requestAdr.equals("/Reg.html")){
+			if (requestAdr.equals("/Login.html")
+					|| requestAdr.equals("/Reg.html")
+					|| requestAdr.equals("/chLang.html")) {
 				chain.doFilter(request, response);
 			} else {
 				((HttpServletResponse) response).sendRedirect("Login.html");
