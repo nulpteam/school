@@ -131,10 +131,15 @@ public class SBMenuController {
 		selectedGame.setClient(client);
 		
 		ActiveGames.getGame(gameID).setClient(client);
-		//model.addAttribute("connectionType", "client");
+		//Рандомний вибір права першого пострілу
+		ActiveGames.getGame(gameID).setFirstTimeMoveRight();
 		
 		session.setAttribute("Game", selectedGame);
 		session.setAttribute("ConnectionType","client");
+		//Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на клієнта
+		GamesList.removeGameFromListBS(gameID);
+		
+		
 		log.debug("---  START ---");
 		log.debug("--- " + selectedGame + "  ---");
 		log.debug("--- STOP  ---");

@@ -5,8 +5,10 @@
 package epam.ph.sg.models.sb;
 
 import java.io.IOException;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
+
 
 public class Game {
 	private static Logger log = Logger.getLogger(Game.class);
@@ -41,7 +43,21 @@ public class Game {
 	public static String fireCheck(int gameID, String connectionType,
 			String point) {
 		Game game = ActiveGames.getGame(gameID);
-
+		boolean clientNextMove = game.getClient().isNextMove();
+		boolean serverNextMove = game.getServer().isNextMove();
+		log.debug("clientNextMove= "+clientNextMove);
+		log.debug("serverNextMove= "+serverNextMove);
+		if(clientNextMove == true && serverNextMove==false)
+		{
+			game.getClient().setNextMove(false);
+			game.getServer().setNextMove(true);
+		}
+		else
+		{
+			game.getClient().setNextMove(true);
+			game.getServer().setNextMove(false);
+		}
+		
 		int x = Integer.parseInt(Character.toString(point.charAt(0)));
 		int y = Integer.parseInt(Character.toString(point.charAt(1)));
 		if (connectionType.equalsIgnoreCase("server")) {
@@ -70,6 +86,19 @@ public class Game {
 			return fp;
 		}
 		return "ERROR";
+	}
+	public void setFirstTimeMoveRight()
+	{
+		Random r = new Random();
+		boolean nm = r.nextBoolean();
+		if(nm)
+		{
+			server.setNextMove(nm);
+		}
+		else
+		{
+			client.setNextMove(nm);
+		}
 	}
 
 	public String toString() {
