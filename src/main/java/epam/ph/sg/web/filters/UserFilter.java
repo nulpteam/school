@@ -15,8 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class UserFilter implements Filter {
+import org.apache.log4j.Logger;
 
+import epam.ph.sg.controllers.HomeController;
+
+public class UserFilter implements Filter {
+	private static Logger log = Logger.getLogger(UserFilter.class);
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
@@ -25,8 +29,8 @@ public class UserFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest) request).getSession();
+		String requestAdr = ((HttpServletRequest) request).getServletPath();
 		if (session.getAttribute("user") == null) {
-			String requestAdr = ((HttpServletRequest) request).getServletPath();
 			if (requestAdr.equals("/Login.html")
 					|| requestAdr.equals("/Reg.html")
 					|| requestAdr.equals("/chLang.html")) {
@@ -36,11 +40,10 @@ public class UserFilter implements Filter {
 			}
 		} else {
 			chain.doFilter(request, response);
+			
 		}
 	}
-
 	@Override
 	public void destroy() {
 	}
-
 }

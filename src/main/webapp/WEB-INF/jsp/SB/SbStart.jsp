@@ -88,7 +88,7 @@
 			<div class="clear"></div>
 		</div>
 		
-		<div class="field2start">
+		<div class="field2">
 			<div class="h_markers">
 				<div class="a">a</div>
 				<div class="b">b</div>
@@ -136,8 +136,6 @@
 <input type="button" value="SendM" onClick="sendM();"/>
 <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/>
 <input type="button" value="Test1" onClick="testWS();"/>
-
-<div id="IH"></div>
 
 </div>
 </body>
