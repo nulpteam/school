@@ -244,3 +244,36 @@ tr {
 .sound:hover {
 	cursor: pointer;
 }
+
+.field2start div {
+	float: left;
+	padding-left: 7px;
+}
+
+.field2start .h_markers {
+	margin-left: -11px;
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: -1991px;
+}
+
+.field2start .v_markers {
+	width: 29px;
+	margin-left: -29px;
+	margin-top: -1959px;
+}
+
+.field2start { /* 	border: 1px solid red; */
+	background: url('../images/SB/field_background.png') no-repeat;
+	width: 209px;
+	height: 208px;
+	margin-top: 33px;
+	margin-left: 219px;
+}
+
+.field2start table {
+	margin-top: -179px;
+	margin-left: 27px;
+	width: 200px;
+	table-layout: fixed;
+}
