@@ -63,15 +63,24 @@ public class PtsGame {
 	
 						board.putPoint(PtsResources.getProperty("user.type.server"),
 								clientMessage.getCoords());
+						server.setLock(true);
+						client.setLock(false);
 		
 						if (counturMarker.markCountur(board.getBoard(),
 								board.getLastY(), board.getLastX(),
 								clientMessage.getUserType())) {
-							board.printBoard();
+							//TODO board.printBoard();
+							PtsGameInfoMessage message = new PtsGameInfoMessage();
+							message.setType(PtsResources.getProperty("user.message.type.countur"));
+							message.initializeBoard(board.getBoard());
+							message.initializeLastCountur(counturMarker.getCounturPtsCoords());
+							message.setUserType(PtsResources.getProperty("user.type.server"));
+							sendGameInfo(PtsResources.getProperty("user.type.server"),
+									message);
+							sendGameInfo(PtsResources.getProperty("user.type.client"),
+									message);
 						}
 		
-						server.setLock(true);
-						client.setLock(false);
 						PtsClientMessage message = new PtsClientMessage();
 						message.setType(PtsResources
 								.getProperty("user.message.type.last_changes"));
@@ -86,15 +95,24 @@ public class PtsGame {
 	
 						board.putPoint(PtsResources.getProperty("user.type.client"),
 								clientMessage.getCoords());
+						client.setLock(true);
+						server.setLock(false);
 		
 						if (counturMarker.markCountur(board.getBoard(),
 								board.getLastY(), board.getLastX(),
 								clientMessage.getUserType())) {
-							board.printBoard();
+							//TODO board.printBoard();
+							PtsGameInfoMessage message = new PtsGameInfoMessage();
+							message.setType(PtsResources.getProperty("user.message.type.countur"));
+							message.initializeBoard(board.getBoard());
+							message.initializeLastCountur(counturMarker.getCounturPtsCoords());
+							message.setUserType(PtsResources.getProperty("user.type.client"));
+							sendGameInfo(PtsResources.getProperty("user.type.server"),
+									message);
+							sendGameInfo(PtsResources.getProperty("user.type.client"),
+									message);
 						}
 		
-						client.setLock(true);
-						server.setLock(false);
 						PtsClientMessage message = new PtsClientMessage();
 						message.setType(PtsResources
 								.getProperty("user.message.type.last_changes"));
@@ -124,7 +142,7 @@ public class PtsGame {
 			client.setConn(conn);
 			PtsClientMessage message = new PtsClientMessage();
 			message.setType(PtsResources
-					.getProperty("user.message.type.server.connect"));
+					.getProperty("user.message.type.client.connect"));
 			message.setClientName(client.getName());
 			message.setServerName(server.getName());
 			sendMessage(PtsResources.getProperty("user.type.client"), message);

@@ -16,9 +16,9 @@ import org.apache.log4j.Logger;
 public class PtsCounturMarker {
 
 	private static Logger logger = Logger.getLogger(PtsCounturMarker.class);
-	
+
 	private List<PtsCoord> clockwisePtsCoords = new ArrayList<PtsCoord>();
-	private Set<PtsCoord> counturPtsCoords = new HashSet<PtsCoord>();
+	private List<PtsCoord> counturPtsCoords = new ArrayList<PtsCoord>();
 
 	private int[][] matrix;
 	private int point_y;
@@ -42,6 +42,8 @@ public class PtsCounturMarker {
 
 		boolean resultOfMarking = false;
 
+		counturPtsCoords.clear();
+
 		if (userType.equals(PtsResources.getProperty("user.type.server"))) {
 			userPointUnmarked = Pts.SERVER_UNMARKED_POINT;
 			userPointMarked = Pts.SERVER_MARKED_POINT;
@@ -54,7 +56,8 @@ public class PtsCounturMarker {
 			rivalPointMarked = Pts.SERVER_MARKED_POINT;
 			rivalPointUnmarked = Pts.SERVER_UNMARKED_POINT;
 		} else {
-			logger.error(PtsResources.getProperty("error.user_type.don't_exist") + userType);
+			logger.error(PtsResources
+					.getProperty("error.user_type.don't_exist") + userType);
 		}
 
 		for (int i = 0; i < 4; i++) {
@@ -73,7 +76,8 @@ public class PtsCounturMarker {
 			if (clockwiseCounturFound) {
 				resultOfMarking = true;
 				for (int j = 0; j < clockwisePtsCoords.size(); j++) {
-					counturPtsCoords.add(clockwisePtsCoords.get(j));
+					if (!isCoordInList(clockwisePtsCoords.get(j), counturPtsCoords))
+						counturPtsCoords.add(clockwisePtsCoords.get(j));
 				}
 				clockwisePtsCoords.clear();
 			}
@@ -87,12 +91,15 @@ public class PtsCounturMarker {
 			PtsCoord PtsCoord = it.next();
 			mas[PtsCoord.getY()][PtsCoord.getX()] = userPointMarked;
 		}
-		counturPtsCoords.clear();
-		
+
 		markRivalPointsInsideCountur(mas);
 
 		return resultOfMarking;
 
+	}
+
+	public List<PtsCoord> getCounturPtsCoords() {
+		return counturPtsCoords;
 	}
 
 	private void clockwise(int y, int x, PtsCoord beginIteration) {
@@ -232,7 +239,8 @@ public class PtsCounturMarker {
 			return new PtsCoord(pointPtsCoord.getY(), pointPtsCoord.getX() - 1);
 		}
 
-		logger.error(PtsResources.getProperty("error.iteration.number.don't_exist") + iteration);
+		logger.error(PtsResources
+				.getProperty("error.iteration.number.don't_exist") + iteration);
 		return new PtsCoord(-1, -1);
 	}
 
@@ -274,7 +282,9 @@ public class PtsCounturMarker {
 				&& point.getX() - 1 == iterationPoint.getX())
 			return 1;
 
-		logger.error(PtsResources.getProperty("error.iteration.coord.don't_exist") + iterationPoint);
+		logger.error(PtsResources
+				.getProperty("error.iteration.coord.don't_exist")
+				+ iterationPoint);
 		return 0;
 	}
 
@@ -317,9 +327,21 @@ public class PtsCounturMarker {
 
 	private void nextIterationClockwise(int y, int x, PtsCoord pointBefore) {
 
-		clockwisePtsCoords.add(new PtsCoord(y, x));
+		PtsCoord coord = new PtsCoord(y, x);
+		clockwisePtsCoords.add(coord);
 		clockwise(y, x, pointBefore);
 		return;
+	}
+	
+	private boolean isCoordInList(PtsCoord coord, List<PtsCoord> coords) {
+		
+		for (int i = 0; i < coords.size(); i++) {
+			if (coords.get(i).getY() == coord.getY()
+					&& coords.get(i).getX() == coord.getX())
+				return true;
+		}
+		
+		return false;
 	}
 
 	private void markRivalPointsInsideCountur(int[][] mas) {
