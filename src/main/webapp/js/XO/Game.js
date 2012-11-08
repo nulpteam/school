@@ -6,6 +6,7 @@ var tickX1 = '210px';
 var tickX2 = '460px';
 
 function gameStart() {
+	document.onupload = alert('by');
 	$('#outText').text(msg9);
 	checker();
 }

@@ -10,22 +10,18 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
-<link href="css/XO/XO.css" type="text/css" rel="stylesheet">
+<link href="css/XO/paperList.css" type="text/css" rel="stylesheet">
+<link href="css/XO/style.css" type="text/css" rel="stylesheet">
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/Menu.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		chatStart();
-	});
-</script>
 </head>
 <body>
 	<div class="page">
 		<c:import url="../Tab/Tab.jsp"></c:import>
 
-		<div class="paperList">
+		<div id="xoMenu" class="paperList">
 			<div class="title">
 				<p align="center">
 					<c:out value="${langPack['XO_title']}" />

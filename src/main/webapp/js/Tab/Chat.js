@@ -11,8 +11,6 @@ function chatStart() {
 			});
 		}
 	});
-
-	$.post("StartChat.html");
 	refresh();
 	msgScanner();
 };

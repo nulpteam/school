@@ -1,0 +1,47 @@
+body {
+	background-image: url('../../images/parta2.jpg');
+	background-repeat: repeat;
+}
+
+.page {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.paperList {
+	float: left;
+	margin-left: 5px;
+}
+
+#xoMenu #menu, #xoServerList #menu {
+	position: absolute;
+	margin: 150px 180px;
+}
+
+#xoMenu #rulles {
+	width: 400px;
+	position: absolute;
+	margin: 400px 110px;
+}
+
+#xoWaitPage #startButton {
+	display: none;
+	position: absolute;
+	margin: 200px 170px;
+}
+
+#xoWaitPage #msg {
+	font-size: 20px;
+	margin-top: 300px;
+}
+
+#xoStatistics table {
+	width: 420px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 100px 100px;
+}
+
+#xoStatistics table .iam {
+	color: red;
+}

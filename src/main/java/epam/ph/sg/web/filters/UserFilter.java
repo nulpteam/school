@@ -15,12 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
-
-import epam.ph.sg.controllers.HomeController;
-
 public class UserFilter implements Filter {
-	private static Logger log = Logger.getLogger(UserFilter.class);
+
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
@@ -39,10 +35,14 @@ public class UserFilter implements Filter {
 				((HttpServletResponse) response).sendRedirect("Login.html");
 			}
 		} else {
-			chain.doFilter(request, response);
-			
+			if (requestAdr.equals("/Login.html")) {
+				((HttpServletResponse) response).sendRedirect("index.html");
+			} else {
+				chain.doFilter(request, response);
+			}
 		}
 	}
+
 	@Override
 	public void destroy() {
 	}

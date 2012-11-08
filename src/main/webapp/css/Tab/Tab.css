@@ -8,6 +8,10 @@
 	float: left;
 }
 
-.chat {
-	display: none;
+.display {
+	height: 439px;
+	width: 271px;
+	font-family: Tahoma;
+	position: absolute;
+	margin: 56px 45px;
 }

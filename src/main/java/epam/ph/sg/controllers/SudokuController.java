@@ -20,7 +20,7 @@ public class SudokuController {
 		if (session.getAttribute("sudoku") == null) {
 			session.setAttribute("sudoku", SudokuGame.getGame());
 		}
-		return "Sudoku";
+		return "Tab/Sudoku";
 	}
 
 	@RequestMapping("/SudokuNewGame.html")

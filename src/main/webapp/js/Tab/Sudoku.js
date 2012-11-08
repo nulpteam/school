@@ -1,4 +1,4 @@
-function newGame() {
+function newGame() {	
 	$.post('SudokuNewGame.html', function(resp) {
 		var i = 0;
 		$('#sudoku #field td div').each(function() {
@@ -11,8 +11,9 @@ function newGame() {
 			}
 			i++;
 		});
-		getFailed();
 	});
+	getFailed();
+	$('#sudoku #value').hide();
 }
 
 function getFailed() {
@@ -36,15 +37,19 @@ var box;
 function boxClick(elem) {
 	if ($(elem).attr('class') == 'lockedBox') {
 		$('#sudoku #value').hide();
+		if (boxHightlight == true) {
+			boxHighlightClear();
+			boxHightlight = false;
+		}
 	} else {
-		boxHighlight(elem.parentNode);
 		boxHightlight = true;
-		
+		boxHighlight(elem.parentNode);
+
 		this.box = elem;
 		var position = $(elem).position();
 		$('#sudoku #value').css({
-			marginTop : position.top + 30,
-			marginLeft : position.left + 30
+			marginTop : position.top + 15,
+			marginLeft : position.left + 15
 		}).show();
 	}
 }
@@ -55,34 +60,30 @@ function boxOver(elem) {
 	}
 }
 
-function fieldOut(){
+function fieldOut() {
 	if (boxHightlight == false) {
 		boxHighlightClear();
 	}
 }
 
 var boxHightlight = false;
-function boxHighlight(elem){
+function boxHighlight(elem) {
 	boxHighlightClear();
-	var id = elem.id.charAt(0);
-	$('#sudoku #field td[id^=' + id + '] div').css({
-		borderColor: 'gold'
-	});
-	id = elem.id.charAt(1);
-	$('#sudoku #field td[id$=' + id + '] div').css({
-		borderColor: 'gold'
-	});
-	$('#sudoku #field td[class=' + $(elem).attr('class') + '] div').css({
-		borderColor: 'gold'
+	var elements = '#sudoku #field td[id^=' + elem.id.charAt(0)
+			+ '] div, #sudoku #field td[id$=' + elem.id.charAt(1)
+			+ '] div, #sudoku #field td[class=' + $(elem).attr('class')
+			+ '] div';
+	$(elements).css({
+		borderColor : 'yellow'
 	});
 	$('#sudoku #field td[id$=' + elem.id + '] div').css({
-		borderColor: 'lawnGreen'
+		borderColor : 'lawnGreen'
 	});
 }
 
 function boxHighlightClear() {
 	$('#sudoku #field td div').css({
-		borderColor: 'inherit'
+		borderColor : 'inherit'
 	});
 }
 
@@ -101,8 +102,8 @@ function valueClick(value) {
 		}
 	});
 	$('#sudoku #value').hide();
-	boxHightlight = false;
 	boxHighlightClear();
+	boxHightlight = false;
 }
 
 function valueOver(elem) {
@@ -113,6 +114,6 @@ function valueOver(elem) {
 
 function valueOut(elem) {
 	$(elem).css({
-		color : "black"
+		color : "inherit"
 	});
 }

@@ -1,26 +1,27 @@
-.paperList .namespace {
+#xoGame .namespace {
 	background-image: url('../../images/XO/namespace.png');
 	background-repeat: no-repeat;
 	height: 30px;
 	width: 193px;
 }
 
-.paperList .namespace p {
+#xoGame .namespace p {
 	font-weight: bold;
 	margin: 5px 20px;
 }
 
-.paperList #myName {
+#xoGame #myName {
 	position: absolute;
 	margin: 30px 85px;
 }
 
-.paperList #opName {
+#xoGame #opName {
 	position: absolute;
 	margin: 30px 335px;
 }
 
-.paperList .playerStat {
+#xoGame .playerStat {
+	display: none;
 	background-image: url('../../images/XO/namespace2.png');
 	background-repeat: no-repeat;
 	height: 120px;
@@ -28,52 +29,50 @@
 	z-index: 2;
 }
 
-.paperList .playerStat table {
+#xoGame .playerStat table {
 	margin: 30px 10px;
 }
 
-.paperList #myNameStat {
+#xoGame #myNameStat {
 	position: absolute;
 	margin: 30px 85px;
-	display: none;
 }
 
-.paperList #opNameStat {
+#xoGame #opNameStat {
 	position: absolute;
 	margin: 30px 335px;
-	display: none;
 }
 
-.paperList #tick {
+#xoGame #tick {
 	background-image: url('../../images/XO/tick.png');
 	background-repeat: no-repeat;
-	width: 50px;
 	height: 50px;
+	width: 50px;
+	
 	position: absolute;
-	margin-top: 5px;
-	margin-left: 460px;
+	margin: 5px 460px;
 }
 
-.paperList #outText {
+#xoGame #outText {
 	margin-top: 75px;
 }
 
-.paperList #win {
+#xoGame #win {
 	position: absolute;
-	margin-top: 250px;
-	margin-left: 200px;
+	margin: 250px 200px;
 }
 
-.paperList #border {
+#xoGame #border {
 	background-image: url('../../images/XO/border.png');
 	background-repeat: no-repeat;
-	width: 427px;
 	height: 419px;
+	width: 427px;
+	
 	position: absolute;
 	margin: 150px 94px;
 }
 
-.paperList #field {
+#xoGame #field {
 	position: absolute;
 	margin: 160px 107px;
 }

@@ -10,23 +10,18 @@
 <title><c:out value="${langPack['XO_title']}" /></title>
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
-<link href="css/XO/XO.css" type="text/css" rel="stylesheet">
-<link href="css/XO/Statistics.css" type="text/css" rel="stylesheet">
+<link href="css/XO/paperList.css" type="text/css" rel="stylesheet">
+<link href="css/XO/style.css" type="text/css" rel="stylesheet">
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/XO/Menu.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		chatStart();
-	});
-</script>
 </head>
 <body>
 	<div class="page">
 		<c:import url="../Tab/Tab.jsp"></c:import>
 
-		<div class="paperList">
+		<div id="xoStatistics" class="paperList">
 			<div class="title">
 				<p align="center">${langPack['XO_stat_title']}</p>
 			</div>
@@ -36,41 +31,39 @@
 				onmouseout=backButtonOut(this); onclick=backButtonClick();></div>
 			<div class="refreshButton" onmouseover=refreshButtonOver(this);
 				onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
-			<div id="statistics">
-				<table>
-					<thead>
-						<tr>
-							<th class="number"></th>
-							<th class="name">${langPack['XO_stat_name']}</th>
-							<th class="wins">${langPack['XO_stat_wins']}</th>
-							<th class="losses">${langPack['XO_stat_losses']}</th>
-							<th class="total">${langPack['XO_stat_total']}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="player" items="${xoStatList}" varStatus="number">
-							<c:if test="${user.name == player.name}">
-								<tr>
-									<td class="iam">${number.count}</td>
-									<td class="iam">${player.name}</td>
-									<td class="iam">${player.wins}</td>
-									<td class="iam">${player.losses}</td>
-									<td class="iam">${player.total}</td>
-								</tr>
-							</c:if>
-							<c:if test="${user.name != player.name}">
-								<tr>
-									<td class="number">${number.count}</td>
-									<td class="name">${player.name}</td>
-									<td class="wins">${player.wins}</td>
-									<td class="losses">${player.losses}</td>
-									<td class="total">${player.total}</td>
-								</tr>
-							</c:if>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+			<table>
+				<thead>
+					<tr>
+						<th class="number"></th>
+						<th class="name">${langPack['XO_stat_name']}</th>
+						<th class="wins">${langPack['XO_stat_wins']}</th>
+						<th class="losses">${langPack['XO_stat_losses']}</th>
+						<th class="total">${langPack['XO_stat_total']}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="player" items="${xoStatList}" varStatus="number">
+						<c:if test="${user.name == player.name}">
+							<tr>
+								<td class="iam">${number.count}</td>
+								<td class="iam">${player.name}</td>
+								<td class="iam">${player.wins}</td>
+								<td class="iam">${player.losses}</td>
+								<td class="iam">${player.total}</td>
+							</tr>
+						</c:if>
+						<c:if test="${user.name != player.name}">
+							<tr>
+								<td class="number">${number.count}</td>
+								<td class="name">${player.name}</td>
+								<td class="wins">${player.wins}</td>
+								<td class="losses">${player.losses}</td>
+								<td class="total">${player.total}</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>

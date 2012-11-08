@@ -19,13 +19,10 @@ import epam.ph.sg.models.User;
 @Controller
 public class ChatController {
 
-	@RequestMapping(value = "/StartChat.html", method = RequestMethod.POST)
-	public @ResponseBody
-	void chat(HttpSession session) {
-		if (session.getAttribute("chatUser") == null) {
-			session.setAttribute("chatUser", new ChatUser());
-		}
+	@RequestMapping(value = "/Chat.html")
+	public String chat(HttpSession session) {
 		session.setAttribute("chatUser", new ChatUser());
+		return "Tab/Chat";
 	}
 
 	@RequestMapping(value = "/Send.html", method = RequestMethod.POST)
@@ -34,7 +31,6 @@ public class ChatController {
 		User user = (User) session.getAttribute("user");
 		Message msg = new Message(user, msgText);
 		Chat.addMessage(msg);
-
 		return refresh(session);
 	}
 
