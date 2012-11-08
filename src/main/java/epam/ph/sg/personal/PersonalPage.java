@@ -13,7 +13,11 @@ public class PersonalPage {
 			"springconfig.xml");
 	private static PersonalPageDAO dao = (PersonalPageDAO) ctx
 			.getBean("personalPageDAOimpl");
-	
+
+	public static void insert(int id) {
+		dao.insert(id);
+	}
+
 	public static UserAddInfo getUserAddIngo(int id) {
 		return dao.getUserAddInfo(id);
 	}

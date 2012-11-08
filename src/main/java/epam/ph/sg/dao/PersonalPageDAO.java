@@ -7,6 +7,13 @@ import epam.ph.sg.personal.UserAddInfo;
  */
 public interface PersonalPageDAO {
 	/**
+	 * Insert new UserAddInfo in the DB
+	 * 
+	 * @param id
+	 *            - User ID
+	 */
+	void insert(int id);
+	/**
 	 * Get User Add Info from the DB
 	 * 
 	 * @param id

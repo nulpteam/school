@@ -25,6 +25,12 @@ public class PersonalPageDAOimpl implements PersonalPageDAO {
 	}
 
 	@Override
+	public void insert(int id) {
+		String sql = "insert into `sgdb`.`useraddinfo`(id) values(" + id + ")";
+		jdbcTemplate.execute(sql);
+	}
+
+	@Override
 	public UserAddInfo getUserAddInfo(int id) {
 		String sql = "select id, email, birthday, about from `sgdb`.`useraddinfo` where id="
 				+ id;
