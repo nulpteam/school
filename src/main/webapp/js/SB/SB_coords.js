@@ -20,7 +20,7 @@ $(document).ready(function()
 	
 	if( userAgent.indexOf("Firefox")!=-1)
 	{
-		bsound.src = "sound/More13.wav";
+		bsound.src = "sound/More9.wav";
 	}
 	bsound.loop=true;
 	startbsound();
