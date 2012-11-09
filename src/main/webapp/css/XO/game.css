@@ -6,7 +6,6 @@
 }
 
 #xoGame .namespace p {
-	font-weight: bold;
 	margin: 5px 20px;
 }
 
@@ -48,7 +47,6 @@
 	background-repeat: no-repeat;
 	height: 50px;
 	width: 50px;
-	
 	position: absolute;
 	margin: 5px 460px;
 }
@@ -58,6 +56,7 @@
 }
 
 #xoGame #win {
+	display: none;
 	position: absolute;
 	margin: 250px 200px;
 }
@@ -67,7 +66,6 @@
 	background-repeat: no-repeat;
 	height: 419px;
 	width: 427px;
-	
 	position: absolute;
 	margin: 150px 94px;
 }

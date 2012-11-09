@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
 import epam.ph.sg.sudoku.SudokuGame;
-import epam.ph.sg.xo.XO;
 import epam.ph.sg.xo.XOConnector;
 import epam.ph.sg.xo.XOPlayer;
 import epam.ph.sg.xo.XOStatistics;
@@ -23,28 +22,37 @@ import epam.ph.sg.xo.XOStatistics;
 public class XOMenuController {
 
 	@RequestMapping("/XO.html")
-	public String xo() {
+	public String xo(HttpSession session) {
+		return "XO/XO";
+	}
+
+	@RequestMapping("/XOMenu.html")
+	public String menu(HttpSession session) {
+		session.setAttribute("xoCurrentPos", "Menu");
 		return "XO/Menu";
 	}
 
 	@RequestMapping("/XOServerList.html")
-	public String serverList(Model model) {
+	public String serverList(HttpSession session, Model model) {
+		session.setAttribute("xoCurrentPos", "ServerList");
 		model.addAttribute("serverMap", XOConnector.getServerMap());
 		return "XO/ServerList";
 	}
-	
+
 	@RequestMapping("/XOStatistics.html")
-	public String statistics(Model model) {
+	public String statistics(HttpSession session, Model model) {
+		session.setAttribute("xoCurrentPos", "Statistics");
 		model.addAttribute("xoStatList", XOStatistics.getAllStatistics());
 		return "XO/Statistics";
 	}
 
 	@RequestMapping("/XOCreate.html")
 	public String create(HttpSession session) {
+		session.setAttribute("xoCurrentPos", "Create");
 		User user = (User) session.getAttribute("user");
 		XOPlayer xo = XOConnector.create(user);
 		session.setAttribute("sudoku", SudokuGame.getGame());
-		session.setAttribute("xo", xo);
+		session.setAttribute("xoGame", xo);
 		return "XO/WaitPage";
 	}
 
@@ -53,24 +61,24 @@ public class XOMenuController {
 	boolean connect(@RequestParam("serverID") int serverID, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		XOPlayer xo = XOConnector.connect(serverID, user);
-		session.setAttribute("xo", xo);
+		session.setAttribute("xoGame", xo);
 		return true;
 	}
 
 	@RequestMapping(value = "/XOGame.html")
 	public String game(HttpSession session, Model model) {
-		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
-		User user = (User) session.getAttribute("user");
-		XOStatistics myStat = XOStatistics.getUserStatistics(user.getId());
+		session.setAttribute("xoCurrentPos", "Game");
+		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
+		XOStatistics myStat = XOStatistics.getUserStatistics(xo.getId());
 		model.addAttribute("myStat", myStat);
-		if (xo.getStatus() == XO.X) {
+		if (xo.getId() == xo.getGame().getServer().getId()) {
 			User client = xo.getGame().getClient();
 			if (client != null) {
 				model.addAttribute("oponent", client);
 				model.addAttribute("opStat",
 						XOStatistics.getUserStatistics(client.getId()));
 			}
-		} else if (xo.getStatus() == XO.O) {
+		} else if (xo.getId() == xo.getGame().getClient().getId()) {
 			User server = xo.getGame().getServer();
 			model.addAttribute("oponent", server);
 			model.addAttribute("opStat",
@@ -78,14 +86,4 @@ public class XOMenuController {
 		}
 		return "XO/Game";
 	}
-
-	@RequestMapping("/XOClear.html")
-	public @ResponseBody
-	boolean clear(HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		session.removeAttribute("xo");
-		XOConnector.getServerMap().remove(user.getId());
-		return true;
-	}
-
 }

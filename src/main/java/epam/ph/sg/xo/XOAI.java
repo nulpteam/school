@@ -4,6 +4,8 @@ package epam.ph.sg.xo;
  * @author Paul Michael T.
  */
 public class XOAI {
+	public static final int TO_WIN = 5;
+
 	private XOFields fields;
 
 	public XOAI(XOFields fields) {
@@ -17,17 +19,17 @@ public class XOAI {
 	 *            - last box
 	 * @return XO.WIN - if game over, or box status
 	 */
-	public int checkout(XOBox box) {
-		if (check1(box) >= XO.TO_WIN) {
-			return XO.GAME_OVER;
-		} else if (check2(box) >= XO.TO_WIN) {
-			return XO.GAME_OVER;
-		} else if (check3(box) >= XO.TO_WIN) {
-			return XO.GAME_OVER;
-		} else if (check4(box) >= XO.TO_WIN) {
-			return XO.GAME_OVER;
+	public boolean isGameOver(XOBox box) {
+		if (check1(box) >= TO_WIN) {
+			return true;
+		} else if (check2(box) >= TO_WIN) {
+			return true;
+		} else if (check3(box) >= TO_WIN) {
+			return true;
+		} else if (check4(box) >= TO_WIN) {
+			return true;
 		} else
-			return box.getStatus();
+			return false;
 	}
 
 	// Vertical check

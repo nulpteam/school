@@ -1,11 +1,12 @@
-var msg1 = 'You can not connect to yourself!';
-var msg2 = 'If you leave, you will lose!';
-var msg3 = 'Wait for opponent';
-var msg4 = ' connected';
-var msg5 = 'Victory :)';
-var msg6 = ' out';
-var msg7 = 'Cell is occupied!';
-var msg8 = 'Not your turn!';
-var msg9 = 'Wait';
-var msg10 = 'Loss :(';
-var msg11 = 'Your move';
+// Other Message
+var msgYourSelf = 'You can not connect to yourself!';
+var msgExit = 'If you leave, you will lose!';
+var msgWaitPlayer = 'Wait for opponent';
+var msgConnected = ' connected';
+
+// Game Message
+var msgWin = 'Victory :)';
+var msgLose = 'Loss :(';
+var msgOut = ' out';
+var msgWait = 'Wait';
+var msgTurn = 'Your move';

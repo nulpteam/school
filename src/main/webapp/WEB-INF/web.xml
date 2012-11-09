@@ -31,4 +31,12 @@
 		<filter-name>langFilter</filter-name>
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
+	<filter>
+		<filter-name>xoFilter</filter-name>
+		<filter-class>epam.ph.sg.web.filters.XOFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>xoFilter</filter-name>
+		<url-pattern>/XO.html</url-pattern>
+	</filter-mapping>
 </web-app>

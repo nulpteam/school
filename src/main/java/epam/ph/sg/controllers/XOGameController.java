@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.xo.XO;
-import epam.ph.sg.xo.XOBox;
+import epam.ph.sg.xo.XOConnector;
+import epam.ph.sg.xo.XOStatus;
 import epam.ph.sg.xo.XOPlayer;
 
 @Controller
@@ -22,42 +22,56 @@ public class XOGameController {
 	@RequestMapping(value = "/XOGetClient.html")
 	public @ResponseBody
 	User getClient(HttpSession session) {
-		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
+		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
 		return xo.getGame().getClient();
 	}
 
 	@RequestMapping(value = "/XOPut.html", method = RequestMethod.POST)
 	public @ResponseBody
-	int put(@RequestParam("xy") String xy, HttpSession session) {
-		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
+	boolean put(@RequestParam("xy") String xy, HttpSession session) {
+		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
 		int indexY = xy.indexOf('Y');
 		int x = Integer.parseInt(xy.substring(1, indexY));
 		int y = Integer.parseInt(xy.substring(indexY + 1));
 		return xo.tryToPut(x, y);
 	}
 
-	@RequestMapping(value = "/XOCheck.html")
+	@RequestMapping(value = "/XOCheckChanges.html")
 	public @ResponseBody
-	int check(HttpSession session) {
-		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
-		if (xo.getId() == xo.getGame().getStatus()) {
-			return XO.NO_CHANGES;
-		} else
-			return xo.getGame().getStatus();
+	boolean check(HttpSession session) {
+		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
+		if (xo.getGame().getStatus().isGameOver() == true) {
+			return true;
+		}
+		if (xo.getId() == xo.getGame().getStatus().getLastPlayer()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
-	@RequestMapping(value = "/XOGet.html")
+	@RequestMapping(value = "/XOGetStatus.html")
 	public @ResponseBody
-	XOBox getBox(HttpSession session) {
-		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
-		return xo.getGame().getLastBox();
+	XOStatus getBox(HttpSession session) {
+		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
+		return xo.getGame().getStatus();
 	}
 
-	@RequestMapping(value = "/XOLose.html")
+	@RequestMapping(value = "/XOPlayerOut.html")
 	public @ResponseBody
-	boolean lose(HttpSession session) {
-		XOPlayer xo = (XOPlayer) session.getAttribute("xo");
+	boolean playerOut(HttpSession session) {
+		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
 		xo.getGame().out(xo.getId());
+		session.removeAttribute("xoGame");
+		return true;
+	}
+
+	@RequestMapping("/XOClear.html")
+	public @ResponseBody
+	boolean clear(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		session.removeAttribute("xoGame");
+		XOConnector.getServerMap().remove(user.getId());
 		return true;
 	}
 }
