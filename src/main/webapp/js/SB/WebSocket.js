@@ -28,12 +28,20 @@ $(document).ready(function(){
 	}
 	
 	
+	
+	
 	socket = new WebSocket("ws://localhost:8081");
 	socket.onopen = function () {
 		  socket.send(gameId + "&" + userName+"&"+connectionType);
 		  console.log("------------------------------Соединение открылось-----------------------------");
 		};
 		socket.onmessage = function (event) {
+//			lock = $("#lock").attr("class");
+			if (connectionType==lock)
+			{
+					alert ("lock ocured");
+					$("#locker").css("visibility", "hidden");
+			}
 			  alert("Пришло сообщение с содержанием: " + event.data);
 			  console.log(event.data);
 		};

@@ -132,6 +132,7 @@
 			</div>
 			
 			<div id="locker" style="height: 200px; width: 200px; position: absolute; visibility: hidden;">
+				<img alt="BSRadar" src="images/SB/BSRadar.gif" height="200px" width="200px">
 			</div>
 		</div>
 	</div>

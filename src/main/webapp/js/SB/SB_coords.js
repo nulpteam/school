@@ -483,6 +483,7 @@ function fire(point) {
 		}
 		$(point).html(html);
 //ТУТ має локатись поле для стрільби		
+		$("#locker").css("visibility", "visible");
 //		if(obj.lock==="lock")
 //		{
 //			$('#table2').hide(0);
