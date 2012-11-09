@@ -24,6 +24,7 @@ $(document).ready(function(){
 	if (connectionType!=lock)
 	{
 			alert ("lock ocured");
+			$("#locker").css("visibility", "visible");
 	}
 	
 	

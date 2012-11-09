@@ -130,6 +130,9 @@
 				
 				
 			</div>
+			
+			<div id="locker" style="height: 200px; width: 200px; position: absolute; visibility: hidden;">
+			</div>
 		</div>
 	</div>
 <div class=debug>
