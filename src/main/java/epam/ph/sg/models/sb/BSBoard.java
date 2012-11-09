@@ -58,6 +58,100 @@ public class BSBoard {
 		return arr;
 	}
 	
+	public void  makeChanges(int x,int y,char value)
+	{
+		StringBuilder sb=null;
+		if(x==0)
+		{
+			String str =  a.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			a.set(y, sb.toString());
+		}else
+		if(x==1)
+		{
+			String str =  b.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			b.set(y, sb.toString());
+		}else
+		if(x==2)
+		{
+			String str =  c.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			c.set(y, sb.toString());
+		}else
+		if(x==3)
+		{
+			String str =  d.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			d.set(y, sb.toString());
+		}else
+		if(x==4)
+		{
+			String str =  e.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			e.set(y, sb.toString());
+		}else
+		if(x==5)
+		{
+			String str =  f.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			f.set(y, sb.toString());
+		}else
+		if(x==6)
+		{
+			String str =  g.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			g.set(y, sb.toString());
+		}else
+		if(x==7)
+		{
+			String str =  h.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			h.set(y, sb.toString());
+		}else
+		if(x==8)
+		{
+			String str =  i.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			i.set(y, sb.toString());
+		}else
+		if(x==9)
+		{
+			String str =  j.get(y);
+			char[] arr = str.toCharArray();
+			arr[1] = value;
+			sb = new StringBuilder();
+			sb.append(arr);
+			j.set(y, sb.toString());
+		}
+	}
 	public String toString()
 	{
 		

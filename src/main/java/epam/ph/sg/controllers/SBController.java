@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import epam.ph.sg.models.sb.ActiveGames;
 import epam.ph.sg.models.sb.BSBoard;
 import epam.ph.sg.models.sb.BSSheeps;
+import epam.ph.sg.models.sb.FireResponse;
 import epam.ph.sg.models.sb.Game;
 import epam.ph.sg.models.sb.JsonParser;
 
@@ -51,16 +52,16 @@ public class SBController {
 	
 	@RequestMapping(value = {"/fire.html"}, method = RequestMethod.POST)
 	public @ResponseBody
-	String fireReciever(@RequestParam("firePoint") String firePoint,
+	FireResponse fireReciever(@RequestParam("firePoint") String firePoint,
 			Model model, HttpSession session) {
 		String connectionType = (String)session.getAttribute("ConnectionType");
-		int gameID = (int)((Game)session.getAttribute("Game")).getId();
+		Game g = (Game)session.getAttribute("Game");
+		int gameID = (int)g.getId();
 		log.debug(firePoint);
 		log.debug(connectionType);
 		log.debug(gameID);
-		String fp = Game.fireCheck(gameID, connectionType, firePoint);
-		log.debug(fp);
-			return  fp;
+		FireResponse fr = g.fireCheck(gameID, connectionType, firePoint);
+		return  fr;
 	}
 
 	

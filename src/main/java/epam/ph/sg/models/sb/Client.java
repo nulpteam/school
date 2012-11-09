@@ -10,16 +10,7 @@ public class Client {
 	private BSPlayer player;
 	private BSBoard gameBoard;
 	private Connection conn;
-	private boolean nextMove;
-
-	public boolean isNextMove() {
-		return nextMove;
-	}
-
-	public void setNextMove(boolean nextMove) {
-		this.nextMove = nextMove;
-	}
-
+	
 	public Connection getConn() {
 		return conn;
 	}
@@ -45,6 +36,6 @@ public class Client {
 	}
 	public String toString()
 	{
-		return player+"\n"+gameBoard+"\n"+nextMove;
+		return player+"\n"+gameBoard;
 	}
 }

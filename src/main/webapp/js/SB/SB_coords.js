@@ -435,8 +435,15 @@ function counter(obj) {
 	}
 	}
 }
+function allreadyShooted()
+{
+	alert("You allready shoot in this point");
+}
 
-function fire(point) {
+
+
+function playShootSound()
+{
 	if( userAgent.indexOf("Chrome")!=-1 )
 	{
 		sound = new Audio;
@@ -450,26 +457,36 @@ function fire(point) {
 		sound.src = "sound/Shoot01.wav";
 		sound.play();
 	}
+}
+
+
+function fire(point) {
+	playShootSound();
 
 	p = $(point).attr('id');
 	p = p[1] + '' + p[4];
 	$.post("fire.html", {
 		firePoint : p
 	}, function(data) {
-		if(data==="00")
-			{
-				rand = Math.floor((Math.random() * 5) + 1);
-				$(point).html(
-						"<img id='fireP" + p + "' src='images/SB/missPoint" + rand
-								+ ".png'>");
-				}
+		obj = eval(data);
+		console.log(obj);
+		//Міняєм ф-ію на обстріляній клітинці
+		$(point).attr("onclick","allreadyShooted();");
+		rand = Math.floor((Math.random() * 5) + 1);
+		if(obj.miss==="00")
+		{
+			html = "<img id='fireP" + p + "' src='images/SB/missPoint" + rand + ".png'>";
+		}
 		else
-			{
-				rand = Math.floor((Math.random() * 5) + 1);
-				$(point).html(
-						"<img id='fireP" + p + "' src='images/SB/firePoint" + rand
-								+ ".png'>");
-			}
+		{		
+			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand + ".png'>";
+		}
+		$(point).html(html);
+//ТУТ має локатись поле для стрільби		
+//		if(obj.lock==="lock")
+//		{
+//			$('#table2').hide(0);
+//		}
 	});
 }
 

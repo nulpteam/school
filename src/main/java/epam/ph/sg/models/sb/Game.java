@@ -15,6 +15,15 @@ public class Game {
 	private Server server;
 	private Client client;
 	private int id;
+	private String nextMove;
+
+	public String getNextMove() {
+		return nextMove;
+	}
+
+	public void setNextMove(String nextMove) {
+		this.nextMove = nextMove;
+	}
 
 	public Game(int id) {
 		this.id = id;
@@ -40,52 +49,84 @@ public class Game {
 		return id;
 	}
 
-	public static String fireCheck(int gameID, String connectionType,
+	public FireResponse fireCheck(int gameID, String connectionType,
 			String point) {
 		Game game = ActiveGames.getGame(gameID);
-		boolean clientNextMove = game.getClient().isNextMove();
-		boolean serverNextMove = game.getServer().isNextMove();
-		log.debug("clientNextMove= "+clientNextMove);
-		log.debug("serverNextMove= "+serverNextMove);
-		if(clientNextMove == true && serverNextMove==false)
-		{
-			game.getClient().setNextMove(false);
-			game.getServer().setNextMove(true);
-		}
-		else
-		{
-			game.getClient().setNextMove(true);
-			game.getServer().setNextMove(false);
-		}
+		FireResponse fireResponse = new FireResponse();
+		//міняє чергу пострілу
+		
 		
 		int x = Integer.parseInt(Character.toString(point.charAt(0)));
 		int y = Integer.parseInt(Character.toString(point.charAt(1)));
+		
 		if (connectionType.equalsIgnoreCase("server")) {
-			String[][] board = game.getClient().getGameBoard().BoardtoArray();
+			BSBoard bsBoard = game.getClient().getGameBoard();
+			String[][] board = bsBoard.BoardtoArray();
 			String fp = board[x][y];
-
+			if(!fp.equals("00"))
+			{
+				char[] arr = fp.toCharArray();
+				arr[1] = '0';
+				StringBuilder sb = new StringBuilder();
+				sb.append(arr);
+				String str = sb.toString();
+				//Вказуємо шо корабель підбитий
+				board[x][y] = str;
+				//заносимо зміни в гру
+				bsBoard.makeChanges(x, y, arr[1]);
+				fireResponse.setMiss(board[x][y]);
+				fireResponse.setLock("");
+			}else
+			{
+				changeMove();
+				fireResponse.setMiss("00");
+				fireResponse.setLock("lock");
+			}
+			
+			//до опонента летить інфа через сокет
 			try {
-				game.getClient().getConn().sendMessage("sheep|fail= " + fp+" point= "+point);
+				game.getClient().getConn().sendMessage("sheep|fail= " + board[x][y]+" point= "+point);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-			return fp;
+			//return fireResponse;
 		}
 		if (connectionType.equalsIgnoreCase("client")) {
-
-			String[][] board = game.getServer().getGameBoard().BoardtoArray();
+			BSBoard bsBoard = game.getServer().getGameBoard();
+			String[][] board = bsBoard.BoardtoArray();
 			String fp = board[x][y];
-
+			if(!fp.equals("00"))
+			{
+				char[] arr = fp.toCharArray();	
+				arr[1] = '0';
+				StringBuilder sb = new StringBuilder();
+				sb.append(arr);
+				String str = sb.toString();
+				//Вказуємо шо корабель підбитий
+				board[x][y] = str;
+				//заносимо зміни в гру
+				bsBoard.makeChanges(x, y, arr[1]);
+				fireResponse.setMiss(board[x][y]);
+				fireResponse.setLock("");
+			}
+			else
+			{
+				changeMove();
+				fireResponse.setMiss("00");
+				fireResponse.setLock("lock");
+			}
+			
+			//до опонента летить інфа через сокет
 			try {
-				game.getServer().getConn().sendMessage("sheep|fail= " + fp+" point= "+point);
+				game.getServer().getConn().sendMessage("sheep|fail= " + board[x][y]+" point= "+point);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-			return fp;
+			//return fireResponse;
 		}
-		return "ERROR";
+		return fireResponse;
 	}
 	public void setFirstTimeMoveRight()
 	{
@@ -93,15 +134,28 @@ public class Game {
 		boolean nm = r.nextBoolean();
 		if(nm)
 		{
-			server.setNextMove(nm);
+			setNextMove("server");
+			log.debug("server otrymav pravo pershoho xodu");
 		}
 		else
 		{
-			client.setNextMove(nm);
+			setNextMove("client");
+			log.debug("client otrymav pravo pershoho xodu");
+		}
+	}
+	
+	private void changeMove()
+	{
+		if(nextMove.equalsIgnoreCase("server"))
+		{
+			setNextMove("client");
+		}else if(nextMove.equalsIgnoreCase("client"))
+		{
+			setNextMove("server");
 		}
 	}
 
 	public String toString() {
-		return "GameID = " + id + "\n" + server + "\n" + client;
+		return "GameID = " + id + "\n" + server + "\n" + client+"\n"+nextMove;
 	}
 }
