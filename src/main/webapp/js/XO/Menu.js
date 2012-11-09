@@ -1,24 +1,27 @@
-function createServerButton() {
-	location.href = "XOCreate.html";
-}
+var curentPos;
+var menuLink = 'XOMenu.html';
+var createLink = 'XOCreate.html';
+var serverListLink = 'XOServerList.html';
+var statisticsLink = 'XOStatistics.html';
+var gameLink = 'XOGame.html';
 
-function serverListButton() {
-	location.href = "XOServerList.html";
-}
-
-function statisticsButton() {
-	location.href = "XOStatistics.html";
+function goTo(link) {
+	$.post(link, function(resp) {
+		$('.paperList').remove();
+		$('.page').append(resp);
+	});
+	curentPos = link;
 }
 
 function connect(id) {
-	if (id == myID) {
-		alert(msg1);
+	if (id == myId) {
+		alert(msgYourSelf);
 	} else {
 		$.post("XOConnect.html", {
 			serverID : id
 		}, function(response) {
-			if (response) {
-				location.href = "XOGame.html";
+			if (response == true) {
+				goTo(gameLink);
 			}
 		});
 	}
@@ -53,7 +56,7 @@ function backButtonOut(elem) {
 }
 
 function backButtonClick() {
-	location.href = "XO.html";
+	goTo(menuLink);
 }
 
 function refreshButtonOver(elem) {
@@ -69,5 +72,5 @@ function refreshButtonOut(elem) {
 }
 
 function refreshButtonClick() {
-	location.reload();
+	goTo(curentPos);
 }

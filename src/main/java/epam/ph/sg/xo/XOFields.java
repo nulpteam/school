@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XOFields {
+	public static final int X_SIZE = 20;
+	public static final int Y_SIZE = 20;
+
 	private XOBox[][] boxes;
 
 	public XOFields() {
-		boxes = new XOBox[XO.X_SIZE][XO.X_SIZE];
-		for (int x = 0; x < XO.X_SIZE; x++) {
-			for (int y = 0; y < XO.Y_SIZE; y++) {
+		boxes = new XOBox[X_SIZE][Y_SIZE];
+		for (int x = 0; x < X_SIZE; x++) {
+			for (int y = 0; y < Y_SIZE; y++) {
 				boxes[x][y] = new XOBox(x, y);
 			}
 		}
@@ -40,9 +43,9 @@ public class XOFields {
 	public List<List<XOBox>> getAllBox() {
 		List<List<XOBox>> fields = new ArrayList<List<XOBox>>();
 		ArrayList<XOBox> line;
-		for (int y = 0; y < XO.Y_SIZE; y++) {
+		for (int y = 0; y < Y_SIZE; y++) {
 			line = new ArrayList<XOBox>();
-			for (int x = 0; x < XO.X_SIZE; x++) {
+			for (int x = 0; x < X_SIZE; x++) {
 				line.add(getBox(x, y));
 			}
 			fields.add(line);

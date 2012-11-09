@@ -24,7 +24,8 @@ public class XOConnector {
 	 * @return XOPlayer instance of creator
 	 */
 	public static XOPlayer create(User server) {
-		XOPlayer serverPlayer = new XOPlayer(server.getId(), XO.X, new XOGame());
+		XOPlayer serverPlayer = new XOPlayer(server.getId(), XOBox.X,
+				new XOGame());
 		serverPlayer.getGame().setServer(server);
 		serverMap.put(server.getId(), serverPlayer);
 
@@ -45,10 +46,10 @@ public class XOConnector {
 	 */
 	public static XOPlayer connect(int serverID, User client) {
 		XOPlayer serverPlayer = serverMap.get(serverID);
-		XOPlayer clientPlayer = new XOPlayer(client.getId(), XO.O,
+		XOPlayer clientPlayer = new XOPlayer(client.getId(), XOBox.O,
 				serverPlayer.getGame());
 		clientPlayer.getGame().setClient(client);
-		clientPlayer.getGame().setStatus(client.getId());
+		clientPlayer.getGame().getStatus().setLastPlayer(client.getId());
 		serverMap.remove(serverID);
 
 		User server = clientPlayer.getGame().getServer();

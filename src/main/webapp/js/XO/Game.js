@@ -1,26 +1,27 @@
 var lock = true;
 var end = false;
+var checkerInterval;
 
 // Tick Position
 var tickX1 = '210px';
 var tickX2 = '460px';
 
 function gameStart() {
-	document.onupload = alert('by');
-	$('#outText').text(msg9);
-	checker();
+	getStatus();
 }
 
 function gameHomeButton() {
 	if (end == true) {
+		clearInterval(checkerInterval);
 		$.post('XOClear.html', function(response) {
-			location.href = 'index.html';
+			homeButtonClick();
 		});
 	} else {
-		var bool = confirm(msg2);
-		if (bool) {
-			$.post('XOLose.html', function(response) {
-				location.href = 'index.html';
+		var bool = confirm(msgExit);
+		if (bool == true) {
+			clearInterval(checkerInterval);
+			$.post('XOPlayerOut.html', function(response) {
+				homeButtonClick();
 			});
 		}
 	}
@@ -28,27 +29,35 @@ function gameHomeButton() {
 
 function gameBackButton() {
 	if (end == true) {
+		clearInterval(checkerInterval);
 		$.post('XOClear.html', function(response) {
-			location.href = 'XO.html';
+			backButtonClick();
 		});
 	} else {
-		var bool = confirm(msg2);
-		if (bool) {
-			$.post('XOLose.html', function(response) {
-				location.href = 'XO.html';
+		var bool = confirm(msgExit);
+		if (bool == true) {
+			clearInterval(checkerInterval);
+			$.post('XOPlayerOut.html', function(response) {
+				backButtonClick();
 			});
 		}
 	}
 }
 
+function gameRefreshButton() {
+	alert("aaa");
+	clearInterval(checkerInterval);
+	refreshButtonClick();
+}
+
 function statShow(id) {
-	$('#outText').hide();
-	$('#' + id + 'Stat').show();
+	$('#xoGame #outText').hide();
+	$('#xoGame #' + id + 'Stat').show();
 }
 
 function statHide(id) {
-	$('#outText').show();
-	$('#' + id).hide();
+	$('#xoGame #outText').show();
+	$('#xoGame #' + id).hide();
 }
 
 function put(img) {
@@ -56,77 +65,67 @@ function put(img) {
 		return;
 	$.post('XOPut.html', {
 		xy : img.id
-	}, function(response) {
-		if (response == -5) {
+	}, function(resp) {
+		if (resp == true) {
 			lock = true;
-			end = true;
-			setImg(img, status);
-			$('#outText').text(msg5);
-			$('#win').css({
-				zIndex : 1
-			});
-		} else if (response == -4) {
-			lock = true;
-			end = true;
-			$('#outText').text($('#opName').text() + msg6);
-		} else if (response == -3) {
-		} else if (response == -2) {
-			alert(msg7);
-		} else if (response == -1) {
-			alert(msg8);
-		} else {
-			lock = true;
-			status = response;
-			setImg(img, status);
-			$('#outText').text(msg9);
-			$('#tick').animate({
-				marginLeft : tickX2
-			}, 1000);
-			checker();
+			getStatus();
 		}
 	});
 }
 
 function checker() {
-	var inter = setInterval(check, 1000);
+	checkerInterval = setInterval(check, 1000);
 	function check() {
-		$.post('XOCheck.html', function(response) {
-			if (response == -5) {
-				end = true;
-				clearInterval(inter);
-				change();
-				$('#outText').text(msg10);
-			} else if (response == -4) {
-				end = true;
-				$('#outText').text($('#opName').text() + msg6);
-			} else if (response == -3) {
-			} else if (response != 0) {
-				clearInterval(inter);
-				change();
-				$('#outText').text(msg11);
-				lock = false;
-				$('#tick').animate({
-					marginLeft : tickX1
-				}, 1000);
+		$.post('XOCheckChanges.html', function(resp) {
+			if (resp == true) {
+				clearInterval(checkerInterval);
+				getStatus();
 			}
 		});
 	}
 }
 
-function change() {
-	$.post('XOGet.html', function(box) {
-		var id = "X" + box.x + "Y" + box.y;
-		var img = document.getElementById(id);
-		setImg(img, box.status);
+function getStatus() {
+	$.post('XOGetStatus.html', function(status) {
+		setImg(status.lastBox);
+		if (status.gameOver == true) {
+			lock = true;
+			end = true;
+			if (status.winnerId == myId) {
+				$('#xoGame #outText').text(msgWin);
+				$('#xoGame #win').show();
+			} else {
+				$('#xoGame #outText').text(msgLose);
+			}
+		} else if (status.playerOut == true) {
+			lock = true;
+			end = true;
+			if (status.outId == myId) {
+				$('#xoGame #outText').text(msgLose);
+			} else {
+				$('#xoGame #outText')
+						.text($('#xoGame #opName').text() + msgOut);
+			}
+		} else if (status.lastPlayer != myId) {
+			lock = false;
+			$('#xoGame #outText').text(msgTurn);
+		} else if (status.lastPlayer == myId) {
+			$('#xoGame #outText').text(msgWait);
+			checker();
+		}
 	});
 }
 
-function setImg(img, status) {
-	if (status == 0) {
+function setImg(box) {
+	if (box == null)
+		return;
+	var id = "X" + box.x + "Y" + box.y;
+	var img = document.getElementById(id);
+	if (box.status == 0) {
 		img.src = "images/XO/0.png";
-	} else if (status == -8) {
+	} else if (box.status == -1) {
 		img.src = "images/XO/X" + getRandomInt(0, 4) + ".png";
-	} else if (status == -9) {
+	} else if (box.status == -2) {
 		img.src = "images/XO/O" + getRandomInt(0, 4) + ".png";
 	}
 }

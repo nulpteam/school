@@ -1,13 +1,14 @@
 var started = false;
+var waitClientInterval;
 
 function waitClient() {
-	$('#outText p').text(msg3);
-	var inter1 = setInterval(check, 1000);
+	$('#outText p').text(msgWaitPlayer);
+	waitClientInterval = setInterval(check, 1000);
 	function check() {
-		$.post('XOGetClient.html', function(response) {
-			if (response.id != null) {
-				clearInterval(inter1);
-				$('#outText p').text(response.name + msg4);
+		$.post('XOGetClient.html', function(resp) {
+			if (resp.id != null) {
+				clearInterval(waitClientInterval);
+				$('#outText p').text(resp.name + msgConnected);
 				$('#startButton').show();
 				started = true;
 			}
@@ -16,35 +17,39 @@ function waitClient() {
 }
 
 function startButtonClick() {
-	location.href = 'XOGame.html';
+	goTo(gameLink);
 }
 
 function waitPageHomeButton() {
-	if (started) {
-		var bool = confirm(msg2);
-		if (bool) {
+	if (started == true) {
+		var bool = confirm(msgExit);
+		if (bool == true) {
+			clearInterval(waitClientInterval);
 			$.post('XOLose.html', function(response) {
-				location.href = 'index.html';
+				homeButtonClick();
 			});
 		}
 	} else {
+		clearInterval(waitClientInterval);
 		$.post('XOClear.html', function(response) {
-			location.href = 'index.html';
+			homeButtonClick();
 		});
 	}
 }
 
 function waitPageBackButton() {
-	if (started) {
-		var bool = confirm(msg2);
-		if (bool) {
+	if (started == true) {
+		var bool = confirm(msgExit);
+		if (bool == true) {
+			clearInterval(waitClientInterval);
 			$.post('XOLose.html', function(response) {
-				location.href = 'XO.html';
+				backButtonClick();
 			});
 		}
 	} else {
+		clearInterval(waitClientInterval);
 		$.post('XOClear.html', function(response) {
-			location.href = 'XO.html';
+			backButtonClick();
 		});
 	}
 }

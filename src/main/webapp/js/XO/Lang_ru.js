@@ -1,11 +1,12 @@
-var msg1 = 'Вы не можете подключиться к себе!';
-var msg2 = 'Если вы выйдете, вы автоматически проиграете!';
-var msg3 = 'Ждите на соперника';
-var msg4 = ' подключился';
-var msg5 = 'Победа :)';
-var msg6 = ' вышел';
-var msg7 = 'Ячейка занята!';
-var msg8 = 'Не ваша очередь!';
-var msg9 = 'Ждите';
-var msg10 = 'Проигрыш: (';
-var msg11 = 'Ваш ход';
+// Other Message
+var msgYourSelf = 'Вы не можете подключиться к себе!';
+var msgExit = 'Если вы выйдете, вы автоматически проиграете!';
+var msgWaitPlayer = 'Ждите на соперника';
+var msgConnected = ' подключился';
+
+// Game Message
+var msgWin = 'Победа :)';
+var msgLose = 'Проигрыш: (';
+var msgOut = ' вышел';
+var msgWait = 'Ждите';
+var msgTurn = 'Ваш ход';

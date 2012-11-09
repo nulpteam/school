@@ -4,7 +4,11 @@ package epam.ph.sg.xo;
  * @author Paul Michael T.
  */
 public class XOBox {
-	private int status = XO.EMPTY;
+	public static final int EMPTY = 0;
+	public static final int X = -1;
+	public static final int O = -2;
+
+	private int status = EMPTY;
 	private int x;
 	private int y;
 
@@ -16,7 +20,7 @@ public class XOBox {
 	/**
 	 * Status getter
 	 * 
-	 * @return XO.EMPTY, XO.X or XO.O
+	 * @return XOBox constant EMPTY, X or O
 	 */
 	public int getStatus() {
 		return status;
@@ -26,7 +30,7 @@ public class XOBox {
 	 * Status setter
 	 * 
 	 * @param status
-	 *            - XO.EMPTY, XO.X or XO.O
+	 *            - XOBox constant EMPTY, X or O
 	 */
 	public void setStatus(int status) {
 		this.status = status;
