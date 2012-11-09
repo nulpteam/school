@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 
 public class Game {
@@ -53,6 +56,7 @@ public class Game {
 			String point) {
 		Game game = ActiveGames.getGame(gameID);
 		FireResponse fireResponse = new FireResponse();
+		SocketFireResponse socetFireResponse = new SocketFireResponse();
 		//міняє чергу пострілу
 		
 		
@@ -80,12 +84,30 @@ public class Game {
 			{
 				changeMove();
 				fireResponse.setMiss("00");
-				fireResponse.setLock("lock");
+				fireResponse.setLock("client");
 			}
+			
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonVal="";
+			socetFireResponse.setSheep(board[x][y]);
+			socetFireResponse.setPoint(point);
+			try {
+				jsonVal= mapper.writeValueAsString(socetFireResponse);
+				log.debug("jsonVal="+jsonVal);
+			} catch (JsonGenerationException e1) {
+				e1.printStackTrace();
+			} catch (JsonMappingException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			
+			
 			
 			//до опонента летить інфа через сокет
 			try {
-				game.getClient().getConn().sendMessage("sheep|fail= " + board[x][y]+" point= "+point);
+				game.getClient().getConn().sendMessage(jsonVal/*"sheep|fail= " + board[x][y]+" point= "+point*/);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -114,12 +136,25 @@ public class Game {
 			{
 				changeMove();
 				fireResponse.setMiss("00");
-				fireResponse.setLock("lock");
+				fireResponse.setLock("server");
 			}
-			
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonVal="";
+			socetFireResponse.setSheep(board[x][y]);
+			socetFireResponse.setPoint(point);
+			try {
+				jsonVal= mapper.writeValueAsString(socetFireResponse);
+				log.debug("jsonVal="+jsonVal);
+			} catch (JsonGenerationException e1) {
+				e1.printStackTrace();
+			} catch (JsonMappingException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			//до опонента летить інфа через сокет
 			try {
-				game.getServer().getConn().sendMessage("sheep|fail= " + board[x][y]+" point= "+point);
+				game.getServer().getConn().sendMessage(jsonVal);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -128,7 +163,7 @@ public class Game {
 		}
 		return fireResponse;
 	}
-	public void setFirstTimeMoveRight()
+	public String setFirstTimeMoveRight()
 	{
 		Random r = new Random();
 		boolean nm = r.nextBoolean();
@@ -136,11 +171,13 @@ public class Game {
 		{
 			setNextMove("server");
 			log.debug("server otrymav pravo pershoho xodu");
+			return "server";
 		}
 		else
 		{
 			setNextMove("client");
 			log.debug("client otrymav pravo pershoho xodu");
+			return "client";
 		}
 	}
 	

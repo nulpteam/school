@@ -5,6 +5,7 @@
 var userName;
 var gameId;
 var socket;
+var lock;
 
 
 $(document).ready(function(){
@@ -12,10 +13,19 @@ $(document).ready(function(){
 	userName = $("#userName").attr("class");
 	gameId = $("#gameID").attr("class");
 	connectionType = $("#ConnectionType").attr("class");
+	lock = $("#lock").attr("class");
 	
 	console.log(userName);
 	console.log(gameId);
 	console.log(connectionType);
+	console.log(lock);
+	
+	//lock
+	if (connectionType!=lock)
+	{
+			alert ("lock ocured");
+	}
+	
 	
 	socket = new WebSocket("ws://localhost:8081");
 	socket.onopen = function () {
@@ -24,6 +34,7 @@ $(document).ready(function(){
 		};
 		socket.onmessage = function (event) {
 			  alert("Пришло сообщение с содержанием: " + event.data);
+			  console.log(event.data);
 		};
 });
 	

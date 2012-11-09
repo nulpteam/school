@@ -77,6 +77,7 @@ public class SBMenuController {
 			server.setPlayer(player);
 			server.setGameBoard(board);
 			game.setServer(server);
+			String s = game.setFirstTimeMoveRight();
 			ActiveGames.addGame(game);
 			session.setAttribute("Game",game);
 			session.setAttribute("ConnectionType","server");
@@ -132,8 +133,7 @@ public class SBMenuController {
 		
 		ActiveGames.getGame(gameID).setClient(client);
 		//Рандомний вибір права першого пострілу
-		ActiveGames.getGame(gameID).setFirstTimeMoveRight();
-		
+		//String nextMove = ActiveGames.getGame(gameID).setFirstTimeMoveRight();
 		session.setAttribute("Game", selectedGame);
 		session.setAttribute("ConnectionType","client");
 		//Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на клієнта
@@ -148,7 +148,7 @@ public class SBMenuController {
 
 	
 	@RequestMapping(value = "/BsGame.html", method = RequestMethod.GET)
-	public String SbGame(Model model, HttpSession session) {
+	public String SbGame(Model model, HttpSession session)  {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";

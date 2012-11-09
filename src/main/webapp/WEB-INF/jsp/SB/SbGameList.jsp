@@ -18,12 +18,9 @@
 	<div>
 	<c:forEach items="${serverMap}" var="server">
 			<div>
-				<input type="button" value="<c:out value="${game.server.player.name}"/>" onclick="connect(<c:out value="${server.key}"/>);">
+				<input type="button" value="<c:out value="${server.value.server.player.name}"/>" onclick="connect(<c:out value="${server.key}"/>);">
 			</div>
 	</c:forEach>
-	<b>Тут треба переробити!!!!! <br>При створенні гри, вона назавжди залишається в мапі створених ігор. (тому шо мапа статична).<br>
-	Треба зробити так, щоб при закритті ігри або браузера в сесії мапа серерів обнулялась або видалалась або щоб вона не була статичною :-)<br> 
-	Одним словом - в мапі запущених серверів мають бути тільки актуальні(запущені) сервера. </b>
 	</div>					
 </body>
 </html>
