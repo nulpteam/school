@@ -57,9 +57,24 @@ public class JettyContext implements ServletContextListener {
 			try {
 				// стопаєм Jetty
 				server.stop();
+				log.debug("+++++++++++++++++++++++++++Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if (ptsServer != null) {
+			try {
+				// стопаєм Jetty
 				ptsServer.stop();
+				log.debug("+++++++++++++++++++++++++++Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if (reversyServer != null) {
+			try {
+				// стопаєм Jetty
 				reversyServer.stop();
-				// server1.stop();
 				log.debug("+++++++++++++++++++++++++++Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
 			} catch (Exception e) {
 				e.printStackTrace();
