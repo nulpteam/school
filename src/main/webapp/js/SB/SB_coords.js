@@ -483,6 +483,9 @@ function fire(point) {
 			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand + ".png'>";
 			$("#locker").css("visibility", "hidden");
 		}
+		if(obj.miss==="10") {
+			alert("ви запіздячили одиничку противника");
+		}
 		$(point).html(html);
 //ТУТ має локатись поле для стрільби		
 		

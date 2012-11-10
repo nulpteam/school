@@ -9,7 +9,6 @@ $(document).ready(function(){
 });
 
 function connect(ID) {
-	alert("Game ID = " + ID);
 	$.post("SbGameSelected.html", 
 			{ gameID: ID },
 			function(response) {

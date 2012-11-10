@@ -48,7 +48,9 @@ $(document).ready(function(){
 //				alert("msg.sheep: " + msg.sheep);
 				lock = connectionType;
 			}
-			
+			if (msg.sheep == "10") {
+				alert("одиничку вбили нахуй!" + msg.sheep);
+			}
 			
 			if (connectionType!=lock) {			
 //					alert ("lock ocured " + lock);
