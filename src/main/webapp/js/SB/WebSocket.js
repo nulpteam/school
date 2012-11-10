@@ -23,8 +23,12 @@ $(document).ready(function(){
 	//lock
 	if (connectionType!=lock)
 	{
-			alert ("lock ocured");
-			$("#locker").css("visibility", "visible");
+//			alert ("lock ocured " + lock);
+			$("#locker").css("visibility", "hidden");
+			
+	} else {
+//		alert ("lock unocured " + lock);
+		$("#locker").css("visibility", "visible");
 	}
 	
 	
@@ -35,16 +39,27 @@ $(document).ready(function(){
 		  socket.send(gameId + "&" + userName+"&"+connectionType);
 		  console.log("------------------------------Соединение открылось-----------------------------");
 		};
-		socket.onmessage = function (event) {
-//			lock = $("#lock").attr("class");
-			if (connectionType==lock)
-			{
-					alert ("lock ocured");
-					$("#locker").css("visibility", "hidden");
+	socket.onmessage = function (event) {
+			var msg = JSON.parse(event.data);
+			if (msg.sheep == "00") {
+//				alert("msg.sheep: " + msg.sheep);
+				lock = "";
+			} else {
+//				alert("msg.sheep: " + msg.sheep);
+				lock = connectionType;
 			}
-			  alert("Пришло сообщение с содержанием: " + event.data);
+			
+			
+			if (connectionType!=lock) {			
+//					alert ("lock ocured " + lock);
+					$("#locker").css("visibility", "hidden");
+			} else {
+//				alert ("lock unocured " + lock);
+				$("#locker").css("visibility", "visible");
+			}
+//			  alert("Пришло сообщение с содержанием: " + event.data);
 			  console.log(event.data);
-		};
+	};
 });
 	
 

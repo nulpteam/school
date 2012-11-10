@@ -476,14 +476,16 @@ function fire(point) {
 		if(obj.miss==="00")
 		{
 			html = "<img id='fireP" + p + "' src='images/SB/missPoint" + rand + ".png'>";
+			$("#locker").css("visibility", "visible");
 		}
 		else
 		{		
 			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand + ".png'>";
+			$("#locker").css("visibility", "hidden");
 		}
 		$(point).html(html);
 //ТУТ має локатись поле для стрільби		
-		$("#locker").css("visibility", "visible");
+		
 //		if(obj.lock==="lock")
 //		{
 //			$('#table2').hide(0);

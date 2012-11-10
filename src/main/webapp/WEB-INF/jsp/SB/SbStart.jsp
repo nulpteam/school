@@ -141,6 +141,8 @@
 <input type="button" value="SendM" onClick="sendM();"/>
 <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/>
 <input type="button" value="Test1" onClick="testWS();"/>
+<input type="button" value="${Game.nextMove}"/>
+
 
 </div>
 </body>

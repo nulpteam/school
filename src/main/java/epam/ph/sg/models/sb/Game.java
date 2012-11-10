@@ -113,8 +113,7 @@ public class Game {
 			}
 
 			//return fireResponse;
-		}
-		if (connectionType.equalsIgnoreCase("client")) {
+		} else {
 			BSBoard bsBoard = game.getServer().getGameBoard();
 			String[][] board = bsBoard.BoardtoArray();
 			String fp = board[x][y];
@@ -183,11 +182,9 @@ public class Game {
 	
 	private void changeMove()
 	{
-		if(nextMove.equalsIgnoreCase("server"))
-		{
+		if(nextMove.equalsIgnoreCase("server"))	{
 			setNextMove("client");
-		}else if(nextMove.equalsIgnoreCase("client"))
-		{
+		} else if(nextMove.equalsIgnoreCase("client")) {
 			setNextMove("server");
 		}
 	}
