@@ -17,7 +17,7 @@
 <script src="js/XO/Menu.js" type="text/javascript"></script>
 <script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
 <script type="text/javascript">
-	var curentPos = 'XO${xoCurrentPos}.html';
+	var curentPos = '${xoCurrentPos}';
 	$(document).ready(function(){
 		goTo(curentPos);
 	});
@@ -26,7 +26,6 @@
 <body>
 	<div class="page">
 		<c:import url="../Tab/Tab.jsp"></c:import>
-		<%-- <c:import url="${xoCurrentPos}.jsp"></c:import> --%>
 	</div>
 </body>
 </html>

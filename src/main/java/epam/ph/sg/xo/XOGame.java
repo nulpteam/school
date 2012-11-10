@@ -19,6 +19,7 @@ public class XOGame {
 	 * @param outId - Outer id
 	 */
 	public void out(int outId) {
+		status.setLastPlayer(outId);
 		status.setPlayerOut(true);
 		status.setOutId(outId);
 

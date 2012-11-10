@@ -11,8 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import epam.ph.sg.xo.XOPlayer;
-
 public class XOFilter implements Filter {
 
 	@Override
@@ -22,16 +20,18 @@ public class XOFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+		
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
-		if (session.getAttribute("xoCurrentPos") == null) {
-			session.setAttribute("xoCurrentPos", "Menu");
+		String requestAdr = ((HttpServletRequest) request).getServletPath();		
+		if (requestAdr.equals("/XO.html")) {
+			if (session.getAttribute("xoCurrentPos") == null) {
+				session.setAttribute("xoCurrentPos", "XOMenu.html");
+			}
+			chain.doFilter(request, response);
+		} else {
+			session.setAttribute("xoCurrentPos", requestAdr.substring(1));
+			chain.doFilter(request, response);
 		}
-		String curentPos = (String) session.getAttribute("xoCurrentPos");
-		if (curentPos.equals("Game") && xo == null) {
-			session.setAttribute("xoCurrentPos", "Menu");
-		}
-		chain.doFilter(request, response);
 	}
 
 	@Override

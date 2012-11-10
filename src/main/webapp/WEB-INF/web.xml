@@ -38,5 +38,10 @@
 	<filter-mapping>
 		<filter-name>xoFilter</filter-name>
 		<url-pattern>/XO.html</url-pattern>
+		<url-pattern>/XOMenu.html</url-pattern>
+		<url-pattern>/XOServerList.html</url-pattern>
+		<url-pattern>/XOStatistics.html</url-pattern>
+		<url-pattern>/XOCreate.html</url-pattern>
+		<url-pattern>/XOGame.html</url-pattern>
 	</filter-mapping>
 </web-app>
