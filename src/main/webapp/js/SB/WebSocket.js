@@ -49,7 +49,7 @@ $(document).ready(function(){
 				lock = connectionType;
 			}
 			if (msg.sheep == "10") {
-				alert("одиничку вбили нахуй!" + msg.sheep);
+//				alert("одиничку вбили нахуй!" + msg.sheep);
 			}
 			
 			if (connectionType!=lock) {			

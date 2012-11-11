@@ -6,6 +6,7 @@ var userAgent;
 var bsound;
 //матриця розташування кораблів
 var M;
+var damagedSheep = 0;
 
 
 $(document).ready(function() 
@@ -440,6 +441,58 @@ function allreadyShooted()
 	alert("You allready shoot in this point");
 }
 
+function allreadyDamaged() {
+	alert("You allready damaged this point");
+}
+
+function cantBe() {
+	alert("There cant be sheep!");
+}
+
+function lockWhereCantBe(id) {
+	x1 = parseInt(id[2]) - 1;
+	y1 = parseInt(id[5]) - 1;
+	x2 = parseInt(id[2]);
+	y2 = parseInt(id[5]);
+	x3 = 1 + parseInt(id[2]);
+	y3 = 1 + parseInt(id[5]);
+	if ($("#X" + x1 + "_Y" + y1).attr("onclick") == "fire(this)") {
+		$("#X" + x1 + "_Y" + y1).html("<img id='cant_be" + x1 + y1 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x1 + "_Y" + y1).attr("onclick", "cantBe()");
+	}
+	if ($("#X" + x2 + "_Y" + y1).attr("onclick") == "fire(this)") {
+		$("#X" + x2 + "_Y" + y1).html("<img id='cant_be" + x2 + y1 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x2 + "_Y" + y1).attr("onclick", "cantBe()");
+	}
+	if ($("#X" + x3 + "_Y" + y1).attr("onclick") == "fire(this)") {
+		$("#X" + x3 + "_Y" + y1).html("<img id='cant_be" + x3 + y1 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x3 + "_Y" + y1).attr("onclick", "cantBe()");
+	}
+	if ($("#X" + x1 + "_Y" + y2).attr("onclick") == "fire(this)") {
+		$("#X" + x1 + "_Y" + y2).html("<img id='cant_be" + x1 + y2 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x1 + "_Y" + y2).attr("onclick", "cantBe()");
+	}
+	if ($("#X" + x3 + "_Y" + y2).attr("onclick") == "fire(this)") {
+		$("#X" + x3 + "_Y" + y2).html("<img id='cant_be" + x3 + y2 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x3 + "_Y" + y2).attr("onclick", "cantBe()");
+	}
+	if ($("#X" + x1 + "_Y" + y3).attr("onclick") == "fire(this)") {
+		$("#X" + x1 + "_Y" + y3).html("<img id='cant_be" + x1 + y3 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x1 + "_Y" + y3).attr("onclick", "cantBe()");
+	}
+	if ($("#X" + x2 + "_Y" + y3).attr("onclick") == "fire(this)") {
+		$("#X" + x2 + "_Y" + y3).html("<img id='cant_be" + x2 + y3 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x2 + "_Y" + y3).attr("onclick", "cantBe()");
+	}
+	if ($("#X" + x3 + "_Y" + y3).attr("onclick") == "fire(this)") {
+		$("#X" + x3 + "_Y" + y3).html("<img id='cant_be" + x3 + y3 + "' src='images/SB/cant_be.png'>");
+		$("#X" + x3 + "_Y" + y3).attr("onclick", "cantBe()");
+	}
+}
+function victory() {
+	alert("<------------------------------------ YOU WIN! ------------------------------------->");
+}
+
 
 
 function playShootSound()
@@ -469,9 +522,15 @@ function fire(point) {
 		firePoint : p
 	}, function(data) {
 		obj = eval(data);
-		console.log(obj);
 		//Міняєм ф-ію на обстріляній клітинці
-		$(point).attr("onclick","allreadyShooted();");
+		if (obj.miss==="00") {
+			$(point).attr("onclick", "allreadyShooted();");
+		} else {
+			$(point).attr("onclick", "allreadyDamaged();");
+		}
+			
+			
+			
 		rand = Math.floor((Math.random() * 5) + 1);
 		if(obj.miss==="00")
 		{
@@ -484,7 +543,194 @@ function fire(point) {
 			$("#locker").css("visibility", "hidden");
 		}
 		if(obj.miss==="10") {
-			alert("ви запіздячили одиничку противника");
+			if (damagedSheep == 20) {
+				victory();
+			}
+			lockWhereCantBe("#" + point.id);
+			damagedSheep++;
+			if (damagedSheep == 20) {
+				victory();
+			}
+		}
+		if (obj.miss==="20") {
+			x1 = parseInt(point.id[1]) - 1;
+			y1 = parseInt(point.id[4]) - 1;
+			x2 = parseInt(point.id[1]);
+			y2 = parseInt(point.id[4]);
+			x3 = 1 + parseInt(point.id[1]);
+			y3 = 1 + parseInt(point.id[4]);
+			leftP = "#X" + x1 + "_Y" + y2;
+			topP =  "#X" + x2 + "_Y" + y1;
+			rightP =  "#X" + x3 + "_Y" + y2;
+			bottomP =  "#X" + x2 + "_Y" + y3;
+			
+			if (($(leftP).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(leftP);
+			}
+			if (($(topP).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(topP);
+			}
+			if (($(rightP).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(rightP);
+				
+			}
+			if (($(bottomP).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(bottomP);
+			}
+			damagedSheep++;
+			if (damagedSheep == 20) {
+				victory();
+			}
+		}
+		if (obj.miss==="30") {
+			x1 = parseInt(point.id[1]) - 2;
+			y1 = parseInt(point.id[4]) - 2;
+			x2 = parseInt(point.id[1]) - 1;
+			y2 = parseInt(point.id[4]) - 1;
+			x3 = parseInt(point.id[1]);
+			y3 = parseInt(point.id[4]);
+			x4 = parseInt(point.id[1]) + 1;
+			y4 = parseInt(point.id[4]) + 1;
+			x5 = parseInt(point.id[1]) + 2;
+			y5 = parseInt(point.id[4]) + 2;
+			
+			leftP1 = "#X" + x1 + "_Y" + y3;
+			leftP2 = "#X" + x2 + "_Y" + y3;
+			
+			topP1 =  "#X" + x3 + "_Y" + y1;
+			topP2 =  "#X" + x3 + "_Y" + y2;
+			
+			rightP1 =  "#X" + x4 + "_Y" + y3;
+			rightP2 =  "#X" + x5 + "_Y" + y3;
+			
+			bottomP1 =  "#X" + x3 + "_Y" + y4;
+			bottomP2 =  "#X" + x3 + "_Y" + y5;
+			
+			
+			if (($(leftP1).attr("onclick") == "allreadyDamaged();") && ($(leftP2).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(leftP1);
+				lockWhereCantBe(leftP2);
+			}
+			if (($(rightP1).attr("onclick") == "allreadyDamaged();") && ($(leftP2).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(rightP1);
+				lockWhereCantBe(leftP2);
+			}
+			if (($(rightP1).attr("onclick") == "allreadyDamaged();") && ($(rightP2).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(rightP1);
+				lockWhereCantBe(rightP2);
+			}
+			if (($(topP1).attr("onclick") == "allreadyDamaged();") && ($(topP2).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(topP1);
+				lockWhereCantBe(topP2);
+			}
+			if (($(bottomP1).attr("onclick") == "allreadyDamaged();") && ($(topP2).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(bottomP1);
+				lockWhereCantBe(topP2);
+			}
+			if (($(bottomP1).attr("onclick") == "allreadyDamaged();") && ($(bottomP2).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(bottomP1);
+				lockWhereCantBe(bottomP2);
+			}
+			damagedSheep++;
+			if (damagedSheep == 20) {
+				victory();
+			}
+		}
+		if (obj.miss==="40") {
+			x1 = parseInt(point.id[1]) - 3;
+			y1 = parseInt(point.id[4]) - 3;
+			x2 = parseInt(point.id[1]) - 2;
+			y2 = parseInt(point.id[4]) - 2;
+			x3 = parseInt(point.id[1]) - 1;
+			y3 = parseInt(point.id[4]) - 1;
+			x4 = parseInt(point.id[1]);
+			y4 = parseInt(point.id[4]);
+			x5 = parseInt(point.id[1]) + 1;
+			y5 = parseInt(point.id[4]) + 1;
+			x6 = parseInt(point.id[1]) + 2;
+			y6 = parseInt(point.id[4]) + 2;
+			x7 = parseInt(point.id[1]) + 3;
+			y7 = parseInt(point.id[4]) + 3;
+			
+			leftP1 = "#X" + x1 + "_Y" + y4;
+			leftP2 = "#X" + x2 + "_Y" + y4;
+			leftP3 = "#X" + x3 + "_Y" + y4;
+			
+			topP1 =  "#X" + x4 + "_Y" + y1;
+			topP2 =  "#X" + x4 + "_Y" + y2;
+			topP3 =  "#X" + x4 + "_Y" + y3;
+			
+			rightP1 =  "#X" + x5 + "_Y" + y4;
+			rightP2 =  "#X" + x6 + "_Y" + y4;
+			rightP3 =  "#X" + x7 + "_Y" + y4;
+			
+			bottomP1 =  "#X" + x4 + "_Y" + y5;
+			bottomP2 =  "#X" + x4 + "_Y" + y6;
+			bottomP3 =  "#X" + x4 + "_Y" + y7;
+			
+			
+			if (($(leftP1).attr("onclick") == "allreadyDamaged();") && ($(leftP2).attr("onclick") == "allreadyDamaged();") && ($(leftP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(leftP1);
+				lockWhereCantBe(leftP2);
+				lockWhereCantBe(leftP3);
+			}
+			if (($(rightP1).attr("onclick") == "allreadyDamaged();") && ($(leftP2).attr("onclick") == "allreadyDamaged();") && ($(leftP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(rightP1);
+				lockWhereCantBe(leftP2);
+				lockWhereCantBe(leftP3);
+			}
+			if (($(rightP1).attr("onclick") == "allreadyDamaged();") && ($(rightP2).attr("onclick") == "allreadyDamaged();") && ($(leftP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(rightP1);
+				lockWhereCantBe(rightP2);
+				lockWhereCantBe(leftP3);
+			}
+			if (($(rightP1).attr("onclick") == "allreadyDamaged();") && ($(rightP2).attr("onclick") == "allreadyDamaged();") && ($(rightP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(rightP1);
+				lockWhereCantBe(rightP2);
+				lockWhereCantBe(rightP3);
+			}
+			if (($(topP1).attr("onclick") == "allreadyDamaged();") && ($(topP2).attr("onclick") == "allreadyDamaged();") && ($(topP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(topP1);
+				lockWhereCantBe(topP2);
+				lockWhereCantBe(topP3);
+			}
+			if (($(bottomP1).attr("onclick") == "allreadyDamaged();") && ($(topP2).attr("onclick") == "allreadyDamaged();") && ($(topP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(bottomP1);
+				lockWhereCantBe(topP2);
+				lockWhereCantBe(topP3);
+			}
+			if (($(bottomP1).attr("onclick") == "allreadyDamaged();") && ($(bottomP2).attr("onclick") == "allreadyDamaged();") && ($(topP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(bottomP1);
+				lockWhereCantBe(bottomP2);
+				lockWhereCantBe(topP3);
+			}
+			if (($(bottomP1).attr("onclick") == "allreadyDamaged();") && ($(bottomP2).attr("onclick") == "allreadyDamaged();") && ($(bottomP3).attr("onclick") == "allreadyDamaged();")) {
+				lockWhereCantBe("#" + point.id);
+				lockWhereCantBe(bottomP1);
+				lockWhereCantBe(bottomP2);
+				lockWhereCantBe(bottomP3);
+			}
+			damagedSheep++;
+			if (damagedSheep == 20) {
+				victory();
+			}
 		}
 		$(point).html(html);
 //ТУТ має локатись поле для стрільби		
