@@ -183,7 +183,7 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
-		ActiveGames.removeGame(gameId);
+		//ActiveGames.removeGame(gameId);
 		return "SB/Victory";
 	}
 
