@@ -373,7 +373,7 @@ function sendM() {
 			sheeps : Send,
 		},
 		success : function(data) {
-			alert(data);
+			;
 		},
 		error : function() {
 			alert("ERROR");
