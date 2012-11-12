@@ -181,6 +181,7 @@ public class SBMenuController {
 	public String Victory(Model model, HttpSession session) {
 		int gameId = ((Game) session.getAttribute("Game")).getId();
 		session.removeAttribute("Game");
+		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
 		ActiveGames.removeGame(gameId);
 		return "SB/Victory";
@@ -189,6 +190,7 @@ public class SBMenuController {
 	@RequestMapping(value = "/Loose.html", method = RequestMethod.GET)
 	public String Loose(Model model, HttpSession session) {
 		session.removeAttribute("Game");
+		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
 		return "SB/Loose";
 	}
