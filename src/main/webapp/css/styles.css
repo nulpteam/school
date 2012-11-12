@@ -3,3 +3,8 @@ body {
 	font-family: LC Chalk;
 	font-size: 15px;
 }
+
+@font-face {
+	font-family: LC Chalk;
+	src: local("LC Chalk"), url(../LC_Chalk.ttf);
+}
