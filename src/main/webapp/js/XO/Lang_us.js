@@ -10,3 +10,4 @@ var msgLose = 'Loss :(';
 var msgOut = ' out';
 var msgWait = 'Wait';
 var msgTurn = 'Your move';
+var msgTime = ' times out';

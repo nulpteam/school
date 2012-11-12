@@ -20,6 +20,7 @@
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+    <div id="body">
 	<div id="bg">
 
 		<div id="infection_title">
@@ -27,22 +28,20 @@
 		</div>
 		<div id="game_table">
 			<table id="table" align="center" cellpadding="0" cellspacing="0">
-			
+
 				<c:forEach begin="0" end="6" step="1" varStatus="i">
-				<c:if test="i==0 && j==0">putRedPoint()</c:if>
 					<tr>
-					
 						<c:forEach begin="0" end="6" step="1" varStatus="j">
-						
 							<td class="chip" id="X${j.count-1}Y${i.count-1}"
-								onClick=putPoint(this)><img
-								src=""></td>
+								onClick=lightFields(this)><img src=""></td>
 						</c:forEach>
 					</tr>
 				</c:forEach>
+
 			</table>
 		</div>
 
+	</div>
 	</div>
 </body>
 </html>

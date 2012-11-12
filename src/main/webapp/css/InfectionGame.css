@@ -1,3 +1,7 @@
+#body{
+	background-color: white;
+}
+
 #bg {
 	background-image: url('../images//Infection/infection_game_background.png');
 	background-repeat: no-repeat;
@@ -28,7 +32,7 @@
 }
 
 .chip:hover{
-	background-image: url('../images//Infection/hover_cell.png');
+	background-image: url('../images//Infection/hoverfield_cell.png');
 }
 
 #game_table {

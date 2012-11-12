@@ -10,3 +10,4 @@ var msgLose = 'Програш :(';
 var msgOut = ' вийшов';
 var msgWait = 'Чекайте';
 var msgTurn = 'Ваш хід';
+var msgTime = ' не встиг';

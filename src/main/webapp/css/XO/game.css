@@ -51,7 +51,15 @@
 	margin: 5px 460px;
 }
 
+#xoGame #timer {
+	font-size: 30px;
+	color: red;
+	position: absolute;
+	margin: 200px 540px;
+}
+
 #xoGame #outText {
+	position: absolute;
 	margin-top: 75px;
 }
 
@@ -67,10 +75,10 @@
 	height: 419px;
 	width: 427px;
 	position: absolute;
-	margin: 150px 94px;
+	margin: 170px 94px;
 }
 
 #xoGame #field {
 	position: absolute;
-	margin: 160px 107px;
+	margin: 180px 107px;
 }

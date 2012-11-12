@@ -19,6 +19,7 @@
 		onmouseout=backButtonOut(this); onclick=gameBackButton();></div>
 	<div class="refreshButton" onmouseover=refreshButtonOver(this);
 		onmouseout=refreshButtonOut(this); onclick=gameRefreshButton();></div>
+
 	<div id="myName" class="namespace" onclick=statShow(this.id);>
 		<p>
 			<c:out value="${user.name}" />
@@ -62,8 +63,9 @@
 		</table>
 	</div>
 	<div id="tick"></div>
-	<div>
-		<p id="outText" align="center" class="title"></p>
+	<div id="timer"></div>
+	<div id="outText" class="title">
+		<p align="center"></p>
 	</div>
 	<div id="win">
 		<img src="images/XO/win.png">

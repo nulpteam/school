@@ -9,6 +9,11 @@
 	color: #5B2FCE;
 }
 
+@font-face {
+	font-family: LC Chalk;
+	src: local("LC Chalk"), url(../../LC_Chalk.ttf);
+}
+
 .paperList .title {
 	width: 450px;
 	font-size: 30px;
