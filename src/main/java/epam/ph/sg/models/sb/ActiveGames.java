@@ -19,7 +19,7 @@ public class ActiveGames {
 	}
 
 	public static void removeGame(int id) {
-		activeGames.remove(id);
+		activeGames.set(id-1,null);
 	}
 
 }
