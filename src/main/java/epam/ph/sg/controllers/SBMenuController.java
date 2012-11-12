@@ -54,36 +54,33 @@ public class SBMenuController {
 	// Створення нового сервера гри
 	@RequestMapping(value = { "/BsCreateGame.html" }, method = RequestMethod.GET)
 	public String SbMenuCreation(HttpSession session, Model model) {
-		
+
 		log.debug("-------------------Added JavaScriptss-------------------");
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");
 		sbJSLoader.addScript("SB/js_stringify");
 		sbJSLoader.addScript("SB/WebSocket");
-		
-			
-		//BOBIK
-		if (session.getAttribute("Game") == null)
-		{
+
+		// BOBIK
+		if (session.getAttribute("Game") == null) {
 			Game game = GamesList.addGameToListBS();
-			
+
 			Server server = new Server();
 			BSPlayer player = new BSPlayer();
 			BSBoard board = new BSBoard();
-			
-			
+
 			player.setName(((User) session.getAttribute("user")).getName());
 			server.setPlayer(player);
 			server.setGameBoard(board);
 			game.setServer(server);
 			String s = game.setFirstTimeMoveRight();
 			ActiveGames.addGame(game);
-			session.setAttribute("Game",game);
-			session.setAttribute("ConnectionType","server");
-			
+			session.setAttribute("Game", game);
+			session.setAttribute("ConnectionType", "server");
+
 		}
-		//model.addAttribute("connectionType", "server");
+		// model.addAttribute("connectionType", "server");
 		System.out.println("YOU HAVE BS-GAME");
 		return "SB/Sb";
 	}
@@ -92,10 +89,10 @@ public class SBMenuController {
 	// Список ігор
 	@RequestMapping(value = { "/BsConectGame.html" }, method = RequestMethod.GET)
 	public String SbMenuConnection(HttpSession session, Model model) {
-//		if (session.getAttribute("user") == null) {
-//			new HomeController().index(session);
-//			return "Login";
-//		}
+		// if (session.getAttribute("user") == null) {
+		// new HomeController().index(session);
+		// return "Login";
+		// }
 		if (session.getAttribute("Game") != null) {
 			return "SB/Sb";
 		}
@@ -110,17 +107,17 @@ public class SBMenuController {
 	}
 
 	/**
-	 *Підєднання клієнта до сервера 
+	 * Підєднання клієнта до сервера
 	 * 
 	 */
 	@RequestMapping(value = { "/SbGameSelected.html" }, method = RequestMethod.POST)
 	public @ResponseBody
 	String SbGameSelected(@RequestParam("gameID") int gameID,
 			HttpSession session, Model model) {
-//		if (session.getAttribute("user") == null) {
-//			new HomeController().index(session);
-//			return "Login";
-//		}
+		// if (session.getAttribute("user") == null) {
+		// new HomeController().index(session);
+		// return "Login";
+		// }
 		log.debug("*/*/*/*/*/*/*/*  GAME ID =" + gameID + "  /*/*/*/*/*/*/*/");
 		Game selectedGame = GamesList.getGameListBS().get(gameID);
 		Client client = new Client();
@@ -130,25 +127,25 @@ public class SBMenuController {
 		client.setPlayer(player);
 		client.setGameBoard(board);
 		selectedGame.setClient(client);
-		
+
 		ActiveGames.getGame(gameID).setClient(client);
-		//Рандомний вибір права першого пострілу
-		//String nextMove = ActiveGames.getGame(gameID).setFirstTimeMoveRight();
+		// Рандомний вибір права першого пострілу
+		// String nextMove =
+		// ActiveGames.getGame(gameID).setFirstTimeMoveRight();
 		session.setAttribute("Game", selectedGame);
-		session.setAttribute("ConnectionType","client");
-		//Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на клієнта
+		session.setAttribute("ConnectionType", "client");
+		// Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на
+		// клієнта
 		GamesList.removeGameFromListBS(gameID);
-		
-		
+
 		log.debug("---  START ---");
 		log.debug("--- " + selectedGame + "  ---");
 		log.debug("--- STOP  ---");
 		return "OK";
 	}
 
-	
 	@RequestMapping(value = "/BsGame.html", method = RequestMethod.GET)
-	public String SbGame(Model model, HttpSession session)  {
+	public String SbGame(Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "Login";
@@ -157,36 +154,49 @@ public class SBMenuController {
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");
 		sbJSLoader.addScript("SB/SB_coords");
-		sbJSLoader.addScript("SB/SbGameList");	
+		sbJSLoader.addScript("SB/SbGameList");
 		sbJSLoader.addScript("SB/WebSocket");
-		
+
 		model.addAttribute("connectionType", "client");
 		return "SB/Sb";
 	}
-	
+
 	@RequestMapping(value = "/BsGameStart.html", method = RequestMethod.GET)
 	public String SbGameStart(Model model, HttpSession session) {
-//		if (session.getAttribute("user") == null) {
-//			new HomeController().index(session);
-//			return "Login";
-//		}
+		// if (session.getAttribute("user") == null) {
+		// new HomeController().index(session);
+		// return "Login";
+		// }
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");
 		sbJSLoader.addScript("SB/SB_coords");
-		sbJSLoader.addScript("SB/SbGameList");	
+		sbJSLoader.addScript("SB/SbGameList");
 		sbJSLoader.addScript("SB/WebSocket");
-		
+
 		return "SB/SbStart";
 	}
-	
-	
-	
-	
+
+	@RequestMapping(value = "/Victory.html", method = RequestMethod.GET)
+	public String Victory(Model model, HttpSession session) {
+		int gameId = ((Game) session.getAttribute("Game")).getId();
+		session.removeAttribute("Game");
+		session.removeAttribute("ConnectionType");
+		ActiveGames.removeGame(gameId);
+		return "SB/Victory";
+	}
+
+	@RequestMapping(value = "/Loose.html", method = RequestMethod.GET)
+	public String Loose(Model model, HttpSession session) {
+		session.removeAttribute("Game");
+		session.removeAttribute("ConnectionType");
+		return "SB/Loose";
+	}
+
 	/**
 	 * Тест - стерти коли стане не потрібним
 	 */
-	 
+
 	@RequestMapping(value = { "/Test.html" }, method = RequestMethod.GET)
 	public @ResponseBody
 	String test(HttpSession session, Model model) {
@@ -194,8 +204,8 @@ public class SBMenuController {
 			new HomeController().index(session);
 			return "Login";
 		}
-		
-		//!
+
+		// !
 		Game game = ActiveGames.getGame(1);
 		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 				+ game.getServer().getConn());
@@ -204,8 +214,10 @@ public class SBMenuController {
 		try {
 			game.getServer().getConn().sendMessage("fiskult-privet Server");
 			game.getClient().getConn().sendMessage("fiskult-privet Client");
-			game.getServer().getConn().sendMessage(game.getServer().getGameBoard().toString());
-			game.getClient().getConn().sendMessage(game.getClient().getGameBoard().toString());
+			game.getServer().getConn()
+					.sendMessage(game.getServer().getGameBoard().toString());
+			game.getClient().getConn()
+					.sendMessage(game.getClient().getGameBoard().toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

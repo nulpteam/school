@@ -6,7 +6,7 @@ var userName;
 var gameId;
 var socket;
 var lock;
-
+var myDamagedSheeps = 0;
 
 $(document).ready(function(){
 	console.log("WEBSOCKET");
@@ -48,8 +48,12 @@ $(document).ready(function(){
 //				alert("msg.sheep: " + msg.sheep);
 				lock = connectionType;
 			}
-			if (msg.sheep == "10") {
-//				alert("одиничку вбили нахуй!" + msg.sheep);
+			if (msg.sheep != "00") {
+				myDamagedSheeps++;
+				if (myDamagedSheeps >= 20) {
+					loose();
+				}
+				
 			}
 			
 			if (connectionType!=lock) {			
@@ -75,3 +79,6 @@ function testWS()
 	$.get("Test.html"); 
 }
 
+function loose() {
+	location.href = "Loose.html";
+}

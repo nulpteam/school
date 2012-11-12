@@ -9,8 +9,7 @@ var M;
 var damagedSheep = 0;
 
 
-$(document).ready(function() 
-{
+$(document).ready(function() {
 	userAgent = navigator.userAgent;
 	//
 	bsound = new Audio;
@@ -26,26 +25,23 @@ $(document).ready(function()
 	bsound.loop=true;
 	startbsound();
 });
-function stopbsound()
-{
+
+function stopbsound() {
 	bsound.pause();
 }
-function startbsound()
-{
-	bsound.volume=0.3;
+
+function startbsound() {
+	bsound.volume=0.1;
 	bsound.play();
 }
-function chSound()
-{
+
+function chSound() {
 	id = $('.sound img').attr('id');
-	if(id=="s_on")
-		{
+	if(id=="s_on") {
 			s_off = '<img id="s_off" src="images/SB/s_off.png" onclick="chSound();">';
 			$('.sound').html(s_off);
 			stopbsound();
-		}else
-	if(id=="s_off")
-	{
+	} else 	if(id=="s_off")	{
 		s_on = '<img id="s_on" src="images/SB/s_on.png" onclick="chSound();">';
 		$('.sound').html(s_on);
 		 startbsound();
@@ -74,7 +70,7 @@ function rotate(obj) {
 		var set = c.substring(1, c.length);
 		set = newOrientation + set;
 		$(obj).attr("class", set);
-	}
+	};
 }
 
 
@@ -85,7 +81,7 @@ function createMatrix() {
 		M[i] = new Array();
 		for ( var j = 0; j < 10; j++) {
 			M[i][j] = "00";
-		}
+		};
 	}
 	return M;
 }
@@ -113,11 +109,11 @@ function parseCoords(coords, ui) {
 			"x" : x,
 			"y" : y,
 			"img" : ui.draggable[0],
-			"ui" : ui
-		};
+			"ui" : ui,
+			};
 		console.log(co);
 		return co;
-	}
+	};
 }
 
 /**
@@ -284,7 +280,7 @@ function disableDroppables(obj) {
 			$("#X" + x5 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x5 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x5 + "_Y" + y1).droppable("option", "disabled", true);
-		}
+		};
 	}
 	if (obj.r == "V") {
 		if (obj.t == "2") {
@@ -344,8 +340,8 @@ function disableDroppables(obj) {
 			$("#X" + x1 + "_Y" + y3).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y4).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y5).droppable("option", "disabled", true);
-		}
-	}
+		};
+	};
 }
 
 /**
@@ -365,7 +361,7 @@ function sendM() {
 		"g" : M[6],
 		"h" : M[7],
 		"i" : M[8],
-		"j" : M[9]
+		"j" : M[9],
 	};
 	var Send = JSON.stringify(j);
 	console.log(Send);
@@ -377,12 +373,13 @@ function sendM() {
 			sheeps : Send,
 		},
 		success : function(data) {
+			alert(data);
 		},
 		error : function() {
 			alert("ERROR");
 		}
 	});
-}
+};
 
 // обєкт кількості кораблів
 var sheepCount = {
@@ -490,10 +487,8 @@ function lockWhereCantBe(id) {
 	}
 }
 function victory() {
-	alert("<------------------------------------ YOU WIN! ------------------------------------->");
+	location.href = "Victory.html";
 }
-
-
 
 function playShootSound()
 {
@@ -751,4 +746,4 @@ function createSbGame() {
 }
 function connectSbGame() {
 	location.href = "BsConectGame.html";
-}
+};
