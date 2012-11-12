@@ -34,7 +34,7 @@ $(document).ready(function(){
 	
 	
 	
-	socket = new WebSocket("ws://localhost:8081");
+	socket = new WebSocket("ws://"+locatio.hostname+":8081");
 	socket.onopen = function () {
 		  socket.send(gameId + "&" + userName+"&"+connectionType);
 		  console.log("------------------------------Соединение открылось-----------------------------");
