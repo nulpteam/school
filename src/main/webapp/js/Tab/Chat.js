@@ -16,7 +16,7 @@ function chatStart() {
 };
 
 function msgScanner() {
-	setInterval(refresh, 5000);
+	chatInterval = setInterval(refresh, 5000);
 }
 
 function refresh() {

@@ -44,4 +44,14 @@
 		<url-pattern>/XOCreate.html</url-pattern>
 		<url-pattern>/XOGame.html</url-pattern>
 	</filter-mapping>
+	<filter>
+		<filter-name>tabFilter</filter-name>
+		<filter-class>epam.ph.sg.web.filters.TabFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>tabFilter</filter-name>
+		<url-pattern>/TabHome.html</url-pattern>
+		<url-pattern>/Chat.html</url-pattern>
+		<url-pattern>/Sudoku.html</url-pattern>
+	</filter-mapping>
 </web-app>

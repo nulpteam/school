@@ -1,17 +1,26 @@
 #tab {
-	background-image: url('../../images/tab.png');
+	background-image: url('../../images/Tab/tab.png');
 	background-repeat: no-repeat;
 	height: 570px;
 	width: 360px;
 	font-family: Tahoma;
-	margin-top: 50px;
 	float: left;
+	margin-top: 50px;
 }
 
-.display {
-	height: 439px;
-	width: 271px;
+#tab .display {
 	font-family: Tahoma;
+	height: 430px;
+	width: 270px;
 	position: absolute;
 	margin: 56px 45px;
+}
+
+#tab .bar {
+	background-image: url('../../images/Tab/bar.png');
+	background-repeat: no-repeat;
+	height: 30px;
+	width: 270px;
+	position: absolute;
+	margin: 486px 45px;
 }

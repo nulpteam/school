@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class XOFilter implements Filter {
+public class TabFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -20,19 +20,10 @@ public class XOFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		String requestAdr = ((HttpServletRequest) request).getServletPath();		
-		if (requestAdr.equals("/XO.html")) {
-			if (session.getAttribute("xoCurrentPos") == null) {
-				session.setAttribute("xoCurrentPos", "XOMenu.html");
-				session.setAttribute("tabCurrentPos", "TabHome.html");
-			}
-			chain.doFilter(request, response);
-		} else {
-			session.setAttribute("xoCurrentPos", requestAdr.substring(1));
-			chain.doFilter(request, response);
-		}
+		String requestAdr = ((HttpServletRequest) request).getServletPath();
+		session.setAttribute("tabCurrentPos", requestAdr.substring(1));
+		chain.doFilter(request, response);
 	}
 
 	@Override
