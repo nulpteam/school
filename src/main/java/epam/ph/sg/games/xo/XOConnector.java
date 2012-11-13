@@ -1,4 +1,4 @@
-package epam.ph.sg.xo;
+package epam.ph.sg.games.xo;
 
 /**
  * @author Paul Michael T.

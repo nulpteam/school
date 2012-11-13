@@ -22,14 +22,15 @@
 
 #sudoku #field div {
 	border: solid 1px;
+	border-color: black;
 	width: 20px;
 	height: 20px;
 	font-size: 16px;
 	font-weight: bold;
-	color: black;
+	color: white;
 	cursor: pointer;
 }
 
 .area0,.area2,.area4,.area6,.area8 {
-	background-color: lightgray;
+	background-color: darkslategray;
 }

@@ -17,9 +17,8 @@
 <script src="js/XO/Menu.js" type="text/javascript"></script>
 <script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
 <script type="text/javascript">
-	var curentPos = '${xoCurrentPos}';
 	$(document).ready(function(){
-		goTo(curentPos);
+		goTo('XOCurrentPos.html');
 	});
 </script>
 </head>

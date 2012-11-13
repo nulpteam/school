@@ -1,5 +1,5 @@
 var chatLink = 'Chat.html';
-var sudokuLink = 'Sudoku.html';
+var sudokuLink = 'SudokuMenu.html';
 var homeLink = 'TabHome.html';
 var chatInterval;
 

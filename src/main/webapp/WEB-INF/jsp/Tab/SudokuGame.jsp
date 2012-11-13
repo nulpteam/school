@@ -62,5 +62,5 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<button onclick=newGame();>New game</button>
+	<button onclick=sudokuNewGame(level);>New game</button>
 </div>

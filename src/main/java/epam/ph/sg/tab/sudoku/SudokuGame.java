@@ -1,4 +1,4 @@
-package epam.ph.sg.sudoku;
+package epam.ph.sg.tab.sudoku;
 
 import java.util.List;
 import java.util.Set;
@@ -48,7 +48,12 @@ public class SudokuGame {
 		return sudokuField;
 	}
 
-	public static SudokuGame getGame() {
-		return new SudokuGame(SudokuMapCreator.prepare(1));
+	public static SudokuGame getGame(int level) {
+		if (level < 1) {
+			level = 1;
+		} else if (level > 3) {
+			level = 3;
+		}
+		return new SudokuGame(SudokuMapCreator.prepare(level));
 	}
 }

@@ -52,6 +52,7 @@
 		<filter-name>tabFilter</filter-name>
 		<url-pattern>/TabHome.html</url-pattern>
 		<url-pattern>/Chat.html</url-pattern>
-		<url-pattern>/Sudoku.html</url-pattern>
+		<url-pattern>/SudokuMenu.html</url-pattern>
+		<url-pattern>/SudokuGame.html</url-pattern>
 	</filter-mapping>
 </web-app>

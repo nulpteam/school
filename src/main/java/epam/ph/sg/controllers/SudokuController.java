@@ -2,49 +2,61 @@ package epam.ph.sg.controllers;
 
 import java.util.Set;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import epam.ph.sg.sudoku.SudokuBox;
-import epam.ph.sg.sudoku.SudokuGame;
+import epam.ph.sg.models.User;
+import epam.ph.sg.tab.sudoku.SudokuBox;
+import epam.ph.sg.tab.sudoku.SudokuGame;
 
 @Controller
 public class SudokuController {
+	private static Logger log = Logger.getLogger(SudokuController.class);
 
-	@RequestMapping("/Sudoku.html")
-	public String sudoku(HttpSession session) {
-		if (session.getAttribute("sudoku") == null) {
-			session.setAttribute("sudoku", SudokuGame.getGame());
-		}
-		return "Tab/Sudoku";
+	@RequestMapping("/SudokuMenu.html")
+	public String menu(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		return "Tab/SudokuMenu";
 	}
 
 	@RequestMapping("/SudokuNewGame.html")
-	public @ResponseBody
-	int[] newGame(HttpSession session) {
-		SudokuGame game = SudokuGame.getGame();
-		session.setAttribute("sudoku", game);
-		int[] values1 = new int[81];
-		int[][] values2 = game.getStaticValues();
-		int x = 0;
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				values1[x] = values2[i][j];
-				x++;
-			}
+	public String newGame(@RequestParam("level") int level,
+			HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId() + ". Level: " + level);
+		SudokuGame game = SudokuGame.getGame(level);
+		request.getSession().setAttribute("sudoku", game);
+		return "redirect:/SudokuGame.html";
+	}
+
+	@RequestMapping("/SudokuGame.html")
+	public String game(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		if (request.getSession().getAttribute("sudoku") == null) {
+			return "redirect:/Sudoku.html";
 		}
-		return values1;
+		return "Tab/SudokuGame";
 	}
 
 	@RequestMapping("/SudokuPut.html")
 	public @ResponseBody
 	boolean put(@RequestParam("id") String id,
-			@RequestParam("value") int value, HttpSession session) {
-		SudokuGame game = (SudokuGame) session.getAttribute("sudoku");
+			@RequestParam("value") int value, HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId() + ". Position: " + id);
+		SudokuGame game = (SudokuGame) request.getSession().getAttribute(
+				"sudoku");
 		int line = Integer.valueOf(id.substring(0, 1));
 		int colum = Integer.valueOf(id.substring(1));
 		return game.put(line, colum, value);
@@ -52,8 +64,12 @@ public class SudokuController {
 
 	@RequestMapping("/SudokuGetFailed.html")
 	public @ResponseBody
-	SudokuBox[] getFailed(HttpSession session) {
-		SudokuGame game = (SudokuGame) session.getAttribute("sudoku");
+	SudokuBox[] getFailed(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		SudokuGame game = (SudokuGame) request.getSession().getAttribute(
+				"sudoku");
 		Set<SudokuBox> failed = game.getFailed();
 		SudokuBox[] failedArray = new SudokuBox[failed.size()];
 		int i = 0;

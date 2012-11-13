@@ -24,10 +24,6 @@ public class XOFilter implements Filter {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		String requestAdr = ((HttpServletRequest) request).getServletPath();		
 		if (requestAdr.equals("/XO.html")) {
-			if (session.getAttribute("xoCurrentPos") == null) {
-				session.setAttribute("xoCurrentPos", "XOMenu.html");
-				session.setAttribute("tabCurrentPos", "TabHome.html");
-			}
 			chain.doFilter(request, response);
 		} else {
 			session.setAttribute("xoCurrentPos", requestAdr.substring(1));

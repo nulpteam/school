@@ -1,4 +1,4 @@
-package epam.ph.sg.sudoku;
+package epam.ph.sg.tab.sudoku;
 
 import java.util.ArrayList;
 import java.util.List;

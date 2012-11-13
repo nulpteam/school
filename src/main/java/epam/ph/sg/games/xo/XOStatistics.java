@@ -1,4 +1,4 @@
-package epam.ph.sg.xo;
+package epam.ph.sg.games.xo;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,7 +18,7 @@ public class XOStatistics {
 	public static void insert(int id) {
 		dao.insert(id);
 	}
-	
+
 	public static void win(int id) {
 		dao.win(id);
 	}
@@ -38,9 +38,16 @@ public class XOStatistics {
 			public int compare(XOStatistics o1, XOStatistics o2) {
 				if (o1.getTotal() > o2.getTotal())
 					return -1;
-				if (o1.getTotal() < o2.getTotal())
+				else if (o1.getTotal() < o2.getTotal())
 					return 1;
-				return 0;
+				else {
+					if (o1.getWins() > o2.getWins())
+						return -1;
+					else if (o1.getWins() < o2.getWins())
+						return 1;
+					else
+						return 0;
+				}
 			}
 		});
 		return list;

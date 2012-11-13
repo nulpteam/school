@@ -1,6 +1,6 @@
-package epam.ph.sg.sudoku;
+package epam.ph.sg.tab.sudoku;
 
-public class SudokuBox implements Comparable<SudokuBox> {
+public class SudokuBox {
 	private int line;
 	private int colum;
 
@@ -68,12 +68,23 @@ public class SudokuBox implements Comparable<SudokuBox> {
 	}
 
 	@Override
-	public int compareTo(SudokuBox o) {
+	public boolean equals(Object obj) {
+		SudokuBox box = (SudokuBox) obj;
 		String id1 = "" + this.getLine() + this.getColum();
-		String id2 = "" + o.getLine() + o.getColum();
+		String id2 = "" + box.getLine() + box.getColum();
 		if (id1.equals(id2))
-			return 0;
+			return true;
 		else
-			return 1;
+			return false;
 	}
+
+	// @Override
+	// public int compareTo(SudokuBox o) {
+	// String id1 = "" + this.getLine() + this.getColum();
+	// String id2 = "" + o.getLine() + o.getColum();
+	// if (id1.equals(id2))
+	// return 0;
+	// else
+	// return 1;
+	// }
 }

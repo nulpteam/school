@@ -5,9 +5,8 @@
 
 <script src="js/Tab/Tab.js" type="text/javascript"></script>
 <script type="text/javascript">
-	var tabCurentPos = '${tabCurrentPos}';
 	$(document).ready(function(){
-		tabGoTo(tabCurentPos);
+		tabGoTo('TabCurrentPos.html');
 	});
 </script>
 <div id="tab">

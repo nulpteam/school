@@ -1,33 +1,36 @@
-function newGame() {	
-	$.post('SudokuNewGame.html', function(resp) {
-		var i = 0;
-		$('#sudoku #field td div').each(function() {
-			if (resp[i] == 0) {
-				$(this).text('');
-				$(this).attr('class', 'unlockedBox');
-			} else {
-				$(this).text(resp[i]);
-				$(this).attr('class', 'lockedBox');
-			}
-			i++;
-		});
+var fail = 'red';
+var good = 'green';
+var locked = 'white';
+var borderHightlight1 = 'yellow';
+var borderHightlight2 = 'lawnGreen';
+
+function sudokuContinue() {
+	tabGoTo('SudokuGame.html');
+}
+
+var level;
+function sudokuNewGame(level) {
+	this.level = level;
+	$.post('SudokuNewGame.html', {
+		level : level
+	}, function(resp) {
+		$('.display').remove();
+		$('#tab').append(resp);
 	});
-	getFailed();
-	$('#sudoku #value').hide();
 }
 
 function getFailed() {
 	$.post('SudokuGetFailed.html', function(resp) {
-		$('#sudoku #field .lockedBox').css({
-			color : 'black'
+		$('#sudoku #field td .unlockedBox').css({
+			color : good
 		});
-		$('#sudoku #field .unlockedBox').css({
-			color : 'inherit'
+		$('#sudoku #field td .lockedBox').css({
+			color : locked
 		});
 		for ( var i = 0; i < resp.length; i++) {
 			var id = "" + resp[i].line + resp[i].colum;
 			$('#sudoku #field td #' + id).css({
-				color : 'red'
+				color : fail,
 			});
 		}
 	});
@@ -74,16 +77,16 @@ function boxHighlight(elem) {
 			+ '] div, #sudoku #field td[class=' + $(elem).attr('class')
 			+ '] div';
 	$(elements).css({
-		borderColor : 'yellow'
+		borderColor : borderHightlight1
 	});
 	$('#sudoku #field td[id$=' + elem.id + '] div').css({
-		borderColor : 'lawnGreen'
+		borderColor : borderHightlight2
 	});
 }
 
 function boxHighlightClear() {
 	$('#sudoku #field td div').css({
-		borderColor : 'inherit'
+		borderColor : ''
 	});
 }
 
@@ -108,12 +111,12 @@ function valueClick(value) {
 
 function valueOver(elem) {
 	$(elem).css({
-		color : "red"
+		color : 'red'
 	});
 }
 
 function valueOut(elem) {
 	$(elem).css({
-		color : "inherit"
+		color : ''
 	});
 }

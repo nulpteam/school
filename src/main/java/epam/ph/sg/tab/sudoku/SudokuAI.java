@@ -1,20 +1,18 @@
-package epam.ph.sg.sudoku;
+package epam.ph.sg.tab.sudoku;
 
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class SudokuAI {
 	private SudokuField sudokuField;
-	// private List<List<SudokuBox>> field;
 	private Set<SudokuBox> failed;
 
 	public SudokuAI(SudokuField sudokuField) {
 		this.sudokuField = sudokuField;
-		// this.field = sudokuField.getField();
 	}
 
 	public Set<SudokuBox> check() {
-		failed = new TreeSet<SudokuBox>();
+		failed = new HashSet<SudokuBox>();
 		checkHorizontal();
 		checkVertical();
 		checkInAreas();
