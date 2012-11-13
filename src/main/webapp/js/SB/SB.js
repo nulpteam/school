@@ -3,43 +3,43 @@
  * 
  */
 
-var store;
-var str1;
-var str2;
-var str3;
+var store = null;
+var str1 = null;
+var str2 = null;
+var str3 = null;
 
-var img01;
-var img02;
-var img03;
-var img04;
-var img05;
-var img06;
-var img07;
-var img08;
-var img09;
-var img10;
+var img01 = null;
+var img02 = null;
+var img03 = null;
+var img04 = null;
+var img05 = null;
+var img06 = null;
+var img07 = null;
+var img08 = null;
+var img09 = null;
+var img10 = null;
 
-var img01x;
-var img02x;
-var img03x;
-var img04x;
-var img05x;
-var img06x;
-var img07x;
-var img08x;
-var img09x;
-var img10x;
+var img01x = null;
+var img02x = null;
+var img03x = null;
+var img04x = null;
+var img05x = null;
+var img06x = null;
+var img07x = null;
+var img08x = null;
+var img09x = null;
+var img10x = null;
 
-var img01y;
-var img02y;
-var img03y;
-var img04y;
-var img05y;
-var img06y;
-var img07y;
-var img08y;
-var img09y;
-var img10y;
+var img01y = null;
+var img02y = null;
+var img03y = null;
+var img04y = null;
+var img05y = null;
+var img06y = null;
+var img07y = null;
+var img08y = null;
+var img09y = null;
+var img10y = null;
 
 var i = 10;
 
@@ -103,62 +103,34 @@ $(function() {
 		store = null;
 	};
 	
-	function addHover() {
-		if(str1 != null) {
-			$(str1).addClass("hover");
-		};
-		if(str2 != null) {
-			$(str2).addClass("hover");
-		};
-		if(str3 != null) {
-			$(str3).addClass("hover");
-		};
-		console.log("addHover", str1, str2, str3);
-	};
-	function remHover() {
-		console.log("remHover", str1, str2, str3);
-		if(str1 != null) {
-			$(str1).removeClass("hover");
-			str1 = null;
-		};
-		if(str2 != null) {
-			$(str2).removeClass("hover");
-			str2 = null;
-		};
-		if(str3 != null) {
-			$(str3).removeClass("hover");
-			str3 = null;
-		};
-	};
-
 	function fDrop(event, ui, id) {
 		co = parseCoords(id, ui);
 		saveCoords(co);
 		if (i == 1) {
 			img01 = ("images/SB/0" + co.t + ".png");
 			console.log(img01);
-			img01x = ui.position.left+2;
+			img01x = ui.position.left+1;
 			img01y = ui.position.top;
 			i--;
 		}
 		if (i == 2) {
 			img02 = ("images/SB/0" + co.t + ".png");
 			console.log(img02);
-			img02x = ui.position.left+2;
+			img02x = ui.position.left+1;
 			img02y = ui.position.top;
 			i--;
 		}
 		if (i == 3) {
 			img03 = ("images/SB/0" + co.t + ".png");
 			console.log(img03);
-			img03x = ui.position.left+2;
+			img03x = ui.position.left+1;
 			img03y = ui.position.top;
 			i--;
 		}
 		if (i == 4) {
 			img04 = ("images/SB/0" + co.t + ".png");
 			console.log(img04);
-			img04x = ui.position.left+2;
+			img04x = ui.position.left+1;
 			img04y = ui.position.top;
 			i--;
 		}
@@ -171,7 +143,7 @@ $(function() {
 				img05 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img05);
 			}
-			img05x = ui.position.left+2;
+			img05x = ui.position.left+1;
 			img05y = ui.position.top;
 			i--;
 		}
@@ -184,7 +156,7 @@ $(function() {
 				img06 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img06);
 			}
-			img06x = ui.position.left+2;
+			img06x = ui.position.left+1;
 			img06y = ui.position.top;
 			i--;
 		}
@@ -197,7 +169,7 @@ $(function() {
 				img07 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img07);
 			}
-			img07x = ui.position.left+2;
+			img07x = ui.position.left+1;
 			img07y = ui.position.top;
 			i--;
 		}
@@ -210,7 +182,7 @@ $(function() {
 				img08 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img08);
 			}
-			img08x = ui.position.left+2;
+			img08x = ui.position.left+1;
 			img08y = ui.position.top;
 			i--;
 		}
@@ -223,7 +195,7 @@ $(function() {
 				img09 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img09);
 			}
-			img09x = ui.position.left+2;
+			img09x = ui.position.left+1;
 			img09y = ui.position.top;
 			i--;
 		}
@@ -236,21 +208,15 @@ $(function() {
 				img10 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img10);
 			}
-			img10x = ui.position.left+2;
+			img10x = ui.position.left+1;
 			img10y = ui.position.top;
 			i--;
 		}
 	}
 
-//	function fOut(id1, id2) {
-//		console.log("out");
-////		remHover();
-//		//clearOldCoordsInM(id1, id2);
-//	}
 
 	function fOver(event, ui, coordinate) {
 		console.log("over");
-		remHover();
 		var x = coordinate.charAt(1);
 		var x1 = ++x;
 		var x2 = ++x;
@@ -274,12 +240,10 @@ $(function() {
 						|| ($("#X" + x3 + "_Y" + coordinate.charAt(4))
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
 					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
 					str3 = "#X" + x3 + "_Y" + coordinate.charAt(4);
-					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -290,12 +254,10 @@ $(function() {
 						|| ($("#X" + coordinate.charAt(1) + "_Y" + y3)
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
 					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
 					str3 = "#X" + coordinate.charAt(1) + "_Y" + y3;
-					addHover();
 				};
 			};
 		};
@@ -307,11 +269,9 @@ $(function() {
 						|| ($("#X" + x2 + "_Y" + coordinate.charAt(4))
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
 					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
-					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -320,11 +280,9 @@ $(function() {
 						|| ($("#X" + coordinate.charAt(1) + "_Y" + y2)
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
 					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
-					addHover();
 				};
 			};
 		};
@@ -334,20 +292,16 @@ $(function() {
 				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable(
 						"option", "disabled")) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
-					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
 				if ($("#X" + coordinate.charAt(1) + "_Y" + y1).droppable(
 						"option", "disabled")) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
-					addHover();
 				};
 			};
 		};
@@ -356,17 +310,12 @@ $(function() {
 	
 	$('#table1 td').each(function(){$(this).droppable({
 		tolerance : "pointer",
-		hoverClass : 'hover',
 		drop : function(event, ui) {
 			fDrop(event, ui, this.id);
 		},
 		over : function(event, ui) {
 			fOver(event, ui, this.id);
 		}
-//		,
-//		out : function(event, ui) {
-//			fOut(event, ui);
-//		}
 	});
 });
 	
