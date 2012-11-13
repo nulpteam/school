@@ -54,4 +54,9 @@ public class Message {
 	public String getText() {
 		return text;
 	}
+	
+	@Override
+	public String toString() {
+		return "Sender: " + getSender().getName() + "; Time: " + getTime();
+	}
 }
