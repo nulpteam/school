@@ -1,5 +1,8 @@
 package epam.ph.sg.controllers;
 
+/**
+ * @author Paul Michael T.
+ */
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

@@ -1,5 +1,8 @@
 package epam.ph.sg.tab.sudoku;
 
+/**
+ * @author Paul Michael T.
+ */
 public class SudokuBox {
 	private int line;
 	private int colum;

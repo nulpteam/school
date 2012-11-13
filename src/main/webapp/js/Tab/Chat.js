@@ -26,6 +26,7 @@ function refresh() {
 		}
 	});
 }
+
 var open = '<tr><td class="sender">';
 var openC = '<tr class="collor"><td class="sender">';
 var mid1 = ':</td><td class="time">';
@@ -36,7 +37,7 @@ var collor = false;
 var tag;
 function add(msgArray) {
 	for ( var i = 0; i < msgArray.length; i++) {
-		if (collor) {
+		if (collor == true) {
 			tag = openC + msgArray[i].sender.name + mid1 + msgArray[i].time
 					+ mid2C + msgArray[i].text + close;
 			collor = false;
@@ -48,7 +49,9 @@ function add(msgArray) {
 
 		$('#chatTable').append(tag);
 	}
-	if (msgArray.length > 0){
-		$('#chatOutText').animate({scrollTop: 99999}, 500);
+	if (msgArray.length > 0) {
+		$('#chatOutText').animate({
+			scrollTop : 99999
+		}, 500);
 	}
 }

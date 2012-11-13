@@ -1,5 +1,8 @@
 package epam.ph.sg.tab.sudoku;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.util.HashSet;
 import java.util.Set;
 

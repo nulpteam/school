@@ -1,5 +1,8 @@
 package epam.ph.sg.web.filters;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.io.IOException;
 
 import javax.servlet.Filter;

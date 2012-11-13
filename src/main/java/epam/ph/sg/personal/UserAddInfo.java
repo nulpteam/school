@@ -1,5 +1,8 @@
 package epam.ph.sg.personal;
 
+/**
+ * @author Paul Michael T.
+ */
 public class UserAddInfo {
 	private int id;
 	private String email;

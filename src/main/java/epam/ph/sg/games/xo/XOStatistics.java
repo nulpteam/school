@@ -1,5 +1,8 @@
 package epam.ph.sg.games.xo;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,10 +23,17 @@ public class ChatController {
 	private static Logger log = Logger.getLogger(ChatController.class);
 
 	@RequestMapping(value = "/Chat.html")
-	public String chat(HttpServletRequest request) {
+	public String chat(HttpServletRequest request, Model model) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
+		// if (request.getSession().getAttribute("chatUser") == null) {
+		// request.getSession().setAttribute("chatUser", new ChatUser());
+		// }
+		// ChatUser cu = (ChatUser)
+		// request.getSession().getAttribute("chatUser");
+		// cu.refresh();
+		// model.addAttribute("msgList", cu.getLoadedMsg());
 		request.getSession().setAttribute("chatUser", new ChatUser());
 		return "Tab/Chat";
 	}

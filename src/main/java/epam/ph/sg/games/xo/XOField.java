@@ -6,13 +6,13 @@ package epam.ph.sg.games.xo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XOFields {
+public class XOField {
 	public static final int X_SIZE = 20;
 	public static final int Y_SIZE = 20;
 
 	private XOBox[][] boxes;
 
-	public XOFields() {
+	public XOField() {
 		boxes = new XOBox[X_SIZE][Y_SIZE];
 		for (int x = 0; x < X_SIZE; x++) {
 			for (int y = 0; y < Y_SIZE; y++) {

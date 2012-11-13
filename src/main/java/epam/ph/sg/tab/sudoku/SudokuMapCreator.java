@@ -1,5 +1,8 @@
 package epam.ph.sg.tab.sudoku;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -1,5 +1,8 @@
 package epam.ph.sg.tab.sudoku;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.util.ArrayList;
 import java.util.List;
 

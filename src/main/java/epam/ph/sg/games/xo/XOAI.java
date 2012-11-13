@@ -6,9 +6,9 @@ package epam.ph.sg.games.xo;
 public class XOAI {
 	public static final int TO_WIN = 5;
 
-	private XOFields fields;
+	private XOField fields;
 
-	public XOAI(XOFields fields) {
+	public XOAI(XOField fields) {
 		this.fields = fields;
 	}
 

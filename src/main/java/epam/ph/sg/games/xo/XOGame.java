@@ -6,8 +6,8 @@ import epam.ph.sg.models.User;
  * @author Paul Michael T.
  */
 public class XOGame {
-	private XOFields xoFields = new XOFields(); // XOFields of this game
-	private XOAI ai = new XOAI(xoFields); // XOAI of this game
+	private XOField xoField = new XOField(); // XOFields of this game
+	private XOAI ai = new XOAI(xoField); // XOAI of this game
 	private XOStatus status = new XOStatus(); // Status of this game
 
 	private User server; // Server User instance
@@ -94,8 +94,8 @@ public class XOGame {
 		return ai;
 	}
 
-	public XOFields getXoFields() {
-		return xoFields;
+	public XOField getXoFields() {
+		return xoField;
 	}
 
 	public XOStatus getStatus() {
