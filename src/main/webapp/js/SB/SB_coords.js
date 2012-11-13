@@ -11,7 +11,6 @@ var damagedSheep = 0;
 
 $(document).ready(function() {
 	userAgent = navigator.userAgent;
-	//
 	bsound = new Audio;
 	if( userAgent.indexOf("Chrome")!=-1 )
 	{
@@ -197,7 +196,6 @@ function saveCoords(saveCoordenates) {
 
 // Деактивовує елементи droppable за координатами
 function disableDroppables(obj) {
-	// console.log(obj);
 	var x0 = obj.x - 1;
 		x1 = obj.x + 1;
 		x2 = obj.x;
@@ -233,7 +231,6 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).removeClass("hover");
 			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
@@ -248,11 +245,9 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).removeClass("hover");
 			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y2).removeClass("hover");
 			$("#X" + x3 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y2).droppable("option", "disabled", true);
@@ -267,15 +262,12 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).removeClass("hover");
 			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y2).removeClass("hover");
 			$("#X" + x3 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y2).removeClass("hover");
 			$("#X" + x4 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x5 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x5 + "_Y" + y2).droppable("option", "disabled", true);
@@ -291,7 +283,6 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).removeClass("hover");
 			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
@@ -307,9 +298,7 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).removeClass("hover");
 			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y3).removeClass("hover");
 			$("#X" + x2 + "_Y" + y4).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
@@ -328,11 +317,8 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).removeClass("hover");
 			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y3).removeClass("hover");
 			$("#X" + x2 + "_Y" + y4).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y4).removeClass("hover");
 			$("#X" + x2 + "_Y" + y5).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
@@ -728,12 +714,6 @@ function fire(point) {
 			}
 		}
 		$(point).html(html);
-//ТУТ має локатись поле для стрільби		
-		
-//		if(obj.lock==="lock")
-//		{
-//			$('#table2').hide(0);
-//		}
 	});
 }
 
