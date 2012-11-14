@@ -55,4 +55,8 @@
 		<url-pattern>/SudokuMenu.html</url-pattern>
 		<url-pattern>/SudokuGame.html</url-pattern>
 	</filter-mapping>
+	<error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>
 </web-app>

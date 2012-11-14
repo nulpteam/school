@@ -35,7 +35,7 @@ public class UserFilter implements Filter {
 				((HttpServletResponse) response).sendRedirect("Login.html");
 			}
 		} else {
-			if (requestAdr.equals("/Login.html")) {
+			if (requestAdr.equals("/Login.html") || requestAdr.equals("/Reg.html")) {
 				((HttpServletResponse) response).sendRedirect("index.html");
 			} else {
 				chain.doFilter(request, response);
