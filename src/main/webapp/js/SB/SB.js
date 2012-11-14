@@ -105,6 +105,8 @@ $(function() {
 	
 	function fDrop(event, ui, id) {
 		co = parseCoords(id, ui);
+		console.log(co);
+		console.log(id);
 		saveCoords(co);
 		if (i == 1) {
 			img01 = ("images/SB/0" + co.t + ".png");
