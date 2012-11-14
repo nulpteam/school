@@ -39,7 +39,7 @@
 					onclick=valueClick(9)>9</div></td>
 		</tr>
 	</table>
-	<table id="field" onmouseout=fieldOut();>
+	<table id="field" onmouseout=fieldOut(); cellpadding="0" cellspacing="0">
 		<c:forEach var="line" items="${sudoku.field}" varStatus="lineNumber">
 			<tr>
 				<c:forEach var="box" items="${line}" varStatus="columNumber">
