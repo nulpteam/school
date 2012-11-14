@@ -7,6 +7,7 @@ var bsound;
 //матриця розташування кораблів
 var M;
 var damagedSheep = 0;
+var unlockDroppableInfo;
 
 
 $(document).ready(function() {
@@ -49,10 +50,13 @@ function chSound() {
 
 //Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
-	console.log(obj);
+	console.log($(obj));
 	id = $(obj).attr('id');
-	isDisabled = $('#' + id).draggable('option', 'disabled');
-	if (!isDisabled) {
+	infield = $(obj)[0].classList[1] === "infield";
+	console.log(infield);
+	isDisabled = $(obj/*'#' + id*/).draggable('option', 'disabled');
+	console.log(isDisabled);
+	if (!isDisabled && !infield) {
 		var c = $(obj).attr("class");
 			orientation = c[0];
 			newOrientation = 'H';
@@ -69,7 +73,33 @@ function rotate(obj) {
 		var set = c.substring(1, c.length);
 		set = newOrientation + set;
 		$(obj).attr("class", set);
-	};
+	}
+	else{
+		
+		console.log("rotate корабля в полі");
+		//Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
+		// протележна до disableDroppables()
+		enableDroppables(unlockDroppableInfo);
+			
+		
+		
+		var c = $(obj).attr("class");
+				orientation = c[0];
+				newOrientation = 'H';
+
+			if (orientation === 'H') {
+				newOrientation = 'V';
+				$(obj).attr("src", "images/SB/0" + id[6] + "_90.png");
+				console.log(obj);
+			} else if (orientation === 'V') {
+				newOrientation = 'H';
+				$(obj).attr("src", "images/SB/0" + id[6] + ".png");
+				console.log(obj);
+			}
+			var set = c.substring(1, c.length);
+			set = newOrientation + set;
+			$(obj).attr("class", set);
+	}
 }
 
 
@@ -110,7 +140,7 @@ function parseCoords(coords, ui) {
 			"img" : ui.draggable[0],
 			"ui" : ui,
 			};
-		console.log(co);
+		//console.log(co);
 		return co;
 	};
 }
@@ -166,8 +196,8 @@ function saveCoords(saveCoordenates) {
 	if (saveCoordenates.r === "H" || saveCoordenates.r === "u") {
 		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
-				'<img id="sheep_' + saveCoordenates.t + '" src="images/SB/0'
-						+ saveCoordenates.t + '.png"/>');
+				'<img id="sheep_' + saveCoordenates.t + '" class="H infield" src="images/SB/0'
+						+ saveCoordenates.t + '.png" ondblclick="bbb(this,event);"/>');
 		$('#sp' + saveCoordenates.t + count).css("top",
 				saveCoordenates.ui.position.top + "px");
 		$('#sp' + saveCoordenates.t + count).css("left",
@@ -176,8 +206,8 @@ function saveCoords(saveCoordenates) {
 	} else if (saveCoordenates.r === "V") {
 		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
-				'<img id="sheep_' + saveCoordenates.t + '" src="images/SB/0'
-						+ saveCoordenates.t + '_90.png"/>');
+				'<img id="sheep_' + saveCoordenates.t + '" class="V infield" src="images/SB/0'
+						+ saveCoordenates.t + '_90.png" ondblclick="bbb(this,event);"/>');
 		$('#sp' + saveCoordenates.t + count).css("top",
 				saveCoordenates.ui.position.top + "px");
 		$('#sp' + saveCoordenates.t + count).css("left",
@@ -193,6 +223,121 @@ function saveCoords(saveCoordenates) {
 	// посилаємо на сервер
 	sendM();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+function bbb(t,event)
+{
+	
+	if (event.ctrlKey==1)
+	  {
+		//alert("The CTRL key was pressed!");
+		//console.log(t);
+		//console.log(event);
+		
+		
+		d = $(t).parent();
+		
+		
+		sheepId = $(t).attr('id');
+		topPx=d[0].offsetTop;
+		leftPx=d[0].offsetLeft;
+		placeHolderId=d[0].id; 
+		rotation = d[0].firstChild.className[0];
+		
+		unlockDroppableInfo ={
+				"sheepId" : sheepId,
+				"topPx" : topPx,
+				"leftPx" : leftPx,
+				"placeHolderId" : placeHolderId, 
+				"rotation" : rotation
+		};
+			
+		//console.log(d);
+		console.log("top="+unlockDroppableInfo.topPx);
+		console.log("left="+unlockDroppableInfo.leftPx);
+		console.log("sheepId="+unlockDroppableInfo.sheepId);
+		console.log("placeHolderId="+unlockDroppableInfo.placeHolderId);
+		console.log("rotation="+unlockDroppableInfo.rotation);
+
+		//Активовуємо драгабл на кораблі по якому даблклікнули+CTRL
+		$(t).draggable({
+			revert : "invalid",
+			//helper : "clone",
+			//revertDuration : 500,
+			cursorAt : {
+				top : 10,
+				left : 10
+			},
+			snap:".ui-droppable",
+			start : function(event,ui)
+			{
+				console.log("druging started");
+				enableDroppables(unlockDroppableInfo);
+			}
+		});
+		
+		
+		
+		$(t).attr('ondblclick','rotate(this);');
+		
+	}
+}
+
+//Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
+//+встановлювати в матриці 00 на місце де був розташований корабель  
+// протележна до disableDroppables()
+function enableDroppables(unlockDroppableInfo)
+{
+	console.log("провірити чи дективовані дропабли навколо корабля. " +
+						"Якщо дективовані то активувати всі заблоковані дропабли навколо корабля"
+						+"встановлювати в матриці 00 на місце де був розташований корабель");
+	setOldCoordsInM();
+}
+
+function setOldCoordsInM()
+{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Деактивовує елементи droppable за координатами
 function disableDroppables(obj) {
