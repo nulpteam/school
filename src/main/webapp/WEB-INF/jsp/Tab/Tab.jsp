@@ -7,8 +7,12 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		tabGoTo('TabCurrentPos.html');
+		tabClock();
 	});
 </script>
 <div id="tab">
-	<div class="bar" onclick=tabHomeButton();></div>
+	<div id="bar">
+		<div id="back" onclick=tabBackButton(); onmouseover=tabBackButtonOver(this); onmouseout=tabBackButtonOut(this);></div>
+		<div id="clock"></div>
+	</div>
 </div>

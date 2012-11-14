@@ -21,11 +21,29 @@
 	margin: 56px 45px;
 }
 
-#tab .bar {
-	background-image: url('../../images/Tab/bar.png');
-	background-repeat: no-repeat;
+#tab #bar {
 	height: 30px;
 	width: 270px;
 	position: absolute;
 	margin: 486px 45px;
+}
+
+#tab #bar #back {
+	background-image: url('../../images/Tab/back1.png');
+	background-repeat: no-repeat;
+	height: 30px;
+	width: 135px;
+	position: absolute;
+	margin: 0px 0px;
+}
+
+#tab #bar #clock {
+	font-size: 20px;
+	text-align: center;
+	color: deepSkyBlue;
+	height: 30px;
+	width: 135px;
+	position: absolute;
+	margin: 0px 135px;
+	padding-top: 2px;
 }
