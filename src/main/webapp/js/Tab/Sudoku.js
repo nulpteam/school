@@ -1,14 +1,12 @@
 var fail = 'red';
 var good = 'green';
 var locked = 'white';
-var borderHightlight1 = 'yellow';
-var borderHightlight2 = 'lawnGreen';
 
 function sudokuContinue() {
 	tabGoTo('SudokuGame.html');
 }
 
-var level;
+var level = 2;
 function sudokuNewGame(level) {
 	this.level = level;
 	$.post('SudokuNewGame.html', {
@@ -77,16 +75,16 @@ function boxHighlight(elem) {
 			+ '] div, #sudoku #field td[class=' + $(elem).attr('class')
 			+ '] div';
 	$(elements).css({
-		borderColor : borderHightlight1
+		backgroundImage : 'url("images/Tab/sudoku/blue.png")'
 	});
 	$('#sudoku #field td[id$=' + elem.id + '] div').css({
-		borderColor : borderHightlight2
+		backgroundImage : 'url("images/Tab/sudoku/green.png")'
 	});
 }
 
 function boxHighlightClear() {
 	$('#sudoku #field td div').css({
-		borderColor : ''
+		backgroundImage : 'none'
 	});
 }
 

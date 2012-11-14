@@ -1,3 +1,8 @@
+#sudoku {
+	background-image: url('../../images/Tab/sudoku/background.png');
+	background-repeat: no-repeat;
+}
+
 #sudoku #value {
 	border: solid 2px;
 	border-color: black;
@@ -13,24 +18,37 @@
 }
 
 #sudoku #field {
-	border-spacing: 0px;
-	border-collapse: collapse;
-	border: solid 3px;
-	text-align: center;
-	margin: 25px 25px;
+	background-image: url('../../images/Tab/sudoku/table.png');
+	background-repeat: no-repeat;
+	height: 243px;
+	width: 243px;
+	margin: 15px 15px;
+}
+
+#sudoku #field tr {
+	height: 27px;
+	width: 243px;
+}
+
+#sudoku #field td {
+	font-weight: bold;
+	font-size: 16px;
+	color: black;
+	cursor: pointer;
+	height: 25px;
+	width: 25px;
+	border: solid none 1px;
 }
 
 #sudoku #field div {
-	border: solid 1px;
-	border-color: black;
-	width: 20px;
-	height: 20px;
-	font-size: 16px;
-	font-weight: bold;
-	color: white;
-	cursor: pointer;
+	background-image: none;
+	background-repeat: no-repeat;
+	text-align: center;
+	vertical-align: middle;
+    height: 25px;
+    width: 25px;
+    margin: 1px 1px;
 }
 
 .area0,.area2,.area4,.area6,.area8 {
-	background-color: darkslategray;
 }
