@@ -1,20 +1,25 @@
 #sudoku {
 	background-image: url('../../images/Tab/sudoku/background.png');
 	background-repeat: no-repeat;
+	font-weight: bold;
+}
+
+#sudoku #level {
+	position: absolute;
+	margin: 100px 100px;
 }
 
 #sudoku #value {
+	display: none;
 	border: solid 2px;
 	border-color: black;
-	background-color: white;
-	width: 40px;
-	height: 70px;
+	background-color: khaki;
+	height: 80px;
+	width: 50px;
 	cursor: pointer;
-	position: absolute;
 	z-index: 2;
-	display: none;
-	font-size: 10px;
-	font-weight: bold;
+	font-size: 12px;
+	position: absolute;
 }
 
 #sudoku #field {
@@ -22,22 +27,15 @@
 	background-repeat: no-repeat;
 	height: 243px;
 	width: 243px;
-	margin: 15px 15px;
-}
-
-#sudoku #field tr {
-	height: 27px;
-	width: 243px;
+	position: absolute;
+	margin: 120px 14px;
 }
 
 #sudoku #field td {
-	font-weight: bold;
 	font-size: 16px;
-	color: black;
 	cursor: pointer;
-	height: 25px;
-	width: 25px;
-	border: solid none 1px;
+	height: 27px;
+	width: 27px;
 }
 
 #sudoku #field div {
@@ -45,10 +43,24 @@
 	background-repeat: no-repeat;
 	text-align: center;
 	vertical-align: middle;
-    height: 25px;
-    width: 25px;
-    margin: 1px 1px;
+	height: 25px;
+	width: 25px;
+	margin: 1px 1px;
 }
 
-.area0,.area2,.area4,.area6,.area8 {
+#sudoku .levelButton {
+	background-image: url('../../images/Tab/sudoku/smallButton1.png');
+	background-repeat: no-repeat;
+	height: 29px;
+	width: 66px;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: middle;
+	color: maroon;
+	cursor: pointer;
+}
+
+#sudoku #levelsBar {
+	position: absolute;
+	margin: 380px 30px;
 }

@@ -21,12 +21,16 @@ import epam.ph.sg.tab.sudoku.SudokuGame;
 public class SudokuController {
 	private static Logger log = Logger.getLogger(SudokuController.class);
 
-	@RequestMapping("/SudokuMenu.html")
+	@RequestMapping("/Sudoku.html")
 	public String menu(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		return "Tab/SudokuMenu";
+		if (request.getSession().getAttribute("sudoku") == null) {
+			SudokuGame game = SudokuGame.getGame(1);
+			request.getSession().setAttribute("sudoku", game);
+		}
+		return "Tab/Sudoku";
 	}
 
 	@RequestMapping("/SudokuNewGame.html")
@@ -37,18 +41,7 @@ public class SudokuController {
 				+ user.getId() + ". Level: " + level);
 		SudokuGame game = SudokuGame.getGame(level);
 		request.getSession().setAttribute("sudoku", game);
-		return "redirect:/SudokuGame.html";
-	}
-
-	@RequestMapping("/SudokuGame.html")
-	public String game(HttpServletRequest request) {
-		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
-		if (request.getSession().getAttribute("sudoku") == null) {
-			return "redirect:/Sudoku.html";
-		}
-		return "Tab/SudokuGame";
+		return "Tab/Sudoku";
 	}
 
 	@RequestMapping("/SudokuPut.html")

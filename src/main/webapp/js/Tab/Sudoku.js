@@ -2,13 +2,7 @@ var fail = 'red';
 var good = 'green';
 var locked = 'white';
 
-function sudokuContinue() {
-	tabGoTo('SudokuGame.html');
-}
-
-var level = 2;
 function sudokuNewGame(level) {
-	this.level = level;
 	$.post('SudokuNewGame.html', {
 		level : level
 	}, function(resp) {
@@ -49,22 +43,29 @@ function boxClick(elem) {
 		this.box = elem;
 		var position = $(elem).position();
 		$('#sudoku #value').css({
-			marginTop : position.top + 15,
-			marginLeft : position.left + 15
+			marginTop : position.top + 140,
+			marginLeft : position.left + 35
 		}).show();
 	}
 }
 
-function boxOver(elem) {
-	if (boxHightlight == false) {
-		boxHighlight(elem);
-	}
-}
-
-function fieldOut() {
-	if (boxHightlight == false) {
-		boxHighlightClear();
-	}
+function valueClick(value) {
+	$.post('SudokuPut.html', {
+		id : box.id,
+		value : value
+	}, function(resp) {
+		if (resp == true) {
+			if (value == 0) {
+				$(box).text('');
+			} else {
+				$(box).text(value);
+			}
+			getFailed();
+		}
+	});
+	$('#sudoku #value').hide();
+	boxHighlightClear();
+	boxHightlight = false;
 }
 
 var boxHightlight = false;
@@ -88,25 +89,6 @@ function boxHighlightClear() {
 	});
 }
 
-function valueClick(value) {
-	$.post('SudokuPut.html', {
-		id : box.id,
-		value : value
-	}, function(resp) {
-		if (resp == true) {
-			if (value == 0) {
-				$(box).text('');
-			} else {
-				$(box).text(value);
-			}
-			getFailed();
-		}
-	});
-	$('#sudoku #value').hide();
-	boxHighlightClear();
-	boxHightlight = false;
-}
-
 function valueOver(elem) {
 	$(elem).css({
 		color : 'red'
@@ -116,5 +98,29 @@ function valueOver(elem) {
 function valueOut(elem) {
 	$(elem).css({
 		color : ''
+	});
+}
+
+function boxOver(elem) {
+	if (boxHightlight == false) {
+		boxHighlight(elem);
+	}
+}
+
+function fieldOut() {
+	if (boxHightlight == false) {
+		boxHighlightClear();
+	}
+}
+
+function buttonOver(elem) {
+	$(elem).css({
+		backgroundImage : 'url("images/Tab/sudoku/smallButton2.png")'
+	});
+}
+
+function buttonOut(elem) {
+	$(elem).css({
+		backgroundImage : 'url("images/Tab/sudoku/smallButton1.png")'
 	});
 }

@@ -3,8 +3,10 @@
 <div id="sudoku" class="display">
 	<script src="js/Tab/Sudoku.js" type="text/javascript"></script>
 	<script type="text/javascript">
+		var level = '${sudoku.level}';
 		$(document).ready(function() {
 			getFailed();
+			$('#levelsBar #level' + level).css({color: 'white'});
 		});
 	</script>
 	<table id="value">
@@ -39,7 +41,8 @@
 					onclick=valueClick(9)>9</div></td>
 		</tr>
 	</table>
-	<table id="field" onmouseout=fieldOut(); cellpadding="0" cellspacing="0">
+	<table id="field" onmouseout=fieldOut(); cellpadding="0"
+		cellspacing="0">
 		<c:forEach var="line" items="${sudoku.field}" varStatus="lineNumber">
 			<tr>
 				<c:forEach var="box" items="${line}" varStatus="columNumber">
@@ -62,5 +65,14 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<button onclick=sudokuNewGame(level);>New game</button>
+	<table id="levelsBar">
+		<tr>
+			<td id="level1" class="levelButton" onclick=sudokuNewGame(1);
+				onmouseover=buttonOver(this); onmouseout=buttonOut(this);>Easy</td>
+			<td id="level2" class="levelButton" onclick=sudokuNewGame(2);
+				onmouseover=buttonOver(this); onmouseout=buttonOut(this);>Normal</td>
+			<td id="level3" class="levelButton" onclick=sudokuNewGame(3);
+				onmouseover=buttonOver(this); onmouseout=buttonOut(this);>Hard</td>
+		</tr>
+	</table>
 </div>
