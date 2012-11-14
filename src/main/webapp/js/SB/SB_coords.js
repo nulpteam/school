@@ -360,10 +360,16 @@ function disableDroppables(obj) {
 		$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
 		$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 		$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
+		
+		$("#X" + x2 + "_Y" + y2).addClass("Sheep");
+		
+		console.log($("#X" + x2 + "_Y" + y2)[0].classList[3]);
+		
 		$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 		$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 		$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
 		$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
+		
 	}
 
 	if (obj.r == "H") {
