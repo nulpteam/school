@@ -14,6 +14,13 @@
 <title>Морський бій</title>
 </head>
 <body>
+	<div style = "margin: 0px auto; height: 600px; width: 1000px;">
+		<img alt="Sheep" src="images/SB/BS.gif" align="left">
+		<img alt="Create Game" src="images/SB/BSCreate.jpg"  onclick="createSbGame();" align="left">
+		<img alt="Connect Game" src="images/SB/BSConnect.jpg" onclick="connectSbGame();" align="top">
+	</div>
+
+
 	<input type="button" value="Створити гру" onclick="createSbGame();">
 	<br>
 	<input type="button" value="Підєднатись до гри"

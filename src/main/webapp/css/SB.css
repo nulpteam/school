@@ -8,6 +8,15 @@ body {
 	clear: both;
 }
 
+.BigSheep {
+	float: left;
+}
+
+.BigSheep img {
+		height: 410px;
+		width: 410px;
+}
+
 .content {
 	background: url('../images/SB/game_sheet2.png') no-repeat;
 	width: 620px;
