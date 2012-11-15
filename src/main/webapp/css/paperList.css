@@ -1,12 +1,24 @@
+body {
+	background-image: url('../images/parta2.jpg');
+	background-repeat: repeat;
+}
+
+.page {
+	width: 1000px;
+	margin: 0 auto;
+}
+
 .paperList {
-	background-image: url('../../images/XO/list.png');
+	background-image: url('../images/paperList/list.png');
 	background-repeat: no-repeat;
-	height: 734px;
+	height: 735px;
 	width: 635px;
 	font-family: LC Chalk;
 	font-size: 16px;
 	font-weight: bold;
 	color: #5B2FCE;
+	float: left;
+	margin-left: 5px;
 	-moz-user-select: -moz-none;
 	-o-user-select: none;
 	-khtml-user-select: none;
@@ -16,7 +28,7 @@
 
 @font-face {
 	font-family: LC Chalk;
-	src: local("LC Chalk"), url(../../LC_Chalk.ttf);
+	src: local("LC Chalk"), url(../LC_Chalk.ttf);
 }
 
 .paperList .title {
@@ -27,7 +39,7 @@
 }
 
 .paperList .homeButton {
-	background-image: url('../../images/XO/home.png');
+	background-image: url('../images/paperList/home.png');
 	background-repeat: no-repeat;
 	height: 50px;
 	width: 50px;
@@ -38,7 +50,7 @@
 }
 
 .paperList .refreshButton {
-	background-image: url('../../images/XO/refresh.png');
+	background-image: url('../images/paperList/refresh.png');
 	background-repeat: no-repeat;
 	height: 40px;
 	width: 60px;
@@ -49,7 +61,7 @@
 }
 
 .paperList .backButton {
-	background-image: url('../../images/XO/back.png');
+	background-image: url('../images/paperList/back.png');
 	background-repeat: no-repeat;
 	height: 40px;
 	width: 60px;
@@ -60,7 +72,7 @@
 }
 
 .paperList .button {
-	background-image: url('../../images/XO/button.png');
+	background-image: url('../images/paperList/button.png');
 	background-repeat: no-repeat;
 	height: 35px;
 	width: 270px;
@@ -70,4 +82,10 @@
 .paperList .buttonText {
 	font-size: 20px;
 	color: white;
+}
+
+.paperList .menu {
+	text-align: center;
+	position: absolute;
+	margin: 150px 180px;
 }

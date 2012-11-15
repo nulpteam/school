@@ -32,12 +32,13 @@
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
 	<filter>
-		<filter-name>xoFilter</filter-name>
-		<filter-class>epam.ph.sg.web.filters.XOFilter</filter-class>
+		<filter-name>paperListFilter</filter-name>
+		<filter-class>epam.ph.sg.web.filters.PaperListFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>xoFilter</filter-name>
-		<url-pattern>/XO.html</url-pattern>
+		<filter-name>paperListFilter</filter-name>
+		<url-pattern>/Menu.html</url-pattern>
+		<url-pattern>/PersonalPage.html</url-pattern>
 		<url-pattern>/XOMenu.html</url-pattern>
 		<url-pattern>/XOServerList.html</url-pattern>
 		<url-pattern>/XOStatistics.html</url-pattern>

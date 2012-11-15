@@ -1,0 +1,27 @@
+#personalPage table {
+	position: absolute;
+	width: 450px;
+	margin: 80px 80px;
+	font-weight: bold;
+}
+
+#personalPage table .param {
+	width: 150px;
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+#personalPage table .value {
+	width: 250px;
+	vertical-align: top;
+}
+
+#personalPage table .button {
+	width: 50px;
+	vertical-align: top;
+	text-align: right;
+}
+
+#personalPage table .edit {
+	display: none;
+}
