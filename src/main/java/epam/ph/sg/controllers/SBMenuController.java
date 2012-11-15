@@ -89,10 +89,6 @@ public class SBMenuController {
 	// Список ігор
 	@RequestMapping(value = { "/BsConectGame.html" }, method = RequestMethod.GET)
 	public String SbMenuConnection(HttpSession session, Model model) {
-		// if (session.getAttribute("user") == null) {
-		// new HomeController().index(session);
-		// return "Login";
-		// }
 		if (session.getAttribute("Game") != null) {
 			return "SB/Sb";
 		}
@@ -114,10 +110,6 @@ public class SBMenuController {
 	public @ResponseBody
 	String SbGameSelected(@RequestParam("gameID") int gameID,
 			HttpSession session, Model model) {
-		// if (session.getAttribute("user") == null) {
-		// new HomeController().index(session);
-		// return "Login";
-		// }
 		log.debug("*/*/*/*/*/*/*/*  GAME ID =" + gameID + "  /*/*/*/*/*/*/*/");
 		Game selectedGame = GamesList.getGameListBS().get(gameID);
 		Client client = new Client();
@@ -129,9 +121,6 @@ public class SBMenuController {
 		selectedGame.setClient(client);
 
 		ActiveGames.getGame(gameID).setClient(client);
-		// Рандомний вибір права першого пострілу
-		// String nextMove =
-		// ActiveGames.getGame(gameID).setFirstTimeMoveRight();
 		session.setAttribute("Game", selectedGame);
 		session.setAttribute("ConnectionType", "client");
 		// Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на
@@ -163,10 +152,6 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/BsGameStart.html", method = RequestMethod.GET)
 	public String SbGameStart(Model model, HttpSession session) {
-		// if (session.getAttribute("user") == null) {
-		// new HomeController().index(session);
-		// return "Login";
-		// }
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");
@@ -202,11 +187,6 @@ public class SBMenuController {
 	@RequestMapping(value = { "/Test.html" }, method = RequestMethod.GET)
 	public @ResponseBody
 	String test(HttpSession session, Model model) {
-//		if (session.getAttribute("user") == null) {
-//			new HomeController().index(session);
-//			return "Login";
-//		}
-
 		// !
 		Game game = ActiveGames.getGame(1);
 		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
