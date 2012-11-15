@@ -1,6 +1,6 @@
 var fail = 'red';
 var good = 'green';
-var locked = 'white';
+var locked = 'maroon';
 
 function sudokuNewGame(level) {
 	$.post('SudokuNewGame.html', {

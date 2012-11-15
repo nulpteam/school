@@ -17,6 +17,7 @@ function put(img) {
 		xy : img.id
 	}, function(resp) {
 		if (resp == true) {
+			timerStop();
 			getStatus();
 		}
 	});
