@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import epam.ph.sg.games.xo.XOStatistics;
 import epam.ph.sg.personal.PersonalPage;
-import epam.ph.sg.xo.XOStatistics;
 
 /**
  * @author roman makovyak

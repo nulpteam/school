@@ -103,64 +103,36 @@ $(function() {
 		store = null;
 	};
 	
-	function addHover() {
-		if(str1 != null) {
-			$(str1).addClass("hover");
-		};
-		if(str2 != null) {
-			$(str2).addClass("hover");
-		};
-		if(str3 != null) {
-			$(str3).addClass("hover");
-		};
-		console.log("addHover", str1, str2, str3);
-	};
-	function remHover() {
-		console.log("remHover", str1, str2, str3);
-		if(str1 != null) {
-			$(str1).removeClass("hover");
-			str1 = null;
-		};
-		if(str2 != null) {
-			$(str2).removeClass("hover");
-			str2 = null;
-		};
-		if(str3 != null) {
-			$(str3).removeClass("hover");
-			str3 = null;
-		};
-	};
-
 	function fDrop(event, ui, id) {
-//		console.log(event);
-//		console.log(ui);
 		co = parseCoords(id, ui);
+		console.log(co);
+		console.log(id);
 		saveCoords(co);
 		if (i == 1) {
 			img01 = ("images/SB/0" + co.t + ".png");
 			console.log(img01);
-			img01x = ui.position.left;
+			img01x = ui.position.left+1;
 			img01y = ui.position.top;
 			i--;
 		}
 		if (i == 2) {
 			img02 = ("images/SB/0" + co.t + ".png");
 			console.log(img02);
-			img02x = ui.position.left;
+			img02x = ui.position.left+1;
 			img02y = ui.position.top;
 			i--;
 		}
 		if (i == 3) {
 			img03 = ("images/SB/0" + co.t + ".png");
 			console.log(img03);
-			img03x = ui.position.left;
+			img03x = ui.position.left+1;
 			img03y = ui.position.top;
 			i--;
 		}
 		if (i == 4) {
 			img04 = ("images/SB/0" + co.t + ".png");
 			console.log(img04);
-			img04x = ui.position.left;
+			img04x = ui.position.left+1;
 			img04y = ui.position.top;
 			i--;
 		}
@@ -173,7 +145,7 @@ $(function() {
 				img05 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img05);
 			}
-			img05x = ui.position.left;
+			img05x = ui.position.left+1;
 			img05y = ui.position.top;
 			i--;
 		}
@@ -186,7 +158,7 @@ $(function() {
 				img06 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img06);
 			}
-			img06x = ui.position.left;
+			img06x = ui.position.left+1;
 			img06y = ui.position.top;
 			i--;
 		}
@@ -199,7 +171,7 @@ $(function() {
 				img07 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img07);
 			}
-			img07x = ui.position.left;
+			img07x = ui.position.left+1;
 			img07y = ui.position.top;
 			i--;
 		}
@@ -212,7 +184,7 @@ $(function() {
 				img08 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img08);
 			}
-			img08x = ui.position.left;
+			img08x = ui.position.left+1;
 			img08y = ui.position.top;
 			i--;
 		}
@@ -225,7 +197,7 @@ $(function() {
 				img09 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img09);
 			}
-			img09x = ui.position.left;
+			img09x = ui.position.left+1;
 			img09y = ui.position.top;
 			i--;
 		}
@@ -238,21 +210,15 @@ $(function() {
 				img10 = ("images/SB/0" + co.t + "_90.png");
 				console.log(img10);
 			}
-			img10x = ui.position.left;
+			img10x = ui.position.left+1;
 			img10y = ui.position.top;
 			i--;
 		}
 	}
 
-	function fOut(id1, id2) {
-		console.log("out");
-//		remHover();
-		//clearOldCoordsInM(id1, id2);
-	}
 
 	function fOver(event, ui, coordinate) {
 		console.log("over");
-		remHover();
 		var x = coordinate.charAt(1);
 		var x1 = ++x;
 		var x2 = ++x;
@@ -276,12 +242,10 @@ $(function() {
 						|| ($("#X" + x3 + "_Y" + coordinate.charAt(4))
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
 					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
 					str3 = "#X" + x3 + "_Y" + coordinate.charAt(4);
-					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -292,12 +256,10 @@ $(function() {
 						|| ($("#X" + coordinate.charAt(1) + "_Y" + y3)
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
 					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
 					str3 = "#X" + coordinate.charAt(1) + "_Y" + y3;
-					addHover();
 				};
 			};
 		};
@@ -309,11 +271,9 @@ $(function() {
 						|| ($("#X" + x2 + "_Y" + coordinate.charAt(4))
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
 					str2 = "#X" + x2 + "_Y" + coordinate.charAt(4);
-					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
@@ -322,11 +282,9 @@ $(function() {
 						|| ($("#X" + coordinate.charAt(1) + "_Y" + y2)
 								.droppable("option", "disabled"))) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
 					str2 = "#X" + coordinate.charAt(1) + "_Y" + y2;
-					addHover();
 				};
 			};
 		};
@@ -336,1346 +294,32 @@ $(function() {
 				if ($("#X" + x1 + "_Y" + coordinate.charAt(4)).droppable(
 						"option", "disabled")) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + x1 + "_Y" + coordinate.charAt(4);
-					addHover();
 				};
 			};
 			if (parseCoords(coordinate, ui).r === "V") {
 				if ($("#X" + coordinate.charAt(1) + "_Y" + y1).droppable(
 						"option", "disabled")) {
 					lock(coordinate);
-					$("#" + coordinate).removeClass("hover");
 				} else {
 					str1 = "#X" + coordinate.charAt(1) + "_Y" + y1;
-					addHover();
 				};
 			};
 		};
 		
 	};
-
-	$("#X0_Y0").droppable({
+	
+	$('#table1 td').each(function(){$(this).droppable({
 		tolerance : "pointer",
-		hoverClass : 'hover',
 		drop : function(event, ui) {
 			fDrop(event, ui, this.id);
 		},
 		over : function(event, ui) {
 			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X1_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y0").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	/* +++++++-Y1-+++++++ */
-	$("#X0_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y1").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	/* +++++++-Y2-+++++++ */
-	$("#X0_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y2").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	/* +++++++-Y3-+++++++ */
-	$("#X0_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y3").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	/* +++++++-Y4-+++++++ */
-	$("#X0_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y4").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	/* +++++++-Y5-+++++++ */
-	$("#X0_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y5").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	/* +++++++-Y6-+++++++ */
-	$("#X0_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y6").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	/* +++++++-Y7-+++++++ */
-	$("#X0_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y7").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	/* +++++++-Y8-+++++++ */
-	$("#X0_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y8").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	/* +++++++-Y9-+++++++ */
-	$("#X0_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-
-	$("#X1_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X2_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X3_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X4_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X5_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X6_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X7_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X8_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
-		}
-	});
-	$("#X9_Y9").droppable({
-		tolerance : "pointer",
-		hoverClass : 'hover',
-		drop : function(event, ui) {
-			fDrop(event, ui, this.id);
-		},
-		over : function(event, ui) {
-			fOver(event, ui, this.id);
-		},
-		out : function(event, ui) {
-			fOut(event, ui);
 		}
 	});
+});
 	
 	$(".img01").attr("src", img01);
 	$(".img01").css("position", "absolute");
@@ -1735,6 +379,7 @@ function start() {
 			"x" : img10x,
 			"y" : img10y
 		};
+	
 	sheeps = {
 			"sheep01" : sheep01,
 			"sheep02" : sheep02,

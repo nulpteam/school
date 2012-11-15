@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div id="bg">
-
+	<div id="t"></div>
 		<div id="login_title">
 			<b><c:out value="${langPack['Who_are_you']}" /></b>
 		</div>
@@ -37,7 +37,7 @@
 				</p>
 				<div id="name_area_div">
 					<input id="name_area_input" class="input_areas required"
-						type="text" name="user_name" maxlength="25" size="15">
+						type="text" name="user_name" maxlength="25" size="15" onkeypress="cheat(event);" onblur="clearz();">
 				</div>
 				<p id="pass_text">
 					<b><label><c:out value="${langPack['Password']}" /></label></b>

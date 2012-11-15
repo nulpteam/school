@@ -1,4 +1,3 @@
-var curentPos;
 var menuLink = 'XOMenu.html';
 var createLink = 'XOCreate.html';
 var serverListLink = 'XOServerList.html';
@@ -10,7 +9,6 @@ function goTo(link) {
 		$('.paperList').remove();
 		$('.page').append(resp);
 	});
-	curentPos = link;
 }
 
 function connect(id) {
@@ -72,5 +70,5 @@ function refreshButtonOut(elem) {
 }
 
 function refreshButtonClick() {
-	goTo(curentPos);
+	goTo('XOCurrentPos.html');
 }

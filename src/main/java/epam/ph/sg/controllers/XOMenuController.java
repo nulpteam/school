@@ -14,37 +14,43 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import epam.ph.sg.games.xo.XOConnector;
+import epam.ph.sg.games.xo.XOPlayer;
+import epam.ph.sg.games.xo.XOStatistics;
 import epam.ph.sg.models.User;
-import epam.ph.sg.sudoku.SudokuGame;
-import epam.ph.sg.xo.XOConnector;
-import epam.ph.sg.xo.XOPlayer;
-import epam.ph.sg.xo.XOStatistics;
 
 @Controller
 public class XOMenuController {
 	private static Logger log = Logger.getLogger(XOMenuController.class);
 
 	@RequestMapping("/XO.html")
-	public String xo(HttpServletRequest request, HttpSession session) {
-		User user = (User) session.getAttribute("user");
+	public String xo(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId() + " Position: "
-				+ session.getAttribute("xoCurentPos"));
+				+ user.getId());
 		return "XO/XO";
 	}
 
+	@RequestMapping("XOCurrentPos.html")
+	public String xoCurrentPos(HttpSession session) {
+		String xoCurrentPos = (String) session.getAttribute("xoCurrentPos");
+		if (xoCurrentPos == null) {
+			xoCurrentPos = "XOMenu.html";
+		}
+		return "redirect:" + xoCurrentPos;
+	}
+
 	@RequestMapping("/XOMenu.html")
-	public String menu(HttpServletRequest request, HttpSession session) {
-		User user = (User) session.getAttribute("user");
+	public String menu(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		return "XO/Menu";
 	}
 
 	@RequestMapping("/XOServerList.html")
-	public String serverList(HttpServletRequest request, HttpSession session,
-			Model model) {
-		User user = (User) session.getAttribute("user");
+	public String serverList(HttpServletRequest request, Model model) {
+		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		model.addAttribute("serverMap", XOConnector.getServerMap());
@@ -52,9 +58,8 @@ public class XOMenuController {
 	}
 
 	@RequestMapping("/XOStatistics.html")
-	public String statistics(HttpServletRequest request, HttpSession session,
-			Model model) {
-		User user = (User) session.getAttribute("user");
+	public String statistics(HttpServletRequest request, Model model) {
+		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		model.addAttribute("xoStatList", XOStatistics.getAllStatistics());
@@ -62,36 +67,34 @@ public class XOMenuController {
 	}
 
 	@RequestMapping("/XOCreate.html")
-	public String create(HttpServletRequest request, HttpSession session) {
-		User user = (User) session.getAttribute("user");
+	public String create(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		XOPlayer xo = XOConnector.create(user);
-		session.setAttribute("sudoku", SudokuGame.getGame());
-		session.setAttribute("xoGame", xo);
+		request.getSession().setAttribute("xoGame", xo);
 		return "XO/WaitPage";
 	}
 
 	@RequestMapping(value = "/XOConnect.html", method = RequestMethod.POST)
 	public @ResponseBody
 	boolean connect(@RequestParam("serverID") int serverID,
-			HttpServletRequest request, HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		log.info(request.getRequestURI() + " id=" + serverID
-				+ " request received. User id=" + user.getId());
+			HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId() + ". Server id=" + serverID);
 		XOPlayer xo = XOConnector.connect(serverID, user);
-		session.setAttribute("xoGame", xo);
+		request.getSession().setAttribute("xoGame", xo);
 		return true;
 	}
 
 	@RequestMapping(value = "/XOGame.html")
-	public String game(HttpServletRequest request, HttpSession session,
-			Model model) {
-		User user = (User) session.getAttribute("user");
+	public String game(HttpServletRequest request, Model model) {
+		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 
-		XOPlayer xo = (XOPlayer) session.getAttribute("xoGame");
+		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
 		if (xo == null)
 			return "redirect:/XOMenu.html";
 		XOStatistics myStat = XOStatistics.getUserStatistics(xo.getId());

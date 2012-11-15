@@ -108,10 +108,12 @@ socket.onmessage = function(event) {
 			pointMarked = 22;
 		}
 
+		var counturBoard = createMatrix();
+		counturBoard = msg.matrix;
 		var counturCoords = new Array();
 		counturCoords = msg.lastCountur;
 
-		paintCountur(counturCoords, pointMarked);
+		paintCountur(counturCoords, pointMarked, counturBoard);
 
 		break;
 	}
@@ -198,37 +200,66 @@ function parseY(strPoint) {
 	return strPoint.substring(indexY + 1);
 }
 
-function paintCountur(counturCoords, pointMarked) {
+function paintCountur(counturCoords, pointMarked, pointsBoard) {
 
 	var ctrCoords = new Array();
 	ctrCoords = counturCoords;
-	
+
 	var c = document.getElementById("canvas");
 	var ctx = c.getContext("2d");
 	ctx.lineWidth = 3;
-	//ctx.beginPath();
+	ctx.beginPath();
 
 	var coord = new Array();
 	coord[0] = -1;
 	coord[1] = -1;
 
-	for (var  i = 0; i < ctrCoords.length; i = i + 2) {
-		console.log(counturCoords[i] + "-" + counturCoords[i+1]);
+	for ( var i = 0; i < ctrCoords.length; i = i + 2) {
+		console.log(counturCoords[i] + "-" + counturCoords[i + 1]);
 		if (coord[0] != -1) {
 
 			ctx.moveTo(coord[1], coord[0]);
-			ctx.lineTo(counturCoords[i+1] * 20 + 8, counturCoords[i] * 20 + 8);
+			ctx
+					.lineTo(counturCoords[i + 1] * 20 + 8,
+							counturCoords[i] * 20 + 8);
 			ctx.stroke();
-			
+
 		}
 		coord[0] = counturCoords[i] * 20 + 8;
-		coord[1] = counturCoords[i+1] * 20 + 8;
+		coord[1] = counturCoords[i + 1] * 20 + 8;
 
 	}
-	
-	ctx.moveTo(counturCoords[1] * 20 + 8, counturCoords[0] * 20 + 8);
-	ctx.lineTo(counturCoords[counturCoords.length - 1] * 20 + 8, counturCoords[counturCoords.length - 2] * 20 + 8);
-	ctx.stroke();
+
+	var first_y = counturCoords[0];
+	var first_x = counturCoords[1];
+
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x - 1,
+			pointMarked, ctx);
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x,
+			pointMarked, ctx);
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x + 1,
+			pointMarked, ctx);
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y, first_x + 1,
+			pointMarked, ctx);
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x + 1,
+			pointMarked, ctx);
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x,
+			pointMarked, ctx);
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x - 1,
+			pointMarked, ctx);
+	markNeighborCoords(pointsBoard, first_y, first_x, first_y, first_x - 1,
+			pointMarked, ctx);
+}
+
+function markNeighborCoords(board, first_y, first_x, neighbor_y, neighbor_x,
+		pointMarked, ctx) {
+
+	if (board[neighbor_y][neighbor_x] == pointMarked) {
+
+		ctx.moveTo(first_x * 20 + 8, first_y * 20 + 8);
+		ctx.lineTo(neighbor_x * 20 + 8, neighbor_y * 20 + 8);
+		ctx.stroke();
+	}
 }
 
 // function waitForFirstMove() {

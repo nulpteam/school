@@ -7,12 +7,11 @@ var bsound;
 //матриця розташування кораблів
 var M;
 var damagedSheep = 0;
+var unlockDroppableInfo;
 
 
-$(document).ready(function() 
-{
+$(document).ready(function() {
 	userAgent = navigator.userAgent;
-	//
 	bsound = new Audio;
 	if( userAgent.indexOf("Chrome")!=-1 )
 	{
@@ -26,26 +25,23 @@ $(document).ready(function()
 	bsound.loop=true;
 	startbsound();
 });
-function stopbsound()
-{
+
+function stopbsound() {
 	bsound.pause();
 }
-function startbsound()
-{
-	bsound.volume=0.3;
+
+function startbsound() {
+	bsound.volume=0.1;
 	bsound.play();
 }
-function chSound()
-{
+
+function chSound() {
 	id = $('.sound img').attr('id');
-	if(id=="s_on")
-		{
+	if(id=="s_on") {
 			s_off = '<img id="s_off" src="images/SB/s_off.png" onclick="chSound();">';
 			$('.sound').html(s_off);
 			stopbsound();
-		}else
-	if(id=="s_off")
-	{
+	} else 	if(id=="s_off")	{
 		s_on = '<img id="s_on" src="images/SB/s_on.png" onclick="chSound();">';
 		$('.sound').html(s_on);
 		 startbsound();
@@ -54,10 +50,13 @@ function chSound()
 
 //Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
-	console.log(obj);
+	console.log($(obj));
 	id = $(obj).attr('id');
-	isDisabled = $('#' + id).draggable('option', 'disabled');
-	if (!isDisabled) {
+	infield = $(obj)[0].classList[1] === "infield";
+	console.log(infield);
+	isDisabled = $(obj/*'#' + id*/).draggable('option', 'disabled');
+	console.log(isDisabled);
+	if (!isDisabled && !infield) {
 		var c = $(obj).attr("class");
 			orientation = c[0];
 			newOrientation = 'H';
@@ -75,6 +74,32 @@ function rotate(obj) {
 		set = newOrientation + set;
 		$(obj).attr("class", set);
 	}
+	else{
+		
+		console.log("rotate корабля в полі");
+		//Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
+		// протележна до disableDroppables()
+		enableDroppables(unlockDroppableInfo);
+			
+		
+		
+		var c = $(obj).attr("class");
+				orientation = c[0];
+				newOrientation = 'H';
+
+			if (orientation === 'H') {
+				newOrientation = 'V';
+				$(obj).attr("src", "images/SB/0" + id[6] + "_90.png");
+				console.log(obj);
+			} else if (orientation === 'V') {
+				newOrientation = 'H';
+				$(obj).attr("src", "images/SB/0" + id[6] + ".png");
+				console.log(obj);
+			}
+			var set = c.substring(1, c.length);
+			set = newOrientation + set;
+			$(obj).attr("class", set);
+	}
 }
 
 
@@ -85,7 +110,7 @@ function createMatrix() {
 		M[i] = new Array();
 		for ( var j = 0; j < 10; j++) {
 			M[i][j] = "00";
-		}
+		};
 	}
 	return M;
 }
@@ -113,11 +138,11 @@ function parseCoords(coords, ui) {
 			"x" : x,
 			"y" : y,
 			"img" : ui.draggable[0],
-			"ui" : ui
-		};
-		console.log(co);
+			"ui" : ui,
+			};
+		//console.log(co);
 		return co;
-	}
+	};
 }
 
 /**
@@ -171,8 +196,8 @@ function saveCoords(saveCoordenates) {
 	if (saveCoordenates.r === "H" || saveCoordenates.r === "u") {
 		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
-				'<img id="sheep_' + saveCoordenates.t + '" src="images/SB/0'
-						+ saveCoordenates.t + '.png"/>');
+				'<img id="sheep_' + saveCoordenates.t + '" class="H infield" src="images/SB/0'
+						+ saveCoordenates.t + '.png" ondblclick="bbb(this,event);"/>');
 		$('#sp' + saveCoordenates.t + count).css("top",
 				saveCoordenates.ui.position.top + "px");
 		$('#sp' + saveCoordenates.t + count).css("left",
@@ -181,8 +206,8 @@ function saveCoords(saveCoordenates) {
 	} else if (saveCoordenates.r === "V") {
 		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
-				'<img id="sheep_' + saveCoordenates.t + '" src="images/SB/0'
-						+ saveCoordenates.t + '_90.png"/>');
+				'<img id="sheep_' + saveCoordenates.t + '" class="V infield" src="images/SB/0'
+						+ saveCoordenates.t + '_90.png" ondblclick="bbb(this,event);"/>');
 		$('#sp' + saveCoordenates.t + count).css("top",
 				saveCoordenates.ui.position.top + "px");
 		$('#sp' + saveCoordenates.t + count).css("left",
@@ -199,9 +224,123 @@ function saveCoords(saveCoordenates) {
 	sendM();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+function bbb(t,event)
+{
+	
+	if (event.ctrlKey==1)
+	  {
+		//alert("The CTRL key was pressed!");
+		//console.log(t);
+		//console.log(event);
+		
+		
+		d = $(t).parent();
+		
+		
+		sheepId = $(t).attr('id');
+		topPx=d[0].offsetTop;
+		leftPx=d[0].offsetLeft;
+		placeHolderId=d[0].id; 
+		rotation = d[0].firstChild.className[0];
+		
+		unlockDroppableInfo ={
+				"sheepId" : sheepId,
+				"topPx" : topPx,
+				"leftPx" : leftPx,
+				"placeHolderId" : placeHolderId, 
+				"rotation" : rotation
+		};
+			
+		//console.log(d);
+		console.log("top="+unlockDroppableInfo.topPx);
+		console.log("left="+unlockDroppableInfo.leftPx);
+		console.log("sheepId="+unlockDroppableInfo.sheepId);
+		console.log("placeHolderId="+unlockDroppableInfo.placeHolderId);
+		console.log("rotation="+unlockDroppableInfo.rotation);
+
+		//Активовуємо драгабл на кораблі по якому даблклікнули+CTRL
+		$(t).draggable({
+			revert : "invalid",
+			//helper : "clone",
+			//revertDuration : 500,
+			cursorAt : {
+				top : 10,
+				left : 10
+			},
+			snap:".ui-droppable",
+			start : function(event,ui)
+			{
+				console.log("druging started");
+				enableDroppables(unlockDroppableInfo);
+			}
+		});
+		
+		
+		
+		$(t).attr('ondblclick','rotate(this);');
+		
+	}
+}
+
+//Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
+//+встановлювати в матриці 00 на місце де був розташований корабель  
+// протележна до disableDroppables()
+function enableDroppables(unlockDroppableInfo)
+{
+	console.log("провірити чи дективовані дропабли навколо корабля. " +
+						"Якщо дективовані то активувати всі заблоковані дропабли навколо корабля"
+						+"встановлювати в матриці 00 на місце де був розташований корабель");
+	setOldCoordsInM();
+}
+
+function setOldCoordsInM()
+{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Деактивовує елементи droppable за координатами
 function disableDroppables(obj) {
-	// console.log(obj);
 	var x0 = obj.x - 1;
 		x1 = obj.x + 1;
 		x2 = obj.x;
@@ -221,10 +360,16 @@ function disableDroppables(obj) {
 		$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
 		$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 		$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
+		
+		$("#X" + x2 + "_Y" + y2).addClass("Sheep");
+		
+		console.log($("#X" + x2 + "_Y" + y2)[0].classList[3]);
+		
 		$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 		$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 		$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
 		$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
+		
 	}
 
 	if (obj.r == "H") {
@@ -237,7 +382,6 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).removeClass("hover");
 			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
@@ -252,11 +396,9 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).removeClass("hover");
 			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y2).removeClass("hover");
 			$("#X" + x3 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y2).droppable("option", "disabled", true);
@@ -271,20 +413,17 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).removeClass("hover");
 			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y2).removeClass("hover");
 			$("#X" + x3 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x4 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y2).removeClass("hover");
 			$("#X" + x4 + "_Y" + y1).droppable("option", "disabled", true);
 			$("#X" + x5 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x5 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x5 + "_Y" + y1).droppable("option", "disabled", true);
-		}
+		};
 	}
 	if (obj.r == "V") {
 		if (obj.t == "2") {
@@ -295,7 +434,6 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).removeClass("hover");
 			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
@@ -311,9 +449,7 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).removeClass("hover");
 			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y3).removeClass("hover");
 			$("#X" + x2 + "_Y" + y4).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
@@ -332,11 +468,8 @@ function disableDroppables(obj) {
 			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
 			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).removeClass("hover");
 			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y3).removeClass("hover");
 			$("#X" + x2 + "_Y" + y4).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y4).removeClass("hover");
 			$("#X" + x2 + "_Y" + y5).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
@@ -344,8 +477,8 @@ function disableDroppables(obj) {
 			$("#X" + x1 + "_Y" + y3).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y4).droppable("option", "disabled", true);
 			$("#X" + x1 + "_Y" + y5).droppable("option", "disabled", true);
-		}
-	}
+		};
+	};
 }
 
 /**
@@ -365,7 +498,7 @@ function sendM() {
 		"g" : M[6],
 		"h" : M[7],
 		"i" : M[8],
-		"j" : M[9]
+		"j" : M[9],
 	};
 	var Send = JSON.stringify(j);
 	console.log(Send);
@@ -377,12 +510,13 @@ function sendM() {
 			sheeps : Send,
 		},
 		success : function(data) {
+			;
 		},
 		error : function() {
 			alert("ERROR");
 		}
 	});
-}
+};
 
 // обєкт кількості кораблів
 var sheepCount = {
@@ -490,10 +624,8 @@ function lockWhereCantBe(id) {
 	}
 }
 function victory() {
-	alert("<------------------------------------ YOU WIN! ------------------------------------->");
+	location.href = "Victory.html";
 }
-
-
 
 function playShootSound()
 {
@@ -733,12 +865,6 @@ function fire(point) {
 			}
 		}
 		$(point).html(html);
-//ТУТ має локатись поле для стрільби		
-		
-//		if(obj.lock==="lock")
-//		{
-//			$('#table2').hide(0);
-//		}
 	});
 }
 
@@ -751,4 +877,4 @@ function createSbGame() {
 }
 function connectSbGame() {
 	location.href = "BsConectGame.html";
-}
+};

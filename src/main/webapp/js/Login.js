@@ -25,3 +25,32 @@ $(document).ready(function() {
 		}, 100);
 	}
 });
+
+var i=0;
+var str = new Array();
+var passphrase ="Show";
+function cheat(event)
+{
+	
+	var char = String.fromCharCode(event.keyCode || event.charCode);
+	str[i]=char;
+	c(str.join(''));
+	i++;
+}
+function c(s)
+{
+	if(s===passphrase)
+	{
+//		document.location.href="http://www.google.com";
+//		document.location.replace("http://www.google.com");
+		html = '<img src="images/flag_ua.png" style="position:relative; top:0px; left:0px;">';
+		$('#t').html(html);
+	}
+}
+function clearz()
+{
+	val  = $('#name_area_input').val();
+	c(val);
+	str = new Array();
+	//console.log("cleared "+ str);
+}

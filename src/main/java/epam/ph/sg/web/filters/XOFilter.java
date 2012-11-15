@@ -1,5 +1,8 @@
 package epam.ph.sg.web.filters;
 
+/**
+ * @author Paul Michael T.
+ */
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -24,9 +27,6 @@ public class XOFilter implements Filter {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		String requestAdr = ((HttpServletRequest) request).getServletPath();		
 		if (requestAdr.equals("/XO.html")) {
-			if (session.getAttribute("xoCurrentPos") == null) {
-				session.setAttribute("xoCurrentPos", "XOMenu.html");
-			}
 			chain.doFilter(request, response);
 		} else {
 			session.setAttribute("xoCurrentPos", requestAdr.substring(1));
