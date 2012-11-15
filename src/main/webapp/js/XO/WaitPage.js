@@ -17,7 +17,9 @@ function waitClient() {
 }
 
 function startButtonClick() {
-	goTo(gameLink);
+	$.post('XOGameStarted.html', function() {
+		goTo(gameLink);
+	});
 }
 
 function waitPageHomeButton() {

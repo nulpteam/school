@@ -21,13 +21,22 @@ import epam.ph.sg.models.User;
 public class XOGameController {
 	private static Logger log = Logger.getLogger(XOGameController.class);
 
-	@RequestMapping(value = "/XOGetClient.html")
+	@RequestMapping("/XOGetClient.html")
 	public @ResponseBody
 	User getClient(HttpServletRequest request) {
 		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ xo.getId());
 		return xo.getGame().getClient();
+	}
+
+	@RequestMapping("/XOGameStarted.html")
+	public @ResponseBody
+	void gameStarted(HttpServletRequest request) {
+		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ xo.getId());
+		xo.getGame().timerStart(xo.getGame().getClient().getId());
 	}
 
 	@RequestMapping(value = "/XOPut.html", method = RequestMethod.POST)
@@ -42,7 +51,7 @@ public class XOGameController {
 		return xo.tryToPut(x, y);
 	}
 
-	@RequestMapping(value = "/XOCheckChanges.html")
+	@RequestMapping("/XOCheckChanges.html")
 	public @ResponseBody
 	boolean check(HttpServletRequest request) {
 		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
@@ -58,7 +67,7 @@ public class XOGameController {
 		}
 	}
 
-	@RequestMapping(value = "/XOGetStatus.html")
+	@RequestMapping("/XOGetStatus.html")
 	public @ResponseBody
 	XOStatus getStatus(HttpServletRequest request) {
 		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
@@ -67,7 +76,7 @@ public class XOGameController {
 		return xo.getGame().getStatus();
 	}
 
-	@RequestMapping(value = "/XOPlayerOut.html")
+	@RequestMapping("/XOPlayerOut.html")
 	public @ResponseBody
 	boolean playerOut(HttpServletRequest request) {
 		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");

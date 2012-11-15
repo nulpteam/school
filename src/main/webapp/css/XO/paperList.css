@@ -7,6 +7,11 @@
 	font-size: 16px;
 	font-weight: bold;
 	color: #5B2FCE;
+	-moz-user-select: -moz-none;
+	-o-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 @font-face {

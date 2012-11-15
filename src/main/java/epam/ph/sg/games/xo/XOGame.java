@@ -10,8 +10,8 @@ public class XOGame {
 	private XOAI ai = new XOAI(xoField); // XOAI of this game
 	private XOStatus status = new XOStatus(); // Status of this game
 
-	private User server; // Server User instance
-	private User client; // Client User instance
+	private User server = null; // Server User instance
+	private User client = null; // Client User instance
 
 	private int timerCount = 0;
 	

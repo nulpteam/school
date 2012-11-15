@@ -10,8 +10,10 @@ public class SudokuGame {
 	private int[][] staticValues;
 	private SudokuField sudokuField = new SudokuField();
 	private SudokuAI sudokuAI = new SudokuAI(sudokuField);
+	private int level;
 
-	public SudokuGame(int[][] values) {
+	public SudokuGame(int level, int[][] values) {
+		this.level = level;
 		this.staticValues = values;
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -50,6 +52,10 @@ public class SudokuGame {
 	public SudokuField getSudokuField() {
 		return sudokuField;
 	}
+	
+	public int getLevel() {
+		return level;
+	}
 
 	public static SudokuGame getGame(int level) {
 		if (level < 1) {
@@ -57,6 +63,6 @@ public class SudokuGame {
 		} else if (level > 3) {
 			level = 3;
 		}
-		return new SudokuGame(SudokuMapCreator.prepare(level));
+		return new SudokuGame(level, SudokuMapCreator.prepare(level));
 	}
 }
