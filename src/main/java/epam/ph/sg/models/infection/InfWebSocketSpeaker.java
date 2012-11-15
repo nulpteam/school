@@ -1,18 +1,18 @@
 package epam.ph.sg.models.infection;
 
-import java.io.IOException;
-
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 
 public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 
-	private static Logger log = Logger.getLogger(InfWebSocketSpeaker.class);
+	private Logger log;
 	private Connection conn;
-	
+	private InfJsonParser jsonParser;
+
 
 	public InfWebSocketSpeaker() {
-		
+		log = Logger.getLogger(InfWebSocketSpeaker.class);
+		jsonParser = new InfJsonParser();
 	}
 
 	@Override
@@ -21,9 +21,9 @@ public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 	}
 
 	@Override
-	public void onOpen(Connection conn) {
+	public void onOpen(Connection connection) {
 		log.debug("Socket created");
-		this.conn = conn;
+		this.conn =connection;
 
 	}
 
@@ -31,17 +31,14 @@ public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 	public void onMessage(String json) {
 		log.debug("Recieved message");
 		log.debug(json);
-		
-		
-		
-        try {
-			conn.sendMessage(json);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-	
+		InfClientMessage clientMessage = jsonParser.parseJsonMessage(json);
+		InfGame game = InfGameMap.getGames().get(clientMessage.getGameId());
+
+		if (clientMessage.getType().equals("userInfo")) {
+			game.setPlayerInfo(clientMessage.getUserType(), conn);
+			
+		}
 	}
 }
 

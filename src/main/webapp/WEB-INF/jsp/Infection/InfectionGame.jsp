@@ -9,7 +9,8 @@
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
 
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Infection/InfectionMenu.js" type="text/javascript"></script>
+<script src="js/Infection/InfectionGame.js" type="text/javascript"></script>
+<script src="js/Infection/InfectionGameWebSocket.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript"
 	src="js/jquery.validate.js"></script>
 <script language="JavaScript" type="text/javascript"
@@ -20,28 +21,35 @@
 <link href="css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <div id="body">
-	<div id="bg">
+	<div id="body">
+		<div id="bg">
+			<div id="player_label_1">
+				<label></label>
+			</div>
+			<div id="player_label_2">
+				<label></label>
+			</div>
 
-		<div id="infection_title">
-			<c:out value="${langPack['Infection']}" />
+			<div id="infection_title">
+				<c:out value="${langPack['Infection']}" />
+			</div>
+			<div id="game_table">
+				<table id="table" align="center" cellpadding="0" cellspacing="0">
+
+					<c:forEach begin="0" end="6" step="1" varStatus="i">
+						<tr>
+							<c:forEach begin="0" end="6" step="1" varStatus="j">
+								<td class="chip" id="X${j.count-1}Y${i.count-1}"
+									onClick=lightFields(this)><img src=""></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+
+				</table>
+			</div>
+
 		</div>
-		<div id="game_table">
-			<table id="table" align="center" cellpadding="0" cellspacing="0">
-
-				<c:forEach begin="0" end="6" step="1" varStatus="i">
-					<tr>
-						<c:forEach begin="0" end="6" step="1" varStatus="j">
-							<td class="chip" id="X${j.count-1}Y${i.count-1}"
-								onClick=lightFields(this)><img src=""></td>
-						</c:forEach>
-					</tr>
-				</c:forEach>
-
-			</table>
-		</div>
-
 	</div>
-	</div>
+
 </body>
 </html>

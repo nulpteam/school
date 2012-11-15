@@ -42,3 +42,18 @@
 	height:280px;
 	
 }
+
+#player_label_1 {
+	position: absolute;
+	margin: 20px 45px;
+	width: 160px;
+	text-align: center;
+}
+
+player_label_2 {
+	position: absolute;
+	margin: 20px 330px;
+	width: 160px;
+	text-align: center;
+	
+}
