@@ -4,6 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoWaitPage" class="paperList">
+	<script src="js/XO/XO.js" type="text/javascript"></script>
+	<script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
 	<script src="js/XO/WaitPage.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){

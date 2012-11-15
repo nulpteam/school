@@ -4,6 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoServerList" class="paperList">
+	<script src="js/XO/XO.js" type="text/javascript"></script>
+	<script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var myId = "${user.id}";
 	</script>
@@ -20,7 +22,7 @@
 	<div class="refreshButton" onmouseover=refreshButtonOver(this);
 		onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
 	<div class="refresh" onclick=refreshButtonClick();></div>
-	<div id="menu" align="center">
+	<div class="menu">
 		<c:forEach var="server" items="${serverMap}" varStatus="i">
 			<div class="button" id="${server.key}" onclick=connect(this.id);>
 				<p class="buttonText">
