@@ -13,12 +13,13 @@ body {
 }
 
 .BigSheep img {
-		height: 410px;
-		width: 410px;
+	height: 410px;
+	width: 410px;
 }
 
 .content {
-	background: url('../images/SB/game_sheet2.png') no-repeat;
+	/*background: url('../images/SB/game_sheet2.png') no-repeat;*/
+	background: url('../images/list.png') no-repeat;
 	width: 620px;
 	height: 725px;
 	/* 	border: 1px solid red; */
@@ -28,11 +29,10 @@ body {
 
 .caption {
 	padding-top: 14px;
-	/* 	padding-left: 133px; */
-	/* 	border: 1px solid red; */
-	/* 	width: 318px; */
 	float: left;
-	margin-left: 12px;
+	margin-left: 80px;
+	margin-top: 30px;
+	font-size: 31px;
 }
 
 .deco_sheep {
@@ -40,7 +40,8 @@ body {
 	/* 	padding-left: 50px; */
 	padding-top: 20px;
 	/* 	border: 1px solid red; */
-	margin-left: 301px;
+	/* 	margin-left: 301px; */
+	float: left;
 }
 
 .deco_sheep img {
@@ -52,7 +53,7 @@ body {
 	width: 207px;
 	height: 208px;
 	margin-top: 28px;
-	margin-left: 219px;
+	margin-left: 225px; /*219*/
 }
 
 .field1 .h_markers {
@@ -107,7 +108,7 @@ body {
 
 .field2 .v_markers {
 	width: 50px;
-	margin-left: -32px;
+	margin-left: -30px;
 	position: absolute;
 	margin-top: 4px;
 }
@@ -118,7 +119,7 @@ body {
 	height: 199px;
 	float: left;
 	margin-top: 32px;
-	margin-left: 20px;
+	margin-left: 86px; /*20*/
 }
 
 .field2 { /* 	border: 1px solid red; */
@@ -126,7 +127,7 @@ body {
 	width: 209px;
 	height: 208px;
 	margin-top: 33px;
-	margin-left: 219px;
+	margin-left: 225px; /*219*/
 }
 
 .debug {
@@ -138,7 +139,7 @@ body {
 
 .field1 table {
 	margin-top: -199px;
-	margin-left: 24px;
+	margin-left: 26px;
 	/* 	border: 1px solid red; */
 	width: 200px;
 	height: 200px;
@@ -147,7 +148,7 @@ body {
 
 .field2 table {
 	margin-top: -200px;
-	margin-left: 27px;
+	margin-left: 26px;
 	width: 200px;
 	table-layout: fixed;
 }
@@ -224,7 +225,7 @@ tr {
 	width: 207px;
 	height: 208px;
 	margin-top: 28px;
-	margin-left: 219px;
+	margin-left: 225px; /*219*/
 }
 
 .field div {
@@ -248,46 +249,100 @@ tr {
 }
 
 .sound {
-	margin-left: 545px;
+	width: 50px;
+	height: 40px;
 }
 
 .sound img {
-	margin-top: -76px;
+	margin-top: -96px;
+	margin-left: 3px;
 }
 
 .sound:hover {
 	cursor: pointer;
 }
 
-/* .field2start div { */
-/* 	float: left; */
-/* 	padding-left: 7px; */
-/* } */
+.SbMenu {
+	margin: 0px auto;
+	/* 	height: 600px; */
+	/* 	width: 1000px; */
+}
 
-/* .field2start .h_markers { */
-/* 	margin-left: -11px; */
-/* 	font-size: 20px; */
-/* 	font-weight: bold; */
-/* 	margin-top: -1991px; */
-/* } */
+.SbMButtons {
+	margin-left: 48px;
+}
 
-/* .field2start .v_markers { */
-/* 	width: 29px; */
-/* 	margin-left: -29px; */
-/* 	margin-top: -1959px; */
-/* } */
+.SbMConnectG {
+	background: url('../images/SB/SbMConnect_sprite.png') no-repeat;
+}
 
-/* .field2start { 	border: 1px solid red; */
-/* 	background: url('../images/SB/field_background.png') no-repeat; */
-/* 	width: 209px; */
-/* 	height: 208px; */
-/* 	margin-top: 33px; */
-/* 	margin-left: 219px; */
-/* } */
+.SbMCreateG {
+	background: url('../images/SB/SbMCreate_sprite.png') no-repeat;
+}
 
-/* .field2start table { */
-/* 	margin-top: -179px; */
-/* 	margin-left: 27px; */
-/* 	width: 200px; */
-/* 	table-layout: fixed; */
-/* } */
+.SbMConnectG,.SbMCreateG {
+	float: left;
+	width: 100px;
+	height: 95px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 25px;
+	padding-top: 5px;
+	text-align: center;
+	margin-bottom: -5px;
+}
+
+.b_text {
+	font-size: 16PX;
+	text-align: center;
+	line-height: 1.4;
+}
+
+.SbMConnectG:hover {
+	background: url('../images/SB/SbMConnect_sprite.png') bottom no-repeat;
+}
+
+.SbMCreateG:hover {
+	background: url('../images/SB/SbMCreate_sprite.png') bottom no-repeat;
+}
+
+.SbMSheep img {
+	width: 305px;
+	margin: 28px 0 20px 145px;
+	float: left;
+}
+
+.SbMConnectGPlaceholder {
+	float: left;
+	width: 150px;
+	margin-left: 60px;
+}
+
+.SbMCreateGPlaceholder {
+	float: left;
+	width: 150px;
+	margin-left: 70px;
+}
+
+.SbMButtonsRight { /* 	float: left; */
+	/* 	margin-left: 95px; */
+	/* padding-top: 17px; */
+	position: relative;
+	top: 30px;
+	left: 545px;
+	width: 50px;
+}
+
+.SbMButtonRightHome {
+	background: url("../images/SB/Home_sprite.png") no-repeat;
+	width: 41px;
+	height: 44px;
+	cursor: pointer;
+}
+
+.SbMButtonRightHome:hover {
+	background: url("../images/SB/Home_sprite.png") bottom no-repeat;
+	width: 44px;
+	height: 46px;
+}

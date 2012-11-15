@@ -26,6 +26,9 @@
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
+		<div class="SbMButtonsRight">
+				<div class="SbMButtonRightHome" onclick="location.href='index.html'"></div>
+			</div>
 		<div class=clear></div>
 		<div  class="ammo">
 			<!-- Кораблі для розставляння на полі-->

@@ -4,29 +4,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
-
-<c:forEach items="${sbJSLoader.scripts}" var="script">
-	<script src="<c:out value="${script}"/>" type="text/javascript"></script>
-</c:forEach>
-<title>Морський бій</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
+	<link href="css/SB.css" type="text/css" rel="stylesheet">
+	<c:forEach items="${sbJSLoader.scripts}" var="script">
+		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
+	</c:forEach>
+	<title><c:out value="${langPack['Sb_title']}" /></title>
 </head>
 <body>
-	<div style = "margin: 0px auto; height: 600px; width: 1000px;">
-		<img alt="Sheep" src="images/SB/BS.gif" align="left">
-		<img alt="Create Game" src="images/SB/BSCreate.jpg"  onclick="createSbGame();" align="left">
-		<img alt="Connect Game" src="images/SB/BSConnect.jpg" onclick="connectSbGame();" align="top">
+<div class="content">
+	<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
+	<div class="SbMButtonsRight">
+				<div class="SbMButtonRightHome" onclick="location.href='index.html'"></div>
 	</div>
-
-
-	<input type="button" value="Створити гру" onclick="createSbGame();">
-	<br>
-	<input type="button" value="Підєднатись до гри"
-		onclick="connectSbGame();">
-	<br>
-	<input type="button" value="Гра (debugOnly)"
-		onclick="sbGame();">
+	<div class="clear"></div>
+	<div class="SbMenu">
+		<div class="SbMSheep">
+			<img alt="Sheep" src="images/SB/BS.gif">	
+		</div>
+		<div class="clear"></div>
+		<div class="SbMButtons">
+			<div class="SbMCreateGPlaceholder">
+				<div class="SbMCreateG"  onclick="createSbGame();"></div>
+				<div class="b_text">${langPack['Sb_Create']}</div>
+			</div>
+			<div class="SbMConnectGPlaceholder">
+				<div class="SbMConnectG" onclick="connectSbGame();"></div>
+				<div class="b_text">${langPack['Sb_Connect']}</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
