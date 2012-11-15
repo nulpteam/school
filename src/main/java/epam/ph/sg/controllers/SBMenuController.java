@@ -38,10 +38,10 @@ public class SBMenuController {
 	// debug
 	@RequestMapping(value = "/Sb.html", method = RequestMethod.GET)
 	public String SbMenu(Model model, HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
+//		if (session.getAttribute("user") == null) {
+//			new HomeController().index(session);
+//			return "Login";
+//		}
 		SbJSLoader sbJSLoader = new SbJSLoader();
 
 		sbJSLoader.addScript("jquery");
@@ -202,10 +202,10 @@ public class SBMenuController {
 	@RequestMapping(value = { "/Test.html" }, method = RequestMethod.GET)
 	public @ResponseBody
 	String test(HttpSession session, Model model) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
+//		if (session.getAttribute("user") == null) {
+//			new HomeController().index(session);
+//			return "Login";
+//		}
 
 		// !
 		Game game = ActiveGames.getGame(1);
