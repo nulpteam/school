@@ -13,9 +13,11 @@ function connect(ID) {
 			{ gameID: ID },
 			function(response) {
 				if (response === "OK") {
-					location.href = "BsGame.html";
+					//location.href = "BsGame.html";
+					goTo("BsGame.html");
 				} else {
-					location.href = "index.html";
+					//location.href = "index.html";
+					goTo("index.html");
 				}
 		}
 	);

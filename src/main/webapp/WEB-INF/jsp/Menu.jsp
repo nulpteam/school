@@ -28,7 +28,7 @@
 		<div class="button" onclick=goTo(xoLink);>
 			<p class="buttonText">${langPack['XO_title']}</p>
 		</div>
-		<div class="button" onclick=BS();>
+		<div class="button" onclick="goTo('Sb.html');">
 			<p class="buttonText">${langPack['Battleship']}</p>
 		</div>
 		<div class="button" onclick=reversy();>

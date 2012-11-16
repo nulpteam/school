@@ -67,12 +67,22 @@ public class SBController {
 	
 	@RequestMapping(value = {"/sheepsReady.html"}, method = RequestMethod.POST)
 	public @ResponseBody String SheepsReady(@RequestParam("sheepsReady") String sheepsReady,
+			@RequestParam("connType") String connType,
 			Model model, HttpSession session) {
 		
 		JsonParser jp = new JsonParser();
 		BSSheeps sheeps = jp.parseJsonSheepsReady(sheepsReady);
 		log.debug("ttteeesssttt  "+sheeps);
+		log.debug("connType= "+connType);
 		session.setAttribute("Sheeps", sheeps);
+		Game g = (Game)session.getAttribute("Game");
+		if(connType.equals("server"))
+		{
+			g.getServer().setStarted(true);
+		}else if(connType.equals("client"))
+		{
+			g.getClient().setStarted(true);
+		}
 		return "OK";
 	}
 	

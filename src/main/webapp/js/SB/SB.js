@@ -328,7 +328,7 @@ $(function() {
 	
 });
 
-function start() {
+function start(ct) {
 	sheep01 = {
 		"img" : img01,
 		"x" : img01x,
@@ -394,13 +394,18 @@ function start() {
 	};
 	stringa = JSON.stringify(sheeps);
 	console.log(stringa);
+	console.log(ct);
 	$.post("sheepsReady.html", 
-			{sheepsReady : stringa},
+			{
+				sheepsReady : stringa,
+				connType : ct
+			},
 			function(data)
 			{
 				if(data=="OK")
 					{
-						location.href="BsGameStart.html";
+						//location.href="BsGameStart.html";
+					goTo("BsGameStart.html");
 					}
 			});
 };

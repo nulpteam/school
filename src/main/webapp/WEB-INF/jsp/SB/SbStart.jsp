@@ -3,31 +3,35 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<c:forEach items="${sbJSLoader.scripts}" var="script">
-	<script src="<c:out value="${script}"/>" type="text/javascript"></script>
-</c:forEach>
+<!-- <html> -->
+<!-- <head> -->
+<%-- <c:forEach items="${sbJSLoader.scripts}" var="script"> --%>
+<%-- 	<script src="<c:out value="${script}"/>" type="text/javascript"></script> --%>
+<%-- </c:forEach> --%>
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon"> 
-<link href="css/SB.css" type="text/css" rel="stylesheet">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+<!-- <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">  -->
+<!-- <link href="css/SB.css" type="text/css" rel="stylesheet"> -->
 
-<title><c:out value="${langPack['Sb_title']}" /></title>
-</head>
-<body>
-<div id="gameID" class="${Game.id}"></div>
+<%-- <title><c:out value="${langPack['Sb_title']}" /></title> --%>
+<!-- </head> -->
+<!-- <body> -->
+	
+	<div class="paperList">
+	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>
 	<div id="lock" class="${Game.nextMove}"></div>
-	<div class="content">
+	<c:forEach items="${sbJSLoader.scripts}" var="script">
+		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
+	</c:forEach>
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
 		<div class="SbMButtonsRight">
-				<div class="SbMButtonRightHome" onclick="location.href='index.html'"></div>
+				<div class="SbMButtonRightHome" onclick="goTo('Menu.html');"></div>
 				<div class="sound">
 					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
 				</div>
@@ -142,12 +146,12 @@
 	</div>
 <div class=debug>
 <input type="button" value="GetM" onClick="getM();"/>
-<input type="button" value="SendM" onClick="sendM();"/>
-<input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/>
-<input type="button" value="Test1" onClick="testWS();"/>
-<input type="button" value="${Game.nextMove}"/>
+<!-- <input type="button" value="SendM" onClick="sendM();"/> -->
+<%-- <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/> --%>
+<!-- <input type="button" value="Test1" onClick="testWS();"/> -->
+<input type="button" value="${ConnectionType}"/>
 
 
 </div>
-</body>
-</html>
+<!-- </body> -->
+<!-- </html> -->

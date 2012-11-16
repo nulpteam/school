@@ -10,7 +10,15 @@ public class Server {
 	private BSPlayer player;
 	private BSBoard gameBoard;
 	private Connection conn;
+	private boolean started;
+	
+	public boolean isStarted() {
+		return started;
+	}
 
+	public void setStarted(boolean started) {
+		this.started = started;
+	}
 	public Connection getConn() {
 		return conn;
 	}
@@ -36,6 +44,6 @@ public class Server {
 	}
 
 	public String toString() {
-		return player + "\n" + gameBoard;
+		return player + "\n" + gameBoard+"\nStarted="+started;
 	}
 }

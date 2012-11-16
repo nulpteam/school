@@ -13,6 +13,7 @@
 <link href="css/XO/xoStyle.css" type="text/css" rel="stylesheet">
 <link href="css/XO/xoGame.css" type="text/css" rel="stylesheet">
 <link href="css/Personal/personal.css" type="text/css" rel="stylesheet">
+<link href="css/SB.css" type="text/css" rel="stylesheet">
 <link href="css/Personal/jquery-ui-datepicker.css" type="text/css"
 	rel="stylesheet">
 

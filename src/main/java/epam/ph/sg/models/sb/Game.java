@@ -52,6 +52,12 @@ public class Game {
 		return id;
 	}
 
+	public boolean isBothStarted()
+	{
+		return server.isStarted() && client.isStarted();
+	}
+	
+	
 	public FireResponse fireCheck(int gameID, String connectionType,
 			String point) {
 		Game game = ActiveGames.getGame(gameID);

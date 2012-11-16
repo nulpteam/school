@@ -5,6 +5,7 @@ function goTo(link) {
 	$.post(link, function(resp) {
 		$('.paperList').remove();
 		$('.page').append(resp);
+		//console.log(resp);
 	});
 }
 

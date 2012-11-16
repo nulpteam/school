@@ -36,23 +36,46 @@ public class SBMenuController {
 	private static Logger log = Logger.getLogger(SBMenuController.class);
 
 	// debug
-	@RequestMapping(value = "/Sb.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/Sb.html"/* , method = RequestMethod.POST */)
 	public String SbMenu(Model model, HttpSession session) {
-//		if (session.getAttribute("user") == null) {
-//			new HomeController().index(session);
-//			return "Login";
-//		}
 		SbJSLoader sbJSLoader = new SbJSLoader();
 
 		sbJSLoader.addScript("jquery");
 		sbJSLoader.addScript("SB/SB_coords");
 		log.debug("-------------------Added JavaScriptss-------------------");
 		session.setAttribute("sbJSLoader", sbJSLoader);
-		return "SB/SbMenu";
+		// session.setAttribute("currentPos", "Sb.html");
+		session.setAttribute("currentPos", "Sb.html");
+		if (session.getAttribute("Game") == null) {
+			return "SB/SbMenu";
+		} else {
+			
+			Game g = (Game) session.getAttribute("Game");
+			String connType = (String) session.getAttribute("ConnectionType");
+			sbJSLoader.addScript("SB/jquery-ui-1.9.0");
+			sbJSLoader.addScript("SB/SB");
+			sbJSLoader.addScript("SB/js_stringify");
+			sbJSLoader.addScript("SB/WebSocket");
+			session.setAttribute("sbJSLoader", sbJSLoader);
+			if (connType.equalsIgnoreCase("server")) {
+				if (g.getServer().isStarted()) {
+					return "SB/SbStart";
+				} else {
+					return "SB/Sb";
+				}
+			} else if (connType.equalsIgnoreCase("client")) {
+				if (g.getClient().isStarted()) {
+					return "SB/SbStart";
+				} else {
+					return "SB/Sb";
+				}
+			}
+			return "SB/Sb";
+		}
 	}
 
 	// Створення нового сервера гри
-	@RequestMapping(value = { "/BsCreateGame.html" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/BsCreateGame.html" }, method = RequestMethod.POST)
 	public String SbMenuCreation(HttpSession session, Model model) {
 
 		log.debug("-------------------Added JavaScriptss-------------------");
@@ -87,7 +110,7 @@ public class SBMenuController {
 
 	// Підєднання до одного з існуючих серверів
 	// Список ігор
-	@RequestMapping(value = { "/BsConectGame.html" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/BsConectGame.html" }, method = RequestMethod.POST)
 	public String SbMenuConnection(HttpSession session, Model model) {
 		if (session.getAttribute("Game") != null) {
 			return "SB/Sb";
@@ -133,7 +156,7 @@ public class SBMenuController {
 		return "OK";
 	}
 
-	@RequestMapping(value = "/BsGame.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/BsGame.html", method = RequestMethod.POST)
 	public String SbGame(Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
@@ -150,7 +173,7 @@ public class SBMenuController {
 		return "SB/Sb";
 	}
 
-	@RequestMapping(value = "/BsGameStart.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/BsGameStart.html", method = RequestMethod.POST)
 	public String SbGameStart(Model model, HttpSession session) {
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
@@ -168,7 +191,7 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
-		//ActiveGames.removeGame(gameId);
+		// ActiveGames.removeGame(gameId);
 		return "SB/Victory";
 	}
 
