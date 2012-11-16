@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 
 public class PtsCounturMarker {
 
+	private int iterationCount = 0;
 	private static Logger logger = Logger.getLogger(PtsCounturMarker.class);
 
 	private List<PtsCoord> clockwisePtsCoords = new ArrayList<PtsCoord>();
@@ -61,7 +62,7 @@ public class PtsCounturMarker {
 		}
 
 		for (int i = 0; i < 4; i++) {
-
+			iterationCount = 0;
 			clockwisePtsCoords.add(new PtsCoord(y, x));
 
 			if (i == 0)
@@ -72,17 +73,6 @@ public class PtsCounturMarker {
 				clockwise(y, x, new PtsCoord(y + 1, x));
 			else if (i == 3)
 				clockwise(y, x, new PtsCoord(y, x - 1));
-
-			if (clockwiseCounturFound) {
-				resultOfMarking = true;
-				for (int j = 0; j < clockwisePtsCoords.size(); j++) {
-					if (!isCoordInList(clockwisePtsCoords.get(j), counturPtsCoords))
-						counturPtsCoords.add(clockwisePtsCoords.get(j));
-				}
-				clockwisePtsCoords.clear();
-			}
-
-			clockwiseCounturFound = false;
 
 		}
 
@@ -196,6 +186,7 @@ public class PtsCounturMarker {
 		if (clockwiseCounturFound)
 			return;
 		else {
+			System.out.println("!!!!!!!REMOVE!!!!!!!");
 			clockwisePtsCoords.remove(clockwisePtsCoords.size() - 1);
 		}
 
@@ -327,7 +318,9 @@ public class PtsCounturMarker {
 
 	private void nextIterationClockwise(int y, int x, PtsCoord pointBefore) {
 
+		System.out.println("iteration count = " + (++iterationCount));
 		PtsCoord coord = new PtsCoord(y, x);
+		System.out.println(coord);
 		clockwisePtsCoords.add(coord);
 		clockwise(y, x, pointBefore);
 		return;
