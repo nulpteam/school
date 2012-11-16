@@ -49,7 +49,7 @@
 }
 
 #sudoku .levelButton {
-	background-image: url('../../images/Tab/sudoku/smallButton1.png');
+	background-image: url('../../images/Tab/sudoku/smallButton.png');
 	background-repeat: no-repeat;
 	height: 29px;
 	width: 66px;
@@ -58,6 +58,10 @@
 	vertical-align: middle;
 	color: maroon;
 	cursor: pointer;
+}
+
+#sudoku .levelButton:hover {
+	background-image: url('../../images/Tab/sudoku/smallButtonOver.png');
 }
 
 #sudoku #levelsBar {

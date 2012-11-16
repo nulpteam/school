@@ -69,12 +69,9 @@
 	</table>
 	<table id="levelsBar">
 		<tr>
-			<td id="level1" class="levelButton" onclick=sudokuNewGame(1);
-				onmouseover=buttonOver(this); onmouseout=buttonOut(this);>${langPack['easy']}</td>
-			<td id="level2" class="levelButton" onclick=sudokuNewGame(2);
-				onmouseover=buttonOver(this); onmouseout=buttonOut(this);>${langPack['normal']}</td>
-			<td id="level3" class="levelButton" onclick=sudokuNewGame(3);
-				onmouseover=buttonOver(this); onmouseout=buttonOut(this);>${langPack['hard']}</td>
+			<td id="level1" class="levelButton" onclick=sudokuNewGame(1);>${langPack['easy']}</td>
+			<td id="level2" class="levelButton" onclick=sudokuNewGame(2);>${langPack['normal']}</td>
+			<td id="level3" class="levelButton" onclick=sudokuNewGame(3);>${langPack['hard']}</td>
 		</tr>
 	</table>
 </div>

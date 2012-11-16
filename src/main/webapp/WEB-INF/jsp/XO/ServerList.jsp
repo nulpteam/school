@@ -9,18 +9,15 @@
 	<script type="text/javascript">
 		var myId = "${user.id}";
 	</script>
-	
+
 	<div class="title">
 		<p align="center">
 			<c:out value="${langPack['XO_SL_title']}" />
 		</p>
 	</div>
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
-	<div class="backButton" onmouseover=backButtonOver(this);
-		onmouseout=backButtonOut(this); onclick=backButtonClick();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick=homeButtonClick();></div>
+	<div class="backButton" onclick=backButtonClick();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	<div class="refresh" onclick=refreshButtonClick();></div>
 	<div class="menu">
 		<c:forEach var="server" items="${serverMap}" varStatus="i">

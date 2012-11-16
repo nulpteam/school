@@ -34,8 +34,6 @@ public class XOPlayer {
 			return false;
 		} else if (game.getStatus().isGameOver()) {
 			return false;
-		} else if (game.getStatus().isPlayerOut()) {
-			return false;
 		} else {
 			put(x, y);
 			return true;

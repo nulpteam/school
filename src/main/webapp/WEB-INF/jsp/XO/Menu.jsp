@@ -11,10 +11,8 @@
 			<c:out value="${langPack['XO_title']}" />
 		</p>
 	</div>
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick=homeButtonClick();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	<div class="menu">
 		<div class="button" onclick=goTo(createLink);>
 			<p class="buttonText">

@@ -14,7 +14,7 @@
 </script>
 <div id="tab">
 	<div id="bar">
-		<div id="back" onclick=tabBackButton(); onmouseover=tabBackButtonOver(this); onmouseout=tabBackButtonOut(this);></div>
+		<div id="back" onclick=tabBackButton();></div>
 		<div id="clock"></div>
 	</div>
 </div>

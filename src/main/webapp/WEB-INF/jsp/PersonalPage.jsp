@@ -20,10 +20,8 @@
 		});
 	</script>
 
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick=homeButtonClick();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	<div class="title">
 		<p align="center">Personal Page</p>
 	</div>

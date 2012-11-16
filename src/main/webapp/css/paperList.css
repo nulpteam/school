@@ -49,6 +49,10 @@ body {
 	position: absolute;
 }
 
+.paperList .homeButton:hover {
+	background-image: url('../images/paperList/homeOver.png');
+}
+
 .paperList .refreshButton {
 	background-image: url('../images/paperList/refresh.png');
 	background-repeat: no-repeat;
@@ -60,6 +64,10 @@ body {
 	position: absolute;
 }
 
+.paperList .refreshButton:hover {
+	background-image: url('../images/paperList/refreshOver.png');
+}
+
 .paperList .backButton {
 	background-image: url('../images/paperList/back.png');
 	background-repeat: no-repeat;
@@ -69,6 +77,10 @@ body {
 	position: absolute;
 	margin: 135px 540px;
 	position: absolute;
+}
+
+.paperList .backButton:hover {
+	background-image: url('../images/paperList/backOver.png');
 }
 
 .paperList .button {

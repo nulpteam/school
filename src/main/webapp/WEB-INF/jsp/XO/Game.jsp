@@ -15,12 +15,9 @@
 		});
 	</script>
 
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=gameHomeButton();></div>
-	<div class="backButton" onmouseover=backButtonOver(this);
-		onmouseout=backButtonOut(this); onclick=gameBackButton();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=gameRefreshButton();></div>
+	<div class="homeButton" onclick=gameHomeButton();></div>
+	<div class="backButton" onclick=gameBackButton();></div>
+	<div class="refreshButton" onclick=gameRefreshButton();></div>
 
 	<div id="myName" class="namespace" onclick=statShow(this.id);>
 		<p>

@@ -12,16 +12,13 @@
 			waitClient();
 		});
 	</script>
-	
+
 	<div id="outText" class="title">
 		<p align="center"></p>
 	</div>
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=waitPageHomeButton();></div>
-	<div class="backButton" onmouseover=backButtonOver(this);
-		onmouseout=backButtonOut(this); onclick=waitPageBackButton();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick=waitPageHomeButton();></div>
+	<div class="backButton" onclick=waitPageBackButton();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	<div id="startButton" align="center">
 		<div class="button" onclick=startButtonClick();>
 			<p class="buttonText">Start Game</p>
