@@ -47,6 +47,7 @@
 	color: deepSkyBlue;
 	height: 30px;
 	width: 135px;
+	cursor: default;
 	position: absolute;
 	margin: 0px 135px;
 	padding-top: 2px;
