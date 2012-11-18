@@ -3,6 +3,11 @@ package epam.ph.sg.models.infection;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 
+import epam.ph.sg.models.points.PtsClientMessage;
+import epam.ph.sg.models.points.PtsGame;
+import epam.ph.sg.models.points.PtsGameMap;
+import epam.ph.sg.models.points.PtsResources;
+
 public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 
 	private Logger log;
@@ -30,15 +35,18 @@ public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 	@Override
 	public void onMessage(String json) {
 		log.debug("Recieved message");
-		log.debug(json);
+		log.debug("JSON MESSAGE"+json);
 
 		InfClientMessage clientMessage = jsonParser.parseJsonMessage(json);
+		log.debug("abra"+clientMessage.getGameId()+"client"+clientMessage.getClientName()+"server"+clientMessage.getServerName());
 		InfGame game = InfGameMap.getGames().get(clientMessage.getGameId());
 
 		if (clientMessage.getType().equals("userInfo")) {
 			game.setPlayerInfo(clientMessage.getUserType(), conn);
-			
 		}
+
+		//game.makeChanges(clientMessage);
+
 	}
 }
 

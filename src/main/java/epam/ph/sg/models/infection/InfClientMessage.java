@@ -13,17 +13,19 @@ public class InfClientMessage {
 	private String type;
 	private String userType;
 	private String gameId;
-	private String coords;
 	private String clientName;
 	private String serverName;
+	private int serverScore;
+	private int clientScore;
 	private boolean lock;
 
 	public InfClientMessage() {
 		type = "";
 		userType = "";
 		gameId = "";
-		coords = "";
 		clientName = "";
+		setServerScore(0);
+		setClientScore(0);
 		serverName = "";
 		lock = false;
 	}
@@ -68,20 +70,22 @@ public class InfClientMessage {
 		this.gameId = gameId;
 	}
 
-	public String getCoords() {
-		return coords;
+	public int getServerScore() {
+		return serverScore;
 	}
 
-	public void setCoords(String coords) {
-		this.coords = coords;
-	}
-	
-	public boolean getLock() {
-		return lock;
+	public void setServerScore(int serverScore) {
+		this.serverScore = serverScore;
 	}
 
-	public void setLock(boolean lock) {
-		this.lock = lock;
+	public int getClientScore() {
+		return clientScore;
 	}
+
+	public void setClientScore(int clientScore) {
+		this.clientScore = clientScore;
+	}
+
+
 }
 

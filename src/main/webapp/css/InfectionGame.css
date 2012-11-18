@@ -1,5 +1,6 @@
 #body{
 	background-color: white;
+	font-size: 35px;
 }
 
 #bg {
@@ -45,15 +46,34 @@
 
 #player_label_1 {
 	position: absolute;
-	margin: 20px 45px;
+	margin: 460px 40px;
 	width: 160px;
 	text-align: center;
+	color:#0000FF;
+	
 }
 
-player_label_2 {
+#player_label_2 {
 	position: absolute;
-	margin: 20px 330px;
+	margin: 460px 320px;
 	width: 160px;
 	text-align: center;
+	color:#0000FF;
 	
+}
+
+#score_label_1 {
+	position: absolute;
+	margin: 550px 40px;
+	width: 160px;
+	text-align: center;
+	color:red;
+}
+
+#score_label_2 {
+	position: absolute;
+	margin: 550px 320px;
+	width: 160px;
+	text-align: center;
+	color:red;
 }

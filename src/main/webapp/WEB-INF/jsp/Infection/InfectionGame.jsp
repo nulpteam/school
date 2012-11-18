@@ -29,11 +29,17 @@
 			<div id="player_label_2">
 				<label></label>
 			</div>
+			<div id="score_label_1">
+				<label></label>
+			</div>
+			<div id="score_label_2">
+				<label></label>
+			</div>
 
 			<div id="infection_title">
 				<c:out value="${langPack['Infection']}" />
 			</div>
-			<div id="game_table">
+			<div id="game_table" userType="${infUserType}" gameId="${infGameId}">
 				<table id="table" align="center" cellpadding="0" cellspacing="0">
 
 					<c:forEach begin="0" end="6" step="1" varStatus="i">

@@ -47,7 +47,7 @@ public class InfJsonParser {
 		String jsonValue = null;
 
 		try {
-
+            			
 			jsonValue = mapper.writeValueAsString(message);
 
 		} catch (JsonGenerationException e) {
@@ -60,7 +60,7 @@ public class InfJsonParser {
 
 		return jsonValue;
 	}
-	
+
 	public String convertGameInfoMessageToJson(InfGameInfoMessage message) {
 
 		String jsonValue = null;

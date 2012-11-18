@@ -28,6 +28,7 @@ $(document).ready(function() {
 				"gameId" : gameId
 		};
 		socket.send(JSON.stringify(initialize));
+		
 
 	};
 
@@ -36,19 +37,21 @@ $(document).ready(function() {
 socket.onmessage = function(event) {
 
 	console.log(event.data);
-	alert(event.data);
+	//alert(event.data);
 	var msg = JSON.parse(event.data);
-
-	switch (msg.type) {
+    switch (msg.type) {
 
 	case "clientConnect":
 		$('#player_label_1 > label').text(msg.serverName);
 		$('#player_label_2 > label').text(msg.clientName);
+		$('#score_label_1 > label').text(msg.serverScore);
+		$('#score_label_2 > label').text(msg.clientScore);
 		waitForClient = false;
 		break;
 
 	case "serverConnect":
 		$('#player_label_1 > label').text(msg.serverName);
+		$('#score_label_1 > label').text(msg.serverScore);
 		break;
 
 
@@ -62,6 +65,8 @@ socket.onmessage = function(event) {
 
 		$('#player_label_1 > label').text(msg.serverName);
 		$('#player_label_2 > label').text(msg.clientName);
+		$('#score_label_1 > label').text(msg.serverScore);
+		$('#score_label_2 > label').text(msg.clientScore);
 
 		if ($('#player_label_2 > label').text() != "") {
 			waitForClient = false;

@@ -1,18 +1,29 @@
 package epam.ph.sg.models.infection;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket.Connection;
+
+import epam.ph.sg.models.points.PtsJsonParser;
 
 
 /*
  * @author roman
  */
-public class InfGame {
+public class InfGame implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6783001176056699868L;
+
+
+
 	private static Logger logger = Logger.getLogger(InfGame.class);
 
-
+    
+	
 	private InfPlayer server, client;
 	private static int gameNumber = 0;
 	private String id;
@@ -22,9 +33,9 @@ public class InfGame {
 	public InfGame() {
 
 		setId(new Integer(gameNumber++).toString());
-
 		setServer(new InfPlayer());
 		setClient(new InfPlayer());
+		jsonParser = new InfJsonParser();
 
 	}
 
@@ -35,7 +46,8 @@ public class InfGame {
 			InfClientMessage message = new InfClientMessage();
 			message.setType("serverConnect");
 			message.setServerName(server.getName());
-			//sendMessage("server", message);
+			sendMessage("server", message);
+			
 
 		} else if (playerType.equals("client")) {
 
@@ -44,8 +56,8 @@ public class InfGame {
 			message.setType("clientConnect");
 			message.setClientName(client.getName());
 			message.setServerName(server.getName());
-			//sendMessage("client", message);
-     		//sendMessage("server", message);
+			sendMessage("client", message);
+     		sendMessage("server", message);
 
 		}
 	}
@@ -55,7 +67,7 @@ public class InfGame {
 		try {
 
 			if (userType.equals("server")) {
-
+                
 				server.getConn().sendMessage(jsonParser.convertClientMessageToJson(message));
 
 			} else if (userType.equals("client")) {

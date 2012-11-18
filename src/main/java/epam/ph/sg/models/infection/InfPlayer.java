@@ -1,9 +1,15 @@
 package epam.ph.sg.models.infection;
 
+import java.io.Serializable;
+
 import org.eclipse.jetty.websocket.WebSocket.Connection;
 
-public class InfPlayer {
+public class InfPlayer implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7574095889596112245L;
 	private String name;
 	private Connection conn;
 	private String gameId;
