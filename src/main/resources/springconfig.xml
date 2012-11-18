@@ -32,10 +32,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
+	<bean id="userDaoImpl" class="epam.ph.sg.dao.impl.UserDAOimpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
 	<bean id="defaultLang" class="epam.ph.sg.models.impl.LangModelImpl">
 	    <property name="lang" value="ua"/>
 	</bean>
-	 
-	
-	 
 </beans>

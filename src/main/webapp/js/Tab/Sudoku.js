@@ -112,15 +112,3 @@ function fieldOut() {
 		boxHighlightClear();
 	}
 }
-
-function buttonOver(elem) {
-	$(elem).css({
-		backgroundImage : 'url("images/Tab/sudoku/smallButton2.png")'
-	});
-}
-
-function buttonOut(elem) {
-	$(elem).css({
-		backgroundImage : 'url("images/Tab/sudoku/smallButton1.png")'
-	});
-}

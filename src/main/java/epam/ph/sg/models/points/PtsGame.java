@@ -65,16 +65,29 @@ public class PtsGame {
 
 				board.putPoint(PtsResources.getProperty("user.type.server"),
 						clientMessage.getCoords());
-				logicBoard.putPoint(PtsResources.getProperty("user.type.server"),
-						clientMessage.getCoords());
 				server.setLock(true);
 				client.setLock(false);
-				System.out.println("HERE??");
-				//TODO
-				counturMarker.markContours(board.getBoard(), logicBoard.getBoard(), logicBoard.getLastY(), logicBoard.getLastX(), 1);
+				List<List<PtsCoord>> contoursList = counturMarker.markContours(
+						board.getBoard(), logicBoard.getBoard(),
+						board.getLastY(), board.getLastX(),
+						Pts.SERVER_UNMARKED_POINT);
+				if (contoursList != null) {
+					PtsGameInfoMessage message = new PtsGameInfoMessage();
+					message.setType(PtsResources
+							.getProperty("user.message.type.countur"));
+					message.initializeBoard(board.getBoard());
+					message.initLastContours(contoursList);
+					message.setUserType(PtsResources
+							.getProperty("user.type.server"));
+					sendGameInfo(PtsResources.getProperty("user.type.server"),
+							message);
+					sendGameInfo(PtsResources.getProperty("user.type.client"),
+							message);
+				}
 				logicBoard.printBoard();
+				board.printBoard();
 				// board.printBoard();
-				// TODO PtsGameInfoMessage message = new PtsGameInfoMessage();
+				// 
 				// message.setType(PtsResources.getProperty("user.message.type.countur"));
 				// message.initializeBoard(board.getBoard());
 				// message.initializeLastCountur(counturMarker.getCounturPtsCoords());
@@ -98,16 +111,29 @@ public class PtsGame {
 
 				board.putPoint(PtsResources.getProperty("user.type.client"),
 						clientMessage.getCoords());
-				logicBoard.putPoint(PtsResources.getProperty("user.type.client"),
-						clientMessage.getCoords());
 				client.setLock(true);
 				server.setLock(false);
-				System.out.println("HERE??");
-				// /////TODO
-				counturMarker.markContours(board.getBoard(), logicBoard.getBoard(), logicBoard.getLastY(), logicBoard.getLastX(), 2);
+				List<List<PtsCoord>> contoursList = counturMarker.markContours(
+						board.getBoard(), logicBoard.getBoard(),
+						board.getLastY(), board.getLastX(),
+						Pts.CLIENT_UNMARKED_POINT);
+				if (contoursList != null) {
+					PtsGameInfoMessage message = new PtsGameInfoMessage();
+					message.setType(PtsResources
+							.getProperty("user.message.type.countur"));
+					message.initializeBoard(board.getBoard());
+					message.initLastContours(contoursList);
+					message.setUserType(PtsResources
+							.getProperty("user.type.client"));
+					sendGameInfo(PtsResources.getProperty("user.type.server"),
+							message);
+					sendGameInfo(PtsResources.getProperty("user.type.client"),
+							message);
+				}
 				logicBoard.printBoard();
+				board.printBoard();
 				// board.printBoard();
-				// //TODO PtsGameInfoMessage message = new
+				// //
 				// PtsGameInfoMessage();
 				// message.setType(PtsResources.getProperty("user.message.type.countur"));
 				// message.initializeBoard(board.getBoard());

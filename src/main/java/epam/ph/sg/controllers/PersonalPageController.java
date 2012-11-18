@@ -37,9 +37,11 @@ public class PersonalPageController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". New name: " + name);
-		PersonalPage.changeName(user.getId(), name);
-		user.setName(name);
-		return true;
+		if (PersonalPage.changeName(user.getId(), name) == true) {
+			user.setName(name);
+			return true;
+		} else
+			return false;
 	}
 
 	@RequestMapping(value = "/ChangeEmail.html", method = RequestMethod.POST)
@@ -66,13 +68,13 @@ public class PersonalPageController {
 
 	@RequestMapping(value = "/ChangeAbout.html", method = RequestMethod.POST)
 	public @ResponseBody
-	boolean changeAbout(@RequestParam("about") String about,
+	String changeAbout(@RequestParam("about") String about,
 			HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". New about: " + about);
 		PersonalPage.changeAbout(user.getId(), about);
-		return true;
+		return PersonalPage.getUserAddIngo(user.getId()).getAbout();
 	}
 
 	@RequestMapping(value = "/ChangePass.html", method = RequestMethod.POST)

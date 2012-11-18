@@ -873,8 +873,10 @@ function sbGame() {
 	location.href = "BsGame.html";
 }
 function createSbGame() {
-	location.href = "BsCreateGame.html";
+	//location.href = "BsCreateGame.html";
+	goTo("BsCreateGame.html");
 }
 function connectSbGame() {
-	location.href = "BsConectGame.html";
+	//location.href = "BsConectGame.html";
+	goTo("BsConectGame.html");
 };

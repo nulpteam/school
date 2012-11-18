@@ -17,18 +17,6 @@ function tabBackButton() {
 	tabGoTo(homeLink);
 }
 
-function tabBackButtonOver(elem) {
-	$(elem).css({
-		backgroundImage : 'url("images/Tab/back2.png")'
-	});
-}
-
-function tabBackButtonOut(elem) {
-	$(elem).css({
-		backgroundImage : 'url("images/Tab/back1.png")'
-	});
-}
-
 function tabClock() {
 	var date = new Date();
 	var hh = timeFormat(date.getHours());

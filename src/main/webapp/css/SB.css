@@ -1,9 +1,8 @@
-body {
-	font-family: LC Chalk;
-	font-size: 35px;
-	color: #5B2FCE;
-}
-
+/* body { */
+/* 	font-family: LC Chalk; */
+/* 	font-size: 35px; */
+/* 	color: #5B2FCE; */
+/* } */
 .clear {
 	clear: both;
 }
@@ -103,7 +102,7 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 	margin-top: -28px;
-	position: absolute;
+	/* 	position: absolute; */
 }
 
 .field2 .v_markers {
@@ -153,13 +152,13 @@ body {
 	table-layout: fixed;
 }
 
-tr td {
+#table2 tr td,#table1 tr td,#table tr td {
 	text-align: center;
 	height: 20px;
 	width: 20px;
 }
 
-tr {
+#table2 tr,#table1 tr,#table tr {
 	height: 20px;
 	width: 20px;
 	text-align: center;
@@ -309,7 +308,7 @@ tr {
 
 .SbMSheep img {
 	width: 305px;
-	margin: 28px 0 20px 145px;
+	margin: 28px 0 16px 145px;
 	float: left;
 }
 
@@ -345,4 +344,56 @@ tr {
 	background: url("../images/SB/Home_sprite.png") bottom no-repeat;
 	width: 44px;
 	height: 46px;
+}
+
+.shturval {
+	width: 92px;
+	padding-left: 100px;
+	margin-top: 13px;
+}
+
+.jakir {
+	width: 54px;
+	margin-top: 6px;
+	float: left;
+}
+
+.decoImg {
+	margin-left: 163px;
+	margin-top: 1px;
+}
+
+.menuText {
+	text-align: center;
+	margin-left: -40px;
+}
+
+.ctgame {
+	border: 2px ridge rgba(91, 47, 206, 0.69);
+	width: 58px;
+	font-size: 12px;
+	text-align: center;
+	overflow: hidden;
+	padding-top: 3px;
+	height: 60px;
+	line-height: 1;
+	cursor: pointer;
+	float: left;
+	margin-right: 17px;
+}
+
+.ctgame:hover {
+	font-size: 13px;
+	border: 2px ridge rgba(211, 30, 189, 0.69);
+	text-decoration: underline;
+}
+
+.ctgame img {
+	width: 35px;
+}
+
+.ServersList {
+	margin-left: 87px;
+	width: 400px;
+	height: 176px;
 }

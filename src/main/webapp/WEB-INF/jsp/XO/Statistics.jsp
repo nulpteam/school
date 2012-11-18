@@ -4,15 +4,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoStatistics" class="paperList">
+	<script src="js/XO/XO.js" type="text/javascript"></script>
+
 	<div class="title">
 		<p align="center">${langPack['XO_stat_title']}</p>
 	</div>
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
-	<div class="backButton" onmouseover=backButtonOver(this);
-		onmouseout=backButtonOut(this); onclick=backButtonClick();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick=homeButtonClick();></div>
+	<div class="backButton" onclick=backButtonClick();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	<table>
 		<thead>
 			<tr>

@@ -4,16 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoMenu" class="paperList">
+	<script src="js/XO/XO.js" type="text/javascript"></script>
+
 	<div class="title">
 		<p align="center">
 			<c:out value="${langPack['XO_title']}" />
 		</p>
 	</div>
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=homeButtonClick();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=refreshButtonClick();></div>
-	<div id="menu" align="center">
+	<div class="homeButton" onclick=homeButtonClick();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
+	<div class="menu">
 		<div class="button" onclick=goTo(createLink);>
 			<p class="buttonText">
 				<c:out value="${langPack['XO_button_create']}" />

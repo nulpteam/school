@@ -29,12 +29,16 @@
 }
 
 #tab #bar #back {
-	background-image: url('../../images/Tab/back1.png');
+	background-image: url('../../images/Tab/back.png');
 	background-repeat: no-repeat;
 	height: 30px;
 	width: 135px;
 	position: absolute;
 	margin: 0px 0px;
+}
+
+#tab #bar #back:hover {
+	background-image: url('../../images/Tab/backOver.png');
 }
 
 #tab #bar #clock {
@@ -43,6 +47,7 @@
 	color: deepSkyBlue;
 	height: 30px;
 	width: 135px;
+	cursor: default;
 	position: absolute;
 	margin: 0px 135px;
 	padding-top: 2px;

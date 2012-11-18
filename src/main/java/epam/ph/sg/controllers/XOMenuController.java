@@ -4,7 +4,6 @@ package epam.ph.sg.controllers;
  * @author Paul Michael T.
  */
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -22,23 +21,6 @@ import epam.ph.sg.models.User;
 @Controller
 public class XOMenuController {
 	private static Logger log = Logger.getLogger(XOMenuController.class);
-
-	@RequestMapping("/XO.html")
-	public String xo(HttpServletRequest request) {
-		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
-		return "XO/XO";
-	}
-
-	@RequestMapping("XOCurrentPos.html")
-	public String xoCurrentPos(HttpSession session) {
-		String xoCurrentPos = (String) session.getAttribute("xoCurrentPos");
-		if (xoCurrentPos == null) {
-			xoCurrentPos = "XOMenu.html";
-		}
-		return "redirect:" + xoCurrentPos;
-	}
 
 	@RequestMapping("/XOMenu.html")
 	public String menu(HttpServletRequest request) {

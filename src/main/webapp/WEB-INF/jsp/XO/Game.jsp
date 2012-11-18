@@ -4,6 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoGame" class="paperList">
+	<script src="js/XO/XO.js" type="text/javascript"></script>
+	<script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
 	<script src="js/XO/Game.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var myId = "${user.id}";
@@ -13,12 +15,9 @@
 		});
 	</script>
 
-	<div class="homeButton" onmouseover=homeButtonOver(this);
-		onmouseout=homeButtonOut(this); onclick=gameHomeButton();></div>
-	<div class="backButton" onmouseover=backButtonOver(this);
-		onmouseout=backButtonOut(this); onclick=gameBackButton();></div>
-	<div class="refreshButton" onmouseover=refreshButtonOver(this);
-		onmouseout=refreshButtonOut(this); onclick=gameRefreshButton();></div>
+	<div class="homeButton" onclick=gameHomeButton();></div>
+	<div class="backButton" onclick=gameBackButton();></div>
+	<div class="refreshButton" onclick=gameRefreshButton();></div>
 
 	<div id="myName" class="namespace" onclick=statShow(this.id);>
 		<p>
