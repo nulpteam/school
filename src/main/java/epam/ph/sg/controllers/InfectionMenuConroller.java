@@ -25,7 +25,7 @@ public class InfectionMenuConroller {
 	
 	//Перехід на сторінку меню гри
 	@RequestMapping("Infection.html")
-	public String pointsMenu(HttpSession session) {
+	public String infMenu(HttpSession session) {
 		return "Infection/InfectionMenu";
 	}
 	//перехід на сторінку гри
