@@ -16,12 +16,17 @@
 	vertical-align: top;
 }
 
-#personalPage table .ppButton {
+#personalPage table .editButton {
 	width: 70px;
 	vertical-align: top;
 }
 
-#personalPage table .ppButton div {
+#personalPage table .saveButton {
+	width: 70px;
+	vertical-align: bottom;
+}
+
+#personalPage table .editButton div, #personalPage table .saveButton div {
 	background-image: url('../../images/paperList/button.png');
 	background-repeat: no-repeat;
 	height: 30px;
@@ -52,4 +57,8 @@
 
 #personalPage table .edit textarea {
 	resize: none;
+}
+
+#personalPage table .edit .pass {
+	width: 140px;
 }

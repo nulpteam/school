@@ -1,13 +1,14 @@
 function editShowHide(node) {
 	var param = node.parentNode.parentNode.id;
 	var edit = $('#personalPage #' + param + ' + .edit');
-	if(edit.is(':visible')) {
+	if (edit.is(':visible')) {
 		edit.hide();
 	} else {
 		$('#personalPage #name + .edit').hide();
 		$('#personalPage #email + .edit').hide();
 		$('#personalPage #birthday + .edit').hide();
 		$('#personalPage #about + .edit').hide();
+		$('#personalPage #pass + .edit').hide();
 		$('#personalPage #' + param + ' + .edit .error').text(editMsg);
 		edit.show();
 	}
@@ -59,15 +60,23 @@ function saveEmail() {
 
 function saveBirthday() {
 	var input = $('#personalPage #birthday + .edit input');
-	$.post('ChangeBirthday.html', {
-		birthday : input.val()
-	}, function(resp) {
-		if (resp == true) {
-			$('#personalPage #birthday .value').text(input.val());
-			$('#personalPage #birthday + .edit').hide();
-			input.val('');
-		}
-	});
+	var error = $('#personalPage #birthday + .edit .error');
+	var regExp = /(0[1-9]|[12][0-9]|3[01])(.)(0[1-9]|1[012])(.)(19|20)\d\d/;
+	var value = regExp.exec(input.val());
+	if (value == null) {
+		error.text(failMsg);
+	} else {
+		$.post('ChangeBirthday.html', {
+			birthday : input.val()
+		}, function(resp) {
+			if (resp == true) {
+				$('#personalPage #birthday .value').text(value[0]);
+				$('#personalPage #birthday + .edit').hide();
+				input.val('');
+				error.text('');
+			}
+		});
+	}
 }
 
 function saveAbout() {
@@ -79,6 +88,25 @@ function saveAbout() {
 			$('#personalPage #about .value').text(resp);
 			$('#personalPage #about + .edit').hide();
 			input.val('');
+		}
+	});
+}
+
+function savePass() {
+	var inputOld = $('#personalPage #pass + .edit #old');
+	var inputNew = $('#personalPage #pass + .edit #new');
+	var error = $('#personalPage #pass .error');
+	$.post('ChangePass.html', {
+		oldPass : inputOld.val(),
+		newPass : inputNew.val()
+	}, function(resp) {
+		if (resp == true) {
+			$('#personalPage #pass + .edit').hide();
+			inputOld.val('');
+			inputNew.val('');
+			error.text('');
+		} else {
+			error.text(failMsg);
 		}
 	});
 }

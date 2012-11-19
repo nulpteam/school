@@ -1,6 +1,3 @@
-var xoLink = 'XOMenu.html';
-var ppLink = 'PersonalPage.html';
-
 function goTo(link) {
 	$.post(link, function(resp) {
 		$('.paperList').remove();
