@@ -15,8 +15,9 @@ var i = 10;
 $(function() {
 
 	// матриця розташування кораблів(XY) координати
-	var Mat = createMatrix();
-	console.log(Mat);
+//	var Mat = createMatrix();
+		createMatrix();
+//	console.log(Mat);
 
 	// кораблі
 	$("#sheep_1").draggable({
@@ -72,120 +73,11 @@ $(function() {
 	
 	function fDrop(event, ui, id) {
 		co = parseCoords(id, ui);
-		console.log(co);
-		console.log(id);
 		saveCoords(co);
-//		if (i == 1) {
-//			img01 = ("images/SB/0" + co.t + ".png");
-//			console.log(img01);
-//			img01x = ui.position.left+1;
-//			img01y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 2) {
-//			img02 = ("images/SB/0" + co.t + ".png");
-//			console.log(img02);
-//			img02x = ui.position.left+1;
-//			img02y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 3) {
-//			img03 = ("images/SB/0" + co.t + ".png");
-//			console.log(img03);
-//			img03x = ui.position.left+1;
-//			img03y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 4) {
-//			img04 = ("images/SB/0" + co.t + ".png");
-//			console.log(img04);
-//			img04x = ui.position.left+1;
-//			img04y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 5) {
-//			if (co.r == "H") {
-//				img05 = ("images/SB/0" + co.t + ".png");
-//				console.log(img05);
-//			}
-//			if (co.r == "V") {
-//				img05 = ("images/SB/0" + co.t + "_90.png");
-//				console.log(img05);
-//			}
-//			img05x = ui.position.left+1;
-//			img05y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 6) {
-//			if (co.r == "H") {
-//				img06 = ("images/SB/0" + co.t + ".png");
-//				console.log(img06);
-//			}
-//			if (co.r == "V") {
-//				img06 = ("images/SB/0" + co.t + "_90.png");
-//				console.log(img06);
-//			}
-//			img06x = ui.position.left+1;
-//			img06y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 7) {
-//			if (co.r == "H") {
-//				img07 = ("images/SB/0" + co.t + ".png");
-//				console.log(img07);
-//			}
-//			if (co.r == "V") {
-//				img07 = ("images/SB/0" + co.t + "_90.png");
-//				console.log(img07);
-//			}
-//			img07x = ui.position.left+1;
-//			img07y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 8) {
-//			if (co.r == "H") {
-//				img08 = ("images/SB/0" + co.t + ".png");
-//				console.log(img08);
-//			}
-//			if (co.r == "V") {
-//				img08 = ("images/SB/0" + co.t + "_90.png");
-//				console.log(img08);
-//			}
-//			img08x = ui.position.left+1;
-//			img08y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 9) {
-//			if (co.r == "H") {
-//				img09 = ("images/SB/0" + co.t + ".png");
-//				console.log(img09);
-//			}
-//			if (co.r == "V") {
-//				img09 = ("images/SB/0" + co.t + "_90.png");
-//				console.log(img09);
-//			}
-//			img09x = ui.position.left+1;
-//			img09y = ui.position.top;
-//			i--;
-//		}
-//		if (i == 10) {
-//			if (co.r == "H") {
-//				img10 = ("images/SB/0" + co.t + ".png");
-//				console.log(img10);
-//			}
-//			if (co.r == "V") {
-//				img10 = ("images/SB/0" + co.t + "_90.png");
-//				console.log(img10);
-//			}
-//			img10x = ui.position.left+1;
-//			img10y = ui.position.top;
-//			i--;
-//		}
 	}
 
 
 	function fOver(event, ui, coordinate) {
-		console.log("over");
 		var x = coordinate.charAt(1);
 		var x1 = ++x;
 		var x2 = ++x;

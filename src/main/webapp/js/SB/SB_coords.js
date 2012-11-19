@@ -68,7 +68,6 @@ function startbsound() {
 	bsound.volume=0.1;
 	bsound.play();
 }
-
 function chSound() {
 	id = $('.sound img').attr('id');
 	if(id=="s_on") {
@@ -84,12 +83,9 @@ function chSound() {
 
 //Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
-	console.log($(obj));
 	id = $(obj).attr('id');
 	infield = $(obj)[0].classList[1] === "infield";
-	console.log(infield);
 	isDisabled = $(obj/*'#' + id*/).draggable('option', 'disabled');
-	console.log(isDisabled);
 	if (!isDisabled && !infield) {
 		var c = $(obj).attr("class");
 			orientation = c[0];
@@ -98,11 +94,9 @@ function rotate(obj) {
 		if (orientation === 'H') {
 			newOrientation = 'V';
 			$(obj).attr("src", "images/SB/0" + id[6] + "_90.png");
-			console.log(obj);
 		} else if (orientation === 'V') {
 			newOrientation = 'H';
 			$(obj).attr("src", "images/SB/0" + id[6] + ".png");
-			console.log(obj);
 		}
 		var set = c.substring(1, c.length);
 		set = newOrientation + set;
@@ -110,7 +104,6 @@ function rotate(obj) {
 	}
 	else{
 		
-		console.log("rotate корабля в полі");
 		//Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
 		// протележна до disableDroppables()
 		enableDroppables(unlockDroppableInfo);
@@ -124,11 +117,9 @@ function rotate(obj) {
 			if (orientation === 'H') {
 				newOrientation = 'V';
 				$(obj).attr("src", "images/SB/0" + id[6] + "_90.png");
-				console.log(obj);
 			} else if (orientation === 'V') {
 				newOrientation = 'H';
 				$(obj).attr("src", "images/SB/0" + id[6] + ".png");
-				console.log(obj);
 			}
 			var set = c.substring(1, c.length);
 			set = newOrientation + set;
@@ -174,7 +165,6 @@ function parseCoords(coords, ui) {
 			"img" : ui.draggable[0],
 			"ui" : ui,
 			};
-		//console.log(co);
 		return co;
 	};
 }
@@ -225,10 +215,8 @@ function saveCoords(saveCoordenates) {
 		}
 	}
 	img = saveCoordenates.img;
-	console.log(img);
 	count = counter(saveCoordenates) + 1;
 	if (saveCoordenates.r === "H" || saveCoordenates.r === "u") {
-		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
 				'<img id="sheep_' + saveCoordenates.t + '" class="H infield" src="images/SB/0'
 						+ saveCoordenates.t + '.png" ondblclick="bbb(this,event);"/>');
@@ -238,7 +226,6 @@ function saveCoords(saveCoordenates) {
 				saveCoordenates.ui.position.left + "px");
 		$('#sp' + saveCoordenates.t + count).css("display", "block");
 	} else if (saveCoordenates.r === "V") {
-		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
 				'<img id="sheep_' + saveCoordenates.t + '" class="V infield" src="images/SB/0'
 						+ saveCoordenates.t + '_90.png" ondblclick="bbb(this,event);"/>');
@@ -264,22 +251,12 @@ function bbb(t,event)
 	
 	if ((event.ctrlKey==1)&&((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0))
 	  {
-		console.log("The CTRL key was pressed!");
-		console.log(t);
-		console.log(event);
-		
-		
 		d = $(t).parent();
-
-		
-		
 		sheepId = $(t).attr('id');
 		topPx=d[0].offsetTop;
 		leftPx=d[0].offsetLeft;
 		placeHolderId=d[0].id; 
 		rotation = d[0].firstChild.className[0];
-		
-//		$(t).draggable('enable');
 		
 		unlockDroppableInfo ={
 				"sheepId" : sheepId,
@@ -289,13 +266,6 @@ function bbb(t,event)
 				"rotation" : rotation
 		};
 			
-		//console.log(d);
-		console.log("top=" + parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20));
-		console.log("left="+parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20 - 7));
-		console.log("sheepId="+unlockDroppableInfo.sheepId);
-		console.log("placeHolderId="+unlockDroppableInfo.placeHolderId);
-		console.log("rotation="+unlockDroppableInfo.rotation);
-		
 		//Активовуємо драгабл на кораблі по якому даблклікнули+CTRL
 		$(t).attr('ondblclick','rotate(this);');
 		$(t).draggable({
@@ -309,11 +279,10 @@ function bbb(t,event)
 			snap:".ui-droppable",
 			start : function(event,ui)
 			{
-				console.log("druging started");
 				enableDroppables(unlockDroppableInfo);
 			},
 			stop: function(event, ui) {
-				//$(t).draggable( "option", "disabled", true );
+				$(t).draggable( "option", "disabled", true );
 				$(t).attr('ondblclick',"");
 			}
 		});
@@ -333,12 +302,6 @@ function bbb(t,event)
 // протележна до disableDroppables()
 function enableDroppables(unlockDroppableInfo)
 {	
-	//console.log(d);
-	console.log("top=" + parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20));
-	console.log("left="+parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20 - 7));
-	console.log("sheepId="+unlockDroppableInfo.sheepId);
-	console.log("placeHolderId="+unlockDroppableInfo.placeHolderId);
-	console.log("rotation="+unlockDroppableInfo.rotation);
 	var
 	x0 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7 - 1;
 	x1 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7 + 1;
@@ -353,19 +316,26 @@ function enableDroppables(unlockDroppableInfo)
 	y4 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20) + 3;
 	y5 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20) + 4;
 	
-	console.log("************************************************************************************************************");
-	console.log(x2);
-	console.log(y2);
-	
-	
 if (unlockDroppableInfo.sheepId == "sheep_1") {
 	$("#X" + x2 + "_Y" + y2).attr("sheep", false);
 	M[x2][y2] = "00";
+	var sheepsNear = 0;
 	
 	for (var i = x0; i <= x1; i++) {
 		for (var j = y0; j <= y1; j++) {
-			$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
-			$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			for (var m = ( - 1 + i); m <= (1 + i); m++) {
+				for (var n = (- 1 + j); n <= (1 + j); n++) {
+					if (($("#X" + m + "_Y" + n).attr("sheep") != undefined)&&($("#X" + m + "_Y" + n).attr("sheep") == "true")) {
+						sheepsNear++;
+					}
+				}
+			}
+			
+			if (sheepsNear == 0){
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+			sheepsNear = 0;
 		}
 	}
 }
@@ -465,21 +435,7 @@ if (unlockDroppableInfo.rotation == "V") {
 		}
 	};
 };
-	
-	
-	
-	
-	
-	console.log(unlockDroppableInfo);
-	console.log("провірити чи дективовані дропабли навколо корабля. " +
-						"Якщо дективовані то активувати всі заблоковані дропабли навколо корабля"
-						+"встановлювати в матриці 00 на місце де був розташований корабель");
-	setOldCoordsInM();
 }
-
-function setOldCoordsInM()
-{}
-
 
 // Деактивовує елементи droppable за координатами
 function disableDroppables(obj) {
@@ -584,8 +540,6 @@ function disableDroppables(obj) {
  * 
  */
 function sendM() {
-	console.log(M);
-
 	var j = {
 		"a" : M[0],
 		"b" : M[1],
@@ -599,8 +553,6 @@ function sendM() {
 		"j" : M[9],
 	};
 	var Send = JSON.stringify(j);
-	console.log(Send);
-
 	$.ajax({
 		url : 'init_sheeps.html',
 		type : 'POST',
@@ -1025,7 +977,6 @@ function start(ct) {
 			"sheep10" : sheep10
 	};
 	stringa = JSON.stringify(sheeps);
-	console.log(stringa);
 	$.post("sheepsReady.html", 
 			{
 				sheepsReady : stringa,
@@ -1040,7 +991,7 @@ function start(ct) {
 			});
 };
 function getSheeps() {
-	alert("getSheeps()");
+//	alert("getSheeps()");
 	M1 = new Array();
 	for ( var i = 0; i < 10; i++) {
 		M1[i] = new Array();
