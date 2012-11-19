@@ -102,7 +102,7 @@
 	font-size: 20px;
 	font-weight: bold;
 	margin-top: -28px;
-	/* 	position: absolute; */
+	 	position: absolute;
 }
 
 .field2 .v_markers {
@@ -396,4 +396,20 @@
 	margin-left: 87px;
 	width: 400px;
 	height: 176px;
+}
+
+#locker {
+	
+}
+looseBody {
+	background-color: red;
+	font-family: LC Chalk;
+	font-size: 35px;
+	color: #5B2FCE;
+}
+victoryBody {
+	background-color: green;
+	font-family: LC Chalk;
+	font-size: 35px;
+	color: #5B2FCE;
 }

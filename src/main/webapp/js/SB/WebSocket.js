@@ -79,7 +79,3 @@ function testWS()
 {
 	$.get("Test.html"); 
 }
-
-function loose() {
-	location.href = "Loose.html";
-}

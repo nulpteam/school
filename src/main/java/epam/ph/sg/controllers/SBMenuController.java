@@ -97,7 +97,7 @@ public class SBMenuController {
 			server.setPlayer(player);
 			server.setGameBoard(board);
 			game.setServer(server);
-			String s = game.setFirstTimeMoveRight();
+			game.setFirstTimeMoveRight();
 			ActiveGames.addGame(game);
 			session.setAttribute("Game", game);
 			session.setAttribute("ConnectionType", "server");
@@ -185,9 +185,9 @@ public class SBMenuController {
 		return "SB/SbStart";
 	}
 
-	@RequestMapping(value = "/Victory.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/Victory.html", method = RequestMethod.POST)
 	public String Victory(Model model, HttpSession session) {
-		int gameId = ((Game) session.getAttribute("Game")).getId();
+		//int gameId = ((Game) session.getAttribute("Game")).getId();
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
@@ -195,7 +195,7 @@ public class SBMenuController {
 		return "SB/Victory";
 	}
 
-	@RequestMapping(value = "/Loose.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/Loose.html", method = RequestMethod.POST)
 	public String Loose(Model model, HttpSession session) {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
@@ -224,10 +224,8 @@ public class SBMenuController {
 			game.getClient().getConn()
 					.sendMessage(game.getClient().getGameBoard().toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "OK";
 	}
-
 }
