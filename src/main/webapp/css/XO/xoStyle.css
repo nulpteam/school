@@ -16,11 +16,17 @@
 	margin-top: 300px;
 }
 
+#xoServerList .menu #list {
+	overflow: auto;
+	height: 420px;
+	width: 345px;
+}
+
 #xoStatistics table {
 	width: 420px;
 	text-align: center;
 	vertical-align: middle;
-	margin: 100px 100px;
+	margin: 150px 100px;
 }
 
 #xoStatistics table .iam {

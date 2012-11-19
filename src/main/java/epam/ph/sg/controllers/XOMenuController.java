@@ -3,6 +3,8 @@ package epam.ph.sg.controllers;
 /**
  * @author Paul Michael T.
  */
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -44,7 +46,20 @@ public class XOMenuController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		model.addAttribute("xoStatList", XOStatistics.getAllStatistics());
+		List<XOStatistics> list = XOStatistics.getAllStatistics();
+		if (list.size() < 10) {
+			model.addAttribute("xoStatList", list);
+		} else {
+			model.addAttribute("xoStatList", list.subList(0, 10));
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getName().equals(user.getName())) {
+				model.addAttribute("myPos", i + 1);
+				model.addAttribute("myStats", list.get(i));
+				break;
+			}
+		}
 		return "XO/Statistics";
 	}
 

@@ -13,7 +13,7 @@ public class XOGame {
 	private User server = null; // Server User instance
 	private User client = null; // Client User instance
 
-	private int timerCount = 0;
+	private int gameTimerCount = 0;
 	
 	/**
 	 * Set game status Time out and change player statistics
@@ -21,9 +21,9 @@ public class XOGame {
 	 * @param outId
 	 *            - Outer id
 	 */
-	public void timerStart(final int id) {
-		timerCount++;
-		final int myTimerCount = timerCount;
+	public void gameTimeOut(final int id) {
+		gameTimerCount++;
+		final int myTimerCount = gameTimerCount;
 		new Thread() {
 			@Override
 			public void run() {
@@ -32,7 +32,7 @@ public class XOGame {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				if (myTimerCount == timerCount) {
+				if (myTimerCount == gameTimerCount) {
 					if (status.getLastPlayer() == id) {
 						status.setWinnerId(id);
 						status.setTimeOut(true);
@@ -120,5 +120,25 @@ public class XOGame {
 
 	public void setClient(User client) {
 		this.client = client;
+	}
+	
+
+	private int serverTimerCount = 0;
+	public void serverTimeOut() {
+		serverTimerCount++;
+		final int myTimerCount = serverTimerCount;
+		new Thread() {
+			@Override
+			public void run() {
+				try {
+					sleep(6000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if (myTimerCount == serverTimerCount) {
+					XOConnector.getServerMap().remove(server.getId());
+				}
+			}
+		}.start();
 	}
 }
