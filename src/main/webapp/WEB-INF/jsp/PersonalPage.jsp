@@ -30,52 +30,54 @@
 		<tr id="name" class="name">
 			<td class="param">${langPack['Name']}</td>
 			<td class="value">${user.name}</td>
-			<td class="editButton"><div onclick=editShowHide(this);>${langPack['PP_edit']}</div></td>
+			<td class="editButton"><div onclick=editShowHide(this);></div></td>
 		</tr>
 		<tr class="edit">
 			<td class="error"></td>
 			<td><input></td>
-			<td class="saveButton"><div onclick=saveName();>${langPack['PP_save']}</div></td>
+			<td class="saveButton"><div onclick=saveName();></div></td>
 		</tr>
 		<tr id="email">
 			<td class="param">Email:</td>
 			<td class="value">${userAddInfo.email}</td>
-			<td class="editButton"><div onclick=editShowHide(this);>${langPack['PP_edit']}</div></td>
+			<td class="editButton"><div onclick=editShowHide(this);></div></td>
 		</tr>
 		<tr class="edit">
 			<td class="error"></td>
 			<td><input></td>
-			<td class="saveButton"><div onclick=saveEmail();>${langPack['PP_save']}</div></td>
+			<td class="saveButton"><div onclick=saveEmail();></div></td>
 		</tr>
 		<tr id="birthday">
 			<td class="param">${langPack['PP_birthday']}</td>
 			<td class="value">${userAddInfo.birthday}</td>
-			<td class="editButton"><div onclick=editShowHide(this);>${langPack['PP_edit']}</div></td>
+			<td class="editButton"><div onclick=editShowHide(this);></div></td>
 		</tr>
 		<tr class="edit">
 			<td class="error"></td>
 			<td><input id="date"></input></td>
-			<td class="saveButton"><div onclick=saveBirthday();>${langPack['PP_save']}</div></td>
+			<td class="saveButton"><div onclick=saveBirthday();></div></td>
 		</tr>
 		<tr id="about">
 			<td class="param">${langPack['PP_about']}</td>
 			<td class="value">${userAddInfo.about}</td>
-			<td class="editButton"><div onclick=editShowHide(this);>${langPack['PP_edit']}</div></td>
+			<td class="editButton"><div onclick=editShowHide(this);></div></td>
 		</tr>
 		<tr class="edit">
 			<td class="error"></td>
 			<td><textarea rows="5"></textarea></td>
-			<td class="saveButton"><div onclick=saveAbout();>${langPack['PP_save']}</div></td>
+			<td class="saveButton"><div onclick=saveAbout();></div></td>
 		</tr>
 		<tr id="pass">
 			<td class="param">${langPack['PP_password']}</td>
 			<td class="error"></td>
-			<td class="editButton"><div onclick=editShowHide(this);>${langPack['PP_edit']}</div></td>
+			<td class="editButton"><div onclick=editShowHide(this);></div></td>
 		</tr>
 		<tr class="edit">
-			<td><p>${langPack['PP_newPassword']}</p><input id="old" class="pass" type="password"></td>
-			<td><p>${langPack['PP_oldPassword']}</p><input id="new" class="pass" type="password"></td>
-			<td class="saveButton"><div onclick=savePass();>${langPack['PP_save']}</div></td>
+			<td class="pass"><p class="error">${langPack['PP_newPassword']}</p>
+				<input id="old" type="password"></td>
+			<td class="pass"><p class="error">${langPack['PP_oldPassword']}</p>
+				<input id="new" type="password"></td>
+			<td class="saveButton"><div onclick=savePass();></div></td>
 		</tr>
 	</table>
 </div>

@@ -11,6 +11,7 @@
 }
 
 #xoWaitPage #msg {
+	color: inherit;
 	font-size: 20px;
 	margin-top: 300px;
 }

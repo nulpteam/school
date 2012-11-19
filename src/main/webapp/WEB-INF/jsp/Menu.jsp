@@ -22,7 +22,7 @@
 		}
 	</script>
 	<div class="title">
-		<p align="center">${langPack['Welcome']}</p>
+		<p align="center">${langPack['Welcome']}, ${user.name}</p>
 	</div>
 	<div class="menu">
 		<div class="button" onclick="goTo('XOMenu.html');">
