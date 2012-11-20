@@ -9,16 +9,16 @@ var lock;
 var myDamagedSheeps = 0;
 
 $(document).ready(function(){
-	console.log("WEBSOCKET");
+//	console.log("WEBSOCKET");
 	userName = $("#userName").attr("class");
 	gameId = $("#gameID").attr("class");
 	connectionType = $("#ConnectionType").attr("class");
 	lock = $("#lock").attr("class");
 	
-	console.log(userName);
-	console.log(gameId);
-	console.log(connectionType);
-	console.log(lock);
+//	console.log(userName);
+//	console.log(gameId);
+//	console.log(connectionType);
+//	console.log(lock);
 	
 	//lock
 	if (connectionType!=lock)
@@ -35,7 +35,7 @@ $(document).ready(function(){
 	
 	
 	socket = new WebSocket("ws://"+location.hostname+":8081");
-	console.log(location.hostname);
+//	console.log(location.hostname);
 	socket.onopen = function () {
 		  socket.send(gameId + "&" + userName+"&"+connectionType);
 		  console.log("------------------------------Соединение открылось-----------------------------");
@@ -43,7 +43,7 @@ $(document).ready(function(){
 	socket.onmessage = function (event) {
 		if(event.data==='kill')
 		{
-			alert('kill');
+//			alert('kill');
 			victory();
 //			goTo2("SbKill.html",connectionType);
 		}

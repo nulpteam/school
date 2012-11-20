@@ -272,11 +272,11 @@
 		</div>
 	</div>
 <div class=debug>
-<input type="button" value="GetM" onClick="getM();"/>
+<!-- <input type="button" value="GetM" onClick="getM();"/> -->
 <!-- <input type="button" value="SendM" onClick="sendM();"/> -->
 <%-- <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/> --%>
 <!-- <input type="button" value="Test1" onClick="testWS();"/> -->
-<input type="button" value="${ConnectionType}"/>
+<%-- <input type="button" value="${ConnectionType}"/> --%>
 
 
 </div>

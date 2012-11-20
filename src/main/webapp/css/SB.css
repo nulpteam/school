@@ -287,6 +287,22 @@
 	width: 50px;
 }
 
+.BSGo {
+	background: url("../images/SB/BSGo.png") no-repeat;
+	position: relative;
+	top: 110px;
+	height: 49px;
+	width: 50px;
+	left: 544px;
+	cursor: pointer;
+}
+
+.BSGo:hover {
+	background: url("../images/SB/BSGo.png") bottom no-repeat;
+	height: 51px;
+	width: 50px;
+}
+
 .sound img {
 	position: relative;
 	top: -93px;

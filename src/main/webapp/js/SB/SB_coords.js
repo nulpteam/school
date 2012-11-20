@@ -175,7 +175,6 @@ function parseCoords(coords, ui) {
  * 
  */
 function saveCoords(saveCoordenates) {
-
 	// Деактивовуємо дроппабли в які вже встановлено кораблик
 	disableDroppables(saveCoordenates);
 	// зберігає
@@ -548,6 +547,9 @@ function disableDroppables(obj) {
  * 
  */
 function sendM() {
+	if (((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0)) {
+		$(".BSGo").css("visibility", "visible");
+	}
 	var j = {
 		"a" : M[0],
 		"b" : M[1],
