@@ -35,7 +35,7 @@
 				<div class="sound">
 					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
 				</div>
-				<div class="SbMButtonRightStop" onclick="goTo('SbStop.html');"></div>
+				<div class="SbMButtonRightStop" onclick="goTo2('SbStop.html','${ConnectionType}');"></div>
 <!-- 		</div> -->
 		
 		<div class=clear></div>
