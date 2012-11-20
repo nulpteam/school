@@ -37,7 +37,7 @@
 		<div class="button" onclick=points();>
 			<p class="buttonText">${langPack['Points']}</p>
 		</div>
-		<div class="button" onclick=infection();>
+		<div class="button" onclick="goTo('Infection.html');">
 			<p class="buttonText">${langPack['Infection']}</p>
 		</div>
 		<div class="button" onclick="goTo('PersonalPage.html');">

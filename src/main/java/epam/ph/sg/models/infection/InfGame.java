@@ -22,8 +22,8 @@ public class InfGame implements Serializable{
 
 	private static Logger logger = Logger.getLogger(InfGame.class);
 
-    
-	
+
+
 	private InfPlayer server, client;
 	private static int gameNumber = 0;
 	private String id;
@@ -47,7 +47,7 @@ public class InfGame implements Serializable{
 			message.setType("serverConnect");
 			message.setServerName(server.getName());
 			sendMessage("server", message);
-			
+
 
 		} else if (playerType.equals("client")) {
 
@@ -57,7 +57,7 @@ public class InfGame implements Serializable{
 			message.setClientName(client.getName());
 			message.setServerName(server.getName());
 			sendMessage("client", message);
-     		sendMessage("server", message);
+			sendMessage("server", message);
 
 		}
 	}
@@ -67,7 +67,7 @@ public class InfGame implements Serializable{
 		try {
 
 			if (userType.equals("server")) {
-                
+
 				server.getConn().sendMessage(jsonParser.convertClientMessageToJson(message));
 
 			} else if (userType.equals("client")) {
@@ -79,6 +79,36 @@ public class InfGame implements Serializable{
 		} catch (IOException e) {
 			logger.error(e.getMessage());
 		}
+	}
+
+	public void changeGame(InfClientMessage message){
+		int x=0;
+		int y=0;
+		if (message.getType().equals("move")){
+
+
+			if (message.getUserType().equals("server")){
+				logger.debug("Server make move");
+				x=message.getXcoord();
+				y=message.getYcoord();
+				message.setXcoord(x);
+				message.setYcoord(y);
+				message.setType("makechanges");
+				sendMessage("client", message);
+				sendMessage("server", message);
+				
+			}
+			if (message.getUserType().equals("client")){
+				logger.debug("Client make move");
+				x=message.getXcoord();
+				y=message.getYcoord();
+				message.setXcoord(x);
+				message.setYcoord(y);
+				message.setType("makechanges");
+				sendMessage("server", message);
+				sendMessage("client", message);
+			}
+		} 
 	}
 
 

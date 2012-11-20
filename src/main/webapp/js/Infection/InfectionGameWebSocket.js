@@ -5,8 +5,8 @@ var waitForClient = true;
 
 
 $(document).ready(function() {
-	userType = $('#game_table').attr('userType');
-	gameId = $('#game_table').attr('gameId');
+	userType = $('#infgame_table').attr('userType');
+	gameId = $('#infgame_table').attr('gameId');
 
 	if (userType == "client")
 		lock = true;
@@ -42,16 +42,16 @@ socket.onmessage = function(event) {
     switch (msg.type) {
 
 	case "clientConnect":
-		$('#player_label_1 > label').text(msg.serverName);
-		$('#player_label_2 > label').text(msg.clientName);
-		$('#score_label_1 > label').text(msg.serverScore);
-		$('#score_label_2 > label').text(msg.clientScore);
+		$('#infplayer_label_1 > label').text(msg.serverName);
+		$('#infplayer_label_2 > label').text(msg.clientName);
+		$('#infscore_label_1 > label').text(msg.serverScore);
+		$('#infscore_label_2 > label').text(msg.clientScore);
 		waitForClient = false;
 		break;
 
 	case "serverConnect":
-		$('#player_label_1 > label').text(msg.serverName);
-		$('#score_label_1 > label').text(msg.serverScore);
+		$('#infplayer_label_1 > label').text(msg.serverName);
+		$('#infscore_label_1 > label').text(msg.serverScore);
 		break;
 
 
@@ -63,16 +63,34 @@ socket.onmessage = function(event) {
 			lock = msg.clientLock;
 		}
 
-		$('#player_label_1 > label').text(msg.serverName);
-		$('#player_label_2 > label').text(msg.clientName);
-		$('#score_label_1 > label').text(msg.serverScore);
-		$('#score_label_2 > label').text(msg.clientScore);
+		$('#infplayer_label_1 > label').text(msg.serverName);
+		$('#infplayer_label_2 > label').text(msg.clientName);
+		$('#infscore_label_1 > label').text(msg.serverScore);
+		$('#infscore_label_2 > label').text(msg.clientScore);
 
-		if ($('#player_label_2 > label').text() != "") {
+		if ($('#infplayer_label_2 > label').text() != "") {
 			waitForClient = false;
 		}
 
 		break;
+		
+	case "makechanges":
+		if (msg.moveType=="server") {
+			lock = msg.clientLock;
+			lock = msg.serverLock;
+			var fieldX = msg.xcoord;
+			var fieldY = msg.ycoord;
+			$('#' + X + fieldX + Y + fieldY + '> img').attr('src', "images/Infection/red_chip.png");
+		} else if (msg.moveType=="client") {
+			lock = msg.clientLock;
+			lock = msg.serverLock;
+			var fieldX = msg.xcoord;
+			var fieldY = msg.ycoord;
+			$('#' + X + fieldX + Y + fieldY + '> img').attr('src', "images/Infection/blue_chip.png");
+		}
+		break;
 	}
+    
+    
 
 };

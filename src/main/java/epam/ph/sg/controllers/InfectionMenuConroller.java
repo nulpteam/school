@@ -54,8 +54,7 @@ public class InfectionMenuConroller {
 		server = new InfPlayer(user.getName(), game.getId());//новий гравець 
 		game.setServer(server);//встановлюємо сервер
 		InfGameMap.addGame(game);//додаємо гру в список ігор
-		System.out.println("Debug create!!+!+!"+InfGameMap.getGames());
-		
+				
 		session.setAttribute("infGamesMap", InfGameMap.getGames());
 		session.setAttribute("infGameId", game.getId());
 		session.setAttribute("infUserType", "server");
@@ -76,14 +75,14 @@ public class InfectionMenuConroller {
 		game = InfGameMap.getGames().get(gameId);
 		client = new InfPlayer(user.getName(), game.getId());
 		game.setClient(client);
-		//System.out.println("Server:"+game.getServer()+"Client:"+game.getClient());
+		
 		session.setAttribute("infUserType", "client");
 		session.setAttribute("infGameId", game.getId());
 
 		return true;
 	}
 	
-	@RequestMapping(value = "/InfectionConnectList.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/InfectionConnectList.html")
 	public String getGameList(HttpSession session) {
 
 		String oldGameId=null;
@@ -95,7 +94,7 @@ public class InfectionMenuConroller {
 		} else {
 			return "Infection/InfectionGameList";
 		}
-
+       
 	}
 
 }

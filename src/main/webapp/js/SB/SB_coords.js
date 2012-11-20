@@ -248,6 +248,7 @@ function saveCoords(saveCoordenates) {
 //
 function bbb(t,event)
 {
+	alert("bbb");
 	
 	if ((event.ctrlKey==1)&&((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0))
 	  {
@@ -268,6 +269,8 @@ function bbb(t,event)
 			
 		//Активовуємо драгабл на кораблі по якому даблклікнули+CTRL
 		$(t).attr('ondblclick','rotate(this);');
+		alert("can rotate");
+		alert("false");
 		$(t).draggable({
 			revert : "invalid",
 			helper : 'original',
@@ -279,11 +282,13 @@ function bbb(t,event)
 			snap:".ui-droppable",
 			start : function(event,ui)
 			{
+				alert("sstart");
 				enableDroppables(unlockDroppableInfo);
 			},
 			stop: function(event, ui) {
+				alert("stop");
 				$(t).draggable( "option", "disabled", true );
-				$(t).attr('ondblclick',"");
+				$(t).attr('ondblclick',"bbb(this,event);");
 			}
 		});
 		
@@ -998,18 +1003,25 @@ function getSheeps() {
 		for ( var j = 0; j < 10; j++) {
 			M1[i][j] = M[i][j];
 		};
-	}
+	};
+	for ( var i = 10; i < 15; i++) {
+		M1[i] = new Array();
+		for ( var j = 10; j < 15; j++) {
+			M1[i][j] = "00";
+		};
+	};
 	for(var k = 0; k <= 9; k++) {
 		for (var i = 0; i <= 9; i++) {
 			for (var j = 0; j <= 9; j++) {
 				if((M1[i][j] == "41")&&(sheepCounter == 10)) {
-					if((M1[i + 1][j] == "41")) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "41")&&(M1[i + 2][j] == "41")&&(M1[i + 3][j] == "41")) {
 						img10 = ("images/SB/04.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
 						M1[i + 2][j] = "00";
 						M1[i + 3][j] = "00";
-					} else if((M1[i][j + 1] == "41")) {
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "41")&&(M1[i][j + 2] == "41")&&(M1[i][j + 3] == "41")) {
 						img10 = ("images/SB/04_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
@@ -1022,12 +1034,13 @@ function getSheeps() {
 				};
 				
 				if((M1[i][j] == "31")&&(sheepCounter == 9)) {
-					if((M1[i + 1][j] == "31")) {
+					if(((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "31")&&(M1[i + 2][j] == "31"))) {
 						img09 = ("images/SB/03.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
 						M1[i + 2][j] = "00";
-					} else if((M1[i][j + 1] == "31")) {
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "31")&&(M1[i][j + 2] == "31")) {
 						img09 = ("images/SB/03_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
@@ -1038,12 +1051,13 @@ function getSheeps() {
 					sheepCounter--;
 				};
 				if((M1[i][j] == "31")&&(sheepCounter == 8)) {
-					if((M1[i + 1][j] == "31")) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "31")&&(M1[i + 2][j] == "31")) {
 						img08 = ("images/SB/03.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
 						M1[i + 2][j] = "00";
-					} else if((M1[i][j + 1] == "31")) {
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "31")&&(M1[i][j + 2] == "31")) {
 						img08 = ("images/SB/03_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
@@ -1055,11 +1069,12 @@ function getSheeps() {
 				};
 				
 				if((M1[i][j] == "21")&&(sheepCounter == 7)) {
-					if((M1[i + 1][j] == "21")) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "21")) {
 						img07 = ("images/SB/02.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
-					} else if((M1[i][j + 1] == "21")) {
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "21")) {
 						img07 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
@@ -1069,11 +1084,12 @@ function getSheeps() {
 					sheepCounter--;
 				};
 				if((M1[i][j] == "21")&&(sheepCounter == 6)) {
-					if((M1[i + 1][j] == "21")) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "21")) {
 						img06 = ("images/SB/02.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
-					} else if((M1[i][j + 1] == "21")) {
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "21")) {
 						img06 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
@@ -1083,11 +1099,12 @@ function getSheeps() {
 					sheepCounter--;
 				};
 				if((M1[i][j] == "21")&&(sheepCounter == 5)) {
-					if((M1[i + 1][j] == "21")) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "21")) {
 						img05 = ("images/SB/02.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
-					} else if((M1[i][j + 1] == "21")) {
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "21")) {
 						img05 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
@@ -1128,4 +1145,4 @@ function getSheeps() {
 			}
 		}
 	}
-}
+};

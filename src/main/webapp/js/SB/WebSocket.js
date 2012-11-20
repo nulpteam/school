@@ -41,6 +41,13 @@ $(document).ready(function(){
 		  console.log("------------------------------Соединение открылось-----------------------------");
 		};
 	socket.onmessage = function (event) {
+		if(event.data==='kill')
+		{
+			alert('kill');
+			goTo2("SbKill.html",connectionType);
+		}
+		else
+		{
 			var msg = JSON.parse(event.data);
 			if (msg.sheep == "00") {
 //				alert("msg.sheep: " + msg.sheep);
@@ -66,6 +73,7 @@ $(document).ready(function(){
 			}
 //			  alert("Пришло сообщение с содержанием: " + event.data);
 			  console.log(event.data);
+		}
 	};
 });
 	

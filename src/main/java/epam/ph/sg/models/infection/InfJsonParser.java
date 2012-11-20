@@ -4,6 +4,7 @@
 package epam.ph.sg.models.infection;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonGenerationException;
@@ -14,7 +15,11 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author roman
  *
  */
-public class InfJsonParser {
+public class InfJsonParser implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9138554779613955671L;
 	private Logger logger;
 	private ObjectMapper mapper;
 

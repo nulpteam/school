@@ -202,30 +202,78 @@ public class SBMenuController {
 		session.removeAttribute("ConnectionType");
 		return "SB/Loose";
 	}
+	
+	@RequestMapping(value = "/SbStop.html", method = RequestMethod.POST)
+	public String StopSbGame(@RequestParam("connType") String connType,
+			Model model, HttpSession session) {
+		Game g = (Game)session.getAttribute("Game");
+		int gameId = g.getId();
+		if(connType.equalsIgnoreCase("server"))
+		{
+			log.debug("+*+*+*+*+*+*===server");
+			try {
+				g.getClient().getConn().sendMessage("kill");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else if(connType.equalsIgnoreCase("client"))
+		{
+			log.debug("+*+*+*+*+*+*===client");
+			try {
+				g.getServer().getConn().sendMessage("kill");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		GamesList.removeGameFromListBS(gameId);
+		session.removeAttribute("Game");
+		session.removeAttribute("Sheeps");
+		session.removeAttribute("ConnectionType");
+		return "SB/SbMenu";
+	}
+	
+	
+	@RequestMapping(value = "/SbKill.html", method = RequestMethod.POST)
+	public String killSbGame(@RequestParam("connType") String connType,
+			Model model, HttpSession session) {
+		Game g = (Game)session.getAttribute("Game");
+		int gameId = g.getId();
+		GamesList.removeGameFromListBS(gameId);
+		session.removeAttribute("Game");
+		session.removeAttribute("Sheeps");
+		session.removeAttribute("ConnectionType");
+		return "SB/SbMenu";
+	}
 
+	
+	
+	
+	
+	
 	/**
 	 * Тест - стерти коли стане не потрібним
 	 */
 
-	@RequestMapping(value = { "/Test.html" }, method = RequestMethod.GET)
-	public @ResponseBody
-	String test(HttpSession session, Model model) {
-		// !
-		Game game = ActiveGames.getGame(1);
-		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-				+ game.getServer().getConn());
-		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-				+ game.getClient().getConn());
-		try {
-			game.getServer().getConn().sendMessage("fiskult-privet Server");
-			game.getClient().getConn().sendMessage("fiskult-privet Client");
-			game.getServer().getConn()
-					.sendMessage(game.getServer().getGameBoard().toString());
-			game.getClient().getConn()
-					.sendMessage(game.getClient().getGameBoard().toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return "OK";
-	}
+//	@RequestMapping(value = { "/Test.html" }, method = RequestMethod.GET)
+//	public @ResponseBody
+//	String test(HttpSession session, Model model) {
+//		// !
+//		Game game = ActiveGames.getGame(1);
+//		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+//				+ game.getServer().getConn());
+//		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+//				+ game.getClient().getConn());
+//		try {
+//			game.getServer().getConn().sendMessage("fiskult-privet Server");
+//			game.getClient().getConn().sendMessage("fiskult-privet Client");
+//			game.getServer().getConn()
+//					.sendMessage(game.getServer().getGameBoard().toString());
+//			game.getClient().getConn()
+//					.sendMessage(game.getClient().getGameBoard().toString());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return "OK";
+//	}
 }

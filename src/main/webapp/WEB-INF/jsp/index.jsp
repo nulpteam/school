@@ -16,7 +16,7 @@
 <link href="css/SB.css" type="text/css" rel="stylesheet">
 <link href="css/Personal/jquery-ui-datepicker.css" type="text/css"
 	rel="stylesheet">
-
+<link href="css/InfectionGame.css" type="text/css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/index.js" type="text/javascript"></script>
 <script type="text/javascript">

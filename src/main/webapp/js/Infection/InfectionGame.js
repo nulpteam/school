@@ -11,12 +11,23 @@ $(document).ready(function(){
 	$('#X0Y6 >img').attr('src',"images/Infection/blue_chip.png" );
 	$('#X6Y0 >img').attr('src',"images/Infection/blue_chip.png" );
 	$('#X6Y6 >img').attr('src',"images/Infection/red_chip.png" );
-
 }
 );
 
-function putRedPoint(td) {
-	$('#' + td.id + '> img').attr('src', "images/Infection/red_chip.png");
+function move(td) {
+	//$('#' + td.id + '> img').attr('src', "images/Infection/red_chip.png");
+	x = parseX(td.id);
+	y = parseY(td.id);
+	var userType = $('#infgame_table').attr('userType');
+	var move = {
+			"type" : "move",
+			"userType" : userType,
+			"gameId" : gameId,
+			"xcoord": x,
+			"ycoord": y,
+			"moveType":userType
+	};
+	socket.send(JSON.stringify(move));
 }
 
 function lightFields(td){
