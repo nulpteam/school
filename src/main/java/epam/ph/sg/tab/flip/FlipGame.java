@@ -51,7 +51,7 @@ public class FlipGame {
 
 	public void nextLevel() {
 		level++;
-		if (level < 9) {
+		if (level < 13) {
 			field = FlipMapCreator.prepare(level);
 			status.setNextLevel(false);
 		} else {

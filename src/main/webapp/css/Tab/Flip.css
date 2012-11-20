@@ -3,18 +3,18 @@
 }
 
 #flip #field {
-	margin: 20px auto;
+	margin: 50px auto;
 }
 
 #flip #field div {
-	height: 20px;
-	width: 20px;
+	height: 30px;
+	width: 30px;
 }
 
-#flip #field .black {	
+#flip #field .black {
 	background-color: black;
 }
 
-#flip #field .white {	
+#flip #field .white {
 	background-color: white;
 }
