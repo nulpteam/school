@@ -1,20 +1,12 @@
-#body{
-	background-color: white;
+#infbody{
 	font-size: 35px;
 }
 
-#bg {
-	background-image: url('../images//Infection/infection_game_background.png');
+#infbg {
 	background-repeat: no-repeat;
 	width: 600px;
 	height: 700px;
 	margin: 25px auto;
-	
-	box-shadow: 0 0 5px black; /* Параметры тени */
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Firefox */
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Safari и Chrome */
-	
 }
 
 #infection_title{
@@ -24,11 +16,11 @@
 	margin:40px 160px;
 }
 
-#table tr td {
+#inftable tr td {
 	width:40px;
 }
 
-#table tr {
+#inftable tr {
 	height:40px;
 }
 
@@ -36,15 +28,20 @@
 	background-image: url('../images//Infection/hoverfield_cell.png');
 }
 
-#game_table {
-	position:absolute;
-	margin:160px 120px;
-	width:280px;
-	height:280px;
-	
+#infgame_table {
+	position:absolute; 
+	margin:1px 1px;
 }
 
-#player_label_1 {
+#inf_table_bg{
+	background-image: url('../images//Infection/infection_table1.png');
+	position:absolute; 
+	margin:120px 107px;
+	width:283px;
+	height:283px;
+}
+
+#infplayer_label_1 {
 	position: absolute;
 	margin: 460px 40px;
 	width: 160px;
@@ -53,7 +50,7 @@
 	
 }
 
-#player_label_2 {
+#infplayer_label_2 {
 	position: absolute;
 	margin: 460px 320px;
 	width: 160px;
@@ -62,7 +59,7 @@
 	
 }
 
-#score_label_1 {
+#infscore_label_1 {
 	position: absolute;
 	margin: 550px 40px;
 	width: 160px;
@@ -70,10 +67,18 @@
 	color:red;
 }
 
-#score_label_2 {
+#infscore_label_2 {
 	position: absolute;
 	margin: 550px 320px;
 	width: 160px;
 	text-align: center;
 	color:red;
+}
+
+.infCreateGameButton{
+	background-image: url('../images/paperList/button.png');
+}
+
+.infConnectButton{
+	background-image: url('../images/paperList/button.png');
 }

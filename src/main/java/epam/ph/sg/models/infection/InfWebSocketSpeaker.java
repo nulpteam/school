@@ -44,8 +44,9 @@ public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 		if (clientMessage.getType().equals("userInfo")) {
 			game.setPlayerInfo(clientMessage.getUserType(), conn);
 		}
-
-		//game.makeChanges(clientMessage);
+        
+		game.changeGame(clientMessage);
+		
 
 	}
 }
