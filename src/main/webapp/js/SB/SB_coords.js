@@ -248,8 +248,6 @@ function saveCoords(saveCoordenates) {
 //
 function bbb(t,event)
 {
-	alert("bbb");
-	
 	if ((event.ctrlKey==1)&&((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0))
 	  {
 		d = $(t).parent();
@@ -259,22 +257,32 @@ function bbb(t,event)
 		placeHolderId=d[0].id; 
 		rotation = d[0].firstChild.className[0];
 		
+		if (($(t).css("top")) != "auto") {
+			a = parseInt($(t).css("top"));
+		} else {a = 0;}
+		if (($(t).css("left")) != "auto") {
+			b = parseInt($(t).css("left"));
+		} else {b = 0;}
+		
 		unlockDroppableInfo ={
 				"sheepId" : sheepId,
-				"topPx" : topPx,
-				"leftPx" : leftPx,
+				"topPx" : (topPx + a),
+				"leftPx" : (leftPx + b),
 				"placeHolderId" : placeHolderId, 
 				"rotation" : rotation
 		};
-			
+		$(t).css("top","0");
+		$(t).css("left","0");
+		$("#"+placeHolderId).css("top", (parseInt($("#"+placeHolderId).css("top")) + a));
+		$("#"+placeHolderId).css("left", (parseInt($("#"+placeHolderId).css("left")) + b));	
+		
 		//Активовуємо драгабл на кораблі по якому даблклікнули+CTRL
 		$(t).attr('ondblclick','rotate(this);');
-		alert("can rotate");
-		alert("false");
+		$(t).draggable();
+		$(t).draggable("enable");
 		$(t).draggable({
 			revert : "invalid",
 			helper : 'original',
-			//revertDuration : 500,
 			cursorAt : {
 				top : 10,
 				left : 10
@@ -282,20 +290,15 @@ function bbb(t,event)
 			snap:".ui-droppable",
 			start : function(event,ui)
 			{
-				alert("sstart");
 				enableDroppables(unlockDroppableInfo);
 			},
 			stop: function(event, ui) {
-				alert("stop");
-				$(t).draggable( "option", "disabled", true );
+				$(t).draggable( "disable" );
 				$(t).attr('ondblclick',"bbb(this,event);");
+				d[0].ofsetTop=0;
+				d[0].ofsetLeft=0;
 			}
-		});
-		
-		
-		
-		
-		
+		});	
 	}
 }
 
