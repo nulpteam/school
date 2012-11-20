@@ -18,7 +18,7 @@
 <!-- </head> -->
 <!-- <body> -->
 
-	<div class="paperList">
+	<div class="plbs paperList">
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>

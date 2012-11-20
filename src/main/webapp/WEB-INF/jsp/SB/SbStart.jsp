@@ -18,7 +18,7 @@
 <!-- </head> -->
 <!-- <body> -->
 	
-	<div class="paperList">
+	<div class="plbs paperList">
 	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>

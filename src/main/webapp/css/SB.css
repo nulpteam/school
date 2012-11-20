@@ -3,6 +3,10 @@
 /* 	font-size: 35px; */
 /* 	color: #5B2FCE; */
 /* } */
+.plbs
+{
+	background: url("../images/SB/list.png") no-repeat;
+}
 .clear {
 	clear: both;
 }
