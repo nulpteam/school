@@ -27,6 +27,7 @@ public class XOGameController {
 		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ xo.getId());
+		xo.getGame().serverTimeOut();
 		return xo.getGame().getClient();
 	}
 
@@ -36,7 +37,7 @@ public class XOGameController {
 		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ xo.getId());
-		xo.getGame().timerStart(xo.getGame().getClient().getId());
+		xo.getGame().gameTimeOut(xo.getGame().getClient().getId());
 	}
 
 	@RequestMapping(value = "/XOPut.html", method = RequestMethod.POST)

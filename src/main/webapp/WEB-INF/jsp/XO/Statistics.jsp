@@ -43,6 +43,22 @@
 					</tr>
 				</c:if>
 			</c:forEach>
+			<c:if test="${myPos > 10}">
+				<tr>
+					<td class="number">...</td>
+					<td class="name">...</td>
+					<td class="wins">...</td>
+					<td class="losses">...</td>
+					<td class="total">...</td>
+				</tr>
+				<tr>
+					<td class="iam">${myPos}</td>
+					<td class="iam">${myStats.name}</td>
+					<td class="iam">${myStats.wins}</td>
+					<td class="iam">${myStats.losses}</td>
+					<td class="iam">${myStats.total}</td>
+				</tr>
+			</c:if>
 		</tbody>
 	</table>
 </div>

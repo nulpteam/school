@@ -48,7 +48,7 @@ public class XOPlayer {
 			game.gameOver(id);
 		}
 		game.getStatus().setLastPlayer(id);
-		game.timerStart(id);
+		game.gameTimeOut(id);
 	}
 
 	/**
