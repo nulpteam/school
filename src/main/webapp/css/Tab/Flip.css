@@ -1,0 +1,20 @@
+#flip {
+	background-color: yellow;
+}
+
+#flip #field {
+	margin: 20px auto;
+}
+
+#flip #field div {
+	height: 20px;
+	width: 20px;
+}
+
+#flip #field .black {	
+	background-color: black;
+}
+
+#flip #field .white {	
+	background-color: white;
+}

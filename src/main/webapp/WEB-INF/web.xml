@@ -54,6 +54,7 @@
 		<url-pattern>/TabHome.html</url-pattern>
 		<url-pattern>/Chat.html</url-pattern>
 		<url-pattern>/Sudoku.html</url-pattern>
+		<url-pattern>/FlipGame.html</url-pattern>
 	</filter-mapping>
 	<error-page>
         <error-code>404</error-code>
