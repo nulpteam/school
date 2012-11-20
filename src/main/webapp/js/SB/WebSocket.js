@@ -44,12 +44,14 @@ $(document).ready(function(){
 		if(event.data==='kill')
 		{
 			alert('kill');
-			goTo2("SbKill.html",connectionType);
+			victory();
+//			goTo2("SbKill.html",connectionType);
 		}
 		else
 		{
 			var msg = JSON.parse(event.data);
 			if (msg.sheep == "00") {
+				$("#" + msg.point).attr("background", "images/SB/cant_be.png");
 //				alert("msg.sheep: " + msg.sheep);
 				lock = "";
 			} else {
@@ -57,6 +59,7 @@ $(document).ready(function(){
 				lock = connectionType;
 			}
 			if (msg.sheep != "00") {
+				$("#" + msg.point).attr("background", "images/SB/firePoint2.png");
 				myDamagedSheeps++;
 				if (myDamagedSheeps >= 20) {
 					loose();
