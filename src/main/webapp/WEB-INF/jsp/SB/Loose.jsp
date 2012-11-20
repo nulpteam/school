@@ -4,5 +4,9 @@
 <div class="paperList">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/SB/Loose.js" type="text/javascript"></script>
-	<h1>You loose the battle my admirale...</h1>
+	<div style="height: 500px; width: 400px; position: relative; left: 100px; top: 70px;">
+		<h1>You loose the battle my admirale...</h1>
+		<img alt="" src="images/SB/BSLoose.gif" height="400px" width="400px">
+	</div>
+	
 </div>
