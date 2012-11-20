@@ -248,6 +248,7 @@ function saveCoords(saveCoordenates) {
 //
 function bbb(t,event)
 {
+	alert("bbb");
 	
 	if ((event.ctrlKey==1)&&((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0))
 	  {
@@ -268,6 +269,8 @@ function bbb(t,event)
 			
 		//Активовуємо драгабл на кораблі по якому даблклікнули+CTRL
 		$(t).attr('ondblclick','rotate(this);');
+		alert("can rotate");
+		alert("false");
 		$(t).draggable({
 			revert : "invalid",
 			helper : 'original',
@@ -279,11 +282,13 @@ function bbb(t,event)
 			snap:".ui-droppable",
 			start : function(event,ui)
 			{
+				alert("sstart");
 				enableDroppables(unlockDroppableInfo);
 			},
 			stop: function(event, ui) {
+				alert("stop");
 				$(t).draggable( "option", "disabled", true );
-				$(t).attr('ondblclick',"");
+				$(t).attr('ondblclick',"bbb(this,event);");
 			}
 		});
 		
