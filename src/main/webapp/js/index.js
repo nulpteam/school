@@ -1,8 +1,14 @@
-var xoLink = 'XOMenu.html';
-var ppLink = 'PersonalPage.html';
-
 function goTo(link) {
 	$.post(link, function(resp) {
+		$('.paperList').remove();
+		$('.page').append(resp);
+		//console.log(resp);
+	});
+}
+function goTo2(link,param) {
+	$.post(link, {
+		connType : param
+	},function(resp) {
 		$('.paperList').remove();
 		$('.page').append(resp);
 		//console.log(resp);

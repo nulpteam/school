@@ -22,10 +22,10 @@
 		}
 	</script>
 	<div class="title">
-		<p align="center">Welcome</p>
+		<p align="center">${langPack['Welcome']}, ${user.name}</p>
 	</div>
 	<div class="menu">
-		<div class="button" onclick=goTo(xoLink);>
+		<div class="button" onclick="goTo('XOMenu.html');">
 			<p class="buttonText">${langPack['XO_title']}</p>
 		</div>
 		<div class="button" onclick="goTo('Sb.html');">
@@ -40,7 +40,7 @@
 		<div class="button" onclick="goTo('Infection.html');">
 			<p class="buttonText">${langPack['Infection']}</p>
 		</div>
-		<div class="button" onclick=goTo(ppLink);>
+		<div class="button" onclick="goTo('PersonalPage.html');">
 			<p class="buttonText">${langPack['Cabinet']}</p>
 		</div>
 	</div>

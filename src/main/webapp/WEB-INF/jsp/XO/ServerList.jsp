@@ -20,12 +20,14 @@
 	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	<div class="refresh" onclick=refreshButtonClick();></div>
 	<div class="menu">
-		<c:forEach var="server" items="${serverMap}" varStatus="i">
-			<div class="button" id="${server.key}" onclick=connect(this.id);>
-				<p class="buttonText">
-					<c:out value="${server.value.game.server.name}" />
-				</p>
-			</div>
-		</c:forEach>
+		<div id="list">
+			<c:forEach var="server" items="${serverMap}" varStatus="i">
+				<div class="button" id="${server.key}" onclick=connect(this.id);>
+					<p class="buttonText">
+						<c:out value="${server.value.game.server.name}" />
+					</p>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 </div>

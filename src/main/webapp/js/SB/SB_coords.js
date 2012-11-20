@@ -9,6 +9,40 @@ var M;
 var damagedSheep = 0;
 var unlockDroppableInfo;
 
+var img01 = null;
+var img02 = null;
+var img03 = null;
+var img04 = null;
+var img05 = null;
+var img06 = null;
+var img07 = null;
+var img08 = null;
+var img09 = null;
+var img10 = null;
+
+var img01x = null;
+var img02x = null;
+var img03x = null;
+var img04x = null;
+var img05x = null;
+var img06x = null;
+var img07x = null;
+var img08x = null;
+var img09x = null;
+var img10x = null;
+
+var img01y = null;
+var img02y = null;
+var img03y = null;
+var img04y = null;
+var img05y = null;
+var img06y = null;
+var img07y = null;
+var img08y = null;
+var img09y = null;
+var img10y = null;
+
+var sheepCounter = 10;
 
 $(document).ready(function() {
 	userAgent = navigator.userAgent;
@@ -34,7 +68,6 @@ function startbsound() {
 	bsound.volume=0.1;
 	bsound.play();
 }
-
 function chSound() {
 	id = $('.sound img').attr('id');
 	if(id=="s_on") {
@@ -50,12 +83,9 @@ function chSound() {
 
 //Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
-	console.log($(obj));
 	id = $(obj).attr('id');
 	infield = $(obj)[0].classList[1] === "infield";
-	console.log(infield);
 	isDisabled = $(obj/*'#' + id*/).draggable('option', 'disabled');
-	console.log(isDisabled);
 	if (!isDisabled && !infield) {
 		var c = $(obj).attr("class");
 			orientation = c[0];
@@ -64,11 +94,9 @@ function rotate(obj) {
 		if (orientation === 'H') {
 			newOrientation = 'V';
 			$(obj).attr("src", "images/SB/0" + id[6] + "_90.png");
-			console.log(obj);
 		} else if (orientation === 'V') {
 			newOrientation = 'H';
 			$(obj).attr("src", "images/SB/0" + id[6] + ".png");
-			console.log(obj);
 		}
 		var set = c.substring(1, c.length);
 		set = newOrientation + set;
@@ -76,7 +104,6 @@ function rotate(obj) {
 	}
 	else{
 		
-		console.log("rotate корабля в полі");
 		//Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
 		// протележна до disableDroppables()
 		enableDroppables(unlockDroppableInfo);
@@ -90,11 +117,9 @@ function rotate(obj) {
 			if (orientation === 'H') {
 				newOrientation = 'V';
 				$(obj).attr("src", "images/SB/0" + id[6] + "_90.png");
-				console.log(obj);
 			} else if (orientation === 'V') {
 				newOrientation = 'H';
 				$(obj).attr("src", "images/SB/0" + id[6] + ".png");
-				console.log(obj);
 			}
 			var set = c.substring(1, c.length);
 			set = newOrientation + set;
@@ -140,7 +165,6 @@ function parseCoords(coords, ui) {
 			"img" : ui.draggable[0],
 			"ui" : ui,
 			};
-		//console.log(co);
 		return co;
 	};
 }
@@ -191,10 +215,8 @@ function saveCoords(saveCoordenates) {
 		}
 	}
 	img = saveCoordenates.img;
-	console.log(img);
 	count = counter(saveCoordenates) + 1;
 	if (saveCoordenates.r === "H" || saveCoordenates.r === "u") {
-		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
 				'<img id="sheep_' + saveCoordenates.t + '" class="H infield" src="images/SB/0'
 						+ saveCoordenates.t + '.png" ondblclick="bbb(this,event);"/>');
@@ -204,7 +226,6 @@ function saveCoords(saveCoordenates) {
 				saveCoordenates.ui.position.left + "px");
 		$('#sp' + saveCoordenates.t + count).css("display", "block");
 	} else if (saveCoordenates.r === "V") {
-		console.log(saveCoordenates.ui);
 		$('#sp' + saveCoordenates.t + count).html(
 				'<img id="sheep_' + saveCoordenates.t + '" class="V infield" src="images/SB/0'
 						+ saveCoordenates.t + '_90.png" ondblclick="bbb(this,event);"/>');
@@ -224,41 +245,13 @@ function saveCoords(saveCoordenates) {
 	sendM();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 function bbb(t,event)
 {
 	
-	if (event.ctrlKey==1)
+	if ((event.ctrlKey==1)&&((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0))
 	  {
-		//alert("The CTRL key was pressed!");
-		//console.log(t);
-		//console.log(event);
-		
-		
 		d = $(t).parent();
-		
-		
 		sheepId = $(t).attr('id');
 		topPx=d[0].offsetTop;
 		leftPx=d[0].offsetLeft;
@@ -273,17 +266,11 @@ function bbb(t,event)
 				"rotation" : rotation
 		};
 			
-		//console.log(d);
-		console.log("top="+unlockDroppableInfo.topPx);
-		console.log("left="+unlockDroppableInfo.leftPx);
-		console.log("sheepId="+unlockDroppableInfo.sheepId);
-		console.log("placeHolderId="+unlockDroppableInfo.placeHolderId);
-		console.log("rotation="+unlockDroppableInfo.rotation);
-
 		//Активовуємо драгабл на кораблі по якому даблклікнули+CTRL
+		$(t).attr('ondblclick','rotate(this);');
 		$(t).draggable({
 			revert : "invalid",
-			//helper : "clone",
+			helper : 'original',
 			//revertDuration : 500,
 			cursorAt : {
 				top : 10,
@@ -292,52 +279,163 @@ function bbb(t,event)
 			snap:".ui-droppable",
 			start : function(event,ui)
 			{
-				console.log("druging started");
 				enableDroppables(unlockDroppableInfo);
+			},
+			stop: function(event, ui) {
+				$(t).draggable( "option", "disabled", true );
+				$(t).attr('ondblclick',"");
 			}
 		});
 		
 		
 		
-		$(t).attr('ondblclick','rotate(this);');
+		
 		
 	}
 }
+
+
+
 
 //Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
 //+встановлювати в матриці 00 на місце де був розташований корабель  
 // протележна до disableDroppables()
 function enableDroppables(unlockDroppableInfo)
-{
-	console.log("провірити чи дективовані дропабли навколо корабля. " +
-						"Якщо дективовані то активувати всі заблоковані дропабли навколо корабля"
-						+"встановлювати в матриці 00 на місце де був розташований корабель");
-	setOldCoordsInM();
+{	
+	var
+	x0 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7 - 1;
+	x1 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7 + 1;
+	x2 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7;
+	x3 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7 + 2;
+	x4 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7 + 3;
+	x5 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1)/20) - 7 + 4;
+	y0 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20) - 1;
+	y1 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20) + 1;
+	y2 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20);
+	y3 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20) + 2;
+	y4 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20) + 3;
+	y5 = parseInt((parseInt(unlockDroppableInfo.topPx) + 1)/20) + 4;
+	
+if (unlockDroppableInfo.sheepId == "sheep_1") {
+	$("#X" + x2 + "_Y" + y2).attr("sheep", false);
+	M[x2][y2] = "00";
+	var sheepsNear = 0;
+	
+	for (var i = x0; i <= x1; i++) {
+		for (var j = y0; j <= y1; j++) {
+			for (var m = ( - 1 + i); m <= (1 + i); m++) {
+				for (var n = (- 1 + j); n <= (1 + j); n++) {
+					if (($("#X" + m + "_Y" + n).attr("sheep") != undefined)&&($("#X" + m + "_Y" + n).attr("sheep") == "true")) {
+						sheepsNear++;
+					}
+				}
+			}
+			
+			if (sheepsNear == 0){
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+			sheepsNear = 0;
+		}
+	}
 }
 
-function setOldCoordsInM()
-{}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if (unlockDroppableInfo.rotation == "H") {
+	if (unlockDroppableInfo.sheepId == "sheep_2") {
+		$("#X" + x2 + "_Y" + y2).attr("sheep", false);
+		M[x2][y2] = "00";
+		$("#X" + x1 + "_Y" + y2).attr("sheep", false);
+		M[x1][y2] = "00";
+		
+		for (var i = x0; i <= x3; i++) {
+			for (var j = y0; j <= y1; j++) {
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+		}
+	}
+	if (unlockDroppableInfo.sheepId == "sheep_3") {
+		$("#X" + x2 + "_Y" + y2).attr("sheep", false);
+		M[x2][y2] = "00";
+		$("#X" + x1 + "_Y" + y2).attr("sheep", false);
+		M[x1][y2] = "00";
+		$("#X" + x3 + "_Y" + y2).attr("sheep", false);
+		M[x3][y2] = "00";
+		
+		for (var i = x0; i <= x4; i++) {
+			for (var j = y0; j <= y1; j++) {
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+		}
+	}
+	if (unlockDroppableInfo.sheepId == "sheep_4") {
+		$("#X" + x2 + "_Y" + y2).attr("sheep", false);
+		M[x2][y2] = "00";
+		$("#X" + x1 + "_Y" + y2).attr("sheep", false);
+		M[x1][y2] = "00";
+		$("#X" + x3 + "_Y" + y2).attr("sheep", false);
+		M[x3][y2] = "00";
+		$("#X" + x4 + "_Y" + y2).attr("sheep", false);
+		M[x4][y2] = "00";
+		
+		for (var i = x0; i <= x5; i++) {
+			for (var j = y0; j <= y1; j++) {
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+		}
+	};
+}
+if (unlockDroppableInfo.rotation == "V") {
+	if (unlockDroppableInfo.sheepId == "sheep_2") {
+		$("#X" + x2 + "_Y" + y2).attr("sheep", false);
+		M[x2][y2] = "00";
+		$("#X" + x2 + "_Y" + y1).attr("sheep", false);
+		M[x2][y1] = "00";
+		
+		for (var i = x0; i <= x1; i++) {
+			for (var j = y0; j <= y3; j++) {
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+		}
+	}
+	if (unlockDroppableInfo.sheepId == "sheep_3") {
+		$("#X" + x2 + "_Y" + y2).attr("sheep", false);
+		M[x2][y2] = "00";
+		$("#X" + x2 + "_Y" + y1).attr("sheep", false);
+		M[x2][y1] = "00";
+		$("#X" + x2 + "_Y" + y3).attr("sheep", false);
+		M[x2][y3] = "00";
+		
+		for (var i = x0; i <= x1; i++) {
+			for (var j = y0; j <= y4; j++) {
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+		}
+	}
+	if (unlockDroppableInfo.sheepId == "sheep_4") {
+		//remove class "sheep"
+		$("#X" + x2 + "_Y" + y2).attr("sheep", false);
+		M[x2][y2] = "00";
+		$("#X" + x2 + "_Y" + y1).attr("sheep", false);
+		M[x2][y1] = "00";
+		$("#X" + x2 + "_Y" + y3).attr("sheep", false);
+		M[x2][y3] = "00";
+		$("#X" + x2 + "_Y" + y4).attr("sheep", false);
+		M[x2][y4] = "00";
+		
+		for (var i = x0; i <= x1; i++) {
+			for (var j = y0; j <= y5; j++) {
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", false);
+				$("#X" + i + "_Y" + j).attr("aria-disabled", false);
+			}
+		}
+	};
+};
+}
 
 // Деактивовує елементи droppable за координатами
 function disableDroppables(obj) {
@@ -355,128 +453,84 @@ function disableDroppables(obj) {
 		y5 = obj.y + 4;
 
 	if (obj.r == "u") {
-		$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
-		$("#X" + x0 + "_Y" + y2).droppable("option", "disabled", true);
-		$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
-		$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-		$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
-		
-		$("#X" + x2 + "_Y" + y2).addClass("Sheep");
-		
-		console.log($("#X" + x2 + "_Y" + y2)[0].classList[3]);
-		
-		$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-		$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
-		$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-		$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
-		
+		for (var i = x0; i <= x1; i++) {
+			for (var j = y0; j <= y1; j++) {
+				$("#X" + i + "_Y" + j).droppable("option", "disabled", true);
+				if ((i == x2)&&(j == y2)) {
+					$("#X" + i + "_Y" + j).attr("sheep", true);
+				}
+			}
+		}
 	}
 
 	if (obj.r == "H") {
 		if (obj.t == "2") {
-			$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y1).droppable("option", "disabled", true);
+			
+			for (var i = x0; i <= x3; i++) {
+				for (var j = y0; j <= y1; j++) {
+					$("#X" + i + "_Y" + j).droppable("option", "disabled", true);
+					if (((i == x2)||(i == x1))&&(j == y2)) {
+						$("#X" + i + "_Y" + j).attr("sheep", true);
+					}
+				}
+			}
 		}
 		if (obj.t == "3") {
-			$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y1).droppable("option", "disabled", true);
+			
+			for (var i = x0; i <= x4; i++) {
+				for (var j = y0; j <= y1; j++) {
+					$("#X" + i + "_Y" + j).droppable("option", "disabled", true);
+					if (((i == x2)||(i == x1)||(i == x3))&&(j == y2)) {
+						$("#X" + i + "_Y" + j).attr("sheep", true);
+					}
+				}
+			}
 		}
 		if (obj.t == "4") {
-			$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x3 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x4 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x5 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x5 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x5 + "_Y" + y1).droppable("option", "disabled", true);
+			
+			for (var i = x0; i <= x5; i++) {
+				for (var j = y0; j <= y1; j++) {
+					$("#X" + i + "_Y" + j).droppable("option", "disabled", true);
+					if (((i == x2)||(i == x1)||(i == x3)||(i == x4))&&(j == y2)) {
+						$("#X" + i + "_Y" + j).attr("sheep", true);
+					}
+				}
+			}
 		};
 	}
 	if (obj.r == "V") {
 		if (obj.t == "2") {
-			$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y3).droppable("option", "disabled", true);
+			
+			for (var i = x0; i <= x1; i++) {
+				for (var j = y0; j <= y3; j++) {
+					$("#X" + i + "_Y" + j).droppable("option", "disabled", true);
+					if ((i == x2)&&((j == y2)||(j == y1))) {
+						$("#X" + i + "_Y" + j).attr("sheep", true);
+					}
+				}
+			}
 		}
 		if (obj.t == "3") {
-			$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y4).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y4).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y4).droppable("option", "disabled", true);
+			
+			for (var i = x0; i <= x1; i++) {
+				for (var j = y0; j <= y4; j++) {
+					$("#X" + i + "_Y" + j).droppable("option", "disabled", true);
+					if ((i == x2)&&((j == y2)||(j == y1)||(j == y3))) {
+						$("#X" + i + "_Y" + j).attr("sheep", true);
+					}
+				}
+			}
 		}
 		if (obj.t == "4") {
-			$("#X" + x0 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y4).droppable("option", "disabled", true);
-			$("#X" + x0 + "_Y" + y5).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y4).droppable("option", "disabled", true);
-			$("#X" + x2 + "_Y" + y5).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y0).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y2).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y1).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y3).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y4).droppable("option", "disabled", true);
-			$("#X" + x1 + "_Y" + y5).droppable("option", "disabled", true);
+			
+			for (var i = x0; i <= x1; i++) {
+				for (var j = y0; j <= y5; j++) {
+					$("#X" + i + "_Y" + j).droppable("option", "disabled", true);
+					if ((i == x2)&&((j == y2)||(j == y1)||(j == y3)||(j == y4))) {
+						$("#X" + i + "_Y" + j).attr("sheep", true);
+					}
+				}
+			}
 		};
 	};
 }
@@ -486,8 +540,6 @@ function disableDroppables(obj) {
  * 
  */
 function sendM() {
-	console.log(M);
-
 	var j = {
 		"a" : M[0],
 		"b" : M[1],
@@ -501,13 +553,11 @@ function sendM() {
 		"j" : M[9],
 	};
 	var Send = JSON.stringify(j);
-	console.log(Send);
-
 	$.ajax({
 		url : 'init_sheeps.html',
 		type : 'POST',
 		data : {
-			sheeps : Send,
+			sheeps : Send
 		},
 		success : function(data) {
 			;
@@ -570,6 +620,7 @@ function counter(obj) {
 	}
 	}
 }
+
 function allreadyShooted()
 {
 	alert("You allready shoot in this point");
@@ -590,41 +641,23 @@ function lockWhereCantBe(id) {
 	y2 = parseInt(id[5]);
 	x3 = 1 + parseInt(id[2]);
 	y3 = 1 + parseInt(id[5]);
-	if ($("#X" + x1 + "_Y" + y1).attr("onclick") == "fire(this)") {
-		$("#X" + x1 + "_Y" + y1).html("<img id='cant_be" + x1 + y1 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x1 + "_Y" + y1).attr("onclick", "cantBe()");
-	}
-	if ($("#X" + x2 + "_Y" + y1).attr("onclick") == "fire(this)") {
-		$("#X" + x2 + "_Y" + y1).html("<img id='cant_be" + x2 + y1 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x2 + "_Y" + y1).attr("onclick", "cantBe()");
-	}
-	if ($("#X" + x3 + "_Y" + y1).attr("onclick") == "fire(this)") {
-		$("#X" + x3 + "_Y" + y1).html("<img id='cant_be" + x3 + y1 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x3 + "_Y" + y1).attr("onclick", "cantBe()");
-	}
-	if ($("#X" + x1 + "_Y" + y2).attr("onclick") == "fire(this)") {
-		$("#X" + x1 + "_Y" + y2).html("<img id='cant_be" + x1 + y2 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x1 + "_Y" + y2).attr("onclick", "cantBe()");
-	}
-	if ($("#X" + x3 + "_Y" + y2).attr("onclick") == "fire(this)") {
-		$("#X" + x3 + "_Y" + y2).html("<img id='cant_be" + x3 + y2 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x3 + "_Y" + y2).attr("onclick", "cantBe()");
-	}
-	if ($("#X" + x1 + "_Y" + y3).attr("onclick") == "fire(this)") {
-		$("#X" + x1 + "_Y" + y3).html("<img id='cant_be" + x1 + y3 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x1 + "_Y" + y3).attr("onclick", "cantBe()");
-	}
-	if ($("#X" + x2 + "_Y" + y3).attr("onclick") == "fire(this)") {
-		$("#X" + x2 + "_Y" + y3).html("<img id='cant_be" + x2 + y3 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x2 + "_Y" + y3).attr("onclick", "cantBe()");
-	}
-	if ($("#X" + x3 + "_Y" + y3).attr("onclick") == "fire(this)") {
-		$("#X" + x3 + "_Y" + y3).html("<img id='cant_be" + x3 + y3 + "' src='images/SB/cant_be.png'>");
-		$("#X" + x3 + "_Y" + y3).attr("onclick", "cantBe()");
+	
+	for (var i = x1; i <= x3; i++) {
+		for (var j = y1; j <= y3; j++) {
+			if (((i == x2)||(i == x1)||(i == x3))&&((j == y2)||(j == y1)||(j == y3))) {
+				if ($("#X" + i + "_Y" + j).attr("onclick") == "fire(this)") {
+					$("#X" + i + "_Y" + j).html("<img id='cant_be" + x1 + y1 + "' src='images/SB/cant_be.png'>");
+					$("#X" + i + "_Y" + j).attr("onclick", "cantBe()");
+				}
+			}
+		}
 	}
 }
 function victory() {
-	location.href = "Victory.html";
+	goTo("Victory.html");
+}
+function loose() {
+	goTo("Loose.html");
 }
 
 function playShootSound()
@@ -870,13 +903,241 @@ function fire(point) {
 
 
 function sbGame() {
-	location.href = "BsGame.html";
+	goTo("BsGame.html");
 }
 function createSbGame() {
-	//location.href = "BsCreateGame.html";
 	goTo("BsCreateGame.html");
 }
 function connectSbGame() {
-	//location.href = "BsConectGame.html";
 	goTo("BsConectGame.html");
+};
+function start(ct) {
+	getSheeps();
+	sheep01 = {
+			"img" : img01,
+			"x" : img01x,
+			"y" : img01y
+	};
+	sheep02 = {
+			"img" : img02,
+			"x" : img02x,
+			"y" : img02y
+		};
+	sheep03 = {
+			"img" : img03,
+			"x" : img03x,
+			"y" : img03y
+		};
+	sheep04 = {
+			"img" : img04,
+			"x" : img04x,
+			"y" : img04y
+			};
+	sheep05 = {
+			"img" : img05,
+			"x" : img05x,
+			"y" : img05y
+		};
+	sheep06 = {
+			"img" : img06,
+			"x" : img06x,
+			"y" : img06y
+		};
+	sheep07 = {
+			"img" : img07,
+			"x" : img07x,
+			"y" : img07y
+		};
+	sheep08 = {
+			"img" : img08,
+			"x" : img08x,
+			"y" : img08y
+		};
+	sheep09 = {
+			"img" : img09,
+			"x" : img09x,
+			"y" : img09y
+		};
+	sheep10 = {
+			"img" : img10,
+			"x" : img10x,
+			"y" : img10y
+		};
+	
+	sheeps = {
+			"sheep01" : sheep01,
+			"sheep02" : sheep02,
+			"sheep03" : sheep03,
+			"sheep04" : sheep04,
+			"sheep05" : sheep05,
+			"sheep06" : sheep06,
+			"sheep07" : sheep07,
+			"sheep08" : sheep08,
+			"sheep09" : sheep09,
+			"sheep10" : sheep10
+	};
+	stringa = JSON.stringify(sheeps);
+	$.post("sheepsReady.html", 
+			{
+				sheepsReady : stringa,
+				connType:ct
+			},
+			function(data)
+			{
+				if(data=="OK")
+					{
+						goTo("BsGameStart.html");
+					}
+			});
+};
+function getSheeps() {
+//	alert("getSheeps()");
+	M1 = new Array();
+	for ( var i = 0; i < 10; i++) {
+		M1[i] = new Array();
+		for ( var j = 0; j < 10; j++) {
+			M1[i][j] = M[i][j];
+		};
+	};
+	for ( var i = 10; i < 15; i++) {
+		M1[i] = new Array();
+		for ( var j = 10; j < 15; j++) {
+			M1[i][j] = "00";
+		};
+	};
+	for(var k = 0; k <= 9; k++) {
+		for (var i = 0; i <= 9; i++) {
+			for (var j = 0; j <= 9; j++) {
+				if((M1[i][j] == "41")&&(sheepCounter == 10)) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "41")&&(M1[i + 2][j] == "41")&&(M1[i + 3][j] == "41")) {
+						img10 = ("images/SB/04.png");
+						M1[i][j] = "00";
+						M1[i + 1][j] = "00";
+						M1[i + 2][j] = "00";
+						M1[i + 3][j] = "00";
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "41")&&(M1[i][j + 2] == "41")&&(M1[i][j + 3] == "41")) {
+						img10 = ("images/SB/04_90.png");
+						M1[i][j] = "00";
+						M1[i][j + 1] = "00";
+						M1[i][j + 2] = "00";
+						M1[i][j + 3] = "00";
+					}
+					img10x = i * 20 + 200;
+					img10y = j * 20;
+					sheepCounter--;
+				};
+				
+				if((M1[i][j] == "31")&&(sheepCounter == 9)) {
+					if(((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "31")&&(M1[i + 2][j] == "31"))) {
+						img09 = ("images/SB/03.png");
+						M1[i][j] = "00";
+						M1[i + 1][j] = "00";
+						M1[i + 2][j] = "00";
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "31")&&(M1[i][j + 2] == "31")) {
+						img09 = ("images/SB/03_90.png");
+						M1[i][j] = "00";
+						M1[i][j + 1] = "00";
+						M1[i][j + 2] = "00";
+					}
+					img09x = i * 20 + 200;
+					img09y = j * 20;
+					sheepCounter--;
+				};
+				if((M1[i][j] == "31")&&(sheepCounter == 8)) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "31")&&(M1[i + 2][j] == "31")) {
+						img08 = ("images/SB/03.png");
+						M1[i][j] = "00";
+						M1[i + 1][j] = "00";
+						M1[i + 2][j] = "00";
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "31")&&(M1[i][j + 2] == "31")) {
+						img08 = ("images/SB/03_90.png");
+						M1[i][j] = "00";
+						M1[i][j + 1] = "00";
+						M1[i][j + 2] = "00";
+					}
+					img08x = i * 20 + 200;
+					img08y = j * 20;
+					sheepCounter--;
+				};
+				
+				if((M1[i][j] == "21")&&(sheepCounter == 7)) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "21")) {
+						img07 = ("images/SB/02.png");
+						M1[i][j] = "00";
+						M1[i + 1][j] = "00";
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "21")) {
+						img07 = ("images/SB/02_90.png");
+						M1[i][j] = "00";
+						M1[i][j + 1] = "00";
+					}
+					img07x = i * 20 + 200;
+					img07y = j * 20;
+					sheepCounter--;
+				};
+				if((M1[i][j] == "21")&&(sheepCounter == 6)) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "21")) {
+						img06 = ("images/SB/02.png");
+						M1[i][j] = "00";
+						M1[i + 1][j] = "00";
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "21")) {
+						img06 = ("images/SB/02_90.png");
+						M1[i][j] = "00";
+						M1[i][j + 1] = "00";
+					}
+					img06x = i * 20 + 200;
+					img06y = j * 20;
+					sheepCounter--;
+				};
+				if((M1[i][j] == "21")&&(sheepCounter == 5)) {
+					if((M1[i + 1][j] != undefined)&&(M1[i + 1][j] == "21")) {
+						img05 = ("images/SB/02.png");
+						M1[i][j] = "00";
+						M1[i + 1][j] = "00";
+					}
+					if((M1[i][j + 1] != undefined)&&(M1[i][j + 1] == "21")) {
+						img05 = ("images/SB/02_90.png");
+						M1[i][j] = "00";
+						M1[i][j + 1] = "00";
+					}
+					img05x = i * 20 + 200;
+					img05y = j * 20;
+					sheepCounter--;
+				};
+				
+				if((M1[i][j] == "11")&&(sheepCounter == 4)) {
+					img04 = ("images/SB/01.png");
+					M1[i][j] = "00";
+					img04x = i * 20 + 200;
+					img04y = j * 20;
+					sheepCounter--;
+				}
+				if((M1[i][j] == "11")&&(sheepCounter == 3)) {
+					img03 = ("images/SB/01.png");
+					M1[i][j] = "00";
+					img03x = i * 20 + 200;
+					img03y = j * 20;
+					sheepCounter--;
+				}
+				if((M1[i][j] == "11")&&(sheepCounter == 2)) {
+					img02 = ("images/SB/01.png");
+					M1[i][j] = "00";
+					img02x = i * 20 + 200;
+					img02y = j * 20;
+					sheepCounter--;
+				}
+				if((M1[i][j] == "11")&&(sheepCounter == 1)) {
+					img01 = ("images/SB/01.png");
+					M1[i][j] = "00";
+					img01x = i * 20 + 200;
+					img01y = j * 20;
+					sheepCounter--;
+				}
+			}
+		}
+	}
 };

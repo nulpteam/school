@@ -20,7 +20,7 @@ body {
 	float: left;
 	margin-left: 5px;
 	
-	-moz-user-select: -moz-none;
+	-moz-user-select: none;
 	-o-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
@@ -33,10 +33,11 @@ body {
 }
 
 .paperList .title {
+	color: red;
 	width: 450px;
 	font-size: 30px;
 	position: absolute;
-	margin-left: 80px;
+	margin: 40px 80px;
 }
 
 .paperList .homeButton {
@@ -82,16 +83,21 @@ body {
 }
 
 .paperList .button {
-	background-image: url('../images/paperList/button.png');
+	background-image: url('../images/paperList/button_sprite.png');
 	background-repeat: no-repeat;
-	height: 35px;
-	width: 270px;
+	height: 40px;
+	width: 280px;
 	cursor: pointer;
+}
+
+.paperList .button:hover {
+	background: url('../images/paperList/button_sprite.png') bottom;
 }
 
 .paperList .buttonText {
 	font-size: 20px;
-	color: white;
+	color: yellow;
+	padding-top: 3px;
 }
 
 .paperList .menu {

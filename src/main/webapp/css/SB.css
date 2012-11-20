@@ -3,6 +3,10 @@
 /* 	font-size: 35px; */
 /* 	color: #5B2FCE; */
 /* } */
+.plbs {
+	background: url("../images/SB/list.png") no-repeat;
+}
+
 .clear {
 	clear: both;
 }
@@ -102,7 +106,7 @@
 	font-size: 20px;
 	font-weight: bold;
 	margin-top: -28px;
-	/* 	position: absolute; */
+	position: absolute;
 }
 
 .field2 .v_markers {
@@ -250,11 +254,42 @@
 .sound {
 	width: 50px;
 	height: 40px;
+	height: 40px;
+	position: relative;
+	top: 80px;
+	width: 50px;
+	left: 547px;
+}
+
+.SbMButtonRightHome {
+	background-image: url('../images/paperList/home_sprite.png');
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+	position: absolute;
+	margin: 20px 540px;
+}
+
+.SbMButtonRightStop {
+	background: url("../images/SB/stop.png") no-repeat;
+	position: relative;
+	top: 35px;
+	height: 49px;
+	width: 50px;
+	left: 544px;
+	cursor: pointer;
+}
+
+.SbMButtonRightStop:hover {
+	background: url("../images/SB/stop.png") bottom no-repeat;
+	height: 51px;
+	width: 50px;
 }
 
 .sound img {
-	margin-top: -96px;
-	margin-left: 3px;
+	position: relative;
+	top: -93px;
 }
 
 .sound:hover {
@@ -333,17 +368,16 @@
 	width: 50px;
 }
 
-.SbMButtonRightHome {
-	background: url("../images/SB/Home_sprite.png") no-repeat;
-	width: 41px;
-	height: 44px;
-	cursor: pointer;
-}
-
+/* .SbMButtonRightHome { */
+/* 	background: url("../images/SB/Home_sprite.png") no-repeat; */
+/* 	width: 41px; */
+/* 	height: 44px; */
+/* 	cursor: pointer; */
+/* } */
 .SbMButtonRightHome:hover {
 	background: url("../images/SB/Home_sprite.png") bottom no-repeat;
-	width: 44px;
-	height: 46px;
+	width: 50px;
+	height: 49px
 }
 
 .shturval {
@@ -396,4 +430,22 @@
 	margin-left: 87px;
 	width: 400px;
 	height: 176px;
+}
+
+#locker {
+	
+}
+
+looseBody {
+	background-color: red;
+	font-family: LC Chalk;
+	font-size: 35px;
+	color: #5B2FCE;
+}
+
+victoryBody {
+	background-color: green;
+	font-family: LC Chalk;
+	font-size: 35px;
+	color: #5B2FCE;
 }

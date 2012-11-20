@@ -191,7 +191,6 @@ function gameBackButton() {
 }
 
 function gameRefreshButton() {
-	alert("aaa");
 	clearInterval(checkerInterval);
 	clearInterval(timerInterval);
 	refreshButtonClick();

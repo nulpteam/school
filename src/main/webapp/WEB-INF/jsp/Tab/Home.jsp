@@ -4,4 +4,5 @@
 <div id="menu" class="display">
 	<button onclick=tabGoTo(chatLink);>Chat</button>
 	<button onclick=tabGoTo(sudokuLink);>Sudoku</button>
+	<button onclick="tabGoTo('FlipGame.html');">Flip</button>
 </div>

@@ -18,7 +18,7 @@
 <!-- </head> -->
 <!-- <body> -->
 	
-	<div class="paperList">
+	<div class="plbs paperList">
 	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>
@@ -30,12 +30,13 @@
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
-		<div class="SbMButtonsRight">
+<!-- 		<div class="SbMButtonsRight"> -->
 				<div class="SbMButtonRightHome" onclick="goTo('Menu.html');"></div>
 				<div class="sound">
 					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
 				</div>
-			</div>
+				<div class="SbMButtonRightStop" onclick="goTo2('SbStop.html','${ConnectionType}');"></div>
+<!-- 		</div> -->
 		
 		<div class=clear></div>
 		
@@ -65,34 +66,34 @@
 				<div class="last10">10</div>
 			</div>
 				<div style="position: relative;top: 0px;left: 0px;height: 200px;width: 200px;">
-					<img class="img1" src='${Sheeps.sheep01.img}' style="position: relative;top: ${Sheeps.sheep01.y}px;left: ${Sheeps.sheep01.x-205}px;"/>
+					<img src="${Sheeps.sheep01.img}" style="position: relative;top: ${Sheeps.sheep01.y}px;left: ${Sheeps.sheep01.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -200px;left: 0px;height: 200px;width: 200px;">
-					<img class="img2" src='${Sheeps.sheep02.img}' style="position: relative;top: ${Sheeps.sheep02.y}px;left: ${Sheeps.sheep02.x-205}px;"/>
+					<img src="${Sheeps.sheep02.img}" style="position: relative;top: ${Sheeps.sheep02.y}px;left: ${Sheeps.sheep02.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -400px;left: 0px;height: 200px;width: 200px;">
-					<img class="img3" src='${Sheeps.sheep03.img}' style="position: relative;top: ${Sheeps.sheep03.y}px;left: ${Sheeps.sheep03.x-205}px;"/>
+					<img src="${Sheeps.sheep03.img}" style="position: relative;top: ${Sheeps.sheep03.y}px;left: ${Sheeps.sheep03.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -600px;left: 0px;height: 200px;width: 200px;">
-					<img class="img4" src='${Sheeps.sheep04.img}' style="position: relative;top: ${Sheeps.sheep04.y}px;left: ${Sheeps.sheep04.x-205}px;"/>
+					<img src="${Sheeps.sheep04.img}" style="position: relative;top: ${Sheeps.sheep04.y}px;left: ${Sheeps.sheep04.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -800px;left: 0px;height: 200px;width: 200px;">
-					<img class="img5" src='${Sheeps.sheep05.img}' style="position: relative;top: ${Sheeps.sheep05.y}px;left: ${Sheeps.sheep05.x-205}px;"/>
+					<img src="${Sheeps.sheep05.img}" style="position: relative;top: ${Sheeps.sheep05.y}px;left: ${Sheeps.sheep05.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -1000px;left: 0px;height: 200px;width: 200px;">
-					<img class="img6" src='${Sheeps.sheep06.img}' style="position: relative;top: ${Sheeps.sheep06.y}px;left: ${Sheeps.sheep06.x-205}px;"/>
+					<img src="${Sheeps.sheep06.img}" style="position: relative;top: ${Sheeps.sheep06.y}px;left: ${Sheeps.sheep06.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -1200px;left: 0px;height: 200px;width: 200px;">
-					<img class="img7" src='${Sheeps.sheep07.img}' style="position: relative;top: ${Sheeps.sheep07.y}px;left: ${Sheeps.sheep07.x-205}px;"/>
+					<img src="${Sheeps.sheep07.img}" style="position: relative;top: ${Sheeps.sheep07.y}px;left: ${Sheeps.sheep07.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -1400px;left: 0px;height: 200px;width: 200px;">
-					<img class="img8" src='${Sheeps.sheep08.img}' style="position: relative;top: ${Sheeps.sheep08.y}px;left: ${Sheeps.sheep08.x-205}px;"/>
+					<img src="${Sheeps.sheep08.img}" style="position: relative;top: ${Sheeps.sheep08.y}px;left: ${Sheeps.sheep08.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -1600px;left: 0px;height: 200px;width: 200px;">
-					<img class="img9" src='${Sheeps.sheep09.img}' style="position: relative;top: ${Sheeps.sheep09.y}px;left: ${Sheeps.sheep09.x-205}px;"/>
+					<img src="${Sheeps.sheep09.img}" style="position: relative;top: ${Sheeps.sheep09.y}px;left: ${Sheeps.sheep09.x-205}px;"/>
 				</div>
 				<div style="position: relative;top: -1800px;left: 0px;height: 200px;width: 200px;">
-					<img class="img10" src='${Sheeps.sheep10.img}' style="position: relative;top: ${Sheeps.sheep10.y}px;left: ${Sheeps.sheep10.x-205}px;"/>
+					<img src="${Sheeps.sheep10.img}" style="position: relative;top: ${Sheeps.sheep10.y}px;left: ${Sheeps.sheep10.x-205}px;"/>
 				</div>
 			<div class="clear"></div>
 		</div>

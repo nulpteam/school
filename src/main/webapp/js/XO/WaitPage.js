@@ -3,14 +3,17 @@ var waitClientInterval;
 
 function waitClient() {
 	$('#outText p').text(msgWaitPlayer);
-	waitClientInterval = setInterval(check, 1000);
+	waitClientInterval = setInterval(check, 3000);
 	function check() {
 		$.post('XOGetClient.html', function(resp) {
 			if (resp.id != null) {
 				clearInterval(waitClientInterval);
-				$('#outText p').text(resp.name + msgConnected);
-				$('#startButton').show();
-				started = true;
+//				$('#outText p').text(resp.name + msgConnected);
+//				$('#startButton').show();
+//				started = true;
+				$.post('XOGameStarted.html', function() {
+					goTo(gameLink);
+				});
 			}
 		});
 	}

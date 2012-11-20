@@ -18,7 +18,7 @@
 <!-- </head> -->
 <!-- <body> -->
 
-	<div class="paperList">
+	<div class="plbs paperList">
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
@@ -30,9 +30,13 @@
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
-		<div class="SbMButtonsRight">
-				<div class="SbMButtonRightHome" onclick="goTo('Menu.html');"></div>
-			</div>
+<!-- 		<div class="SbMButtonsRight"> -->
+				<div class=SbMButtonRightHome onclick="goTo('Menu.html');"></div>
+				<div class="sound">
+					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
+				</div>
+				<div class="SbMButtonRightStop" onclick="goTo2('SbStop.html','${ConnectionType}');"></div>
+<!-- 			</div> -->
 		<div class=clear></div>
 		<div  class="ammo">
 			<!-- Кораблі для розставляння на полі-->
@@ -133,7 +137,7 @@
 
 <div id="IH"></div>
 <%-- 	<% --%>
-<!-- // // 	 Enumeration<String> en = request.getAttributeNames(); -->
+<!-- // // dfgdfgdfg	 Enumeration<String> en = request.getAttributeNames(); -->
 <!-- // // 	while (en.hasMoreElements()) -->
 <!-- // // 	 {  -->
 <!-- // // 		out.println(en.nextElement()); -->

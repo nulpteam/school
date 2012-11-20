@@ -2,7 +2,7 @@
 	width: 450px;
 	font-weight: bold;
 	position: absolute;
-	margin: 100px 80px;
+	margin: 150px 80px;
 }
 
 #personalPage table .param {
@@ -12,24 +12,40 @@
 }
 
 #personalPage table .value {
-	width: 230px;
+	width: 250px;
 	vertical-align: top;
 }
 
-#personalPage table .ppButton {
-	width: 70px;
+#personalPage table .editButton {
 	vertical-align: top;
 }
 
-#personalPage table .ppButton div {
-	background-image: url('../../images/paperList/button.png');
+#personalPage table .saveButton {
+	vertical-align: bottom;
+}
+
+#personalPage table .editButton div {
+	background-image: url('../../images/Personal/eButton_sprite.png');
 	background-repeat: no-repeat;
-	height: 30px;
-	width: 60px;
-	color: white;
+	height: 40px;
+	width: 45px;
 	cursor: pointer;
-	text-align: center;
-	padding-top: 5px;
+}
+
+#personalPage table .editButton div:hover {
+	background: url('../../images/Personal/eButton_sprite.png') bottom;
+}
+
+#personalPage table .saveButton div {
+	background-image: url('../../images/Personal/sButton_sprite.png');
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 45px;
+	cursor: pointer;
+}
+
+#personalPage table .saveButton div:hover {
+	background: url('../../images/Personal/sButton_sprite.png') bottom;
 }
 
 #personalPage table .edit {
@@ -52,4 +68,12 @@
 
 #personalPage table .edit textarea {
 	resize: none;
+}
+
+#personalPage table .edit .pass input {
+	width: 140px;
+}
+
+#personalPage table .edit .pass {
+	vertical-align: bottom;
 }
