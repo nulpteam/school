@@ -30,9 +30,13 @@
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
-		<div class="SbMButtonsRight">
+<!-- 		<div class="SbMButtonsRight"> -->
 				<div class="SbMButtonRightHome" onclick="goTo('Menu.html');"></div>
-			</div>
+				<div class="sound">
+					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
+				</div>
+				<div class="SbMButtonRightStop" onclick="goTo('SbStop.html');"></div>
+<!-- 			</div> -->
 		<div class=clear></div>
 		<div  class="ammo">
 			<!-- Кораблі для розставляння на полі-->
