@@ -198,6 +198,7 @@ public class SBMenuController {
 		session.removeAttribute("ConnectionType");
 		// ActiveGames.removeGame(gameId);
 		GamesList.removeGameFromListBS(gameId);
+		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Victory";
 	}
 
@@ -206,6 +207,7 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Loose";
 	}
 	

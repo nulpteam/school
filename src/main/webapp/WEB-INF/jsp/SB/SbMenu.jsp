@@ -19,9 +19,9 @@
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
 	<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
-	<div class="SbMButtonsRight">
+<!-- 	<div class="SbMButtonsRight"> -->
 				<div class="SbMButtonRightHome" onclick="goTo('Menu.html')";></div>
-	</div>
+<!-- 	</div> -->
 	<div class="clear"></div>
 	<div class="SbMenu">
 		<div class="SbMSheep">
