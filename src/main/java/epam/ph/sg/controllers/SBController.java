@@ -3,6 +3,8 @@ package epam.ph.sg.controllers;
 /**
  * @author Gutey Bogdan
  */
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -79,9 +81,21 @@ public class SBController {
 		if(connType.equals("server"))
 		{
 			g.getServer().setStarted(true);
+			try {
+				g.getClient().getConn().sendMessage("ready");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(connType.equals("client"))
 		{
 			g.getClient().setStarted(true);
+			try {
+				g.getServer().getConn().sendMessage("ready");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return "OK";
 	}

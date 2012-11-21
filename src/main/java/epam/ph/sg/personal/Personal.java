@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import epam.ph.sg.dao.PersonalPageDAO;
 import epam.ph.sg.models.UserCheck;
 
-public class PersonalPage {
+public class Personal {
 	private static ApplicationContext ctx = new ClassPathXmlApplicationContext(
 			"springconfig.xml");
 	private static PersonalPageDAO dao = (PersonalPageDAO) ctx

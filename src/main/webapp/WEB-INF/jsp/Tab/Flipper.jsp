@@ -11,22 +11,24 @@
 			getStatus();
 		});
 	</script>
-	<table id="field">
-		<c:forEach var="line" items="${flipperGame.field}"
-			varStatus="lineNumber">
-			<tr>
-				<c:forEach var="box" items="${line}" varStatus="columNumber">
-					<td><c:if test="${box.value == 0}">
-							<div id="${lineNumber.count-1}${columNumber.count-1}"
-								class="white" onclick=send(this);></div>
-						</c:if> <c:if test="${box.value == 1}">
-							<div id="${lineNumber.count-1}${columNumber.count-1}"
-								class="black" onclick=send(this);></div>
-						</c:if></td>
-				</c:forEach>
-			</tr>
-		</c:forEach>
-	</table>
+	<div id="cont">
+		<table id="field">
+			<c:forEach var="line" items="${flipperGame.field}"
+				varStatus="lineNumber">
+				<tr>
+					<c:forEach var="box" items="${line}" varStatus="columNumber">
+						<td><c:if test="${box.value == 0}">
+								<div id="${lineNumber.count-1}${columNumber.count-1}"
+									class="white" onclick=send(this);></div>
+							</c:if> <c:if test="${box.value == 1}">
+								<div id="${lineNumber.count-1}${columNumber.count-1}"
+									class="black" onclick=send(this);></div>
+							</c:if></td>
+					</c:forEach>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 	<div id="newGame" class="flipperButton"
 		onclick="tabGoTo('FlipperNewGame.html')">
 		<p>${langPack['newGame']}</p>

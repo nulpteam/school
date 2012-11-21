@@ -18,4 +18,12 @@
 	<form id="chatForm">
 		<input id="chatInText">
 	</form>
+	
+	<div id="userInfo">
+		<div id="name"></div>
+		<div id="email"></div>
+		<div id="birthday"></div>
+		<div id="about"></div>
+		<div onclick="$('#userInfo').hide()">закрити</div>
+	</div>
 </div>

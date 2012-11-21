@@ -26,6 +26,11 @@
 
 #chat #chatOutText .sender {
 	color: #009AEE;
+	cursor: default;
+}
+
+#chat #chatOutText .sender:hover {
+	text-decoration: underline;
 }
 
 #chat #chatInText {
@@ -36,4 +41,15 @@
 	width: 258px;
 	position: absolute;
 	margin: 390px 5px;
+}
+
+#chat #userInfo {
+	display: none;
+	z-index: 3;
+	position: absolute;
+	margin: 100px 35px;
+	height: 200px;
+	width: 200px;
+	border: solid 2px black;
+	background-color: white;
 }
