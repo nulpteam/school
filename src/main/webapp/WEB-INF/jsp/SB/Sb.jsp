@@ -26,6 +26,17 @@
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>
 	<div id="lock" class="${Game.nextMove}"></div>
+	<c:choose>
+      <c:when test="${ConnectionType=='server'}">
+      <div id="oponent" class="${Game.client.conn}"></div>
+      </c:when>
+
+      <c:otherwise>
+      <div id="oponent" class="${Game.server.conn}"></div>
+      </c:otherwise>
+	</c:choose>
+		
+		
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
@@ -36,6 +47,7 @@
 					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
 				</div>
 				<div class="SbMButtonRightStop" onclick="goTo2('SbStop.html','${ConnectionType}');"></div>
+				<div class="BSGo" onClick="start('${ConnectionType}');" style="visibility: hidden;"></div>
 <!-- 			</div> -->
 		<div class=clear></div>
 		<div  class="ammo">
@@ -129,11 +141,11 @@
 		</div>
 	</div>
 <div class=debug>
-<input type="button" value="GetM" onClick="getM();"/>
+<!-- <input type="button" value="GetM" onClick="getM();"/> -->
 <!-- <input type="button" value="SendM" onClick="sendM();"/> -->
 <%-- <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/> --%>
 <!-- <input type="button" value="Test1" onClick="testWS();"/> -->
-<input type="button" value="Start!" onClick="start('${ConnectionType}');"/>
+<%-- <input type="button" value="Start!" onClick="start('${ConnectionType}');"/> --%>
 
 <div id="IH"></div>
 <%-- 	<% --%>
