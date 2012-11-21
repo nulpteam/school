@@ -7,20 +7,17 @@ var Y="Y";
 
 
 $(document).ready(function(){
-	$('#X0Y0 >img').attr('src',"images/Infection/red_chip.png" );
-	$('#X0Y6 >img').attr('src',"images/Infection/blue_chip.png" );
-	$('#X6Y0 >img').attr('src',"images/Infection/blue_chip.png" );
-	$('#X6Y6 >img').attr('src',"images/Infection/red_chip.png" );
+	
 }
 );
 
 function move(td) {
-	//$('#' + td.id + '> img').attr('src', "images/Infection/red_chip.png");
 	x = parseX(td.id);
 	y = parseY(td.id);
 	var userType = $('#infgame_table').attr('userType');
+	
 	var move = {
-			"type" : "move",
+			"type" : "firstmove",
 			"userType" : userType,
 			"gameId" : gameId,
 			"xcoord": x,
@@ -158,13 +155,6 @@ function putBluePoint(td){
 function putPointOnCoords(event){
 	$('#' + event.data + '> img').attr('src', "images/Infection/red_chip.png");
 }
-
-socket.onmessage = function(event){
-
-	putPointOnCoords(event);
-	console.log(event.data);
-};
-
 
 
 function parseX(strPoint){

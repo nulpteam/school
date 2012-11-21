@@ -13,7 +13,7 @@
 	font-size: 35px;
 	color:#0000FF;
 	position:absolute;
-	margin:40px 160px;
+	margin:60px 160px;
 }
 
 #inftable tr td {
@@ -75,10 +75,17 @@
 	color:red;
 }
 
-.infCreateGameButton{
-	background-image: url('../images/paperList/button.png');
+#infNewGame{
+	position:absolute;
+	margin:140px 160px;
 }
 
-.infConnectButton{
-	background-image: url('../images/paperList/button.png');
+#infConnectGame{
+	position:absolute;
+	margin:200px 160px;
+}
+
+#infConectList{
+	position:absolute;
+	margin:60px 160px;
 }

@@ -24,6 +24,15 @@ function getConnectionList(){
 			goTo('InfectionConnectList.html');
 }
 
+function PageHomeButton(){
+	goTo('Infection.html');
+}
+
+function gameRefreshButton() {
+	clearInterval(checkerInterval);
+	clearInterval(timerInterval);
+	refreshButtonClick();
+}
 
 
 

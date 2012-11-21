@@ -17,12 +17,19 @@
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/Infection/InfectionMenu.js" type="text/javascript"></script>
 
-	<div align="center">
+	<div class="homeButton" onclick=PageHomeButton();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
+
+	<div align="center" id="infConectList">
 		<c:forEach var="game" items="${infGamesMap}" varStatus="i">
-			<button id="${game.key}" onclick=connect(this.id);>
-				Server Name:
-				<c:out value="${game.value.server.name}" />
-			</button>
+			<div class="button" id="${game.key}" onclick=connect(this.id);>
+				<center>
+					<div class="buttonText">
+						${langPack['INF_server_name']}:
+						<c:out value="${game.value.server.name}" />
+					</div>
+				</center>
+			</div>
 		</c:forEach>
 	</div>
 </div>
