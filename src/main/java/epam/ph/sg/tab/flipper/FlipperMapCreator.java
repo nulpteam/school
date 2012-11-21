@@ -1,4 +1,4 @@
-package epam.ph.sg.tab.flip;
+package epam.ph.sg.tab.flipper;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,16 +10,16 @@ import java.util.List;
 /**
  * @author Paul Michael T.
  */
-public class FlipMapCreator {
+public class FlipperMapCreator {
 
-	public static List<List<FlipBox>> prepare(int level) {
+	public static List<List<FlipperBox>> prepare(int level) {
 		List<String> lines = read(getFileAddress(level));
-		List<List<FlipBox>> map = new ArrayList<List<FlipBox>>();
+		List<List<FlipperBox>> map = new ArrayList<List<FlipperBox>>();
 		for (int i = 0; i < lines.size(); i++) {
-			List<FlipBox> mapLine = new ArrayList<FlipBox>();
+			List<FlipperBox> mapLine = new ArrayList<FlipperBox>();
 			char[] valueCharArray = lines.get(i).toCharArray();
 			for (int j = 0; j < valueCharArray.length; j++) {
-				mapLine.add(new FlipBox(Integer.valueOf(String
+				mapLine.add(new FlipperBox(Integer.valueOf(String
 						.valueOf(valueCharArray[j]))));
 			}
 			map.add(mapLine);
@@ -28,8 +28,8 @@ public class FlipMapCreator {
 	}
 
 	private static String getFileAddress(int level) {
-		String adr = FlipMapCreator.class.getClassLoader()
-				.getResource("/flip/level_" + level + ".map").getFile()
+		String adr = FlipperMapCreator.class.getClassLoader()
+				.getResource("/flipper/level_" + level + ".map").getFile()
 				.replaceAll("%20", " ");
 		return adr;
 	}

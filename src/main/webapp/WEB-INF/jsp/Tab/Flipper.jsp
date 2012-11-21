@@ -2,17 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<div id="flip" class="display">
+<div id="flipper" class="display">
 	<script src="js/Tab/jquery-ui.custom.min.js" type="text/javascript"></script>
 	<script src="js/Tab/jquery.flip.min.js" type="text/javascript"></script>
-	<script src="js/Tab/Flip.js" type="text/javascript"></script>
+	<script src="js/Tab/Flipper.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			getStatus();
 		});
 	</script>
 	<table id="field">
-		<c:forEach var="line" items="${flipGame.field}" varStatus="lineNumber">
+		<c:forEach var="line" items="${flipperGame.field}"
+			varStatus="lineNumber">
 			<tr>
 				<c:forEach var="box" items="${line}" varStatus="columNumber">
 					<td><c:if test="${box.value == 0}">
@@ -26,7 +27,12 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<button id="newGame" onclick="tabGoTo('FlipNewGame.html')">new
-		game</button>
-	<button id="reset" onclick="tabGoTo('FlipResetLevel.html');">reset</button>
+	<div id="newGame" class="flipperButton"
+		onclick="tabGoTo('FlipperNewGame.html')">
+		<p>${langPack['newGame']}</p>
+	</div>
+	<div id="reset" class="flipperButton"
+		onclick="tabGoTo('FlipperResetLevel.html');">
+		<p>${langPack['reset']}</p>
+	</div>
 </div>

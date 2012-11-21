@@ -1,9 +1,9 @@
 var levelSound = new Audio;
-levelSound.src = 'sound/Flip/levelComplete.wav';
+levelSound.src = 'sound/Flipper/levelComplete.wav';
 var flipSound = new Audio;
-flipSound.src = 'sound/Flip/flip.wav';
+flipSound.src = 'sound/Flipper/flip.wav';
 var gameOver = new Audio;
-gameOver.src = 'sound/Flip/gameOver.wav';
+gameOver.src = 'sound/Flipper/gameOver.wav';
 
 var lock = false;
 
@@ -21,14 +21,13 @@ function send(elem) {
 }
 
 function getStatus() {
-	$.post("FlipStatus.html", function(resp) {
+	$.post("FlipperStatus.html", function(resp) {
 		if (resp.gameOver == true) {
 			gameOver.play();
 			lock = true;
-			alert('Game Over');
 		} else if (resp.nextLevel == true) {
 			levelSound.play();
-			tabGoTo("FlipNextLevel.html");
+			tabGoTo("FlipperNextLevel.html");
 		}
 	});
 }
@@ -37,19 +36,19 @@ function flip(elem) {
 	flipSound.play();
 	var line = parseInt(elem.id.charAt(0));
 	var colum = parseInt(elem.id.charAt(1));
-	flipUI($('#flip #field #' + line + colum));
-	flipUI($('#flip #field #' + line + (colum - 1)));
-	flipUI($('#flip #field #' + line + (colum + 1)));
-	flipUI($('#flip #field #' + (line - 1) + colum));
-	flipUI($('#flip #field #' + (line + 1) + colum));
+	flipUI($('#flipper #field #' + line + colum));
+	flipUI($('#flipper #field #' + line + (colum - 1)));
+	flipUI($('#flipper #field #' + line + (colum + 1)));
+	flipUI($('#flipper #field #' + (line - 1) + colum));
+	flipUI($('#flipper #field #' + (line + 1) + colum));
 }
 
 function flipUI($elem) {
-	$elem.flip({
-		direction : "rl",
-		speed : 200,
-		dontChangeColor : true,
-	});
+//	$elem.flip({
+//		direction : "rl",
+//		speed : 200,
+//		dontChangeColor : true,
+//	});
 	if ($elem.attr('class') == 'white') {
 		$elem.attr('class', 'black');
 	} else {

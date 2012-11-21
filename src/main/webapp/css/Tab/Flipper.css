@@ -1,0 +1,52 @@
+#flipper {
+	background-image: url('../../images/Tab/flipper/background.png');
+	background-repeat: no-repeat;
+}
+
+#flipper #field {
+	margin: 120px auto;
+}
+
+#flipper #field div {
+	height: 30px;
+	width: 30px;
+}
+
+#flipper #field .black {
+	background-image: url('../../images/Tab/flipper/black.png');
+	background-repeat: no-repeat;
+}
+
+#flipper #field .white {
+	background-image: url('../../images/Tab/flipper/white.png');
+	background-repeat: no-repeat;
+}
+
+#flipper .flipperButton {
+	background-image: url('../../images/Tab/flipper/button_sprite.png');
+	background-repeat: no-repeat;
+	height: 30px;
+	width: 115px;
+	cursor: pointer;
+	position: absolute;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+#flipper .flipperButton:hover {
+	background: url('../../images/Tab/flipper/button_sprite.png') bottom;
+}
+
+#flipper .flipperButton p {
+	font-weight: bold;
+	color: brown;
+	margin-top: 5px;
+}
+
+#flipper #newGame {
+	margin-left: 10px;
+}
+
+#flipper #reset {
+	margin-left: 140px;
+}

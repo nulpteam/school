@@ -1,9 +1,9 @@
-package epam.ph.sg.tab.flip;
+package epam.ph.sg.tab.flipper;
 
-public class FlipBox {
+public class FlipperBox {
 	private int value;
 
-	public FlipBox(int value) {
+	public FlipperBox(int value) {
 		this.value = value;
 	}
 	

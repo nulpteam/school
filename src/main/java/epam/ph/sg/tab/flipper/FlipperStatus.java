@@ -1,6 +1,6 @@
-package epam.ph.sg.tab.flip;
+package epam.ph.sg.tab.flipper;
 
-public class FlipStatus {
+public class FlipperStatus {
 	private boolean gameOver = false;
 	private boolean nextLevel = false;
 	/**

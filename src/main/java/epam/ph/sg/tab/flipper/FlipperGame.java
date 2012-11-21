@@ -1,18 +1,18 @@
-package epam.ph.sg.tab.flip;
+package epam.ph.sg.tab.flipper;
 
 /**
  * @author Paul Michael T.
  */
 import java.util.List;
 
-public class FlipGame {
+public class FlipperGame {
 	private int level;
-	private List<List<FlipBox>> field;
-	private FlipStatus status = new FlipStatus();
+	private List<List<FlipperBox>> field;
+	private FlipperStatus status = new FlipperStatus();
 
-	public FlipGame(int level) {
+	public FlipperGame(int level) {
 		this.level = level;
-		this.field = FlipMapCreator.prepare(level);
+		this.field = FlipperMapCreator.prepare(level);
 	}
 
 	public void flip(int line, int colum) {
@@ -39,8 +39,8 @@ public class FlipGame {
 	}
 
 	private boolean isNextLevel() {
-		for (List<FlipBox> line : field) {
-			for (FlipBox flipBox : line) {
+		for (List<FlipperBox> line : field) {
+			for (FlipperBox flipBox : line) {
 				if (flipBox.getValue() == 1) {
 					return false;
 				}
@@ -52,7 +52,7 @@ public class FlipGame {
 	public void nextLevel() {
 		level++;
 		if (level < 13) {
-			field = FlipMapCreator.prepare(level);
+			field = FlipperMapCreator.prepare(level);
 			status.setNextLevel(false);
 		} else {
 			status.setGameOver(true);
@@ -60,7 +60,7 @@ public class FlipGame {
 	}
 
 	public void resetLevel() {
-		field = FlipMapCreator.prepare(level);
+		field = FlipperMapCreator.prepare(level);
 	}
 	
 	/**
@@ -73,14 +73,14 @@ public class FlipGame {
 	/**
 	 * @return the field
 	 */
-	public List<List<FlipBox>> getField() {
+	public List<List<FlipperBox>> getField() {
 		return field;
 	}
 
 	/**
 	 * @return the status
 	 */
-	public FlipStatus getStatus() {
+	public FlipperStatus getStatus() {
 		return status;
 	}
 }
