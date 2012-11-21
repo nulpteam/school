@@ -3,6 +3,7 @@
  */
 package epam.ph.sg.models.infection;
 
+
 /**
  * @author roman
  *
@@ -17,11 +18,18 @@ public class InfClientMessage {
 	private String serverName;
 	private String moveType;
 	private int serverScore;
+	private int clientScore;
 	private int xcoord;
 	private int ycoord;
-	private int clientScore;
+	private int fmXcoord;
+	private int fmYcoord;
+	private int nullcoord;
 	private boolean lock;
+	private int[][] board;
+	private boolean clientLock;
+	private boolean serverlock;
 	
+		
 	public InfClientMessage() {
 		type = "";
 		userType = "";
@@ -30,7 +38,9 @@ public class InfClientMessage {
 		setServerScore(0);
 		setClientScore(0);
 		serverName = "";
-		lock = false;
+		setLock(false);
+		
+	
 	}
 
 	public String getClientName() {
@@ -112,6 +122,65 @@ public class InfClientMessage {
 	public void setMoveType(String moveType) {
 		this.moveType = moveType;
 	}
+
+	public boolean isLock() {
+		return lock;
+	}
+
+	public void setLock(boolean lock) {
+		this.lock = lock;
+	}
+
+	public int[][] getBoard() {
+		return board;
+	}
+
+	public void setBoard(int[][] board) {
+		this.board = board;
+	}
+
+	public int getFmXcoord() {
+		return fmXcoord;
+	}
+
+	public void setFmXcoord(int fmXcoord) {
+		this.fmXcoord = fmXcoord;
+	}
+
+	public int getFmYcoord() {
+		return fmYcoord;
+	}
+
+	public void setFmYcoord(int fmYcoord) {
+		this.fmYcoord = fmYcoord;
+	}
+
+	public int getNullcoord() {
+		return nullcoord;
+	}
+
+	public void setNullcoord(int nullcoord) {
+		this.nullcoord = nullcoord;
+	}
+
+	public boolean isClientLock() {
+		return clientLock;
+	}
+
+	public void setClientLock(boolean clientLock) {
+		this.clientLock = clientLock;
+	}
+
+	public boolean isServerlock() {
+		return serverlock;
+	}
+
+	public void setServerlock(boolean serverlock) {
+		this.serverlock = serverlock;
+	}
+
+
+	
 
 
 }

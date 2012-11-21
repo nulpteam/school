@@ -24,6 +24,7 @@
 <div class="paperList">
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/Infection/InfectionGame.js" type="text/javascript"></script>
+	<script src="js/Infection/InfectionMenu.js" type="text/javascript"></script>
 	<script src="js/Infection/InfectionGameWebSocket.js"
 		type="text/javascript"></script>
 	<script language="JavaScript" type="text/javascript"
@@ -46,26 +47,29 @@
 			<label></label>
 		</div>
 
+		<div class="homeButton" onclick=PageHomeButton();></div>
+		<div class="refreshButton" onclick=refreshButtonClick();></div>
+
 		<div id="infection_title">
 			<c:out value="${langPack['Infection']}" />
 		</div>
-        <div id="inf_table_bg">
-		<div id="infgame_table" userType="${infUserType}"
-			gameId="${infGameId}">
-			<table id="inftable" align="center" cellpadding="0" cellspacing="0">
+		<div id="inf_table_bg">
+			<div id="infgame_table" userType="${infUserType}"
+				gameId="${infGameId}">
+				<table id="inftable" align="center" cellpadding="0" cellspacing="0">
 
-				<c:forEach begin="0" end="6" step="1" varStatus="i">
-					<tr>
-						<c:forEach begin="0" end="6" step="1" varStatus="j">
-							<td class="chip" id="X${j.count-1}Y${i.count-1}"
-								onClick=move(this)><img src=""></td>
-						</c:forEach>
-					</tr>
-				</c:forEach>
+					<c:forEach begin="0" end="6" step="1" varStatus="i">
+						<tr>
+							<c:forEach begin="0" end="6" step="1" varStatus="j">
+								<td class="chip" id="X${j.count-1}Y${i.count-1}"
+									onClick=firstMove(this)><img src=""></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
 
-			</table>
+				</table>
+			</div>
 		</div>
-        </div>
 	</div>
 
 </div>

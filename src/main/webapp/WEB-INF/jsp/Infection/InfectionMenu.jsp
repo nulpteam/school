@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--  <html>
 <head>
@@ -13,9 +13,21 @@
 </head>
 <body>-->
 <div class="paperList">
-    <script src="js/jquery.js" type="text/javascript"></script>
-    <script src="js/Infection/InfectionMenu.js" type="text/javascript"></script>
-    Infection Menu
-	<input  type="button" value="New Game" onClick=create()>
-	<input  type="button" value="Connect" onClick=getConnectionList()>
-</div>	
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/Infection/InfectionMenu.js" type="text/javascript"></script>
+
+	<div class="homeButton" onclick=PageHomeButton();></div>
+	<div class="refreshButton" onclick=refreshButtonClick();></div>
+	
+	<div id="infection_title">Infection Menu</div>
+	<div class="button" id="infNewGame" onClick=create();>
+		<center>
+			<div class="buttonText">${langPack['INF_newgame']}</div>
+		</center>
+	</div>
+	<div class="button" id="infConnectGame" onClick=getConnectionList();>
+		<center>
+			<div class="buttonText">${langPack['INF_connect']}</div>
+		</center>
+	</div>
+</div>
