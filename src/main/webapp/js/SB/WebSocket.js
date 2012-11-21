@@ -12,7 +12,6 @@ var flag = false;
 $(document)
 		.ready(
 				function() {
-					// console.log("WEBSOCKET");
 					userName = $("#userName").attr("class");
 					gameId = $("#gameID").attr("class");
 					connectionType = $("#ConnectionType").attr("class");
@@ -47,15 +46,10 @@ $(document)
 					socket.onmessage = function(event) {
 
 						if (event.data == "ready") {
-							alert(event.data);
 							if (connectionType == "client"
 									|| $("#oponent").attr("class") != undefined) {
 								flag = true;
 							};
-							alert($("#bothStarted").attr("class"));
-							alert(connectionType);
-							alert(lock);
-							
 							if (connectionType != lock) {
 								$("#locker").css("visibility", "hidden");
 							} else {
