@@ -23,6 +23,7 @@
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>
 	<div id="lock" class="${Game.nextMove}"></div>
+	<div id="bothStarted" class="${Game.bothStarted}"></div>
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
@@ -266,7 +267,7 @@
 				
 			</div>
 			
-			<div id="locker" style="height: 210px; width: 210px; position: absolute; visibility: hidden;">
+			<div id="locker" style="height: 210px; width: 210px; position: absolute; visibility: visible;">
 				<img alt="BSRadar" src="images/SB/BSRadar.gif" height="200px" width="200px">
 			</div>
 		</div>

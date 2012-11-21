@@ -7,6 +7,7 @@ var gameId;
 var socket;
 var lock;
 var myDamagedSheeps = 0;
+var flag=false;
 
 $(document).ready(function(){
 //	console.log("WEBSOCKET");
@@ -14,6 +15,15 @@ $(document).ready(function(){
 	gameId = $("#gameID").attr("class");
 	connectionType = $("#ConnectionType").attr("class");
 	lock = $("#lock").attr("class");
+	console.log($("#oponent").attr("class"));
+	console.log(connectionType);
+	if(connectionType=="client" || $("#oponent").attr("class")!="")
+	{
+		flag=true;
+	}
+	if (($("#bothStarted") == "true") && (connectionType!=lock)) {
+		$("#locker").css("visibility", "hidden");
+	}
 	
 //	console.log(userName);
 //	console.log(gameId);
@@ -46,6 +56,14 @@ $(document).ready(function(){
 //			alert('kill');
 			victory();
 //			goTo2("SbKill.html",connectionType);
+		}
+		else if(event.data==='connected')
+		{
+			flag=true;
+			if((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0)
+			{
+				$(".BSGo").css("visibility", "visible");
+			}
 		}
 		else
 		{

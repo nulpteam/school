@@ -19,7 +19,8 @@ public class Game {
 	private Client client;
 	private int id;
 	private String nextMove;
-
+	
+	
 	public String getNextMove() {
 		return nextMove;
 	}

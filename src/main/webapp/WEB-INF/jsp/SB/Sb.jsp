@@ -26,6 +26,17 @@
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>
 	<div id="lock" class="${Game.nextMove}"></div>
+	<c:choose>
+      <c:when test="${ConnectionType=='server'}">
+      <div id="oponent" class="${Game.client.conn}"></div>
+      </c:when>
+
+      <c:otherwise>
+      <div id="oponent" class="${Game.server.conn}"></div>
+      </c:otherwise>
+	</c:choose>
+		
+		
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">

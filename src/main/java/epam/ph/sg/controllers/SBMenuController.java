@@ -144,6 +144,11 @@ public class SBMenuController {
 		selectedGame.setClient(client);
 
 		ActiveGames.getGame(gameID).setClient(client);
+		try {
+			ActiveGames.getGame(gameID).getServer().getConn().sendMessage("connected");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		session.setAttribute("Game", selectedGame);
 		session.setAttribute("ConnectionType", "client");
 		// Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на

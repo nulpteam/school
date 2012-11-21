@@ -547,7 +547,7 @@ function disableDroppables(obj) {
  * 
  */
 function sendM() {
-	if (((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0)) {
+	if (((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0) && flag ==true) {
 		$(".BSGo").css("visibility", "visible");
 	}
 	var j = {
