@@ -694,22 +694,41 @@ function loose() {
 	goTo("Loose.html");
 }
 
-function playShootSound() {
-	if (userAgent.indexOf("Chrome") != -1) {
-		sound = new Audio;
-		sound.src = "sound/Shoot01.mp3";
-		sound.play();
+function playShootSound(miss) {
+	
+	if(miss=="demage")
+	{
+		if (userAgent.indexOf("Chrome") != -1) {
+			sound = new Audio;
+			sound.src = "sound/Shoot01.mp3";
+			sound.play();
+		}
+	
+		if (userAgent.indexOf("Firefox") != -1) {
+			sound = new Audio;
+			sound.src = "sound/Shoot01.wav";
+			sound.play();
+		}
 	}
-
-	if (userAgent.indexOf("Firefox") != -1) {
-		sound = new Audio;
-		sound.src = "sound/Shoot01.wav";
-		sound.play();
-	}
+	else if(miss=="miss")
+		{
+			if (userAgent.indexOf("Chrome") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.mp3";
+				sound.play();
+			}
+		
+			if (userAgent.indexOf("Firefox") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.wav";
+				sound.play();
+			}
+		}
 }
 
+
 function fire(point) {
-	playShootSound();
+	//playShootSound();
 
 	p = $(point).attr('id');
 	p = p[1] + '' + p[4];
@@ -726,10 +745,12 @@ function fire(point) {
 
 		rand = Math.floor((Math.random() * 5) + 1);
 		if (obj.miss === "00") {
+			playShootSound("miss");
 			html = "<img id='fireP" + p + "' src='images/SB/missPoint" + rand
 					+ ".png'>";
 			$("#locker").css("visibility", "visible");
 		} else {
+			playShootSound("demage");
 			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand
 					+ ".png'>";
 			$("#locker").css("visibility", "hidden");
