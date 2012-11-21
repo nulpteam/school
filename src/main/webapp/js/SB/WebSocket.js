@@ -17,8 +17,6 @@ $(document)
 					gameId = $("#gameID").attr("class");
 					connectionType = $("#ConnectionType").attr("class");
 					lock = $("#lock").attr("class");
-					console.log($("#oponent").attr("class"));
-					console.log(connectionType);
 					if (connectionType == "client"
 							|| $("#oponent").attr("class") != undefined) {
 						flag = true;
@@ -26,28 +24,12 @@ $(document)
 					if (($("#bothStarted") == "true")
 							&& (connectionType != lock)) {
 						$("#locker").css("visibility", "hidden");
-					}
-
-					// console.log(userName);
-					// console.log(gameId);
-					// console.log(connectionType);
-					// console.log(lock);
-
-					// lock
-					// if (connectionType!=lock)
-					// {
-					// // alert ("lock ocured " + lock);
-					// $("#locker").css("visibility", "hidden");
-					//			
-					// }
-					else {
-						// alert ("lock unocured " + lock);
+					} else {
 						$("#locker").css("visibility", "visible");
 					}
 
 					socket = new WebSocket("ws://" + location.hostname
 							+ ":8081");
-					// console.log(location.hostname);
 					socket.onopen = function() {
 						socket.send(gameId + "&" + userName + "&"
 								+ connectionType);
@@ -81,9 +63,7 @@ $(document)
 								$("#locker").css("visibility", "visible");
 							}
 						} else if (event.data === 'kill') {
-							// alert('kill');
 							victory();
-							// goTo2("SbKill.html",connectionType);
 						} else if (event.data === 'connected') {
 							flag = true;
 							if ((sheepCount.sheep1 + sheepCount.sheep2
@@ -95,10 +75,8 @@ $(document)
 							if (msg.sheep == "00") {
 								$("#" + msg.point).attr("background",
 										"images/SB/cant_be.png");
-								// alert("msg.sheep: " + msg.sheep);
 								lock = "";
 							} else {
-								// alert("msg.sheep: " + msg.sheep);
 								lock = connectionType;
 							}
 							if (msg.sheep != "00") {
@@ -112,14 +90,10 @@ $(document)
 							}
 
 							if (connectionType != lock) {
-								// alert ("lock ocured " + lock);
 								$("#locker").css("visibility", "hidden");
 							} else {
-								// alert ("lock unocured " + lock);
 								$("#locker").css("visibility", "visible");
 							}
-							// alert("Пришло сообщение с содержанием: " +
-							// event.data);
 							console.log(event.data);
 						}
 					};
