@@ -654,15 +654,15 @@ function counter(obj) {
 }
 
 function allreadyShooted() {
-	alert("You allready shoot in this point");
+	alert(SbMsgAllreadyShooted);
 }
 
 function allreadyDamaged() {
-	alert("You allready damaged this point");
+	alert(SbMsgAllreadyShooted);
 }
 
 function cantBe() {
-	alert("There cant be sheep!");
+	alert(SbMsgCantBeSheep);
 }
 
 function lockWhereCantBe(id) {
