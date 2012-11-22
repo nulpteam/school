@@ -44,6 +44,10 @@
 		<url-pattern>/XOStatistics.html</url-pattern>
 		<url-pattern>/XOCreate.html</url-pattern>
 		<url-pattern>/XOGame.html</url-pattern>
+		<url-pattern>/Points.html</url-pattern>
+ 		<url-pattern>/PointsGame.html</url-pattern>
+  		<url-pattern>/PointsConnectList.html</url-pattern>
+  		<url-pattern>/PointsEndGame.html</url-pattern>
 	</filter-mapping>
 	<filter>
 		<filter-name>tabFilter</filter-name>
