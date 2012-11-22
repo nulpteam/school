@@ -19,7 +19,7 @@
 	<div class="homeButton" onclick=PageHomeButton();></div>
 	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	
-	<div id="infection_title">Infection Menu</div>
+	<div id="infection_title">${langPack['Infection']}</div>
 	<div class="button" id="infNewGame" onClick=create();>
 		<center>
 			<div class="buttonText">${langPack['INF_newgame']}</div>
@@ -28,6 +28,11 @@
 	<div class="button" id="infConnectGame" onClick=getConnectionList();>
 		<center>
 			<div class="buttonText">${langPack['INF_connect']}</div>
+		</center>
+	</div>
+	<div class="button" id="infRules" onClick="goTo('InfectionRules.html');">
+		<center>
+			<div class="buttonText">${langPack['INF_rules']}</div>
 		</center>
 	</div>
 </div>

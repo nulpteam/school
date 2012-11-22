@@ -50,6 +50,15 @@
 	
 }
 
+#inf_message_place{
+	position:absolute;
+	margin:200px 407px;
+	width: 100px;
+	height: 140px;
+	font-size: 15px;
+	text-align: center;
+}
+
 #infplayer_label_2 {
 	position: absolute;
 	margin: 460px 320px;
@@ -85,7 +94,52 @@
 	margin:200px 160px;
 }
 
+#infRules{
+	position:absolute;
+	margin:260px 160px;
+}
+
 #infConectList{
 	position:absolute;
 	margin:60px 160px;
+}
+
+#winner_img{
+	background-image: url('../images//Infection/winner_cup.gif');
+	position:absolute;
+	margin:140px 167px;
+	width: 260px;
+	height: 300px;
+}
+
+#congrat_message{
+	position:absolute;
+	margin:420px 30px;
+	font-size: 25px;
+	text-align: center;
+	width: 500px;
+}
+
+#loser_img{
+	background-image: url('../images//Infection/loser.gif');
+	position:absolute;
+	margin:140px 127px;
+	width: 340px;
+	height: 260px;
+}
+
+#loser_message{
+	position:absolute;
+	margin:420px 30px;
+	font-size: 25px;
+	text-align: center;
+	width: 500px;
+}
+
+#inf_game_rules{
+	position:absolute;
+	margin:140px 127px;
+	width: 340px;
+	height: 260px;
+	font-size: 15px;
 }

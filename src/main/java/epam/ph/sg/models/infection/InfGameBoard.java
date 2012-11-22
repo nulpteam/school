@@ -5,6 +5,7 @@ package epam.ph.sg.models.infection;
 
 
 
+
 /**
  * @author roman
  *
@@ -46,7 +47,8 @@ public class InfGameBoard {
 		if ( message.getMoveType().equals("server") ){
 			if ( board[message.getXcoord()][message.getYcoord()] == 1 ){
 				message.setType("rightFirstMove");
-
+				board = lightFields(board, message);
+				message.setBoard(board);
 			}
 			else{
 				System.out.println("You CANT DO IT");
@@ -57,6 +59,8 @@ public class InfGameBoard {
 		if ( message.getMoveType().equals("client") ){
 			if ( board[message.getXcoord()][message.getYcoord()] == 2 ){
 				message.setType("rightFirstMove");
+				board = lightFields(board, message);
+				message.setBoard(board);
 			}
 			else{
 				System.out.println("You CANT DO IT");
@@ -66,7 +70,8 @@ public class InfGameBoard {
 
 		return message;
 	}
-	public static InfClientMessage validateSecondMove(int[][] board,InfClientMessage message,int fmX,int fmY){
+	public static InfClientMessage validateSecondMove(int[][] board,InfClientMessage message,int fmX,int fmY,String id){
+		board = cleandLightFields(board, message);
 
 		if ( message.getMoveType().equals("server") ){
 			if ( board[message.getXcoord()][message.getYcoord()] == 0){
@@ -84,6 +89,7 @@ public class InfGameBoard {
 							}else{
 								message.setType("clientWin");
 							}
+							//InfGameMap.deleteGame(id);
 						}
 						return message;
 					}
@@ -98,6 +104,7 @@ public class InfGameBoard {
 						}else{
 							message.setType("clientWin");
 						}
+						//InfGameMap.deleteGame(id);
 					}
 				}
 				else{
@@ -124,6 +131,7 @@ public class InfGameBoard {
 							}else{
 								message.setType("clientWin");
 							}
+							//InfGameMap.deleteGame(id);
 						}
 						return message;
 					}
@@ -138,6 +146,7 @@ public class InfGameBoard {
 						}else{
 							message.setType("clientWin");
 						}
+						//InfGameMap.deleteGame(id);
 					}
 
 				}
@@ -266,7 +275,7 @@ public class InfGameBoard {
 		}
 
 	}
-	
+
 	private static boolean isNoServerChipsLeft(int[][] board){
 		int score=0;
 		for ( int i = 0 ; i <= 6; i++){
@@ -285,7 +294,7 @@ public class InfGameBoard {
 		}
 
 	}
-	
+
 	private static boolean isNoClientChipsLeft(int[][] board){
 		int score=0;
 		for ( int i = 0 ; i <= 6; i++){
@@ -303,6 +312,36 @@ public class InfGameBoard {
 			return false;
 		}
 
+	}
+
+	private static int[][] lightFields(int[][] board,InfClientMessage message){
+
+		int xcoord = message.getXcoord();
+		int ycoord = message.getYcoord();
+
+		for ( int i = 0 ; i <= 6; i++){
+			for (int j = 0; j <=6 ; j++){
+				if ( ((i >= xcoord-2)&(i<=xcoord+2)) & ((j >= ycoord-2)&(j<=ycoord+2)) ){
+					if (board[i][j] == 0){
+						board[i][j] = 5;
+					}
+
+				}
+			}
+		}	
+
+		return board;
+	}
+
+	private static int[][] cleandLightFields(int[][] board,InfClientMessage message){
+		for ( int i = 0 ; i <= 6; i++){
+			for (int j = 0; j <=6 ; j++){
+				if (board[i][j] == 5){
+					board[i][j] = 0;
+				}
+			}
+		}
+		return board;
 	}
 
 

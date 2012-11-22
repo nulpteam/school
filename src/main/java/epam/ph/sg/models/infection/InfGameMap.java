@@ -15,8 +15,8 @@ public class InfGameMap {
 		gamesMap.put(game.getId(), game);
 	}
 
-	public static void deleteGame(InfGame game) {
-		gamesMap.remove(game.getId());
+	public static void deleteGame(String id) {
+		gamesMap.remove(id);
 	}
 
 	public static Map<String, InfGame> getGames() {

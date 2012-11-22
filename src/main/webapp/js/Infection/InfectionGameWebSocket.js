@@ -47,6 +47,7 @@ socket.onmessage = function(event) {
 	switch (msg.type) {
 
 	case "clientConnect":
+		userType = $('#infgame_table').attr('userType');
 		$('#infplayer_label_1 > label').text(msg.serverName);
 		$('#infplayer_label_2 > label').text(msg.clientName);
 		$('#infscore_label_1 > label').text(msg.serverScore);
@@ -55,6 +56,12 @@ socket.onmessage = function(event) {
 		drawBoard();
 		waitForClient = false;
 		clientLock = true;
+		if (userType == "client"){
+			$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
+		}
+		if (userType == "server"){
+			$('#inf_message_place > img').attr('src','images/Infection/empty_sand_clock.png');
+		}
 		break;
 
 	case "serverConnect":
@@ -62,6 +69,9 @@ socket.onmessage = function(event) {
 		$('#infscore_label_1 > label').text(msg.serverScore);
 		refreshBoard(msg.board);
 		drawBoard();
+		if (userType == "server"){
+			$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
+		}
 		break;
 
 
@@ -75,20 +85,23 @@ socket.onmessage = function(event) {
 		break;
 	case "rightFirstMove":
 		//alert("Right move");
+		refreshBoard(msg.board);		
+		drawBoard();
+				
         if (msg.moveType == "server"){
         	$('#X' + msg.xcoord + 'Y' + msg.ycoord + ' > img').attr('src',
-			'images/Infection/red_hover_chip.png');
+			'images/Infection/red_chip_eye_rotate.gif');
         }
         if (msg.moveType == "client"){
         	$('#X' + msg.xcoord + 'Y' + msg.ycoord + ' > img').attr('src',
-			'images/Infection/blue_hover_chip.png');
+			'images/Infection/blue_chip_eye_rotate.gif');
         }
 		break;
 	case "wrongFirstMove":
 		//alert("Wrong move");
 		break;
 	case "rightSecondMove":
-				
+		userType = $('#infgame_table').attr('userType');		
 		refreshBoard(msg.board);		
 		drawBoard();
 		
@@ -98,10 +111,24 @@ socket.onmessage = function(event) {
 		if (msg.moveType == "server"){
 			clientLock = false;
 			serverLock = true;
+			if (userType == "client"){
+				$('#inf_message_place > img').attr('src','images/Infection/empty_sand_clock.png');
+			}
+			if (userType == "server"){
+				$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
+			}
+				
+			
 		}
 		if (msg.moveType == "client"){
 			clientLock = true;
 			serverLock = false;
+			if (userType == "server"){
+				$('#inf_message_place > img').attr('src','images/Infection/empty_sand_clock.png');
+			}
+			if (userType == "client"){
+				$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
+			}
 		}
 		break;
 	case "wrongSecondMove":
@@ -117,9 +144,9 @@ socket.onmessage = function(event) {
 		$('#infscore_label_2 > label').text(msg.clientScore);
 		
 		if (userType == "server"){
-			alert("You win");
+			winnerPage();
 		}else{
-			alert("You Lose");
+			looserPage();
 		}
 		break;
 	case "clientWin":
@@ -132,9 +159,9 @@ socket.onmessage = function(event) {
 		$('#infscore_label_2 > label').text(msg.clientScore);
 		
 		if (userType == "client"){
-			alert("You win");
+			winnerPage();
 		}else{
-			alert("You Lose");
+			looserPage();
 		}
 		break;
 	}
@@ -167,7 +194,11 @@ function drawBoard(){
 			if (board[i][j] == 0) {
 				$('#X' + i + 'Y' + j + ' > img').attr('src',
 				'images/Infection/empty_cell.png');
-			}	
+			}
+			if (board[i][j] == 5) {
+				$('#X' + i + 'Y' + j + ' > img').attr('src',
+				'images/Infection/hover2_cell.png');
+			}
 		}
 	}
 }
@@ -184,14 +215,14 @@ function firstMove(td) {
 	userType = $('#infgame_table').attr('userType');
     if (userType == "server"){
 		if ( serverLock == true ){
-			alert ("Wait for your turn");
+			$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
 			return;
 		}
 	}
 	
 	if (userType == "client"){
 		if ( clientLock == true ){
-			alert ("Wait for your turn");
+			$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
 			return;
 		}
 	}
@@ -234,5 +265,22 @@ function firstMove(td) {
 	socket.send(JSON.stringify(move));
 }
 
+function winnerPage(){
+	goTo('InfectionWin.html');
+}
+
+function looserPage(){
+	goTo('InfectionLose.html');
+}
+
+function cleanLightFields(){
+	for ( var i = 0; i <= 6; i++) {
+		for ( var j = 0; j <= 6; j++) {
+			if( board[i][j] == 5){
+				board[i][j] = 0;
+			}
+		}
+	}
+}
 
 

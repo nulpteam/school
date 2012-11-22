@@ -97,7 +97,7 @@ public class InfGame implements Serializable{
 		}
 	}
 
-	public void changeGame(InfClientMessage message){
+	public void changeGame(InfClientMessage message,String id){
 		
 		if (message.getType().equals("firstmove")){
 
@@ -120,14 +120,14 @@ public class InfGame implements Serializable{
 		if (message.getType().equals("secondmove")){
 			if (message.getUserType().equals("server")){
 				logger.debug("Server make second move");
-				message = InfGameBoard.validateSecondMove(board, message,this.getFmXcoor(),this.getFmYcoor() );
+				message = InfGameBoard.validateSecondMove(board, message,this.getFmXcoor(),this.getFmYcoor(),id );
 				sendMessage("server", message);
 				sendMessage("client", message);
 				
 			}
 			if (message.getUserType().equals("client")){
 				logger.debug("Client make second move");
-				message = InfGameBoard.validateSecondMove(board, message,this.getFmXcoor(),this.getFmYcoor() );
+				message = InfGameBoard.validateSecondMove(board, message,this.getFmXcoor(),this.getFmYcoor(),id );
 				sendMessage("server", message);
 				sendMessage("client", message);
 				

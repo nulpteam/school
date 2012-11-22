@@ -3,11 +3,6 @@ package epam.ph.sg.models.infection;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 
-import epam.ph.sg.models.points.PtsClientMessage;
-import epam.ph.sg.models.points.PtsGame;
-import epam.ph.sg.models.points.PtsGameMap;
-import epam.ph.sg.models.points.PtsResources;
-
 public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 
 	private Logger log;
@@ -45,7 +40,7 @@ public class InfWebSocketSpeaker implements WebSocket.OnTextMessage {
 			game.setPlayerInfo(clientMessage.getUserType(), conn);
 		}
         
-		game.changeGame(clientMessage);
+		game.changeGame(clientMessage,game.getId());
 		
 
 	}

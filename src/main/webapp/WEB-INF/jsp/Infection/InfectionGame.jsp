@@ -53,6 +53,10 @@
 		<div id="infection_title">
 			<c:out value="${langPack['Infection']}" />
 		</div>
+		<div id="inf_message_place">
+		   <img src="">
+		</div>
+		
 		<div id="inf_table_bg">
 			<div id="infgame_table" userType="${infUserType}"
 				gameId="${infGameId}">

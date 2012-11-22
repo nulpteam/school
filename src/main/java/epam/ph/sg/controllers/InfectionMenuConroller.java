@@ -22,7 +22,7 @@ import epam.ph.sg.models.infection.InfPlayer;
 @Controller
 @SessionAttributes("user")
 public class InfectionMenuConroller {
-	
+
 	//Перехід на сторінку меню гри
 	@RequestMapping("Infection.html")
 	public String infMenu(HttpSession session) {
@@ -33,7 +33,23 @@ public class InfectionMenuConroller {
 	public String infGame(HttpSession session) {
 		return "Infection/InfectionGame";
 	}
-    //створення нової гри
+	//перехід на сторінку переможця гри
+	@RequestMapping("InfectionWin.html")
+	public String infWinGame(HttpSession session) {
+		return "Infection/InfectionGameWin";
+	}
+	//перехід на сторінку програвшого
+	@RequestMapping("InfectionLose.html")
+	public String infLoseGame(HttpSession session) {
+		return "Infection/InfectionGameLose";
+	}
+	
+	//перехід на сторінку правил
+	@RequestMapping("InfectionRules.html")
+	public String infGameRules(HttpSession session) {
+		return "Infection/InfectionRules";
+	}
+	//створення нової гри
 	@RequestMapping(value = "/InfectionCreateGame.html", method = RequestMethod.GET)
 	public @ResponseBody
 	boolean createGame(HttpSession session) {
@@ -42,19 +58,19 @@ public class InfectionMenuConroller {
 		User user;
 		InfPlayer server;
 		InfGame game;
-        
+
 		//якщо в сесії є гра то повертає на сторінку гри
 		oldGameId = (String) session.getAttribute("infGameId");
 		if (oldGameId != null) {
 			return true;
 		}
-        //якщо ні проводиться створення нової гри 
+		//якщо ні проводиться створення нової гри 
 		user = (User) session.getAttribute("user");
 		game = new InfGame();//нова гра
 		server = new InfPlayer(user.getName(), game.getId());//новий гравець 
 		game.setServer(server);//встановлюємо сервер
 		InfGameMap.addGame(game);//додаємо гру в список ігор
-				
+
 		session.setAttribute("infGamesMap", InfGameMap.getGames());
 		session.setAttribute("infGameId", game.getId());
 		session.setAttribute("infUserType", "server");
@@ -75,18 +91,18 @@ public class InfectionMenuConroller {
 		game = InfGameMap.getGames().get(gameId);
 		client = new InfPlayer(user.getName(), game.getId());
 		game.setClient(client);
-		
+
 		session.setAttribute("infUserType", "client");
 		session.setAttribute("infGameId", game.getId());
 
 		return true;
 	}
-	
+
 	@RequestMapping(value = "/InfectionConnectList.html")
 	public String getGameList(HttpSession session) {
 
 		String oldGameId=null;
-				
+
 		session.setAttribute("infGamesMap", InfGameMap.getGames());
 		oldGameId = (String)session.getAttribute("infGameId");
 		if (oldGameId != null) {
@@ -94,7 +110,7 @@ public class InfectionMenuConroller {
 		} else {
 			return "Infection/InfectionGameList";
 		}
-       
+
 	}
 
 }
