@@ -34,7 +34,7 @@
 		<div class="button" onclick=reversy();>
 			<p class="buttonText">${langPack['Reversi']}</p>
 		</div>
-		<div class="button" onclick=points();>
+		<div class="button" onclick="goTo('Points.html')">
 			<p class="buttonText">${langPack['Points']}</p>
 		</div>
 		<div class="button" onclick="goTo('Infection.html');">

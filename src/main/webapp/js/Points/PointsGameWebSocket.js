@@ -4,268 +4,401 @@ var socket = new WebSocket("ws://localhost:8082");
 var waitForClient = true;
 var lock = false;
 var board;
-
-// TODO таски 1.замутити промальовку гри при рефреші - промальовка контурів
+var x_length = 20;
+var y_length = 19;
 //
 
-$(document).ready(function() {
+$(document).ready(function(){
 
-	board = createMatrix();
-
-	userType = $('#game_table').attr('userType');
-	gameId = $('#game_table').attr('gameId');
-
-	if (userType == "client")
-		lock = true;
-
-	socket.onopen = function() {
-
-		console.log("open socket");
-
-		var userInfo = {
-			"type" : "userInfo",
-			"userType" : userType,
-			"gameId" : gameId
-		};
-		socket.send(JSON.stringify(userInfo));
-
-		var initialize = {
-			"type" : "initialize",
-			"userType" : userType,
-			"gameId" : gameId
-		};
-		socket.send(JSON.stringify(initialize));
-
-	};
-
+    userType = $('#pts_game_table').attr('userType');
+    gameId = $('#pts_game_table').attr('gameId');
+    $('#pts_player2_img').css('visibility', 'hidden');
+    
+    $(".pts_point").mouseover(function(){
+    
+        var x = parseX(this.id);
+        var y = parseY(this.id);
+        if (board[y][x] == 0) {
+            $('#' + this.id).css('background-image', "url(\'images/Points/point_hover_true.png\')");
+        }
+        if (board[y][x] == -1) {
+            $('#' + this.id).css('background-image', "url(\'images/Points/point_hover_false.png\')");
+        }
+    });
+    
+    $(".pts_point").mouseout(function(){
+    
+        var x = parseX(this.id);
+        var y = parseY(this.id);
+        if (board[y][x] == 0 || board[y][x] == -1) {
+            $('#' + this.id).css('background-image', "url(\'images/Points/square.png\')");
+        }
+    });
+    
+    board = createMatrix();
+    
+    
+    if (userType == "client") 
+        lock = true;
+    
+    socket.onopen = function(){
+    
+        console.log("open socket");
+        
+        var userInfo = {
+            "type": "userInfo",
+            "userType": userType,
+            "gameId": gameId
+        };
+        socket.send(JSON.stringify(userInfo));
+        
+        var initialize = {
+            "type": "initialize",
+            "userType": userType,
+            "gameId": gameId
+        };
+        socket.send(JSON.stringify(initialize));
+        
+    };
+    
 });
 
-socket.onmessage = function(event) {
 
-	console.log(event.data);
-	// alert(event.data);
-	var msg = JSON.parse(event.data);
 
-	switch (msg.type) {
+socket.onmessage = function(event){
 
-	case "clientConnect":
-		$('#player_label_1 > label').text(msg.serverName);
-		$('#player_label_2 > label').text(msg.clientName);
-		waitForClient = false;
-		break;
-
-	case "serverConnect":
-		$('#player_label_1 > label').text(msg.serverName);
-		break;
-
-	case "lastChanges":
-		if (msg.userType == "server") {
-			$('#' + msg.coords + ' > img').attr('src',
-					'images/Points/point2.png');
-			lock = msg.serverLock;
-			var x = parseX(msg.coords);
-			var y = parseY(msg.coords);
-			board[y][x] = 1;
-		} else if (msg.userType == "client") {
-			$('#' + msg.coords + ' > img').attr('src',
-					'images/Points/point1.png');
-			lock = msg.clientLock;
-			var x = parseX(msg.coords);
-			var y = parseY(msg.coords);
-			board[y][x] = 2;
-		}
-
-		break;
-
-	case "initialize":
-
-		if (userType == "server") {
-			lock = msg.serverLock;
-		} else if (userType == "client") {
-			lock = msg.clientLock;
-		}
-
-		for ( var i = 0; i < 26; i++) {
-			board[i] = msg.matrix[i];
-		}
-		$('#player_label_1 > label').text(msg.serverName);
-		$('#player_label_2 > label').text(msg.clientName);
-
-		if ($('#player_label_2 > label').text() != "") {
-			waitForClient = false;
-		}
-
-		putPoints();
-		break;
-
-	case "countur":
-		console.log(msg);
-		var pointMarked;
-
-		if (msg.userType == "server") {
-			pointMarked = 11;
-		} else {
-			pointMarked = 22;
-		}
-
-		var counturBoard = createMatrix();
-		counturBoard = msg.matrix;
-		var counturCoords = createMatrix();
-		counturCoords = msg.lastContours;
-
-		paintCountur(counturCoords, pointMarked, counturBoard);
-
-		break;
-	}
-
+    console.log(event.data);
+    
+    var msg = JSON.parse(event.data);
+    
+    switch (msg.type) {
+    
+        case "clientConnect":
+            $('#pts_player_label_1 > label').text(msg.serverName);
+            $('#pts_player_label_2 > label').text(msg.clientName);
+            $('#pts_player2_img').css('visibility', 'visible');
+            waitForClient = false;
+            break;
+            
+        case "serverConnect":
+            $('#player_label_1 > label').text(msg.serverName);
+            break;
+            
+        case "lastChanges":
+            if (msg.userType == "server") {
+                $('#' + msg.coords + ' > img').attr('src', getRandomPoint("client"));
+                lock = msg.serverLock;
+                var x = parseX(msg.coords);
+                var y = parseY(msg.coords);
+                board[y][x] = 1;
+            }
+            else 
+                if (msg.userType == "client") {
+                    $('#' + msg.coords + ' > img').attr('src', getRandomPoint("server"));
+                    lock = msg.clientLock;
+                    var x = parseX(msg.coords);
+                    var y = parseY(msg.coords);
+                    board[y][x] = 2;
+                }
+            
+            break;
+            
+        case "initialize":
+            
+            var matrix = createMatrix();
+            matrix = msg.matrix;
+            
+            if (userType == "server") {
+                lock = msg.serverLock;
+            }
+            else 
+                if (userType == "client") {
+                    lock = msg.clientLock;
+                }
+            
+            for (var i = 0; i < y_length; i++) {
+            
+                for (var j = 0; j < x_length; j++) {
+                    if (matrix[i][j] == -11 || matrix[i][j] == 11 || matrix[i][j] == 10) 
+                        board[i][j] = 1;
+                    else 
+                        if (matrix[i][j] == -12 || matrix[i][j] == 22 || matrix[i][j] == 20) 
+                            board[i][j] = 2;
+                        else 
+                            board[i][j] = matrix[i][j];
+                }
+            }
+            $('#pts_player_label_1 > label').text(msg.serverName);
+            $('#pts_player_label_2 > label').text(msg.clientName);
+            $('#pts_player1_score > label').text("score : " + msg.serverScore);
+            $('#pts_player2_score > label').text("score : " + msg.clientScore);
+            
+            if ($('#pts_player_label_2 > label').text() != "") {
+            
+                $('#pts_player2_img').css('visibility', 'visible');
+                waitForClient = false;
+            }
+            
+            putPoints();
+            
+            paintContour(msg.contoursServer, contourBoard, "server");
+            paintContour(msg.contoursClient, contourBoard, "client");
+            break;
+            
+        case "countur":
+            console.log(msg);
+            
+            var usType = msg.userType;
+            
+            var contourBoard = createMatrix();
+            contourBoard = msg.matrix;
+            
+            var contourCoords = createMatrix();
+            contourCoords = msg.lastCounturs;
+            initializeBoard(contourBoard);
+            
+            $('#pts_player1_score > label').text("score : " + msg.serverScore);
+            $('#pts_player2_score > label').text("score : " + msg.clientScore);
+            
+            
+            paintContour(contourCoords, contourBoard, usType);
+            
+            break;
+    }
+    
 };
 
-function putPoints() {
-	for ( var i = 0; i < 26; i++) {
-		for ( var j = 0; j < 22; j++) {
-			if (board[i][j] == 1) {
-				$('#X' + j + 'Y' + i + ' > img').attr('src',
-						'images/Points/point1.png');
-			} else if (board[i][j] == 2) {
-				$('#X' + j + 'Y' + i + ' > img').attr('src',
-						'images/Points/point2.png');
-			}
-		}
-	}
 
+function initializeBoard(matrix){
+    for (var i = 0; i < matrix.length; i++) {
+    
+        for (var j = 0; j < matrix[i].length; j++) {
+            if (matrix[i][j] == 11 || matrix[i][j] == -11) 
+                board[i][j] = 1;
+            else 
+                if (matrix[i][j] == 22 || matrix[i][j] == -12) 
+                    board[i][j] = 2;
+                else 
+                    board[i][j] = matrix[i][j];
+        }
+    }
+    console.log("BOARD!!!!!!!!!!!!!!!!!" + board);
 }
 
-function createMatrix() {
-	var board = new Array();
-	for ( var i = 0; i < 26; i++) {
-		board[i] = new Array();
-		for ( var j = 0; j < 22; j++) {
-			board[i][j] = 0;
-		}
-	}
-	return board;
+function putPoints(){
+    for (var i = 0; i < y_length; i++) {
+        for (var j = 0; j < x_length; j++) {
+            if (board[i][j] == 1) {
+                $('#X' + j + 'Y' + i + ' > img').attr('src', getRandomPoint("server"));
+            }
+            else 
+                if (board[i][j] == 2) {
+                    $('#X' + j + 'Y' + i + ' > img').attr('src', getRandomPoint("client"));
+                }
+        }
+    }
+    
 }
 
-function putPoint(td_point) {
+function createMatrix(){
+    var board = new Array();
+    for (var i = 0; i < y_length; i++) {
+        board[i] = new Array();
+        for (var j = 0; j < x_length; j++) {
+            board[i][j] = 0;
+        }
+    }
+    return board;
+}
 
-	if (lock == true) {
-		alert("not your move");
-		return;
-	}
-	console.log(waitForClient);
-	if (waitForClient == true) {
+function putPoint(td_point){
 
-		alert("wait for client");
+    if (lock == true) {
+        alert("not your move");
+        return;
+    }
+    console.log(waitForClient);
+    if (waitForClient == true) {
+    
+        alert("wait for client");
+        
+    }
+    else {
+    
+        var x = parseX(td_point.id);
+        var y = parseY(td_point.id);
+        console.log(board[y][x]);
 
-	} else {
-
-		var x = parseX(td_point.id);
-		var y = parseY(td_point.id);
-		console.log(board[y][x]);
-		if (board[y][x] == 0) {
-			if (userType == "server") {
-				$('#' + td_point.id + ' > img').attr('src',
-						'images/Points/point1.png');
-				board[y][x] = 1;
+        if (board[y][x] == 0) {
+            if (userType == "server") {
+                $('#' + td_point.id + ' > img').attr('src', getRandomPoint(userType));
+                board[y][x] = 1;
+            }
+            else {
+                $('#' + td_point.id + ' > img').attr('src', getRandomPoint(userType));
+                board[y][x] = 2;
+            }
+            
+			if (!isEndOfGame()) {
+				var coords = {
+					"type": "lastChanges",
+					"userType": userType,
+					"gameId": gameId,
+					"coords": td_point.id
+				};
+				var sendCoords = JSON.stringify(coords);
+				socket.send(sendCoords);
+				lock = true;
 			} else {
-				$('#' + td_point.id + ' > img').attr('src',
-						'images/Points/point2.png');
-				board[y][x] = 2;
+				
+				goTo('PointsEndGame.html');
 			}
-			var coords = {
-				"type" : "lastChanges",
-				"userType" : userType,
-				"gameId" : gameId,
-				"coords" : td_point.id
-			};
-			var sendCoords = JSON.stringify(coords);
-			socket.send(sendCoords);
-			lock = true;
-
-		} else
-			alert("there is already a point there");
-
-	}
+            
+        }
+        else 
+            alert("there is already a point there");
+        
+    }
 }
 
-function parseX(strPoint) {
-
-	var indexY = strPoint.indexOf('Y');
-	return strPoint.substring(1, indexY);
-}
-
-function parseY(strPoint) {
-
-	var indexY = strPoint.indexOf('Y');
-	return strPoint.substring(indexY + 1);
-}
-
-function paintCountur(contourCoords, pointMarked, pointsBoard) {
-
-
-	var c = document.getElementById("canvas");
-	var ctx = c.getContext("2d");
-	ctx.lineWidth = 3;
-	ctx.beginPath();
-
+function isEndOfGame() {
 	
-
-	for ( var j = 0; j < contourCoords.size; j++) {
-		
-		var coord = new Array();
-		coord[0] = -1;
-		coord[1] = -1;
-		
-		for ( var i = 0; i < contourCoords[j].size; i = i + 2) {
-			console.log(contourCoords[j][i] + "-" + contourCoords[j][i + 1]);
-			if (coord[0] != -1) {
-
-				ctx.moveTo(coord[1], coord[0]);
-				ctx.lineTo(counturCoords[j][i + 1] * 20 + 8,
-						counturCoords[j][i] * 20 + 8);
-				ctx.stroke();
-
-			}
-			coord[0] = counturCoords[j][i] * 20 + 8;
-			coord[1] = counturCoords[j][i + 1] * 20 + 8;
-
+	for (var i = 0; i < y_length; i++) {
+		for (var j = 0; j < x_length; j++) {
+			if (board[i][j] == 0)
+				return false;
 		}
-		
-		var first_y = counturCoords[j][0];
-		var first_x = counturCoords[j][1];
-
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x - 1,
-				pointMarked, ctx);
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x,
-				pointMarked, ctx);
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x + 1,
-				pointMarked, ctx);
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y, first_x + 1,
-				pointMarked, ctx);
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x + 1,
-				pointMarked, ctx);
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x,
-				pointMarked, ctx);
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x - 1,
-				pointMarked, ctx);
-		markNeighborCoords(pointsBoard, first_y, first_x, first_y, first_x - 1,
-				pointMarked, ctx);
 	}
-
 	
+	return true;
 }
 
-function markNeighborCoords(board, first_y, first_x, neighbor_y, neighbor_x,
-		pointMarked, ctx) {
+function getRandomPoint(usType){
 
-	if (board[neighbor_y][neighbor_x] == pointMarked) {
-
-		ctx.moveTo(first_x * 20 + 8, first_y * 20 + 8);
-		ctx.lineTo(neighbor_x * 20 + 8, neighbor_y * 20 + 8);
-		ctx.stroke();
-	}
+    var random = Math.floor((Math.random() * 4) + 1);
+    
+    if (usType === "server") {
+    
+        return ('images/Points/server_point-' + random + '.png');
+    }
+    else {
+    
+        return ('images/Points/client_point-' + random + '.png');
+    }
 }
 
+function parseX(strPoint){
+
+    var indexY = strPoint.indexOf('Y');
+    return strPoint.substring(1, indexY);
+}
+
+function parseY(strPoint){
+
+    var indexY = strPoint.indexOf('Y');
+    return strPoint.substring(indexY + 1);
+}
+
+function paintContour(contoursCoords, pointsBoard, usType){
+
+    var contourCoords = createMatrix();
+    contourCoords = contoursCoords;
+    
+    var c = document.getElementById("pts_canvas");
+    var ctx = c.getContext("2d");
+    
+    ctx.lineWidth = 8;
+    
+    
+    if (usType === "server") {
+        ctx.strokeStyle = '#2f2d33';
+        ctx.fillStyle = '#676767';
+    }
+    else {
+        ctx.strokeStyle = '#3904ba';
+        ctx.fillStyle = '#686fd2';
+    }
+    
+    for (var j = 0; j < contourCoords.length; j++) {
+        ctx.beginPath();
+        var coord = new Array();
+        coord[0] = -1;
+        coord[1] = -1;
+        
+        for (var i = 0; i < contourCoords[j].length; i = i + 2) {
+        
+            if (coord[0] != -1) {
+            
+                ctx.lineTo(contourCoords[j][i + 1] * 21.6 + 13, contourCoords[j][i] * 26.35 + 16);
+                
+                
+            }
+            else {
+                coord[0] = contourCoords[j][i] * 26.35 + 16;
+                coord[1] = contourCoords[j][i + 1] * 21.6 + 13;
+                ctx.moveTo(coord[1], coord[0]);
+            }
+            
+        }
+        ctx.lineTo(coord[1], coord[0]);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+    }
+    
+    
+    //		ctx.m1oveTo(coord[1], coord[0]);
+    //		ctx.lineTo(contourCoords[j][1] * 20 + 8, contourCoords[j][0] * 20 + 8);
+    //		ctx.stroke();
+    //        for (var i = 0; i < x_length-1; i ++) {
+    //        	console.log(i);
+    //        	if (i%2 == 0) {
+    //        		ctx.strokeStyle = 'yellow';
+    //        	} else {
+    //        		ctx.strokeStyle = 'blue';
+    //        	}
+    //        	 ctx.beginPath();
+    //        ctx.moveTo( i*21.6+12,500);
+    //        ctx.lineTo( (i+1)*21.6+12,500);
+    //        ctx.closePath();
+    //        ctx.stroke();
+    //        
+    //    }
+}
+
+//
+// var first_y = contourCoords[j][0];
+// var first_x = contourCoords[j][1];
+//
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x - 1,
+// pointMarked, ctx);
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x,
+// pointMarked, ctx);
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y - 1, first_x + 1,
+// pointMarked, ctx);
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y, first_x + 1,
+// pointMarked, ctx);
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x + 1,
+// pointMarked, ctx);
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x,
+// pointMarked, ctx);
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y + 1, first_x - 1,
+// pointMarked, ctx);
+// markNeighborCoords(pointsBoard, first_y, first_x, first_y, first_x - 1,
+// pointMarked, ctx);
+// }
+// }
+//
+// function markNeighborCoords(board, first_y, first_x, neighbor_y, neighbor_x,
+// pointMarked, ctx) {
+//
+// if (board[neighbor_y][neighbor_x] == pointMarked) {
+//
+// ctx.moveTo(first_x * 20 + 8, first_y * 20 + 8);
+// ctx.lineTo(neighbor_x * 20 + 8, neighbor_y * 20 + 8);
+// ctx.stroke();
+// }
+// }
 // function waitForFirstMove() {
 // changes = setInterval(getChanges, 1000);
 // }
@@ -338,3 +471,5 @@ function markNeighborCoords(board, first_y, first_x, neighbor_y, neighbor_x,
 // });
 //
 // }
+
+

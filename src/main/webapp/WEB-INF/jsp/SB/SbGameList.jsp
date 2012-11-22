@@ -29,7 +29,14 @@
 	</div>
 	<div class="clear"></div>
 	<div class="menuText">
-			<c:out value="${langPack['Sb_ExistsGames']}"/>
+	<c:choose>
+		 <c:when test="${serverMap.size()>0}">
+     		<c:out value="${langPack['Sb_ExistsGames']}"/>
+     	 </c:when>
+      	<c:otherwise>
+			<c:out value="${langPack['Sb_NoGames']}"/>
+		</c:otherwise>
+	</c:choose>
 	</div>
 	<div class="ServersList"style="float: left; font-size: 20px;">		
 			<c:forEach items="${serverMap}" var="server">

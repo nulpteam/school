@@ -1,48 +1,83 @@
-body {
+#pts_body {
 	font-family: LC Chalk;
 	font-size: 22px;
 	color: #5B2FCE;
 }
 
-#bg {
+#pts_bg {
 	background-image: url('../../images/Points/background.png');
 	width: 605px;
 	height: 705px;
-	margin: 50px auto;
+	margin: 0px 0px;
 }
 
-#player_label_1 {
+#pts_bg_end_ofGame {
+	background-image: url('../../images/Points/endofGameBackground.png');
+	width: 605px;
+	height: 705px;
+	margin: 0px 0px;
+}
+
+#pts_player1_score {
 	position: absolute;
-	margin: 20px 45px;
+	margin: 37px 95px;
 	width: 160px;
 	text-align: center;
 }
 
-#player_label_2 {
+#pts_player2_score {
 	position: absolute;
-	margin: 20px 330px;
+	margin: 43px 373px;
 	width: 160px;
 	text-align: center;
 }
 
-#game_table {
+#pts_player_label_1 {
 	position: absolute;
-	margin: 130px 50px;
+	margin: 75px 90px;
+	width: 160px;
+	text-align: center;
+	font-size: 16px;
+	vertical-align:middle;
 }
 
-#canvas {
+#pts_player_label_2 {
 	position: absolute;
-	margin: 130px 50px;
+	margin: 78px 368px;
+	width: 140px;
+	text-align: center;
+	font-size: 16px;
+	vertical-align:middle;
 }
 
-#table1 tr td {
-	width:20px;
+.pts_player_div_elements {
+	margin-top: 10px;
 }
 
-#table1 tr {
-	height:20px;
+#pts_label_win_loose {
+	position: absolute;
+	margin: 300px 300px;
+	width: 300px;
+	text-align: center;
+	font-size: 24px;
 }
 
-.point:hover {
-	background-image: url('../../images/Points/point_hover.png');
+#pts_game_table {
+	position: absolute;
+	margin: 190px 97px;
+}
+
+#pts_canvas {
+	position: absolute;
+	margin: 186px 95px;
+	width: 406px;
+	height: 395px;
+}
+
+#pts_table1 tr td {
+	width: 20px;
+}
+
+#pts_table1 tr {
+	height: 20px;
 }

@@ -17,7 +17,10 @@ $(document)
 					connectionType = $("#ConnectionType").attr("class");
 					lock = $("#lock").attr("class");
 					if (connectionType == "client"
-							|| $("#oponent").attr("class") != undefined) {
+							|| $("#oponent").attr("class") != "") {
+						console.log(connectionType);
+						console.log($("#oponent").attr("class"));
+						
 						flag = true;
 					}
 					if (($("#bothStarted") == "true")
@@ -47,7 +50,7 @@ $(document)
 
 						if (event.data == "ready") {
 							if (connectionType == "client"
-									|| $("#oponent").attr("class") != undefined) {
+									|| $("#oponent").attr("class") != "") {
 								flag = true;
 							};
 							if (connectionType != lock) {

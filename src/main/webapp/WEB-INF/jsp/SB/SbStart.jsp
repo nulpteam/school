@@ -27,6 +27,7 @@
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
+	<script src="js/SB/SbLang_${lang}.js" type="text/javascript"></script>
 		<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
@@ -260,9 +261,9 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<div class="oponentName">
-					Опонент: Імя, к-ть вцілілих кораблів, ...
-				</div>
+<!-- 				<div class="oponentName"> -->
+<!-- 					Опонент: Імя, к-ть вцілілих кораблів, ... -->
+<!-- 				</div> -->
 				
 				
 			</div>

@@ -654,15 +654,15 @@ function counter(obj) {
 }
 
 function allreadyShooted() {
-	alert("You allready shoot in this point");
+	alert(SbMsgAllreadyShooted);
 }
 
 function allreadyDamaged() {
-	alert("You allready damaged this point");
+	alert(SbMsgAllreadyShooted);
 }
 
 function cantBe() {
-	alert("There cant be sheep!");
+	alert(SbMsgCantBeSheep);
 }
 
 function lockWhereCantBe(id) {
@@ -694,22 +694,41 @@ function loose() {
 	goTo("Loose.html");
 }
 
-function playShootSound() {
-	if (userAgent.indexOf("Chrome") != -1) {
-		sound = new Audio;
-		sound.src = "sound/Shoot01.mp3";
-		sound.play();
+function playShootSound(miss) {
+	
+	if(miss=="demage")
+	{
+		if (userAgent.indexOf("Chrome") != -1) {
+			sound = new Audio;
+			sound.src = "sound/Shoot01.mp3";
+			sound.play();
+		}
+	
+		if (userAgent.indexOf("Firefox") != -1) {
+			sound = new Audio;
+			sound.src = "sound/Shoot01.wav";
+			sound.play();
+		}
 	}
-
-	if (userAgent.indexOf("Firefox") != -1) {
-		sound = new Audio;
-		sound.src = "sound/Shoot01.wav";
-		sound.play();
-	}
+	else if(miss=="miss")
+		{
+			if (userAgent.indexOf("Chrome") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.mp3";
+				sound.play();
+			}
+		
+			if (userAgent.indexOf("Firefox") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.wav";
+				sound.play();
+			}
+		}
 }
 
+
 function fire(point) {
-	playShootSound();
+	//playShootSound();
 
 	p = $(point).attr('id');
 	p = p[1] + '' + p[4];
@@ -726,10 +745,12 @@ function fire(point) {
 
 		rand = Math.floor((Math.random() * 5) + 1);
 		if (obj.miss === "00") {
+			playShootSound("miss");
 			html = "<img id='fireP" + p + "' src='images/SB/missPoint" + rand
 					+ ".png'>";
 			$("#locker").css("visibility", "visible");
 		} else {
+			playShootSound("demage");
 			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand
 					+ ".png'>";
 			$("#locker").css("visibility", "hidden");
@@ -1047,10 +1068,18 @@ function getSheeps() {
 		;
 	}
 	;
-	for ( var k = 0; k <= 20; k++) {
+	for ( var k = 0; k <= 9; k++) {
+		console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+		console.log(k);
+		
 		for ( var i = 0; i <= 9; i++) {
+			console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+			console.log(i);
 			for ( var j = 0; j <= 9; j++) {
+				console.log("jjjjjjjjjjjj");
+				console.log(j);
 				if ((M1[i][j] == "41") && (sheepCounter == 10)) {
+					console.log("(M1[i][j] == 41) && (sheepCounter == 10)");
 					if ((M1[i + 1][j] == "41") && (M1[i + 2][j] == "41")
 							&& (M1[i + 3][j] == "41")) {
 						img10 = ("images/SB/04.png");
@@ -1058,6 +1087,9 @@ function getSheeps() {
 						M1[i + 1][j] = "00";
 						M1[i + 2][j] = "00";
 						M1[i + 3][j] = "00";
+						img10x = i * 20 + 200;
+						img10y = j * 20;
+						sheepCounter++;
 					} else if ((M1[i][j] == "41") && (M1[i][j + 1] == "41")
 							&& (M1[i][j + 2] == "41") && (M1[i][j + 3] == "41")) {
 						img10 = ("images/SB/04_90.png");
@@ -1065,103 +1097,129 @@ function getSheeps() {
 						M1[i][j + 1] = "00";
 						M1[i][j + 2] = "00";
 						M1[i][j + 3] = "00";
+						img10x = i * 20 + 200;
+						img10y = j * 20;
+						sheepCounter++;
 					}
-					img10x = i * 20 + 200;
-					img10y = j * 20;
-					sheepCounter++;
+					
 					console.log(img10);
 				}
-				;
-
 				if ((M1[i][j] == "31") && (sheepCounter == 9)) {
+					console.log("(M1[i][j] == 31) && (sheepCounter == 9)");
 					if ((M1[i + 1][j] == "31") && (M1[i + 2][j] == "31")) {
 						img09 = ("images/SB/03.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
 						M1[i + 2][j] = "00";
+						img09x = i * 20 + 200;
+						img09y = j * 20;
+						sheepCounter++;
+						console.log(img09);
 					} else if ((M1[i][j] == "31") && (M1[i][j + 1] == "31")
 							&& (M1[i][j + 2] == "31")) {
 						img09 = ("images/SB/03_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
 						M1[i][j + 2] = "00";
+						img09x = i * 20 + 200;
+						img09y = j * 20;
+						sheepCounter++;
+						console.log(img09);
 					}
-					img09x = i * 20 + 200;
-					img09y = j * 20;
-					sheepCounter++;
-					console.log(img09);
+					
 				}
 				;
 				if ((M1[i][j] == "31") && (sheepCounter == 8)) {
+					console.log("(M1[i][j] == 31) && (sheepCounter == 8)");
 					if ((M1[i + 1][j] == "31") && (M1[i + 2][j] == "31")) {
 						img08 = ("images/SB/03.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
 						M1[i + 2][j] = "00";
+						img08x = i * 20 + 200;
+						img08y = j * 20;
+						sheepCounter++;
+						console.log(img08);
 					} else if ((M1[i][j] == "31") && (M1[i][j + 1] == "31")
 							&& (M1[i][j + 2] == "31")) {
 						img08 = ("images/SB/03_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
 						M1[i][j + 2] = "00";
+						img08x = i * 20 + 200;
+						img08y = j * 20;
+						sheepCounter++;
+						console.log(img08);
 					}
-					img08x = i * 20 + 200;
-					img08y = j * 20;
-					sheepCounter++;
-					console.log(img08);
 				}
 				;
 
 				if ((M1[i][j] == "21") && (sheepCounter == 7)) {
+					console.log("(M1[i][j] == 21) && (sheepCounter == 7)");
 					if (M1[i + 1][j] == "21") {
 						img07 = ("images/SB/02.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
+						img07x = i * 20 + 200;
+						img07y = j * 20;
+						sheepCounter++;
+						console.log(img07);
 					} else if ((M1[i][j] == "21") && (M1[i][j + 1] == "21")) {
 						img07 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
+						img07x = i * 20 + 200;
+						img07y = j * 20;
+						sheepCounter++;
+						console.log(img07);
 					}
-					img07x = i * 20 + 200;
-					img07y = j * 20;
-					sheepCounter++;
-					console.log(img07);
 				}
 				;
 				if ((M1[i][j] == "21") && (sheepCounter == 6)) {
-					if ((M1[i + 1][j] != undefined) && (M1[i + 1][j] == "21")) {
+					console.log("(M1[i][j] == 21) && (sheepCounter == 6)");
+					if (M1[i + 1][j] == "21") {
 						img06 = ("images/SB/02.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
+						img06x = i * 20 + 200;
+						img06y = j * 20;
+						sheepCounter++;
+						console.log(img06);
 					} else if ((M1[i][j] == "21") && (M1[i][j + 1] == "21")) {
 						img06 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
+						img06x = i * 20 + 200;
+						img06y = j * 20;
+						sheepCounter++;
+						console.log(img06);
 					}
-					img06x = i * 20 + 200;
-					img06y = j * 20;
-					sheepCounter++;
-					console.log(img06);
 				}
 				;
 				if ((M1[i][j] == "21") && (sheepCounter == 5)) {
+					console.log("(M1[i][j] == 21) && (sheepCounter == 5)");
 					if ((M1[i][j] == "21") && (M1[i + 1][j] == "21")) {
 						img05 = ("images/SB/02.png");
 						M1[i][j] = "00";
 						M1[i + 1][j] = "00";
+						img05x = i * 20 + 200;
+						img05y = j * 20;
+						sheepCounter++;
+						console.log(img05);
 					} else if ((M1[i][j] == "21") && (M1[i][j + 1] == "21")) {
 						img05 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
 						M1[i][j + 1] = "00";
+						img05x = i * 20 + 200;
+						img05y = j * 20;
+						sheepCounter++;
+						console.log(img05);
 					}
-					img05x = i * 20 + 200;
-					img05y = j * 20;
-					sheepCounter++;
-					console.log(img05);
 				}
 				;
 
 				if ((M1[i][j] == "11") && (sheepCounter == 4)) {
+					console.log("(M1[i][j] == 11) && (sheepCounter == 4)");
 					img04 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img04x = i * 20 + 200;
@@ -1170,6 +1228,7 @@ function getSheeps() {
 					console.log(img04);
 				}
 				if ((M1[i][j] == "11") && (sheepCounter == 3)) {
+					console.log("(M1[i][j] == 11) && (sheepCounter == 3)");
 					img03 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img03x = i * 20 + 200;
@@ -1178,6 +1237,7 @@ function getSheeps() {
 					console.log(img03);
 				}
 				if ((M1[i][j] == "11") && (sheepCounter == 2)) {
+					console.log("(M1[i][j] == 11) && (sheepCounter == 2)");
 					img02 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img02x = i * 20 + 200;
@@ -1186,6 +1246,7 @@ function getSheeps() {
 					console.log(img02);
 				}
 				if ((M1[i][j] == "11") && (sheepCounter == 1)) {
+					console.log("(M1[i][j] == 11) && (sheepCounter == 1)");
 					img01 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img01x = i * 20 + 200;
