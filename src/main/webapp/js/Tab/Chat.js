@@ -1,3 +1,15 @@
+function userInfo(elem) {
+	$.post('GetUserInfo.html', {
+		id : elem.id
+	}, function(resp) {
+		$('#userInfo #name').text($(elem).text());
+		$('#userInfo #email').text(resp.email);
+		$('#userInfo #about').text(resp.about);
+		$('#userInfo #birthday').text(resp.birthday);
+		$('#userInfo').show();
+	});
+}
+
 function chatStart() {
 	$('#chatForm').submit(function(eo) {
 		eo.preventDefault();
@@ -27,9 +39,9 @@ function refresh() {
 	});
 }
 
-var open = '<tr><td class="sender">';
-var openC = '<tr class="collor"><td class="sender">';
-var mid1 = ':</td><td class="time">';
+var open = '<tr><td class="sender" onclick=userInfo(this); id="';
+var openC = '<tr class="collor"><td class="sender" onclick=userInfo(this); id="';
+var mid1 = '</td><td class="time">';
 var mid2 = '</td></tr><tr><td colspan="2" class="msg">';
 var mid2C = '</td></tr><tr class="collor"><td colspan="2" class="msg">';
 var close = '</td></tr>';
@@ -38,11 +50,11 @@ var tag;
 function add(msgArray) {
 	for ( var i = 0; i < msgArray.length; i++) {
 		if (collor == true) {
-			tag = openC + msgArray[i].sender.name + mid1 + msgArray[i].time
+			tag = openC + msgArray[i].sender.id + '">' + msgArray[i].sender.name + mid1 + msgArray[i].time
 					+ mid2C + msgArray[i].text + close;
 			collor = false;
 		} else {
-			tag = open + msgArray[i].sender.name + mid1 + msgArray[i].time
+			tag = open + msgArray[i].sender.id + '">' + msgArray[i].sender.name + mid1 + msgArray[i].time
 					+ mid2 + msgArray[i].text + close;
 			collor = true;
 		}

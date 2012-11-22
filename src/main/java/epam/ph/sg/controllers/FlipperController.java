@@ -9,55 +9,55 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.tab.flip.FlipGame;
-import epam.ph.sg.tab.flip.FlipStatus;
+import epam.ph.sg.tab.flipper.FlipperGame;
+import epam.ph.sg.tab.flipper.FlipperStatus;
 
 @Controller
-public class FlipController {
-	private static Logger log = Logger.getLogger(FlipController.class);
+public class FlipperController {
+	private static Logger log = Logger.getLogger(FlipperController.class);
 
-	@RequestMapping("/FlipGame.html")
+	@RequestMapping("/FlipperGame.html")
 	public String game(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipGame game = (FlipGame) request.getSession()
-				.getAttribute("flipGame");
+		FlipperGame game = (FlipperGame) request.getSession()
+				.getAttribute("flipperGame");
 		if (game == null) {
-			request.getSession().setAttribute("flipGame", new FlipGame(1));
+			request.getSession().setAttribute("flipperGame", new FlipperGame(1));
 		}
-		return "Tab/Flip";
+		return "Tab/Flipper";
 	}
 
-	@RequestMapping("/FlipNewGame.html")
+	@RequestMapping("/FlipperNewGame.html")
 	public String newGame(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		request.getSession().setAttribute("flipGame", new FlipGame(1));
-		return "Tab/Flip";
+		request.getSession().setAttribute("flipperGame", new FlipperGame(1));
+		return "Tab/Flipper";
 	}
 
-	@RequestMapping("/FlipNextLevel.html")
+	@RequestMapping("/FlipperNextLevel.html")
 	public String gameLevel(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipGame game = (FlipGame) request.getSession()
-				.getAttribute("flipGame");
+		FlipperGame game = (FlipperGame) request.getSession()
+				.getAttribute("flipperGame");
 		game.nextLevel();
-		return "Tab/Flip";
+		return "Tab/Flipper";
 	}
 
-	@RequestMapping("/FlipResetLevel.html")
+	@RequestMapping("/FlipperResetLevel.html")
 	public String resetGame(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipGame game = (FlipGame) request.getSession()
-				.getAttribute("flipGame");
+		FlipperGame game = (FlipperGame) request.getSession()
+				.getAttribute("flipperGame");
 		game.resetLevel();
-		return "Tab/Flip";
+		return "Tab/Flipper";
 	}
 
 	@RequestMapping("/Flip.html")
@@ -68,20 +68,20 @@ public class FlipController {
 				+ user.getId() + ". Position: " + id);
 		int line = Integer.valueOf(id.substring(0, 1));
 		int colum = Integer.valueOf(id.substring(1));
-		FlipGame game = (FlipGame) request.getSession()
-				.getAttribute("flipGame");
+		FlipperGame game = (FlipperGame) request.getSession()
+				.getAttribute("flipperGame");
 		game.flip(line, colum);
 		return true;
 	}
 
-	@RequestMapping("FlipStatus.html")
+	@RequestMapping("FlipperStatus.html")
 	public @ResponseBody
-	FlipStatus getStatus(HttpServletRequest request) {
+	FlipperStatus getStatus(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipGame game = (FlipGame) request.getSession()
-				.getAttribute("flipGame");
+		FlipperGame game = (FlipperGame) request.getSession()
+				.getAttribute("flipperGame");
 		return game.getStatus();
 	}
 }

@@ -144,6 +144,11 @@ public class SBMenuController {
 		selectedGame.setClient(client);
 
 		ActiveGames.getGame(gameID).setClient(client);
+		try {
+			ActiveGames.getGame(gameID).getServer().getConn().sendMessage("connected");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		session.setAttribute("Game", selectedGame);
 		session.setAttribute("ConnectionType", "client");
 		// Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на
@@ -187,11 +192,13 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/Victory.html", method = RequestMethod.POST)
 	public String Victory(Model model, HttpSession session) {
-		//int gameId = ((Game) session.getAttribute("Game")).getId();
+		int gameId = ((Game) session.getAttribute("Game")).getId();
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
 		// ActiveGames.removeGame(gameId);
+		GamesList.removeGameFromListBS(gameId);
+		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Victory";
 	}
 
@@ -200,6 +207,7 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Loose";
 	}
 	
@@ -211,10 +219,13 @@ public class SBMenuController {
 		if(connType.equalsIgnoreCase("server"))
 		{
 			log.debug("+*+*+*+*+*+*===server");
-			try {
-				g.getClient().getConn().sendMessage("kill");
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(g.getClient()!=null)
+			{
+				try {
+					g.getClient().getConn().sendMessage("kill");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		else if(connType.equalsIgnoreCase("client"))
