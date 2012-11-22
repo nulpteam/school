@@ -1,5 +1,8 @@
 package epam.ph.sg.models.points;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 public class PtsBoard {
@@ -8,10 +11,15 @@ public class PtsBoard {
 	private int board[][];
 	private int lastX;
 	private int lastY;
+	private List<List<PtsCoord>> allContoursServer;
+	private List<List<PtsCoord>> allContoursClient;
 
+	
 	public PtsBoard() {
 		logger = Logger.getLogger(PtsBoard.class);
 		board = new int[Pts.Y_LENGTH][Pts.X_LENGTH];
+		allContoursClient = new ArrayList<List<PtsCoord>>();
+		allContoursServer = new ArrayList<List<PtsCoord>>();
 		init();
 	}
 
@@ -48,6 +56,24 @@ public class PtsBoard {
 			}
 		}
 	}
+	
+	public List<List<PtsCoord>> getAllServerContours() {
+		return allContoursServer;
+	}
+	
+	public void addContours(List<List<PtsCoord>> listOfContours, String userType) {
+		
+		if (userType.equals(PtsResources.getProperty("user.type.server")))
+			allContoursServer.addAll(listOfContours);
+		else 
+			allContoursClient.addAll(listOfContours);
+	}
+	
+	public List<List<PtsCoord>> getAllClientContours() {
+		return allContoursClient;
+	}
+
+
 	
 	//TODO delete this method
 	public void printBoard() {

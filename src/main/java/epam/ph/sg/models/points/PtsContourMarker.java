@@ -20,6 +20,7 @@ public class PtsContourMarker {
 	private int contourIdServer = 110;
 	private int contourIdClient = 210;
 	private Map<Integer, PtsContour> contourMap;
+	int iterationIndex = 0;
 
 	// private int[][] logicBoard;
 
@@ -220,19 +221,13 @@ public class PtsContourMarker {
 			int y, int x, int pointsValue) {
 
 		int[][] commonBoard = new int[Pts.Y_LENGTH][Pts.X_LENGTH];
-
-		if (logicBoard[y][x] == Pts.POINT_IN_SERVER_CONTOUR
-				|| logicBoard[y][x] == Pts.POINT_IN_CLIENT_CONTOUR) {
-
-			board[y][x] = pointsValue * 10;
-			logicBoard[y][x] = 0;
-			return null;
-		}
+		iterationIndex = 0;
 
 		int rivalPointsValue = 0;
 		List<List<PtsCoord>> listOfContours = new ArrayList<List<PtsCoord>>();
 		List<List<PtsCoord>> resultContours = new ArrayList<List<PtsCoord>>();
 		List<List<PtsCoord>> commonContours = new ArrayList<List<PtsCoord>>();
+		List<PtsCoord> biggestContour = new ArrayList<PtsCoord>();
 
 		if (pointsValue == Pts.CLIENT_UNMARKED_POINT)
 			rivalPointsValue = 1;
@@ -261,11 +256,15 @@ public class PtsContourMarker {
 				rivalPointsValue);
 
 		initCommonBoard(commonBoard, board, pointsValue);
+		System.out.println("init common. contours!!!!!!!!!!!");
 		commonContours = getContours(commonBoard, y, x, pointsValue);
-		System.out.println("befire different. contours!!!!!!!!!!! = "
+		System.out.println("before different. contours!!!!!!!!!!! = "
 				+ commonContours);
+		biggestContour = getTheBiggestContour(commonBoard, commonContours,
+				rivalPointsValue);
 		commonContours = getDifferentContours(commonBoard, commonContours,
 				rivalPointsValue);
+
 		System.out.println("common contours!!!!!!!!!!! = " + commonContours);
 
 		if (resultContours != null) {
@@ -303,34 +302,109 @@ public class PtsContourMarker {
 
 		if (commonContours != null || resultContours != null) {
 
-			return connectContoursList(commonContours, resultContours);
+			List<List<PtsCoord>> connectList = connectContoursList(
+					commonContours, resultContours, board, rivalPointsValue);
+
+			markFieldsInsideContourAsUnusable(board, biggestContour,
+					pointsValue, rivalPointsValue);
+
+			return connectList;
 		}
 
 		if (commonContours == null && resultContours == null) {
 
 			if (logicBoard[y][x] - 90 > 0) {
 
+				List<List<PtsCoord>> readyContour = new ArrayList<List<PtsCoord>>();
 				PtsContour contour = contourMap.get(logicBoard[y][x]);
-				writeContourInBoard(board, logicBoard,
-						contour.getContourPoints(), rivalPointsValue,
-						pointsValue);
-				board[y][x] = pointsValue * 10;
-				List<PtsCoord> contourFields = contour.getContourFields();
-				for (int i = 0; i < contourFields.size(); i++) {
 
-					PtsCoord coord = contourFields.get(i);
-					if (logicBoard[coord.getY()][coord.getX()] == logicBoard[y][x]) {
-						logicBoard[coord.getY()][coord.getX()] = getPointInReadyContourValue(rivalPointsValue);
+				if (logicBoard[y][x] - 190 > 0) {
+					if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
+						board[y][x] = pointsValue * 10;
+
+						writeReadyContourPointsInBoard(board, contour,
+								rivalPointsValue);
+						rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+								logicBoard, pointsValue);
+						readyContour.add(contour.getContourPoints());
+					}
+					if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
+						board[y][x] = Pts.UNUSABLE_POINT_CLIENT;
+
+						rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+								logicBoard, pointsValue);
 					}
 				}
 
+				if (logicBoard[y][x] - 90 > 0) {
+
+					if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
+						board[y][x] = pointsValue * 10;
+
+						writeReadyContourPointsInBoard(board, contour,
+								rivalPointsValue);
+
+						rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+								logicBoard, rivalPointsValue);
+						readyContour.add(contour.getContourPoints());
+					}
+					if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
+						board[y][x] = Pts.UNUSABLE_POINT_SERVER;
+
+						rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+								logicBoard, rivalPointsValue);
+					}
+				}
+				// rewriteBoardsIfPointHitsInContour(y, x, commonBoard,
+				// logicBoard, contour, pointsValue, rivalPointsValue);
+
 				contourMap.remove(logicBoard[y][x]);
+
+				return readyContour;
 
 			}
 
 		}
 		System.out.println("resultContours  " + resultContours);
 		return null;
+	}
+
+	private List<PtsCoord> getTheBiggestContour(int[][] board,
+			List<List<PtsCoord>> contours, int rivalPointsValue) {
+
+		int contour_id = 0;
+
+		if (contours.size() >= 1) {
+			int max = getFieldsInsideContour(board, contours.get(0),
+					rivalPointsValue).size();
+			for (int i = 1; i < contours.size(); i++) {
+				if (max < getFieldsInsideContour(board, contours.get(i),
+						rivalPointsValue).size()) {
+					max = getFieldsInsideContour(board, contours.get(i),
+							rivalPointsValue).size();
+					contour_id = i;
+				}
+			}
+			return contours.get(contour_id);
+		}
+
+		return null;
+	}
+
+	private void markFieldsInsideContourAsUnusable(int[][] board,
+			List<PtsCoord> biggestContour, int pointsValue, int rivalPointsValue) {
+
+		if (biggestContour != null) {
+			List<PtsCoord> contourFields = getFieldsInsideContour(board,
+					biggestContour, rivalPointsValue);
+			for (int i = 0; i < contourFields.size(); i++) {
+
+				PtsCoord coord = contourFields.get(i);
+				if (board[coord.getY()][coord.getX()] == pointsValue
+						|| board[coord.getY()][coord.getX()] == (pointsValue * 10 + pointsValue))
+					board[coord.getY()][coord.getX()] = getUnusablePointValue(pointsValue);
+			}
+		}
 	}
 
 	public List<PtsCoord> getContour(int[][] board, int y, int x,
@@ -349,21 +423,82 @@ public class PtsContourMarker {
 		return contourPoints;
 	}
 
+	private void rewriteBoardsIfPointHitsInContour(int y, int x, int[][] board,
+			int[][] logicBoard, PtsContour contour, int pointsValue,
+			int rivalPointsValue) {
+
+		if (logicBoard[y][x] - 190 > 0) {
+
+			if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
+				board[y][x] = pointsValue * 10;
+				writeContourInBoard(board, logicBoard,
+						contour.getContourPoints(), pointsValue,
+						rivalPointsValue);
+				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+						logicBoard, pointsValue);
+			}
+			if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
+				board[y][x] = Pts.UNUSABLE_POINT_CLIENT;
+				writeContourInBoard(board, logicBoard,
+						contour.getContourPoints(), pointsValue, pointsValue);
+				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+						logicBoard, pointsValue);
+			}
+		} else if (logicBoard[y][x] - 90 > 0) {
+
+			if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
+				board[y][x] = pointsValue * 10;
+				writeContourInBoard(board, logicBoard,
+						contour.getContourPoints(), rivalPointsValue,
+						pointsValue);
+				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+						logicBoard, rivalPointsValue);
+			}
+			if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
+				board[y][x] = Pts.UNUSABLE_POINT_SERVER;
+				writeContourInBoard(board, logicBoard,
+						contour.getContourPoints(), pointsValue, pointsValue);
+				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+						logicBoard, rivalPointsValue);
+			}
+		}
+
+	}
+
+	private void rewriteLogicBoardIfPointHitsInContour(PtsContour contour,
+			int y, int x, int[][] logicBoard, int pointsValue) {
+
+		List<PtsCoord> contourFields = contour.getContourFields();
+		for (int i = 0; i < contourFields.size(); i++) {
+
+			PtsCoord coord = contourFields.get(i);
+			if (logicBoard[coord.getY()][coord.getX()] == logicBoard[y][x]) {
+				logicBoard[coord.getY()][coord.getX()] = 0;
+			}
+		}
+
+	}
+
 	private List<List<PtsCoord>> connectContoursList(
 			List<List<PtsCoord>> firstContoursList,
-			List<List<PtsCoord>> secondContoursList) {
+			List<List<PtsCoord>> secondContoursList, int[][] board,
+			int rivalPointsValue) {
 
 		List<List<PtsCoord>> resultContoursList = new ArrayList<List<PtsCoord>>();
 
 		if (firstContoursList != null) {
 			for (int i = 0; i < firstContoursList.size(); i++) {
-				resultContoursList.add(firstContoursList.get(i));
+				if (isRivalpointInsideContours(board, firstContoursList.get(i),
+						rivalPointsValue))
+					resultContoursList.add(firstContoursList.get(i));
 			}
 		}
 
 		if (secondContoursList != null) {
 			for (int i = 0; i < secondContoursList.size(); i++) {
-				resultContoursList.add(secondContoursList.get(i));
+				if (isRivalpointInsideContours(board,
+						secondContoursList.get(i), rivalPointsValue))
+					resultContoursList.add(secondContoursList.get(i));
 			}
 		}
 
@@ -411,7 +546,8 @@ public class PtsContourMarker {
 				PtsCoord coord = contourFields.get(j);
 				if ((board[coord.getY()][coord.getX()] == 0 || board[coord
 						.getY()][coord.getX()] == rivalPointsValue)
-						&& logicBoard[coord.getY()][coord.getX()] == 0)
+						&& (logicBoard[coord.getY()][coord.getX()] == 0 || logicBoard[coord
+								.getY()][coord.getX()] == (rivalPointsValue * 10 + rivalPointsValue)))
 					isUnique = true;
 			}
 
@@ -460,13 +596,8 @@ public class PtsContourMarker {
 					PtsCoord coord = contourFields.get(j);
 					if (board[contourFields.get(j).getY()][contourFields.get(j)
 							.getX()] == 0)
-						if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
-							logicBoard[contourFields.get(j).getY()][contourFields
-									.get(j).getX()] = Pts.POINT_IN_SERVER_CONTOUR;
-						} else {
-							logicBoard[contourFields.get(j).getY()][contourFields
-									.get(j).getX()] = Pts.POINT_IN_CLIENT_CONTOUR;
-						}
+						board[contourFields.get(j).getY()][contourFields.get(j)
+								.getX()] = Pts.UNUSABLE_POINT;
 					if (board[coord.getY()][coord.getX()] == pointsValue
 							|| board[coord.getY()][coord.getX()] == (pointsValue * 10 + pointsValue)
 							|| board[coord.getY()][coord.getX()] == (pointsValue * 10)) {
@@ -509,17 +640,10 @@ public class PtsContourMarker {
 
 				if (board[i][j] == pointsValue
 						|| board[i][j] == (pointsValue * 10 + pointsValue))
-					commonBoard[i][j] = 1;
+					commonBoard[i][j] = pointsValue;
+
 			}
 		}
-	}
-
-	private int getPointInReadyContourValue(int pointsValue) {
-
-		if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
-			return Pts.POINT_IN_SERVER_CONTOUR;
-		} else
-			return Pts.POINT_IN_CLIENT_CONTOUR;
 	}
 
 	private int getContourId(int pointsValue) {
@@ -545,6 +669,29 @@ public class PtsContourMarker {
 			return Pts.UNUSABLE_POINT_SERVER;
 		} else {
 			return Pts.UNUSABLE_POINT_CLIENT;
+		}
+	}
+
+	private void writeReadyContourPointsInBoard(int[][] board,
+			PtsContour contour, int pointsValue) {
+
+		List<PtsCoord> contourPoints = contour.getContourPoints();
+		List<PtsCoord> contourFieds = contour.getContourFields();
+
+		for (int i = 0; i < contourPoints.size(); i++) {
+			PtsCoord coord = contourPoints.get(i);
+			if (pointsValue == 1) {
+				board[coord.getY()][coord.getX()] = 11;
+			} else if (pointsValue == 2) {
+				board[coord.getY()][coord.getX()] = 22;
+			}
+		}
+
+		for (int i = 0; i < contourFieds.size(); i++) {
+			PtsCoord coord = contourFieds.get(i);
+			if (board[coord.getY()][coord.getX()] == 0) {
+				board[coord.getY()][coord.getX()] = Pts.UNUSABLE_POINT;
+			}
 		}
 	}
 
@@ -849,6 +996,7 @@ public class PtsContourMarker {
 	private void nextIterationClockwise(int[][] board, PtsCoord point,
 			int pointsValue, List<PtsCoord> contourPoints) {
 
+		System.out.println("iteration:" + iterationIndex++);
 		contourPoints.add(point);
 		moveClockwise(board, point, pointsValue, contourPoints,
 				contourPoints.get(contourPoints.size() - 2));

@@ -43,15 +43,21 @@ public class PtsGame {
 			message.setClientLock(client.isLock());
 			message.setServerName(server.getName());
 			message.setClientName(client.getName());
+			message.initClientContours(board.getAllClientContours());
+			message.initServerContours(board.getAllServerContours());
 			if (clientMessage.getUserType().equals(
-					PtsResources.getProperty("user.type.server")))
+					PtsResources.getProperty("user.type.server"))) {
+				message.setUserType(PtsResources
+						.getProperty("user.type.server"));
 				sendGameInfo(PtsResources.getProperty("user.type.server"),
 						message);
-			else if (clientMessage.getUserType().equals(
-					PtsResources.getProperty("user.type.client")))
+			} else if (clientMessage.getUserType().equals(
+					PtsResources.getProperty("user.type.client"))) {
+				message.setUserType(PtsResources
+						.getProperty("user.type.client"));
 				sendGameInfo(PtsResources.getProperty("user.type.client"),
 						message);
-			else
+			} else
 				logger.error(PtsResources
 						.getProperty("error.user_type.don't_exist")
 						+ clientMessage.getUserType());
@@ -71,14 +77,16 @@ public class PtsGame {
 						board.getBoard(), logicBoard.getBoard(),
 						board.getLastY(), board.getLastX(),
 						Pts.SERVER_UNMARKED_POINT);
-				if (contoursList != null) {
+				if (contoursList != null && contoursList.size() >= 1) {
+					board.addContours(contoursList,
+							getPlayerByContourPoint(contoursList.get(0).get(0)));
 					PtsGameInfoMessage message = new PtsGameInfoMessage();
 					message.setType(PtsResources
 							.getProperty("user.message.type.countur"));
 					message.initializeBoard(board.getBoard());
 					message.initLastContours(contoursList);
-					message.setUserType(PtsResources
-							.getProperty("user.type.server"));
+					message.setUserType(getPlayerByContourPoint(contoursList
+							.get(0).get(0)));
 					sendGameInfo(PtsResources.getProperty("user.type.server"),
 							message);
 					sendGameInfo(PtsResources.getProperty("user.type.client"),
@@ -87,7 +95,7 @@ public class PtsGame {
 				logicBoard.printBoard();
 				board.printBoard();
 				// board.printBoard();
-				// 
+				//
 				// message.setType(PtsResources.getProperty("user.message.type.countur"));
 				// message.initializeBoard(board.getBoard());
 				// message.initializeLastCountur(counturMarker.getCounturPtsCoords());
@@ -117,14 +125,16 @@ public class PtsGame {
 						board.getBoard(), logicBoard.getBoard(),
 						board.getLastY(), board.getLastX(),
 						Pts.CLIENT_UNMARKED_POINT);
-				if (contoursList != null) {
+				if (contoursList != null && contoursList.size() >= 1) {
+					board.addContours(contoursList,
+							getPlayerByContourPoint(contoursList.get(0).get(0)));
 					PtsGameInfoMessage message = new PtsGameInfoMessage();
 					message.setType(PtsResources
 							.getProperty("user.message.type.countur"));
 					message.initializeBoard(board.getBoard());
 					message.initLastContours(contoursList);
-					message.setUserType(PtsResources
-							.getProperty("user.type.client"));
+					message.setUserType(getPlayerByContourPoint(contoursList
+							.get(0).get(0)));
 					sendGameInfo(PtsResources.getProperty("user.type.server"),
 							message);
 					sendGameInfo(PtsResources.getProperty("user.type.client"),
@@ -256,6 +266,15 @@ public class PtsGame {
 
 	public String getId() {
 		return id;
+	}
+
+	private String getPlayerByContourPoint(PtsCoord coord) {
+
+		if (board.getBoard()[coord.getY()][coord.getX()] == Pts.CLIENT_MARKED_POINT) {
+			return PtsResources.getProperty("user.type.client");
+		} else {
+			return PtsResources.getProperty("user.type.server");
+		}
 	}
 
 }

@@ -17,9 +17,9 @@ import epam.ph.sg.models.points.PtsPlayer;
 @Controller
 public class PointsMenuController {
 
-	private static Logger logger = Logger.getLogger(PointsGameController.class);
+	private static Logger logger = Logger.getLogger(PointsMenuController.class);
 
-	@RequestMapping(value = "/Points.html")
+	@RequestMapping(value = "/Points.html", method = RequestMethod.POST)
 	public String pointsMenu(HttpSession session) {
 
 		if (session.getAttribute("user") == null) {
@@ -33,7 +33,7 @@ public class PointsMenuController {
 
 		return "Points/PointsMenu";
 	}
-	
+
 	@RequestMapping(value = "/PointsGame.html")
 	public String pointsGame(HttpSession session) {
 
@@ -41,7 +41,7 @@ public class PointsMenuController {
 			new HomeController().index(session);
 			return "redirect:/index.html";
 		}
-		
+
 		return "Points/PointsGame";
 	}
 
@@ -53,7 +53,7 @@ public class PointsMenuController {
 		User user;
 		PtsPlayer server;
 		PtsGame game;
-		
+
 		oldGameId = (String) session.getAttribute("ptsGameId");
 		if (oldGameId != null) {
 			return true;
@@ -63,6 +63,8 @@ public class PointsMenuController {
 		game = new PtsGame();
 		server = new PtsPlayer(user.getName(), game.getId());
 		game.setServer(server);
+		
+		session.setAttribute("ptsGame", game);
 
 		PtsGameMap.addGame(game);
 		session.setAttribute("pointGamesMap", PtsGameMap.getGames());
@@ -72,27 +74,26 @@ public class PointsMenuController {
 		return true;
 	}
 
-	@RequestMapping(value = "/PointsConnectList.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/PointsConnectList.html")
 	public String getGameList(HttpSession session) {
 
 		String oldGameId;
-		
+
 		if (session.getAttribute("user") == null) {
 			new HomeController().index(session);
 			return "redirect:/index.html";
 		}
-		
-		oldGameId = (String)session.getAttribute("ptsGameId");
+
+		oldGameId = (String) session.getAttribute("ptsGameId");
 		if (oldGameId != null) {
 			return "redirect:/PointsGame.html";
 		} else {
+
 			return "Points/PointsGameList";
 		}
 
 	}
 
-	
-	
 	@RequestMapping(value = "/PointsConnect.html", method = RequestMethod.POST)
 	public @ResponseBody
 	boolean connectToGame(@RequestParam("gameId") String gameId,
@@ -106,10 +107,18 @@ public class PointsMenuController {
 		game = PtsGameMap.getGames().get(gameId);
 		client = new PtsPlayer(user.getName(), game.getId());
 		game.setClient(client);
+		session.setAttribute("ptsGame", game);
 		session.setAttribute("ptsUserType", "client");
 		session.setAttribute("ptsGameId", game.getId());
 
 		return true;
 	}
 	
+	@RequestMapping(value = "/PointsEndGame.html", method = RequestMethod.POST)
+	public String endOFGame(HttpSession session) {
+		System.out.println("END GAME");
+		return "Points/PointsEndGame";
+	}
+	
+
 }
