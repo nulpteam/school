@@ -2,6 +2,7 @@ $(document).ready(function() {
 	userAgent = navigator.userAgent;
 	//
 	bsound = new Audio;
+	
 	if( userAgent.indexOf("Chrome")!=-1 )
 	{
 		bsound.src = "sound/Infection/pageTurn.mp3";

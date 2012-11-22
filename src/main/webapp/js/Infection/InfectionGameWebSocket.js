@@ -11,6 +11,22 @@ var clientLock = false;
 var serverLock = false;
 
 $(document).ready(function() {
+	
+	userAgent = navigator.userAgent;
+	//
+	bsound = new Audio;
+	ssound = new Audio;
+	asound = new Audio;
+	if( userAgent.indexOf("Chrome")!=-1 )
+	{
+		bsound.src = "sound/Infection/bell.mp3";
+		ssound.src = "sound/Infection/select.mp3";
+		asound.src = "sound/Infection/attack.mp3";
+	}
+	bsound.loop=false;
+	ssound.loop=false;
+	asound.loop=false;
+		
 	userType = $('#infgame_table').attr('userType');
 	gameId = $('#infgame_table').attr('gameId');
 	board=createBoard();
@@ -62,6 +78,7 @@ socket.onmessage = function(event) {
 		if (userType == "server"){
 			$('#inf_message_place > img').attr('src','images/Infection/empty_sand_clock.png');
 		}
+		startbsound();
 		break;
 
 	case "serverConnect":
@@ -96,6 +113,7 @@ socket.onmessage = function(event) {
         	$('#X' + msg.xcoord + 'Y' + msg.ycoord + ' > img').attr('src',
 			'images/Infection/blue_chip_eye_rotate.gif');
         }
+        startssound();
 		break;
 	case "wrongFirstMove":
 		//alert("Wrong move");
@@ -130,6 +148,7 @@ socket.onmessage = function(event) {
 				$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
 			}
 		}
+		startssound();
 		break;
 	case "wrongSecondMove":
 		//alert("Wrong second move");
@@ -281,6 +300,21 @@ function cleanLightFields(){
 			}
 		}
 	}
+}
+
+function startbsound(){
+	bsound.volume=0.9;
+	bsound.play();
+}
+
+function startssound(){
+	ssound.volume=0.9;
+	ssound.play();
+}
+
+function startasound(){
+	asound.volume=0.9;
+	asound.play();
 }
 
 
