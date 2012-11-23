@@ -3,27 +3,57 @@
  * */
 
 @CHARSET "UTF-8";
-body {
-	font-family: LC Chalk;
-	font-size: 20px;
-	color: #505050;
-}
+/* body { */
+/* 	font-family: LC Chalk; */
+/* 	font-size: 20px; */
+/* 	color: #505050; */
+/* } */
 
-.game {
-	background: url('../images/Reversy/reversy_background.png') no-repeat;
-	width: 620px;
-	height: 725px;
-	margin: 50px auto;
-}
-td {
+/* .game { */
+/* 	background: url('../images/Reversy/reversy_background.png') no-repeat; */
+/* 	width: 620px; */
+/* 	height: 725px; */
+/* 	margin: 50px auto; */
+/* } */
+
+/* $('.paperList').css("background-image", "url(images/Reversy/reversy_background_clear.png)"); */
+
+
+#reversyMain td {
 	height: 40px;
 	width: 40px;
 	text-align: center;
+}
+#reversyMain {
+	background-image: url('../images/Reversy/reversy_background.png');
+	color: #909090;
+	font-size: 20px;
+    font-weight: bold;
+}
+#reversyMenu {
+	background-image: url('../images/Reversy/reversy_background_clear.png');
+	color: #909090;
+	font-size: 20px;
+    font-weight: bold;
+}
+#reversyGames {
+	background-image: url('../images/Reversy/reversy_background_clear.png');
+	color: #909090;
+	font-size: 20px;
+    font-weight: bold;
 }
 .board {
 	background-image: url("../images/Reversy/empty.png");
 	background-repeat: no-repeat;
 	
+}
+.boards {
+	
+}
+.reversy {
+    left: 66px;
+    position: relative;
+    top: 23px;
 }
 .x {
 	background-image: url("../images/Reversy/X.gif");

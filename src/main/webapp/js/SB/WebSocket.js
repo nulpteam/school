@@ -16,14 +16,21 @@ $(document)
 					gameId = $("#gameID").attr("class");
 					connectionType = $("#ConnectionType").attr("class");
 					lock = $("#lock").attr("class");
+					
+					console.log("********************************* info connectionType bothStarted lock ++++++++++++++++++++++++++++++");
+					console.log(connectionType);
+					console.log($("#bothStarted").attr("class"));
+					console.log(lock);
+					console.log("********************************* info ++++++++++++++++++++++++++++++");
+					
 					if (connectionType == "client"
-							|| $("#oponent").attr("class") != "") {
+							|| $("#oponent").attr("class") != "" ) {
 						console.log(connectionType);
 						console.log($("#oponent").attr("class"));
 						
 						flag = true;
 					}
-					if (($("#bothStarted") == "true")
+					if (($("#bothStarted").attr("class") == "true")
 							&& (connectionType != lock)) {
 						$("#locker").css("visibility", "hidden");
 					} else {
@@ -38,6 +45,9 @@ $(document)
 						console
 								.log("------------------------------Соединение открылось-----------------------------");
 					};
+					socket.onclose = function() {
+						alert("onclose");
+					};
 
 					/*
 					 * 
@@ -47,10 +57,12 @@ $(document)
 					 * 
 					 */
 					socket.onmessage = function(event) {
-
+						console.log("********************************* on message ++++++++++++++++++++++++++++++");
+						console.log(event.data);
+						console.log("********************************* on message ++++++++++++++++++++++++++++++");
+						
 						if (event.data == "ready") {
-							if (connectionType == "client"
-									|| $("#oponent").attr("class") != "") {
+							if (connectionType == "client") {
 								flag = true;
 							};
 							if (connectionType != lock) {

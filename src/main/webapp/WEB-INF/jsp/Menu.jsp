@@ -31,7 +31,7 @@
 		<div class="button" onclick="goTo('Sb.html');">
 			<p class="buttonText">${langPack['Battleship']}</p>
 		</div>
-		<div class="button" onclick=reversy();>
+		<div class="button" onclick="goTo('ReversyMenu.html');">
 			<p class="buttonText">${langPack['Reversi']}</p>
 		</div>
 		<div class="button" onclick="goTo('Points.html')">

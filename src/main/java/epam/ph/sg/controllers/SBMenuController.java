@@ -7,8 +7,10 @@
 package epam.ph.sg.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -27,6 +29,7 @@ import epam.ph.sg.models.sb.BSPlayer;
 import epam.ph.sg.models.sb.Client;
 import epam.ph.sg.models.sb.Game;
 import epam.ph.sg.models.sb.GamesList;
+import epam.ph.sg.models.sb.SBStatistics;
 import epam.ph.sg.models.sb.SbJSLoader;
 import epam.ph.sg.models.sb.Server;
 
@@ -193,6 +196,8 @@ public class SBMenuController {
 	@RequestMapping(value = "/Victory.html", method = RequestMethod.POST)
 	public String Victory(Model model, HttpSession session) {
 		int gameId = ((Game) session.getAttribute("Game")).getId();
+		SBStatistics.win(((User)session.getAttribute("user")).getId());
+		log.debug("-//--//--//user id="+((User)session.getAttribute("user")).getId());
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
@@ -204,6 +209,7 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/Loose.html", method = RequestMethod.POST)
 	public String Loose(Model model, HttpSession session) {
+		SBStatistics.lose(((User)session.getAttribute("user")).getId());
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
@@ -214,6 +220,7 @@ public class SBMenuController {
 	@RequestMapping(value = "/SbStop.html", method = RequestMethod.POST)
 	public String StopSbGame(@RequestParam("connType") String connType,
 			Model model, HttpSession session) {
+		SBStatistics.lose(((User)session.getAttribute("user")).getId());
 		Game g = (Game)session.getAttribute("Game");
 		int gameId = g.getId();
 		if(connType.equalsIgnoreCase("server"))
@@ -257,7 +264,27 @@ public class SBMenuController {
 		return "SB/SbMenu";
 	}
 
-	
+	@RequestMapping("/SBStatistics.html")
+	public String sbstatistics(HttpServletRequest request, Model model) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		List<SBStatistics> list = SBStatistics.getAllStatistics();
+		if (list.size() < 10) {
+			model.addAttribute("xoStatList", list);
+		} else {
+			model.addAttribute("xoStatList", list.subList(0, 10));
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getName().equals(user.getName())) {
+				model.addAttribute("myPos", i + 1);
+				model.addAttribute("myStats", list.get(i));
+				break;
+			}
+		}
+		return "XO/Statistics";
+	}
 	
 	
 	

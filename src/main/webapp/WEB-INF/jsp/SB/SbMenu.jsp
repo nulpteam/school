@@ -21,6 +21,7 @@
 	<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 <!-- 	<div class="SbMButtonsRight"> -->
 				<div class="SbMButtonRightHome" onclick="goTo('Menu.html')";></div>
+				<div class="SbMButtonRightStat" onclick="goTo('SBStatistics.html')";></div>
 <!-- 	</div> -->
 	<div class="clear"></div>
 	<div class="SbMenu">

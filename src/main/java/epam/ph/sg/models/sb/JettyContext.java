@@ -62,7 +62,7 @@ public class JettyContext implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent sce) {
 		if (server != null && ptsServer != null) {
 			try {
-				// стопаєм Jetty
+				// пїЅпїЅпїЅпїЅпїЅпїЅ Jetty
 				server.stop();
 				log.debug("+++++++++++++++++++++++++++Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
 			} catch (Exception e) {
@@ -71,7 +71,7 @@ public class JettyContext implements ServletContextListener {
 		}
 		if (ptsServer != null) {
 			try {
-				// стопаєм Jetty
+				// пїЅпїЅпїЅпїЅпїЅпїЅ Jetty
 				ptsServer.stop();
 				log.debug("+++++++++++++++++++++++++++Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
 			} catch (Exception e) {
@@ -80,16 +80,16 @@ public class JettyContext implements ServletContextListener {
 		}
 		if (reversyServer != null) {
 			try {
-				// стопаєм Jetty
+				// пїЅпїЅпїЅпїЅпїЅпїЅ Jetty
 				reversyServer.stop();
-				log.debug("+++++++++++++++++++++++++++Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
+				log.debug("+++++++++++++++++++++++++++Reversy Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		if (infectionServer != null) {
 			try {
-				// стопаєм Jetty
+				// пїЅпїЅпїЅпїЅпїЅпїЅ Jetty
 				infectionServer.stop();
 				log.debug("+++++++++++++++++++++++++++Jetty stoped+++++++++++++++++++++++++++++++++++++++++");
 			} catch (Exception e) {

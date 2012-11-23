@@ -11,7 +11,7 @@ var clientLock = false;
 var serverLock = false;
 
 $(document).ready(function() {
-	
+
 	userAgent = navigator.userAgent;
 	//
 	bsound = new Audio;
@@ -26,11 +26,47 @@ $(document).ready(function() {
 	bsound.loop=false;
 	ssound.loop=false;
 	asound.loop=false;
-		
+
+	$(".chip").mouseover(function(){
+
+		var x = parseX(this.id);
+		var y = parseY(this.id);
+		if (board[x][y] == 0) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/over_empty_cell.png');
+		}
+		if (board[x][y] == 1) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/over_red_chip.png');
+		}
+		if (board[x][y] == 2) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/over_blue_chip.png');
+		}
+		if (board[x][y] == 5) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/over_hover2_cell.png');
+		}
+	});
+
+	$(".chip").mouseout(function(){
+
+		var x = parseX(this.id);
+		var y = parseY(this.id);
+		if (board[x][y] == 0) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/empty_cell.png');
+		}
+		if (board[x][y] == 1) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/red_chip.png');
+		}
+		if (board[x][y] == 2) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/blue_chip.png');
+		}
+		if (board[x][y] == 5) {
+			$('#X' + x + 'Y' + y + ' > img').attr('src','images/Infection/hover2_cell.png');
+		}
+	});
+
 	userType = $('#infgame_table').attr('userType');
 	gameId = $('#infgame_table').attr('gameId');
 	board=createBoard();
-	
+
 
 	socket.onopen = function() {
 
@@ -93,7 +129,7 @@ socket.onmessage = function(event) {
 
 
 	case "initialize":
-	
+
 		$('#infplayer_label_1 > label').text(msg.serverName);
 		$('#infplayer_label_2 > label').text(msg.clientName);
 		$('#infscore_label_1 > label').text(msg.serverScore);
@@ -104,16 +140,18 @@ socket.onmessage = function(event) {
 		//alert("Right move");
 		refreshBoard(msg.board);		
 		drawBoard();
-				
-        if (msg.moveType == "server"){
-        	$('#X' + msg.xcoord + 'Y' + msg.ycoord + ' > img').attr('src',
+
+		if (msg.moveType == "server"){
+			$('#X' + msg.xcoord + 'Y' + msg.ycoord + ' > img').attr('src',
 			'images/Infection/red_chip_eye_rotate.gif');
-        }
-        if (msg.moveType == "client"){
-        	$('#X' + msg.xcoord + 'Y' + msg.ycoord + ' > img').attr('src',
+			board[msg.xcoord][msg.ycoord] = 6;
+		}
+		if (msg.moveType == "client"){
+			$('#X' + msg.xcoord + 'Y' + msg.ycoord + ' > img').attr('src',
 			'images/Infection/blue_chip_eye_rotate.gif');
-        }
-        startssound();
+			board[msg.xcoord][msg.ycoord] = 6;
+		}
+		startssound();
 		break;
 	case "wrongFirstMove":
 		//alert("Wrong move");
@@ -122,10 +160,10 @@ socket.onmessage = function(event) {
 		userType = $('#infgame_table').attr('userType');		
 		refreshBoard(msg.board);		
 		drawBoard();
-		
+
 		$('#infscore_label_1 > label').text(msg.serverScore);
 		$('#infscore_label_2 > label').text(msg.clientScore);
-		
+
 		if (msg.moveType == "server"){
 			clientLock = false;
 			serverLock = true;
@@ -135,8 +173,8 @@ socket.onmessage = function(event) {
 			if (userType == "server"){
 				$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
 			}
-				
-			
+
+
 		}
 		if (msg.moveType == "client"){
 			clientLock = true;
@@ -153,15 +191,19 @@ socket.onmessage = function(event) {
 	case "wrongSecondMove":
 		//alert("Wrong second move");
 		break;
-	case "serverWin":
-		userType = $('#infgame_table').attr('userType');
-		
+	case "cancelFirstMove":
 		refreshBoard(msg.board);		
 		drawBoard();
-		
+		break;
+	case "serverWin":
+		userType = $('#infgame_table').attr('userType');
+
+		refreshBoard(msg.board);		
+		drawBoard();
+
 		$('#infscore_label_1 > label').text(msg.serverScore);
 		$('#infscore_label_2 > label').text(msg.clientScore);
-		
+
 		if (userType == "server"){
 			winnerPage();
 		}else{
@@ -170,13 +212,13 @@ socket.onmessage = function(event) {
 		break;
 	case "clientWin":
 		userType = $('#infgame_table').attr('userType');
-		
+
 		refreshBoard(msg.board);		
 		drawBoard();
-		
+
 		$('#infscore_label_1 > label').text(msg.serverScore);
 		$('#infscore_label_2 > label').text(msg.clientScore);
-		
+
 		if (userType == "client"){
 			winnerPage();
 		}else{
@@ -232,28 +274,29 @@ function refreshBoard(matrix){
 
 function firstMove(td) {
 	userType = $('#infgame_table').attr('userType');
-    if (userType == "server"){
+	if (userType == "server"){
 		if ( serverLock == true ){
 			$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
 			return;
 		}
 	}
-	
+
 	if (userType == "client"){
 		if ( clientLock == true ){
 			$('#inf_message_place > img').attr('src','images/Infection/sand_clock.gif');
 			return;
 		}
 	}
-	
-    if ( waitForClient == true ){
-    	alert("Wait for a client");
-    	return;
-    }
-	
+
+	if ( waitForClient == true ){
+		alert("Wait for a client");
+		return;
+	}
+
 	if (msg.type == "rightFirstMove" || msg.type == "wrongSecondMove"){
 		x = parseX(td.id);
 		y = parseY(td.id);
+		
 		var userType = $('#infgame_table').attr('userType');
 
 		var move = {
