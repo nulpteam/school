@@ -13,13 +13,20 @@
 </head>
 <body>-->
 <div class="paperList">
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
-	<div align="center">
-		<c:forEach var="game" items="${pointGamesMap}" varStatus="i">
-			<button id="${game.key}" onclick=connect(this.id);>
-					Server Name:<c:out value="${game.value.server.name}" />
-			</button>
-		</c:forEach>
+	<div id="pts_bg_game_list">
+		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
+		<div id="pts_servers_div">
+			<c:forEach var="game" items="${pointGamesMap}" varStatus="i">
+			<div id="${game.value.id}" class="pts_server_div" onclick=connect(this.id)>
+				<img src="images/Points/server_point-2.png" id="${game.key}">
+				<label><c:out value="${game.value.server.name}" /> </label>
+			</div>
+			</c:forEach>
+		</div>
+
+		<div class="homeButton" onclick="goTo('Menu.html')"></div>
+		<div class="backButton" onClick="goTo('Points.html')"></div>
+		<div class="refreshButton" onclick="goTo('PointsConnectList.html')"></div>
 	</div>
 </div>

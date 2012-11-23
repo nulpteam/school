@@ -11,6 +11,13 @@
 	margin: 0px 0px;
 }
 
+#pts_bg_game_list {
+	background-image: url('../../images/Points/game_list_background.png');
+	width: 605px;
+	height: 705px;
+	margin: 0px 0px;
+}
+
 #pts_bg_end_ofGame {
 	background-image: url('../../images/Points/endofGameBackground.png');
 	width: 605px;
@@ -74,6 +81,10 @@
 	height: 395px;
 }
 
+#pts_table1:hover {
+	cursor: url('../../images/Points/cursor.png'), pointer;
+}
+
 #pts_table1 tr td {
 	width: 20px;
 }
@@ -81,3 +92,68 @@
 #pts_table1 tr {
 	height: 20px;
 }
+
+#pts_menu_connect {
+	position: absolute;
+	margin: 140px 300px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_connect {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_menu_create {
+	position: absolute;
+	margin: 140px 100px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_create {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_menu_statistics {
+	position: absolute;
+	margin: 340px 100px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_statistics {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_menu_rules {
+	position: absolute;
+	margin: 340px 300px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_rules {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_servers_div {
+	overflow-y: auto;
+	position: absolute;
+	margin: 390px 120px;
+	width: 355px;
+	height: 175px;
+	display: table;
+}
+
+.pts_server_div {
+	width: 110px;
+	height: 30px;
+	display: table-cell;
+}
+
+

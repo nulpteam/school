@@ -16,23 +16,26 @@ $(document).ready(function(){
     
     $(".pts_point").mouseover(function(){
     
-        var x = parseX(this.id);
-        var y = parseY(this.id);
-        if (board[y][x] == 0) {
-            $('#' + this.id).css('background-image', "url(\'images/Points/point_hover_true.png\')");
-        }
-        if (board[y][x] == -1) {
-            $('#' + this.id).css('background-image', "url(\'images/Points/point_hover_false.png\')");
-        }
+    	if(!lock) {
+	        var x = parseX(this.id);
+	        var y = parseY(this.id);
+	        if (board[y][x] == 0) {
+	            $('#' + this.id).css('background-image', "url(\'images/Points/point_hover_true.png\')");
+	        }
+	        if (board[y][x] == -1) {
+	            $('#' + this.id).css('background-image', "url(\'images/Points/point_hover_false.png\')");
+	        }
+    	}
     });
     
     $(".pts_point").mouseout(function(){
-    
-        var x = parseX(this.id);
-        var y = parseY(this.id);
-        if (board[y][x] == 0 || board[y][x] == -1) {
-            $('#' + this.id).css('background-image', "url(\'images/Points/square.png\')");
-        }
+    	if(!lock) {
+	        var x = parseX(this.id);
+	        var y = parseY(this.id);
+	        if (board[y][x] == 0 || board[y][x] == -1) {
+	            $('#' + this.id).css('background-image', "url(\'images/Points/square.png\')");
+	        }
+    	}
     });
     
     board = createMatrix();
@@ -471,5 +474,3 @@ function paintContour(contoursCoords, pointsBoard, usType){
 // });
 //
 // }
-
-
