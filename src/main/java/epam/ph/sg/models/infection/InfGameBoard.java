@@ -72,6 +72,12 @@ public class InfGameBoard {
 	}
 	public static InfClientMessage validateSecondMove(int[][] board,InfClientMessage message,int fmX,int fmY,String id){
 		board = cleandLightFields(board, message);
+		
+		if ((message.getXcoord() == fmX ) & (message.getYcoord() == fmY)){
+			message.setType("cancelFirstMove");
+			message.setBoard(board);
+			return message;
+		}
 
 		if ( message.getMoveType().equals("server") ){
 			if ( board[message.getXcoord()][message.getYcoord()] == 0){
