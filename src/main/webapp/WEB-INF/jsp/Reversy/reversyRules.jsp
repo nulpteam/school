@@ -9,5 +9,10 @@
 <script src="js/Reversy/Reversy_menu.js" type="text/javascript"></script>
 	<button value="Create Game" onclick="create()">Create Game</button>
 	<button value="View Games" onclick="goToList()">View Games</button>
-	<button value="View Rules" onclick="goToRules()">Rules</button>
+	<button value="View Games" onclick="goToRules()">Rules</button>
+	<div>
+		<p>
+			Reversy Rules!
+		</p>
+	</div>
 </div>
