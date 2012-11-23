@@ -16,7 +16,23 @@
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 
-	<input type="button" value="Create game" id="create" onClick=create()>
-	<input type="button" value="Connect" id="connect">
-
+	<div id="pts_menu_create">
+		<img src="images/Points/Create1.png" onClick=create()>
+		<label id="pts_label_create">Create</label>
+	</div>
+	<div id="pts_menu_connect">
+		<img src="images/Points/Connect1.png">
+		<label id="pts_label_connect">Connect</label>
+	</div>
+	<div id="pts_menu_statistics">
+		<img src="images/Points/statistics1.png">
+		<label id="pts_label_statistics">Statistics</label>
+	</div>
+	<div id="pts_menu_rules">
+		<img src="images/Points/rules1.png">
+		<label id="pts_label_rules">Rules</label>
+	</div>
+	
+	<div class="homeButton" onClick="goTo('Menu.html')"></div>
+	<div class="refreshButton" onclick="goTo('Points.html')"></div>
 </div>
