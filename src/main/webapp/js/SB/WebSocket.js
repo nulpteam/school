@@ -22,7 +22,6 @@ $(document)
 					console.log($("#bothStarted").attr("class"));
 					console.log(lock);
 					console.log("********************************* info ++++++++++++++++++++++++++++++");
-					
 					if (connectionType == "client"
 							|| $("#oponent").attr("class") != "" ) {
 						console.log(connectionType);
@@ -40,13 +39,21 @@ $(document)
 					socket = new WebSocket("ws://" + location.hostname
 							+ ":8081");
 					socket.onopen = function() {
-						socket.send(gameId + "&" + userName + "&"
+						socket.send("open&" + gameId + "&" + userName + "&"
 								+ connectionType);
 						console
 								.log("------------------------------Соединение открылось-----------------------------");
+						
 					};
 					socket.onclose = function() {
 						alert("onclose");
+						mess = "close&";
+						for ( var i = 0; i < 10; i++) {
+							for ( var j = 0; j < 10; j++) {
+								mess = mess + $("#" + i + j).css("background-image") + "&" + $("#X" + i + "_Y" + j).css("background-image") + "&" + $("#X" + i + "_Y" + j).attr("onclick") + "&";
+							}
+						}
+//						console.log(mess);
 					};
 
 					/*
@@ -82,19 +89,17 @@ $(document)
 						} else {
 							var msg = JSON.parse(event.data);
 							if (msg.sheep == "00") {
-								$("#" + msg.point).attr("background",
-										"images/SB/cant_be.png");
+								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
 								lock = "";
 							} else {
 								lock = connectionType;
 							}
 							if (msg.sheep != "00") {
-								$("#" + msg.point).attr("background",
-										"images/SB/firePoint2.png");
+								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
 								myDamagedSheeps++;
 								if (myDamagedSheeps >= 20) {
 									loose();
-								}
+								};
 
 							}
 
@@ -104,7 +109,7 @@ $(document)
 								$("#locker").css("visibility", "visible");
 							}
 							console.log(event.data);
-						}
+						};
 					};
 				});
 

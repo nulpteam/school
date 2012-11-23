@@ -678,9 +678,15 @@ function lockWhereCantBe(id) {
 			if (((i == x2) || (i == x1) || (i == x3))
 					&& ((j == y2) || (j == y1) || (j == y3))) {
 				if ($("#X" + i + "_Y" + j).attr("onclick") == "fire(this)") {
-					$("#X" + i + "_Y" + j).html(
-							"<img id='cant_be" + x1 + y1
-									+ "' src='images/SB/cant_be.png'>");
+//					$("#X" + i + "_Y" + j).html(
+//							"<img id='cant_be" + x1 + y1
+//									+ "' src='images/SB/cant_be.png'>");
+					/*
+					 * 
+					 * 
+					 * 
+					 */
+					$("#X" + i + "_Y" + j).css("background-image", "url('images/SB/cant_be.png')");
 					$("#X" + i + "_Y" + j).attr("onclick", "cantBe()");
 				}
 			}
@@ -731,6 +737,7 @@ function fire(point) {
 	//playShootSound();
 
 	p = $(point).attr('id');
+	c = $(point).attr('id');
 	p = p[1] + '' + p[4];
 	$.post("fire.html", {
 		firePoint : p
@@ -746,13 +753,25 @@ function fire(point) {
 		rand = Math.floor((Math.random() * 5) + 1);
 		if (obj.miss === "00") {
 			playShootSound("miss");
-			html = "<img id='fireP" + p + "' src='images/SB/missPoint" + rand
-					+ ".png'>";
+//			html = "<img id='fireP" + p + "' src='images/SB/missPoint" + rand
+//					+ ".png'>";
+			/*
+			 * 
+			 * 
+			 * 
+			 */
+			$("#" + c).css("background-image", "url('images/SB/missPoint" + rand + ".png')");
 			$("#locker").css("visibility", "visible");
 		} else {
 			playShootSound("demage");
-			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand
-					+ ".png'>";
+//			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand
+//					+ ".png'>";
+			/*
+			 * 
+			 * 
+			 * 
+			 */
+			$("#" + c).css("background-image", "url('images/SB/firePoint" + rand + ".png')");
 			$("#locker").css("visibility", "hidden");
 		}
 		if (obj.miss === "10") {
