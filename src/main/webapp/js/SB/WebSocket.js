@@ -8,10 +8,19 @@ var socket;
 var lock;
 var myDamagedSheeps = 0;
 var flag = false;
+var save = $("#mess").attr("class");
+
+//$(window).on("beforeunload", sendMess());
+
 
 $(document)
 		.ready(
 				function() {
+					if (save != undefined) {
+						getMess();
+					}
+					
+					
 					userName = $("#userName").attr("class");
 					gameId = $("#gameID").attr("class");
 					connectionType = $("#ConnectionType").attr("class");
@@ -46,14 +55,7 @@ $(document)
 						
 					};
 					socket.onclose = function() {
-						alert("onclose");
-						mess = "close&";
-						for ( var i = 0; i < 10; i++) {
-							for ( var j = 0; j < 10; j++) {
-								mess = mess + $("#" + i + j).css("background-image") + "&" + $("#X" + i + "_Y" + j).css("background-image") + "&" + $("#X" + i + "_Y" + j).attr("onclick") + "&";
-							}
-						}
-//						console.log(mess);
+						console.log("socket.onclose");
 					};
 
 					/*
@@ -67,7 +69,6 @@ $(document)
 						console.log("********************************* on message ++++++++++++++++++++++++++++++");
 						console.log(event.data);
 						console.log("********************************* on message ++++++++++++++++++++++++++++++");
-						
 						if (event.data == "ready") {
 							if (connectionType == "client") {
 								flag = true;
@@ -75,7 +76,6 @@ $(document)
 							if (connectionType != lock) {
 								$("#locker").css("visibility", "hidden");
 							} else {
-								// alert ("lock unocured " + lock);
 								$("#locker").css("visibility", "visible");
 							}
 						} else if (event.data === 'kill') {
@@ -89,6 +89,7 @@ $(document)
 						} else {
 							var msg = JSON.parse(event.data);
 							if (msg.sheep == "00") {
+								sendMess();
 								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
 								lock = "";
 							} else {
@@ -97,6 +98,7 @@ $(document)
 							if (msg.sheep != "00") {
 								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
 								myDamagedSheeps++;
+								sendMess();
 								if (myDamagedSheeps >= 20) {
 									loose();
 								};
@@ -119,4 +121,63 @@ function wtest(message) {
 
 function testWS() {
 	$.get("Test.html");
+}
+
+function sendMess() {
+	mess = "close&";
+	for ( var i = 0; i < 10; i++) {
+		for ( var j = 0; j < 10; j++) {
+			
+			a1 = $("#" + i + j).css("background-image");
+			b1 = $("#X" + i + "_Y" + j).css("background-image");
+			
+//			console.log("a1");
+//			console.log(a1);
+//			console.log("b1");
+//			console.log(b1);
+			
+			if (a1 != undefined) {
+				a = a1.replace("url(http://localhost:8080/School/", "url('");
+				a = a.replace("png)", "png')");
+			
+				b = b1.replace("url(http://localhost:8080/School/", "url('");
+				b = b.replace("png)", "png')");
+				c = $("#X" + i + "_Y" + j).attr("onclick");
+			
+//				console.log("a");
+//				console.log(a);
+//				console.log("b");
+//				console.log(b);
+//				
+				mess = mess + a + "&" + b + "&" + c + "&";
+			}
+		}
+	}
+	console.log(mess);
+	$.post("mess.html", {mess : mess}, function() {
+		
+	});
+}
+
+function getMess() {
+	if (save != undefined) {
+		arr = save.split("&");
+		count = 0;
+		if (arr[0] == "close") {
+			for ( var i = 0; i < 10; i++) {
+				for ( var j = 0; j < 10; j++) {
+					count++;
+					$("#" + i + j).css("background-image", arr[count]);
+					count++;
+					$("#X" + i + "_Y" + j).css("background-image", arr[count]);
+					count++;
+					$("#X" + i + "_Y" + j).attr("onclick", arr[count]);
+				}
+			}
+		}
+	}
+}
+
+function sayHi() {
+	alert("hi!");
 }

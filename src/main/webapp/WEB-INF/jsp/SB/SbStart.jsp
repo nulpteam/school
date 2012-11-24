@@ -24,6 +24,8 @@
 	<div id="ConnectionType" class="${ConnectionType}"></div>
 	<div id="lock" class="${Game.nextMove}"></div>
 	<div id="bothStarted" class="${Game.bothStarted}"></div>
+	<div id="mess" class="${mess}"></div>
+	
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
@@ -279,8 +281,6 @@
 <%-- <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/> --%>
 <!-- <input type="button" value="Test1" onClick="testWS();"/> -->
 <%-- <input type="button" value="${ConnectionType}"/> --%>
-
-
 </div>
 <!-- </body> -->
 <!-- </html> -->

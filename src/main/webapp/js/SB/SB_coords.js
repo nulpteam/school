@@ -735,7 +735,6 @@ function playShootSound(miss) {
 
 function fire(point) {
 	//playShootSound();
-
 	p = $(point).attr('id');
 	c = $(point).attr('id');
 	p = p[1] + '' + p[4];
@@ -984,7 +983,8 @@ function fire(point) {
 				victory();
 			}
 		}
-		$(point).html(html);
+		sendMess();
+//		$(point).html(html);
 	});
 }
 
@@ -1073,7 +1073,6 @@ function start(ct) {
 	});
 };
 function getSheeps() {
-	// alert("getSheeps()");
 	M1 = new Array();
 	for ( var i = 0; i < 15; i++) {
 		M1[i] = new Array();
