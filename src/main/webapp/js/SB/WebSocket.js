@@ -91,12 +91,14 @@ $(document)
 							if (msg.sheep == "00") {
 								sendMess();
 								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
+								$("#" + msg.point).attr("class", "cant_be.png");
 								lock = "";
 							} else {
 								lock = connectionType;
 							}
 							if (msg.sheep != "00") {
 								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
+								$("#" + msg.point).attr("class", "cant_be.png");
 								myDamagedSheeps++;
 								sendMess();
 								if (myDamagedSheeps >= 20) {
@@ -124,31 +126,27 @@ function testWS() {
 }
 
 function sendMess() {
-	mess = "close&";
+	mess = "close&" + damagedSheep + "&" + myDamagedSheeps + "&";
 	for ( var i = 0; i < 10; i++) {
 		for ( var j = 0; j < 10; j++) {
-			
-			a1 = $("#" + i + j).css("background-image");
-			b1 = $("#X" + i + "_Y" + j).css("background-image");
-			
-//			console.log("a1");
-//			console.log(a1);
-//			console.log("b1");
-//			console.log(b1);
-			
-			if (a1 != undefined) {
-				a = a1.replace("url(http://localhost:8080/School/", "url('");
-				a = a.replace("png)", "png')");
-			
-				b = b1.replace("url(http://localhost:8080/School/", "url('");
-				b = b.replace("png)", "png')");
+			if ($("#" + i + j).css("background-image") != undefined) {
 				c = $("#X" + i + "_Y" + j).attr("onclick");
-			
-//				console.log("a");
-//				console.log(a);
-//				console.log("b");
-//				console.log(b);
-//				
+				if ($("#" + i + j).attr("class") == "cant_be.png") {
+					a = "url('images/SB/cant_be.png')";
+				} else a = "none";
+				
+				if (c == "allreadyShooted();") {
+					b = "url('images/SB/missPoint3.png')";
+				}
+				if (c == "allreadyDamaged();") {
+					b = "url('images/SB/firePoint3.png')";
+				}
+				if (c == "cantBe()") {
+					b = "url('images/SB/cant_be.png')";
+				}
+				if (c == "fire(this)") {
+					b = "none";
+				}
 				mess = mess + a + "&" + b + "&" + c + "&";
 			}
 		}
@@ -164,10 +162,17 @@ function getMess() {
 		arr = save.split("&");
 		count = 0;
 		if (arr[0] == "close") {
+			count++;
+			damagedSheep = parseInt(arr[count]);
+			count++;
+			myDamagedSheeps = parseInt(arr[count]);
 			for ( var i = 0; i < 10; i++) {
 				for ( var j = 0; j < 10; j++) {
 					count++;
 					$("#" + i + j).css("background-image", arr[count]);
+					if (arr[count] == "url('images/SB/cant_be.png')") {
+						$("#" + i + j).attr("class", "cant_be.png");
+					}
 					count++;
 					$("#X" + i + "_Y" + j).css("background-image", arr[count]);
 					count++;
