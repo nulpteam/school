@@ -285,33 +285,8 @@ public class SBMenuController {
 		}
 		return "XO/Statistics";
 	}
-	
-	
-	
-	
-	/**
-	 * Тест - стерти коли стане не потрібним
-	 */
-
-//	@RequestMapping(value = { "/Test.html" }, method = RequestMethod.GET)
-//	public @ResponseBody
-//	String test(HttpSession session, Model model) {
-//		// !
-//		Game game = ActiveGames.getGame(1);
-//		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-//				+ game.getServer().getConn());
-//		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-//				+ game.getClient().getConn());
-//		try {
-//			game.getServer().getConn().sendMessage("fiskult-privet Server");
-//			game.getClient().getConn().sendMessage("fiskult-privet Client");
-//			game.getServer().getConn()
-//					.sendMessage(game.getServer().getGameBoard().toString());
-//			game.getClient().getConn()
-//					.sendMessage(game.getClient().getGameBoard().toString());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return "OK";
-//	}
+	@RequestMapping(value = "/rules.html", method = RequestMethod.POST)
+	public String rules(Model model, HttpSession session) {
+		return "SB/Rules";
+	}
 }

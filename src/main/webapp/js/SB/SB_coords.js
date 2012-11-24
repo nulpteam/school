@@ -1236,3 +1236,7 @@ function getSheeps() {
 		}
 	}
 };
+
+function showRules() {
+	goTo("rules.html");
+}

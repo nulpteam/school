@@ -319,7 +319,7 @@
 }
 
 .SbMButtons {
-	margin-left: 48px;
+	margin-left: 0px;
 }
 
 .SbMConnectG {
@@ -330,7 +330,11 @@
 	background: url('../images/SB/SbMCreate_sprite.png') no-repeat;
 }
 
-.SbMConnectG,.SbMCreateG {
+.SbMHelp {
+	background: url('../images/SB/BSHelp.png') no-repeat;
+}
+
+.SbMConnectG,.SbMCreateG, .SbMHelp {
 	float: left;
 	width: 100px;
 	height: 95px;
@@ -357,6 +361,10 @@
 	background: url('../images/SB/SbMCreate_sprite.png') bottom no-repeat;
 }
 
+.SbMHelp:hover {
+	background: url('../images/SB/BSHelp.png') bottom no-repeat;
+}
+
 .SbMSheep img {
 	width: 305px;
 	margin: 28px 0 16px 145px;
@@ -366,13 +374,19 @@
 .SbMConnectGPlaceholder {
 	float: left;
 	width: 150px;
-	margin-left: 60px;
+	margin-left: 10px;
 }
 
 .SbMCreateGPlaceholder {
 	float: left;
 	width: 150px;
-	margin-left: 70px;
+	margin-left: 60px;
+}
+
+.SbMHelpPlaceholder {
+	float: left;
+	width: 150px;
+	margin-left: 10px;
 }
 
 .SbMButtonsRight { /* 	float: left; */
@@ -478,4 +492,10 @@ victoryBody {
 	background: url('../images/paperList/home_sprite.png') bottom no-repeat;
 	width: 50px;
 	height: 49px
+}
+
+.SbRules {
+	width: 450px;
+	margin-left: 70px;
+	font-size: 14px;
 }
