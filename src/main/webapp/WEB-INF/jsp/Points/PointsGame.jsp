@@ -61,6 +61,17 @@
 				</table>
 			</div>
 			
+			<div id="pts_surrender_div">
+				<div id="pts_surrender_bg">
+					<label id="pts_surrender_label">Surrender?</label> <label
+						id="pts_surrender_yes" class="pts_surrender_button" onClick="surrenderYes()">Yes</label> <label
+						id="pts_surrender_no" class="pts_surrender_button" onClick="surrenderNo()">No</label>
+				</div>
+			</div>
+			
+			<div class="homeButton" onclick="goToMenu()"></div>
+			<div class="refreshButton" onclick="goTo('PointsGame.html')"></div>
+			<div class="surrenderButton" onClick="surrender()"></div>
 		</div>
 	</div>
 </div>

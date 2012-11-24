@@ -22,9 +22,16 @@ public class PointsMenuController {
 	@RequestMapping(value = "/Points.html")
 	public String pointsMenu(HttpSession session) {
 
+		Integer oldGameId;
+		oldGameId = (Integer) session.getAttribute("ptsGameId");
+		
 		if (session.getAttribute("pointGamesMap") == null) {
 			session.setAttribute("pointGamesMap", PtsGameMap.getGames());
 			session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
+		}
+		
+		if (oldGameId != null) {
+			return "redirect:/PointsGame.html";
 		}
 
 		return "Points/PointsMenu";
@@ -40,12 +47,12 @@ public class PointsMenuController {
 	public @ResponseBody
 	boolean createGame(HttpSession session) {
 
-		String oldGameId;
+		Integer oldGameId;
 		User user;
 		PtsPlayer server;
 		PtsGame game;
 
-		oldGameId = (String) session.getAttribute("ptsGameId");
+		oldGameId = (Integer) session.getAttribute("ptsGameId");
 		if (oldGameId != null) {
 			return true;
 		}
@@ -68,9 +75,9 @@ public class PointsMenuController {
 	@RequestMapping(value = "/PointsConnectList.html")
 	public String getGameList(HttpSession session) {
 
-		String oldGameId;
+		Integer oldGameId;
 
-		oldGameId = (String) session.getAttribute("ptsGameId");
+		oldGameId = (Integer) session.getAttribute("ptsGameId");
 		if (oldGameId != null) {
 			return "redirect:/PointsGame.html";
 		} else {
@@ -90,7 +97,7 @@ public class PointsMenuController {
 		PtsGame game;
 
 		user = (User) session.getAttribute("user");
-		game = PtsGameMap.getGames().get(gameId);
+		game = PtsGameMap.getGames().get(Integer.parseInt(gameId));
 		client = new PtsPlayer(user.getName(), game.getId());
 		game.setClient(client);
 		session.setAttribute("ptsGame", game);
@@ -106,6 +113,38 @@ public class PointsMenuController {
 	public String endOFGame(HttpSession session) {
 
 		return "Points/PointsEndGame";
+	}
+	
+	@RequestMapping(value = "/PointsClearPointsGameSession.html", method = RequestMethod.POST)
+	public @ResponseBody String clearGameSession(HttpSession session) {
+		
+		Integer gameId = (Integer)session.getAttribute("ptsGameId");
+				
+		PtsGameMap.deleteGame(gameId);
+		PtsGameMap.deleteGameServer(gameId);
+		
+		session.removeAttribute("ptsGame");
+		session.removeAttribute("ptsUserType");
+		session.removeAttribute("ptsGameId");
+
+		return "";
+	}
+	
+	@RequestMapping(value = "/PointsClearPointsMenuSession.html", method = RequestMethod.POST)
+	public @ResponseBody String clearMenuSession(HttpSession session) {
+
+		Integer gameId = (Integer)session.getAttribute("ptsGameId");
+		
+		PtsGameMap.deleteGame(gameId);
+		PtsGameMap.deleteGameServer(gameId);
+		
+		session.removeAttribute("ptsGame");
+		session.removeAttribute("ptsUserType");
+		session.removeAttribute("ptsGameId");
+		session.removeAttribute("ptsGameMap");
+		session.removeAttribute("pointsGameServersMap");
+
+		return "";
 	}
 	
 

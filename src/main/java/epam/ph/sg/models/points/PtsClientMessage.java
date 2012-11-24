@@ -4,20 +4,39 @@ public class PtsClientMessage {
 
 	private String type;
 	private String userType;
-	private String gameId;
+	private int gameId;
 	private String coords;
 	private String clientName;
 	private String serverName;
 	private boolean lock;
+	private boolean activeMainMenu;
+	private boolean activePointsMenu;
 
 	public PtsClientMessage() {
 		type = "";
 		userType = "";
-		gameId = "";
 		coords = "";
 		clientName = "";
 		serverName = "";
 		lock = false;
+		activeMainMenu = false;
+		activePointsMenu = false;
+	}
+
+	public boolean isActiveMainMenu() {
+		return activeMainMenu;
+	}
+
+	public void setActiveMainMenu(boolean activeMainMenu) {
+		this.activeMainMenu = activeMainMenu;
+	}
+
+	public boolean isActivePointsMenu() {
+		return activePointsMenu;
+	}
+
+	public void setActivePointsMenu(boolean activePointsMenu) {
+		this.activePointsMenu = activePointsMenu;
 	}
 
 	public String getClientName() {
@@ -52,11 +71,11 @@ public class PtsClientMessage {
 		this.userType = userType;
 	}
 
-	public String getGameId() {
+	public int getGameId() {
 		return gameId;
 	}
 
-	public void setGameId(String gameId) {
+	public void setGameId(int gameId) {
 		this.gameId = gameId;
 	}
 

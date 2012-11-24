@@ -6,7 +6,7 @@ public class PtsPlayer {
 
 	private String name;
 	private Connection conn;
-	private String gameId;
+	private int gameId;
 	private boolean lock;
 	
 	
@@ -14,11 +14,10 @@ public class PtsPlayer {
 	public PtsPlayer() {
 		name = "";
 		conn = null;
-		gameId = "";
 		lock = true;
 	}
 
-	public PtsPlayer(String name, String gameId) {
+	public PtsPlayer(String name, int gameId) {
 		this.name = name;
 		this.gameId = gameId;
 		lock = true;
@@ -40,11 +39,11 @@ public class PtsPlayer {
 		this.conn = conn;
 	}
 
-	public String getGameId() {
+	public int getGameId() {
 		return gameId;
 	}
 
-	public void setGameId(String gameId) {
+	public void setGameId(int gameId) {
 		this.gameId = gameId;
 	}
 

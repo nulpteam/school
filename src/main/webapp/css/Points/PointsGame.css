@@ -72,6 +72,7 @@
 #pts_game_table {
 	position: absolute;
 	margin: 190px 97px;
+	z-index: 2;
 }
 
 #pts_canvas {
@@ -79,7 +80,9 @@
 	margin: 186px 95px;
 	width: 406px;
 	height: 395px;
+	z-index: 1;
 }
+
 
 #pts_table1:hover {
 	cursor: url('../../images/Points/cursor.png'), pointer;
@@ -93,6 +96,55 @@
 	height: 20px;
 }
 
+#pts_surrender_div {
+	position: fixed;
+	width: 635px;
+	height: 735px;
+	z-index: 3;
+	visibility: hidden;
+}
+
+#pts_surrender_bg {
+	background-image: url('../../images/Points/background_surrender.png');
+	margin: 200px 140px;
+	position: fixed;
+	width: 320px;
+	height: 150px;
+}
+
+#pts_surrender_label {
+	position: fixed;
+	margin: 10px 100px;
+}
+
+#pts_surrender_yes {
+	position: fixed;
+	margin: 60px 20px;
+	text-align: center;
+	color: white;
+}
+
+#pts_surrender_no {
+	position: fixed;
+	margin: 100px 20px;	
+	text-align: center;
+	color: white;
+}
+
+.pts_surrender_button {
+	background-image: url('../../images/paperList/button_sprite.png');
+	background-repeat: no-repeat;
+	width: 280px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.pts_surrender_button:hover {
+	background: url('../../images/paperList/button_sprite.png') bottom;
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 280px;
+}
 #pts_menu_connect {
 	position: absolute;
 	margin: 140px 300px;
@@ -177,3 +229,22 @@
 	margin: 86px 275px;
 	visibility: hidden;
 }
+
+.surrenderButton {
+	position: absolute;
+	background-image: url('../../images/Points/surrender_sprite.png');
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+	margin: 127px 540px;
+	cursor: pointer;
+}
+
+.surrenderButton:hover {
+
+	background: url('../../images/Points/surrender_sprite.png') bottom;
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+}
+

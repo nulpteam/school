@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class PtsGameMap {
 
-	private static Map<String, PtsGame> gamesMap = new HashMap<String, PtsGame>();
-	private static Map<String, String> gameServers = new HashMap<String, String>();
+	private static Map<Integer, PtsGame> gamesMap = new HashMap<Integer, PtsGame>();
+	private static Map<Integer, String> gameServers = new HashMap<Integer, String>();
 	
 	private PtsGameMap() {
 		
@@ -17,19 +17,19 @@ public class PtsGameMap {
 		gameServers.put(game.getId(), game.getServer().getName());
 	}
 	
-	public static void deleteGame(PtsGame game) {
-		gamesMap.remove(game.getId());
+	public static void deleteGame(int id) {
+		gamesMap.remove(id);
 	}
 	
-	public static void deleteGameServer(String id) {
+	public static void deleteGameServer(int id) {
 		gameServers.remove(id);
 	}
 	
-	public static Map<String, PtsGame> getGames() {
+	public static Map<Integer, PtsGame> getGames() {
 		return gamesMap;
 	}
 	
-	public static Map<String, String> getGameServers() {
+	public static Map<Integer, String> getGameServers() {
 		return gameServers;
 	}
 	
