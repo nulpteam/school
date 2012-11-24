@@ -37,7 +37,7 @@ $(document).ready(function(){
 	        }
     	}
     });
-    
+      
     board = createMatrix();
     
     
@@ -81,6 +81,7 @@ socket.onmessage = function(event){
             $('#pts_player_label_2 > label').text(msg.clientName);
             $('#pts_player2_img').css('visibility', 'visible');
             waitForClient = false;
+            $('#waiting_for_client > label').css('visibility', "hidden");
             break;
             
         case "serverConnect":
@@ -104,6 +105,8 @@ socket.onmessage = function(event){
                     board[y][x] = 2;
                 }
             
+            $('#wait > img').css('visibility', "hidden");
+            
             break;
             
         case "initialize":
@@ -118,6 +121,10 @@ socket.onmessage = function(event){
                 if (userType == "client") {
                     lock = msg.clientLock;
                 }
+            
+            if(lock) {
+            	 $('#wait > img').css('visibility', "visible");
+            }
             
             for (var i = 0; i < y_length; i++) {
             
@@ -140,6 +147,8 @@ socket.onmessage = function(event){
             
                 $('#pts_player2_img').css('visibility', 'visible');
                 waitForClient = false;
+            } else {
+            	$('#waiting_for_client > label').css('visibility', "visible");
             }
             
             putPoints();
@@ -241,6 +250,8 @@ function putPoint(td_point){
                 $('#' + td_point.id + ' > img').attr('src', getRandomPoint(userType));
                 board[y][x] = 2;
             }
+            
+            $('#wait > img').css('visibility', "visible");
             
 			if (!isEndOfGame()) {
 				var coords = {
@@ -345,8 +356,8 @@ function paintContour(contoursCoords, pointsBoard, usType){
         }
         ctx.lineTo(coord[1], coord[0]);
         ctx.closePath();
-        ctx.stroke();
         ctx.fill();
+        ctx.stroke();
     }
     
     

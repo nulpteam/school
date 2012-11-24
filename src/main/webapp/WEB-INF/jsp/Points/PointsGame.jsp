@@ -22,6 +22,9 @@
 	<script src="js/Points/PointsGameWebSocket.js" type="text/javascript"></script>
 	<div id="pts_body">
 		<div id="pts_bg">
+			<div id="waiting_for_client">
+				<label>Waiting for client...</label>
+			</div>
 			<div id="pts_player1_score">
 				<label>score :</label>
 			</div>
@@ -35,6 +38,9 @@
 			<div id="pts_player_label_2">
 				<img id="pts_player2_img" class="pts_player_div_elements" src="images/Points/client_point-1.png">
 				<label class="pts_player_div_elements"></label>
+			</div>
+			<div id="wait">
+				<img src="images/Points/wait.gif">
 			</div>
 
 			<canvas id="pts_canvas" width="435" height="520"></canvas>
@@ -54,7 +60,7 @@
 					</c:forEach>
 				</table>
 			</div>
-
+			
 		</div>
 	</div>
 </div>

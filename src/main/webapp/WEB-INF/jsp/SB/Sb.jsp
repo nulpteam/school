@@ -8,7 +8,7 @@
 <%-- <c:forEach items="${sbJSLoader.scripts}" var="script"> --%>
 <%-- 	<script src="<c:out value="${script}"/>" type="text/javascript"></script> --%>
 <%-- </c:forEach> --%>
-
+<!--  -->
 
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
 <!-- <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">  -->

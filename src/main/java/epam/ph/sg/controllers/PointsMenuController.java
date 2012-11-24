@@ -24,6 +24,7 @@ public class PointsMenuController {
 
 		if (session.getAttribute("pointGamesMap") == null) {
 			session.setAttribute("pointGamesMap", PtsGameMap.getGames());
+			session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
 		}
 
 		return "Points/PointsMenu";
@@ -95,6 +96,8 @@ public class PointsMenuController {
 		session.setAttribute("ptsGame", game);
 		session.setAttribute("ptsUserType", "client");
 		session.setAttribute("ptsGameId", game.getId());
+		PtsGameMap.deleteGameServer(game.getId());
+		session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
 
 		return true;
 	}
