@@ -2,15 +2,8 @@
  * @author Gutey Bogdan
  * 
  */
-var userName;
-var gameId;
-var socket;
-var lock;
-var myDamagedSheeps = 0;
-var flag = false;
-var save = $("#mess").attr("class");
 
-//$(window).on("beforeunload", sendMess());
+var userName, gameId, socket, lock, myDamagedSheeps = 0, flag = false, save = $("#mess").attr("class");
 
 $(document)
 		.ready(
@@ -62,9 +55,9 @@ $(document)
 						} else {
 							var msg = JSON.parse(event.data);
 							if (msg.sheep == "00") {
-								sendMess();
 								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
 								$("#" + msg.point).attr("class", "cant_be.png");
+								sendMess();
 								lock = "";
 							} else {
 								lock = connectionType;

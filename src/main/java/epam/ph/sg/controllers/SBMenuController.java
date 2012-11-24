@@ -201,6 +201,7 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		session.removeAttribute("mess");
 		// ActiveGames.removeGame(gameId);
 		GamesList.removeGameFromListBS(gameId);
 		//session.setAttribute("currentPos", "Menu.html");
@@ -213,6 +214,7 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		session.removeAttribute("mess");
 		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Loose";
 	}
@@ -226,7 +228,7 @@ public class SBMenuController {
 		if(connType.equalsIgnoreCase("server"))
 		{
 			log.debug("+*+*+*+*+*+*===server");
-			if(g.getClient()!=null)
+			if(g.getClient().getConn()!=null)
 			{
 				try {
 					g.getClient().getConn().sendMessage("kill");
@@ -261,6 +263,7 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		session.removeAttribute("mess");
 		return "SB/SbMenu";
 	}
 
