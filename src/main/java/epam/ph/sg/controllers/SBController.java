@@ -70,11 +70,6 @@ public class SBController {
 	public @ResponseBody
 	String messReciever(@RequestParam("mess") String mess, HttpSession session) {
 		session.setAttribute("mess", mess);
-		
-		log.debug("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV");
-		log.debug(mess);
-		log.debug("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV");
-		
 		return  "";
 	}
 

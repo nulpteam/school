@@ -12,30 +12,18 @@ var save = $("#mess").attr("class");
 
 //$(window).on("beforeunload", sendMess());
 
-
 $(document)
 		.ready(
 				function() {
 					if (save != undefined) {
 						getMess();
 					}
-					
-					
 					userName = $("#userName").attr("class");
 					gameId = $("#gameID").attr("class");
 					connectionType = $("#ConnectionType").attr("class");
 					lock = $("#lock").attr("class");
-					
-					console.log("********************************* info connectionType bothStarted lock ++++++++++++++++++++++++++++++");
-					console.log(connectionType);
-					console.log($("#bothStarted").attr("class"));
-					console.log(lock);
-					console.log("********************************* info ++++++++++++++++++++++++++++++");
 					if (connectionType == "client"
 							|| $("#oponent").attr("class") != "" ) {
-						console.log(connectionType);
-						console.log($("#oponent").attr("class"));
-						
 						flag = true;
 					}
 					if (($("#bothStarted").attr("class") == "true")
@@ -50,25 +38,10 @@ $(document)
 					socket.onopen = function() {
 						socket.send("open&" + gameId + "&" + userName + "&"
 								+ connectionType);
-						console
-								.log("------------------------------Соединение открылось-----------------------------");
-						
 					};
 					socket.onclose = function() {
-						console.log("socket.onclose");
 					};
-
-					/*
-					 * 
-					 * 
-					 * onMessage
-					 * 
-					 * 
-					 */
 					socket.onmessage = function(event) {
-						console.log("********************************* on message ++++++++++++++++++++++++++++++");
-						console.log(event.data);
-						console.log("********************************* on message ++++++++++++++++++++++++++++++");
 						if (event.data == "ready") {
 							if (connectionType == "client") {
 								flag = true;
@@ -112,7 +85,6 @@ $(document)
 							} else {
 								$("#locker").css("visibility", "visible");
 							}
-							console.log(event.data);
 						};
 					};
 				});
@@ -134,24 +106,10 @@ function sendMess() {
 				if ($("#" + i + j).attr("class") == "cant_be.png") {
 					a = "url('images/SB/cant_be.png')";
 				} else a = "none";
-				
-				if (c == "allreadyShooted();") {
-					b = "url('images/SB/missPoint3.png')";
-				}
-				if (c == "allreadyDamaged();") {
-					b = "url('images/SB/firePoint3.png')";
-				}
-				if (c == "cantBe()") {
-					b = "url('images/SB/cant_be.png')";
-				}
-				if (c == "fire(this)") {
-					b = "none";
-				}
-				mess = mess + a + "&" + b + "&" + c + "&";
+				mess = mess + a + "&" + /*b + "&" + */c + "&";
 			}
 		}
 	}
-	console.log(mess);
 	$.post("mess.html", {mess : mess}, function() {
 		
 	});
@@ -174,15 +132,21 @@ function getMess() {
 						$("#" + i + j).attr("class", "cant_be.png");
 					}
 					count++;
-					$("#X" + i + "_Y" + j).css("background-image", arr[count]);
-					count++;
 					$("#X" + i + "_Y" + j).attr("onclick", arr[count]);
+					if ($("#X" + i + "_Y" + j).attr("onclick") == "allreadyShooted();") {
+						$("#X" + i + "_Y" + j).css("background-image", "url('images/SB/missPoint3.png')");
+						$("#X" + i + "_Y" + j).attr("class", "none");
+					}
+					if ($("#X" + i + "_Y" + j).attr("onclick") == "allreadyDamaged();") {
+						$("#X" + i + "_Y" + j).css("background-image", "url('images/SB/firePoint3.png')");
+						$("#X" + i + "_Y" + j).attr("class", "none");
+					}
+					if ($("#X" + i + "_Y" + j).attr("onclick") == "cantBe()") {
+						$("#X" + i + "_Y" + j).css("background-image", "url('images/SB/cant_be.png')");
+						$("#X" + i + "_Y" + j).attr("class", "none");
+					}
 				}
 			}
 		}
 	}
-}
-
-function sayHi() {
-	alert("hi!");
 }

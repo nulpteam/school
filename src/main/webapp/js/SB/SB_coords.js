@@ -654,15 +654,15 @@ function counter(obj) {
 }
 
 function allreadyShooted() {
-	alert(SbMsgAllreadyShooted);
+//	alert(SbMsgAllreadyShooted);
 }
 
 function allreadyDamaged() {
-	alert(SbMsgAllreadyShooted);
+//	alert(SbMsgAllreadyShooted);
 }
 
 function cantBe() {
-	alert(SbMsgCantBeSheep);
+//	alert(SbMsgCantBeSheep);
 }
 
 function lockWhereCantBe(id) {
