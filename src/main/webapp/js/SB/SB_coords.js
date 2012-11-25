@@ -3,7 +3,6 @@
  *  @author Gutey Bogdan
  */
 var userAgent, bsound, M, damagedSheep = 0, unlockDroppableInfo, sheepCounter = 1;
-
 var img01 = null, img02 = null, img03 = null, img04 = null, img05 = null,
 	img06 = null, img07 = null, img08 = null, img09 = null, img10 = null,
 	img01x = null, img02x = null, img03x = null, img04x = null, img05x = null,
@@ -12,6 +11,35 @@ var img01 = null, img02 = null, img03 = null, img04 = null, img05 = null,
 	img06y = null, img07y = null, img08y = null, img09y = null, img10y = null;
 
 $(document).ready(function() {
+	
+	
+	
+	getValues();
+	var ctrl = false;
+	
+	$(document).keydown(function(e) {
+		if (ctrl && (e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 61 || e.keyCode == 173)) {
+			return false;
+		}
+		if (e.keyCode == 17) {
+			ctrl = true;
+			var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
+			if (document.attachEvent) {
+				document.attachEvent("on" + mousewheelevt, function(e){
+					return false;
+				});
+				} else if (document.addEventListener) {
+					document.addEventListener(mousewheelevt, function(e){return false;}, false);
+				}
+		}
+	});
+
+	$(document).keyup(function(e) {
+		if (e.keyCode == 17) {
+			ctrl = false;
+		}
+	});
+
 	userAgent = navigator.userAgent;
 	bsound = new Audio;
 	if (userAgent.indexOf("Chrome") != -1) {
@@ -1186,4 +1214,42 @@ function getSheeps() {
 
 function showRules() {
 	goTo("rules.html");
+}
+
+
+/*
+ * 
+ * 
+ * 
+ * 
+ */
+
+$(window).resize(function() {
+	getScale();
+	console.log(this.size);
+});
+
+var sw = screen.width;
+var sh = screen.height;
+var iw = window.innerWidth;
+var ih = window.innerHeight;
+function getValues(){
+  sw = screen.width;
+  sh = screen.height;
+  iw = window.innerWidth;
+  ih = window.innerHeight;
+  
+  console.log(sw, sh, iw, ih);
+  
+}
+function getScale() {
+  if (Math.round(window.innerWidth*100/iw) !=     Math.round(window.innerHeight*100/ih)){
+    //зум не изменился, поменялись размеры окна
+    getValues(); //обновим значения ширины и высоты
+  }
+  else {
+    //изменился уровень зума
+    scale = Math.round(iw/window.innerWidth * 100);
+    console.log(scale);
+  }
 }

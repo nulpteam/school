@@ -73,7 +73,6 @@ public class ReversyController {
 		try {
 			reversyGame.getPlayer1().getConnection().sendMessage(boundle.getString("game.connected"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			log.error(boundle.getString("message.err.cant.send.message"));
 		}
 		tempList.put(gameID, reversyGame);
