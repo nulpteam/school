@@ -22,6 +22,9 @@
 	<script src="js/Points/PointsGameWebSocket.js" type="text/javascript"></script>
 	<div id="pts_body">
 		<div id="pts_bg">
+			<div id="waiting_for_client">
+				<label>Waiting for client...</label>
+			</div>
 			<div id="pts_player1_score">
 				<label>score :</label>
 			</div>
@@ -35,6 +38,9 @@
 			<div id="pts_player_label_2">
 				<img id="pts_player2_img" class="pts_player_div_elements" src="images/Points/client_point-1.png">
 				<label class="pts_player_div_elements"></label>
+			</div>
+			<div id="wait">
+				<img src="images/Points/wait.gif">
 			</div>
 
 			<canvas id="pts_canvas" width="435" height="520"></canvas>
@@ -54,7 +60,18 @@
 					</c:forEach>
 				</table>
 			</div>
-
+			
+			<div id="pts_surrender_div">
+				<div id="pts_surrender_bg">
+					<label id="pts_surrender_label">Surrender?</label> <label
+						id="pts_surrender_yes" class="pts_surrender_button" onClick="surrenderYes()">Yes</label> <label
+						id="pts_surrender_no" class="pts_surrender_button" onClick="surrenderNo()">No</label>
+				</div>
+			</div>
+			
+			<div class="homeButton" onclick="goToMenu()"></div>
+			<div class="refreshButton" onclick="goTo('PointsGame.html')"></div>
+			<div class="surrenderButton" onClick="surrender()"></div>
 		</div>
 	</div>
 </div>

@@ -18,6 +18,7 @@
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
+	<div class="SbMButtonRightHome" onclick="goTo('Menu.html')"></div>
 	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	<div class="decoImg">
@@ -40,7 +41,7 @@
 	</div>
 	<div class="ServersList"style="float: left; font-size: 20px;">		
 			<c:forEach items="${serverMap}" var="server">
-			<div class=ctgame onclick="connect(<c:out value="${server.key}"/>)";>
+			<div class=ctgame onclick="connect(<c:out value="${server.key}"/>)">
 				<img alt="${server.value.server.player.name}" src="images/SB/BSButton.gif">
 				<p>${server.value.server.player.name}</p>
 			</div>

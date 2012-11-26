@@ -65,6 +65,13 @@ public class SBController {
 		FireResponse fr = g.fireCheck(gameID, connectionType, firePoint);
 		return  fr;
 	}
+	
+	@RequestMapping(value = {"/mess.html"}, method = RequestMethod.POST)
+	public @ResponseBody
+	String messReciever(@RequestParam("mess") String mess, HttpSession session) {
+		session.setAttribute("mess", mess);
+		return  "";
+	}
 
 	
 	@RequestMapping(value = {"/sheepsReady.html"}, method = RequestMethod.POST)

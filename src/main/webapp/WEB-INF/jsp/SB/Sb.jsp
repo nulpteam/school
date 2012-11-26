@@ -3,20 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- <html> -->
-<!-- <head> -->
-<%-- <c:forEach items="${sbJSLoader.scripts}" var="script"> --%>
-<%-- 	<script src="<c:out value="${script}"/>" type="text/javascript"></script> --%>
-<%-- </c:forEach> --%>
-
-
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
-<!-- <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">  -->
-<!-- <link href="css/SB.css" type="text/css" rel="stylesheet"> -->
-
-<%-- <title><c:out value="${langPack['Sb_title']}" /></title> --%>
-<!-- </head> -->
-<!-- <body> -->
 
 	<div class="plbs paperList">
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
@@ -139,23 +125,8 @@
 				<div class="last10">10</div>
 			</div>
 		</div>
+		
+		<div class=debug>
+		</div>
+		
 	</div>
-<div class=debug>
-<!-- <input type="button" value="GetM" onClick="getM();"/> -->
-<!-- <input type="button" value="SendM" onClick="sendM();"/> -->
-<%-- <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/> --%>
-<!-- <input type="button" value="Test1" onClick="testWS();"/> -->
-<%-- <input type="button" value="Start!" onClick="start('${ConnectionType}');"/> --%>
-
-<div id="IH"></div>
-<%-- 	<% --%>
-<!-- // // dfgdfgdfg	 Enumeration<String> en = request.getAttributeNames(); -->
-<!-- // // 	while (en.hasMoreElements()) -->
-<!-- // // 	 {  -->
-<!-- // // 		out.println(en.nextElement()); -->
-<!-- // // 	} -->
-
-<%-- 	 %>  --%>
-</div>
-<!-- </body> -->
-<!-- </html> -->

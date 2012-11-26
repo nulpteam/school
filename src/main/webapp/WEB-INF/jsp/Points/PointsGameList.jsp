@@ -17,10 +17,10 @@
 		<script src="js/jquery.js" type="text/javascript"></script>
 		<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 		<div id="pts_servers_div">
-			<c:forEach var="game" items="${pointGamesMap}" varStatus="i">
-			<div id="${game.value.id}" class="pts_server_div" onclick=connect(this.id)>
+			<c:forEach var="gameServer" items="${pointsGameServersMap}" varStatus="i">
+			<div id="${gameServer.key}" class="pts_server_div" onclick=connect(this.id)>
 				<img src="images/Points/server_point-2.png" id="${game.key}">
-				<label><c:out value="${game.value.server.name}" /> </label>
+				<label id="pts_server_label"><c:out value="${gameServer.value}" /> </label>
 			</div>
 			</c:forEach>
 		</div>

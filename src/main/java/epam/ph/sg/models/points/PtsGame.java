@@ -19,17 +19,21 @@ public class PtsGame {
 	private PtsPlayer server, client;
 	private PtsBoard board, logicBoard;
 	private static int gameNumber = 0;
-	private String id;
+	private int id;
 	private PtsContourMarker counturMarker;
+	private boolean surrenderMainMenuActive;
+	private boolean surrenderPointsMenuActive;
 
 	public PtsGame() {
 		board = new PtsBoard();
 		logicBoard = new PtsBoard();
-		id = new Integer(gameNumber++).toString();
+		id = gameNumber++;
 		jsonParser = new PtsJsonParser();
 		server = new PtsPlayer();
 		client = new PtsPlayer();
 		counturMarker = new PtsContourMarker();
+		surrenderMainMenuActive = false;
+		surrenderPointsMenuActive = false;
 	}
 
 	public void makeChanges(PtsClientMessage clientMessage) {
@@ -45,6 +49,8 @@ public class PtsGame {
 			message.setClientName(client.getName());
 			message.initClientContours(board.getAllClientContours());
 			message.initServerContours(board.getAllServerContours());
+			message.setActiveMainMenu(surrenderMainMenuActive);
+			message.setActivePointsMenu(surrenderPointsMenuActive);
 			if (clientMessage.getUserType().equals(
 					PtsResources.getProperty("user.type.server"))) {
 				message.setUserType(PtsResources
@@ -61,6 +67,13 @@ public class PtsGame {
 				logger.error(PtsResources
 						.getProperty("error.user_type.don't_exist")
 						+ clientMessage.getUserType());
+		}
+
+		if (clientMessage.getType().equals(
+				PtsResources.getProperty("user.message.type.surrender"))) {
+
+			surrenderMainMenuActive = clientMessage.isActiveMainMenu();
+			surrenderPointsMenuActive = clientMessage.isActivePointsMenu();
 		}
 
 		if (clientMessage.getType().equals(
@@ -94,16 +107,6 @@ public class PtsGame {
 				}
 				logicBoard.printBoard();
 				board.printBoard();
-				// board.printBoard();
-				//
-				// message.setType(PtsResources.getProperty("user.message.type.countur"));
-				// message.initializeBoard(board.getBoard());
-				// message.initializeLastCountur(counturMarker.getCounturPtsCoords());
-				// message.setUserType(PtsResources.getProperty("user.type.server"));
-				// sendGameInfo(PtsResources.getProperty("user.type.server"),
-				// message);
-				// sendGameInfo(PtsResources.getProperty("user.type.client"),
-				// message);
 
 				PtsClientMessage message = new PtsClientMessage();
 				message.setType(PtsResources
@@ -142,17 +145,6 @@ public class PtsGame {
 				}
 				logicBoard.printBoard();
 				board.printBoard();
-				// board.printBoard();
-				// //
-				// PtsGameInfoMessage();
-				// message.setType(PtsResources.getProperty("user.message.type.countur"));
-				// message.initializeBoard(board.getBoard());
-				// message.initializeLastCountur(counturMarker.getCounturPtsCoords());
-				// message.setUserType(PtsResources.getProperty("user.type.client"));
-				// sendGameInfo(PtsResources.getProperty("user.type.server"),
-				// message);
-				// sendGameInfo(PtsResources.getProperty("user.type.client"),
-				// message);
 
 				PtsClientMessage message = new PtsClientMessage();
 				message.setType(PtsResources
@@ -264,7 +256,7 @@ public class PtsGame {
 		return client;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 

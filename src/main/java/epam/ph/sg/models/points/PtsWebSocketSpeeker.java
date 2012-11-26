@@ -21,7 +21,7 @@ public class PtsWebSocketSpeeker implements WebSocket.OnTextMessage {
 
 	@Override
 	public void onOpen(Connection conn) {
-		logger.debug(PtsResources.getProperty("socket.onopen"));
+		logger.debug(PtsResources.getProperty("socket.onopen") + conn);
 		this.conn = conn;
 
 	}
