@@ -480,7 +480,7 @@ victoryBody {
 	color: #5B2FCE;
 }
 .SbMButtonRightStat{
-	background-image: url('../images/paperList/home_sprite.png');
+	background-image: url('../images/SB/stat.png');
 	background-repeat: no-repeat;
 	height: 50px;
 	width: 50px;
@@ -489,13 +489,26 @@ victoryBody {
 	margin: 70px 540px;
 }
 .SbMButtonRightStat:hover{
-	background: url('../images/paperList/home_sprite.png') bottom no-repeat;
+	background: url('../images/SB/stat.png') bottom no-repeat;
 	width: 50px;
-	height: 49px
+	height: 50px
 }
 
 .SbRules {
 	width: 450px;
 	margin-left: 70px;
 	font-size: 14px;
+}
+
+.paperList .backButton {
+background-image: url('../images/paperList/back_sprite.png');
+background-repeat: no-repeat;
+height: 40px;
+width: 60px;
+cursor: pointer;
+position: absolute;
+margin: 75px 540px;
+}
+.paperList .backButton:hover {
+background: url('../images/paperList/back_sprite.png') bottom;
 }

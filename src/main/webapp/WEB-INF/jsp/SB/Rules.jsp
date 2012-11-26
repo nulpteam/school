@@ -8,7 +8,8 @@
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
 	<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
-				<div class="SbMButtonRightHome" onclick="goTo('Menu.html')"></div>
+	<div class="SbMButtonRightHome" onclick="goTo('Menu.html')"></div>
+	<div class="backButton" onclick="goTo('Sb.html');"></div>
 	<div class="clear"></div>
 	<div class="SbRules">
 		<p>

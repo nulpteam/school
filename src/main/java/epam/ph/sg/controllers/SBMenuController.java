@@ -286,7 +286,7 @@ public class SBMenuController {
 				break;
 			}
 		}
-		return "XO/Statistics";
+		return "SB/Statistics";
 	}
 	@RequestMapping(value = "/rules.html", method = RequestMethod.POST)
 	public String rules(Model model, HttpSession session) {
