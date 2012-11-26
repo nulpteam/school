@@ -486,7 +486,7 @@ victoryBody {
 	width: 50px;
 	cursor: pointer;
 	position: absolute;
-	margin: 70px 540px;
+	margin: 70px 542px;
 }
 .SbMButtonRightStat:hover{
 	background: url('../images/SB/stat.png') bottom no-repeat;
