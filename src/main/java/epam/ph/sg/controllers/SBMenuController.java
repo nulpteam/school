@@ -225,9 +225,9 @@ public class SBMenuController {
 		SBStatistics.lose(((User)session.getAttribute("user")).getId());
 		Game g = (Game)session.getAttribute("Game");
 		int gameId = g.getId();
-		if(connType.equalsIgnoreCase("server"))
+		if(connType.equalsIgnoreCase("server") && g.getClient()!=null)
 		{
-			log.debug("+*+*+*+*+*+*===server");
+			log.debug("+*+*+*+*+*+*===server+client="+ g.getClient());
 			if(g.getClient().getConn()!=null)
 			{
 				try {
@@ -237,7 +237,7 @@ public class SBMenuController {
 				}
 			}
 		}
-		else if(connType.equalsIgnoreCase("client"))
+		else if(connType.equalsIgnoreCase("client") && g.getServer()!=null)
 		{
 			log.debug("+*+*+*+*+*+*===client");
 			try {
