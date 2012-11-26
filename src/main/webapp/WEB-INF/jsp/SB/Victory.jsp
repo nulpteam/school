@@ -8,8 +8,8 @@
 <script src="js/SB/Victory.js" type="text/javascript"></script>
 <div class="SbMButtonRightHome" onclick="goTo('Menu.html')";></div>
 <div class="backButton" onclick="goTo('Sb.html');"></div>
-	<div style="height: 500px; width: 400px; position: relative; left: 100px; top: 70px;">
+	<div class = "winloose">
 		<h1><c:out value="${langPack['Sb_win']}"/></h1>
-		<img alt="" src="images/SB/BSVictory.gif" height="400px" width="400px">
+		<img alt="Victory" src="images/SB/BSVictory.gif" height="400px" width="400px">
 	</div>
 </div>

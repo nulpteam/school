@@ -334,7 +334,7 @@
 	background: url('../images/SB/BSHelp.png') no-repeat;
 }
 
-.SbMConnectG,.SbMCreateG, .SbMHelp {
+.SbMConnectG,.SbMCreateG,.SbMHelp {
 	float: left;
 	width: 100px;
 	height: 95px;
@@ -479,7 +479,8 @@ victoryBody {
 	font-size: 35px;
 	color: #5B2FCE;
 }
-.SbMButtonRightStat{
+
+.SbMButtonRightStat {
 	background-image: url('../images/SB/stat.png');
 	background-repeat: no-repeat;
 	height: 50px;
@@ -488,7 +489,8 @@ victoryBody {
 	position: absolute;
 	margin: 70px 542px;
 }
-.SbMButtonRightStat:hover{
+
+.SbMButtonRightStat:hover {
 	background: url('../images/SB/stat.png') bottom no-repeat;
 	width: 50px;
 	height: 50px
@@ -501,14 +503,23 @@ victoryBody {
 }
 
 .paperList .backButton {
-background-image: url('../images/paperList/back_sprite.png');
-background-repeat: no-repeat;
-height: 40px;
-width: 60px;
-cursor: pointer;
-position: absolute;
-margin: 75px 540px;
+	background-image: url('../images/paperList/back_sprite.png');
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 60px;
+	cursor: pointer;
+	position: absolute;
+	margin: 75px 540px;
 }
+
 .paperList .backButton:hover {
-background: url('../images/paperList/back_sprite.png') bottom;
+	background: url('../images/paperList/back_sprite.png') bottom;
+}
+
+.winloose {
+	height: 500px;
+	width: 400px;
+	position: relative;
+	left: 100px;
+	top: 70px;
 }
