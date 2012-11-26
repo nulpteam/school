@@ -6,5 +6,5 @@ body {
 
 @font-face {
 	font-family: LC Chalk;
-	src: local("LC Chalk"), url(../LC_Chalk.ttf);
+	src: local("LC Chalk"), url(../font/LC_Chalk.ttf);
 }
