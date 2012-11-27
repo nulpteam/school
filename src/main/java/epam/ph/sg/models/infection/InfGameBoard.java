@@ -95,7 +95,7 @@ public class InfGameBoard {
 							}else{
 								message.setType("clientWin");
 							}
-							//InfGameMap.deleteGame(id);
+							InfGameMap.deleteGame(id);
 						}
 						return message;
 					}
@@ -110,7 +110,7 @@ public class InfGameBoard {
 						}else{
 							message.setType("clientWin");
 						}
-						//InfGameMap.deleteGame(id);
+						InfGameMap.deleteGame(id);
 					}
 				}
 				else{
@@ -137,7 +137,7 @@ public class InfGameBoard {
 							}else{
 								message.setType("clientWin");
 							}
-							//InfGameMap.deleteGame(id);
+							InfGameMap.deleteGame(id);
 						}
 						return message;
 					}
@@ -152,7 +152,7 @@ public class InfGameBoard {
 						}else{
 							message.setType("clientWin");
 						}
-						//InfGameMap.deleteGame(id);
+						InfGameMap.deleteGame(id);
 					}
 
 				}

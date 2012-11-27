@@ -10,7 +10,11 @@
 	<div class="homeButton" onclick=PageHomeButton();></div>
 	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	
+	
 	<div id="winner_img"></div>
 	<div id="congrat_message">${langPack['INF_user_won']}</div>
+	
+	<div class="exitButton" onclick=exitButton();></div>
+	
 
 </div>

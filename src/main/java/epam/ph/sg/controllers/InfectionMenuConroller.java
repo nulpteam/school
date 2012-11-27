@@ -2,7 +2,6 @@ package epam.ph.sg.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import org.eclipse.jetty.util.log.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -112,5 +111,20 @@ public class InfectionMenuConroller {
 		}
 
 	}
+	
+	@RequestMapping(value = "/InfectionGameExit.html")
+	public String quitGame(HttpSession session) {
+		
+		String gameID;
+		
+		gameID = (String)session.getAttribute("infGameId");
+		InfGameMap.deleteGame(gameID);
+		session.removeAttribute("infGamesMap");
+		session.removeAttribute("infGameId");
+		session.removeAttribute("infUserType");
+        
+		return "Infection/InfectionMenu";
+	}	
+	
 
 }
