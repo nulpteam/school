@@ -12,6 +12,7 @@ import epam.ph.sg.models.User;
 import epam.ph.sg.tab.minesweeper.MSBox;
 import epam.ph.sg.tab.minesweeper.MSGame;
 import epam.ph.sg.tab.minesweeper.MSMapCreator;
+import epam.ph.sg.tab.minesweeper.MSStatus;
 
 @Controller
 public class MineSweeperController {
@@ -38,10 +39,10 @@ public class MineSweeperController {
 				MSMapCreator.newGame(10, 10, 10));
 		return "Tab/MineSweeper";
 	}
-	
+
 	@RequestMapping("/MSLock.html")
 	public @ResponseBody
-	boolean lock(@RequestParam("id") String id, HttpServletRequest request) {
+	void lock(@RequestParam("id") String id, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
@@ -49,12 +50,11 @@ public class MineSweeperController {
 		int line = Integer.valueOf(id.substring(0, 1));
 		int colum = Integer.valueOf(id.substring(1));
 		game.lock(line, colum);
-		return game.isWin();
 	}
 
 	@RequestMapping("/MSPut.html")
 	public @ResponseBody
-	boolean put(@RequestParam("id") String id, HttpServletRequest request) {
+	MSBox put(@RequestParam("id") String id, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
@@ -62,7 +62,7 @@ public class MineSweeperController {
 		int line = Integer.valueOf(id.substring(0, 1));
 		int colum = Integer.valueOf(id.substring(1));
 		game.put(line, colum);
-		return game.isLose();
+		return game.getField().get(line).get(colum);
 	}
 
 	@RequestMapping("/MSRefresh.html")
@@ -78,5 +78,16 @@ public class MineSweeperController {
 					.toArray(new MSBox[game.getField().get(i).size()]);
 		}
 		return array;
+	}
+
+	@RequestMapping("/MSGetStatus.html")
+	public @ResponseBody
+	MSStatus getStatus(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		MSGame game = (MSGame) request.getSession().getAttribute("mineSweeper");
+
+		return game.getStatus();
 	}
 }

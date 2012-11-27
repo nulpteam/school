@@ -10,7 +10,7 @@ public class MSMapCreator {
 		List<List<MSBox>> field = createField(lines, colums,
 				generateMines(lines, colums, mines));
 		generateNumbers(field);
-		return new MSGame(field);
+		return new MSGame(field, mines);
 	}
 
 	private static int[] generateMines(int lines, int colums, int mines) {

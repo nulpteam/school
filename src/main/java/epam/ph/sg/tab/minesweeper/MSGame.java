@@ -3,38 +3,54 @@ package epam.ph.sg.tab.minesweeper;
 import java.util.List;
 
 public class MSGame {
+	private int mines;
 	private List<List<MSBox>> field;
-	private int lockedMines = 0;
-	private boolean lose = false;
-	private boolean win = false;
+	private MSStatus status = new MSStatus();
 
-	public MSGame(List<List<MSBox>> field) {
+	public MSGame(List<List<MSBox>> field, int mines) {
 		this.field = field;
+		this.mines = mines;
 	}
 
 	public void lock(int line, int colum) {
 		if (field.get(line).get(colum).isLocked()) {
 			field.get(line).get(colum).setLocked(false);
+			status.decLockedBox();
 			if (field.get(line).get(colum).isMine()) {
-				lockedMines--;
+				status.decLockedMines();
 			}
 		} else {
 			field.get(line).get(colum).setLocked(true);
+			status.incLockedBox();
 			if (field.get(line).get(colum).isMine()) {
-				lockedMines++;
-				if (lockedMines > 9) {
-					win = true;
-				}
+				status.incLockedMines();
 			}
 		}
 	}
 
 	public void put(int line, int colum) {
 		if (field.get(line).get(colum).isMine()) {
-			lose = true;
+			field.get(line).get(colum).setVisible(true);
+			status.setLoose(true);
 		} else {
 			open(line, colum);
+			status.setWin(isGameOver());
 		}
+	}
+
+	private boolean isGameOver() {
+		int unVisible = 0;
+		for (List<MSBox> line : field) {
+			for (MSBox msBox : line) {
+				if (!msBox.isVisible()) {
+					unVisible++;
+				}
+				if (unVisible > mines) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	private void open(int line, int colum) {
@@ -64,11 +80,11 @@ public class MSGame {
 		return field;
 	}
 
-	public boolean isLose() {
-		return lose;
+	public MSStatus getStatus() {
+		return status;
 	}
 
-	public boolean isWin() {
-		return win;
+	public void setStatus(MSStatus status) {
+		this.status = status;
 	}
 }
