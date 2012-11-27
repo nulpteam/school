@@ -24,6 +24,7 @@ function getStatus() {
 	$.post("FlipperStatus.html", function(resp) {
 		if (resp.gameOver == true) {
 			gameOver.play();
+			alert('Game Over');
 			lock = true;
 		} else if (resp.nextLevel == true) {
 			levelSound.play();

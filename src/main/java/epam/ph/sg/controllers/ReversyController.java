@@ -6,6 +6,8 @@ package epam.ph.sg.controllers;
  *
  */
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpSession;
@@ -13,8 +15,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
+import epam.ph.sg.models.reversy.ReversyGame;
+import epam.ph.sg.models.reversy.ReversyGameList;
+import epam.ph.sg.models.reversy.ReversyPlayer;
 
 @Controller
 public class ReversyController {
@@ -30,37 +38,54 @@ public class ReversyController {
 		if (user == null) {
 			return boundle.getString("jsp.login");
 		}
-		
 		return boundle.getString("jsp.menu");
+	}
+	
+	@RequestMapping(value = "/ReversyRules.html")
+	public String reversyRules(HttpSession session) {
+		log.debug(boundle.getString("message.hello"));
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return boundle.getString("jsp.login");
+		}
+		return boundle.getString("jsp.rules");
 	}
 	
 	@RequestMapping(value = "/ReversyCreateGame.html")
 	public String reversyCreateGame(HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			return boundle.getString("jsp.login");
-		} else
+		ReversyGame reversyGame = ReversyGameList.addGameToList();
+		ReversyPlayer player1 = new ReversyPlayer();
+		player1.setName(((User) session.getAttribute("user")).getName());
+		reversyGame.setPlayer1(player1);
+		session.setAttribute("ReversyGame", reversyGame);
 		return boundle.getString("jsp.game");
 	}
 	
-	@RequestMapping(value = "/ReversyConnectGame.html")
-	public String reversyConnectGame(HttpSession session) {
+	@RequestMapping(value = "/ReversyConnectGame.html", method = RequestMethod.POST)
+	public @ResponseBody String reversyConnectGame(@RequestParam("gameID") Integer gameID, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			return boundle.getString("jsp.login");
-		} else
-		return boundle.getString("jsp.game");
+		HashMap<Integer, ReversyGame> tempList = ReversyGameList.getGameList();
+		ReversyGame reversyGame = tempList.get(gameID);
+		ReversyPlayer player2 = new ReversyPlayer();
+		player2.setName(((User) session.getAttribute("user")).getName());
+		reversyGame.setPlayer2(player2);
+		try {
+			reversyGame.getPlayer1().getConnection().sendMessage(boundle.getString("game.connected"));
+		} catch (IOException e) {
+			log.error(boundle.getString("message.err.cant.send.message"));
+		}
+		tempList.put(gameID, reversyGame);
+		ReversyGameList.setGameList(tempList);
+		session.setAttribute("ReversyGame", reversyGame);
+		return boundle.getString("answer.possitive");
 	}
 	
 	@RequestMapping(value = "/ReversyGamesList.html")
-	public String reversyGamesList(HttpSession session) {
+	public String reversyGameList(HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			return boundle.getString("jsp.login");
-		} else
+		HashMap<Integer,ReversyGame> reversyGameList = ReversyGameList.getGameList();
+		session.setAttribute("ReversyGameList", reversyGameList);
 		return boundle.getString("jsp.games");
 	}
 	
@@ -73,5 +98,4 @@ public class ReversyController {
 		} else
 		return boundle.getString("jsp.game");
 	}
-
 }

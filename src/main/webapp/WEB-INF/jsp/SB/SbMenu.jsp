@@ -14,18 +14,18 @@
 <!-- </head> -->
 <!-- <body> -->
 <div class="paperList">
-
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
 	<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 <!-- 	<div class="SbMButtonsRight"> -->
-				<div class="SbMButtonRightHome" onclick="goTo('Menu.html')";></div>
+				<div class="SbMButtonRightHome" onclick="goTo('Menu.html')"></div>
+				<div class="SbMButtonRightStat" onclick="goTo('SBStatistics.html')"></div>
 <!-- 	</div> -->
 	<div class="clear"></div>
 	<div class="SbMenu">
 		<div class="SbMSheep">
-			<img alt="Sheep" src="images/SB/BS.gif">	
+			<img id="SheepImg" alt="Sheep" src="images/SB/BS.gif">
 		</div>
 		<div class="clear"></div>
 		<div class="SbMButtons">
@@ -36,6 +36,10 @@
 			<div class="SbMConnectGPlaceholder">
 				<div class="SbMConnectG" onclick="connectSbGame();"></div>
 				<div class="b_text">${langPack['Sb_Connect']}</div>
+			</div>
+			<div class="SbMHelpPlaceholder">
+				<div class="SbMHelp" onclick="showRules();"></div>
+				<div class="b_text">${langPack['Sb_Rules']}</div>
 			</div>
 		</div>
 	</div>

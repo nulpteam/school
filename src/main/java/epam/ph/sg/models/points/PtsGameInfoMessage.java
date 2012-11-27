@@ -14,6 +14,9 @@ public class PtsGameInfoMessage {
 	private String userType;
 	private int serverScore;
 	private int clientScore;
+	private boolean activeMainMenu;
+	private boolean activePointsMenu;
+
 	
 	private List<List<Integer>> lastContours;
 	private List<List<Integer>> matrix;
@@ -35,6 +38,24 @@ public class PtsGameInfoMessage {
 		clientLock = true;
 		serverScore = 0;
 		clientScore = 0;
+		activeMainMenu = false;
+		activePointsMenu = false;
+	}
+
+	public boolean isActiveMainMenu() {
+		return activeMainMenu;
+	}
+
+	public void setActiveMainMenu(boolean activeMainMenu) {
+		this.activeMainMenu = activeMainMenu;
+	}
+
+	public boolean isActivePointsMenu() {
+		return activePointsMenu;
+	}
+
+	public void setActivePointsMenu(boolean activePointsMenu) {
+		this.activePointsMenu = activePointsMenu;
 	}
 
 	public void initializeBoard(int[][] board) {

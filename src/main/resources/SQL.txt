@@ -18,6 +18,13 @@ CREATE TABLE `sgdb` . `xostatistics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
 
 delimiter $$
+CREATE  TABLE `sgdb`.`sbstatistics` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Wins` int(11) DEFAULT 0 ,
+  `Losses` int(11) DEFAULT 0 ,
+  PRIMARY KEY (`id`) )$$
+
+delimiter $$
 CREATE TABLE `sgdb` . `userAddInfo` (
   `id` int(11) NOT NULL,
   `email` varchar(30) DEFAULT NULL,

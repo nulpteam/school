@@ -11,6 +11,13 @@
 	margin: 0px 0px;
 }
 
+#pts_bg_game_list {
+	background-image: url('../../images/Points/game_list_background.png');
+	width: 605px;
+	height: 705px;
+	margin: 0px 0px;
+}
+
 #pts_bg_end_ofGame {
 	background-image: url('../../images/Points/endofGameBackground.png');
 	width: 605px;
@@ -65,6 +72,7 @@
 #pts_game_table {
 	position: absolute;
 	margin: 190px 97px;
+	z-index: 2;
 }
 
 #pts_canvas {
@@ -72,6 +80,12 @@
 	margin: 186px 95px;
 	width: 406px;
 	height: 395px;
+	z-index: 1;
+}
+
+
+#pts_table1:hover {
+	cursor: url('../../images/Points/cursor.png'), pointer;
 }
 
 #pts_table1 tr td {
@@ -81,3 +95,156 @@
 #pts_table1 tr {
 	height: 20px;
 }
+
+#pts_surrender_div {
+	position: fixed;
+	width: 635px;
+	height: 735px;
+	z-index: 3;
+	visibility: hidden;
+}
+
+#pts_surrender_bg {
+	background-image: url('../../images/Points/background_surrender.png');
+	margin: 200px 140px;
+	position: fixed;
+	width: 320px;
+	height: 150px;
+}
+
+#pts_surrender_label {
+	position: fixed;
+	margin: 10px 100px;
+}
+
+#pts_surrender_yes {
+	position: fixed;
+	margin: 60px 20px;
+	text-align: center;
+	color: white;
+}
+
+#pts_surrender_no {
+	position: fixed;
+	margin: 100px 20px;	
+	text-align: center;
+	color: white;
+}
+
+.pts_surrender_button {
+	background-image: url('../../images/paperList/button_sprite.png');
+	background-repeat: no-repeat;
+	width: 280px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.pts_surrender_button:hover {
+	background: url('../../images/paperList/button_sprite.png') bottom;
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 280px;
+}
+#pts_menu_connect {
+	position: absolute;
+	margin: 140px 300px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_connect {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_menu_create {
+	position: absolute;
+	margin: 140px 100px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_create {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_menu_statistics {
+	position: absolute;
+	margin: 340px 100px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_statistics {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_menu_rules {
+	position: absolute;
+	margin: 340px 300px;
+	width: 170px;
+	height: 133px;
+}
+
+#pts_label_rules {
+	margin: 100px 20px;
+	font-size: 24px;
+}
+
+#pts_servers_div {
+	overflow-y: auto;
+	position: absolute;
+	margin: 390px 120px;
+	width: 355px;
+	height: 175px;
+}
+
+.pts_server_div {
+	width: 110px;
+	height: 35px;
+}
+
+.pts_server_div:hover {
+	font-size: 18px;
+}
+
+#pts_server_label:hover {
+	text-decoration: underline;
+}
+
+#waiting_for_client {
+	position: absolute;
+	width: 300px;
+	height: 30px;
+	margin: 140px 155px;
+	visibility: hidden;
+}
+
+#wait {
+	position: absolute;
+	width: 61px;
+	height: 51px;
+	margin: 86px 275px;
+	visibility: hidden;
+}
+
+.surrenderButton {
+	position: absolute;
+	background-image: url('../../images/Points/surrender_sprite.png');
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+	margin: 127px 540px;
+	cursor: pointer;
+}
+
+.surrenderButton:hover {
+
+	background: url('../../images/Points/surrender_sprite.png') bottom;
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+}
+

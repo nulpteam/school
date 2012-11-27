@@ -28,6 +28,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
+	<bean id="sbStatisticsDAOimpl" class="epam.ph.sg.dao.impl.SBStatisticsDAOimpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
 	<bean id="personalPageDAOimpl" class="epam.ph.sg.dao.impl.PersonalPageDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>

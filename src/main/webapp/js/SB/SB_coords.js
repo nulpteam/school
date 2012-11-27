@@ -1,50 +1,45 @@
 /*
- * @author Gutey Bogdan
- * 
+/*
+ *  @author Gutey Bogdan
  */
-var userAgent;
-var bsound;
-// матриця розташування кораблів
-var M;
-var damagedSheep = 0;
-var unlockDroppableInfo;
-
-var img01 = null;
-var img02 = null;
-var img03 = null;
-var img04 = null;
-var img05 = null;
-var img06 = null;
-var img07 = null;
-var img08 = null;
-var img09 = null;
-var img10 = null;
-
-var img01x = null;
-var img02x = null;
-var img03x = null;
-var img04x = null;
-var img05x = null;
-var img06x = null;
-var img07x = null;
-var img08x = null;
-var img09x = null;
-var img10x = null;
-
-var img01y = null;
-var img02y = null;
-var img03y = null;
-var img04y = null;
-var img05y = null;
-var img06y = null;
-var img07y = null;
-var img08y = null;
-var img09y = null;
-var img10y = null;
-
-var sheepCounter = 1;
+var userAgent, bsound, M, damagedSheep = 0, unlockDroppableInfo, sheepCounter = 1;
+var img01 = null, img02 = null, img03 = null, img04 = null, img05 = null,
+	img06 = null, img07 = null, img08 = null, img09 = null, img10 = null,
+	img01x = null, img02x = null, img03x = null, img04x = null, img05x = null,
+	img06x = null, img07x = null, img08x = null, img09x = null, img10x = null,
+	img01y = null, img02y = null, img03y = null, img04y = null, img05y = null,
+	img06y = null, img07y = null, img08y = null, img09y = null, img10y = null;
 
 $(document).ready(function() {
+	
+	
+	
+	getValues();
+	var ctrl = false;
+	
+	$(document).keydown(function(e) {
+		if (ctrl && (e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 61 || e.keyCode == 173)) {
+			return false;
+		}
+		if (e.keyCode == 17) {
+			ctrl = true;
+			var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
+			if (document.attachEvent) {
+				document.attachEvent("on" + mousewheelevt, function(e){
+					return false;
+				});
+				} else if (document.addEventListener) {
+					document.addEventListener(mousewheelevt, function(e){return false;}, false);
+				}
+		}
+	});
+
+	$(document).keyup(function(e) {
+		if (e.keyCode == 17) {
+			ctrl = false;
+		}
+	});
+
 	userAgent = navigator.userAgent;
 	bsound = new Audio;
 	if (userAgent.indexOf("Chrome") != -1) {
@@ -654,15 +649,15 @@ function counter(obj) {
 }
 
 function allreadyShooted() {
-	alert(SbMsgAllreadyShooted);
+	// alert(SbMsgAllreadyShooted);
 }
 
 function allreadyDamaged() {
-	alert(SbMsgAllreadyShooted);
+	// alert(SbMsgAllreadyShooted);
 }
 
 function cantBe() {
-	alert(SbMsgCantBeSheep);
+	// alert(SbMsgCantBeSheep);
 }
 
 function lockWhereCantBe(id) {
@@ -678,10 +673,10 @@ function lockWhereCantBe(id) {
 			if (((i == x2) || (i == x1) || (i == x3))
 					&& ((j == y2) || (j == y1) || (j == y3))) {
 				if ($("#X" + i + "_Y" + j).attr("onclick") == "fire(this)") {
-					$("#X" + i + "_Y" + j).html(
-							"<img id='cant_be" + x1 + y1
-									+ "' src='images/SB/cant_be.png'>");
+					$("#X" + i + "_Y" + j).css("background-image",
+							"url('images/SB/cant_be.png')");
 					$("#X" + i + "_Y" + j).attr("onclick", "cantBe()");
+					$("#X" + i + "_Y" + j).attr("class", "none");
 				}
 			}
 		}
@@ -695,42 +690,38 @@ function loose() {
 }
 
 function playShootSound(miss) {
-	
-	if(miss=="demage")
-	{
+
+	if (miss == "demage") {
 		if (userAgent.indexOf("Chrome") != -1) {
 			sound = new Audio;
 			sound.src = "sound/Shoot01.mp3";
 			sound.play();
 		}
-	
+
 		if (userAgent.indexOf("Firefox") != -1) {
 			sound = new Audio;
 			sound.src = "sound/Shoot01.wav";
 			sound.play();
 		}
-	}
-	else if(miss=="miss")
-		{
-			if (userAgent.indexOf("Chrome") != -1) {
-				sound = new Audio;
-				sound.src = "sound/miss.mp3";
-				sound.play();
-			}
-		
-			if (userAgent.indexOf("Firefox") != -1) {
-				sound = new Audio;
-				sound.src = "sound/miss.wav";
-				sound.play();
-			}
+	} else if (miss == "miss") {
+		if (userAgent.indexOf("Chrome") != -1) {
+			sound = new Audio;
+			sound.src = "sound/miss.mp3";
+			sound.play();
 		}
+
+		if (userAgent.indexOf("Firefox") != -1) {
+			sound = new Audio;
+			sound.src = "sound/miss.wav";
+			sound.play();
+		}
+	}
 }
 
-
 function fire(point) {
-	//playShootSound();
-
+	// playShootSound();
 	p = $(point).attr('id');
+	c = $(point).attr('id');
 	p = p[1] + '' + p[4];
 	$.post("fire.html", {
 		firePoint : p
@@ -746,13 +737,15 @@ function fire(point) {
 		rand = Math.floor((Math.random() * 5) + 1);
 		if (obj.miss === "00") {
 			playShootSound("miss");
-			html = "<img id='fireP" + p + "' src='images/SB/missPoint" + rand
-					+ ".png'>";
+			$("#" + c).css("background-image",
+					"url('images/SB/missPoint" + rand + ".png')");
+			$("#" + c).attr("class", "none");
 			$("#locker").css("visibility", "visible");
 		} else {
 			playShootSound("demage");
-			html = "<img id='fireP" + p + "' src='images/SB/firePoint" + rand
-					+ ".png'>";
+			$("#" + c).css("background-image",
+					"url('images/SB/firePoint" + rand + ".png')");
+			$("#" + c).attr("class", "none");
 			$("#locker").css("visibility", "hidden");
 		}
 		if (obj.miss === "10") {
@@ -965,7 +958,8 @@ function fire(point) {
 				victory();
 			}
 		}
-		$(point).html(html);
+		sendMess();
+		// $(point).html(html);
 	});
 }
 
@@ -1054,7 +1048,6 @@ function start(ct) {
 	});
 };
 function getSheeps() {
-	// alert("getSheeps()");
 	M1 = new Array();
 	for ( var i = 0; i < 15; i++) {
 		M1[i] = new Array();
@@ -1069,17 +1062,9 @@ function getSheeps() {
 	}
 	;
 	for ( var k = 0; k <= 9; k++) {
-		console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-		console.log(k);
-		
 		for ( var i = 0; i <= 9; i++) {
-			console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-			console.log(i);
 			for ( var j = 0; j <= 9; j++) {
-				console.log("jjjjjjjjjjjj");
-				console.log(j);
 				if ((M1[i][j] == "41") && (sheepCounter == 10)) {
-					console.log("(M1[i][j] == 41) && (sheepCounter == 10)");
 					if ((M1[i + 1][j] == "41") && (M1[i + 2][j] == "41")
 							&& (M1[i + 3][j] == "41")) {
 						img10 = ("images/SB/04.png");
@@ -1101,11 +1086,8 @@ function getSheeps() {
 						img10y = j * 20;
 						sheepCounter++;
 					}
-					
-					console.log(img10);
 				}
 				if ((M1[i][j] == "31") && (sheepCounter == 9)) {
-					console.log("(M1[i][j] == 31) && (sheepCounter == 9)");
 					if ((M1[i + 1][j] == "31") && (M1[i + 2][j] == "31")) {
 						img09 = ("images/SB/03.png");
 						M1[i][j] = "00";
@@ -1114,7 +1096,6 @@ function getSheeps() {
 						img09x = i * 20 + 200;
 						img09y = j * 20;
 						sheepCounter++;
-						console.log(img09);
 					} else if ((M1[i][j] == "31") && (M1[i][j + 1] == "31")
 							&& (M1[i][j + 2] == "31")) {
 						img09 = ("images/SB/03_90.png");
@@ -1124,13 +1105,10 @@ function getSheeps() {
 						img09x = i * 20 + 200;
 						img09y = j * 20;
 						sheepCounter++;
-						console.log(img09);
 					}
-					
+
 				}
-				;
 				if ((M1[i][j] == "31") && (sheepCounter == 8)) {
-					console.log("(M1[i][j] == 31) && (sheepCounter == 8)");
 					if ((M1[i + 1][j] == "31") && (M1[i + 2][j] == "31")) {
 						img08 = ("images/SB/03.png");
 						M1[i][j] = "00";
@@ -1139,7 +1117,6 @@ function getSheeps() {
 						img08x = i * 20 + 200;
 						img08y = j * 20;
 						sheepCounter++;
-						console.log(img08);
 					} else if ((M1[i][j] == "31") && (M1[i][j + 1] == "31")
 							&& (M1[i][j + 2] == "31")) {
 						img08 = ("images/SB/03_90.png");
@@ -1149,13 +1126,9 @@ function getSheeps() {
 						img08x = i * 20 + 200;
 						img08y = j * 20;
 						sheepCounter++;
-						console.log(img08);
 					}
 				}
-				;
-
 				if ((M1[i][j] == "21") && (sheepCounter == 7)) {
-					console.log("(M1[i][j] == 21) && (sheepCounter == 7)");
 					if (M1[i + 1][j] == "21") {
 						img07 = ("images/SB/02.png");
 						M1[i][j] = "00";
@@ -1163,7 +1136,6 @@ function getSheeps() {
 						img07x = i * 20 + 200;
 						img07y = j * 20;
 						sheepCounter++;
-						console.log(img07);
 					} else if ((M1[i][j] == "21") && (M1[i][j + 1] == "21")) {
 						img07 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
@@ -1171,12 +1143,9 @@ function getSheeps() {
 						img07x = i * 20 + 200;
 						img07y = j * 20;
 						sheepCounter++;
-						console.log(img07);
 					}
 				}
-				;
 				if ((M1[i][j] == "21") && (sheepCounter == 6)) {
-					console.log("(M1[i][j] == 21) && (sheepCounter == 6)");
 					if (M1[i + 1][j] == "21") {
 						img06 = ("images/SB/02.png");
 						M1[i][j] = "00";
@@ -1184,7 +1153,6 @@ function getSheeps() {
 						img06x = i * 20 + 200;
 						img06y = j * 20;
 						sheepCounter++;
-						console.log(img06);
 					} else if ((M1[i][j] == "21") && (M1[i][j + 1] == "21")) {
 						img06 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
@@ -1192,12 +1160,9 @@ function getSheeps() {
 						img06x = i * 20 + 200;
 						img06y = j * 20;
 						sheepCounter++;
-						console.log(img06);
 					}
 				}
-				;
 				if ((M1[i][j] == "21") && (sheepCounter == 5)) {
-					console.log("(M1[i][j] == 21) && (sheepCounter == 5)");
 					if ((M1[i][j] == "21") && (M1[i + 1][j] == "21")) {
 						img05 = ("images/SB/02.png");
 						M1[i][j] = "00";
@@ -1205,7 +1170,6 @@ function getSheeps() {
 						img05x = i * 20 + 200;
 						img05y = j * 20;
 						sheepCounter++;
-						console.log(img05);
 					} else if ((M1[i][j] == "21") && (M1[i][j + 1] == "21")) {
 						img05 = ("images/SB/02_90.png");
 						M1[i][j] = "00";
@@ -1213,48 +1177,79 @@ function getSheeps() {
 						img05x = i * 20 + 200;
 						img05y = j * 20;
 						sheepCounter++;
-						console.log(img05);
 					}
 				}
-				;
-
 				if ((M1[i][j] == "11") && (sheepCounter == 4)) {
-					console.log("(M1[i][j] == 11) && (sheepCounter == 4)");
 					img04 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img04x = i * 20 + 200;
 					img04y = j * 20;
 					sheepCounter++;
-					console.log(img04);
 				}
 				if ((M1[i][j] == "11") && (sheepCounter == 3)) {
-					console.log("(M1[i][j] == 11) && (sheepCounter == 3)");
 					img03 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img03x = i * 20 + 200;
 					img03y = j * 20;
 					sheepCounter++;
-					console.log(img03);
 				}
 				if ((M1[i][j] == "11") && (sheepCounter == 2)) {
-					console.log("(M1[i][j] == 11) && (sheepCounter == 2)");
 					img02 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img02x = i * 20 + 200;
 					img02y = j * 20;
 					sheepCounter++;
-					console.log(img02);
 				}
 				if ((M1[i][j] == "11") && (sheepCounter == 1)) {
-					console.log("(M1[i][j] == 11) && (sheepCounter == 1)");
 					img01 = ("images/SB/01.png");
 					M1[i][j] = "00";
 					img01x = i * 20 + 200;
 					img01y = j * 20;
 					sheepCounter++;
-					console.log(img01);
 				}
 			}
 		}
 	}
 };
+
+function showRules() {
+	goTo("rules.html");
+}
+
+
+/*
+ * 
+ * 
+ * 
+ * 
+ */
+
+$(window).resize(function() {
+	getScale();
+	console.log(this.size);
+});
+
+var sw = screen.width;
+var sh = screen.height;
+var iw = window.innerWidth;
+var ih = window.innerHeight;
+function getValues(){
+  sw = screen.width;
+  sh = screen.height;
+  iw = window.innerWidth;
+  ih = window.innerHeight;
+  
+  console.log(sw, sh, iw, ih);
+  
+}
+function getScale() {
+  if (Math.round(window.innerWidth*100/iw) !=     Math.round(window.innerHeight*100/ih)){
+    //зум не изменился, поменялись размеры окна
+    getValues(); //обновим значения ширины и высоты
+  }
+  else {
+    //изменился уровень зума
+    scale = Math.round(iw/window.innerWidth * 100);
+    console.log(scale);
+  }
+}

@@ -3,27 +3,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- <html> -->
-<!-- <head> -->
-<%-- <c:forEach items="${sbJSLoader.scripts}" var="script"> --%>
-<%-- 	<script src="<c:out value="${script}"/>" type="text/javascript"></script> --%>
-<%-- </c:forEach> --%>
-
-
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
-<!-- <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">  -->
-<!-- <link href="css/SB.css" type="text/css" rel="stylesheet"> -->
-
-<%-- <title><c:out value="${langPack['Sb_title']}" /></title> --%>
-<!-- </head> -->
-<!-- <body> -->
-	
 	<div class="plbs paperList">
 	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	<div id="ConnectionType" class="${ConnectionType}"></div>
 	<div id="lock" class="${Game.nextMove}"></div>
 	<div id="bothStarted" class="${Game.bothStarted}"></div>
+	<div id="mess" class="${mess}"></div>
+		<script type="text/javascript" src="js/SB/swfobject.js"></script>
+ 	<script type="text/javascript" src="js/SB/web_socket.js"></script>
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
@@ -32,13 +20,11 @@
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
-<!-- 		<div class="SbMButtonsRight"> -->
 				<div class="SbMButtonRightHome" onclick="goTo('Menu.html');"></div>
 				<div class="sound">
 					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
 				</div>
 				<div class="SbMButtonRightStop" onclick="goTo2('SbStop.html','${ConnectionType}');"></div>
-<!-- 		</div> -->
 		
 		<div class=clear></div>
 		
@@ -261,11 +247,6 @@
 						</tr>
 					</c:forEach>
 				</table>
-<!-- 				<div class="oponentName"> -->
-<!-- 					Опонент: Імя, к-ть вцілілих кораблів, ... -->
-<!-- 				</div> -->
-				
-				
 			</div>
 			
 			<div id="locker" style="height: 210px; width: 210px; position: absolute; visibility: visible;">
@@ -274,13 +255,4 @@
 		</div>
 	</div>
 <div class=debug>
-<!-- <input type="button" value="GetM" onClick="getM();"/> -->
-<!-- <input type="button" value="SendM" onClick="sendM();"/> -->
-<%-- <input type="button" value="TestWebSocket" onClick="wtest('${Game.id}&My String');"/> --%>
-<!-- <input type="button" value="Test1" onClick="testWS();"/> -->
-<%-- <input type="button" value="${ConnectionType}"/> --%>
-
-
 </div>
-<!-- </body> -->
-<!-- </html> -->

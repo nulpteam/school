@@ -17,7 +17,7 @@ function editShowHide(node) {
 function saveName() {
 	var input = $('#personalPage #name + .edit input');
 	var error = $('#personalPage #name + .edit .error');
-	var regExp = /\w{4,}/;
+	var regExp = /\w{4,10}/;
 	var value = regExp.exec(input.val());
 	if (value == null) {
 		error.text(failMsg);

@@ -7,8 +7,10 @@
 package epam.ph.sg.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -27,6 +29,7 @@ import epam.ph.sg.models.sb.BSPlayer;
 import epam.ph.sg.models.sb.Client;
 import epam.ph.sg.models.sb.Game;
 import epam.ph.sg.models.sb.GamesList;
+import epam.ph.sg.models.sb.SBStatistics;
 import epam.ph.sg.models.sb.SbJSLoader;
 import epam.ph.sg.models.sb.Server;
 
@@ -193,9 +196,12 @@ public class SBMenuController {
 	@RequestMapping(value = "/Victory.html", method = RequestMethod.POST)
 	public String Victory(Model model, HttpSession session) {
 		int gameId = ((Game) session.getAttribute("Game")).getId();
+		SBStatistics.win(((User)session.getAttribute("user")).getId());
+		log.debug("-//--//--//user id="+((User)session.getAttribute("user")).getId());
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		session.removeAttribute("mess");
 		// ActiveGames.removeGame(gameId);
 		GamesList.removeGameFromListBS(gameId);
 		//session.setAttribute("currentPos", "Menu.html");
@@ -204,9 +210,11 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/Loose.html", method = RequestMethod.POST)
 	public String Loose(Model model, HttpSession session) {
+		SBStatistics.lose(((User)session.getAttribute("user")).getId());
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		session.removeAttribute("mess");
 		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Loose";
 	}
@@ -214,12 +222,13 @@ public class SBMenuController {
 	@RequestMapping(value = "/SbStop.html", method = RequestMethod.POST)
 	public String StopSbGame(@RequestParam("connType") String connType,
 			Model model, HttpSession session) {
+		SBStatistics.lose(((User)session.getAttribute("user")).getId());
 		Game g = (Game)session.getAttribute("Game");
 		int gameId = g.getId();
-		if(connType.equalsIgnoreCase("server"))
+		if(connType.equalsIgnoreCase("server") && g.getClient()!=null)
 		{
-			log.debug("+*+*+*+*+*+*===server");
-			if(g.getClient()!=null)
+			log.debug("+*+*+*+*+*+*===server+client="+ g.getClient());
+			if(g.getClient().getConn()!=null)
 			{
 				try {
 					g.getClient().getConn().sendMessage("kill");
@@ -228,7 +237,7 @@ public class SBMenuController {
 				}
 			}
 		}
-		else if(connType.equalsIgnoreCase("client"))
+		else if(connType.equalsIgnoreCase("client") && g.getServer()!=null)
 		{
 			log.debug("+*+*+*+*+*+*===client");
 			try {
@@ -254,37 +263,33 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		session.removeAttribute("mess");
 		return "SB/SbMenu";
 	}
 
-	
-	
-	
-	
-	
-	/**
-	 * Тест - стерти коли стане не потрібним
-	 */
+	@RequestMapping("/SBStatistics.html")
+	public String sbstatistics(HttpServletRequest request, Model model) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		List<SBStatistics> list = SBStatistics.getAllStatistics();
+		if (list.size() < 10) {
+			model.addAttribute("xoStatList", list);
+		} else {
+			model.addAttribute("xoStatList", list.subList(0, 10));
+		}
 
-//	@RequestMapping(value = { "/Test.html" }, method = RequestMethod.GET)
-//	public @ResponseBody
-//	String test(HttpSession session, Model model) {
-//		// !
-//		Game game = ActiveGames.getGame(1);
-//		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-//				+ game.getServer().getConn());
-//		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-//				+ game.getClient().getConn());
-//		try {
-//			game.getServer().getConn().sendMessage("fiskult-privet Server");
-//			game.getClient().getConn().sendMessage("fiskult-privet Client");
-//			game.getServer().getConn()
-//					.sendMessage(game.getServer().getGameBoard().toString());
-//			game.getClient().getConn()
-//					.sendMessage(game.getClient().getGameBoard().toString());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return "OK";
-//	}
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getName().equals(user.getName())) {
+				model.addAttribute("myPos", i + 1);
+				model.addAttribute("myStats", list.get(i));
+				break;
+			}
+		}
+		return "SB/Statistics";
+	}
+	@RequestMapping(value = "/rules.html", method = RequestMethod.POST)
+	public String rules(Model model, HttpSession session) {
+		return "SB/Rules";
+	}
 }

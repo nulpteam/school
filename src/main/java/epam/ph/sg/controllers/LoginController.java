@@ -41,4 +41,13 @@ public class LoginController {
 			return "Login";
 		}
 	}
+	
+	@RequestMapping("/Logout.html")
+	public String logout(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		request.getSession().removeAttribute("user");
+		return "Login";
+	}
 }
