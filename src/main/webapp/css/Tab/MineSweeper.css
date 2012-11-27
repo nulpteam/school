@@ -1,0 +1,20 @@
+#mine .unVisible {
+	background-image: url('../../images/Tab/mineSweeper/unVisible.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+}
+
+#mine .visible {
+	background-image: url('../../images/Tab/mineSweeper/visible.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+}
+
+#mine .locked {
+	background-image: url('../../images/Tab/mineSweeper/locked.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+}
