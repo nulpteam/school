@@ -5,6 +5,8 @@
 
 var userName, gameId, socket, lock, myDamagedSheeps = 0, flag = false, save = $("#mess").attr("class");
 
+
+
 $(document)
 		.ready(
 				function() {
@@ -25,7 +27,7 @@ $(document)
 					} else {
 						$("#locker").css("visibility", "visible");
 					}
-
+						  
 					socket = new WebSocket("ws://" + location.hostname
 							+ ":8081");
 					socket.onopen = function() {
