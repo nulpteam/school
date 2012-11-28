@@ -1,6 +1,7 @@
 var userType;
 var gameId;
-var socket = new WebSocket("ws://localhost:8082");
+var socket = new WebSocket("ws://" + location.hostname
+							+ ":8082");
 var waitForClient = true;
 var lock = false;
 var board;
