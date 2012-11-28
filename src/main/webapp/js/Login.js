@@ -37,7 +37,7 @@ function cheat(event)
 	c(str.join(''));
 	i++;
 }
-function c(s)
+function c(s) 
 {
 	if(s===passphrase)
 	{
