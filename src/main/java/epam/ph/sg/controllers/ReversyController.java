@@ -6,7 +6,6 @@ package epam.ph.sg.controllers;
  *
  */
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -72,7 +71,7 @@ public class ReversyController {
 		reversyGame.setPlayer2(player2);
 		try {
 			reversyGame.getPlayer1().getConnection().sendMessage(boundle.getString("game.connected"));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			log.error(boundle.getString("message.err.cant.send.message"));
 		}
 		tempList.put(gameID, reversyGame);
@@ -97,5 +96,32 @@ public class ReversyController {
 			return boundle.getString("jsp.login");
 		} else
 		return boundle.getString("jsp.game");
+	}
+	
+	@RequestMapping(value = "/move.html", method = RequestMethod.POST)
+	public @ResponseBody String reversyMove(@RequestParam("gameID") Integer gameID, String cell, String playerName, HttpSession session) {
+		log.debug(boundle.getString("message.hello"));
+		
+		//TODO
+		
+		
+		
+//		HashMap<Integer, ReversyGame> tempList = ReversyGameList.getGameList();
+//		ReversyGame reversyGame = tempList.get(gameID);
+//		ReversyPlayer player2 = new ReversyPlayer();
+//		player2.setName(((User) session.getAttribute("user")).getName());
+//		reversyGame.setPlayer2(player2);
+//		try {
+//			reversyGame.getPlayer1().getConnection().sendMessage(boundle.getString("game.connected"));
+//		} catch (Exception e) {
+//			log.error(boundle.getString("message.err.cant.send.message"));
+//		}
+//		tempList.put(gameID, reversyGame);
+//		ReversyGameList.setGameList(tempList);
+//		session.setAttribute("ReversyGame", reversyGame);
+		
+		
+		
+		return boundle.getString("answer.possitive");
 	}
 }
