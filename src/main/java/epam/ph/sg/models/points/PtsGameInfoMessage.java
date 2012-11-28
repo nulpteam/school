@@ -1,7 +1,6 @@
 package epam.ph.sg.models.points;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class PtsGameInfoMessage {
@@ -16,8 +15,17 @@ public class PtsGameInfoMessage {
 	private int clientScore;
 	private boolean activeMainMenu;
 	private boolean activePointsMenu;
+	private String userTypeActiveMenu;
 
 	
+	public String getUserTypeActiveMenu() {
+		return userTypeActiveMenu;
+	}
+
+	public void setUserTypeActiveMenu(String userTypeActiveMenu) {
+		this.userTypeActiveMenu = userTypeActiveMenu;
+	}
+
 	private List<List<Integer>> lastContours;
 	private List<List<Integer>> matrix;
 	private List<List<Integer>> contoursServer;
@@ -97,13 +105,13 @@ public class PtsGameInfoMessage {
 		}
 	}
 
-	public void initLastContours(List<List<PtsCoord>> lastCounturs) {
+	public void initLastContours(List<List<PtsCoord>> lastContours) {
 		
 		List<Integer> coords;
-		for (int i = 0; i < lastCounturs.size(); i++) {
+		for (int i = 0; i < lastContours.size(); i++) {
 			coords = new ArrayList<Integer>();
-			for (int j = 0; j < lastCounturs.get(i).size(); j++) {
-				PtsCoord coord = lastCounturs.get(i).get(j);
+			for (int j = 0; j < lastContours.get(i).size(); j++) {
+				PtsCoord coord = lastContours.get(i).get(j);
 				coords.add(coord.getY());
 				coords.add(coord.getX());
 			}
@@ -111,9 +119,9 @@ public class PtsGameInfoMessage {
 		}
 	}
 	
-	public void initServerContours(List<List<PtsCoord>> counturs) {
+	public void initServerContours(List<List<PtsCoord>> contours) {
 		
-		initContours(counturs, contoursServer);
+		initContours(contours, contoursServer);
 	}
 	
 	public List<List<Integer>> getContoursServer() {
@@ -132,18 +140,18 @@ public class PtsGameInfoMessage {
 		this.contoursClient = contoursClient;
 	}
 
-	public void initClientContours(List<List<PtsCoord>> counturs) {
+	public void initClientContours(List<List<PtsCoord>> contours) {
 		
-		initContours(counturs, contoursClient);
+		initContours(contours, contoursClient);
 	}
 	
-	private void initContours(List<List<PtsCoord>> counturs, List<List<Integer>> userContours) {
+	private void initContours(List<List<PtsCoord>> contours, List<List<Integer>> userContours) {
 		
 		List<Integer> coords;
-		for (int i = 0; i < counturs.size(); i++) {
+		for (int i = 0; i < contours.size(); i++) {
 			coords = new ArrayList<Integer>();
-			for (int j = 0; j < counturs.get(i).size(); j++) {
-				PtsCoord coord = counturs.get(i).get(j);
+			for (int j = 0; j < contours.get(i).size(); j++) {
+				PtsCoord coord = contours.get(i).get(j);
 				coords.add(coord.getY());
 				coords.add(coord.getX());
 			}
@@ -151,12 +159,12 @@ public class PtsGameInfoMessage {
 		}
 	}
 
-	public List<List<Integer>> getLastCounturs() {
+	public List<List<Integer>> getLastContours() {
 		return lastContours;
 	}
 
-	public void setLastCounturs(List<List<Integer>> lastCounturs) {
-		this.lastContours = lastCounturs;
+	public void setLastContours(List<List<Integer>> lastContours) {
+		this.lastContours = lastContours;
 	}
 
 	public List<List<Integer>> getMatrix() {
