@@ -44,28 +44,7 @@ function PageHomeButton(){
 	goTo('Infection.html');
 }
 
-function exitButton(){
-	userType = $('#infgame_table').attr('userType');
-	
-	if (userType == "client"){
-		var endGame = {
-				"type" : "clientOut",
-				"userType" : userType,
-				"gameId" : gameId
-		};
-		socket.send(JSON.stringify(endGame));  	
-	}
-	if (userType == "server"){
-		var endGame = {
-				"type" : "serverOut",
-				"userType" : userType,
-				"gameId" : gameId
-		};
-		socket.send(JSON.stringify(endGame));
-	}
-	
-	goTo('InfectionGameExit.html');
-}
+
 
 function gameRefreshButton() {
 	clearInterval(checkerInterval);
