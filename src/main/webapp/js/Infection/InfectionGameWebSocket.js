@@ -210,6 +210,7 @@ socket.onmessage = function(event) {
 			looserPage();
 		}
 		break;
+		
 	case "clientWin":
 		userType = $('#infgame_table').attr('userType');
 
@@ -225,6 +226,7 @@ socket.onmessage = function(event) {
 			looserPage();
 		}
 		break;
+		
 	}
 
 

@@ -5,4 +5,5 @@
 	<button onclick=tabGoTo(chatLink);>Chat</button>
 	<button onclick=tabGoTo(sudokuLink);>Sudoku</button>
 	<button onclick="tabGoTo('FlipperGame.html');">Flipper</button>
+	<button onclick="tabGoTo('MSGame.html');">saper</button>
 </div>

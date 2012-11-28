@@ -1,3 +1,33 @@
+.exitButton{
+	background-image: url('../images//Infection/exit_button.png');
+	margin:480px 247px;
+	width:80px;
+	height:80px;
+}
+
+.exitButton:hover{
+	background-image: url('../images//Infection/exit_button_hover.png');
+	margin:480px 247px;
+	width:80px;
+	height:80px;
+}
+
+.exitInGameButton{
+	position:absolute;
+	background-image: url('../images//Infection/exit_button.png');
+	margin:300px 427px;
+	width:80px;
+	height:80px;
+}
+
+.exitInGameButton:hover{
+	position:absolute;
+	background-image: url('../images//Infection/exit_button_hover.png');
+	margin:300px 427px;
+	width:80px;
+	height:80px;
+}
+
 #infbody{
 	font-size: 35px;
 }
@@ -52,7 +82,7 @@
 
 #inf_message_place{
 	position:absolute;
-	margin:200px 407px;
+	margin:100px 407px;
 	width: 100px;
 	height: 140px;
 	font-size: 15px;

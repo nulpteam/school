@@ -10,7 +10,9 @@
 	<div class="homeButton" onclick=PageHomeButton();></div>
 	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	
+	
 	<div id="loser_img"></div>
 	<div id="loser_message">${langPack['INF_user_lost']}</div>
 
+    <div class="exitButton" onclick=exitButton();></div>
 </div>

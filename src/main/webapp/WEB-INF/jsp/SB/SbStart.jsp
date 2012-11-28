@@ -10,7 +10,8 @@
 	<div id="lock" class="${Game.nextMove}"></div>
 	<div id="bothStarted" class="${Game.bothStarted}"></div>
 	<div id="mess" class="${mess}"></div>
-	
+		<script type="text/javascript" src="js/SB/swfobject.js"></script>
+ 	<script type="text/javascript" src="js/SB/web_socket.js"></script>
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
@@ -26,64 +27,64 @@
 				<div class="SbMButtonRightStop" onclick="goTo2('SbStop.html','${ConnectionType}');"></div>
 		
 		<div class=clear></div>
-		
-		<div class="field">
-			<div class="h_markers">
-				<div class="a">a</div>
-				<div class="b">b</div>
-				<div class="c">c</div>
-				<div class="d">d</div>
-				<div class="e">e</div>
-				<div class="f">f</div>
-				<div class="g">g</div>
-				<div class="h">h</div>
-				<div class="i">i</div>
-				<div class="j">j</div>
-			</div>
-			<div class="v_markers">
-				<div class="1">1</div>
-				<div class="2">2</div>
-				<div class="3">3</div>
-				<div class="4">4</div>
-				<div class="5">5</div>
-				<div class="6">6</div>
-				<div class="7">7</div>
-				<div class="8">8</div>
-				<div class="9">9</div>
-				<div class="last10">10</div>
-			</div>
-				<div style="position: relative;top: 0px;left: 0px;height: 200px;width: 200px;">
+		<div class=f1>
+<!-- 		<div class="field"> -->
+<!-- 			<div class="h_markers"> -->
+<!-- 				<div class="a">a</div> -->
+<!-- 				<div class="b">b</div> -->
+<!-- 				<div class="c">c</div> -->
+<!-- 				<div class="d">d</div> -->
+<!-- 				<div class="e">e</div> -->
+<!-- 				<div class="f">f</div> -->
+<!-- 				<div class="g">g</div> -->
+<!-- 				<div class="h">h</div> -->
+<!-- 				<div class="i">i</div> -->
+<!-- 				<div class="j">j</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="v_markers"> -->
+<!-- 				<div class="1">1</div> -->
+<!-- 				<div class="2">2</div> -->
+<!-- 				<div class="3">3</div> -->
+<!-- 				<div class="4">4</div> -->
+<!-- 				<div class="5">5</div> -->
+<!-- 				<div class="6">6</div> -->
+<!-- 				<div class="7">7</div> -->
+<!-- 				<div class="8">8</div> -->
+<!-- 				<div class="9">9</div> -->
+<!-- 				<div class="last10">10</div> -->
+<!-- 			</div> -->
+				<div style="position: relative;top: 4px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep01.img}" style="position: relative;top: ${Sheeps.sheep01.y}px;left: ${Sheeps.sheep01.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -200px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -196px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep02.img}" style="position: relative;top: ${Sheeps.sheep02.y}px;left: ${Sheeps.sheep02.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -400px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -396px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep03.img}" style="position: relative;top: ${Sheeps.sheep03.y}px;left: ${Sheeps.sheep03.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -600px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -596px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep04.img}" style="position: relative;top: ${Sheeps.sheep04.y}px;left: ${Sheeps.sheep04.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -800px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -796px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep05.img}" style="position: relative;top: ${Sheeps.sheep05.y}px;left: ${Sheeps.sheep05.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -1000px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -996px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep06.img}" style="position: relative;top: ${Sheeps.sheep06.y}px;left: ${Sheeps.sheep06.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -1200px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -1196px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep07.img}" style="position: relative;top: ${Sheeps.sheep07.y}px;left: ${Sheeps.sheep07.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -1400px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -1396px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep08.img}" style="position: relative;top: ${Sheeps.sheep08.y}px;left: ${Sheeps.sheep08.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -1600px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -1596px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep09.img}" style="position: relative;top: ${Sheeps.sheep09.y}px;left: ${Sheeps.sheep09.x-205}px;"/>
 				</div>
-				<div style="position: relative;top: -1800px;left: 0px;height: 200px;width: 200px;">
+				<div style="position: relative;top: -1796px;left: 32px;height: 200px;width: 200px;">
 					<img src="${Sheeps.sheep10.img}" style="position: relative;top: ${Sheeps.sheep10.y}px;left: ${Sheeps.sheep10.x-205}px;"/>
 				</div>
 				<div id="shoots" style="position: relative;top: -2000px;left: -4px;height: 200px;width: 200px;">
-					<table id="table1" align="center" cellpadding="0" cellspacing="0">
+					<table id="table1g" align="center" cellpadding="0" cellspacing="0">
 						<tbody>
 							<tr>
 									<td id="00"></td>
@@ -211,30 +212,30 @@
 			<div class="clear"></div>
 		</div>
 		
-		<div class="field2">
-			<div class="h_markers">
-				<div class="a">a</div>
-				<div class="b">b</div>
-				<div class="c">c</div>
-				<div class="d">d</div>
-				<div class="e">e</div>
-				<div class="f">f</div>
-				<div class="g">g</div>
-				<div class="h">h</div>
-				<div class="i">i</div>
-				<div class="j">j</div>
-			</div>
-			<div class="v_markers">
-				<div class="1">1</div>
-				<div class="2">2</div>
-				<div class="3">3</div>
-				<div class="4">4</div>
-				<div class="5">5</div>
-				<div class="6">6</div>
-				<div class="7">7</div>
-				<div class="8">8</div>
-				<div class="9">9</div>
-				<div class="last10">10</div>
+		<div class="f2g">
+<!-- 			<div class="h_markers"> -->
+<!-- 				<div class="a">a</div> -->
+<!-- 				<div class="b">b</div> -->
+<!-- 				<div class="c">c</div> -->
+<!-- 				<div class="d">d</div> -->
+<!-- 				<div class="e">e</div> -->
+<!-- 				<div class="f">f</div> -->
+<!-- 				<div class="g">g</div> -->
+<!-- 				<div class="h">h</div> -->
+<!-- 				<div class="i">i</div> -->
+<!-- 				<div class="j">j</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="v_markers"> -->
+<!-- 				<div class="1">1</div> -->
+<!-- 				<div class="2">2</div> -->
+<!-- 				<div class="3">3</div> -->
+<!-- 				<div class="4">4</div> -->
+<!-- 				<div class="5">5</div> -->
+<!-- 				<div class="6">6</div> -->
+<!-- 				<div class="7">7</div> -->
+<!-- 				<div class="8">8</div> -->
+<!-- 				<div class="9">9</div> -->
+<!-- 				<div class="last10">10</div> -->
 				
 				
 				<table id="table2" align="center" cellpadding="0" cellspacing="0">
@@ -248,10 +249,10 @@
 				</table>
 			</div>
 			
-			<div id="locker" style="height: 210px; width: 210px; position: absolute; visibility: visible;">
+			<div id="locker" style="top: -232px;right: -229px;height: 210px; width: 210px; position: relative; visibility: visible;">
 				<img alt="BSRadar" src="images/SB/BSRadar.gif" height="200px" width="200px">
 			</div>
-		</div>
+<!-- 		</div> -->
 	</div>
 <div class=debug>
 </div>

@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 	<div class="plbs paperList">
+	<script type="text/javascript" src="js/SB/swfobject.js"></script>
+ 	<script type="text/javascript" src="js/SB/web_socket.js"></script>
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
@@ -62,31 +64,31 @@
 			<div id="sp41" class="dn"></div>
 		</div>
 		
-		<div class="field1">
-			<div class="h_markers">
-				<div class="a">a</div>
-				<div class="b">b</div>
-				<div class="c">c</div>
-				<div class="d">d</div>
-				<div class="e">e</div>
-				<div class="f">f</div>
-				<div class="g">g</div>
-				<div class="h">h</div>
-				<div class="i">i</div>
-				<div class="j">j</div>
-			</div>
-			<div class="v_markers">
-				<div class="1">1</div>
-				<div class="2">2</div>
-				<div class="3">3</div>
-				<div class="4">4</div>
-				<div class="5">5</div>
-				<div class="6">6</div>
-				<div class="7">7</div>
-				<div class="8">8</div>
-				<div class="9">9</div>
-				<div class="last10">10</div>
-			
+<!-- 		<div class="field1"> -->
+<!-- 			<div class="h_markers"> -->
+<!-- 				<div class="a">a</div> -->
+<!-- 				<div class="b">b</div> -->
+<!-- 				<div class="c">c</div> -->
+<!-- 				<div class="d">d</div> -->
+<!-- 				<div class="e">e</div> -->
+<!-- 				<div class="f">f</div> -->
+<!-- 				<div class="g">g</div> -->
+<!-- 				<div class="h">h</div> -->
+<!-- 				<div class="i">i</div> -->
+<!-- 				<div class="j">j</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="v_markers"> -->
+<!-- 				<div class="1">1</div> -->
+<!-- 				<div class="2">2</div> -->
+<!-- 				<div class="3">3</div> -->
+<!-- 				<div class="4">4</div> -->
+<!-- 				<div class="5">5</div> -->
+<!-- 				<div class="6">6</div> -->
+<!-- 				<div class="7">7</div> -->
+<!-- 				<div class="8">8</div> -->
+<!-- 				<div class="9">9</div> -->
+<!-- 				<div class="last10">10</div> -->
+			<div class="f1">
 				<table id="table1" align="center" cellpadding="0" cellspacing="0">
 					<c:forEach begin="0" end="9" step="1" varStatus="chirik">
 						<tr>
@@ -96,37 +98,38 @@
 						</tr>
 					</c:forEach>
 				</table>
-			</div>
+				</div>
+<!-- 			</div> -->
 			<div class="clear"></div>
-		</div>
-		<div class="field2">
-			<div class="h_markers">
-				<div>a</div>
-				<div>b</div>
-				<div>c</div>
-				<div>d</div>
-				<div>e</div>
-				<div>f</div>
-				<div>g</div>
-				<div>h</div>
-				<div>i</div>
-				<div>j</div>
-			</div>
-			<div class="v_markers">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-				<div>4</div>
-				<div>5</div>
-				<div>6</div>
-				<div>7</div>
-				<div>8</div>
-				<div>9</div>
-				<div class="last10">10</div>
-			</div>
-		</div>
-		
-		<div class=debug>
-		</div>
+
+<!-- 		<div class="field2"> -->
+<!-- 			<div class="h_markers"> -->
+<!-- 				<div>a</div> -->
+<!-- 				<div>b</div> -->
+<!-- 				<div>c</div> -->
+<!-- 				<div>d</div> -->
+<!-- 				<div>e</div> -->
+<!-- 				<div>f</div> -->
+<!-- 				<div>g</div> -->
+<!-- 				<div>h</div> -->
+<!-- 				<div>i</div> -->
+<!-- 				<div>j</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="v_markers"> -->
+<!-- 				<div>1</div> -->
+<!-- 				<div>2</div> -->
+<!-- 				<div>3</div> -->
+<!-- 				<div>4</div> -->
+<!-- 				<div>5</div> -->
+<!-- 				<div>6</div> -->
+<!-- 				<div>7</div> -->
+<!-- 				<div>8</div> -->
+<!-- 				<div>9</div> -->
+<!-- 				<div class="last10">10</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<div class="f2"></div>
+
+
 		
 	</div>

@@ -15,10 +15,13 @@
 <!-- <body> -->
 	
 	<div class=paperList>
+		<script type="text/javascript" src="js/SB/swfobject.js"></script>
+ 	<script type="text/javascript" src="js/SB/web_socket.js"></script>
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
 	<div class="SbMButtonRightHome" onclick="goTo('Menu.html')"></div>
+	<div class="backButton2" onclick="goTo('Sb.html');"></div>
 	<div id="gameID" class="${Game.id}"></div>
 	<div id="userName" class="${user.name}"></div>
 	<div class="decoImg">

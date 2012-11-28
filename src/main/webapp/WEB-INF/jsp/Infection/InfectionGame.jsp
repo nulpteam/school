@@ -46,7 +46,9 @@
 		<div id="infscore_label_2">
 			<label></label>
 		</div>
-
+		
+		<div class="exitInGameButton" onclick=exitButton();></div>
+		
 		<div class="homeButton" onclick=PageHomeButton();></div>
 		<div class="refreshButton" onclick=refreshButtonClick();></div>
 

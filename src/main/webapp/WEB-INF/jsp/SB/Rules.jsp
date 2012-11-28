@@ -9,7 +9,7 @@
 	</c:forEach>
 	<div class="caption"><c:out value="${langPack['Sb_title']}" /></div>
 	<div class="SbMButtonRightHome" onclick="goTo('Menu.html')"></div>
-	<div class="backButton" onclick="goTo('Sb.html');"></div>
+	<div class="backButton2" onclick="goTo('Sb.html');"></div>
 	<div class="clear"></div>
 	<div class="SbRules">
 		<p>
