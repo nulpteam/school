@@ -8,7 +8,7 @@
 		<p align="center">${langPack['XO_stat_title']}</p>
 	</div>
 	<div class="homeButton" onclick=homeButtonClick();></div>
-	<div class="backButton" onclick="goTo('Sb.html');"></div>
+	<div class="backButton2" onclick="goTo('Sb.html');"></div>
 	<table>
 		<thead>
 			<tr>

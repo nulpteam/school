@@ -147,6 +147,7 @@
 	width: 200px;
 	height: 200px;
 	table-layout: fixed;
+	border: 1px solid red;
 }
 
 .field2 table {
@@ -463,7 +464,12 @@
 }
 
 #locker {
-	
+/* 	height: 210px; */
+/* 	width: 210px; */
+/* 	position: absolute; */
+/* 	visibility: visible; */
+/* 	top: 428PX; */
+/* 	right: 328PX; */
 }
 
 looseBody {
@@ -502,7 +508,7 @@ victoryBody {
 	font-size: 14px;
 }
 
-.paperList .backButton {
+.backButton2 {
 	background-image: url('../images/paperList/back_sprite.png');
 	background-repeat: no-repeat;
 	height: 40px;
@@ -522,4 +528,54 @@ victoryBody {
 	position: relative;
 	left: 100px;
 	top: 70px;
+}
+
+.f1 {
+	background: url("../images/SB/field.png") no-repeat;
+	margin-left: 200px;
+	height: 231px;
+	width: 232px;
+	margin-top: 5px;
+	padding-top: 23px;
+}
+
+.f2 {
+	background: url("../images/SB/field.png") no-repeat;
+	margin-left: 200px;
+	height: 231px;
+	width: 232px;
+	margin-top: -15px;
+	padding-top: 23px;
+}
+
+.f2g {
+	background: url("../images/SB/field.png") no-repeat;
+	margin-left: 200px;
+	height: 231px;
+	width: 232px;
+	margin-top: -15px;
+	padding-top: 28px;
+	padding-left: 12px;
+}
+
+#table1 {
+	margin-top: 3px;
+	margin-left: 27px;
+	width: 200px;
+	height: 200px;
+	table-layout: fixed;
+}
+
+#table2 {
+/* 	margin-left: 26px; */
+	/* 	margin-top: 6px; */
+}
+
+#table1g {
+	margin-top: 6px;
+	margin-left: 32px;
+	width: 200px;
+	height: 200px;
+	table-layout: fixed;
+	margin-left: 32px;
 }
