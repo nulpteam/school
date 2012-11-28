@@ -7,7 +7,7 @@
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/SB/Victory.js" type="text/javascript"></script>
 <div class="SbMButtonRightHome" onclick="goTo('Menu.html')";></div>
-<div class="backButton" onclick="goTo('Sb.html');"></div>
+<div class="backButton2" onclick="goTo('Sb.html');"></div>
 	<div class = "winloose">
 		<h1><c:out value="${langPack['Sb_win']}"/></h1>
 		<img alt="Victory" src="images/SB/BSVictory.gif" height="400px" width="400px">

@@ -1,0 +1,63 @@
+#mineSweeper {
+	background-image: url('../../images/Tab/mineSweeper/background.png');
+	background-repeat: no-repeat;
+}
+
+#mineSweeper #msField {
+	cursor: pointer;
+	margin: 100px auto 10px;
+}
+
+#mineSweeper #msField div {
+	color: darkblue;
+	font-weight: bold;
+	text-align: center;
+}
+
+#mineSweeper .unVisible {
+	background-image: url('../../images/Tab/mineSweeper/unVisible.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+}
+
+#mineSweeper .visible {
+	background-image: url('../../images/Tab/mineSweeper/visible.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+}
+
+#mineSweeper .locked {
+	background-image: url('../../images/Tab/mineSweeper/locked.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+}
+
+#mineSweeper .mine {
+	background-image: url('../../images/Tab/mineSweeper/mine.png');
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+}
+
+#mineSweeper .msButton {
+	background-image: url('../../images/Tab/mineSweeper/button_sprite.png');
+	background-repeat: no-repeat;
+	height: 51px;
+	width: 252px;
+	cursor: pointer;
+	margin: 0px auto;
+}
+
+#mineSweeper .msButton:hover {
+	background: url('../../images/Tab/mineSweeper/button_sprite.png') bottom;
+}
+
+#mineSweeper .msButton p {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 12px;
+}
