@@ -55,8 +55,6 @@
 		<url-pattern>/ReversyConnectGame.html</url-pattern>
 		<url-pattern>/ReversyGamesList.html</url-pattern>
 		<url-pattern>/Reversy.html</url-pattern>
-		<url-pattern>/PointsEndGameLooser.html</url-pattern>
-		
 	</filter-mapping>
 	<filter>
 		<filter-name>tabFilter</filter-name>

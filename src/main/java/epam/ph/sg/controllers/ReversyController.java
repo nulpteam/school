@@ -100,6 +100,24 @@ public class ReversyController {
 		
 		ReversyWebSocketSpeeker.activeGames.get(gameID).getBoard().changeBoard(x, y, figure);
 		log.debug(ReversyWebSocketSpeeker.activeGames.get(gameID));
+		try {
+			ReversyWebSocketSpeeker.activeGames.get(gameID).getPlayer1().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes"));
+		} catch (Exception e) {
+			log.error(boundle.getString("message.err.cant.send.message"));
+		}
+		try {
+			ReversyWebSocketSpeeker.activeGames.get(gameID).getPlayer2().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes"));
+		} catch (Exception e) {
+			log.error(boundle.getString("message.err.cant.send.message"));
+		}
+		session.setAttribute("ReversyGame", ReversyWebSocketSpeeker.activeGames.get(gameID));
+		return boundle.getString("answer.possitive");
+	}
+	
+	@RequestMapping(value = "/changes.html", method = RequestMethod.POST)
+	public @ResponseBody String reversyChanges(@RequestParam("gameID") Integer gameID, HttpSession session) {
+		log.debug(boundle.getString("message.hello"));
+		log.debug(gameID);
 		session.setAttribute("ReversyGame", ReversyWebSocketSpeeker.activeGames.get(gameID));
 		return boundle.getString("answer.possitive");
 	}

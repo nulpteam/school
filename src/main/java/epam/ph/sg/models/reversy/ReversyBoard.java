@@ -149,7 +149,7 @@ public class ReversyBoard {
 			if ((x > 0)&&(y > 0)&&getCell(x - 1, y - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x - 1;
 				int y0 = y - 1;
-				while ((x0 > 0) && (y0 > 0) && getCell(x0 - 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((x0 > 0) && (y0 > 0) && getCell(x0 - 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					x0--;
 					y0--;
 				}
@@ -164,7 +164,7 @@ public class ReversyBoard {
 			if ((y > 0)&&getCell(x, y - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x;
 				int y0 = y - 1;
-				while ((y0 > 0) && getCell(x0, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((y0 > 0) && getCell(x0, y0 - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					y0--;
 				}
 				if ((y0 > 0) && getCell(x0, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
@@ -176,7 +176,7 @@ public class ReversyBoard {
 			if ((x < 7)&&(y > 0)&&getCell(x + 1, y - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x + 1;
 				int y0 = y - 1;
-				while ((x0 < 7) && (y0 > 0) && getCell(x0 + 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((x0 < 7) && (y0 > 0) && getCell(x0 + 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					x0++;
 					y0--;
 				}
@@ -192,7 +192,7 @@ public class ReversyBoard {
 			if ((x > 0)&&getCell(x - 1, y).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x - 1;
 				int y0 = y;
-				while ((x0 > 0) && getCell(x0 - 1, y0).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((x0 > 0) && getCell(x0 - 1, y0).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					x0--;
 				}
 				if ((x0 > 0) && getCell(x0 - 1, y0).equals(ReversyController.boundle.getString("game.figure.o"))) {
@@ -204,7 +204,7 @@ public class ReversyBoard {
 			if ((x < 7)&&getCell(x + 1, y).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x + 1;
 				int y0 = y;
-				while ((x0 < 7) && getCell(x0 + 1, y0).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((x0 < 7) && getCell(x0 + 1, y0).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					x0++;
 				}
 				if ((x0 < 7) && getCell(x0 + 1, y0).equals(ReversyController.boundle.getString("game.figure.o"))) {
@@ -216,7 +216,7 @@ public class ReversyBoard {
 			if ((x > 0)&&(y < 7)&&getCell(x - 1, y + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x - 1;
 				int y0 = y + 1;
-				while ((x0 > 0) && (y0 < 7) && getCell(x0 - 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((x0 > 0) && (y0 < 7) && getCell(x0 - 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					x0--;
 					y0++;
 				}
@@ -231,7 +231,7 @@ public class ReversyBoard {
 			if ((y < 7)&&getCell(x, y + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x;
 				int y0 = y + 1;
-				while ((y0 < 7) && getCell(x0, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((y0 < 7) && getCell(x0, y0 + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					y0++;
 				}
 				if ((y0 < 7) && getCell(x0, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
@@ -243,7 +243,7 @@ public class ReversyBoard {
 			if ((x < 7)&&(y < 7)&&getCell(x + 1, y + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 				int x0 = x + 1;
 				int y0 = y + 1;
-				while ((x0 < 7) && (y0 < 7) && getCell(x0 + 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				while ((x0 < 7) && (y0 < 7) && getCell(x0 + 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					x0++;
 					y0++;
 				}
@@ -380,7 +380,7 @@ public class ReversyBoard {
 		movesO = 0;
 		for (int x = 0; x <= 7; x++) {
 			for (int y = 0; y <= 7; y++) {
-				if (!getCell(x, y).equals(ReversyController.boundle.getString("game.figure.o")) && !getCell(x, y).equals(ReversyController.boundle.getString("game.figure.o"))) {
+				if (!getCell(x, y).equals(ReversyController.boundle.getString("game.figure.o")) && !getCell(x, y).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					if ((x > 0)&&(y > 0)&&getCell(x - 1, y - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 						int x0 = x - 1;
 						int y0 = y - 1;

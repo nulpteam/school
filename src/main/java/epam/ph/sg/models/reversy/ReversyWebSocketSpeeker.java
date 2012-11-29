@@ -37,25 +37,22 @@ public class ReversyWebSocketSpeeker implements WebSocket.OnTextMessage {
 			log.debug(gameID);
 			log.debug(playerName);
 			
-			if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer1().getName())) {
-				if (ReversyGameList.getGameList().get(gameID) != null) {
+			
+			if (ReversyGameList.getGameList().get(gameID) != null) {
+				if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer1().getName())) {
 					ReversyGameList.getGameList().get(gameID).getPlayer1().setConnection(conn);
-				} else {
-					activeGames.get(gameID).getPlayer1().setConnection(conn);
-				}
-				
-			} else if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer2().getName())) {
-				if (ReversyGameList.getGameList().get(gameID) != null) {
+				} else if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer2().getName())) {
 					ReversyGameList.getGameList().get(gameID).getPlayer2().setConnection(conn);
 					activeGames.put(gameID, ReversyGameList.getGameList().get(gameID));
-					log.debug(ReversyGameList.getGameList().get(gameID));
 					ReversyGameList.removeGameFromList(gameID);
-				} else {
+				}
+			} else if (activeGames.get(gameID) != null) {
+				if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer1().getName())) {
+					activeGames.get(gameID).getPlayer1().setConnection(conn);
+				} else if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer2().getName())) {
 					activeGames.get(gameID).getPlayer2().setConnection(conn);
 				}
-
 			}
 		}
-		
 	}
 }

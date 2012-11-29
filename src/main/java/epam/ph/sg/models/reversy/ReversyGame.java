@@ -60,7 +60,7 @@ public class ReversyGame {
 	}
 
 	public String toString() {
-		return ("gameID = " + id + "player1 = " + player1 + "player2" + player2 + "\nboard\n" + board);
+		return ("gameID = " + id + " player1 = " + player1.getName() + " player2" + player2.getName() + "\nboard\n" + board);
 	}
 
 }
