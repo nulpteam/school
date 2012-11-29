@@ -54,30 +54,7 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 				ActiveGames.getGame(gameID).getClient().setConn(conn);
 			}
 		}
-//		if (temporary[0].equals("open")) {
-//			Integer gameID = Integer.parseInt(temporary[1]);
-//			String userName = temporary[2];
-//			String connectionType = temporary[3];
-//			log.debug("++++++++++++gameID = " + gameID + "++++++++++++++");
-//			log.debug("++++++++++++userName = " + userName + "++++++++++++++");
-//			log.debug("++++++++++++connectionType = " + connectionType
-//					+ "++++++++++++++");
-//			if (connectionType.equalsIgnoreCase("server")) {
-//				log.debug("++++++++++++server v pershomu if++++++++++++++");
-//				if (ActiveGames.getGame(gameID).getServer().getConn() != null) {
-//					log.debug("++++++++++++server v drugomu if++++++++++++++");
-//					ActiveGames.getGame(gameID).getServer().getConn().close();
-//				}
-//				ActiveGames.getGame(gameID).getServer().setConn(conn);
-//			}
-//			if (connectionType.equalsIgnoreCase("client")) {
-//				log.debug("++++++++++++client v pershomu if++++++++++++++");
-//				if (ActiveGames.getGame(gameID).getClient().getConn() != null) {
-//					log.debug("++++++++++++client v pershomu if++++++++++++++");
-//					ActiveGames.getGame(gameID).getClient().getConn().close();
-//				}
-//				ActiveGames.getGame(gameID).getClient().setConn(conn);
-//			}
+//		if (temporary[0].equals("close")) {
 //		}
 
 

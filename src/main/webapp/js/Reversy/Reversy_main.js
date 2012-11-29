@@ -14,11 +14,31 @@ $(document).ready(function(){
 	
     $(".canX").click(function(){
         console.log(this.id);
-        $("#" + this.id).attr("class", "x");
+        console.log(parseInt(this.id.charCodeAt(0))-97);
+        console.log(parseInt(this.id[1]));
+        
+        $.post("move.html", {
+        	gameID : $("#gameID").attr("class"),
+    		x : parseInt(this.id.charCodeAt(0))-97,
+    		y : parseInt(this.id[1]-1),
+    		figure : "x",
+    		playerName : $("#userName").attr("class")
+    	}, function(data) {
+    	});
     });
     
     $(".canO").click(function(){
         console.log(this.id);
-        $("#" + this.id).attr("class", "o");
+        console.log(parseInt(this.id.charCodeAt(0))-97);
+        console.log(parseInt(this.id[1]));
+        
+        $.post("move.html", {
+        	gameID : $("#gameID").attr("class"),
+    		x : parseInt(this.id.charCodeAt(0))-97,
+    		y : parseInt(this.id[1]-1),
+    		figure : "o",
+    		playerName : $("#userName").attr("class")
+    	}, function(data) {
+    	});
     });
 });

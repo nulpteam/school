@@ -166,10 +166,6 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/BsGame.html", method = RequestMethod.POST)
 	public String SbGame(Model model, HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");

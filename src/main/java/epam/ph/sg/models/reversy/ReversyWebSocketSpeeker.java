@@ -8,7 +8,7 @@ import org.eclipse.jetty.websocket.WebSocket;
 import epam.ph.sg.controllers.ReversyController;
 
 public class ReversyWebSocketSpeeker implements WebSocket.OnTextMessage {
-	private static HashMap<Integer, ReversyGame> activeGames = new HashMap<Integer, ReversyGame>();
+	public static HashMap<Integer, ReversyGame> activeGames = new HashMap<Integer, ReversyGame>();
 	private static Logger log = Logger.getLogger(ReversyWebSocketSpeeker.class);
 	private Connection conn;
 
@@ -30,19 +30,30 @@ public class ReversyWebSocketSpeeker implements WebSocket.OnTextMessage {
 		log.debug(ReversyController.boundle.getString("message.socket.onMessage") + message);
 		String[] temporary = message.split("&");
 		String messageType = temporary[0];
-		if (messageType.equals(ReversyController.boundle.getString("message.socket.onMessage.type.connection"))) {
+		if (messageType.equalsIgnoreCase(ReversyController.boundle.getString("message.socket.onMessage.type.connection"))) {
 			Integer gameID = Integer.parseInt(temporary[1]);
 			String playerName = temporary[2];
 			
 			log.debug(gameID);
 			log.debug(playerName);
 			
-			if (playerName.equals(ReversyGameList.getGameList().get(gameID).getPlayer1().getName())) {
-				ReversyGameList.getGameList().get(gameID).getPlayer1().setConnection(conn);
-			} else if (playerName.equals(ReversyGameList.getGameList().get(gameID).getPlayer2().getName())) {
-				ReversyGameList.getGameList().get(gameID).getPlayer2().setConnection(conn);
-				activeGames.put(gameID, ReversyGameList.getGameList().get(gameID));
-				ReversyGameList.removeGameFromList(gameID);
+			if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer1().getName())) {
+				if (ReversyGameList.getGameList().get(gameID) != null) {
+					ReversyGameList.getGameList().get(gameID).getPlayer1().setConnection(conn);
+				} else {
+					activeGames.get(gameID).getPlayer1().setConnection(conn);
+				}
+				
+			} else if (playerName.equalsIgnoreCase(ReversyGameList.getGameList().get(gameID).getPlayer2().getName())) {
+				if (ReversyGameList.getGameList().get(gameID) != null) {
+					ReversyGameList.getGameList().get(gameID).getPlayer2().setConnection(conn);
+					activeGames.put(gameID, ReversyGameList.getGameList().get(gameID));
+					log.debug(ReversyGameList.getGameList().get(gameID));
+					ReversyGameList.removeGameFromList(gameID);
+				} else {
+					activeGames.get(gameID).getPlayer2().setConnection(conn);
+				}
+
 			}
 		}
 		

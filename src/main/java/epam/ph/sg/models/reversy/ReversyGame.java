@@ -1,5 +1,6 @@
 package epam.ph.sg.models.reversy;
 
+
 /**
  * 
  * @author SergiyManko
@@ -11,12 +12,11 @@ public class ReversyGame {
 	private ReversyPlayer player1;
 	private ReversyPlayer player2;
 	private ReversyBoard board;
-	private String xPlayer;
-	private String oPlayer;
 	private String playerNameToMove;
 	public ReversyGame(int gameId) {
 		setId(gameId);
 		board = new ReversyBoard();
+		board.setCanX();
 	}
 
 	public Integer getId() {
@@ -58,24 +58,9 @@ public class ReversyGame {
 	public void setPlayerNameToMove(String playerNameToMove) {
 		this.playerNameToMove = playerNameToMove;
 	}
-	public String getxPlayer() {
-		return xPlayer;
-	}
-
-	public void setxPlayer(String xPlayer) {
-		this.xPlayer = xPlayer;
-	}
-
-	public String getoPlayer() {
-		return oPlayer;
-	}
-
-	public void setoPlayer(String oPlayer) {
-		this.oPlayer = oPlayer;
-	}
 
 	public String toString() {
-		return ("gameID = " + id + "player1 = " + player1 + "player2" + player2);
+		return ("gameID = " + id + "player1 = " + player1 + "player2" + player2 + "\nboard\n" + board);
 	}
 
 }

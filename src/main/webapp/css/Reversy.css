@@ -65,10 +65,10 @@
 .canX:hover { 
 	background-image: url("../images/Reversy/X.gif");
 	background-repeat: no-repeat;
-	opacity: 0.25;
+	opacity: 0.35;
 } 
 .canO:hover { 
 	background-image: url("../images/Reversy/O.gif");
 	background-repeat: no-repeat;
-	opacity: 0.25;
+	opacity: 0.35;
 } 

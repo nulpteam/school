@@ -6,7 +6,6 @@ package epam.ph.sg.controllers;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -30,10 +29,6 @@ public class HomeController {
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		return "index";
-	}
-	
-	//нахуй стерти !!!!!!!!
-	public void index(HttpSession session) {
 	}
 
 	@RequestMapping("CurrentPos.html")
