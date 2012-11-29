@@ -1,7 +1,7 @@
 package epam.ph.sg.controllers;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,13 +27,6 @@ public class ChatController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		// if (request.getSession().getAttribute("chatUser") == null) {
-		// request.getSession().setAttribute("chatUser", new ChatUser());
-		// }
-		// ChatUser cu = (ChatUser)
-		// request.getSession().getAttribute("chatUser");
-		// cu.refresh();
-		// model.addAttribute("msgList", cu.getLoadedMsg());
 		request.getSession().setAttribute("chatUser", new ChatUser());
 		return "Tab/Chat";
 	}

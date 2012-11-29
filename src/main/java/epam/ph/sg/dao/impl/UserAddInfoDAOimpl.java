@@ -1,7 +1,7 @@
 package epam.ph.sg.dao.impl;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,10 +10,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
-import epam.ph.sg.dao.PersonalPageDAO;
+import epam.ph.sg.dao.UserAddInfoDAO;
 import epam.ph.sg.personal.UserAddInfo;
 
-public class PersonalPageDAOimpl implements PersonalPageDAO {
+public class UserAddInfoDAOimpl implements UserAddInfoDAO {
+	
 	private JdbcTemplate jdbcTemplate;
 
 	public JdbcTemplate getJdbcTemplate() {

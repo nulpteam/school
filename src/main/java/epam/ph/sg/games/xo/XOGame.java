@@ -1,10 +1,10 @@
 package epam.ph.sg.games.xo;
 
+/**
+ * @author Talash Pavlo
+ */
 import epam.ph.sg.models.User;
 
-/**
- * @author Paul Michael T.
- */
 public class XOGame {
 	private XOField xoField = new XOField(); // XOFields of this game
 	private XOAI ai = new XOAI(xoField); // XOAI of this game
@@ -14,12 +14,35 @@ public class XOGame {
 	private User client = null; // Client User instance
 
 	private int gameTimerCount = 0;
-	
+
 	/**
-	 * Set game status Time out and change player statistics
+	 * Wait for client time out
+	 */
+	private int serverTimerCount = 0;
+
+	public void serverTimeOut() {
+		serverTimerCount++;
+		final int myTimerCount = serverTimerCount;
+		new Thread() {
+			@Override
+			public void run() {
+				try {
+					sleep(6000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if (myTimerCount == serverTimerCount) {
+					XOConnector.getServerMap().remove(server.getId());
+				}
+			}
+		}.start();
+	}
+
+	/**
+	 * Player move time out
 	 * 
-	 * @param outId
-	 *            - Outer id
+	 * @param id
+	 *            - Player id
 	 */
 	public void gameTimeOut(final int id) {
 		gameTimerCount++;
@@ -120,25 +143,5 @@ public class XOGame {
 
 	public void setClient(User client) {
 		this.client = client;
-	}
-	
-
-	private int serverTimerCount = 0;
-	public void serverTimeOut() {
-		serverTimerCount++;
-		final int myTimerCount = serverTimerCount;
-		new Thread() {
-			@Override
-			public void run() {
-				try {
-					sleep(6000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				if (myTimerCount == serverTimerCount) {
-					XOConnector.getServerMap().remove(server.getId());
-				}
-			}
-		}.start();
 	}
 }

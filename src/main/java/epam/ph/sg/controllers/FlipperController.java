@@ -1,5 +1,8 @@
 package epam.ph.sg.controllers;
 
+/**
+ * @author Talash Pavlo
+ */
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -21,10 +24,11 @@ public class FlipperController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipperGame game = (FlipperGame) request.getSession()
-				.getAttribute("flipperGame");
+		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
+				"flipperGame");
 		if (game == null) {
-			request.getSession().setAttribute("flipperGame", new FlipperGame(1));
+			request.getSession()
+					.setAttribute("flipperGame", new FlipperGame(1));
 		}
 		return "Tab/Flipper";
 	}
@@ -43,8 +47,8 @@ public class FlipperController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipperGame game = (FlipperGame) request.getSession()
-				.getAttribute("flipperGame");
+		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
+				"flipperGame");
 		game.nextLevel();
 		return "Tab/Flipper";
 	}
@@ -54,8 +58,8 @@ public class FlipperController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipperGame game = (FlipperGame) request.getSession()
-				.getAttribute("flipperGame");
+		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
+				"flipperGame");
 		game.resetLevel();
 		return "Tab/Flipper";
 	}
@@ -67,10 +71,10 @@ public class FlipperController {
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". Position: " + id);
 		int line = Integer.valueOf(id.substring(0, 1));
-		int colum = Integer.valueOf(id.substring(1));
-		FlipperGame game = (FlipperGame) request.getSession()
-				.getAttribute("flipperGame");
-		game.flip(line, colum);
+		int column = Integer.valueOf(id.substring(1));
+		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
+				"flipperGame");
+		game.flip(line, column);
 		return true;
 	}
 
@@ -80,8 +84,8 @@ public class FlipperController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		FlipperGame game = (FlipperGame) request.getSession()
-				.getAttribute("flipperGame");
+		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
+				"flipperGame");
 		return game.getStatus();
 	}
 }

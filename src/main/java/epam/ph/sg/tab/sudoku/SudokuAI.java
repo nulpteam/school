@@ -1,7 +1,7 @@
 package epam.ph.sg.tab.sudoku;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.HashSet;
 import java.util.Set;
@@ -14,15 +14,21 @@ public class SudokuAI {
 		this.sudokuField = sudokuField;
 	}
 
+	/**
+	 * Check the field to doubles numbers in lines, columns and areas
+	 * 
+	 * @return doubles Set
+	 */
 	public Set<SudokuBox> check() {
 		failed = new HashSet<SudokuBox>();
-		checkHorizontal();
-		checkVertical();
+		checkInLines();
+		checkInColumns();
 		checkInAreas();
 		return failed;
 	}
 
-	private void checkHorizontal() {
+	// Check in lines
+	private void checkInLines() {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				SudokuBox box1 = sudokuField.getBox(i, j);
@@ -39,7 +45,8 @@ public class SudokuAI {
 		}
 	}
 
-	private void checkVertical() {
+	// Check in columns
+	private void checkInColumns() {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				SudokuBox box1 = sudokuField.getBox(j, i);
@@ -56,6 +63,7 @@ public class SudokuAI {
 		}
 	}
 
+	// Check in areas
 	private void checkInAreas() {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {

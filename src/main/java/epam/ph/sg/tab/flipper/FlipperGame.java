@@ -1,7 +1,7 @@
 package epam.ph.sg.tab.flipper;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.List;
 
@@ -15,22 +15,30 @@ public class FlipperGame {
 		this.field = FlipperMapCreator.prepare(level);
 	}
 
-	public void flip(int line, int colum) {
-		field.get(line).get(colum).change();
+	/**
+	 * Flip boxes
+	 * 
+	 * @param line
+	 *            - box line
+	 * @param column
+	 *            - box column
+	 */
+	public void flip(int line, int column) {
+		field.get(line).get(column).change();
 		try {
-			field.get(line + 1).get(colum).change();
+			field.get(line + 1).get(column).change();
 		} catch (IndexOutOfBoundsException e) {
 		}
 		try {
-			field.get(line).get(colum + 1).change();
+			field.get(line).get(column + 1).change();
 		} catch (IndexOutOfBoundsException e) {
 		}
 		try {
-			field.get(line).get(colum - 1).change();
+			field.get(line).get(column - 1).change();
 		} catch (IndexOutOfBoundsException e) {
 		}
 		try {
-			field.get(line - 1).get(colum).change();
+			field.get(line - 1).get(column).change();
 		} catch (IndexOutOfBoundsException e) {
 		}
 		if (isNextLevel() == true) {
@@ -38,6 +46,11 @@ public class FlipperGame {
 		}
 	}
 
+	/**
+	 * Check is this level finished
+	 * 
+	 * @return true or false
+	 */
 	private boolean isNextLevel() {
 		for (List<FlipperBox> line : field) {
 			for (FlipperBox flipBox : line) {
@@ -49,6 +62,9 @@ public class FlipperGame {
 		return true;
 	}
 
+	/**
+	 * Switch game to the next level
+	 */
 	public void nextLevel() {
 		level++;
 		if (level < 13) {
@@ -59,27 +75,21 @@ public class FlipperGame {
 		}
 	}
 
+	/**
+	 * Reset this level to start
+	 */
 	public void resetLevel() {
 		field = FlipperMapCreator.prepare(level);
 	}
-	
-	/**
-	 * @return the level
-	 */
+
 	public int getLevel() {
 		return level;
 	}
 
-	/**
-	 * @return the field
-	 */
 	public List<List<FlipperBox>> getField() {
 		return field;
 	}
 
-	/**
-	 * @return the status
-	 */
 	public FlipperStatus getStatus() {
 		return status;
 	}

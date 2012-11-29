@@ -1,22 +1,27 @@
 package epam.ph.sg.tab.chat;
 
+/**
+ * @author Talash Pavlo
+ */
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-/**
- * @author Paul Michael T.
- */
 public class ChatUser {
 	private static Logger log = Logger.getLogger(ChatUser.class);
-	
+
 	private List<Message> loadedMsg = new ArrayList<Message>();
 
 	public List<Message> getLoadedMsg() {
 		return loadedMsg;
-	}	
+	}
 
+	/**
+	 * Check for new message in the chat and return it.
+	 * 
+	 * @return message array
+	 */
 	public Message[] refresh() {
 		int all = Chat.getAllMessages().size();
 		if (all > loadedMsg.size()) {

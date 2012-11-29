@@ -1,7 +1,7 @@
 package epam.ph.sg.games.xo;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +10,16 @@ public class XOField {
 	public static final int X_SIZE = 20;
 	public static final int Y_SIZE = 20;
 
-	private XOBox[][] boxes;
+	private List<List<XOBox>> boxes;
 
 	public XOField() {
-		boxes = new XOBox[X_SIZE][Y_SIZE];
+		boxes = new ArrayList<List<XOBox>>();
 		for (int x = 0; x < X_SIZE; x++) {
+			List<XOBox> line = new ArrayList<XOBox>();
 			for (int y = 0; y < Y_SIZE; y++) {
-				boxes[x][y] = new XOBox(x, y);
+				line.add(new XOBox(x, y));
 			}
+			boxes.add(line);
 		}
 	}
 
@@ -32,7 +34,7 @@ public class XOField {
 	 * @return box by coordinates
 	 */
 	public XOBox getBox(int x, int y) {
-		return boxes[x][y];
+		return boxes.get(x).get(y);
 	}
 
 	/**
@@ -41,15 +43,6 @@ public class XOField {
 	 * @return List of Lists of XOBox
 	 */
 	public List<List<XOBox>> getAllBox() {
-		List<List<XOBox>> fields = new ArrayList<List<XOBox>>();
-		ArrayList<XOBox> line;
-		for (int y = 0; y < Y_SIZE; y++) {
-			line = new ArrayList<XOBox>();
-			for (int x = 0; x < X_SIZE; x++) {
-				line.add(getBox(x, y));
-			}
-			fields.add(line);
-		}
-		return fields;
+		return boxes;
 	}
 }

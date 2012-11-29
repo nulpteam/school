@@ -1,5 +1,8 @@
 package epam.ph.sg.tab.minesweeper;
 
+/**
+ * @author Talash Pavlo
+ */
 import java.util.List;
 
 public class MSGame {
@@ -12,32 +15,92 @@ public class MSGame {
 		this.mines = mines;
 	}
 
-	public void lock(int line, int colum) {
-		if (field.get(line).get(colum).isLocked()) {
-			field.get(line).get(colum).setLocked(false);
+	/**
+	 * Put the flag on the box
+	 * 
+	 * @param line
+	 *            - box line
+	 * @param column
+	 *            - box column
+	 */
+	public void lock(int line, int column) {
+		if (field.get(line).get(column).isLocked()) {
+			field.get(line).get(column).setLocked(false);
 			status.decLockedBox();
-			if (field.get(line).get(colum).isMine()) {
+			if (field.get(line).get(column).isMine()) {
 				status.decLockedMines();
 			}
 		} else {
-			field.get(line).get(colum).setLocked(true);
+			field.get(line).get(column).setLocked(true);
 			status.incLockedBox();
-			if (field.get(line).get(colum).isMine()) {
+			if (field.get(line).get(column).isMine()) {
 				status.incLockedMines();
 			}
 		}
 	}
 
-	public void put(int line, int colum) {
-		if (field.get(line).get(colum).isMine()) {
-			field.get(line).get(colum).setVisible(true);
+	/**
+	 * Try to open box
+	 * 
+	 * @param line
+	 *            - box line
+	 * @param column
+	 *            - box column
+	 */
+	public void tryToOpen(int line, int column) {
+		if (field.get(line).get(column).isMine()) {
+			field.get(line).get(column).setVisible(true);
 			status.setLoose(true);
 		} else {
-			open(line, colum);
+			open(line, column);
 			status.setWin(isGameOver());
 		}
 	}
 
+	/**
+	 * Open box and if it's empty open all around boxes
+	 * 
+	 * @param line
+	 *            - box line
+	 * @param column
+	 *            - box column
+	 */
+	private void open(int line, int column) {
+		try {
+			if (!field.get(line).get(column).isVisible()) {
+				field.get(line).get(column).setVisible(true);
+				if (field.get(line).get(column).getMinesAround() == 0) {
+					openAllAround(line, column);
+				}
+			}
+		} catch (IndexOutOfBoundsException e) {
+		}
+	}
+
+	/**
+	 * Open all around boxes
+	 * 
+	 * @param line
+	 *            - box line
+	 * @param column
+	 *            - box column
+	 */
+	private void openAllAround(int line, int column) {
+		open(line, column + 1);
+		open(line, column - 1);
+		open(line + 1, column + 1);
+		open(line + 1, column - 1);
+		open(line - 1, column + 1);
+		open(line - 1, column - 1);
+		open(line + 1, column);
+		open(line - 1, column);
+	}
+
+	/**
+	 * Check is game over
+	 * 
+	 * @return true or false
+	 */
 	private boolean isGameOver() {
 		int unVisible = 0;
 		for (List<MSBox> line : field) {
@@ -51,29 +114,6 @@ public class MSGame {
 			}
 		}
 		return true;
-	}
-
-	private void open(int line, int colum) {
-		try {
-			if (!field.get(line).get(colum).isVisible()) {
-				field.get(line).get(colum).setVisible(true);
-				if (field.get(line).get(colum).getMinesAround() == 0) {
-					openAllAround(line, colum);
-				}
-			}
-		} catch (IndexOutOfBoundsException e) {
-		}
-	}
-
-	private void openAllAround(int line, int colum) {
-		open(line, colum + 1);
-		open(line, colum - 1);
-		open(line + 1, colum + 1);
-		open(line + 1, colum - 1);
-		open(line - 1, colum + 1);
-		open(line - 1, colum - 1);
-		open(line + 1, colum);
-		open(line - 1, colum);
 	}
 
 	public List<List<MSBox>> getField() {

@@ -1,41 +1,50 @@
 package epam.ph.sg.tab.sudoku;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 public class SudokuBox {
 	private int line;
-	private int colum;
+	private int column;
 
 	private int value = 0;
 	private int boxArea;
 	private boolean locked = false;
 
-	public SudokuBox(int line, int colum) {
+	public SudokuBox(int line, int column) {
 		this.line = line;
-		this.colum = colum;
-		this.boxArea = getArea(line, colum);
+		this.column = column;
+		this.boxArea = getArea(line, column);
 	}
 
-	private int getArea(int line, int colum) {
+	/**
+	 * Calculate the area from line and column
+	 * 
+	 * @param line
+	 *            - box line
+	 * @param column
+	 *            - box column
+	 * @return box area
+	 */
+	private static int getArea(int line, int column) {
 		if (line < 3) {
-			if (colum < 3)
+			if (column < 3)
 				return 0;
-			else if (colum < 6)
+			else if (column < 6)
 				return 1;
 			else
 				return 2;
 		} else if (line < 6) {
-			if (colum < 3)
+			if (column < 3)
 				return 3;
-			else if (colum < 6)
+			else if (column < 6)
 				return 4;
 			else
 				return 5;
 		} else {
-			if (colum < 3)
+			if (column < 3)
 				return 6;
-			else if (colum < 6)
+			else if (column < 6)
 				return 7;
 			else
 				return 8;
@@ -47,7 +56,7 @@ public class SudokuBox {
 	}
 
 	public int getColum() {
-		return colum;
+		return column;
 	}
 
 	public int getValue() {
@@ -80,14 +89,4 @@ public class SudokuBox {
 		else
 			return false;
 	}
-
-	// @Override
-	// public int compareTo(SudokuBox o) {
-	// String id1 = "" + this.getLine() + this.getColum();
-	// String id2 = "" + o.getLine() + o.getColum();
-	// if (id1.equals(id2))
-	// return 0;
-	// else
-	// return 1;
-	// }
 }

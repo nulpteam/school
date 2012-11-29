@@ -4,7 +4,7 @@ function msPut(elem) {
 	if (locked == true) {
 		return;
 	}
-	$.post('MSPut.html', {
+	$.post('MSOpen.html', {
 		id : elem.id
 	}, function(resp) {
 		msChange(resp, $('#mineSweeper #' + elem.id + ' div'));

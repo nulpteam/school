@@ -1,5 +1,8 @@
 package epam.ph.sg.dao;
 
+/**
+ * @author Talash Pavlo
+ */
 import epam.ph.sg.models.User;
 
 public interface UserDAO {

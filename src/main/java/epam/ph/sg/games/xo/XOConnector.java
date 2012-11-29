@@ -1,7 +1,7 @@
 package epam.ph.sg.games.xo;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.HashMap;
 import java.util.Map;

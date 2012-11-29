@@ -1,7 +1,7 @@
 package epam.ph.sg.web.filters;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.io.IOException;
 import java.util.Map;

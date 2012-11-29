@@ -1,7 +1,7 @@
 package epam.ph.sg.controllers;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.personal.Personal;
+import epam.ph.sg.personal.PersonalPage;
 import epam.ph.sg.personal.UserAddInfo;
 
 @Controller
@@ -27,7 +27,7 @@ public class PersonalController {
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		model.addAttribute("userAddInfo",
-				Personal.getUserAddIngo(user.getId()));
+				PersonalPage.getUserAddIngo(user.getId()));
 		return "PersonalPage";
 	}
 
@@ -38,7 +38,7 @@ public class PersonalController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		return Personal.getUserAddIngo(id);
+		return PersonalPage.getUserAddIngo(id);
 	}
 
 	@RequestMapping(value = "/ChangeName.html", method = RequestMethod.POST)
@@ -48,7 +48,7 @@ public class PersonalController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". New name: " + name);
-		if (Personal.changeName(user.getId(), name) == true) {
+		if (PersonalPage.changeName(user.getId(), name) == true) {
 			user.setName(name);
 			return true;
 		} else
@@ -62,7 +62,7 @@ public class PersonalController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". New email: " + email);
-		Personal.changeEmail(user.getId(), email);
+		PersonalPage.changeEmail(user.getId(), email);
 		return true;
 	}
 
@@ -73,7 +73,7 @@ public class PersonalController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". New birthday: " + birthday);
-		Personal.changeBirthday(user.getId(), birthday);
+		PersonalPage.changeBirthday(user.getId(), birthday);
 		return true;
 	}
 
@@ -84,8 +84,8 @@ public class PersonalController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". New about: " + about);
-		Personal.changeAbout(user.getId(), about);
-		return Personal.getUserAddIngo(user.getId()).getAbout();
+		PersonalPage.changeAbout(user.getId(), about);
+		return PersonalPage.getUserAddIngo(user.getId()).getAbout();
 	}
 
 	@RequestMapping(value = "/ChangePass.html", method = RequestMethod.POST)
@@ -97,7 +97,7 @@ public class PersonalController {
 				+ user.getId() + ". New pass: " + newPass + "; old pass: "
 				+ oldPass);
 		if (user.getPass().equals(oldPass)) {
-			Personal.changePass(user.getId(), newPass);
+			PersonalPage.changePass(user.getId(), newPass);
 			user.setPass(newPass);
 			return true;
 		} else {

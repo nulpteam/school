@@ -1,7 +1,7 @@
 package epam.ph.sg.games.xo;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,6 +34,11 @@ public class XOStatistics {
 		return dao.getUserStatistics(id);
 	}
 
+	/**
+	 * Extract sort and return users XO statistics
+	 * 
+	 * @return List of XOStatistics
+	 */
 	public static List<XOStatistics> getAllStatistics() {
 		List<XOStatistics> list = dao.getAllStatistics();
 		Collections.sort(list, new Comparator<XOStatistics>() {

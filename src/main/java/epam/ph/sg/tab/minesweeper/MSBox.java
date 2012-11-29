@@ -1,11 +1,14 @@
 package epam.ph.sg.tab.minesweeper;
 
+/**
+ * @author Talash Pavlo
+ */
 public class MSBox {
 	private boolean visible = false;
 	private boolean locked = false;
 	private boolean mine;
 	private int minesAround = 0;
-	
+
 	public MSBox(boolean mine) {
 		this.mine = mine;
 	}
@@ -29,11 +32,11 @@ public class MSBox {
 	public boolean isMine() {
 		return mine;
 	}
-	
+
 	public int getMinesAround() {
 		return minesAround;
 	}
-	
+
 	public void incMinesAround() {
 		this.minesAround++;
 	}
