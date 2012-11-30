@@ -40,10 +40,10 @@ public class ReversyBoard {
 					y0--;
 				}
 				if ((x0 > 0) && (y0 > 0) && getCell(x0 - 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
-					for (int i = x - 1; i >= x0; i--) {
-						for (int j = y - 1; j >= y0; j--) {
+					for (int i = x - 1, j = y - 1; i >= x0 && j >= y0; i--, j--) {
+//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-						}
+//						}
 					}
 				}
 			}
@@ -67,10 +67,10 @@ public class ReversyBoard {
 					y0--;
 				}
 				if ((x0 < 7) && (y0 > 0) && getCell(x0 + 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
-					for (int i = x + 1; i <= x0; i++) {
-						for (int j = y - 1; j >= y0; j--) {
+					for (int i = x + 1, j = y - 1; i <= x0 && j >= y0; i++, j--) {
+//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-						}
+//						}
 					}
 				}
 			}
@@ -107,10 +107,10 @@ public class ReversyBoard {
 					y0++;
 				}
 				if ((x0 > 0) && (y0 < 7) && getCell(x0 - 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
-					for (int i = x - 1; i >= x0; i--) {
-						for (int j = y + 1; j <= y0; j++) {
+					for (int i = x - 1, j = y + 1; i >= x0 && j <= y0; i--, j++) {
+//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-						}
+//						}
 					}
 				}
 			}
@@ -134,10 +134,10 @@ public class ReversyBoard {
 					y0++;
 				}
 				if ((x0 < 7) && (y0 < 7) && getCell(x0 + 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
-					for (int i = x + 1; i <= x0; i++) {
-						for (int j = y + 1; j <= y0; j++) {
+					for (int i = x + 1, j = y + 1; i <= x0 && j <= y0; i++, j++) {
+//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-						}
+//						}
 					}
 				}
 			}
@@ -154,10 +154,10 @@ public class ReversyBoard {
 					y0--;
 				}
 				if ((x0 > 0) && (y0 > 0) && getCell(x0 - 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
-					for (int i = x - 1; i >= x0; i--) {
-						for (int j = y - 1; j >= y0; j--) {
+					for (int i = x - 1, j = y - 1; i >= x0 && j >= y0; i--, j--) {
+//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-						}
+//						}
 					}
 				}
 			}
@@ -181,10 +181,10 @@ public class ReversyBoard {
 					y0--;
 				}
 				if ((x0 < 7) && (y0 > 0) && getCell(x0 + 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
-					for (int i = x + 1; i <= x0; i++) {
-						for (int j = y - 1; j >= y0; j--) {
+					for (int i = x + 1, j = y - 1; i <= x0 && j >= y0; i++, j--) {
+//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-						}
+//						}
 					}
 				}
 			}
@@ -221,10 +221,10 @@ public class ReversyBoard {
 					y0++;
 				}
 				if ((x0 > 0) && (y0 < 7) && getCell(x0 - 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
-					for (int i = x - 1; i >= x0; i--) {
-						for (int j = y + 1; j <= y0; j++) {
+					for (int i = x - 1, j = y + 1; i >= x0 && j <= y0; i--, j++) {
+//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-						}
+//						}
 					}
 				}
 			}
@@ -248,10 +248,10 @@ public class ReversyBoard {
 					y0++;
 				}
 				if ((x0 < 7) && (y0 < 7) && getCell(x0 + 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
-					for (int i = x + 1; i <= x0; i++) {
-						for (int j = y + 1; j <= y0; j++) {
+					for (int i = x + 1, j = y + 1; i <= x0 && j <= y0; i++, j++) {
+//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-						}
+//						}
 					}
 				}
 			}
@@ -713,13 +713,8 @@ public class ReversyBoard {
 	}
 	public String toString() {
 		String res = "";
-		int i = 0;
 		for (String cell : board) {
-			i++;
-			res = res + cell + "\t";
-			if (i%8 == 0) {
-				res = res + "\n";
-			}
+			res = res + cell + " ";
 		}
 		return res;
 	}

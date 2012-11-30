@@ -17,5 +17,9 @@ function goToRules() {
 };
 
 function create() {
-	goTo("ReversyCreateGame.html");
+	$.post("ReversyCreateGame.html", 
+			function(response) {
+					goTo("Reversy.html");
+			});
 };
+

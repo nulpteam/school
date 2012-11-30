@@ -15,18 +15,18 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
+import epam.ph.sg.models.reversy.ReversyBoard;
 import epam.ph.sg.models.reversy.ReversyGame;
 import epam.ph.sg.models.reversy.ReversyGameList;
 import epam.ph.sg.models.reversy.ReversyPlayer;
-import epam.ph.sg.models.reversy.ReversyWebSocketSpeeker;
 
 @Controller
 public class ReversyController {
 	private static Logger log = Logger.getLogger(ReversyController.class);
+	public static HashMap<Integer, ReversyGame> activeGames = new HashMap<Integer, ReversyGame>();
 	
 	private static String propertyFileName = "reversy";
 	public static ResourceBundle boundle = ResourceBundle.getBundle(propertyFileName);
@@ -51,12 +51,13 @@ public class ReversyController {
 		player1.setName(((User) session.getAttribute("user")).getName());
 		player1.setFigure(ReversyController.boundle.getString("game.figure.x"));
 		reversyGame.setPlayer1(player1);
+		ReversyGameList.setGame(reversyGame.getId(), reversyGame);
 		session.setAttribute("ReversyGame", reversyGame);
 		return boundle.getString("jsp.game");
 	}
 	
 	@RequestMapping(value = "/ReversyConnectGame.html", method = RequestMethod.POST)
-	public @ResponseBody String reversyConnectGame(@RequestParam("gameID") Integer gameID, HttpSession session) {
+	public @ResponseBody String reversyConnectGame(Integer gameID, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
 		HashMap<Integer, ReversyGame> tempList = ReversyGameList.getGameList();
 		ReversyGame reversyGame = tempList.get(gameID);
@@ -90,7 +91,7 @@ public class ReversyController {
 	}
 	
 	@RequestMapping(value = "/move.html", method = RequestMethod.POST)
-	public @ResponseBody String reversyMove(@RequestParam("gameID") Integer gameID, int x, int y, String figure, String playerName, HttpSession session) {
+	public @ResponseBody String reversyMove(Integer gameID, int x, int y, String figure, String playerName, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
 		log.debug(gameID);
 		log.debug(x);
@@ -98,27 +99,30 @@ public class ReversyController {
 		log.debug(figure);
 		log.debug(playerName);
 		
-		ReversyWebSocketSpeeker.activeGames.get(gameID).getBoard().changeBoard(x, y, figure);
-		log.debug(ReversyWebSocketSpeeker.activeGames.get(gameID));
+		ReversyBoard temp = activeGames.get(gameID).getBoard();
+		temp.changeBoard(x, y, figure);
+		activeGames.get(gameID).setBoard(temp);
+		log.debug(activeGames.get(gameID));
 		try {
-			ReversyWebSocketSpeeker.activeGames.get(gameID).getPlayer1().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes"));
+			activeGames.get(gameID).getPlayer1().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes") + " " + temp);
 		} catch (Exception e) {
-			log.error(boundle.getString("message.err.cant.send.message"));
+			e.printStackTrace();
 		}
 		try {
-			ReversyWebSocketSpeeker.activeGames.get(gameID).getPlayer2().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes"));
+			activeGames.get(gameID).getPlayer2().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes") + " " + temp);
 		} catch (Exception e) {
-			log.error(boundle.getString("message.err.cant.send.message"));
+			e.printStackTrace();
 		}
-		session.setAttribute("ReversyGame", ReversyWebSocketSpeeker.activeGames.get(gameID));
+		session.setAttribute("ReversyGame", activeGames.get(gameID));
 		return boundle.getString("answer.possitive");
 	}
 	
 	@RequestMapping(value = "/changes.html", method = RequestMethod.POST)
-	public @ResponseBody String reversyChanges(@RequestParam("gameID") Integer gameID, HttpSession session) {
+	public @ResponseBody String reversyChanges(Integer gameID, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
+		log.debug("/changes.html");
 		log.debug(gameID);
-		session.setAttribute("ReversyGame", ReversyWebSocketSpeeker.activeGames.get(gameID));
+		session.setAttribute("ReversyGame", activeGames.get(gameID));
 		return boundle.getString("answer.possitive");
 	}
 }
