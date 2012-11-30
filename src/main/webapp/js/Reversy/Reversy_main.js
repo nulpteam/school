@@ -32,3 +32,32 @@ function clickO(id) {
 	}, function(data) {
 	});
 };
+/*
+ * games
+ */
+function connectGame(id) {
+	$.post("ReversyConnectGame.html", {gameID: id},
+		function(response) {
+			if (response === "true") {
+				goTo("Reversy.html");
+			}
+		}
+	);
+};
+/*
+ * menu
+ */
+function goToList(ID) {
+	goTo("ReversyGamesList.html");
+};
+
+function goToRules() {
+	goTo("ReversyRules.html");
+};
+
+function create() {
+	$.post("ReversyCreateGame.html", 
+			function(response) {
+					goTo("Reversy.html");
+			});
+};
