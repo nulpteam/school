@@ -21,6 +21,13 @@ public class SbJSLoader {
 	{
 		scripts.add("js/"+script+".js");
 	}
+	public void removeScript(String script)
+	{
+		scripts.remove(script);
+	}
+	
+	
+	
 	public String toString()
 	{
 		StringBuilder sb = new StringBuilder();

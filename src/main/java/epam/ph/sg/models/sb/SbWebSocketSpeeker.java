@@ -41,7 +41,7 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 				log.debug("++++++++++++server v pershomu if++++++++++++++");
 				if (ActiveGames.getGame(gameID).getServer().getConn() != null) {
 					log.debug("++++++++++++server v drugomu if++++++++++++++");
-					ActiveGames.getGame(gameID).getServer().getConn().close();
+					//ActiveGames.getGame(gameID).getServer().getConn().close();
 				}
 				ActiveGames.getGame(gameID).getServer().setConn(conn);
 			}
@@ -49,7 +49,7 @@ public class SbWebSocketSpeeker implements WebSocket.OnTextMessage {
 				log.debug("++++++++++++client v pershomu if++++++++++++++");
 				if (ActiveGames.getGame(gameID).getClient().getConn() != null) {
 					log.debug("++++++++++++client v pershomu if++++++++++++++");
-					ActiveGames.getGame(gameID).getClient().getConn().close();
+					//ActiveGames.getGame(gameID).getClient().getConn().close();
 				}
 				ActiveGames.getGame(gameID).getClient().setConn(conn);
 			}
