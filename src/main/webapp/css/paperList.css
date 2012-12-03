@@ -105,3 +105,9 @@ body {
 	position: absolute;
 	margin: 150px 180px;
 }
+.errMsg{
+	margin: 100px 86px;
+	width: 420px;
+	height: 200px;
+	text-align: center;
+}
