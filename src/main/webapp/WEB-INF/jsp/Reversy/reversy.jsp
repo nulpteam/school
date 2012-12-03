@@ -10,6 +10,13 @@
 <script src="js/Reversy/Reversy_socket.js" type="text/javascript"></script>
 	<div id="gameID" class="${ReversyGame.id}"></div>
 	<div id="userName" class="${user.name}"></div>
+	<div id="player1" class="${ReversyGame.player1.name}"></div>
+	<div id="player2" class="${ReversyGame.player2.name}"></div>
+	<div id="figure1" class="${ReversyGame.player1.figure}"></div>
+	<div id="figure2" class="${ReversyGame.player2.figure}"></div>
+	<div id="gameView1" class="${ReversyGame.player1.gameView}"></div>
+	<div id="gameView2" class="${ReversyGame.player2.gameView}"></div>
+	<div id="nextMove" class="${ReversyGame.playerNameToMove}"></div>
 	<div class="boards">
 		<table class="reversy" cellspacing="0" cellpadding="0" border="0px">
 			<tr >
@@ -112,11 +119,9 @@
 				<td id="h8" class="${ReversyGame.board.h8}"></td>
 			</tr>
 		</table>
-<!-- 		<p> -->
-<%-- 			${ReversyGame.id} --%>
-<!-- 		</p> -->
-<!-- 		<p> -->
-<%-- 			${user.name} --%>
-<!-- 		</p> -->
+		<div class="results">
+			<div class="player1">${ReversyGame.player1.name} (${ReversyGame.player1.figure}) <div class="player1count"></div></div>
+			<div class="player2">${ReversyGame.player2.name} (${ReversyGame.player2.figure}) <div class="player2count"></div></div>
+		</div>
 	</div>
 </div>

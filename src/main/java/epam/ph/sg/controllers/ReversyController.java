@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.models.reversy.ReversyBoard;
 import epam.ph.sg.models.reversy.ReversyGame;
 import epam.ph.sg.models.reversy.ReversyGameList;
 import epam.ph.sg.models.reversy.ReversyPlayer;
@@ -65,8 +64,9 @@ public class ReversyController {
 		player2.setName(((User) session.getAttribute("user")).getName());
 		player2.setFigure(ReversyController.boundle.getString("game.figure.o"));
 		reversyGame.setPlayer2(player2);
+		reversyGame.setPlayerNameToMove(reversyGame.getPlayer1().getName());
 		try {
-			reversyGame.getPlayer1().getConnection().sendMessage(boundle.getString("game.connected"));
+			reversyGame.getPlayer1().getConnection().sendMessage(boundle.getString("game.connected") + "&" + reversyGame.getPlayer2().getName() + "&" + reversyGame.getPlayer2().getFigure() + "&" + reversyGame.getPlayerNameToMove());
 		} catch (Exception e) {
 			log.error(boundle.getString("message.err.cant.send.message"));
 		}
@@ -99,17 +99,17 @@ public class ReversyController {
 		log.debug(figure);
 		log.debug(playerName);
 		
-		ReversyBoard temp = activeGames.get(gameID).getBoard();
+		ReversyGame temp = activeGames.get(gameID);
 		temp.changeBoard(x, y, figure);
-		activeGames.get(gameID).setBoard(temp);
+		activeGames.put(gameID, temp);
 		log.debug(activeGames.get(gameID));
 		try {
-			activeGames.get(gameID).getPlayer1().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes") + " " + temp);
+			activeGames.get(gameID).getPlayer1().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes") + temp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		try {
-			activeGames.get(gameID).getPlayer2().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes") + " " + temp);
+			activeGames.get(gameID).getPlayer2().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.changes") + temp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
