@@ -40,10 +40,14 @@ $(document)
 								if ($("#" + x + y).attr("class") ==  "canX") {
 									if (myFigure == "x") {
 										$("#" + x + y).attr("onclick", "clickX(this.id)");
+									} else {
+										$("#" + x + y).attr("onclick", "");
 									}
 								} else if ($("#" + x + y).attr("class") ==  "canO") {
 									if (myFigure == "o") {
 										$("#" + x + y).attr("onclick", "clickO(this.id)");
+									} else {
+										$("#" + x + y).attr("onclick", "");
 									}
 								}
 								if ($("#" + x + y).attr("class") ==  "x") {
@@ -73,15 +77,19 @@ $(document)
 									if (temp[i + 2] == "canX") {
 										if (myFigure == "x") {
 											$("#" + x + y).attr("onclick", "clickX(this.id)");
+										} else {
+											$("#" + x + y).attr("onclick", "");
 										}
 									}
 									if (temp[i + 2] == "canO") {
 										if (myFigure == "o") {
 											$("#" + x + y).attr("onclick", "clickO(this.id)");
+										} else {
+											$("#" + x + y).attr("onclick", "");
 										}
 									}
 									if ((temp[i + 2] != "canO")&&(temp[i + 2] != "canX")) {
-										$("#" + x + y).removeClass("onclick");
+										$("#" + x + y).attr("onclick", "");
 									}
 									if ($("#" + x + y).attr("class") ==  "x") {
 										xs++;
@@ -92,6 +100,19 @@ $(document)
 								};
 								$(".player1count").text(xs);
 								$(".player2count").text(os);
+								//TODO game end
+								if (nextMove == "end") {
+									if (myFigure == "x") {
+										if (xs > os) {goTo("Victory.html");}
+										if (xs < os) {goTo("Loose.html");}
+										if (xs == os) {goTo("Nichya.html");}
+									}
+									if (myFigure == "o") {
+										if (xs > os) {goTo("Victory.html");}
+										if (xs < os) {goTo("Loose.html");}
+										if (xs == os) {goTo("Nichya.html");}
+									}
+								}
 							};
 						};
 					};
