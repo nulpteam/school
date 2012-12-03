@@ -13,8 +13,15 @@ public class ErrorController {
 	
 	@RequestMapping("/404.html")
 	public String error404(HttpSession session) {
-		session.setAttribute("currentPos", "error404.html");
-		return "index";
+		if(session.getAttribute("user")!=null)
+		{
+			session.setAttribute("currentPos", "error404.html");
+			return "index";
+		}
+		else
+		{
+			return "404";	
+		}
 	}
 
 	@RequestMapping("/error404.html")
