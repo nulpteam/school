@@ -6,6 +6,7 @@ package epam.ph.sg.controllers;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,11 @@ public class HomeController {
 	private static Logger log = Logger.getLogger(HomeController.class);
 
 	@RequestMapping("/index.html")
-	public String index(HttpServletRequest request) {
+	public String index(HttpServletRequest request, HttpSession session) {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
+		session.setAttribute("currentPos", "Menu.html");
 		return "index";
 	}
 
