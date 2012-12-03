@@ -1,7 +1,7 @@
 package epam.ph.sg.dao.impl;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +19,7 @@ import epam.ph.sg.dao.XOStatisticsDAO;
 import epam.ph.sg.games.xo.XOStatistics;
 
 public class XOStatisticsDAOimpl implements XOStatisticsDAO {
+	
 	private JdbcTemplate jdbcTemplate;
 
 	public JdbcTemplate getJdbcTemplate() {

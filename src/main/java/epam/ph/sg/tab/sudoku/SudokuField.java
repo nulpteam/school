@@ -1,7 +1,7 @@
 package epam.ph.sg.tab.sudoku;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,11 @@ public class SudokuField {
 		}
 		createAreas();
 	}
-	
-	private void createAreas(){
+
+	/**
+	 * Create List of box areas
+	 */
+	private void createAreas() {
 		areas = new ArrayList<List<SudokuBox>>();
 		for (int i = 0; i < 9; i++) {
 			areas.add(new ArrayList<SudokuBox>());
@@ -35,11 +38,11 @@ public class SudokuField {
 			}
 		}
 	}
-	
-	public SudokuBox getBox(int line, int colum) {
-		return field.get(line).get(colum);
+
+	public SudokuBox getBox(int line, int column) {
+		return field.get(line).get(column);
 	}
-	
+
 	public SudokuBox getBoxByArea(int areaNumber, int boxNumber) {
 		return areas.get(areaNumber).get(boxNumber);
 	}

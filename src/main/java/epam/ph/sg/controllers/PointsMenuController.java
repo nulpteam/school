@@ -2,7 +2,6 @@ package epam.ph.sg.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +16,7 @@ import epam.ph.sg.models.points.PtsPlayer;
 @Controller
 public class PointsMenuController {
 
-	private static Logger logger = Logger.getLogger(PointsMenuController.class);
+	//private static Logger logger = Logger.getLogger(PointsMenuController.class);
 
 	@RequestMapping(value = "/Points.html")
 	public String pointsMenu(HttpSession session) {
@@ -98,21 +97,30 @@ public class PointsMenuController {
 
 		user = (User) session.getAttribute("user");
 		game = PtsGameMap.getGames().get(Integer.parseInt(gameId));
-		client = new PtsPlayer(user.getName(), game.getId());
-		game.setClient(client);
-		session.setAttribute("ptsGame", game);
-		session.setAttribute("ptsUserType", "client");
-		session.setAttribute("ptsGameId", game.getId());
-		PtsGameMap.deleteGameServer(game.getId());
-		session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
+		if (game != null) {
+			client = new PtsPlayer(user.getName(), game.getId());
+			game.setClient(client);
+			session.setAttribute("ptsGame", game);
+			session.setAttribute("ptsUserType", "client");
+			session.setAttribute("ptsGameId", game.getId());
+			PtsGameMap.deleteGameServer(game.getId());
+			session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
+			return true;
+		}
 
-		return true;
+		return false;
 	}
 	
-	@RequestMapping(value = "/PointsEndGame.html")
-	public String endOFGame(HttpSession session) {
-
-		return "Points/PointsEndGame";
+	@RequestMapping(value = "/PointsEndGameWinner.html")
+	public String endOfGameLooser(HttpSession session) {
+		
+		return "Points/PointsEndGameWinner";
+	}
+	
+	@RequestMapping(value = "/PointsEndGameLooser.html")
+	public String endOfGameWinner(HttpSession session) {
+		
+		return "Points/PointsEndGameLooser";
 	}
 	
 	@RequestMapping(value = "/PointsClearPointsGameSession.html", method = RequestMethod.POST)

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
 	$("#pts_menu_connect").mouseover(function() {
 		$("#pts_menu_connect > img").attr('src', "images/Points/Connect2.png");
 	});
@@ -41,6 +41,9 @@ function connect(game_Id) {
 	$.post("PointsConnect.html", {
 		gameId : game_Id
 	}, function(response) {
-		goTo('PointsGame.html');
+		if (response == false)
+			goTo('PointsConnectList.html');
+		else
+			goTo('PointsGame.html');
 	});
 }

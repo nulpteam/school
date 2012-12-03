@@ -1,7 +1,7 @@
 package epam.ph.sg.controllers;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.List;
 
@@ -68,8 +68,7 @@ public class XOMenuController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		XOPlayer xo = XOConnector.create(user);
-		request.getSession().setAttribute("xoGame", xo);
+		request.getSession().setAttribute("xoGame", XOConnector.create(user));
 		return "XO/WaitPage";
 	}
 
@@ -80,8 +79,8 @@ public class XOMenuController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". Server id=" + serverID);
-		XOPlayer xo = XOConnector.connect(serverID, user);
-		request.getSession().setAttribute("xoGame", xo);
+		request.getSession().setAttribute("xoGame",
+				XOConnector.connect(serverID, user));
 		return true;
 	}
 
@@ -94,8 +93,7 @@ public class XOMenuController {
 		XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
 		if (xo == null)
 			return "redirect:/XOMenu.html";
-		XOStatistics myStat = XOStatistics.getUserStatistics(xo.getId());
-		model.addAttribute("myStat", myStat);
+		model.addAttribute("myStat", XOStatistics.getUserStatistics(xo.getId()));
 		if (xo.getId() == xo.getGame().getServer().getId()) {
 			User client = xo.getGame().getClient();
 			if (client != null) {

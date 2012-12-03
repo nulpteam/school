@@ -166,10 +166,6 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/BsGame.html", method = RequestMethod.POST)
 	public String SbGame(Model model, HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			new HomeController().index(session);
-			return "Login";
-		}
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		sbJSLoader.addScript("SB/jquery-ui-1.9.0");
 		sbJSLoader.addScript("SB/SB");
@@ -195,6 +191,7 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/Victory.html", method = RequestMethod.POST)
 	public String Victory(Model model, HttpSession session) {
+		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		int gameId = ((Game) session.getAttribute("Game")).getId();
 		SBStatistics.win(((User)session.getAttribute("user")).getId());
 		log.debug("-//--//--//user id="+((User)session.getAttribute("user")).getId());
@@ -202,6 +199,7 @@ public class SBMenuController {
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
 		session.removeAttribute("mess");
+		sbJSLoader.removeScript("js/SB/WebSocket.js");
 		// ActiveGames.removeGame(gameId);
 		GamesList.removeGameFromListBS(gameId);
 		//session.setAttribute("currentPos", "Menu.html");
@@ -210,11 +208,13 @@ public class SBMenuController {
 
 	@RequestMapping(value = "/Loose.html", method = RequestMethod.POST)
 	public String Loose(Model model, HttpSession session) {
+		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		SBStatistics.lose(((User)session.getAttribute("user")).getId());
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
 		session.removeAttribute("mess");
+		sbJSLoader.removeScript("js/SB/WebSocket.js");
 		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Loose";
 	}
@@ -222,6 +222,7 @@ public class SBMenuController {
 	@RequestMapping(value = "/SbStop.html", method = RequestMethod.POST)
 	public String StopSbGame(@RequestParam("connType") String connType,
 			Model model, HttpSession session) {
+		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		SBStatistics.lose(((User)session.getAttribute("user")).getId());
 		Game g = (Game)session.getAttribute("Game");
 		int gameId = g.getId();
@@ -250,6 +251,8 @@ public class SBMenuController {
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
+		session.removeAttribute("mess");
+		sbJSLoader.removeScript("js/SB/WebSocket.js");
 		return "SB/SbMenu";
 	}
 	

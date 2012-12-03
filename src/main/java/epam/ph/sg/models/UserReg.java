@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import epam.ph.sg.games.xo.XOStatistics;
 import epam.ph.sg.models.sb.SBStatistics;
-import epam.ph.sg.personal.Personal;
+import epam.ph.sg.personal.PersonalPage;
 
 /**
  * @author roman makovyak
@@ -25,6 +25,6 @@ public class UserReg {
 		User user = UserCheck.check(name, pass);
 		XOStatistics.insert(user.getId());
 		SBStatistics.insert(user.getId());
-		Personal.insert(user.getId());
+		PersonalPage.insert(user.getId());
 	}
 }

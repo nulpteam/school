@@ -1,7 +1,7 @@
 package epam.ph.sg.controllers;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.Set;
 
@@ -27,8 +27,7 @@ public class SudokuController {
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		if (request.getSession().getAttribute("sudoku") == null) {
-			SudokuGame game = SudokuGame.getGame(1);
-			request.getSession().setAttribute("sudoku", game);
+			request.getSession().setAttribute("sudoku", SudokuGame.getGame(1));
 		}
 		return "Tab/Sudoku";
 	}
@@ -39,8 +38,7 @@ public class SudokuController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". Level: " + level);
-		SudokuGame game = SudokuGame.getGame(level);
-		request.getSession().setAttribute("sudoku", game);
+		request.getSession().setAttribute("sudoku", SudokuGame.getGame(level));
 		return "Tab/Sudoku";
 	}
 
@@ -54,8 +52,8 @@ public class SudokuController {
 		SudokuGame game = (SudokuGame) request.getSession().getAttribute(
 				"sudoku");
 		int line = Integer.valueOf(id.substring(0, 1));
-		int colum = Integer.valueOf(id.substring(1));
-		return game.put(line, colum, value);
+		int column = Integer.valueOf(id.substring(1));
+		return game.tryToPut(line, column, value);
 	}
 
 	@RequestMapping("/SudokuGetFailed.html")
@@ -67,12 +65,6 @@ public class SudokuController {
 		SudokuGame game = (SudokuGame) request.getSession().getAttribute(
 				"sudoku");
 		Set<SudokuBox> failed = game.getFailed();
-		SudokuBox[] failedArray = new SudokuBox[failed.size()];
-		int i = 0;
-		for (SudokuBox sudokuBox : failed) {
-			failedArray[i] = sudokuBox;
-			i++;
-		}
-		return failedArray;
+		return failed.toArray(new SudokuBox[failed.size()]);
 	}
 }

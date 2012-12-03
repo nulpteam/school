@@ -13,6 +13,12 @@ public class ReversyGameList {
 	public static void setGameList(HashMap<Integer, ReversyGame> gameList) {
 		ReversyGameList.gameList = gameList;
 	}
+	public static void setGame(Integer id, ReversyGame game) {
+		ReversyGameList.gameList.put(id, game);
+	}
+	public static ReversyGame getGame(Integer id) {
+		return ReversyGameList.gameList.get(id);
+	}
 	private static Integer gameID = 0;
 	
 	public static HashMap<Integer, ReversyGame> getGameList() {

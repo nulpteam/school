@@ -1,5 +1,8 @@
 package epam.ph.sg.tab.flipper;
 
+/**
+ * @author Talash Pavlo
+ */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,11 +10,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Paul Michael T.
- */
 public class FlipperMapCreator {
 
+	/**
+	 * Prepare level map for game
+	 * 
+	 * @param level
+	 *            - game level
+	 * @return List of List of FlipperBox
+	 */
 	public static List<List<FlipperBox>> prepare(int level) {
 		List<String> lines = read(getFileAddress(level));
 		List<List<FlipperBox>> map = new ArrayList<List<FlipperBox>>();
@@ -27,6 +34,13 @@ public class FlipperMapCreator {
 		return map;
 	}
 
+	/**
+	 * Build file address (level source)
+	 * 
+	 * @param level
+	 *            - game level
+	 * @return file address
+	 */
 	private static String getFileAddress(int level) {
 		String adr = FlipperMapCreator.class.getClassLoader()
 				.getResource("/flipper/level_" + level + ".map").getFile()
@@ -34,6 +48,13 @@ public class FlipperMapCreator {
 		return adr;
 	}
 
+	/**
+	 * Read level source
+	 * 
+	 * @param file
+	 *            - file address
+	 * @return file data in Strings
+	 */
 	private static List<String> read(String file) {
 		List<String> lines = new ArrayList<String>();
 		try {

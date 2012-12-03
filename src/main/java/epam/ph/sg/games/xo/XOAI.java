@@ -1,7 +1,7 @@
 package epam.ph.sg.games.xo;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 public class XOAI {
 	public static final int TO_WIN = 5;
@@ -42,13 +42,13 @@ public class XOAI {
 			while (box.getStatus() == fields.getBox(x + i, y).getStatus()) {
 				i++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		try {
 			while (box.getStatus() == fields.getBox(x - j, y).getStatus()) {
 				j++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		return i + j - 1;
 	}
@@ -63,13 +63,13 @@ public class XOAI {
 			while (box.getStatus() == fields.getBox(x, y + i).getStatus()) {
 				i++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		try {
 			while (box.getStatus() == fields.getBox(x, y - j).getStatus()) {
 				j++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		return i + j - 1;
 	}
@@ -84,13 +84,13 @@ public class XOAI {
 			while (box.getStatus() == fields.getBox(x + i, y + i).getStatus()) {
 				i++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		try {
 			while (box.getStatus() == fields.getBox(x - j, y - j).getStatus()) {
 				j++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		return i + j - 1;
 	}
@@ -105,13 +105,13 @@ public class XOAI {
 			while (box.getStatus() == fields.getBox(x + i, y - i).getStatus()) {
 				i++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		try {
 			while (box.getStatus() == fields.getBox(x - j, y + j).getStatus()) {
 				j++;
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 		}
 		return i + j - 1;
 	}

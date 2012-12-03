@@ -1,5 +1,8 @@
 package epam.ph.sg.dao.impl;
 
+/**
+ * @author Talash Pavlo
+ */
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -11,7 +14,7 @@ import epam.ph.sg.dao.UserDAO;
 import epam.ph.sg.models.User;
 
 public class UserDAOimpl implements UserDAO {
-	
+
 	private JdbcTemplate jdbcTemplate = null;
 
 	public JdbcTemplate getJdbcTemplate() {
@@ -24,11 +27,12 @@ public class UserDAOimpl implements UserDAO {
 
 	@Override
 	public User getUserByName(String name) {
-		String sql = "select id, name, pass from users where name='" + name + "'";
+		String sql = "select id, name, pass from users where name='" + name
+				+ "'";
 		User user = jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
 
 			public User extractData(ResultSet rs) throws SQLException,
-			DataAccessException {
+					DataAccessException {
 				User user = null;
 				if (rs.next()) {
 					user = new User();

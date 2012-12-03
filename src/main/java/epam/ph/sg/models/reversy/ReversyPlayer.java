@@ -12,6 +12,7 @@ public class ReversyPlayer {
 	private String name;
 	private Connection connection;
 	private int gameView;
+	private String figure;
 	public ReversyPlayer() {
 		// TODO Auto-generated constructor stub
 		name = "Unknown Player";
@@ -32,6 +33,14 @@ public class ReversyPlayer {
 
 	public void setConnection(Connection connection) {
 		this.connection = connection;
+	}
+
+	public String getFigure() {
+		return figure;
+	}
+
+	public void setFigure(String figure) {
+		this.figure = figure;
 	}
 
 	public int getGameView() {

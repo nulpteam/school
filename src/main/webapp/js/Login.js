@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 var i=0;
 var str = new Array();
-var passphrase ="Show";
+var passphrase ="Orest";
 function cheat(event)
 {
 	
@@ -37,14 +37,15 @@ function cheat(event)
 	c(str.join(''));
 	i++;
 }
-function c(s)
+function c(s) 
 {
 	if(s===passphrase)
 	{
 //		document.location.href="http://www.google.com";
 //		document.location.replace("http://www.google.com");
-		html = '<img src="images/flag_ua.png" style="position:relative; top:0px; left:0px;">';
-		$('#t').html(html);
+//		html = '<img src="images/birds3.png" style="position:relative; top:0px; left:0px;">';
+//		$('#t').html(html);
+		$('#bg').css("background-image","url('http://"+location.hostname+":"+location.port+"/School/images/background3.png')");
 	}
 }
 function clearz()

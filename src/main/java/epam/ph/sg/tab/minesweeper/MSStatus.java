@@ -1,5 +1,8 @@
 package epam.ph.sg.tab.minesweeper;
 
+/**
+ * @author Talash Pavlo
+ */
 public class MSStatus {
 	private boolean loose = false;
 	private boolean win = false;
@@ -13,7 +16,7 @@ public class MSStatus {
 	public void incLockedBox() {
 		this.lockedBox++;
 	}
-	
+
 	public void decLockedBox() {
 		this.lockedBox--;
 	}

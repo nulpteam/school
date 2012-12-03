@@ -76,10 +76,13 @@ function chSound() {
 
 // Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
+	//console.log(obj);
 	id = $(obj).attr('id');
-	infield = $(obj)[0].classList[1] === "infield";
+	//console.log(id);
+	//infield = $(obj)[0].classList[1] === "infield";
+	//console.log(infield);
 	isDisabled = $(obj/* '#' + id */).draggable('option', 'disabled');
-	if (!isDisabled && !infield) {
+	if (!isDisabled /*&& !infield*/) {
 		var c = $(obj).attr("class");
 		orientation = c[0];
 		newOrientation = 'H';

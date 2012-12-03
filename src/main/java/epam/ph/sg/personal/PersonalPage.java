@@ -1,18 +1,18 @@
 package epam.ph.sg.personal;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import epam.ph.sg.dao.PersonalPageDAO;
+import epam.ph.sg.dao.UserAddInfoDAO;
 import epam.ph.sg.models.UserCheck;
 
-public class Personal {
+public class PersonalPage {
 	private static ApplicationContext ctx = new ClassPathXmlApplicationContext(
 			"springconfig.xml");
-	private static PersonalPageDAO dao = (PersonalPageDAO) ctx
+	private static UserAddInfoDAO dao = (UserAddInfoDAO) ctx
 			.getBean("personalPageDAOimpl");
 
 	public static void insert(int id) {
@@ -48,6 +48,13 @@ public class Personal {
 		dao.changeAbout(id, textSplitter(about));
 	}
 
+	/**
+	 * Split text to add it to the DB
+	 * 
+	 * @param text
+	 *            - text to split
+	 * @return prepared text
+	 */
 	private static String textSplitter(String text) {
 		int wordlenght = 20;
 		String preparedText = "";

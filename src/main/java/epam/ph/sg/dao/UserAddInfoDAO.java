@@ -1,11 +1,11 @@
 package epam.ph.sg.dao;
 
+/**
+ * @author Talash Pavlo
+ */
 import epam.ph.sg.personal.UserAddInfo;
 
-/**
- * @author Paul Michael T.
- */
-public interface PersonalPageDAO {
+public interface UserAddInfoDAO {
 	/**
 	 * Insert new UserAddInfo in the DB
 	 * 
@@ -13,6 +13,7 @@ public interface PersonalPageDAO {
 	 *            - User ID
 	 */
 	void insert(int id);
+
 	/**
 	 * Get User Add Info from the DB
 	 * 

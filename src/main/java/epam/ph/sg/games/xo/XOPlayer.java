@@ -1,7 +1,7 @@
 package epam.ph.sg.games.xo;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.List;
 
@@ -17,15 +17,14 @@ public class XOPlayer {
 	}
 
 	/**
-	 * Try to put
+	 * Try to put figure on the field
 	 * 
 	 * @param x
-	 *            - X coordinate of this box
+	 *            - X coordinate of box
 	 * @param y
-	 *            - Y coordinate of this box
+	 *            - Y coordinate of box
 	 * 
-	 * @return XO.NOT_YOUR_TURN, XO.WITHOUT_CLIENT, XO.OUT, XO.NOT_EMPTY,
-	 *         XO.GAME_OVER or status of changed box
+	 * @return true or false
 	 */
 	public boolean tryToPut(int x, int y) {
 		if (game.getStatus().getLastPlayer() == id) {
@@ -40,6 +39,14 @@ public class XOPlayer {
 		}
 	}
 
+	/**
+	 * Put figure on the field
+	 * 
+	 * @param x
+	 *            - X coordinate of box
+	 * @param y
+	 *            - Y coordinate of box
+	 */
 	private void put(int x, int y) {
 		XOBox box = game.getXoFields().getBox(x, y);
 		box.setStatus(status);
@@ -51,11 +58,6 @@ public class XOPlayer {
 		game.gameTimeOut(id);
 	}
 
-	/**
-	 * Fields getter
-	 * 
-	 * @return List of Lists of XOBox
-	 */
 	public List<List<XOBox>> getFields() {
 		return game.getXoFields().getAllBox();
 	}

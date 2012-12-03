@@ -1,13 +1,15 @@
 package epam.ph.sg.tab.chat;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.Date;
 
 import epam.ph.sg.models.User;
 
 public class Message {
+	public static final int MAX_LENGTH = 20;
+
 	private String time;
 	private User sender;
 	private String text;
@@ -27,13 +29,20 @@ public class Message {
 		this.text = msgPrepare(text);
 	}
 
+	/**
+	 * Prepare text to add it to the Chat (split to MAX_LENGTH)
+	 * 
+	 * @param text
+	 *            - text to split
+	 * @return prepared text
+	 */
 	private static String msgPrepare(String text) {
-		int wordlenght = 20;
+
 		String preparedText = "";
 		String[] words = text.split(" ");
 		for (int i = 0; i < words.length; i++) {
-			if (words[i].length() > wordlenght) {
-				String newWord = words[i].substring(0, wordlenght);
+			if (words[i].length() > MAX_LENGTH) {
+				String newWord = words[i].substring(0, MAX_LENGTH);
 				newWord = newWord.concat("...");
 				preparedText += " " + newWord;
 			} else {
@@ -54,7 +63,7 @@ public class Message {
 	public String getText() {
 		return text;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Sender: " + getSender().getName() + "; Time: " + getTime();

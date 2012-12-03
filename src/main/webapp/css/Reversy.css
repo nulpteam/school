@@ -42,10 +42,9 @@
 	font-size: 20px;
     font-weight: bold;
 }
-.board {
+.board, .canX, .canO {
 	background-image: url("../images/Reversy/empty.png");
 	background-repeat: no-repeat;
-	
 }
 .boards {
 	
@@ -63,3 +62,13 @@
 	background-image: url("../images/Reversy/O.gif");
 	background-repeat: no-repeat;
 }
+.canX:hover { 
+	background-image: url("../images/Reversy/X.gif");
+	background-repeat: no-repeat;
+	opacity: 0.35;
+} 
+.canO:hover { 
+	background-image: url("../images/Reversy/O.gif");
+	background-repeat: no-repeat;
+	opacity: 0.35;
+} 

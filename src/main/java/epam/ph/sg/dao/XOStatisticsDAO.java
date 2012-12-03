@@ -1,7 +1,7 @@
 package epam.ph.sg.dao;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.List;
 

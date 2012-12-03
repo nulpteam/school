@@ -24,8 +24,14 @@
 				<label class="pts_player_div_elements">${ptsGame.client.name}</label>
 			</div>
 			<div id="pts_label_win_loose">
-				<label>YOU WIN</label>
+				<label>WINNER :)</label>
 			</div>
+			<div id="winner_gif">
+				<img src="images/Points/winner.gif">
+			</div>
+			
+			<div class="homeButton" onclick=goToMainMenu()></div>
+			<div class="backButton" onClick=goToPointsMenu()></div>
 		</div>
 	</div>
 </div>

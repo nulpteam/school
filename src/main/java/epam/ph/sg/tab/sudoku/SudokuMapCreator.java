@@ -1,7 +1,7 @@
 package epam.ph.sg.tab.sudoku;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -13,13 +13,23 @@ import java.util.Random;
 
 public class SudokuMapCreator {
 	private static Random random = new Random();
-	private static List<String> easy = read(SudokuMapCreator.class.getClassLoader()
-			.getResource("/sudoku/Easy.map").getFile().replaceAll("%20", " "));
-	private static List<String> normal = read(SudokuMapCreator.class.getClassLoader()
-			.getResource("/sudoku/Normal.map").getFile().replaceAll("%20", " "));
-	private static List<String> hard = read(SudokuMapCreator.class.getClassLoader()
-			.getResource("/sudoku/Hard.map").getFile().replaceAll("%20", " "));
+	private static List<String> easy = read(SudokuMapCreator.class
+			.getClassLoader().getResource("/sudoku/Easy.map").getFile()
+			.replaceAll("%20", " "));
+	private static List<String> normal = read(SudokuMapCreator.class
+			.getClassLoader().getResource("/sudoku/Normal.map").getFile()
+			.replaceAll("%20", " "));
+	private static List<String> hard = read(SudokuMapCreator.class
+			.getClassLoader().getResource("/sudoku/Hard.map").getFile()
+			.replaceAll("%20", " "));
 
+	/**
+	 * Read file and build List of levels
+	 * 
+	 * @param file
+	 *            - file address
+	 * @return List of levels
+	 */
 	private static List<String> read(String file) {
 		List<String> mapList = new ArrayList<String>();
 		try {
@@ -37,6 +47,13 @@ public class SudokuMapCreator {
 		return mapList;
 	}
 
+	/**
+	 * Prepare map for game
+	 * 
+	 * @param level
+	 *            - game level (Easy, Normal, Hard)
+	 * @return game map in array
+	 */
 	public static int[][] prepare(int level) {
 		char[] valueCharArray;
 		if (level == 1) {

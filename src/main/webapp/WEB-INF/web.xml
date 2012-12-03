@@ -47,7 +47,14 @@
 		<url-pattern>/Points.html</url-pattern>
  		<url-pattern>/PointsGame.html</url-pattern>
   		<url-pattern>/PointsConnectList.html</url-pattern>
-  		<url-pattern>/PointsEndGame.html</url-pattern>
+  		<url-pattern>/PointsEndGameWinner.html</url-pattern>
+		<url-pattern>/PointsEndGameLooser.html</url-pattern>
+		<url-pattern>/ReversyMenu.html</url-pattern>
+		<url-pattern>/ReversyRules.html</url-pattern>
+		<url-pattern>/ReversyCreateGame.html</url-pattern>
+		<url-pattern>/ReversyConnectGame.html</url-pattern>
+		<url-pattern>/ReversyGamesList.html</url-pattern>
+		<url-pattern>/Reversy.html</url-pattern>
 	</filter-mapping>
 	<filter>
 		<filter-name>tabFilter</filter-name>

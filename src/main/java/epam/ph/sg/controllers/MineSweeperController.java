@@ -1,5 +1,8 @@
 package epam.ph.sg.controllers;
 
+/**
+ * @author Talash Pavlo
+ */
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -48,11 +51,11 @@ public class MineSweeperController {
 				+ user.getId());
 		MSGame game = (MSGame) request.getSession().getAttribute("mineSweeper");
 		int line = Integer.valueOf(id.substring(0, 1));
-		int colum = Integer.valueOf(id.substring(1));
-		game.lock(line, colum);
+		int column = Integer.valueOf(id.substring(1));
+		game.lock(line, column);
 	}
 
-	@RequestMapping("/MSPut.html")
+	@RequestMapping("/MSOpen.html")
 	public @ResponseBody
 	MSBox put(@RequestParam("id") String id, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -60,9 +63,9 @@ public class MineSweeperController {
 				+ user.getId());
 		MSGame game = (MSGame) request.getSession().getAttribute("mineSweeper");
 		int line = Integer.valueOf(id.substring(0, 1));
-		int colum = Integer.valueOf(id.substring(1));
-		game.put(line, colum);
-		return game.getField().get(line).get(colum);
+		int column = Integer.valueOf(id.substring(1));
+		game.tryToOpen(line, column);
+		return game.getField().get(line).get(column);
 	}
 
 	@RequestMapping("/MSRefresh.html")
@@ -87,7 +90,6 @@ public class MineSweeperController {
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
 		MSGame game = (MSGame) request.getSession().getAttribute("mineSweeper");
-
 		return game.getStatus();
 	}
 }

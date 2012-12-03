@@ -1,12 +1,16 @@
 package epam.ph.sg.tab.sudoku;
 
 /**
- * @author Paul Michael T.
+ * @author Talash Pavlo
  */
 import java.util.List;
 import java.util.Set;
 
 public class SudokuGame {
+	public static final int EASY = 1;
+	public static final int NORMAL = 2;
+	public static final int HARD = 3;
+	
 	private int[][] staticValues;
 	private SudokuField sudokuField = new SudokuField();
 	private SudokuAI sudokuAI = new SudokuAI(sudokuField);
@@ -27,8 +31,19 @@ public class SudokuGame {
 		}
 	}
 
-	public boolean put(int line, int colum, int value) {
-		SudokuBox box = sudokuField.getBox(line, colum);
+	/**
+	 * Put the number in to the box
+	 * 
+	 * @param line
+	 *            - box line
+	 * @param column
+	 *            - box column
+	 * @param value
+	 *            - number value
+	 * @return false if box locked. If box isn't locked return true
+	 */
+	public boolean tryToPut(int line, int column, int value) {
+		SudokuBox box = sudokuField.getBox(line, column);
 		if (!box.isLocked()) {
 			box.setValue(value);
 			return true;
@@ -52,7 +67,7 @@ public class SudokuGame {
 	public SudokuField getSudokuField() {
 		return sudokuField;
 	}
-	
+
 	public int getLevel() {
 		return level;
 	}
