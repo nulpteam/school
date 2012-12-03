@@ -1,7 +1,7 @@
 	$(document)
 		.ready(
 				function() {
-					console.log(location.hostname);
+//					console.log(location.hostname);
 					  if (!("WebSocket" in window))
 					  {
 					    // the browser doesn't support WebSockets
@@ -12,7 +12,7 @@
 					WEB_SOCKET_SWF_LOCATION = "js/SB/WebSocketMain.swf";
 					// Set this to dump debug message from Flash to console.log:
 					WEB_SOCKET_DEBUG = true;
-					console.log(WEB_SOCKET_SWF_LOCATION);
+//					console.log(WEB_SOCKET_SWF_LOCATION);
 				});	
 					
 function goTo(link) {
