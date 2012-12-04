@@ -56,6 +56,11 @@ public class SBController {
 	public @ResponseBody
 	FireResponse fireReciever(@RequestParam("firePoint") String firePoint,
 			Model model, HttpSession session) {
+//		log.debug("session="+session.getId());
+//		if(!(session.getId().equalsIgnoreCase(LoginController.getSessionid())))
+//		{
+//			log.error("session==null");
+//		}
 		String connectionType = (String)session.getAttribute("ConnectionType");
 		Game g = (Game)session.getAttribute("Game");
 		int gameID = (int)g.getId();
