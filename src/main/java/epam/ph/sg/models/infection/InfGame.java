@@ -136,12 +136,14 @@ public class InfGame implements Serializable{
 		if (message.getType().equals("serverOut")){
 			message.setType("clientWin");
 			sendMessage("server", message);
+			message.setType("serverOut");
 			sendMessage("client", message);
 		}
 		if (message.getType().equals("clientOut")){
 			message.setType("serverWin");
-			sendMessage("server", message);
 			sendMessage("client", message);
+			message.setType("clientOut");
+			sendMessage("server", message);
 		}
 	}
 

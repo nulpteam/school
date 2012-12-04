@@ -23,6 +23,14 @@ CREATE  TABLE `sgdb`.`sbstatistics` (
   `Wins` int(11) DEFAULT 0 ,
   `Losses` int(11) DEFAULT 0 ,
   PRIMARY KEY (`id`) )$$
+  
+delimiter $$
+CREATE  TABLE `sgdb`.`infstatistics` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Wins` int(11) DEFAULT 0 ,
+  `Losses` int(11) DEFAULT 0 ,
+  PRIMARY KEY (`id`) )$$ 
+  
 
 delimiter $$
 CREATE TABLE `sgdb` . `userAddInfo` (

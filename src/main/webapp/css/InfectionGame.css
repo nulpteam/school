@@ -1,12 +1,12 @@
 .exitButton{
-	background-image: url('../images//Infection/exit_button.png');
+	background-image: url('../images/Infection/exit_button.png');
 	margin:480px 247px;
 	width:80px;
 	height:80px;
 }
 
 .exitButton:hover{
-	background-image: url('../images//Infection/exit_button_hover.png');
+	background-image: url('../images/Infection/exit_button_hover.png');
 	margin:480px 247px;
 	width:80px;
 	height:80px;
@@ -14,7 +14,7 @@
 
 .exitInGameButton{
 	position:absolute;
-	background-image: url('../images//Infection/exit_button.png');
+	background-image: url('../images/Infection/exit_button.png');
 	margin:300px 427px;
 	width:80px;
 	height:80px;
@@ -22,7 +22,7 @@
 
 .exitInGameButton:hover{
 	position:absolute;
-	background-image: url('../images//Infection/exit_button_hover.png');
+	background-image: url('../images/Infection/exit_button_hover.png');
 	margin:300px 427px;
 	width:80px;
 	height:80px;
@@ -55,7 +55,7 @@
 }
 
 .chip:hover{
-	background-image: url('../images//Infection/hoverfield_cell.png');
+	background-image: url('../images/Infection/hoverfield_cell.png');
 }
 
 #infgame_table {
@@ -64,7 +64,7 @@
 }
 
 #inf_table_bg{
-	background-image: url('../images//Infection/infection_table1.png');
+	background-image: url('../images/Infection/infection_table1.png');
 	position:absolute; 
 	margin:120px 107px;
 	width:283px;
@@ -73,7 +73,7 @@
 
 #infplayer_label_1 {
 	position: absolute;
-	margin: 460px 40px;
+	margin: 420px 60px;
 	width: 160px;
 	text-align: center;
 	color:#0000FF;
@@ -91,7 +91,7 @@
 
 #infplayer_label_2 {
 	position: absolute;
-	margin: 460px 320px;
+	margin: 420px 280px;
 	width: 160px;
 	text-align: center;
 	color:#0000FF;
@@ -100,7 +100,7 @@
 
 #infscore_label_1 {
 	position: absolute;
-	margin: 550px 40px;
+	margin: 470px 60px;
 	width: 160px;
 	text-align: center;
 	color:red;
@@ -108,7 +108,7 @@
 
 #infscore_label_2 {
 	position: absolute;
-	margin: 550px 320px;
+	margin: 470px 290px;
 	width: 160px;
 	text-align: center;
 	color:red;
@@ -135,7 +135,7 @@
 }
 
 #winner_img{
-	background-image: url('../images//Infection/winner_cup.gif');
+	background-image: url('../images/Infection/winner_cup.gif');
 	position:absolute;
 	margin:140px 167px;
 	width: 260px;
@@ -151,7 +151,7 @@
 }
 
 #loser_img{
-	background-image: url('../images//Infection/loser.gif');
+	background-image: url('../images/Infection/loser.gif');
 	position:absolute;
 	margin:140px 127px;
 	width: 340px;
@@ -172,4 +172,23 @@
 	width: 340px;
 	height: 260px;
 	font-size: 15px;
+}
+
+#inf_player_out{
+	position: absolute;
+	width: 635px;
+	height: 735px;
+	z-index: 3;
+	margin: 397px 90px;
+	font-size: 25px;
+	color:red;
+	visibility: hidden;
+}
+
+#inf_player_out_bg{
+	background-image: url('../../images/Points/background_surrender1.png');
+	margin: 200px 140px;
+	position: absolute;
+	width: 320px;
+	height: 150px;
 }

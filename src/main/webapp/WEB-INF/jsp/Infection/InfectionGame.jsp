@@ -46,9 +46,9 @@
 		<div id="infscore_label_2">
 			<label></label>
 		</div>
-		
+
 		<div class="exitInGameButton" onclick=exitButton();></div>
-		
+
 		<div class="homeButton" onclick=PageHomeButton();></div>
 		<div class="refreshButton" onclick=refreshButtonClick();></div>
 
@@ -56,9 +56,9 @@
 			<c:out value="${langPack['Infection']}" />
 		</div>
 		<div id="inf_message_place">
-		   <img src="">
+			<img src="">
 		</div>
-		
+
 		<div id="inf_table_bg">
 			<div id="infgame_table" userType="${infUserType}"
 				gameId="${infGameId}">
@@ -75,6 +75,9 @@
 
 				</table>
 			</div>
+		</div>
+		<div id="inf_player_out">
+			<label><c:out value="${langPack['INF_player_out']}" /></label>
 		</div>
 	</div>
 

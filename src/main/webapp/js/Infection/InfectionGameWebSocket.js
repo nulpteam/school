@@ -1,6 +1,7 @@
 var userType;
 var gameId;
-var socket = new WebSocket("ws://localhost:8086");
+var socket = new WebSocket("ws://" + location.hostname
+		+ ":8086");
 var waitForClient = true;
 var board;
 var x="0";
@@ -228,9 +229,19 @@ socket.onmessage = function(event) {
 		}
 		alert("endgame");
 		break;
-		
+	case "serverOut":
+		$('#infplayer_label_1 > label').css("visibility", "hidden");
+		$('#infscore_label_1 > label').css("visibility", "hidden");
+		$("#inf_player_out").css("visibility", "visible");
+		break;
+	case "clientOut":
+		$('#infplayer_label_2 > label').css("visibility", "hidden");
+		$('#infscore_label_2 > label').css("visibility", "hidden");
+		$("#inf_player_out").css("visibility", "visible");
+		break;
 	}
-
+	
+   
 
 
 };

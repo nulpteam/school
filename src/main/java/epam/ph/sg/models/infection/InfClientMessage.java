@@ -35,8 +35,8 @@ public class InfClientMessage {
 		userType = "";
 		gameId = "";
 		clientName = "";
-		setServerScore(0);
-		setClientScore(0);
+		setServerScore(2);
+		setClientScore(2);
 		serverName = "";
 		setLock(false);
 		
