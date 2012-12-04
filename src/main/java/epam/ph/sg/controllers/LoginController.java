@@ -17,13 +17,7 @@ import epam.ph.sg.models.UserCheck;
 @Controller
 public class LoginController {
 	private static Logger log = Logger.getLogger(LoginController.class);
-//	private static String sessionid="";
-	
-//	public static String getSessionid() {
-//		return sessionid;
-//	}
-	
-	
+
 	@RequestMapping(value = "/Login.html")
 	public String loginpage() {
 		return "Login";
@@ -35,7 +29,6 @@ public class LoginController {
 			Model model, HttpSession session) {
 		User user = UserCheck.check(name, pass);
 		if (user != null) {
-//			sessionid = session.getId();
 			session.setAttribute("user", user);
 			log.debug(user.getName() + " object added to session");
 			return "redirect:/index.html";
@@ -48,7 +41,7 @@ public class LoginController {
 			return "Login";
 		}
 	}
-	
+
 	@RequestMapping("/Logout.html")
 	public String logout(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -57,6 +50,4 @@ public class LoginController {
 		request.getSession().removeAttribute("user");
 		return "Login";
 	}
-
-	
 }
