@@ -2,16 +2,6 @@
  * @author SergiyManko
  */
 
-$(document).ready(function(){
-	
-    $(".canX").click(function(){
-        clickX(this.id);
-    });
-    
-    $(".canO").click(function(){
-        clickO(this.id);
-    });
-});
 function clickX(id) {
 	 $.post("move.html", {
      	gameID : $("#gameID").attr("class"),

@@ -14,7 +14,7 @@
 			}
 		});
 	</script>
-	<table id="msField" cellpadding="0" cellspacing="0">
+	<table id="msField" cellpadding="0" cellspacing="3">
 		<c:forEach var="line" items="${mineSweeper.field}"
 			varStatus="lineNumber">
 			<tr>

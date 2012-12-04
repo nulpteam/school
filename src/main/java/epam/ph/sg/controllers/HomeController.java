@@ -29,7 +29,6 @@ public class HomeController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId());
-		session.setAttribute("currentPos", "Menu.html");
 		return "index";
 	}
 

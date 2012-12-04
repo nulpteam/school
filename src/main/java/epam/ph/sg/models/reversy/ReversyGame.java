@@ -1,5 +1,7 @@
 package epam.ph.sg.models.reversy;
 
+import epam.ph.sg.controllers.ReversyController;
+
 
 /**
  * 
@@ -50,6 +52,15 @@ public class ReversyGame {
 	public void setBoard(ReversyBoard board) {
 		this.board = board;
 	}
+	
+	public void changeBoard(int x, int y, String figure) {
+		board.changeBoard(x, y, figure);
+		if (board.getNext().equals(player1.getFigure())) {
+			setPlayerNameToMove(player1.getName());
+		} else if (board.getNext().equals(player2.getFigure())) {
+			setPlayerNameToMove(player2.getName());
+		} else setPlayerNameToMove(ReversyController.boundle.getString("game.end"));
+	}
 
 	public String getPlayerNameToMove() {
 		return playerNameToMove;
@@ -60,7 +71,7 @@ public class ReversyGame {
 	}
 
 	public String toString() {
-		return ("gameID = " + id + " player1 = " + player1.getName() + " player2" + player2.getName() + "\nboard\n" + board);
+		return ("&" + id + "&" + playerNameToMove + "&" + board);
 	}
 
 }

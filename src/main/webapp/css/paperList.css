@@ -19,7 +19,6 @@ body {
 	color: #5B2FCE;
 	float: left;
 	margin-left: 5px;
-	
 	-moz-user-select: none;
 	-o-user-select: none;
 	-khtml-user-select: none;
@@ -28,8 +27,9 @@ body {
 }
 
 @font-face {
-	font-family: LC Chalk;
-	src: local("LC Chalk"), url(../LC_Chalk.ttf);
+	font-family: 'LC Chalk';
+	src: url('../font/LC_Chalk.eot?') format('eot'),
+		url('../font/LC_Chalk.ttf') format('truetype');
 }
 
 .paperList .title {
@@ -105,7 +105,8 @@ body {
 	position: absolute;
 	margin: 150px 180px;
 }
-.errMsg{
+
+.errMsg {
 	margin: 100px 86px;
 	width: 420px;
 	height: 200px;
