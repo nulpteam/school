@@ -56,7 +56,7 @@ public class SBController {
 	public @ResponseBody
 	FireResponse fireReciever(@RequestParam("firePoint") String firePoint,
 			Model model, HttpSession session) {
-//		log.debug("session="+session.getId());
+	log.debug("+++++++++++++++++++++++session=");
 //		if(!(session.getId().equalsIgnoreCase(LoginController.getSessionid())))
 //		{
 //			log.error("session==null");

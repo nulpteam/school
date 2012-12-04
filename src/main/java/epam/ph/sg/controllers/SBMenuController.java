@@ -234,7 +234,7 @@ public class SBMenuController {
 				try {
 					g.getClient().getConn().sendMessage("kill");
 				} catch (IOException e) {
-					e.printStackTrace();
+					log.debug("no connection on client side");
 				}
 			}
 		}
@@ -244,7 +244,7 @@ public class SBMenuController {
 			try {
 				g.getServer().getConn().sendMessage("kill");
 			} catch (IOException e) {
-				e.printStackTrace();
+				log.debug("no connection on server side");
 			}
 		}
 		GamesList.removeGameFromListBS(gameId);

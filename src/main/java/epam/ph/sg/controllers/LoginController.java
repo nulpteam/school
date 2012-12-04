@@ -19,9 +19,9 @@ public class LoginController {
 	private static Logger log = Logger.getLogger(LoginController.class);
 //	private static String sessionid="";
 	
-	public static String getSessionid() {
-		return sessionid;
-	}
+//	public static String getSessionid() {
+//		return sessionid;
+//	}
 	
 	
 	@RequestMapping(value = "/Login.html")

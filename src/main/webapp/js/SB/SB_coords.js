@@ -14,31 +14,31 @@ $(document).ready(function() {
 	
 	
 	
-	getValues();
+//	getValues();
 	var ctrl = false;
 	
-	$(document).keydown(function(e) {
-		if (ctrl && (e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 61 || e.keyCode == 173)) {
-			return false;
-		}
-		if (e.keyCode == 17) {
-			ctrl = true;
-			var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
-			if (document.attachEvent) {
-				document.attachEvent("on" + mousewheelevt, function(e){
-					return false;
-				});
-				} else if (document.addEventListener) {
-					document.addEventListener(mousewheelevt, function(e){return false;}, false);
-				}
-		}
-	});
+//	$(document).keydown(function(e) {
+//		if (ctrl && (e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 61 || e.keyCode == 173)) {
+//			return false;
+//		}
+////		if (e.keyCode == 17) {
+////			ctrl = true;
+////			var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
+////			if (document.attachEvent) {
+////				document.attachEvent("on" + mousewheelevt, function(e){
+////					return false;
+////				});
+////				} else if (document.addEventListener) {
+////					document.addEventListener(mousewheelevt, function(e){return false;}, false);
+////				}
+////		}
+//	});
 
-	$(document).keyup(function(e) {
-		if (e.keyCode == 17) {
-			ctrl = false;
-		}
-	});
+//	$(document).keyup(function(e) {
+//		if (e.keyCode == 17) {
+//			ctrl = false;
+//		}
+//	});
 
 	userAgent = navigator.userAgent;
 	bsound = new Audio;
@@ -721,6 +721,8 @@ function playShootSound(miss) {
 	}
 }
 
+
+
 function fire(point) {
 	// playShootSound();
 	p = $(point).attr('id');
@@ -729,7 +731,15 @@ function fire(point) {
 	$.post("fire.html", {
 		firePoint : p
 	}, function(data) {
-		obj = eval(data);
+		if(!jQuery.isPlainObject(data))
+		{
+			//session fail
+			alert(SbMsgSessionFail);
+			window.location.reload();
+		}
+		else
+		{
+			obj = eval(data);
 		// Міняєм ф-ію на обстріляній клітинці
 		if (obj.miss === "00") {
 			$(point).attr("onclick", "allreadyShooted();");
@@ -963,7 +973,7 @@ function fire(point) {
 		}
 		sendMess();
 		// $(point).html(html);
-	});
+	}});
 }
 
 function sbGame() {
@@ -1227,32 +1237,32 @@ function showRules() {
  * 
  */
 
-$(window).resize(function() {
-	getScale();
-	console.log(this.size);
-});
+//$(window).resize(function() {
+//	getScale();
+//	console.log(this.size);
+//});
 
-var sw = screen.width;
-var sh = screen.height;
-var iw = window.innerWidth;
-var ih = window.innerHeight;
-function getValues(){
-  sw = screen.width;
-  sh = screen.height;
-  iw = window.innerWidth;
-  ih = window.innerHeight;
-  
-  console.log(sw, sh, iw, ih);
-  
-}
-function getScale() {
-  if (Math.round(window.innerWidth*100/iw) !=     Math.round(window.innerHeight*100/ih)){
-    //зум не изменился, поменялись размеры окна
-    getValues(); //обновим значения ширины и высоты
-  }
-  else {
-    //изменился уровень зума
-    scale = Math.round(iw/window.innerWidth * 100);
-    console.log(scale);
-  }
-}
+//var sw = screen.width;
+//var sh = screen.height;
+//var iw = window.innerWidth;
+//var ih = window.innerHeight;
+//function getValues(){
+//  sw = screen.width;
+//  sh = screen.height;
+//  iw = window.innerWidth;
+//  ih = window.innerHeight;
+//  
+//  console.log(sw, sh, iw, ih);
+//  
+//}
+//function getScale() {
+//  if (Math.round(window.innerWidth*100/iw) !=     Math.round(window.innerHeight*100/ih)){
+//    //зум не изменился, поменялись размеры окна
+//    getValues(); //обновим значения ширины и высоты
+//  }
+//  else {
+//    //изменился уровень зума
+//    scale = Math.round(iw/window.innerWidth * 100);
+//    console.log(scale);
+//  }
+//}

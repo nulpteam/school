@@ -4,9 +4,9 @@
  *
  */
 
-$(document).ready(function(){
-	console.log("SBGAMELISTJS");
-});
+//$(document).ready(function(){
+//	console.log("SBGAMELISTJS");
+//});
 
 function connect(ID) {
 	$.post("SbGameSelected.html", 
@@ -22,4 +22,3 @@ function connect(ID) {
 		}
 	);
 };
-
