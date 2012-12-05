@@ -61,7 +61,8 @@
 
 		<div id="inf_table_bg">
 			<div id="infgame_table" userType="${infUserType}"
-				gameId="${infGameId}">
+				gameId="${infGameId}" userId="${userId}">
+				
 				<table id="inftable" align="center" cellpadding="0" cellspacing="0">
 
 					<c:forEach begin="0" end="6" step="1" varStatus="i">
@@ -76,9 +77,7 @@
 				</table>
 			</div>
 		</div>
-		<div id="inf_player_out">
-			<label><c:out value="${langPack['INF_player_out']}" /></label>
-		</div>
+		
 	</div>
 
 </div>

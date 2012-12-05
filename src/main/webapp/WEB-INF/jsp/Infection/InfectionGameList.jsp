@@ -19,7 +19,9 @@
 
 	<div class="homeButton" onclick=PageHomeButton();></div>
 	<div class="refreshButton" onclick=refreshButtonClick();></div>
-
+    
+    <div id="infection_title">${langPack['Infection']}</div>
+     
 	<div align="center" id="infConectList">
 		<c:forEach var="game" items="${infGamesMap}" varStatus="i">
 			<div class="button" id="${game.key}" onclick=connect(this.id);>

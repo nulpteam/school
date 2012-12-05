@@ -7,7 +7,7 @@
 	<script src="js/jquery.js" type="text/javascript"></script>
 
 	<div class="title">
-		<p align="center">${langPack['Pts_stat_title']}</p>
+		<p id="stat_title">${langPack['Pts_stat_title']}</p>
 	</div>
 	<div class="homeButton" onclick=homeButtonClick();></div>
 	<div class="backButton" onclick=backButtonClick();></div>
