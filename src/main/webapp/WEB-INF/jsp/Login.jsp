@@ -10,6 +10,10 @@
 			startLogin();
 		});
 	</script>
+	
+	<div class="title">
+		<p align="center">${langPack['Who_are_you']}</p>
+	</div>
 	<div id="loginForm">
 		<div class="formError">
 			<c:if test="${msg.noUserFound=='true'}">
@@ -26,6 +30,9 @@
 		</div>
 		<div class="button" onclick="mySubmit();">
 			<p class="buttonText">${langPack['Login']}</p>
+		</div>
+		<div class="button" onclick="alert('register');">
+			<p class="buttonText">${langPack['Register']}</p>
 		</div>
 	</div>
 </div>
