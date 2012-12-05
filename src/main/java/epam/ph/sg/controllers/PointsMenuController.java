@@ -18,6 +18,7 @@ import epam.ph.sg.models.points.PointsStatistics;
 import epam.ph.sg.models.points.PtsGame;
 import epam.ph.sg.models.points.PtsGameMap;
 import epam.ph.sg.models.points.PtsPlayer;
+import epam.ph.sg.models.sb.SBStatistics;
 
 @Controller
 public class PointsMenuController {
@@ -154,12 +155,14 @@ public class PointsMenuController {
 	@RequestMapping(value = "/PointsEndGameWinner.html")
 	public String endOfGameLooser(HttpSession session) {
 		
+		PointsStatistics.win(((User)session.getAttribute("user")).getId());
 		return "Points/PointsEndGameWinner";
 	}
 	
 	@RequestMapping(value = "/PointsEndGameLooser.html")
 	public String endOfGameWinner(HttpSession session) {
 		
+		PointsStatistics.lose(((User)session.getAttribute("user")).getId());
 		return "Points/PointsEndGameLooser";
 	}
 	

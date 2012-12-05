@@ -107,6 +107,14 @@
 #pts_statistics_table {
 	position: absolute;
 	margin: 186px 95px;
+	text-align: center;
+	vertical-align: middle;
+	width: 420px;
+}
+
+#stat_title {
+	text-align: center;
+	color: #5B2FCE;
 }
 
 .ptsStNumber {
