@@ -20,6 +20,8 @@ public class PtsBoard {
 		board = new int[Pts.Y_LENGTH][Pts.X_LENGTH];
 		allContoursClient = new ArrayList<List<PtsCoord>>();
 		allContoursServer = new ArrayList<List<PtsCoord>>();
+		lastX = -1;
+		lastY = -1;
 		init();
 	}
 

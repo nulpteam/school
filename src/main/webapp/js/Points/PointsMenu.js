@@ -25,8 +25,8 @@ $(document).ready(function() {
 		$("#pts_menu_rules > img").attr('src', "images/Points/rules1.png");
 	});
 	
-	$('#pts_menu_connect').click(function() {
-		goTo('PointsConnectList.html');
+	$('#pts_menu_rules').click(function() {
+		goTo('PointsRules.html');
 	});
 	
 });

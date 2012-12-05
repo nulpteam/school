@@ -1,7 +1,6 @@
 var userType;
 var gameId;
-var socket = new WebSocket("ws://" + location.hostname
-							+ ":8082");
+var socket;
 var waitForClient = true;
 var lock = false;
 var board;
@@ -15,7 +14,9 @@ var clientScore = 0;
 $(document)
 		.ready(
 				function() {
-
+					
+					socket = new WebSocket("ws://" + location.hostname
+							+ ":8082");
 					userType = $('#pts_game_table').attr('userType');
 					gameId = $('#pts_game_table').attr('gameId');
 					$('#pts_player2_img').css('visibility', 'hidden');
@@ -65,8 +66,6 @@ $(document)
 
 					socket.onopen = function() {
 
-						console.log("open socket");
-
 						var userInfo = {
 							"type" : "userInfo",
 							"userType" : userType,
@@ -82,149 +81,153 @@ $(document)
 						socket.send(JSON.stringify(initialize));
 
 					};
+					
+					socket.onclose = function() {
+						console.log("socket.onclose");
+					};
+
+					socket.onmessage = function(event) {
+
+						console.log(event.data);
+
+						var msg = JSON.parse(event.data);
+
+						switch (msg.type) {
+
+						case "clientConnect":
+							$('#pts_player_label_1 > label').text(msg.serverName);
+							$('#pts_player_label_2 > label').text(msg.clientName);
+							$('#pts_player2_img').css('visibility', 'visible');
+							waitForClient = false;
+							$('#waiting_for_client > label').css('visibility', "hidden");
+							break;
+
+						case "serverConnect":
+							$('#player_label_1 > label').text(msg.serverName);
+							break;
+
+						case "lastChanges":
+							var x = parseX(msg.coords);
+							var y = parseY(msg.coords);
+							if (msg.userType == "server") {
+								$('#' + msg.coords + ' > img')
+										.attr('src', getRandomPoint("client"));
+								lock = msg.serverLock;
+								board[y][x] = 1;
+							} else if (msg.userType == "client") {
+								$('#' + msg.coords + ' > img')
+										.attr('src', getRandomPoint("server"));
+								lock = msg.clientLock;
+								board[y][x] = 2;
+							}
+							
+							drawLastPointPointer(y, x);
+							$('#wait > img').css('visibility', "hidden");
+
+							break;
+
+						case "initialize":
+
+							var matrix = createMatrix();
+							matrix = msg.matrix;
+
+							if (userType == "server") {
+								lock = msg.serverLock;
+							} else if (userType == "client") {
+								lock = msg.clientLock;
+							}
+							
+							console.log(userType + msg.userTypeActiveMenu);
+							if (userType == msg.userTypeActiveMenu) {
+								isHomeMenuActive = msg.activeMainMenu;
+								isPointsMenuActive = msg.activePointsMenu;
+							}
+
+							if (lock) {
+								$('#wait > img').css('visibility', "visible");
+							}
+
+							for ( var i = 0; i < y_length; i++) {
+
+								for ( var j = 0; j < x_length; j++) {
+									if (matrix[i][j] == -11 || matrix[i][j] == 11
+											|| matrix[i][j] == 10)
+										board[i][j] = 1;
+									else if (matrix[i][j] == -12 || matrix[i][j] == 22
+											|| matrix[i][j] == 20)
+										board[i][j] = 2;
+									else
+										board[i][j] = matrix[i][j];
+								}
+							}
+							$('#pts_player_label_1 > label').text(msg.serverName);
+							$('#pts_player_label_2 > label').text(msg.clientName);
+
+							serverScore = msg.serverScore;
+							clientScore = msg.clientScore;
+
+							$('#pts_player1_score > label').text("score : " + msg.serverScore);
+							$('#pts_player2_score > label').text("score : " + msg.clientScore);
+
+							if ($('#pts_player_label_2 > label').text() != "") {
+
+								$('#pts_player2_img').css('visibility', 'visible');
+								waitForClient = false;
+							} else {
+
+								$('#waiting_for_client > label').css('visibility', "visible");
+							}
+
+							if (isHomeMenuActive || isPointsMenuActive)
+								$("#pts_surrender_div").css("visibility", "visible");
+
+							putPoints();
+
+							paintContour(msg.contoursServer, contourBoard, "server");
+							paintContour(msg.contoursClient, contourBoard, "client");
+							
+							if (msg.lastY != -1)
+								drawLastPointPointer(msg.lastY, msg.lastX);
+							break;
+
+						case "contour":
+							console.log(msg);
+
+							var usType = msg.userType;
+
+							var contourBoard = createMatrix();
+							contourBoard = msg.matrix;
+
+							var contourCoords = createMatrix();
+							contourCoords = msg.lastContours;
+							initializeBoard(contourBoard);
+
+							serverScore = msg.serverScore;
+							clientScore = msg.clientScore;
+
+							$('#pts_player1_score > label').text("score : " + msg.serverScore);
+							$('#pts_player2_score > label').text("score : " + msg.clientScore);
+
+							paintContour(contourCoords, contourBoard, usType);
+
+							break;
+
+						case "player_win":
+							socket.close();
+							goTo('PointsEndGameWinner.html');
+							break;
+
+						case "player_loose":
+							socket.close();
+							goTo('PointsEndGameLooser.html');
+							break;
+						}
+
+					};
 
 				});
 
-socket.onclose = function() {
-	console.log("socket.onclose");
-};
 
-socket.onmessage = function(event) {
-
-	console.log(event.data);
-
-	var msg = JSON.parse(event.data);
-
-	switch (msg.type) {
-
-	case "clientConnect":
-		$('#pts_player_label_1 > label').text(msg.serverName);
-		$('#pts_player_label_2 > label').text(msg.clientName);
-		$('#pts_player2_img').css('visibility', 'visible');
-		waitForClient = false;
-		$('#waiting_for_client > label').css('visibility', "hidden");
-		break;
-
-	case "serverConnect":
-		$('#player_label_1 > label').text(msg.serverName);
-		break;
-
-	case "lastChanges":
-		if (msg.userType == "server") {
-			$('#' + msg.coords + ' > img')
-					.attr('src', getRandomPoint("client"));
-			lock = msg.serverLock;
-			var x = parseX(msg.coords);
-			var y = parseY(msg.coords);
-			board[y][x] = 1;
-		} else if (msg.userType == "client") {
-			$('#' + msg.coords + ' > img')
-					.attr('src', getRandomPoint("server"));
-			lock = msg.clientLock;
-			var x = parseX(msg.coords);
-			var y = parseY(msg.coords);
-			board[y][x] = 2;
-		}
-
-		$('#wait > img').css('visibility', "hidden");
-
-		break;
-
-	case "initialize":
-
-		var matrix = createMatrix();
-		matrix = msg.matrix;
-
-		if (userType == "server") {
-			lock = msg.serverLock;
-		} else if (userType == "client") {
-			lock = msg.clientLock;
-		}
-		
-		console.log(userType + msg.userTypeActiveMenu);
-		if (userType == msg.userTypeActiveMenu) {
-			isHomeMenuActive = msg.activeMainMenu;
-			isPointsMenuActive = msg.activePointsMenu;
-		}
-
-		if (lock) {
-			$('#wait > img').css('visibility', "visible");
-		}
-
-		for ( var i = 0; i < y_length; i++) {
-
-			for ( var j = 0; j < x_length; j++) {
-				if (matrix[i][j] == -11 || matrix[i][j] == 11
-						|| matrix[i][j] == 10)
-					board[i][j] = 1;
-				else if (matrix[i][j] == -12 || matrix[i][j] == 22
-						|| matrix[i][j] == 20)
-					board[i][j] = 2;
-				else
-					board[i][j] = matrix[i][j];
-			}
-		}
-		$('#pts_player_label_1 > label').text(msg.serverName);
-		$('#pts_player_label_2 > label').text(msg.clientName);
-
-		serverScore = msg.serverScore;
-		clientScore = msg.clientScore;
-
-		$('#pts_player1_score > label').text("score : " + msg.serverScore);
-		$('#pts_player2_score > label').text("score : " + msg.clientScore);
-
-		if ($('#pts_player_label_2 > label').text() != "") {
-
-			$('#pts_player2_img').css('visibility', 'visible');
-			waitForClient = false;
-		} else {
-
-			$('#waiting_for_client > label').css('visibility', "visible");
-		}
-
-		if (isHomeMenuActive || isPointsMenuActive)
-			$("#pts_surrender_div").css("visibility", "visible");
-
-		putPoints();
-
-		paintContour(msg.contoursServer, contourBoard, "server");
-		paintContour(msg.contoursClient, contourBoard, "client");
-		break;
-
-	case "contour":
-		console.log(msg);
-
-		var usType = msg.userType;
-
-		var contourBoard = createMatrix();
-		contourBoard = msg.matrix;
-
-		var contourCoords = createMatrix();
-		contourCoords = msg.lastContours;
-		initializeBoard(contourBoard);
-
-		serverScore = msg.serverScore;
-		clientScore = msg.clientScore;
-
-		$('#pts_player1_score > label').text("score : " + msg.serverScore);
-		$('#pts_player2_score > label').text("score : " + msg.clientScore);
-
-		paintContour(contourCoords, contourBoard, usType);
-
-		break;
-
-	case "player_win":
-		socket.close();
-		goTo('PointsEndGameWinner.html');
-		break;
-
-	case "player_loose":
-		socket.close();
-		goTo('PointsEndGameLooser.html');
-		break;
-	}
-
-};
 
 function initializeBoard(matrix) {
 	for ( var i = 0; i < matrix.length; i++) {
@@ -295,6 +298,8 @@ function putPoint(td_point) {
 			}
 
 			$('#wait > img').css('visibility', "visible");
+			
+			drawLastPointPointer(y, x);
 
 			if (!isEndOfGame()) {
 				var coords = {
@@ -396,6 +401,21 @@ function parseY(strPoint) {
 	return strPoint.substring(indexY + 1);
 }
 
+function drawLastPointPointer(y, x) {
+	
+	 var canvas = document.getElementById('pts_canvas_last_points');
+	 var ctx = canvas.getContext('2d');
+	 ctx.clearRect(0, 0, canvas.width, canvas.height);
+	    
+	    ctx.beginPath();
+	    ctx.arc(x*21.6 + 11.5, y*26.35 + 18, 14, 0, 2*Math.PI, false);
+	    ctx.fillStyle = '#e0bc15';
+	    ctx.fill();
+	    ctx.lineWidth = 2;
+	    ctx.strokeStyle = '#b19822';
+	    ctx.stroke();
+}
+
 function paintContour(contoursCoords, pointsBoard, usType) {
 
 	var contourCoords = createMatrix();
@@ -423,7 +443,6 @@ function paintContour(contoursCoords, pointsBoard, usType) {
 		for ( var i = 0; i < contourCoords[j].length; i = i + 2) {
 
 			if (coord[0] != -1) {
-
 				ctx.lineTo(contourCoords[j][i + 1] * 21.6 + 13,
 						contourCoords[j][i] * 26.35 + 16);
 
@@ -504,7 +523,7 @@ function surrenderYes() {
 	};
 
 	socket.send(JSON.stringify(user_surrended));
-	alert(isPointsMenuActive);
+
 	if (isPointsMenuActive) {
 
 		$.post("PointsClearPointsGameSession.html", function(data) {
@@ -525,3 +544,4 @@ function surrenderNo() {
 	isPointsMenuActive = false;
 	isHomeMenuActive = false;
 }
+

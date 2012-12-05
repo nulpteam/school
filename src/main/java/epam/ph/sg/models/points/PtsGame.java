@@ -41,7 +41,6 @@ public class PtsGame {
 
 		if (clientMessage.getType().equals(
 				PtsResources.getProperty("user.message.type.initialize"))) {
-
 			PtsGameInfoMessage message = new PtsGameInfoMessage();
 			message.initializeBoard(board.getBoard());
 			message.setServerLock(server.isLock());
@@ -53,6 +52,8 @@ public class PtsGame {
 			message.setActiveMainMenu(surrenderMainMenuActive);
 			message.setActivePointsMenu(surrenderPointsMenuActive);
 			message.setUserTypeActiveMenu(userTypeActiveMenu);
+			message.setLastX(board.getLastX());
+			message.setLastY(board.getLastY());
 			if (clientMessage.getUserType().equals(
 					PtsResources.getProperty("user.type.server"))) {
 				message.setUserType(PtsResources

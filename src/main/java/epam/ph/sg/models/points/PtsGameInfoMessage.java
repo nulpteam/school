@@ -16,16 +16,8 @@ public class PtsGameInfoMessage {
 	private boolean activeMainMenu;
 	private boolean activePointsMenu;
 	private String userTypeActiveMenu;
-
-	
-	public String getUserTypeActiveMenu() {
-		return userTypeActiveMenu;
-	}
-
-	public void setUserTypeActiveMenu(String userTypeActiveMenu) {
-		this.userTypeActiveMenu = userTypeActiveMenu;
-	}
-
+	private int lastX;
+	private int lastY;
 	private List<List<Integer>> lastContours;
 	private List<List<Integer>> matrix;
 	private List<List<Integer>> contoursServer;
@@ -48,6 +40,16 @@ public class PtsGameInfoMessage {
 		clientScore = 0;
 		activeMainMenu = false;
 		activePointsMenu = false;
+		lastX = -1;
+		lastY = -1;
+	}
+	
+	public String getUserTypeActiveMenu() {
+		return userTypeActiveMenu;
+	}
+
+	public void setUserTypeActiveMenu(String userTypeActiveMenu) {
+		this.userTypeActiveMenu = userTypeActiveMenu;
 	}
 
 	public boolean isActiveMainMenu() {
@@ -222,5 +224,22 @@ public class PtsGameInfoMessage {
 	public void setClientLock(boolean clientLock) {
 		this.clientLock = clientLock;
 	}
+
+	public int getLastX() {
+		return lastX;
+	}
+
+	public void setLastX(int lastX) {
+		this.lastX = lastX;
+	}
+
+	public int getLastY() {
+		return lastY;
+	}
+
+	public void setLastY(int lastY) {
+		this.lastY = lastY;
+	}
+
 	
 }

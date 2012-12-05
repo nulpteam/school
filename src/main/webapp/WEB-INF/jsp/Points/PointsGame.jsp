@@ -20,6 +20,9 @@
 <div class="paperList">
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/Points/PointsGameWebSocket.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/SB/swfobject.js"></script>
+ 	<script type="text/javascript" src="js/SB/web_socket.js"></script>
+ 	
 	<div id="pts_body">
 		<div id="pts_bg">
 			<div id="waiting_for_client">
@@ -43,7 +46,10 @@
 				<img src="images/Points/wait.gif">
 			</div>
 
+			
 			<canvas id="pts_canvas" width="435" height="520"></canvas>
+
+			<canvas id="pts_canvas_last_points" width="435" height="520"></canvas>
 
 			<div id="pts_game_table" userType="${ptsUserType}"
 				gameId="${ptsGameId}">
@@ -60,6 +66,7 @@
 					</c:forEach>
 				</table>
 			</div>
+			
 			
 			<div id="pts_surrender_div">
 				<div id="pts_surrender_bg">

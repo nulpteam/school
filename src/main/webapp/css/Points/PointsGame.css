@@ -75,10 +75,17 @@
 
 }
 
+#pts_rules {
+	position: absolute;
+	margin: 100px 87px;
+	width: 420px;
+	height: 460px;
+}
+
 #pts_game_table {
 	position: absolute;
 	margin: 190px 97px;
-	z-index: 2;
+	z-index: 3;
 }
 
 #pts_canvas {
@@ -87,6 +94,14 @@
 	width: 406px;
 	height: 395px;
 	z-index: 1;
+}
+
+#pts_canvas_last_points {
+	position: absolute;
+	margin: 186px 95px;
+	width: 406px;
+	height: 395px;
+	z-index: 2;
 }
 
 
@@ -106,7 +121,7 @@
 	position: absolute;
 	width: 635px;
 	height: 735px;
-	z-index: 3;
+	z-index: 4;
 	visibility: hidden;
 }
 
@@ -244,7 +259,7 @@
 	background-repeat: no-repeat;
 	height: 40px;
 	width: 60px;
-	margin: 127px 540px;
+	margin: 80px 540px;
 	cursor: pointer;
 }
 

@@ -29,8 +29,11 @@ public class PointsMenuController {
 			session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
 		}
 		
+
 		if (oldGameId != null) {
+			
 			return "redirect:/PointsGame.html";
+			
 		}
 
 		return "Points/PointsMenu";
@@ -38,7 +41,7 @@ public class PointsMenuController {
 
 	@RequestMapping(value = "/PointsGame.html")
 	public String pointsGame(HttpSession session) {
-		
+
 		return "Points/PointsGame";
 	}
 
@@ -109,6 +112,12 @@ public class PointsMenuController {
 		}
 
 		return false;
+	}
+	
+	@RequestMapping(value = "/PointsRules.html")
+	public String goToRules(HttpSession session) {
+		
+		return "Points/PointsRules";
 	}
 	
 	@RequestMapping(value = "/PointsEndGameWinner.html")

@@ -28,6 +28,7 @@ public class PtsWebSocketSpeeker implements WebSocket.OnTextMessage {
 
 	@Override
 	public void onMessage(String json) {
+		System.out.println(json);
 		logger.debug(PtsResources.getProperty("socket.onmessage"));
 		logger.debug(json);
 

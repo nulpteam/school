@@ -17,10 +17,10 @@
 	<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 
 	<div id="pts_menu_create">
-		<img src="images/Points/Create1.png" onClick=create()>
+		<img src="images/Points/Create1.png" onClick=create();>
 		<label id="pts_label_create">Create</label>
 	</div>
-	<div id="pts_menu_connect">
+	<div id="pts_menu_connect" onClick=connect(this.id);>
 		<img src="images/Points/Connect1.png">
 		<label id="pts_label_connect">Connect</label>
 	</div>
