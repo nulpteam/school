@@ -28,7 +28,7 @@ body {
 
 @font-face {
 	font-family: 'LC Chalk';
-	src: url('../font/LC_Chalk.eot?') format('eot'),
+	src: url('../font/LC_Chalk.eot?') format('embedded-opentype'),
 		url('../font/LC_Chalk.ttf') format('truetype');
 }
 
