@@ -23,10 +23,22 @@ public class ReversyBoard {
 			board.add(ReversyController.boundle.getString("game.figure.null"));
 		}
 		//put first 4 figures in new game
+		/*
+		 * 
+		 */
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 8; j++) {
+				setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
+			}
+		}
+		/*
+		 * 
+		 */
 		setCell(3, 3, ReversyController.boundle.getString("game.figure.x"));
 		setCell(4, 4, ReversyController.boundle.getString("game.figure.x"));
 		setCell(4, 3, ReversyController.boundle.getString("game.figure.o"));
 		setCell(3, 4, ReversyController.boundle.getString("game.figure.o"));
+
 	}
 	//game logic
 	public void changeBoard(int x, int y, String figure) {
@@ -261,20 +273,20 @@ public class ReversyBoard {
 				}
 			}
 			
-			setCanO();
-			next = ReversyController.boundle.getString("game.figure.o");
-			if (movesO == 0) {
-				setCanX();
-				if (movesX == 0) {
-					next = ReversyController.boundle.getString("game.end");
-				} else next = ReversyController.boundle.getString("game.figure.x");
-			}
+//			setCanO();
+//			next = ReversyController.boundle.getString("game.figure.o");
+//			if (movesO == 0) {
+//				setCanX();
+//				if (movesX == 0) {
+//					next = ReversyController.boundle.getString("game.end");
+//				} else next = ReversyController.boundle.getString("game.figure.x");
+//			}
 			
 			setCanX();
 			next = ReversyController.boundle.getString("game.figure.x");
 			if (movesX == 0) {
 				setCanO();
-				if (movesX == 0) {
+				if (movesO == 0) {
 					next = ReversyController.boundle.getString("game.end");
 				} else next = ReversyController.boundle.getString("game.figure.o");
 			}

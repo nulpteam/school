@@ -21,6 +21,7 @@ import epam.ph.sg.models.User;
 import epam.ph.sg.models.reversy.ReversyGame;
 import epam.ph.sg.models.reversy.ReversyGameList;
 import epam.ph.sg.models.reversy.ReversyPlayer;
+import epam.ph.sg.models.reversy.ReversyVinDefData;
 
 @Controller
 public class ReversyController {
@@ -45,6 +46,9 @@ public class ReversyController {
 	@RequestMapping(value = "/ReversyCreateGame.html")
 	public String reversyCreateGame(HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
+		if (session.getAttribute("ReversyGame") != null) {
+			return boundle.getString("jsp.game");
+		}
 		ReversyGame reversyGame = ReversyGameList.addGameToList();
 		ReversyPlayer player1 = new ReversyPlayer();
 		player1.setName(((User) session.getAttribute("user")).getName());
@@ -58,7 +62,13 @@ public class ReversyController {
 	@RequestMapping(value = "/ReversyConnectGame.html", method = RequestMethod.POST)
 	public @ResponseBody String reversyConnectGame(Integer gameID, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
+		if (session.getAttribute("ReversyGame") != null) {
+			return boundle.getString("jsp.game");
+		}
 		HashMap<Integer, ReversyGame> tempList = ReversyGameList.getGameList();
+		if (tempList.get(gameID) == null) {
+			return boundle.getString("answer.negative");
+		}
 		ReversyGame reversyGame = tempList.get(gameID);
 		ReversyPlayer player2 = new ReversyPlayer();
 		player2.setName(((User) session.getAttribute("user")).getName());
@@ -79,6 +89,9 @@ public class ReversyController {
 	@RequestMapping(value = "/ReversyGamesList.html")
 	public String reversyGameList(HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
+		if (session.getAttribute("ReversyGame") != null) {
+			return boundle.getString("jsp.game");
+		}
 		HashMap<Integer,ReversyGame> reversyGameList = ReversyGameList.getGameList();
 		session.setAttribute("ReversyGameList", reversyGameList);
 		return boundle.getString("jsp.games");
@@ -123,6 +136,57 @@ public class ReversyController {
 		log.debug("/changes.html");
 		log.debug(gameID);
 		session.setAttribute("ReversyGame", activeGames.get(gameID));
+		return boundle.getString("answer.possitive");
+	}
+	
+	@RequestMapping(value = "/end.html", method = RequestMethod.POST)
+	public @ResponseBody String reversyEnd(String player1, Integer xs, String player2, Integer os, HttpSession session) {
+		log.debug(boundle.getString("message.hello"));
+		log.debug("/end.html");
+		ReversyVinDefData data = new ReversyVinDefData(player1, player2, xs, os);
+		session.setAttribute("ReversyVinDefData", data);
+		session.removeAttribute("ReversyGame");
+		return boundle.getString("answer.possitive");
+	}
+	
+	@RequestMapping(value = "/ReversyVictory.html")
+	public String victory(HttpSession session) {
+		log.debug(boundle.getString("message.hello"));
+		return boundle.getString("jsp.victory");
+	}
+	
+	@RequestMapping(value = "/ReversyDefeat.html")
+	public String defeat(HttpSession session) {
+		log.debug(boundle.getString("message.hello"));
+		return boundle.getString("jsp.defeat");
+	}
+	
+	@RequestMapping(value = "/ReversyDraw.html")
+	public String draw(HttpSession session) {
+		log.debug(boundle.getString("message.hello"));
+		return boundle.getString("jsp.draw");
+	}
+	
+	@RequestMapping(value = "/ReversySurrender.html")
+	public @ResponseBody String surrender(HttpSession session, Integer gameID, String playerName) {
+		log.debug(boundle.getString("message.hello"));
+		log.debug(gameID);
+		log.debug(playerName);
+		ReversyGame temp = activeGames.get(gameID);
+		if ((temp.getPlayer1().getName() != null) && (playerName.equalsIgnoreCase(temp.getPlayer1().getName()))) {
+			try {
+				temp.getPlayer2().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.surrender"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if ((temp.getPlayer2().getName() != null) && (playerName.equalsIgnoreCase(temp.getPlayer2().getName()))) {
+			try {
+				temp.getPlayer1().getConnection().sendMessage(boundle.getString("message.socket.onMessage.type.surrender"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		return boundle.getString("answer.possitive");
 	}
 }

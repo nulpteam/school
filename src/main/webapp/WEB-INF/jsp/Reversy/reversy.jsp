@@ -124,4 +124,10 @@
 			<div class="player2">${ReversyGame.player2.name} (${ReversyGame.player2.figure}) <div class="player2count"></div></div>
 		</div>
 	</div>
+	<div class=reversyNavigation>
+		<div class="reversyToHome" onclick="goTo('Menu.html');"></div>
+		<div class="reversyToMenu" onclick="goTo('ReversyMenu.html');"></div>
+		<div class="reversyToChamps" onclick="goTo('ReversyChamps.html');"></div>
+		<div class="reversyToSurrender" onclick="surrender('${ReversyGame.id}');"></div>
+	</div>	
 </div>

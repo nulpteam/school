@@ -7,11 +7,15 @@
 <div  class="paperList" id="reversyGames">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/Reversy/Reversy_main.js" type="text/javascript"></script>
+	<div class=reversyNavigation>
+		<div class="reversyToHome" onclick="goTo('Menu.html');"></div>
+		<div class="reversyToMenu" onclick="goTo('ReversyMenu.html');"></div>
+		<div class="reversyToChamps" onclick="goTo('ReversyChamps.html');"></div>
+	</div>
 	<div class="reversy">
 		<c:forEach items="${ReversyGameList}" var="game">
-			<div class=game onclick="connectGame(<c:out value="${game.key}"/>);">
+			<div class=reversyServer onclick="connectGame(<c:out value="${game.key}"/>);">
 				<p>${game.value.player1.name}</p>
-				<p>${game.value.id}</p>
 			</div>
 			</c:forEach>
 	</div>

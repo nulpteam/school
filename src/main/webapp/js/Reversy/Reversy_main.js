@@ -30,6 +30,8 @@ function connectGame(id) {
 		function(response) {
 			if (response === "true") {
 				goTo("Reversy.html");
+			} else {
+				goTo("ReversyGamesList.html");
 			}
 		}
 	);
@@ -51,3 +53,56 @@ function create() {
 					goTo("Reversy.html");
 			});
 };
+/*
+ * game end
+ */
+function victory(player1, xs, player2, os) {
+	console.log("victory", player1, xs, player2, os);
+	$.post("end.html", {
+		player1 : player1,
+		xs : xs,
+		player2 : player2,
+		os : os
+	}, function(data) {
+		goTo("ReversyVictory.html");
+	});
+}
+function defeat(player1, xs, player2, os) {
+	console.log("defeat", player1, xs, player2, os);
+	$.post("end.html", {
+		player1 : player1,
+		xs : xs,
+		player2 : player2,
+		os : os
+	}, function(data) {
+		goTo("ReversyDefeat.html");
+	});
+}
+function draw(player1, xs, player2, os) {
+	console.log("draw", player1, xs, player2, os);
+	$.post("end.html", {
+		player1 : player1,
+		xs : xs,
+		player2 : player2,
+		os : os
+	}, function(data) {
+		goTo("ReversyDraw.html");
+	});
+}
+function surrender(gameID) {
+	console.log("surrender", gameID, myName);
+	$.post("ReversySurrender.html", {
+		gameID : gameID,
+		playerName : myName,
+	}, function(data) {
+		if (myName == player2) {
+			defeat(player1, 64, player2, 0);
+		}
+		if (myName == player1) {
+			defeat(player1, 0, player2, 64);
+		}
+	});
+}
+
+
+

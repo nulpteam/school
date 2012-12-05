@@ -3,22 +3,6 @@
  * */
 
 @CHARSET "UTF-8";
-/* body { */
-/* 	font-family: LC Chalk; */
-/* 	font-size: 20px; */
-/* 	color: #505050; */
-/* } */
-
-/* .game { */
-/* 	background: url('../images/Reversy/reversy_background.png') no-repeat; */
-/* 	width: 620px; */
-/* 	height: 725px; */
-/* 	margin: 50px auto; */
-/* } */
-
-/* $('.paperList').css("background-image", "url(images/Reversy/reversy_background_clear.png)"); */
-
-
 #reversyMain td {
 	height: 40px;
 	width: 40px;
@@ -54,6 +38,11 @@
     position: relative;
     top: 23px;
 }
+#reversyGames .reversy {
+    left: 92px;
+    position: relative;
+    top: -256px;
+}
 .player1 {
 	float: left;
 	left: 10px;
@@ -86,4 +75,152 @@
 	background-image: url("../images/Reversy/O.gif");
 	background-repeat: no-repeat;
 	opacity: 0.35;
-} 
+}
+.reversyNavigation {
+	position: relative;
+	top: 105px;
+	left: 543px;
+	height: 250px;
+	width: 50px;
+	opacity: 0.6;
+}
+#reversyMain .reversyNavigation {
+	top: -254px;
+}
+.reversyToHome {
+	height: 50px;
+	width: 50px;
+	background-image: url("../images/Reversy/reversyHome.png");
+}
+.reversyToMenu {
+	height: 50px;
+	width: 50px;
+	background-image: url("../images/Reversy/reversyMenu.png");
+}
+.reversyToChamps {
+	height: 50px;
+	width: 50px;
+	background-image: url("../images/Reversy/reversyChamps.png");
+}
+.reversyToSurrender {
+	height: 50px;
+	width: 50px;
+	background-image: url("../images/Reversy/reversySurrender.png");
+}
+
+.reversyToHome:hover {
+	background-image: url("../images/Reversy/reversyHomeActive.png");
+}
+.reversyToMenu:hover {
+	background-image: url("../images/Reversy/reversyMenuActive.png");
+}
+.reversyToChamps:hover {
+	background-image: url("../images/Reversy/reversyChampsActive.png");
+}
+.reversyToSurrender:hover {
+	background-image: url("../images/Reversy/reversySurrenderActive.png");
+}
+.reversyGameMenu{
+	position: relative;
+	top: -129px;
+	left: 116px;
+	height: 100px;
+	width: 360px;
+	opacity: 0.8;
+}
+.reversyCreate {
+	height: 100px;
+	width: 100px;
+	background-image: url("../images/Reversy/reversyCreate.png");
+	background-size: cover;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.reversyConnect {
+	height: 100px;
+	width: 100px;
+	background-image: url("../images/Reversy/reversyConnect.png");
+	background-size: cover;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.reversyRules {
+	height: 100px;
+	width: 100px;
+	background-image: url("../images/Reversy/reversyHelp.png");
+	background-size: cover;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.reversyCreate:hover {
+	background-image: url("../images/Reversy/reversyCreate.gif");
+	background-size: cover;
+}
+.reversyConnect:hover {
+	background-image: url("../images/Reversy/reversyConnect.gif");
+	background-size: cover;
+}
+.reversyRules:hover {
+	background-image: url("../images/Reversy/reversyHelp.gif");
+	background-size: cover;
+}
+.reversyServer:hover {
+	color: red;
+}
+.rules {
+	font-size: 14px;
+	position: relative;
+	top: 0px;
+	left: 67px;
+	height: 600px;
+	width: 448px;
+}
+#rules {
+	position: relative;
+	top: -509px;
+}
+#end {
+	top: -232px;
+}
+.boards:hover {
+	cursor: url('../images/Reversy/pensil.png'), pointer;
+}
+#menuAnimation {
+	background-image: url("../images/Reversy/reversyMenu.gif");
+	position: relative;
+	height: 200px;
+	width: 200px;
+	top: -216px;
+	left: 90px;
+	opacity: 0.6;
+}
+#drawAnimation {
+	background-image: url("../images/Reversy/reversyDraw.gif");
+	position: relative;
+	height: 200px;
+	width: 200px;
+	top: 45px;
+	left: 128px;
+	opacity: 0.6;
+}
+#defeatAnimation {
+	background-image: url("../images/Reversy/reversyDefeat.gif");
+	position: relative;
+	height: 200px;
+	width: 200px;
+	top: 45px;
+	left: 128px;
+	opacity: 0.6;
+}
+#victoryAnimation {
+	background-image: url("../images/Reversy/reversyVictory.gif");
+	position: relative;
+	height: 200px;
+	width: 200px;
+	top: 45px;
+	left: 128px;
+	opacity: 0.6;
+}

@@ -55,6 +55,10 @@
 		<url-pattern>/ReversyConnectGame.html</url-pattern>
 		<url-pattern>/ReversyGamesList.html</url-pattern>
 		<url-pattern>/Reversy.html</url-pattern>
+		<url-pattern>/ReversyVictory.html</url-pattern>
+		<url-pattern>/ReversyDefeat.html</url-pattern>
+		<url-pattern>/ReversyDraw.html</url-pattern>
+		
 	</filter-mapping>
 	<filter>
 		<filter-name>tabFilter</filter-name>
