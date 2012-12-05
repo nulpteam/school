@@ -14,7 +14,10 @@ function chatStart() {
 	$('#chatForm').submit(function(eo) {
 		eo.preventDefault();
 		var msg = $('#chatInText');
-		if (msg.val() != '') {
+		if (msg.val() == "(fuckAndDig)") {
+			$('#chatTable').append('<tr><td colspan="2"><div class="fuckAndDig"></div></td>');
+			msg.val('');
+		} else if (msg.val() != '') {
 			$.post("Send.html", {
 				msg : msg.val()
 			}, function(resp) {

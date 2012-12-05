@@ -53,3 +53,10 @@
 	border: solid 2px black;
 	background-color: white;
 }
+
+#chat .fuckAndDig {
+	background-image: url('../../images/Tab/smile.png');
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 50px;
+}
