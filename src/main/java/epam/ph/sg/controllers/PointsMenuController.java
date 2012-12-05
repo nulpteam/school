@@ -1,14 +1,20 @@
 package epam.ph.sg.controllers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import epam.ph.sg.games.xo.XOStatistics;
 import epam.ph.sg.models.User;
+import epam.ph.sg.models.points.PointsStatistics;
 import epam.ph.sg.models.points.PtsGame;
 import epam.ph.sg.models.points.PtsGameMap;
 import epam.ph.sg.models.points.PtsPlayer;
@@ -122,6 +128,27 @@ public class PointsMenuController {
 	public String goToRules(HttpSession session) {
 		
 		return "Points/PointsRules";
+	}
+	
+	@RequestMapping("/PointsStatistics.html")
+	public String statistics(HttpServletRequest request, Model model) {
+		User user = (User) request.getSession().getAttribute("user");
+
+		List<PointsStatistics> list = PointsStatistics.getAllStatistics();
+		if (list.size() < 10) {
+			model.addAttribute("ptsStatList", list);
+		} else {
+			model.addAttribute("ptsStatList", list.subList(0, 10));
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getName().equals(user.getName())) {
+				model.addAttribute("ptsMyPos", i + 1);
+				model.addAttribute("ptsMyStats", list.get(i));
+				break;
+			}
+		}
+		return "Points/PointsStatistics";
 	}
 	
 	@RequestMapping(value = "/PointsEndGameWinner.html")

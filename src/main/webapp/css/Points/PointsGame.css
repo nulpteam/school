@@ -104,6 +104,33 @@
 	z-index: 2;
 }
 
+#pts_statistics_table {
+	position: absolute;
+	margin: 186px 95px;
+}
+
+.ptsStNumber {
+	width: 10px;
+	text-align: center;
+}
+
+.ptsStTableTd {
+	width: 100px;
+	text-align: center;
+}
+
+.iamTableTd {
+	width: 100px;
+	text_align: center;
+	color: red;
+}
+
+.iamNumber {
+	width: 10px;
+	text-align: center;
+	color: red;
+}
+
 
 #pts_table1:hover {
 	cursor: url('../../images/Points/cursor.png'), pointer;

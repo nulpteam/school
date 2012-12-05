@@ -33,6 +33,10 @@ $(document).ready(function() {
 		goTo('PointsConnectList.html');
 	});
 	
+	$('#pts_menu_statistics').click(function() {
+		goTo('PointsStatistics.html');
+	});
+	
 });
 
 function create() {

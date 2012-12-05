@@ -72,6 +72,17 @@ delimiter $$
 insert into `sgdb`.`xostatistics`(id) values(5);$$
 
 delimiter $$
+insert into `sgdb`.`ptsstatistics`(id) values(1);$$
+delimiter $$
+insert into `sgdb`.`ptsstatistics`(id) values(2);$$
+delimiter $$
+insert into `sgdb`.`ptsstatistics`(id) values(3);$$
+delimiter $$
+insert into `sgdb`.`ptsstatistics`(id) values(4);$$
+delimiter $$
+insert into `sgdb`.`ptsstatistics`(id) values(5);$$
+
+delimiter $$
 insert into `sgdb`.`useraddinfo`(id) values(1);$$
 delimiter $$
 insert into `sgdb`.`useraddinfo`(id) values(2);$$

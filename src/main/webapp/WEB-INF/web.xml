@@ -49,6 +49,7 @@
   		<url-pattern>/PointsConnectList.html</url-pattern>
   		<url-pattern>/PointsEndGameWinner.html</url-pattern>
 		<url-pattern>/PointsEndGameLooser.html</url-pattern>
+		<url-pattern>/PointsStatistics.html</url-pattern>
 		<url-pattern>/PointsRules.html</url-pattern>
 		<url-pattern>/ReversyMenu.html</url-pattern>
 		<url-pattern>/ReversyRules.html</url-pattern>
