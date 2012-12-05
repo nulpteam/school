@@ -16,14 +16,6 @@
 		<listener-class>epam.ph.sg.models.sb.JettyContext</listener-class>
 	</listener>
 	<filter>
-		<filter-name>userFilter</filter-name>
-		<filter-class>epam.ph.sg.web.filters.UserFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>userFilter</filter-name>
-		<url-pattern>*.html</url-pattern>
-	</filter-mapping>
-	<filter>
 		<filter-name>langFilter</filter-name>
 		<filter-class>epam.ph.sg.web.filters.LanguageFilter</filter-class>
 	</filter>
@@ -60,6 +52,7 @@
 		<url-pattern>/ReversyVictory.html</url-pattern>
 		<url-pattern>/ReversyDefeat.html</url-pattern>
 		<url-pattern>/ReversyDraw.html</url-pattern>
+		<url-pattern>/Sb.html</url-pattern>
 		
 	</filter-mapping>
 	<filter>

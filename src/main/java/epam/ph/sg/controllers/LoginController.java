@@ -31,7 +31,7 @@ public class LoginController {
 		if (user != null) {
 			session.setAttribute("user", user);
 			log.debug(user.getName() + " object added to session");
-			return "redirect:/index.html";
+			return "redirect:/Menu.html";
 		} else {
 			log.debug("Login/Pass is not correct: Login->" + name + " Pass->"
 					+ pass + " host-> " + request.getHeader("host"));

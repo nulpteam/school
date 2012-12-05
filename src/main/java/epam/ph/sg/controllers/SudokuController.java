@@ -24,8 +24,12 @@ public class SudokuController {
 	@RequestMapping("/Sudoku.html")
 	public String menu(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		if (request.getSession().getAttribute("sudoku") == null) {
 			request.getSession().setAttribute("sudoku", SudokuGame.getGame(1));
 		}
@@ -36,8 +40,13 @@ public class SudokuController {
 	public String newGame(@RequestParam("level") int level,
 			HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId() + ". Level: " + level);
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId() + ". Level: " + level);
+		} else {
+			log.info(request.getRequestURI() + " request received. Level: "
+					+ level);
+		}
 		request.getSession().setAttribute("sudoku", SudokuGame.getGame(level));
 		return "Tab/Sudoku";
 	}
@@ -47,8 +56,13 @@ public class SudokuController {
 	boolean put(@RequestParam("id") String id,
 			@RequestParam("value") int value, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId() + ". Position: " + id);
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId() + ". Position: " + id);
+		} else {
+			log.info(request.getRequestURI() + " request received. Position: "
+					+ id);
+		}
 		SudokuGame game = (SudokuGame) request.getSession().getAttribute(
 				"sudoku");
 		int line = Integer.valueOf(id.substring(0, 1));
@@ -60,8 +74,12 @@ public class SudokuController {
 	public @ResponseBody
 	SudokuBox[] getFailed(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		SudokuGame game = (SudokuGame) request.getSession().getAttribute(
 				"sudoku");
 		Set<SudokuBox> failed = game.getFailed();

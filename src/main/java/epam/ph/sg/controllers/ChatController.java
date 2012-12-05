@@ -25,8 +25,12 @@ public class ChatController {
 	@RequestMapping(value = "/Chat.html")
 	public String chat(HttpServletRequest request, Model model) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		request.getSession().setAttribute("chatUser", new ChatUser());
 		return "Tab/Chat";
 	}
@@ -36,10 +40,14 @@ public class ChatController {
 	Message[] send(@RequestParam("msg") String msgText,
 			HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId() + ". Message: " + msgText);
-		Message msg = new Message(user, msgText);
-		Chat.addMessage(msg);
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId() + ". Message: " + msgText);
+			Message msg = new Message(user, msgText);
+			Chat.addMessage(msg);
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		return refresh(request);
 	}
 
@@ -47,8 +55,12 @@ public class ChatController {
 	public @ResponseBody
 	Message[] refresh(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		ChatUser cu = (ChatUser) request.getSession().getAttribute("chatUser");
 		return cu.refresh();
 	}

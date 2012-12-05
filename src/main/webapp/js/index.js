@@ -43,3 +43,13 @@ function refreshButtonClick() {
 function backButtonClick() {
 	goTo('Menu.html');
 }
+
+function language(node) {
+	var lang = node.id;
+	$.post("chLang.html", {
+		lang : lang},
+	function(data)
+	{
+		location.reload();
+	});
+}

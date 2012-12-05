@@ -26,9 +26,8 @@
 		<div class="button" onclick="goTo('PersonalPage.html');">
 			<p class="buttonText">${langPack['Cabinet']}</p>
 		</div>
-		<div class="button" onclick="location.href = 'Logout.html';">
+		<div class="button" onclick="goTo('Logout.html');">
 			<p class="buttonText">${langPack['Logout']}</p>
 		</div>
-<!-- 		<button onclick="location.href = 'Logout.html';">logout</button> -->
 	</div>
 </div>

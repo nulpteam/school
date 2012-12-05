@@ -27,16 +27,24 @@ public class HomeController {
 	@RequestMapping("/index.html")
 	public String index(HttpServletRequest request, HttpSession session) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		return "index";
 	}
 
 	@RequestMapping("CurrentPos.html")
 	public String currentPos(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		String currentPos = (String) request.getSession().getAttribute(
 				"currentPos");
 		if (currentPos == null) {
@@ -48,8 +56,12 @@ public class HomeController {
 	@RequestMapping("/Menu.html")
 	public String menu(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		return "Menu";
 	}
 
@@ -60,6 +72,9 @@ public class HomeController {
 		if (user != null) {
 			log.info(request.getRequestURI() + " request received. User id="
 					+ user.getId() + " Language: " + lang);
+		} else {
+			log.info(request.getRequestURI() + " request received. Language: "
+					+ lang);
 		}
 		request.getSession().setAttribute("lang", lang);
 		Map<String, String> langPack = new LangSelector()

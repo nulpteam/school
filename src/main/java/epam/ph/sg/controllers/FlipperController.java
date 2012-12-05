@@ -22,8 +22,12 @@ public class FlipperController {
 	@RequestMapping("/FlipperGame.html")
 	public String game(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
 				"flipperGame");
 		if (game == null) {
@@ -36,8 +40,12 @@ public class FlipperController {
 	@RequestMapping("/FlipperNewGame.html")
 	public String newGame(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		request.getSession().setAttribute("flipperGame", new FlipperGame(1));
 		return "Tab/Flipper";
 	}
@@ -45,8 +53,12 @@ public class FlipperController {
 	@RequestMapping("/FlipperNextLevel.html")
 	public String gameLevel(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
 				"flipperGame");
 		game.nextLevel();
@@ -56,8 +68,12 @@ public class FlipperController {
 	@RequestMapping("/FlipperResetLevel.html")
 	public String resetGame(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
 				"flipperGame");
 		game.resetLevel();
@@ -68,8 +84,13 @@ public class FlipperController {
 	public @ResponseBody
 	boolean flip(@RequestParam("id") String id, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId() + ". Position: " + id);
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId() + ". Position: " + id);
+		} else {
+			log.info(request.getRequestURI() + " request received. Position: "
+					+ id);
+		}
 		int line = Integer.valueOf(id.substring(0, 1));
 		int column = Integer.valueOf(id.substring(1));
 		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
@@ -82,8 +103,12 @@ public class FlipperController {
 	public @ResponseBody
 	FlipperStatus getStatus(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		FlipperGame game = (FlipperGame) request.getSession().getAttribute(
 				"flipperGame");
 		return game.getStatus();

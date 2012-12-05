@@ -19,8 +19,12 @@ public class TabController {
 	@RequestMapping("TabHome.html")
 	public String home(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		return "Tab/Home";
 	}
 

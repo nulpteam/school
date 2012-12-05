@@ -1,0 +1,27 @@
+#login #loginForm {
+	margin: 200px auto;
+	width: 280px;
+}
+
+#login .formText {
+	font-size: 25px;
+	text-align: center;
+}
+
+#login .formError {
+	font-size: 16px;
+	text-align: center;
+	color: red;
+}
+
+#login .input, #login .button {
+	text-align: center;
+}
+
+#login #loginForm input {
+	background: none;
+	width: 220px;
+	border: solid 2px #5B2FCE;
+	font: inherit;
+	color: #5B2FCE;
+}

@@ -48,7 +48,7 @@ public class SBMenuController {
 		log.debug("-------------------Added JavaScriptss-------------------");
 		session.setAttribute("sbJSLoader", sbJSLoader);
 		// session.setAttribute("currentPos", "Sb.html");
-		session.setAttribute("currentPos", "Sb.html");
+//		session.setAttribute("currentPos", "Sb.html");
 		if (session.getAttribute("Game") == null) {
 			return "SB/SbMenu";
 		} else {

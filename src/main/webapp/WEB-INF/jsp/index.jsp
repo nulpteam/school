@@ -10,6 +10,7 @@
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon">
 <link href="css/paperList.css" type="text/css" rel="stylesheet">
+<link href="css/Login.css" type="text/css" rel="stylesheet">
 <link href="css/Reversy.css" type="text/css" rel="stylesheet">
 <link href="css/XO/xoStyle.css" type="text/css" rel="stylesheet">
 <link href="css/XO/xoGame.css" type="text/css" rel="stylesheet">
