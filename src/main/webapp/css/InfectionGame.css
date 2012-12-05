@@ -129,6 +129,11 @@
 	margin:260px 160px;
 }
 
+#infStatistic{
+	position:absolute;
+	margin:320px 160px;
+}
+
 #infConectList{
 	position:absolute;
 	margin:60px 160px;
@@ -186,9 +191,21 @@
 }
 
 #inf_player_out_bg{
-	background-image: url('../../images/Points/background_surrender1.png');
+	background-image: url('../images/Points/background_surrender1.png');
 	margin: 200px 140px;
 	position: absolute;
 	width: 320px;
 	height: 150px;
+}
+
+
+#infStatistics table {
+	width: 420px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 150px 100px;
+}
+
+#infStatistics table .iam {
+	color: red;
 }

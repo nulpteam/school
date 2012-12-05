@@ -19,32 +19,36 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="loginModelDAOImpl" class="epam.ph.sg.models.impl.LoginModelDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	
+
 	<bean id="regModelDAOImpl" class="epam.ph.sg.models.impl.RegModelDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-			
+
 	<bean id="xoStatisticsDAOimpl" class="epam.ph.sg.dao.impl.XOStatisticsDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	
+
 	<bean id="sbStatisticsDAOimpl" class="epam.ph.sg.dao.impl.SBStatisticsDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	
+
+	<bean id="infStatisticsDAOimpl" class="epam.ph.sg.dao.impl.INFStatisticsDAOimpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
 	<bean id="pointsStatisticsDAOimpl" class="epam.ph.sg.dao.impl.PointsStatisticsDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	
+
 	<bean id="personalPageDAOimpl" class="epam.ph.sg.dao.impl.UserAddInfoDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	
+
 	<bean id="userDaoImpl" class="epam.ph.sg.dao.impl.UserDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	
+
 	<bean id="defaultLang" class="epam.ph.sg.models.impl.LangModelImpl">
-	    <property name="lang" value="ua"/>
+		<property name="lang" value="ua" />
 	</bean>
 </beans>

@@ -35,4 +35,9 @@
 			<div class="buttonText">${langPack['INF_rules']}</div>
 		</center>
 	</div>
+	<div class="button" id="infStatistic" onClick="goTo('InfectionStatistic.html');">
+		<center>
+			<div class="buttonText">${langPack['INF_statistic']}</div>
+		</center>
+	</div>
 </div>
