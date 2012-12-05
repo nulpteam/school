@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--  <html>
@@ -26,13 +26,13 @@
 	<div id="pts_body">
 		<div id="pts_bg">
 			<div id="waiting_for_client">
-				<label>Waiting for client...</label>
+				<label>${langPack['Pts_waiting']}</label>
 			</div>
 			<div id="pts_player1_score">
-				<label>score :</label>
+				<label>${langPack['Pts_score']}</label>
 			</div>
 			<div id="pts_player2_score">
-				<label>score :</label>
+				<label>${langPack['Pts_score']}</label>
 			</div>
 			<div id="pts_player_label_1">
 				<img class="pts_player_div_elements" src="images/Points/server_point-2.png">
@@ -70,9 +70,9 @@
 			
 			<div id="pts_surrender_div">
 				<div id="pts_surrender_bg">
-					<label id="pts_surrender_label">Surrender?</label> <label
-						id="pts_surrender_yes" class="pts_surrender_button" onClick="surrenderYes()">Yes</label> <label
-						id="pts_surrender_no" class="pts_surrender_button" onClick="surrenderNo()">No</label>
+					<label id="pts_surrender_label">${langPack['Pts_surrender']}</label> <label
+						id="pts_surrender_yes" class="pts_surrender_button" onClick="surrenderYes()">${langPack['Pts_yes']}</label> <label
+						id="pts_surrender_no" class="pts_surrender_button" onClick="surrenderNo()">${langPack['Pts_no']}</label>
 				</div>
 			</div>
 			

@@ -99,8 +99,12 @@ public class PointsMenuController {
 		PtsGame game;
 
 		user = (User) session.getAttribute("user");
-		game = PtsGameMap.getGames().get(Integer.parseInt(gameId));
-		if (game != null) {
+		
+		char[] gameIdChar = gameId.toCharArray();
+		Character.isDigit(gameIdChar[0]);
+		
+		if (Character.isDigit(gameIdChar[0])) {
+			game = PtsGameMap.getGames().get(Integer.parseInt(gameId));
 			client = new PtsPlayer(user.getName(), game.getId());
 			game.setClient(client);
 			session.setAttribute("ptsGame", game);

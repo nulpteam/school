@@ -29,6 +29,10 @@ $(document).ready(function() {
 		goTo('PointsRules.html');
 	});
 	
+	$('#pts_menu_connect').click(function() {
+		goTo('PointsConnectList.html');
+	});
+	
 });
 
 function create() {

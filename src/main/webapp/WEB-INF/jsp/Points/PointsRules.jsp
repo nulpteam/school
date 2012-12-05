@@ -8,7 +8,7 @@
 	<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 
 	<div id="pts_rules">
-		<label>123 ${langPack['INF_connect']}</label>
+		<label>${langPack['Pts_rules']}</label>
 	</div>
 
 	<div class="homeButton" onclick="goTo('Menu.html')"></div>

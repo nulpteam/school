@@ -18,19 +18,19 @@
 
 	<div id="pts_menu_create">
 		<img src="images/Points/Create1.png" onClick=create();>
-		<label id="pts_label_create">Create</label>
+		<label id="pts_label_create">${langPack['Pts_create_label']}</label>
 	</div>
-	<div id="pts_menu_connect" onClick=connect(this.id);>
+	<div id="pts_menu_connect">
 		<img src="images/Points/Connect1.png">
-		<label id="pts_label_connect">Connect</label>
+		<label id="pts_label_connect">${langPack['Pts_connect_label']}</label>
 	</div>
 	<div id="pts_menu_statistics">
 		<img src="images/Points/statistics1.png">
-		<label id="pts_label_statistics">Statistics</label>
+		<label id="pts_label_statistics">${langPack['Pts_statistics_label']}</label>
 	</div>
 	<div id="pts_menu_rules">
 		<img src="images/Points/rules1.png">
-		<label id="pts_label_rules">Rules</label>
+		<label id="pts_label_rules">${langPack['Pts_rules_label']}</label>
 	</div>
 	
 	<div class="homeButton" onClick="goTo('Menu.html')"></div>

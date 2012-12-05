@@ -19,7 +19,7 @@
 		<div id="pts_servers_div">
 			<c:forEach var="gameServer" items="${pointsGameServersMap}" varStatus="i">
 			<div id="${gameServer.key}" class="pts_server_div" onclick=connect(this.id)>
-				<img src="images/Points/server_point-2.png" id="${game.key}">
+				<img src="images/Points/server_point-2.png" id="${gameServer.key}">
 				<label id="pts_server_label"><c:out value="${gameServer.value}" /> </label>
 			</div>
 			</c:forEach>
