@@ -28,11 +28,12 @@ public class ChatController {
 		if (user != null) {
 			log.info(request.getRequestURI() + " request received. User id="
 					+ user.getId());
+			request.getSession().setAttribute("chatUser", new ChatUser());
+			return "Tab/Chat";
 		} else {
 			log.info(request.getRequestURI() + " request received.");
+			return "redirect://TabHome.html";
 		}
-		request.getSession().setAttribute("chatUser", new ChatUser());
-		return "Tab/Chat";
 	}
 
 	@RequestMapping(value = "/Send.html", method = RequestMethod.POST)
@@ -58,10 +59,11 @@ public class ChatController {
 		if (user != null) {
 			log.info(request.getRequestURI() + " request received. User id="
 					+ user.getId());
+			ChatUser cu = (ChatUser) request.getSession().getAttribute("chatUser");
+			return cu.refresh();
 		} else {
 			log.info(request.getRequestURI() + " request received.");
+			return null;
 		}
-		ChatUser cu = (ChatUser) request.getSession().getAttribute("chatUser");
-		return cu.refresh();
 	}
 }

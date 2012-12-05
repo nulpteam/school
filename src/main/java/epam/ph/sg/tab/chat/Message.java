@@ -37,8 +37,9 @@ public class Message {
 	 * @return prepared text
 	 */
 	private static String msgPrepare(String text) {
-
 		String preparedText = "";
+		text = text.replace('<', '.');
+		text = text.replace('>', '.');
 		String[] words = text.split(" ");
 		for (int i = 0; i < words.length; i++) {
 			if (words[i].length() > MAX_LENGTH) {
