@@ -23,16 +23,16 @@ public class ReversyBoard {
 			board.add(ReversyController.boundle.getString("game.figure.null"));
 		}
 		//put first 4 figures in new game
-		/*
+		/*TODO
+		 * debug
 		 * 
-		 */
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 8; j++) {
 				setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
 			}
 		}
-		/*
-		 * 
+		 *
+		 * debug
 		 */
 		setCell(3, 3, ReversyController.boundle.getString("game.figure.x"));
 		setCell(4, 4, ReversyController.boundle.getString("game.figure.x"));
@@ -54,9 +54,7 @@ public class ReversyBoard {
 				}
 				if ((x0 > 0) && (y0 > 0) && getCell(x0 - 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					for (int i = x - 1, j = y - 1; i >= x0 && j >= y0; i--, j--) {
-//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-//						}
 					}
 				}
 			}
@@ -81,9 +79,7 @@ public class ReversyBoard {
 				}
 				if ((x0 < 7) && (y0 > 0) && getCell(x0 + 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					for (int i = x + 1, j = y - 1; i <= x0 && j >= y0; i++, j--) {
-//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-//						}
 					}
 				}
 			}
@@ -121,9 +117,7 @@ public class ReversyBoard {
 				}
 				if ((x0 > 0) && (y0 < 7) && getCell(x0 - 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					for (int i = x - 1, j = y + 1; i >= x0 && j <= y0; i--, j++) {
-//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-//						}
 					}
 				}
 			}
@@ -148,9 +142,7 @@ public class ReversyBoard {
 				}
 				if ((x0 < 7) && (y0 < 7) && getCell(x0 + 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.x"))) {
 					for (int i = x + 1, j = y + 1; i <= x0 && j <= y0; i++, j++) {
-//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.x"));
-//						}
 					}
 				}
 			}
@@ -172,9 +164,7 @@ public class ReversyBoard {
 				}
 				if ((x0 > 0) && (y0 > 0) && getCell(x0 - 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
 					for (int i = x - 1, j = y - 1; i >= x0 && j >= y0; i--, j--) {
-//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-//						}
 					}
 				}
 			}
@@ -199,9 +189,7 @@ public class ReversyBoard {
 				}
 				if ((x0 < 7) && (y0 > 0) && getCell(x0 + 1, y0 - 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
 					for (int i = x + 1, j = y - 1; i <= x0 && j >= y0; i++, j--) {
-//						for (int j = y - 1; j >= y0; j--) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-//						}
 					}
 				}
 			}
@@ -239,9 +227,7 @@ public class ReversyBoard {
 				}
 				if ((x0 > 0) && (y0 < 7) && getCell(x0 - 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
 					for (int i = x - 1, j = y + 1; i >= x0 && j <= y0; i--, j++) {
-//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-//						}
 					}
 				}
 			}
@@ -266,22 +252,10 @@ public class ReversyBoard {
 				}
 				if ((x0 < 7) && (y0 < 7) && getCell(x0 + 1, y0 + 1).equals(ReversyController.boundle.getString("game.figure.o"))) {
 					for (int i = x + 1, j = y + 1; i <= x0 && j <= y0; i++, j++) {
-//						for (int j = y + 1; j <= y0; j++) {
 							setCell(i, j, ReversyController.boundle.getString("game.figure.o"));
-//						}
 					}
 				}
 			}
-			
-//			setCanO();
-//			next = ReversyController.boundle.getString("game.figure.o");
-//			if (movesO == 0) {
-//				setCanX();
-//				if (movesX == 0) {
-//					next = ReversyController.boundle.getString("game.end");
-//				} else next = ReversyController.boundle.getString("game.figure.x");
-//			}
-			
 			setCanX();
 			next = ReversyController.boundle.getString("game.figure.x");
 			if (movesX == 0) {

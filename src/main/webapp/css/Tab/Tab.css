@@ -60,10 +60,10 @@
  *
  */
 .TabButton {
-	height: 37px;
-	width: 40px;
-	float: left;
-	margin: 5px;
+    float: left;
+    height: 74px;
+    margin: 5px;
+    width: 80px;
 }
 #TabChat {
 	background-image: url('../../images/Tab/chat_2.png');

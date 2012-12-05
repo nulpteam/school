@@ -185,7 +185,7 @@
 #end {
 	top: -232px;
 }
-.boards:hover {
+.board:hover, .canX:hover, .canO:hover, .o:hover, .x:hover {
 	cursor: url('../images/Reversy/pensil.png'), pointer;
 }
 #menuAnimation {
