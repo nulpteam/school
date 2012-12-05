@@ -8,6 +8,26 @@ body {
 	margin: 0 auto;
 }
 
+#lang_bar {
+	background-image: url('../images/language_bar.png');
+	background-repeat: no-repeat;
+	height: 57px;
+	width: 165px;
+	padding: 13px 5px;
+	position: fixed;
+}
+
+.flag {
+	border: 2px solid;
+	border-color: transparent;
+	margin-left: 10px;
+}
+
+.flag:hover {
+	border-color: gray;
+	margin-left: 10px;
+}
+
 .paperList {
 	background-image: url('../images/paperList/list.png');
 	background-repeat: no-repeat;
