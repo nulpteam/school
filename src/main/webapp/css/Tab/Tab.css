@@ -21,6 +21,10 @@
 	margin: 56px 45px;
 }
 
+#menu {
+		background-image: url('../../images/Tab/tab_back.jpg');
+}
+
 #tab #bar {
 	height: 30px;
 	width: 270px;
@@ -51,4 +55,45 @@
 	position: absolute;
 	margin: 0px 135px;
 	padding-top: 2px;
+}
+/*
+ *
+ */
+.TabButton {
+	height: 37px;
+	width: 40px;
+	float: left;
+	margin: 5px;
+}
+#TabChat {
+	background-image: url('../../images/Tab/chat_2.png');
+	background-size: cover;
+}
+#TabSudo {
+	background-image: url('../../images/Tab/sudoku_2.png');
+	background-size: cover;
+}
+#TabFlip {
+	background-image: url('../../images/Tab/flipper_2.png');
+	background-size: cover;
+}
+#TabBomb {
+	background-image: url('../../images/Tab/saper_2.png');
+	background-size: cover;
+}
+#TabChat:hover {
+	background-image: url('../../images/Tab/chat_1.png');
+	background-size: cover;
+}
+#TabSudo:hover {
+	background-image: url('../../images/Tab/sudoku_1.png');
+	background-size: cover;
+}
+#TabFlip:hover {
+	background-image: url('../../images/Tab/flipper_1.png');
+	background-size: cover;
+}
+#TabBomb:hover {
+	background-image: url('../../images/Tab/saper_1.png');
+	background-size: cover;
 }
