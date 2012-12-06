@@ -53,7 +53,14 @@
 		<url-pattern>/ReversyDefeat.html</url-pattern>
 		<url-pattern>/ReversyDraw.html</url-pattern>
 		<url-pattern>/Sb.html</url-pattern>
-		
+		<url-pattern>/Infection.html</url-pattern>
+		<url-pattern>/InfectionGame.html</url-pattern>
+		<url-pattern>/InfectionWin.html</url-pattern>
+		<url-pattern>/InfectionLose.html</url-pattern>
+		<url-pattern>/InfectionRules.html</url-pattern>
+		<url-pattern>/InfectionCreateGame.html</url-pattern>
+		<url-pattern>/InfectionConnectList.html</url-pattern>
+		<url-pattern>InfectionStatistic.html</url-pattern>
 	</filter-mapping>
 	<filter>
 		<filter-name>tabFilter</filter-name>
