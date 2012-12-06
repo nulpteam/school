@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import epam.ph.sg.games.xo.XOStatistics;
+import epam.ph.sg.models.infection.INFStatistics;
 import epam.ph.sg.models.points.PointsStatistics;
 import epam.ph.sg.models.sb.SBStatistics;
 import epam.ph.sg.personal.PersonalPage;
@@ -27,6 +28,7 @@ public class UserReg {
 		XOStatistics.insert(user.getId());
 		SBStatistics.insert(user.getId());
 		PointsStatistics.insert(user.getId());
+		INFStatistics.insert(user.getId());
 		PersonalPage.insert(user.getId());
 	}
 }
