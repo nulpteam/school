@@ -1,22 +1,47 @@
-function startLogin() {
-	$('#login #myform').submit(function(ev) {
-		ev.preventDefault();
-		mySubmit();
-	});
-	$('#login input').keypress(function(ev) {
-		if (ev.keyCode == 13) {
-			mySubmit();
+function login() {
+	var name = $('#login #user_name').val();
+	var pass = $('#login #user_pass').val();
+	if (name == '' | pass == '') {
+		$('#login .formError').text(inputEmptyMsg);
+		return;
+	}
+	$.post('Login.html', {
+		user_name : name,
+		password : pass
+	}, function(resp) {
+		if (resp == true) {
+			goTo('Menu.html');
+		} else {
+			$('#login .formError').text(userNotFoundMsg);
 		}
 	});
 }
 
-function mySubmit() {
-	$.post('Login.html', {
-		user_name : $('#login #user_name').val(),
-		password : $('#login #user_pass').val()
+function register() {
+	var name = $('#register #user_name').val();
+	var pass = $('#register #user_pass').val();
+	var passConfirm = $('#register #user_pass_confirm').val();
+	var regExp = /\w{4,10}/;
+	var value = regExp.exec(name);
+	if (name == '' | pass == '' | passConfirm == '') {
+		$('#register .formError').text(inputEmptyMsg);
+		return;
+	} else if (value == null) {
+		$('#register .formError').text(failMsg);
+		return;
+	} else if (pass != passConfirm) {
+		$('#register .formError').text(passConfirmMsg);
+		return;
+	}
+	$.post('Register.html', {
+		user_name : value[0],
+		password : pass
 	}, function(resp) {
-		$('.paperList').remove();
-		$('.page').append(resp);
+		if (resp == true) {
+			goTo('Menu.html');
+		} else {
+			$('#register .formError').text(userExistMsg);
+		}
 	});
 }
 

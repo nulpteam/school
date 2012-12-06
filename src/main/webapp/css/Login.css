@@ -1,24 +1,25 @@
-#login #loginForm {
-	margin: 200px auto;
+#login #loginForm,#register #registerForm {
+	margin: 160px auto;
 	width: 280px;
 }
 
-#login .formText {
+#login .formText,#register .formText {
 	font-size: 25px;
 	text-align: center;
 }
 
-#login .formError {
+#login .formError,#register .formError {
+	height: 60px;
 	font-size: 16px;
 	text-align: center;
 	color: red;
 }
 
-#login .input, #login .button {
+#login .input,#login .button,#register .input,#register .button {
 	text-align: center;
 }
 
-#login #loginForm input {
+#login #loginForm input,#register #registerForm input {
 	background: none;
 	width: 220px;
 	border: solid 2px #5B2FCE;
