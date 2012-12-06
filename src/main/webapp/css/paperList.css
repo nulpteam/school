@@ -15,6 +15,7 @@ body {
 	width: 165px;
 	padding: 13px 5px;
 	position: fixed;
+	z-index: 3;
 }
 
 .flag {

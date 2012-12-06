@@ -82,7 +82,7 @@ function saveBirthday() {
 function saveAbout() {
 	var input = $('#personalPage #about + .edit textarea');
 	$.post('ChangeAbout.html', {
-		about : input.val()
+		about : input.val().substring(0, 100)
 	}, function(resp) {
 		if (resp != null) {
 			$('#personalPage #about .value').text(resp);
