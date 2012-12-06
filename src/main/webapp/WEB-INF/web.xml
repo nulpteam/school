@@ -60,7 +60,7 @@
 		<url-pattern>/InfectionRules.html</url-pattern>
 		<url-pattern>/InfectionCreateGame.html</url-pattern>
 		<url-pattern>/InfectionConnectList.html</url-pattern>
-		<url-pattern>InfectionStatistic.html</url-pattern>
+		<url-pattern>/InfectionStatistic.html</url-pattern>
 	</filter-mapping>
 	<filter>
 		<filter-name>tabFilter</filter-name>
