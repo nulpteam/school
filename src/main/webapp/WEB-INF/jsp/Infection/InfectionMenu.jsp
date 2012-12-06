@@ -16,7 +16,7 @@
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/Infection/InfectionMenu.js" type="text/javascript"></script>
 
-	<div class="homeButton" onclick=PageHomeButton();></div>
+	<div class="homeButton" onclick="goTo('Menu.html');"></div>
 	<div class="refreshButton" onclick=refreshButtonClick();></div>
 	
 	<div id="infection_title">${langPack['Infection']}</div>
