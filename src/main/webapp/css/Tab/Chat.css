@@ -47,11 +47,22 @@
 	display: none;
 	z-index: 3;
 	position: absolute;
-	margin: 100px 35px;
+	margin: 100px 10px;
 	height: 200px;
-	width: 200px;
+	width: 250px;
 	border: solid 2px black;
-	background-color: white;
+	background-color: royalblue; 
+	padding: 5px 5px;
+} 
+
+#userInfo .param_name {
+	color: red;
+	vertical-align: top;
+	width: 30px;
+}
+
+#userInfo .param {
+	vertical-align: top;
 }
 
 #chat .fuckAndDig {

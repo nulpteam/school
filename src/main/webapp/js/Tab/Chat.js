@@ -2,10 +2,10 @@ function userInfo(elem) {
 	$.post('GetUserInfo.html', {
 		id : elem.id
 	}, function(resp) {
-		$('#userInfo #name').text($(elem).text());
-		$('#userInfo #email').text(resp.email);
-		$('#userInfo #about').text(resp.about);
-		$('#userInfo #birthday').text(resp.birthday);
+		$('#userInfo #name + .param').text($(elem).text());
+		$('#userInfo #email + .param').text(resp.email == null ? '' : resp.email);
+		$('#userInfo #about + .param').text(resp.about == null ? '' : resp.about);
+		$('#userInfo #birthday + .param').text(resp.birthday == null ? '' : resp.birthday);
 		$('#userInfo').show();
 	});
 }

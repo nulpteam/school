@@ -19,11 +19,18 @@
 		<input id="chatInText">
 	</form>
 	
-	<div id="userInfo">
-		<div id="name"></div>
-		<div id="email"></div>
-		<div id="birthday"></div>
-		<div id="about"></div>
+	<%-- <div id="userInfo">
+		<div id="name" class="param_name">${langPack['Name']}</div><div class="param"></div>
+		<div id="email" class="param_name">Email:</div><div class="param"></div>
+		<div id="birthday" class="param_name">${langPack['PP_birthday']}</div><div class="param"></div>
+		<div id="about" class="param_name">${langPack['PP_about']}</div><div class="param"></div>
 		<div onclick="$('#userInfo').hide()">закрити</div>
-	</div>
+	</div> --%>
+	<table id="userInfo" cellpadding="0" cellspacing="0">
+		<tr><td id="name" class="param_name">${langPack['Name']}</td><td class="param"></td></tr>
+		<tr><td id="email" class="param_name">Email:</td><td class="param"></td></tr>
+		<tr><td id="birthday" class="param_name">${langPack['PP_birthday']}</td><td class="param"></td></tr>
+		<tr><td id="about" class="param_name">${langPack['PP_about']}</td><td class="param"></td></tr>
+		<tr><td colspan="2" onclick="$('#userInfo').hide()" align="center">закрити</td></tr>
+	</table>
 </div>

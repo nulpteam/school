@@ -64,7 +64,7 @@
 		</tr>
 		<tr class="edit">
 			<td class="error"></td>
-			<td><textarea rows="5"></textarea></td>
+			<td><textarea maxlength="100" rows="5"></textarea></td>
 			<td class="saveButton"><div onclick=saveAbout();></div></td>
 		</tr>
 		<tr id="pass">
