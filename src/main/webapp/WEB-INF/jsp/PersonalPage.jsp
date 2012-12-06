@@ -73,9 +73,9 @@
 			<td class="editButton"><div onclick=editShowHide(this);></div></td>
 		</tr>
 		<tr class="edit">
-			<td class="pass"><p class="error">${langPack['PP_newPassword']}</p>
+			<td class="pass"><p>${langPack['PP_newPassword']}</p>
 				<input id="old" type="password"></td>
-			<td class="pass"><p class="error">${langPack['PP_oldPassword']}</p>
+			<td class="pass"><p>${langPack['PP_oldPassword']}</p>
 				<input id="new" type="password"></td>
 			<td class="saveButton"><div onclick=savePass();></div></td>
 		</tr>
