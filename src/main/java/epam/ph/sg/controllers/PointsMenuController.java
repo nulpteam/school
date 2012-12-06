@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import epam.ph.sg.games.xo.XOStatistics;
 import epam.ph.sg.models.User;
-import epam.ph.sg.models.points.PointsStatistics;
+import epam.ph.sg.models.points.PtsStatistics;
 import epam.ph.sg.models.points.PtsGame;
 import epam.ph.sg.models.points.PtsGameMap;
 import epam.ph.sg.models.points.PtsPlayer;
-import epam.ph.sg.models.sb.SBStatistics;
 
 @Controller
 public class PointsMenuController {
@@ -31,10 +29,8 @@ public class PointsMenuController {
 		Integer oldGameId;
 		oldGameId = (Integer) session.getAttribute("ptsGameId");
 		
-		if (session.getAttribute("pointGamesMap") == null) {
-			session.setAttribute("pointGamesMap", PtsGameMap.getGames());
-			session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
-		}
+		session.setAttribute("pointGamesMap", PtsGameMap.getGames());
+		session.setAttribute("pointsGameServersMap", PtsGameMap.getGameServers());
 		
 
 		if (oldGameId != null) {
@@ -48,7 +44,6 @@ public class PointsMenuController {
 
 	@RequestMapping(value = "/PointsGame.html")
 	public String pointsGame(HttpSession session) {
-
 		return "Points/PointsGame";
 	}
 
@@ -135,7 +130,7 @@ public class PointsMenuController {
 	public String statistics(HttpServletRequest request, Model model) {
 		User user = (User) request.getSession().getAttribute("user");
 
-		List<PointsStatistics> list = PointsStatistics.getAllStatistics();
+		List<PtsStatistics> list = PtsStatistics.getAllStatistics();
 		if (list.size() < 10) {
 			model.addAttribute("ptsStatList", list);
 		} else {
@@ -153,26 +148,39 @@ public class PointsMenuController {
 	}
 	
 	@RequestMapping(value = "/PointsEndGameWinner.html")
-	public String endOfGameLooser(HttpSession session) {
+	public String endOfGameWinner(HttpSession session) {
 		
-		PointsStatistics.win(((User)session.getAttribute("user")).getId());
+		PtsStatistics.win(((User)session.getAttribute("user")).getId());
 		return "Points/PointsEndGameWinner";
 	}
 	
 	@RequestMapping(value = "/PointsEndGameLooser.html")
-	public String endOfGameWinner(HttpSession session) {
+	public String endOfGameLoser(HttpSession session) {
 		
-		PointsStatistics.lose(((User)session.getAttribute("user")).getId());
+		PtsStatistics.lose(((User)session.getAttribute("user")).getId());
 		return "Points/PointsEndGameLooser";
+	}
+
+	@RequestMapping(value = "/PointsGameExit.html", method = RequestMethod.POST)
+	public String exitGame(HttpSession session) {
+
+		PtsStatistics.lose(((User)session.getAttribute("user")).getId());
+		return "";
 	}
 	
 	@RequestMapping(value = "/PointsClearPointsGameSession.html", method = RequestMethod.POST)
 	public @ResponseBody String clearGameSession(HttpSession session) {
 		
 		Integer gameId = (Integer)session.getAttribute("ptsGameId");
-				
-		PtsGameMap.deleteGame(gameId);
-		PtsGameMap.deleteGameServer(gameId);
+		
+		
+		synchronized(PtsGameMap.getGames()) {
+			if (PtsGameMap.getGames().get(gameId) != null) {
+				PtsGameMap.deleteGame(gameId);
+				PtsGameMap.deleteGameServer(gameId);
+			}
+		}
+		
 		
 		session.removeAttribute("ptsGame");
 		session.removeAttribute("ptsUserType");
@@ -186,8 +194,12 @@ public class PointsMenuController {
 
 		Integer gameId = (Integer)session.getAttribute("ptsGameId");
 		
-		PtsGameMap.deleteGame(gameId);
-		PtsGameMap.deleteGameServer(gameId);
+		synchronized(PtsGameMap.getGames()) {
+			if (PtsGameMap.getGames().get(gameId) != null) {
+				PtsGameMap.deleteGame(gameId);
+				PtsGameMap.deleteGameServer(gameId);
+			}
+		}
 		
 		session.removeAttribute("ptsGame");
 		session.removeAttribute("ptsUserType");

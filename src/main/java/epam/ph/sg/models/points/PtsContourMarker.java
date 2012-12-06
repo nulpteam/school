@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.springframework.web.servlet.theme.FixedThemeResolver;
 
 public class PtsContourMarker {
 
@@ -40,7 +39,7 @@ public class PtsContourMarker {
 
 	public PtsContourMarker() {
 
-		logger = Logger.getLogger(PtsCounturMarker.class);
+		logger = Logger.getLogger(PtsContourMarker.class);
 		contourMap = new HashMap<Integer, PtsContour>();
 		// logicBoard = new int[Pts.Y_LENGTH][Pts.X_LENGTH];
 		// pointsClockwiseUp = new ArrayList<PtsCoord>();
@@ -423,47 +422,47 @@ public class PtsContourMarker {
 		return contourPoints;
 	}
 
-	private void rewriteBoardsIfPointHitsInContour(int y, int x, int[][] board,
-			int[][] logicBoard, PtsContour contour, int pointsValue,
-			int rivalPointsValue) {
-
-		if (logicBoard[y][x] - 190 > 0) {
-
-			if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
-				board[y][x] = pointsValue * 10;
-				writeContourInBoard(board, logicBoard,
-						contour.getContourPoints(), pointsValue,
-						rivalPointsValue);
-				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
-						logicBoard, pointsValue);
-			}
-			if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
-				board[y][x] = Pts.UNUSABLE_POINT_CLIENT;
-				writeContourInBoard(board, logicBoard,
-						contour.getContourPoints(), pointsValue, pointsValue);
-				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
-						logicBoard, pointsValue);
-			}
-		} else if (logicBoard[y][x] - 90 > 0) {
-
-			if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
-				board[y][x] = pointsValue * 10;
-				writeContourInBoard(board, logicBoard,
-						contour.getContourPoints(), rivalPointsValue,
-						pointsValue);
-				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
-						logicBoard, rivalPointsValue);
-			}
-			if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
-				board[y][x] = Pts.UNUSABLE_POINT_SERVER;
-				writeContourInBoard(board, logicBoard,
-						contour.getContourPoints(), pointsValue, pointsValue);
-				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
-						logicBoard, rivalPointsValue);
-			}
-		}
-
-	}
+//	private void rewriteBoardsIfPointHitsInContour(int y, int x, int[][] board,
+//			int[][] logicBoard, PtsContour contour, int pointsValue,
+//			int rivalPointsValue) {
+//
+//		if (logicBoard[y][x] - 190 > 0) {
+//
+//			if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
+//				board[y][x] = pointsValue * 10;
+//				writeContourInBoard(board, logicBoard,
+//						contour.getContourPoints(), pointsValue,
+//						rivalPointsValue);
+//				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+//						logicBoard, pointsValue);
+//			}
+//			if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
+//				board[y][x] = Pts.UNUSABLE_POINT_CLIENT;
+//				writeContourInBoard(board, logicBoard,
+//						contour.getContourPoints(), pointsValue, pointsValue);
+//				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+//						logicBoard, pointsValue);
+//			}
+//		} else if (logicBoard[y][x] - 90 > 0) {
+//
+//			if (pointsValue == Pts.CLIENT_UNMARKED_POINT) {
+//				board[y][x] = pointsValue * 10;
+//				writeContourInBoard(board, logicBoard,
+//						contour.getContourPoints(), rivalPointsValue,
+//						pointsValue);
+//				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+//						logicBoard, rivalPointsValue);
+//			}
+//			if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
+//				board[y][x] = Pts.UNUSABLE_POINT_SERVER;
+//				writeContourInBoard(board, logicBoard,
+//						contour.getContourPoints(), pointsValue, pointsValue);
+//				rewriteLogicBoardIfPointHitsInContour(contour, y, x,
+//						logicBoard, rivalPointsValue);
+//			}
+//		}
+//
+//	}
 
 	private void rewriteLogicBoardIfPointHitsInContour(PtsContour contour,
 			int y, int x, int[][] logicBoard, int pointsValue) {

@@ -13,6 +13,8 @@ public class PtsBoard {
 	private int lastY;
 	private List<List<PtsCoord>> allContoursServer;
 	private List<List<PtsCoord>> allContoursClient;
+	int serverScore;
+	int clientScore;
 
 	
 	public PtsBoard() {
@@ -22,6 +24,8 @@ public class PtsBoard {
 		allContoursServer = new ArrayList<List<PtsCoord>>();
 		lastX = -1;
 		lastY = -1;
+		serverScore = 0;
+		clientScore = 0;
 		init();
 	}
 
@@ -75,6 +79,31 @@ public class PtsBoard {
 		return allContoursClient;
 	}
 
+	public int getServerScore() {
+		serverScore = 0;
+
+		for (int i = 0; i < Pts.Y_LENGTH; i++) {
+			for (int j = 0; j < Pts.X_LENGTH; j++) {
+				if (board[i][j] == 20) {
+					serverScore++;
+			}
+		}
+		}	
+		return serverScore;
+	}
+	
+	public int getClientScore() {
+		clientScore = 0;
+
+		for (int i = 0; i < Pts.Y_LENGTH; i++) {
+			for (int j = 0; j < Pts.X_LENGTH; j++) {
+				if (board[i][j] == 10) {
+					clientScore++;
+			}
+		}
+		}	
+		return clientScore;
+	}
 
 	
 	//TODO delete this method
@@ -87,6 +116,16 @@ public class PtsBoard {
 			System.out.println();
 		}
 	}
+
+	public void setServerScore(int serverScore) {
+		this.serverScore = serverScore;
+	}
+
+	public void setClientScore(int clientScore) {
+		this.clientScore = clientScore;
+	}
+	
+	
 	
 	
 }

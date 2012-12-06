@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import epam.ph.sg.dao.PointsStatisticsDAO;
 
 
-public class PointsStatistics {
+public class PtsStatistics {
 	
 	private static ApplicationContext ctx = new ClassPathXmlApplicationContext(
 			"springconfig.xml");
@@ -29,7 +29,7 @@ public class PointsStatistics {
 		dao.lose(id);
 	}
 
-	public static PointsStatistics getUserStatistics(int id) {
+	public static PtsStatistics getUserStatistics(int id) {
 		return dao.getUserStatistics(id);
 	}
 
@@ -38,11 +38,11 @@ public class PointsStatistics {
 	 * 
 	 * @return List of pointsStatistics
 	 */
-	public static List<PointsStatistics> getAllStatistics() {
-		List<PointsStatistics> list = dao.getAllStatistics();
-		Collections.sort(list, new Comparator<PointsStatistics>() {
+	public static List<PtsStatistics> getAllStatistics() {
+		List<PtsStatistics> list = dao.getAllStatistics();
+		Collections.sort(list, new Comparator<PtsStatistics>() {
 			@Override
-			public int compare(PointsStatistics o1, PointsStatistics o2) {
+			public int compare(PtsStatistics o1, PtsStatistics o2) {
 				if (o1.getTotal() > o2.getTotal())
 					return -1;
 				else if (o1.getTotal() < o2.getTotal())

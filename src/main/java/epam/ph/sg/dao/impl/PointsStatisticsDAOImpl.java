@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 import epam.ph.sg.dao.PointsStatisticsDAO;
-import epam.ph.sg.models.points.PointsStatistics;
+import epam.ph.sg.models.points.PtsStatistics;
 
 public class PointsStatisticsDAOImpl implements PointsStatisticsDAO {
 
@@ -46,18 +46,18 @@ public class PointsStatisticsDAOImpl implements PointsStatisticsDAO {
 	}
 
 	@Override
-	public PointsStatistics getUserStatistics(int id) {
+	public PtsStatistics getUserStatistics(int id) {
 		String sql = "select wins, losses from `sgdb`.`ptsstatistics` where id="
 				+ id;
-		PointsStatistics stat = jdbcTemplate.query(sql,
-				new ResultSetExtractor<PointsStatistics>() {
+		PtsStatistics stat = jdbcTemplate.query(sql,
+				new ResultSetExtractor<PtsStatistics>() {
 
 					@Override
-					public PointsStatistics extractData(ResultSet rs)
+					public PtsStatistics extractData(ResultSet rs)
 							throws SQLException, DataAccessException {
-						PointsStatistics stat = null;
+						PtsStatistics stat = null;
 						if (rs.next()) {
-							stat = new PointsStatistics();
+							stat = new PtsStatistics();
 							stat.setWins(rs.getInt(1));
 							stat.setLosses(rs.getInt(2));
 						}
@@ -69,17 +69,17 @@ public class PointsStatisticsDAOImpl implements PointsStatisticsDAO {
 	}
 
 	@Override
-	public List<PointsStatistics> getAllStatistics() {
+	public List<PtsStatistics> getAllStatistics() {
 		String sql = "select name, wins, losses from `sgdb`.`users` join "
 				+ "`sgdb`.`ptsstatistics` on users.id = ptsstatistics.id;";
 
-		List<PointsStatistics> list = jdbcTemplate.query(sql,
-				new RowMapper<PointsStatistics>() {
+		List<PtsStatistics> list = jdbcTemplate.query(sql,
+				new RowMapper<PtsStatistics>() {
 
 					@Override
-					public PointsStatistics mapRow(ResultSet rs, int rowNum)
+					public PtsStatistics mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
-						PointsStatistics stat = new PointsStatistics();
+						PtsStatistics stat = new PtsStatistics();
 						stat.setName(rs.getString(1));
 						stat.setWins(rs.getInt(2));
 						stat.setLosses(rs.getInt(3));

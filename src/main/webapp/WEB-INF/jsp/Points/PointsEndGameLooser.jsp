@@ -11,7 +11,7 @@
 				<label>${langPack['Pts_score']}</label>
 			</div>
 			<div id="pts_player2_score">
-				<label>${langPack['Pts_score']}</label>
+				<label>${langPack['Pts_score']}e}</label>
 			</div>
 			<div id="pts_player_label_1">
 				<img class="pts_player_div_elements"
@@ -26,13 +26,13 @@
 			<div id="pts_label_win_loose">
 				<label>${langPack['Pts_loser']}</label>
 			</div>
-			<div id="winner_gif">
+			<div id="loser_gif">
 				<img src="images/Points/angry.png">
 			</div>
 			
 			
 			<div class="homeButton" onclick=goToMainMenu()></div>
-			<div class="backButton" onClick=goToPointsMenu()></div>
+			<div class="pts_backButton" onClick=goToPointsMenu()></div>
 		</div>
 	</div>
 </div>

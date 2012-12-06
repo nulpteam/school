@@ -9,9 +9,9 @@
 	<div class="title">
 		<p id="stat_title">${langPack['Pts_stat_title']}</p>
 	</div>
-	<div class="homeButton" onclick=homeButtonClick();></div>
-	<div class="backButton" onclick=backButtonClick();></div>
-	<div class="refreshButton" onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick="goTo('Menu.html')"></div>
+	<div class="backButton" onclick="goTo('Points.html')"></div>
+	<div class="refreshButton" onclick="goTo('Statistics.html')"></div>
 	<table id="pts_statistics_table">
 		<thead>
 			<tr>

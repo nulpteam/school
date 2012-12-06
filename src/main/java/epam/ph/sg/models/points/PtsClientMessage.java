@@ -11,6 +11,8 @@ public class PtsClientMessage {
 	private boolean lock;
 	private boolean activeMainMenu;
 	private boolean activePointsMenu;
+	private boolean timer;
+	private int moveTime;
 
 	public PtsClientMessage() {
 		type = "";
@@ -21,6 +23,16 @@ public class PtsClientMessage {
 		lock = false;
 		activeMainMenu = false;
 		activePointsMenu = false;
+		timer = false;
+		moveTime = 60;
+	}
+
+	public boolean isTimer() {
+		return timer;
+	}
+
+	public void setTimer(boolean timer) {
+		this.timer = timer;
 	}
 
 	public boolean isActiveMainMenu() {
@@ -29,6 +41,14 @@ public class PtsClientMessage {
 
 	public void setActiveMainMenu(boolean activeMainMenu) {
 		this.activeMainMenu = activeMainMenu;
+	}
+
+	public int getMoveTime() {
+		return moveTime;
+	}
+
+	public void setMoveTime(int moveTime) {
+		this.moveTime = moveTime;
 	}
 
 	public boolean isActivePointsMenu() {

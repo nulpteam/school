@@ -10,7 +10,7 @@ public class PtsWebSocketHandler extends WebSocketHandler {
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest arg0, String arg1) {
 
-		return new PtsWebSocketSpeeker();
+		return new PtsWebSocketSpeaker();
 	}
 
 	

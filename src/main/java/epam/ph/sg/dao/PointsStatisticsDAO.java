@@ -2,7 +2,7 @@ package epam.ph.sg.dao;
 
 import java.util.List;
 
-import epam.ph.sg.models.points.PointsStatistics;
+import epam.ph.sg.models.points.PtsStatistics;
 
 public interface PointsStatisticsDAO {
 
@@ -37,13 +37,13 @@ public interface PointsStatisticsDAO {
 	 *            - User ID
 	 * @return PointsStatistics
 	 */
-	PointsStatistics getUserStatistics(int id);
+	PtsStatistics getUserStatistics(int id);
 
 	/**
 	 * Extract statistics from the DB
 	 * 
 	 * @return List of PointsStatistics
 	 */
-	List<PointsStatistics> getAllStatistics();
+	List<PtsStatistics> getAllStatistics();
 
 }

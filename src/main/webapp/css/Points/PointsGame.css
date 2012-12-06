@@ -75,6 +75,11 @@
 
 }
 
+#loser_gif {
+	position: absolute;
+	margin: 120px 120px;
+}
+
 #pts_rules {
 	position: absolute;
 	margin: 160px 87px;
@@ -150,6 +155,26 @@
 
 #pts_table1 tr {
 	height: 20px;
+}
+
+.pts_rules {
+	text-align: left;
+	width: 400px;
+	height: 50px;
+}
+
+#pts_timer {
+	position: absolute;
+	margin: 80px 270px;
+	width: 50px;
+	hieght: 70px;
+	visibility: hidden;
+	color: red;
+	text-align: center;
+}
+
+#pts_timer_title {
+	color: #5B2FCE;
 }
 
 #pts_surrender_div {
@@ -305,6 +330,22 @@
 	width: 60px;
 }
 
+.pts_backButton {
+	position: absolute;
+	background-image: url('../../images/paperList/back_sprite.png');
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 60px;
+	margin: 80px 540px;
+	cursor: pointer;
+}
+
+.pts_backButton:hover {
+	background: url('../../images/paperList/back_sprite.png') bottom;
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 60px;
+}
 .surrenderButton {
 	
 	position: absolute;

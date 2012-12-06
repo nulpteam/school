@@ -8,7 +8,12 @@
 	<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
 
 	<div id="pts_rules">
-		<label>${langPack['Pts_rules']}</label>
+		<div class="pts_rules"><label>${langPack['Pts_rules_title']}</label></div>
+		<div class="pts_rules"><label>${langPack['Pts_rule1']}</label></div>
+		<div class="pts_rules"><label>${langPack['Pts_rule2']}</label></div>
+		<div class="pts_rules"><label>${langPack['Pts_rule3']}</label></div>
+		<div class="pts_rules"><label>${langPack['Pts_rule4']}</label></div>
+		<div class="pts_rules"><label>${langPack['Pts_rule5']}</label></div>
 	</div>
 
 	<div class="homeButton" onclick="goTo('Menu.html')"></div>
