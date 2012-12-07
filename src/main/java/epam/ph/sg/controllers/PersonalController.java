@@ -36,8 +36,12 @@ public class PersonalController {
 	UserAddInfo getUserAddInfo(@RequestParam("id") int id,
 			HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+		} else {
+			log.info(request.getRequestURI() + " request received.");
+		}
 		return PersonalPage.getUserAddIngo(id);
 	}
 
