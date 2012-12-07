@@ -14,6 +14,7 @@ $(document).ready(
 		});
 
 function goTo(link) {
+	$('.paperList').html('<img id="wait_response" src="images/paperList/load.gif">');
 	$.post(link, function(resp) {
 		$('.paperList').remove();
 		$('.page').append(resp);

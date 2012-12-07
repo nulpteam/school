@@ -36,6 +36,8 @@
 	</div>
 	<div class="page">
 		<c:import url="Tab/Tab.jsp"></c:import>
+		<div class="paperList"></div>
 	</div>
+	<div id="tab_buffer"></div>
 </body>
 </html>

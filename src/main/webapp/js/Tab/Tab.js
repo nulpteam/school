@@ -2,11 +2,25 @@ var chatLink = 'Chat.html';
 var sudokuLink = 'Sudoku.html';
 var homeLink = 'TabHome.html';
 
+
 function tabGoTo(link) {
+	$('.display').remove();
+	$('#tab').append('<div class="display">'
+			+ '<img id="wait_response" src="images/Tab/load.gif"></div>');
 	$.post(link, function(resp) {
 		$('.display').remove();
 		$('#tab').append(resp);
 	});
+//	$.post(link, function(resp) {
+//		$('#tab_buffer').html(resp);
+//		$('#tab_buffer').ready(function() {
+//			$('#tab_buffer .display').load(insertContent(resp));
+//		});
+//	});
+//	function insertContent(resp) {
+//		$('.display').remove();
+//		$('#tab').append(resp);
+//	}
 }
 
 function tabBackButton() {

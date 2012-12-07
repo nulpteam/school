@@ -53,6 +53,10 @@ body {
 		url('../font/LC_Chalk.ttf') format('truetype');
 }
 
+.paperList #wait_response {
+	margin: 300px 280px;
+}
+
 .paperList .title {
 	color: red;
 	width: 450px;

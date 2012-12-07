@@ -21,8 +21,12 @@
 	margin: 56px 45px;
 }
 
-#menu {
-		background-image: url('../../images/Tab/tab_back.jpg');
+#tab #menu {
+	background-image: url('../../images/Tab/tab_back.jpg');
+}
+
+#tab .display #wait_response {
+	margin: 200px 71px;
 }
 
 #tab #bar {
