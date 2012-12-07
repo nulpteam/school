@@ -15,7 +15,7 @@
 .exitInGameButton{
 	position:absolute;
 	background-image: url('../images/Infection/exit_button.png');
-	margin:300px 427px;
+	margin:480px 447px;
 	width:80px;
 	height:80px;
 }
@@ -23,7 +23,7 @@
 .exitInGameButton:hover{
 	position:absolute;
 	background-image: url('../images/Infection/exit_button_hover.png');
-	margin:300px 427px;
+	margin:480px 447px;
 	width:80px;
 	height:80px;
 }
@@ -60,29 +60,29 @@
 
 #infgame_table {
 	position:absolute; 
-	margin:1px 1px;
+	margin:20px 20px;
 }
 
 #inf_table_bg{
-	background-image: url('../images/Infection/infection_table1.png');
+	background-image: url('../images/Infection/infection_table_1.png');
 	position:absolute; 
-	margin:120px 107px;
-	width:283px;
-	height:283px;
+	margin:80px 107px;
+	width:360px;
+	height:360px;
 }
 
 #infplayer_label_1 {
 	position: absolute;
-	margin: 420px 60px;
+	margin: 440px 80px;
 	width: 160px;
 	text-align: center;
-	color:#0000FF;
+	color:#562FB7;
 	
 }
 
 #inf_message_place{
 	position:absolute;
-	margin:100px 407px;
+	margin:440px 327px;
 	width: 100px;
 	height: 140px;
 	font-size: 15px;
@@ -91,25 +91,29 @@
 
 #infplayer_label_2 {
 	position: absolute;
-	margin: 420px 280px;
+	margin: 520px 80px;
 	width: 160px;
 	text-align: center;
-	color:#0000FF;
+	color:#562FB7;
 	
 }
 
 #infscore_label_1 {
+	/*background-image: url('../images/Infection/infscore_bg.png');*/
 	position: absolute;
-	margin: 470px 60px;
-	width: 160px;
+	margin: 440px 247px;
+	width: 60px;
+	height: 60px;
 	text-align: center;
 	color:red;
 }
 
 #infscore_label_2 {
+	/*background-image: url('../images/Infection/infscore_bg.png');*/
 	position: absolute;
-	margin: 470px 290px;
-	width: 160px;
+	margin: 520px 247px;
+	width: 60px;
+	height: 60px;
 	text-align: center;
 	color:red;
 }

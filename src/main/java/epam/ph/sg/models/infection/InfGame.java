@@ -28,7 +28,7 @@ public class InfGame implements Serializable{
 	private InfJsonParser jsonParser;
 	private int serverScore=0;
 	private int clientScore=0;
-	private int[][] board=new int[7][7];
+	private int[][] board=new int[8][8];
 	private int fmXcoor;
 	private int fmYcoor;
 	private boolean clientLock;
@@ -46,9 +46,9 @@ public class InfGame implements Serializable{
 		setServerlock(false);
 		
 		board[0][0]=1;
-		board[0][6]=2;
-		board[6][0]=2;
-		board[6][6]=1;
+		board[0][7]=2;
+		board[7][0]=2;
+		board[7][7]=1;
 		
 
 	}
