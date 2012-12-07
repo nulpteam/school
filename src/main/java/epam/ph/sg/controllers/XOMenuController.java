@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import epam.ph.sg.games.xo.XOConnector;
 import epam.ph.sg.games.xo.XOPlayer;
 import epam.ph.sg.games.xo.XOStatistics;
+import epam.ph.sg.games.xo.XoWebSocketSpeacker;
 import epam.ph.sg.models.User;
 
 @Controller
@@ -79,9 +80,14 @@ public class XOMenuController {
 		User user = (User) request.getSession().getAttribute("user");
 		log.info(request.getRequestURI() + " request received. User id="
 				+ user.getId() + ". Server id=" + serverID);
-		request.getSession().setAttribute("xoGame",
-				XOConnector.connect(serverID, user));
-		return true;
+		XOPlayer xo = XOConnector.connect(serverID, user);
+		if (xo == null) {
+			return false;
+		} else {
+			request.getSession().setAttribute("xoGame", xo);
+			XoWebSocketSpeacker.send(serverID);
+			return true;
+		}
 	}
 
 	@RequestMapping(value = "/XOGame.html")

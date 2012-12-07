@@ -13,6 +13,8 @@ function connect(id) {
 		}, function(response) {
 			if (response == true) {
 				goTo(gameLink);
+			} else {
+				goTo(serverListLink);
 			}
 		});
 	}

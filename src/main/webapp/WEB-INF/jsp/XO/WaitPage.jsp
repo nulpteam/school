@@ -8,6 +8,7 @@
 	<script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
 	<script src="js/XO/WaitPage.js" type="text/javascript"></script>
 	<script type="text/javascript">
+		var myId = "${user.id}";
 		$(document).ready(function(){
 			waitClient();
 		});

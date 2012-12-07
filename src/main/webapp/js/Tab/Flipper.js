@@ -45,11 +45,6 @@ function flip(elem) {
 }
 
 function flipUI($elem) {
-//	$elem.flip({
-//		direction : "rl",
-//		speed : 200,
-//		dontChangeColor : true,
-//	});
 	if ($elem.attr('class') == 'white') {
 		$elem.attr('class', 'black');
 	} else {

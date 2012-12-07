@@ -46,10 +46,15 @@ public class XOConnector {
 	 */
 	public static XOPlayer connect(int serverID, User client) {
 		XOPlayer serverPlayer = serverMap.get(serverID);
+		if (serverPlayer == null) {
+			return null;
+		}
 		XOPlayer clientPlayer = new XOPlayer(client.getId(), XOBox.O,
 				serverPlayer.getGame());
 		clientPlayer.getGame().setClient(client);
 		clientPlayer.getGame().getStatus().setLastPlayer(client.getId());
+		clientPlayer.setOponentId(serverID);
+		serverPlayer.setOponentId(client.getId());
 		serverMap.remove(serverID);
 
 		User server = clientPlayer.getGame().getServer();

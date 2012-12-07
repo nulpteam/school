@@ -1,12 +1,19 @@
 var lock = true;
 var end = false;
-var checkerInterval;
+var socket;
 
 // Tick Position
 var tickX1 = '210px';
 var tickX2 = '460px';
 
 function gameStart() {
+	socket = new WebSocket("ws://" + location.hostname + ":8088");
+	socket.onopen = function() {
+		socket.send(myId);
+	};
+	socket.onmessage = function(event) {
+		getStatus();
+	};
 	getStatus();
 }
 
@@ -21,18 +28,6 @@ function put(img) {
 			getStatus();
 		}
 	});
-}
-
-function checker() {
-	checkerInterval = setInterval(check, 1000);
-	function check() {
-		$.post('XOCheckChanges.html', function(resp) {
-			if (resp == true) {
-				clearInterval(checkerInterval);
-				getStatus();
-			}
-		});
-	}
 }
 
 function getStatus() {
@@ -99,7 +94,6 @@ function opTurn() {
 	$('#xoGame #tick').animate({
 		marginLeft : tickX2
 	}, 500);
-	checker();
 }
 
 var timerInterval;
@@ -154,7 +148,7 @@ function statHide(id) {
 
 function gameHomeButton() {
 	if (end == true) {
-		clearInterval(checkerInterval);
+		socket.close();
 		clearInterval(timerInterval);
 		$.post('XOClear.html', function(response) {
 			homeButtonClick();
@@ -162,7 +156,7 @@ function gameHomeButton() {
 	} else {
 		var bool = confirm(msgExit);
 		if (bool == true) {
-			clearInterval(checkerInterval);
+			socket.close();
 			clearInterval(timerInterval);
 			$.post('XOPlayerOut.html', function(response) {
 				homeButtonClick();
@@ -173,7 +167,7 @@ function gameHomeButton() {
 
 function gameBackButton() {
 	if (end == true) {
-		clearInterval(checkerInterval);
+		socket.close();
 		clearInterval(timerInterval);
 		$.post('XOClear.html', function(response) {
 			backButtonClick();
@@ -181,7 +175,7 @@ function gameBackButton() {
 	} else {
 		var bool = confirm(msgExit);
 		if (bool == true) {
-			clearInterval(checkerInterval);
+			socket.close();
 			clearInterval(timerInterval);
 			$.post('XOPlayerOut.html', function(response) {
 				backButtonClick();
@@ -191,7 +185,7 @@ function gameBackButton() {
 }
 
 function gameRefreshButton() {
-	clearInterval(checkerInterval);
+	socket.close();
 	clearInterval(timerInterval);
 	refreshButtonClick();
 }

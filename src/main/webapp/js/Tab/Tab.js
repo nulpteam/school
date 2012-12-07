@@ -1,7 +1,6 @@
 var chatLink = 'Chat.html';
 var sudokuLink = 'Sudoku.html';
 var homeLink = 'TabHome.html';
-var chatInterval;
 
 function tabGoTo(link) {
 	$.post(link, function(resp) {
@@ -11,9 +10,6 @@ function tabGoTo(link) {
 }
 
 function tabBackButton() {
-	if (chatInterval != null) {
-		clearInterval(chatInterval);
-	}
 	tabGoTo(homeLink);
 }
 

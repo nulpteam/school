@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import epam.ph.sg.models.User;
 import epam.ph.sg.tab.chat.Chat;
 import epam.ph.sg.tab.chat.ChatUser;
+import epam.ph.sg.tab.chat.ChatWebSocketSpeacker;
 import epam.ph.sg.tab.chat.Message;
 
 @Controller
@@ -38,18 +39,19 @@ public class ChatController {
 
 	@RequestMapping(value = "/Send.html", method = RequestMethod.POST)
 	public @ResponseBody
-	Message[] send(@RequestParam("msg") String msgText,
-			HttpServletRequest request) {
+	boolean send(@RequestParam("msg") String msgText, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		if (user != null) {
 			log.info(request.getRequestURI() + " request received. User id="
 					+ user.getId() + ". Message: " + msgText);
 			Message msg = new Message(user, msgText);
 			Chat.addMessage(msg);
+			ChatWebSocketSpeacker.informAll();
+			return true;
 		} else {
 			log.info(request.getRequestURI() + " request received.");
+			return false;
 		}
-		return refresh(request);
 	}
 
 	@RequestMapping(value = "/Refresh.html", method = RequestMethod.POST)
@@ -59,7 +61,8 @@ public class ChatController {
 		if (user != null) {
 			log.info(request.getRequestURI() + " request received. User id="
 					+ user.getId());
-			ChatUser cu = (ChatUser) request.getSession().getAttribute("chatUser");
+			ChatUser cu = (ChatUser) request.getSession().getAttribute(
+					"chatUser");
 			return cu.refresh();
 		} else {
 			log.info(request.getRequestURI() + " request received.");

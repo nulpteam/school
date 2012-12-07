@@ -13,30 +13,7 @@ public class XOGame {
 	private User server = null; // Server User instance
 	private User client = null; // Client User instance
 
-	private int gameTimerCount = 0;
-
-	/**
-	 * Wait for client time out
-	 */
-	private int serverTimerCount = 0;
-
-	public void serverTimeOut() {
-		serverTimerCount++;
-		final int myTimerCount = serverTimerCount;
-		new Thread() {
-			@Override
-			public void run() {
-				try {
-					sleep(6000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				if (myTimerCount == serverTimerCount) {
-					XOConnector.getServerMap().remove(server.getId());
-				}
-			}
-		}.start();
-	}
+	private volatile int gameTimerCount = 0;
 
 	/**
 	 * Player move time out
@@ -59,14 +36,15 @@ public class XOGame {
 					if (status.getLastPlayer() == id) {
 						status.setWinnerId(id);
 						status.setTimeOut(true);
+						XoWebSocketSpeacker.send(id);
 						if (id == server.getId()) {
 							XOStatistics.win(server.getId());
 							XOStatistics.lose(client.getId());
-							status.setLastPlayer(client.getId());
+//							status.setLastPlayer(client.getId());
 						} else if (id == client.getId()) {
 							XOStatistics.win(client.getId());
 							XOStatistics.lose(server.getId());
-							status.setLastPlayer(server.getId());
+//							status.setLastPlayer(server.getId());
 						}
 					}
 				}

@@ -7,6 +7,7 @@ import java.util.List;
 
 public class XOPlayer {
 	private int id; // User ID
+	private int oponentId;
 	private int status; // Player status (XO.X or XO.O)
 	private XOGame game; // Game instance
 
@@ -72,5 +73,13 @@ public class XOPlayer {
 
 	public XOGame getGame() {
 		return game;
+	}
+
+	public int getOponentId() {
+		return oponentId;
+	}
+
+	public void setOponentId(int oponentId) {
+		this.oponentId = oponentId;
 	}
 }
