@@ -10,8 +10,8 @@
 	<div id="lock" class="${Game.nextMove}"></div>
 	<div id="bothStarted" class="${Game.bothStarted}"></div>
 	<div id="mess" class="${mess}"></div>
-		<script type="text/javascript" src="js/SB/swfobject.js"></script>
- 	<script type="text/javascript" src="js/SB/web_socket.js"></script>
+<!-- 		<script type="text/javascript" src="js/SB/swfobject.js"></script> -->
+<!--  	<script type="text/javascript" src="js/SB/web_socket.js"></script> -->
 	<c:forEach items="${sbJSLoader.scripts}" var="script">
 		<script src="<c:out value="${script}"/>" type="text/javascript"></script>
 	</c:forEach>
@@ -20,7 +20,7 @@
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
-				<div class="SbMButtonRightHome" onclick="goTo('Menu.html');"></div>
+				<div class="SbMButtonRightHome" onclick="closeAndgoTo('Menu.html');"></div>
 				<div class="sound">
 					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
 				</div>

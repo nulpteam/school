@@ -23,7 +23,7 @@
 		<div class="deco_sheep">
 			<img alt="sheep" src="images/SB/sheep_deco.png">
 		</div>
-				<div class=SbMButtonRightHome onclick="goTo('Menu.html');"></div>
+				<div class=SbMButtonRightHome onclick="closeAndgoTo('Menu.html');"></div>
 				<div class="sound">
 					<img id="s_on" src="images/SB/s_on.png" onclick="chSound();"/>
 				</div>
