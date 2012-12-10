@@ -11,16 +11,6 @@ function tabGoTo(link) {
 		$('.display').remove();
 		$('#tab').append(resp);
 	});
-//	$.post(link, function(resp) {
-//		$('#tab_buffer').html(resp);
-//		$('#tab_buffer').ready(function() {
-//			$('#tab_buffer .display').load(insertContent(resp));
-//		});
-//	});
-//	function insertContent(resp) {
-//		$('.display').remove();
-//		$('#tab').append(resp);
-//	}
 }
 
 function tabBackButton() {

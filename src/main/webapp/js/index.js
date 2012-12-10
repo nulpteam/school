@@ -1,20 +1,13 @@
-$(document).ready(
-		function() {
-			// console.log(location.hostname);
-			if (!("WebSocket" in window)) {
-				// the browser doesn't support WebSockets
-				alert("WebSockets NOT supported here!\r\n\r\nBrowser: "
-						+ navigator.userAgent + "\n");
-			}
-			// Set URL of your WebSocketMain.swf here:
-			WEB_SOCKET_SWF_LOCATION = "js/SB/WebSocketMain.swf";
-			// Set this to dump debug message from Flash to console.log:
-			WEB_SOCKET_DEBUG = true;
-			// console.log(WEB_SOCKET_SWF_LOCATION);
-		});
+$(document).ready(function() {
+	WEB_SOCKET_SWF_LOCATION = "js/WebSocket/WebSocketMain.swf";
+	WEB_SOCKET_DEBUG = false;
+	goTo('CurrentPos.html');
+});
 
 function goTo(link) {
-	$('.paperList').html('<img id="wait_response" src="images/paperList/load.gif">');
+	$('.paperList').remove();
+	$('.page').append('<div class="paperList">'
+			+ '<img id="wait_response" src="images/paperList/load.gif"></div>');
 	$.post(link, function(resp) {
 		$('.paperList').remove();
 		$('.page').append(resp);

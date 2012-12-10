@@ -50,6 +50,7 @@ function getStatus() {
 function gameOver(winnerId) {
 	lock = true;
 	end = true;
+	timerStop();
 	if (winnerId == myId) {
 		$('#xoGame #outText p').text(msgWin);
 		$('#xoGame #win').show();
@@ -61,6 +62,7 @@ function gameOver(winnerId) {
 function playerOut(winnerId) {
 	lock = true;
 	end = true;
+	timerStop();
 	if (winnerId == myId) {
 		$('#xoGame #outText p').text($('#xoGame #opName').text() + msgOut);
 	} else {
