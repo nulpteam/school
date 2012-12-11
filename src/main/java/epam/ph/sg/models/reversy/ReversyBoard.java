@@ -9,7 +9,7 @@ package epam.ph.sg.models.reversy;
 import java.util.ArrayList;
 import java.util.List;
 
-import epam.ph.sg.controllers.ReversyController;
+import epam.ph.sg.web.controllers.ReversyController;
 
 public class ReversyBoard {
 	private int boardSize = 64;

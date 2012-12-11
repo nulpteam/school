@@ -3,7 +3,7 @@ package epam.ph.sg.dao;
 /**
  * @author Talash Pavlo
  */
-import epam.ph.sg.personal.UserAddInfo;
+import epam.ph.sg.models.UserAddInfo;
 
 public interface UserAddInfoDAO {
 	/**

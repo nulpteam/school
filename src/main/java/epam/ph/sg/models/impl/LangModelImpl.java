@@ -9,7 +9,6 @@ import epam.ph.sg.models.LangModel;
 
 public class LangModelImpl implements LangModel {
 	private  String lang;
-	private static Logger log = Logger.getLogger(LangModelImpl.class);
 	
 	
 	public String getLang() {

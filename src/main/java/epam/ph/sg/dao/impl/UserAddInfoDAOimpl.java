@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 import epam.ph.sg.dao.UserAddInfoDAO;
-import epam.ph.sg.personal.UserAddInfo;
+import epam.ph.sg.models.UserAddInfo;
 
 public class UserAddInfoDAOimpl implements UserAddInfoDAO {
 	

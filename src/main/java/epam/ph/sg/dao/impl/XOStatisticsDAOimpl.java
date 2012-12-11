@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
  * @author Paul Michael T.
  */
 import epam.ph.sg.dao.XOStatisticsDAO;
-import epam.ph.sg.games.xo.XOStatistics;
+import epam.ph.sg.models.xo.XOStatistics;
 
 public class XOStatisticsDAOimpl implements XOStatisticsDAO {
 	

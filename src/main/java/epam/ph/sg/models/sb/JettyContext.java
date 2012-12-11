@@ -11,10 +11,10 @@ import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.DefaultHandler;
 
-import epam.ph.sg.games.xo.XoWebSocketHandler;
 import epam.ph.sg.models.infection.InfWebSocketHandler;
 import epam.ph.sg.models.points.PtsWebSocketHandler;
 import epam.ph.sg.models.reversy.ReversyWebSocketHandler;
+import epam.ph.sg.models.xo.XoWebSocketHandler;
 import epam.ph.sg.tab.chat.ChatWebSocketHandler;
 
 public class JettyContext implements ServletContextListener {
