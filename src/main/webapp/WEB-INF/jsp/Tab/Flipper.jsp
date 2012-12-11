@@ -10,6 +10,7 @@
 		});
 	</script>
 	<div id="cont">
+		<div id="msgOut"><p></p></div>
 		<table id="field">
 			<c:forEach var="line" items="${flipperGame.field}"
 				varStatus="lineNumber">

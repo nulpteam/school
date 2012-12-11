@@ -3,9 +3,19 @@
 	background-repeat: no-repeat;
 }
 
+#mineSweeper #msgOut {
+	font-size: 20px;
+	font-weight: bold;
+	color: mediumslateblue;
+	width: 270px;
+	height: 24px;
+	text-align: center;
+	margin-top: 80px;
+}
+
 #mineSweeper #msField {
 	cursor: pointer;
-	margin: 100px auto 10px;
+	margin: 10px auto 10px;
 }
 
 #mineSweeper #msField div {

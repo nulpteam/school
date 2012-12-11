@@ -14,8 +14,8 @@ function userInfo(elem) {
 }
 
 function chatStart() {
-	socket = new WebSocket("ws://" + location.hostname + ":8089");
-	socket.onmessage = function(event) {
+	chatSocket = new WebSocket("ws://" + location.hostname + ":8089");
+	chatSocket.onmessage = function(event) {
 		refresh();
 	};
 	$('#chatForm #chatInText').keypress(function(ev) {

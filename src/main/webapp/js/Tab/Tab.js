@@ -1,6 +1,7 @@
 var chatLink = 'Chat.html';
 var sudokuLink = 'Sudoku.html';
 var homeLink = 'TabHome.html';
+var chatSocket;
 
 
 function tabGoTo(link) {
@@ -14,6 +15,9 @@ function tabGoTo(link) {
 }
 
 function tabBackButton() {
+	if(chatSocket != null) {
+		chatSocket.close();
+	}
 	tabGoTo(homeLink);
 }
 

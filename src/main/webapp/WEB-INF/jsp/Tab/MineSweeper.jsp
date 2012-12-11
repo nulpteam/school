@@ -5,15 +5,11 @@
 <div id="mineSweeper" class="display">
 	<script src="js/Tab/MineSweeper.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		var win = ${mineSweeper.status.win};
-		var lose = ${mineSweeper.status.loose};
 		$(document).ready(function() {
 			msStart();
-			if (win | lose) {
-				locked = true;
-			}
 		});
 	</script>
+	<div id="msgOut"><p></p></div>
 	<table id="msField" cellpadding="0" cellspacing="3">
 		<c:forEach var="line" items="${mineSweeper.field}"
 			varStatus="lineNumber">

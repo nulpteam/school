@@ -5,7 +5,6 @@
 
 <div id="personalPage" class="paperList">
 	<script src="js/Personal/personal.js" type="text/javascript"></script>
-	<script src="js/Personal/lang_${lang}.js" type="text/javascript"></script>
 	<script src="js/Personal/jquery-ui-datepicker.js"
 		type="text/javascript"></script>
 	<script src="js/Personal/jquery.ui.datepicker-${lang}.js"
@@ -21,8 +20,8 @@
 		});
 	</script>
 
-	<div class="homeButton" onclick=homeButtonClick();></div>
-	<div class="refreshButton" onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick="goTo('Menu.html');"></div>
+	<div class="refreshButton" onclick="goTo('CurrentPos.html');"></div>
 	<div class="title">
 		<p align="center">${langPack['PP_title']}</p>
 	</div>
@@ -73,9 +72,9 @@
 			<td class="editButton"><div onclick=editShowHide(this);></div></td>
 		</tr>
 		<tr class="edit">
-			<td class="pass"><p>${langPack['PP_newPassword']}</p>
-				<input id="old" type="password"></td>
 			<td class="pass"><p>${langPack['PP_oldPassword']}</p>
+				<input id="old" type="password"></td>
+			<td class="pass"><p>${langPack['PP_newPassword']}</p>
 				<input id="new" type="password"></td>
 			<td class="saveButton"><div onclick=savePass();></div></td>
 		</tr>

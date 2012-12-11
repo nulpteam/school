@@ -13,6 +13,7 @@ function goTo(link) {
 		$('.page').append(resp);
 	});
 }
+
 function goTo2(link, param) {
 	$.post(link, {
 		connType : param
@@ -23,16 +24,13 @@ function goTo2(link, param) {
 }
 
 function homeButtonClick() {
+	alert('deprecated');
 	goTo('Menu.html');
 }
 
 function refreshButtonClick() {
+	alert('deprecated');
 	goTo('CurrentPos.html');
-}
-
-function backButtonClick() {
-	alert("deprecated");
-	goTo('Menu.html');
 }
 
 function language(node) {

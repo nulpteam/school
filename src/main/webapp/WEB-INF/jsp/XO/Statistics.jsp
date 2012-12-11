@@ -9,9 +9,9 @@
 	<div class="title">
 		<p align="center">${langPack['XO_stat_title']}</p>
 	</div>
-	<div class="homeButton" onclick=homeButtonClick();></div>
-	<div class="backButton" onclick=backButtonClick();></div>
-	<div class="refreshButton" onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick="goTo('Menu.html');"></div>
+	<div class="backButton" onclick="goTo('XOMenu.html');"></div>
+	<div class="refreshButton" onclick="goTo('CurrentPos.html');"></div>
 	<table>
 		<thead>
 			<tr>

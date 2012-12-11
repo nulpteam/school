@@ -23,8 +23,8 @@ function send(elem) {
 function getStatus() {
 	$.post("FlipperStatus.html", function(resp) {
 		if (resp.gameOver == true) {
+			$('#flipper #msgOut p').text(msgLose);
 			gameOver.play();
-			alert('Game Over');
 			lock = true;
 		} else if (resp.nextLevel == true) {
 			levelSound.play();

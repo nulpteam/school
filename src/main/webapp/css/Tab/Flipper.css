@@ -10,8 +10,17 @@
 	margin: 70px 0px;
 }
 
+#flipper #msgOut {
+	font-size: 20px;
+	font-weight: bold;
+	color: snow;
+	width: 270px;
+	height: 24px;
+	text-align: center;
+}
+
 #flipper #field {
-	margin: 50px auto;
+	margin: 30px auto;
 }
 
 #flipper #field div {
