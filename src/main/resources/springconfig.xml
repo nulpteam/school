@@ -16,14 +16,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="loginModelDAOImpl" class="epam.ph.sg.dao.impl.LoginModelDAOImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-
-	<bean id="regModelDAOImpl" class="epam.ph.sg.dao.impl.RegModelDAOImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-
 	<bean id="xoStatisticsDAOimpl" class="epam.ph.sg.dao.impl.XOStatisticsDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>

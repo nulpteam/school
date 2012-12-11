@@ -3,8 +3,6 @@
  */
 package epam.ph.sg.models.impl;
 
-import org.apache.log4j.Logger;
-
 import epam.ph.sg.models.LangModel;
 
 public class LangModelImpl implements LangModel {

@@ -17,7 +17,7 @@
 	</div>
 	<div class="homeButton" onclick=waitPageHomeButton();></div>
 	<div class="backButton" onclick=waitPageBackButton();></div>
-	<div class="refreshButton" onclick="goTo('CurrentPos.html');"></div>
+	<div class="refreshButton" onclick=waitPageRefreshButton();></div>
 	<div id="startButton" align="center">
 		<div class="button" onclick=startButtonClick();>
 			<p class="buttonText">Start Game</p>
