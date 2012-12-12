@@ -1,94 +1,118 @@
-delimiter $$
-CREATE DATABASE `sgdb` /*!40100 DEFAULT CHARACTER SET utf8 */$$
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-delimiter $$
-CREATE TABLE `sgdb`.`users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(30) DEFAULT NULL,
-  `Pass` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8$$
+CREATE SCHEMA IF NOT EXISTS `sgdb` DEFAULT CHARACTER SET utf8 ;
+USE `sgdb` ;
 
-delimiter $$
-CREATE TABLE `sgdb` . `xostatistics` (
-  `id` int(11) NOT NULL,
-  `Wins` int(11) DEFAULT 0,
-  `Losses` int(11) DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+-- -----------------------------------------------------
+-- Table `sgdb`.`users`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sgdb`.`users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(30) NOT NULL ,
+  `Pass` VARCHAR(30) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `Name_UNIQUE` (`Name` ASC) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8;
 
-delimiter $$
-CREATE  TABLE `sgdb`.`sbstatistics` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `Wins` int(11) DEFAULT 0 ,
-  `Losses` int(11) DEFAULT 0 ,
-  PRIMARY KEY (`id`) )$$
-  
-delimiter $$
-CREATE  TABLE `sgdb`.`infstatistics` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `Wins` int(11) DEFAULT 0 ,
-  `Losses` int(11) DEFAULT 0 ,
-  PRIMARY KEY (`id`) )$$ 
-  
- delimiter $$
-CREATE  TABLE `sgdb`.`ptsstatistics` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `Wins` int(11) DEFAULT 0 ,
-  `Losses` int(11) DEFAULT 0 ,
-  `Draws` int(11) DEFAULT 0 ,
-  PRIMARY KEY (`id`) )$$ 
-  
 
-delimiter $$
-CREATE TABLE `sgdb` . `userAddInfo` (
-  `id` int(11) NOT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `birthday` varchar(30) DEFAULT NULL,
-  `about` varchar(999) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+-- -----------------------------------------------------
+-- Table `sgdb`.`infstatistics`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sgdb`.`infstatistics` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `Wins` INT(11) NOT NULL DEFAULT '0' ,
+  `Losses` INT(11) NOT NULL DEFAULT '0' ,
+  INDEX `id_idx` (`id` ASC) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  CONSTRAINT `inf_stat_id`
+    FOREIGN KEY (`id` )
+    REFERENCES `sgdb`.`users` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-delimiter $$
-INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (1, 'paul', '1');$$
-delimiter $$
-INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (2, 'bobik', '1');$$
-delimiter $$
-INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (3, 'kostya', '1');$$
-delimiter $$
-INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (4, 'sergiy', '1');$$
-delimiter $$
-INSERT INTO `sgdb`.`users` (id, name, pass) VALUES (5, 'roman', '1');$$
 
-delimiter $$
-insert into `sgdb`.`xostatistics`(id) values(1);$$
-delimiter $$
-insert into `sgdb`.`xostatistics`(id) values(2);$$
-delimiter $$
-insert into `sgdb`.`xostatistics`(id) values(3);$$
-delimiter $$
-insert into `sgdb`.`xostatistics`(id) values(4);$$
-delimiter $$
-insert into `sgdb`.`xostatistics`(id) values(5);$$
+-- -----------------------------------------------------
+-- Table `sgdb`.`ptsstatistics`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sgdb`.`ptsstatistics` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `Wins` INT(11) NOT NULL DEFAULT '0' ,
+  `Losses` INT(11) NOT NULL DEFAULT '0' ,
+  `Draws` INT(11) NOT NULL DEFAULT '0' ,
+  INDEX `id_idx` (`id` ASC) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  CONSTRAINT `pts_stat_id`
+    FOREIGN KEY (`id` )
+    REFERENCES `sgdb`.`users` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8;
 
-delimiter $$
-insert into `sgdb`.`ptsstatistics`(id) values(1);$$
-delimiter $$
-insert into `sgdb`.`ptsstatistics`(id) values(2);$$
-delimiter $$
-insert into `sgdb`.`ptsstatistics`(id) values(3);$$
-delimiter $$
-insert into `sgdb`.`ptsstatistics`(id) values(4);$$
-delimiter $$
-insert into `sgdb`.`ptsstatistics`(id) values(5);$$
 
-delimiter $$
-insert into `sgdb`.`useraddinfo`(id) values(1);$$
-delimiter $$
-insert into `sgdb`.`useraddinfo`(id) values(2);$$
-delimiter $$
-insert into `sgdb`.`useraddinfo`(id) values(3);$$
-delimiter $$
-insert into `sgdb`.`useraddinfo`(id) values(4);$$
-delimiter $$
-insert into `sgdb`.`useraddinfo`(id) values(5);$$
+-- -----------------------------------------------------
+-- Table `sgdb`.`sbstatistics`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sgdb`.`sbstatistics` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `Wins` INT(11) NOT NULL DEFAULT '0' ,
+  `Losses` INT(11) NOT NULL DEFAULT '0' ,
+  INDEX `id_idx` (`id` ASC) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  CONSTRAINT `sb_stat_id`
+    FOREIGN KEY (`id` )
+    REFERENCES `sgdb`.`users` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `sgdb`.`useraddinfo`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sgdb`.`useraddinfo` (
+  `id` INT(11) NOT NULL ,
+  `email` VARCHAR(30) NULL ,
+  `birthday` VARCHAR(30) NULL ,
+  `about` VARCHAR(999) NULL ,
+  INDEX `id_idx` (`id` ASC) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  CONSTRAINT `user_info_id`
+    FOREIGN KEY (`id` )
+    REFERENCES `sgdb`.`users` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `sgdb`.`xostatistics`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sgdb`.`xostatistics` (
+  `id` INT(11) NOT NULL ,
+  `Wins` INT(11) NOT NULL DEFAULT '0' ,
+  `Losses` INT(11) NOT NULL DEFAULT '0' ,
+  INDEX `id_idx` (`id` ASC) ,
+  CONSTRAINT `xo_stat_id`
+    FOREIGN KEY (`id` )
+    REFERENCES `sgdb`.`users` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
