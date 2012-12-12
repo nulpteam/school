@@ -197,6 +197,7 @@
 
 .reversyServer:hover {
 	color: red;
+	cursor:pointer;
 }
 
 .rules {
@@ -311,5 +312,11 @@
 
 .reversyMButtons {
 	float: left;
-	cursor:pointer;
+	cursor: pointer;
+}
+
+.ActiveServersList {
+	margin-top: 104px;
+	font-size: 14px;
+	margin-left: -25px;
 }
