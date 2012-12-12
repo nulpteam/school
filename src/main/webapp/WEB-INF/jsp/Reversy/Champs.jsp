@@ -6,8 +6,8 @@
 	<div class="title">
 		<p align="center">${langPack['XO_stat_title']}</p>
 	</div>
-	<div class="homeButton" onclick=homeButtonClick();></div>
-	<div class="backButton2" onclick="goTo('ReversyMenu.html');"></div>
+	<div class="reversyToHome stat" onclick="goTo('Menu.html');"></div>
+	<div class="revstatback" onclick="goTo('ReversyMenu.html');">back</div>
 	<table>
 		<thead>
 			<tr>

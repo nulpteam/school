@@ -268,6 +268,7 @@
 
 #RevStatistics .title {
 	color: #909090;
+	margin: 10px 80px;
 }
 
 #RevStatistics table {
@@ -279,4 +280,18 @@
 
 #RevStatistics table .iam {
 	color: #464646;
+}
+
+.stat {
+	position: absolute;
+	margin: 114px 544px;
+}
+
+.revstatback {
+	margin: 177px 551px;
+	height: 27px;
+	clear: both;
+	width: 39px;
+	position: absolute;
+	cursor: pointer;
 }
