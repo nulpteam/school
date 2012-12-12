@@ -26,7 +26,6 @@ import epam.ph.sg.models.reversy.ReversyGameList;
 import epam.ph.sg.models.reversy.ReversyPlayer;
 import epam.ph.sg.models.reversy.ReversyStatistic;
 import epam.ph.sg.models.reversy.ReversyVinDefData;
-import epam.ph.sg.models.sb.SBStatistics;
 
 @Controller
 public class ReversyController {

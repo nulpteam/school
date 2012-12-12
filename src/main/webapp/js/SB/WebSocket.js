@@ -103,7 +103,7 @@ function sendMess() {
 				if ($("#" + i + j).attr("class") == "cant_be.png") {
 					a = "url('images/SB/cant_be.png')";
 				} else a = "none";
-				mess = mess + a + "&" + /*b + "&" + */c + "&";
+				mess = mess + a + "&" + c + "&";
 			}
 		}
 	}

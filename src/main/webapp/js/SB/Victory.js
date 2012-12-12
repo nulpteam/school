@@ -17,7 +17,7 @@ $(document).ready(function() {
 	{
 		bsound.src = "sound/Victory.wav";
 	}
-	bsound.loop=true;
+	bsound.loop=false;
 	startbsound();
 });
 
