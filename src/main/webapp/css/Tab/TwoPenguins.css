@@ -8,6 +8,7 @@
 }
 
 #penguinsTable {
+	position:absolute;
 	width: 240px;
 	height: 320px;
 	margin: 60px 20px;
@@ -16,4 +17,30 @@
 .penguinCard{
 	width: 80px;
 	height: 80px;
+}
+
+#flipper #penguinScore{
+	position:absolute;
+	width: 120px;
+	height: 60px;
+	margin: 374px 75px;
+	text-align: center;
+	font-size: 40px;
+	color: #FFBA00;
+	font-weight:bold;
+	
+}
+
+#flipper #penguinScoreMessage{
+	background-image: url('../../images/Tab/twoPenguins/finalScore.png');
+	position:absolute;
+	width: 160px;
+	height: 160px;
+	margin: 111px 60px;
+	text-align: center;
+	font-size: 38px;
+	color: #FFBA00;
+	font-weight:bold;
+	visibility: hidden;
+	
 }
