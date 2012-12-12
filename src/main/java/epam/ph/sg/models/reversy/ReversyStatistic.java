@@ -20,7 +20,16 @@ public class ReversyStatistic {
 	private String name;
 	private int wins;
 	private int losses;
+	private int nichija;
 	
+	public int getNichija() {
+		return nichija;
+	}
+
+	public void setNichija(int nichija) {
+		this.nichija = nichija;
+	}
+
 	public static void insert(int id) {
 		dao.insert(id);
 	}

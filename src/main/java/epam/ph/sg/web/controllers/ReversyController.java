@@ -7,12 +7,15 @@ package epam.ph.sg.web.controllers;
  */
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -145,8 +148,8 @@ public class ReversyController {
 	public @ResponseBody String reversyEnd(String player1, Integer xs, String player2, Integer os, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
 		log.debug("/end.html");
-		int userId = ((User)session.getAttribute("User")).getId();
-		String userName = ((User)session.getAttribute("User")).getName();
+		int userId = ((User)session.getAttribute("user")).getId();
+		String userName = ((User)session.getAttribute("user")).getName();
 		if(userName.equals(player1))
 		{
 			if(xs>os)
@@ -221,5 +224,27 @@ public class ReversyController {
 			}
 		}
 		return boundle.getString("answer.possitive");
+	}
+	
+	@RequestMapping(value = "/ReversyChamps.html")
+	public String stat(HttpServletRequest request, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+		log.info(request.getRequestURI() + " request received. User id="
+				+ user.getId());
+		List<ReversyStatistic> list = ReversyStatistic.getAllStatistics();
+		if (list.size() < 10) {
+			model.addAttribute("xoStatList", list);
+		} else {
+			model.addAttribute("xoStatList", list.subList(0, 10));
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getName().equals(user.getName())) {
+				model.addAttribute("myPos", i + 1);
+				model.addAttribute("myStats", list.get(i));
+				break;
+			}
+		}
+		return boundle.getString("jsp.champs");
 	}
 }
