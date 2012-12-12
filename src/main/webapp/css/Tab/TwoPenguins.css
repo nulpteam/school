@@ -1,0 +1,19 @@
+#flipper #penguins {
+	background-image: url('../../images/Tab/twoPenguins/background.png');
+	background-repeat: no-repeat;
+	height: 430px;
+	width: 270px;
+	position: absolute;
+	
+}
+
+#penguinsTable {
+	width: 240px;
+	height: 320px;
+	margin: 60px 20px;
+}
+
+.penguinCard{
+	width: 80px;
+	height: 80px;
+}
