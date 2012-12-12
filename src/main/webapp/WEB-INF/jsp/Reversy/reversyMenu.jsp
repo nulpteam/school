@@ -16,8 +16,23 @@
 	<div id="menuAnimation">
 	</div>
 	<div class=reversyGameMenu>
-		<div class="reversyCreate" onclick="create()"></div>
-		<div class="reversyConnect" onclick="goToList()"></div>
-		<div class="reversyRules" onclick="goToRules()"></div>
+	
+		<div class="reversyMButtons">
+			<div class="reversyCreate"  onclick="create();"></div>
+			<div class="revText">${langPack['Rev_Create']}</div>
+		</div>
+		
+		<div class="reversyMButtons">
+			<div class="reversyConnect"  onclick="goToList();"></div>
+			<div class="revText">${langPack['Rev_Connect']}</div>
+		</div>
+		<div class="reversyMButtons">
+			<div class="reversyRules"  onclick="goToRules();"></div>
+			<div class="revText">${langPack['Rev_Rules']}</div>
+		</div>
+	
+<!-- 		<div class="reversyCreate" onclick="create()"></div> -->
+<!-- 		<div class="reversyConnect" onclick="goToList()"></div> -->
+<!-- 		<div class="reversyRules" onclick="goToRules()"></div> -->
 	</div>
 </div>

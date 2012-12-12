@@ -59,16 +59,16 @@ $(document)
 						} else {
 							var msg = JSON.parse(event.data);
 							if (msg.sheep == "00") {
-								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
-								$("#" + msg.point).attr("class", "cant_be.png");
+								$("#sb_game_1 #" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
+								$("#sb_game_1 #" + msg.point).attr("class", "cant_be.png");
 								sendMess();
 								lock = "";
 							} else {
 								lock = connectionType;
 							}
 							if (msg.sheep != "00") {
-								$("#" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
-								$("#" + msg.point).attr("class", "cant_be.png");
+								$("#sb_game_1 #" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
+								$("#sb_game_1 #" + msg.point).attr("class", "cant_be.png");
 								myDamagedSheeps++;
 								sendMess();
 								if (myDamagedSheeps >= 20) {
@@ -124,9 +124,9 @@ function getMess() {
 			for ( var i = 0; i < 10; i++) {
 				for ( var j = 0; j < 10; j++) {
 					count++;
-					$("#" + i + j).css("background-image", arr[count]);
+					$("#sb_game_1 #" + i + j).css("background-image", arr[count]);
 					if (arr[count] == "url('images/SB/cant_be.png')") {
-						$("#" + i + j).attr("class", "cant_be.png");
+						$("#sb_game_1 #" + i + j).attr("class", "cant_be.png");
 					}
 					count++;
 					$("#X" + i + "_Y" + j).attr("onclick", arr[count]);
