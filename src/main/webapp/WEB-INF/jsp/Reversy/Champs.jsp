@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<div id="xoStatistics" class="paperList">
+<div id="RevStatistics" class="paperList">
 	<div class="title">
 		<p align="center">${langPack['XO_stat_title']}</p>
 	</div>
-	<div class="homeButton" onclick="goTo('Menu.html')"></div>
-	<div class="backButton2" onclick="goTo('Sb.html');"></div>
+	<div class="reversyToHome stat" onclick="goTo('Menu.html');"></div>
+	<div class="revstatback" onclick="goTo('ReversyMenu.html');">back</div>
 	<table>
 		<thead>
 			<tr>
@@ -15,6 +15,7 @@
 				<th class="name">${langPack['XO_stat_name']}</th>
 				<th class="wins">${langPack['XO_stat_wins']}</th>
 				<th class="losses">${langPack['XO_stat_losses']}</th>
+				<th class="draws">${langPack['Rev_stat_draws']}</th>
 				<th class="total">${langPack['XO_stat_total']}</th>
 			</tr>
 		</thead>
@@ -26,6 +27,7 @@
 						<td class="iam">${player.name}</td>
 						<td class="iam">${player.wins}</td>
 						<td class="iam">${player.losses}</td>
+						<td class="iam">${player.nichija}</td>
 						<td class="iam">${player.total}</td>
 					</tr>
 				</c:if>
@@ -35,6 +37,7 @@
 						<td class="name">${player.name}</td>
 						<td class="wins">${player.wins}</td>
 						<td class="losses">${player.losses}</td>
+						<td class="draws">${player.nichija}</td>
 						<td class="total">${player.total}</td>
 					</tr>
 				</c:if>
@@ -45,6 +48,7 @@
 					<td class="name">...</td>
 					<td class="wins">...</td>
 					<td class="losses">...</td>
+					<td class="nachijas">...</td>
 					<td class="total">...</td>
 				</tr>
 				<tr>
@@ -52,6 +56,7 @@
 					<td class="iam">${myStats.name}</td>
 					<td class="iam">${myStats.wins}</td>
 					<td class="iam">${myStats.losses}</td>
+					<td class="iam">${myStats.nichija}</td>
 					<td class="iam">${myStats.total}</td>
 				</tr>
 			</c:if>

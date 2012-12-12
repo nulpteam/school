@@ -1,6 +1,9 @@
 $(document).ready(function() {
 	WEB_SOCKET_SWF_LOCATION = "js/WebSocket/WebSocketMain.swf";
 	WEB_SOCKET_DEBUG = true;
+	document.onselectstart = function() {
+		return false;
+	};
 	goTo('CurrentPos.html');
 });
 

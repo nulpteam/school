@@ -8,6 +8,7 @@ function waitClient() {
 	};
 	wpSocket.onmessage = function(event) {
 		$.post('XOGameStarted.html', function() {
+			wpSocket.close();
 			goTo('XOGame.html');
 		});
 	};
