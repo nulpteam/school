@@ -3,6 +3,8 @@ var locked = false;
 function msPut(elem) {
 	if (locked == true) {
 		return;
+	} else if ($(elem).children('div').attr('class') == 'locked') {
+		return;
 	}
 	$.post('MSOpen.html', {
 		id : elem.id
@@ -59,10 +61,10 @@ function msGetStatus() {
 	$.post('MSGetStatus.html', function(resp) {
 		if (resp.win == true) {
 			locked = true;
-			alert("WIN !!!!!!!!!");
+			$('#mineSweeper #msgOut p').text(msgWin);
 		} else if (resp.loose == true) {
 			locked = true;
-			alert("LOOSE !!!!!!!!");
+			$('#mineSweeper #msgOut p').text(msgLose);
 		}
 	});
 }
@@ -74,4 +76,5 @@ function msStart() {
 			msLock(this);
 		});
 	});
+	msGetStatus();
 }

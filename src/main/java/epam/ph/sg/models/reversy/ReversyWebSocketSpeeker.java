@@ -3,7 +3,7 @@ package epam.ph.sg.models.reversy;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 
-import epam.ph.sg.controllers.ReversyController;
+import epam.ph.sg.web.controllers.ReversyController;
 
 public class ReversyWebSocketSpeeker implements WebSocket.OnTextMessage {
 	

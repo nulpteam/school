@@ -19,9 +19,9 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import epam.ph.sg.controllers.HomeController;
 import epam.ph.sg.models.LangModel;
 import epam.ph.sg.models.lang.LangSelector;
+import epam.ph.sg.web.controllers.HomeController;
 
 public class LanguageFilter implements Filter {
 	private static Logger log = Logger.getLogger(HomeController.class);

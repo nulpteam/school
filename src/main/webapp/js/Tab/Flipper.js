@@ -23,8 +23,8 @@ function send(elem) {
 function getStatus() {
 	$.post("FlipperStatus.html", function(resp) {
 		if (resp.gameOver == true) {
+			$('#flipper #msgOut p').text(msgLose);
 			gameOver.play();
-			alert('Game Over');
 			lock = true;
 		} else if (resp.nextLevel == true) {
 			levelSound.play();
@@ -45,11 +45,6 @@ function flip(elem) {
 }
 
 function flipUI($elem) {
-//	$elem.flip({
-//		direction : "rl",
-//		speed : 200,
-//		dontChangeColor : true,
-//	});
 	if ($elem.attr('class') == 'white') {
 		$elem.attr('class', 'black');
 	} else {

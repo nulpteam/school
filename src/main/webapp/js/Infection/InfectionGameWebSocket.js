@@ -285,9 +285,9 @@ socket.onmessage = function(event) {
 
 function createBoard() {
 	var board = new Array();
-	for ( var i = 0; i <= 6; i++) {
+	for ( var i = 0; i <= 7; i++) {
 		board[i] = new Array();
-		for ( var j = 0; j <= 6; j++) {
+		for ( var j = 0; j <= 7; j++) {
 			board[i][j] = 0;
 		}
 	}
@@ -295,8 +295,8 @@ function createBoard() {
 }
 
 function drawBoard() {
-	for ( var i = 0; i <= 6; i++) {
-		for ( var j = 0; j <= 6; j++) {
+	for ( var i = 0; i <= 7; i++) {
+		for ( var j = 0; j <= 7; j++) {
 			if (board[i][j] == 1) {
 				$('#X' + i + 'Y' + j + ' > img').attr('src',
 						'images/Infection/red_chip.png');
@@ -317,8 +317,8 @@ function drawBoard() {
 }
 
 function refreshBoard(matrix) {
-	for ( var i = 0; i <= 6; i++) {
-		for ( var j = 0; j <= 6; j++) {
+	for ( var i = 0; i <= 7; i++) {
+		for ( var j = 0; j <= 7; j++) {
 			board[i][j] = matrix[i][j];
 		}
 	}

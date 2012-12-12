@@ -1228,6 +1228,14 @@ function getSheeps() {
 function showRules() {
 	goTo("rules.html");
 }
+function closeAndgoTo(url)
+{
+	if(socketFlag)
+		{
+			socket.close();
+		}
+	goTo(url);
+}
 
 
 /*

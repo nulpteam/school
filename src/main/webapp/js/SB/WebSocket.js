@@ -3,7 +3,7 @@
  * 
  */
 
-var userName, gameId, socket, lock, myDamagedSheeps = 0, flag = false, save = $("#mess").attr("class");
+var userName, gameId, socket, lock, myDamagedSheeps = 0, socketFlag=false, flag = false, save = $("#mess").attr("class");
 
 
 
@@ -31,10 +31,12 @@ $(document)
 					socket = new WebSocket("ws://" + location.hostname
 							+ ":8081");
 					socket.onopen = function() {
+						socketFlag = true;
 						socket.send("open&" + gameId + "&" + userName + "&"
 								+ connectionType);
 					};
 					socket.onclose = function() {
+					socketFlag=false;
 					};
 					socket.onmessage = function(event) {
 						if (event.data == "ready") {

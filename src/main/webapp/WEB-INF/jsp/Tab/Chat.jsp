@@ -15,17 +15,10 @@
 		</table>
 	</div>
 
-	<form id="chatForm">
+	<div id="chatForm">
 		<input id="chatInText">
-	</form>
+	</div>
 	
-	<%-- <div id="userInfo">
-		<div id="name" class="param_name">${langPack['Name']}</div><div class="param"></div>
-		<div id="email" class="param_name">Email:</div><div class="param"></div>
-		<div id="birthday" class="param_name">${langPack['PP_birthday']}</div><div class="param"></div>
-		<div id="about" class="param_name">${langPack['PP_about']}</div><div class="param"></div>
-		<div onclick="$('#userInfo').hide()">закрити</div>
-	</div> --%>
 	<table id="userInfo" cellpadding="0" cellspacing="0">
 		<tr><td id="name" class="param_name">${langPack['Name']}</td><td class="param"></td></tr>
 		<tr><td id="email" class="param_name">Email:</td><td class="param"></td></tr>

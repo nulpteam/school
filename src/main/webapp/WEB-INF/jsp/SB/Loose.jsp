@@ -5,8 +5,8 @@
 <div class="plbs  paperList">
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/SB/Loose.js" type="text/javascript"></script>
-	<div class="SbMButtonRightHome" onclick="goTo('Menu.html')";></div>
-	<div class="backButton2" onclick="goTo('Sb.html');"></div>
+	<div class="SbMButtonRightHome" onclick="closeAndgoTo('Menu.html')";></div>
+	<div class="backButton2" onclick="closeAndgoTo('Sb.html');"></div>
 	<div class="winloose">
 		<h1><c:out value="${langPack['Sb_loose']}"/></h1>
 		<img alt="Loose" src="images/SB/BSLoose.gif" height="400px" width="400px">

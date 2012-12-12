@@ -5,7 +5,6 @@
 
 <div id="login" class="paperList">
 	<script src="js/Login.js" type="text/javascript"></script>
-	<script src="js/Personal/lang_${lang}.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#login input').keypress(function(ev) {

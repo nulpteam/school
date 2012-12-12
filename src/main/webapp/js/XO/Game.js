@@ -1,12 +1,19 @@
 var lock = true;
 var end = false;
-var checkerInterval;
+var xoSocket;
 
 // Tick Position
 var tickX1 = '210px';
 var tickX2 = '460px';
 
 function gameStart() {
+	xoSocket = new WebSocket("ws://" + location.hostname + ":8088");
+	xoSocket.onopen = function() {
+		xoSocket.send(myId);
+	};
+	xoSocket.onmessage = function(event) {
+		getStatus();
+	};
 	getStatus();
 }
 
@@ -21,18 +28,6 @@ function put(img) {
 			getStatus();
 		}
 	});
-}
-
-function checker() {
-	checkerInterval = setInterval(check, 1000);
-	function check() {
-		$.post('XOCheckChanges.html', function(resp) {
-			if (resp == true) {
-				clearInterval(checkerInterval);
-				getStatus();
-			}
-		});
-	}
 }
 
 function getStatus() {
@@ -55,6 +50,7 @@ function getStatus() {
 function gameOver(winnerId) {
 	lock = true;
 	end = true;
+	timerStop();
 	if (winnerId == myId) {
 		$('#xoGame #outText p').text(msgWin);
 		$('#xoGame #win').show();
@@ -66,6 +62,7 @@ function gameOver(winnerId) {
 function playerOut(winnerId) {
 	lock = true;
 	end = true;
+	timerStop();
 	if (winnerId == myId) {
 		$('#xoGame #outText p').text($('#xoGame #opName').text() + msgOut);
 	} else {
@@ -99,12 +96,12 @@ function opTurn() {
 	$('#xoGame #tick').animate({
 		marginLeft : tickX2
 	}, 500);
-	checker();
 }
 
 var timerInterval;
 var timerTime = 15;
 function timerStart() {
+	clearInterval(timerInterval);
 	timerInterval = setInterval(timer, 1000);
 	function timer() {
 		$('#xoGame #timer').text(timerTime);
@@ -154,18 +151,18 @@ function statHide(id) {
 
 function gameHomeButton() {
 	if (end == true) {
-		clearInterval(checkerInterval);
+		xoSocket.close();
 		clearInterval(timerInterval);
 		$.post('XOClear.html', function(response) {
-			homeButtonClick();
+			goTo('Menu.html');
 		});
 	} else {
 		var bool = confirm(msgExit);
 		if (bool == true) {
-			clearInterval(checkerInterval);
+			xoSocket.close();
 			clearInterval(timerInterval);
 			$.post('XOPlayerOut.html', function(response) {
-				homeButtonClick();
+				goTo('Menu.html');
 			});
 		}
 	}
@@ -173,25 +170,25 @@ function gameHomeButton() {
 
 function gameBackButton() {
 	if (end == true) {
-		clearInterval(checkerInterval);
+		xoSocket.close();
 		clearInterval(timerInterval);
 		$.post('XOClear.html', function(response) {
-			backButtonClick();
+			goTo('XOMenu.html');
 		});
 	} else {
 		var bool = confirm(msgExit);
 		if (bool == true) {
-			clearInterval(checkerInterval);
+			xoSocket.close();
 			clearInterval(timerInterval);
 			$.post('XOPlayerOut.html', function(response) {
-				backButtonClick();
+				goTo('XOMenu.html');
 			});
 		}
 	}
 }
 
 function gameRefreshButton() {
-	clearInterval(checkerInterval);
+	xoSocket.close();
 	clearInterval(timerInterval);
-	refreshButtonClick();
+	goTo('CurrentPos.html');
 }

@@ -20,13 +20,12 @@
 	rel="stylesheet">
 <link href="css/InfectionGame.css" type="text/css" rel="stylesheet">
 <link href="css/Points/PointsGame.css" type="text/css" rel="stylesheet">
+
 <script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/Lang/Lang_${lang}.js" type="text/javascript"></script>
 <script src="js/index.js" type="text/javascript"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		goTo('CurrentPos.html');
-	});
-</script>
+<script type="text/javascript" src="js/WebSocket/swfobject.js"></script>
+<script type="text/javascript" src="js/WebSocket/web_socket.js"></script>
 </head>
 <body>
 	<div id="lang_bar">
@@ -36,6 +35,7 @@
 	</div>
 	<div class="page">
 		<c:import url="Tab/Tab.jsp"></c:import>
+		<div class="paperList"></div>
 	</div>
 </body>
 </html>

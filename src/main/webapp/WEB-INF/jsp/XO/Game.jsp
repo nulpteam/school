@@ -4,8 +4,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoGame" class="paperList">
-	<script src="js/XO/XO.js" type="text/javascript"></script>
-	<script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
 	<script src="js/XO/Game.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var myId = "${user.id}";
@@ -76,13 +74,13 @@
 				<tr>
 					<c:forEach var="box" items="${lines}" varStatus="j">
 						<td><c:if test="${box.status == 0}">
-								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/0.png"
+								<img id="X${i.count-1}Y${j.count-1}" src="images/XO/0.png"
 									onclick=put(this);>
 							</c:if> <c:if test="${box.status == -1}">
-								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/X0.png"
+								<img id="X${i.count-1}Y${j.count-1}" src="images/XO/X0.png"
 									onclick=put(this);>
 							</c:if> <c:if test="${box.status == -2}">
-								<img id="X${j.count-1}Y${i.count-1}" src="images/XO/O0.png"
+								<img id="X${i.count-1}Y${j.count-1}" src="images/XO/O0.png"
 									onclick=put(this);>
 							</c:if></td>
 					</c:forEach>

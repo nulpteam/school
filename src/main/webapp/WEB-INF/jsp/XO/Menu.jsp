@@ -4,27 +4,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoMenu" class="paperList">
-	<script src="js/XO/XO.js" type="text/javascript"></script>
-
 	<div class="title">
 		<p align="center">
 			<c:out value="${langPack['XO_title']}" />
 		</p>
 	</div>
-	<div class="homeButton" onclick=homeButtonClick();></div>
-	<div class="refreshButton" onclick=refreshButtonClick();></div>
+	<div class="homeButton" onclick="goTo('Menu.html');"></div>
+	<div class="refreshButton" onclick="goTo('CurrentPos.html');"></div>
 	<div class="menu">
-		<div class="button" onclick=goTo(createLink);>
+		<div class="button" onclick="goTo('XOCreate.html');">
 			<p class="buttonText">
 				<c:out value="${langPack['XO_button_create']}" />
 			</p>
 		</div>
-		<div class="button" onclick=goTo(serverListLink);>
+		<div class="button" onclick="goTo('XOServerList.html');">
 			<p class="buttonText">
 				<c:out value="${langPack['XO_button_connect']}" />
 			</p>
 		</div>
-		<div class="button" onclick=goTo(statisticsLink);>
+		<div class="button" onclick="goTo('XOStatistics.html');">
 			<p class="buttonText">${langPack['XO_stat_title']}</p>
 		</div>
 	</div>

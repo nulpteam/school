@@ -4,10 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div id="xoWaitPage" class="paperList">
-	<script src="js/XO/XO.js" type="text/javascript"></script>
-	<script src="js/XO/Lang_${lang}.js" type="text/javascript"></script>
-	<script src="js/XO/WaitPage.js" type="text/javascript"></script>
+	<script src="js/XO/Connections.js" type="text/javascript"></script>
 	<script type="text/javascript">
+		var myId = "${user.id}";
 		$(document).ready(function(){
 			waitClient();
 		});
@@ -18,7 +17,7 @@
 	</div>
 	<div class="homeButton" onclick=waitPageHomeButton();></div>
 	<div class="backButton" onclick=waitPageBackButton();></div>
-	<div class="refreshButton" onclick=refreshButtonClick();></div>
+	<div class="refreshButton" onclick=waitPageRefreshButton();></div>
 	<div id="startButton" align="center">
 		<div class="button" onclick=startButtonClick();>
 			<p class="buttonText">Start Game</p>

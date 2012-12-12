@@ -1,6 +1,6 @@
 package epam.ph.sg.models.reversy;
 
-import epam.ph.sg.controllers.ReversyController;
+import epam.ph.sg.web.controllers.ReversyController;
 
 
 /**

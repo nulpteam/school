@@ -1,9 +1,13 @@
 var chatLink = 'Chat.html';
 var sudokuLink = 'Sudoku.html';
 var homeLink = 'TabHome.html';
-var chatInterval;
+var chatSocket;
+
 
 function tabGoTo(link) {
+	$('.display').remove();
+	$('#tab').append('<div class="display">'
+			+ '<img id="wait_response" src="images/Tab/load.gif"></div>');
 	$.post(link, function(resp) {
 		$('.display').remove();
 		$('#tab').append(resp);
@@ -11,8 +15,8 @@ function tabGoTo(link) {
 }
 
 function tabBackButton() {
-	if (chatInterval != null) {
-		clearInterval(chatInterval);
+	if(chatSocket != null) {
+		chatSocket.close();
 	}
 	tabGoTo(homeLink);
 }
