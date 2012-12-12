@@ -4,15 +4,9 @@
 <div id="menu" class="display">
 	<div class="TabButton" id="TabChat" onclick=tabGoTo(chatLink)></div>
 	<div class="TabButton" id="TabSudo" onclick=tabGoTo(sudokuLink)></div>
-	<div class="TabButton" id="TabFlip" onclick="tabGoTo('FlipperGame.html')"></div>
+	<div class="TabButton" id="TabFlipper" onclick="tabGoTo('FlipperGame.html')"></div>
 	<div class="TabButton" id="TabBomb" onclick="tabGoTo('MSGame.html')"></div>
 	<div class="TabButton" id="TabFlip" onclick="tabGoTo('PenguinsGame.html')"></div>
 	<!-- <div class="TabButton" id="TabPenguins" onclick="tabGoTo('PenguinsGame.html')"></div> -->
 	<div class="TabButton" id="Tab15-puzzle" onclick="tabGoTo('PuzzleGame.html')"></div>
-	
-<!-- 	<button onclick=tabGoTo(chatLink);>Chat</button> -->
-<!-- 	<button onclick=tabGoTo(sudokuLink);>Sudoku</button> -->
-<!-- 	<button onclick="tabGoTo('FlipperGame.html');">Flipper</button> -->
-<!-- 	<button onclick="tabGoTo('MSGame.html');">saper</button> -->
-
 </div>

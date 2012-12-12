@@ -10,7 +10,7 @@
 		});
 	</script>
 
-	<div id="chatOutText">
+	<div id="chatOutText" onclick="$('#userInfo').hide()">
 		<table id="chatTable" cellpadding="0" cellspacing="0">
 		</table>
 	</div>
@@ -24,6 +24,5 @@
 		<tr><td id="email" class="param_name">Email:</td><td class="param"></td></tr>
 		<tr><td id="birthday" class="param_name">${langPack['PP_birthday']}</td><td class="param"></td></tr>
 		<tr><td id="about" class="param_name">${langPack['PP_about']}</td><td class="param"></td></tr>
-		<tr><td colspan="2" onclick="$('#userInfo').hide()" align="center">закрити</td></tr>
 	</table>
 </div>

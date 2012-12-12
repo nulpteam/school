@@ -28,12 +28,14 @@ public class PaperListFilter implements Filter {
 		String requestAdr = ((HttpServletRequest) request).getServletPath();		
 		session.setAttribute("currentPos", requestAdr.substring(1));
 		if (session.getAttribute("user") == null) {
-			if (requestAdr.equals("/Login.html")
-					|| requestAdr.equals("/Reg.html")
+			if (requestAdr.equals("/LoginPage.html")
+					|| requestAdr.equals("/Login.html")
+					|| requestAdr.equals("/RegisterPage.html")
+					|| requestAdr.equals("/Register.html")
 					|| requestAdr.equals("/chLang.html")) {
 				chain.doFilter(request, response);
 			} else {
-				((HttpServletResponse) response).sendRedirect("Login.html");
+				((HttpServletResponse) response).sendRedirect("LoginPage.html");
 			}
 		} else {
 			if (requestAdr.equals("/Login.html") || requestAdr.equals("/Reg.html")) {

@@ -48,22 +48,6 @@ public class XOGameController {
 		}
 	}
 
-	// @RequestMapping("/XOCheckChanges.html")
-	// public @ResponseBody
-	// boolean check(HttpServletRequest request) {
-	// XOPlayer xo = (XOPlayer) request.getSession().getAttribute("xoGame");
-	// log.info(request.getRequestURI() + " request received. User id="
-	// + xo.getId());
-	// if (xo.getGame().getStatus().isGameOver() == true) {
-	// return true;
-	// }
-	// if (xo.getId() == xo.getGame().getStatus().getLastPlayer()) {
-	// return false;
-	// } else {
-	// return true;
-	// }
-	// }
-
 	@RequestMapping("/XOGetStatus.html")
 	public @ResponseBody
 	XOStatus getStatus(HttpServletRequest request) {
@@ -89,10 +73,14 @@ public class XOGameController {
 	public @ResponseBody
 	boolean clear(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
-		log.info(request.getRequestURI() + " request received. User id="
-				+ user.getId());
-		request.getSession().removeAttribute("xoGame");
-		XOConnector.getServerMap().remove(user.getId());
-		return true;
+		if (user != null) {
+			log.info(request.getRequestURI() + " request received. User id="
+					+ user.getId());
+			request.getSession().removeAttribute("xoGame");
+			XOConnector.getServerMap().remove(user.getId());
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -14,7 +14,7 @@
 			});
 		});
 	</script>
-	
+	<div class="homeButton" onclick="goTo('LoginPage.html');"></div>
 	<div class="title">
 		<p align="center">${langPack['Who_are_you']}</p>
 	</div>

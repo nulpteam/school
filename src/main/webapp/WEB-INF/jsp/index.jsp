@@ -31,7 +31,7 @@
 	<div id="lang_bar">
 		<img id="ua" src="images/flag_ua.png" class="flag" onclick=language(this);>
 		<img id="ru" src="images/flag_ru.png" class="flag" onclick=language(this);>
-		<img id="us" src="images/flag_us.png" class="flag" onclick=language(this);>
+		<img id="us" src="images/flag_en.png" class="flag" onclick=language(this);>
 	</div>
 	<div class="page">
 		<c:import url="Tab/Tab.jsp"></c:import>

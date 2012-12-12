@@ -69,6 +69,12 @@
     margin: 5px;
     width: 80px;
 }
+#TabFlipper {
+	background-image: url('../../images/Tab/flipper_sprite.png');
+}
+#TabFlipper:hover {
+	background: url('../../images/Tab/flipper_sprite.png') bottom;
+}
 #TabChat {
 	background-image: url('../../images/Tab/chat_2.png');
 	background-size: cover;
