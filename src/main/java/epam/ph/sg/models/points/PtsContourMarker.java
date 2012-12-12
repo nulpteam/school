@@ -12,14 +12,16 @@ import org.apache.log4j.Logger;
 
 public class PtsContourMarker {
 
-	private Logger logger;
-	private int first_point_y;
-	private int first_point_x;
-	private boolean clockwiseCounturFound = false;
-	private int contourIdServer = 110;
-	private int contourIdClient = 210;
-	private Map<Integer, PtsContour> contourMap;
-	int iterationIndex = 0;
+	private static Logger logger = Logger.getLogger(PtsContourMarker.class);
+	private static int first_point_y;
+	private static int first_point_x;
+	private static boolean clockwiseCounturFound = false;
+	private static int contourIdServer = 110;
+	private static int contourIdClient = 210;
+	private static Map<Integer, PtsContour> contourMap = new HashMap<Integer, PtsContour>();
+	private static int iterationIndex = 0;
+	private static List<PtsCoord> unmarkedPointsNearContour = new ArrayList<PtsCoord>();
+	
 
 	// private int[][] logicBoard;
 
@@ -37,190 +39,15 @@ public class PtsContourMarker {
 	// Set<Integer> aroundPointsSet;
 	// Set<Integer> aroundContourPointsSet;
 
-	public PtsContourMarker() {
 
-		logger = Logger.getLogger(PtsContourMarker.class);
-		contourMap = new HashMap<Integer, PtsContour>();
-		// logicBoard = new int[Pts.Y_LENGTH][Pts.X_LENGTH];
-		// pointsClockwiseUp = new ArrayList<PtsCoord>();
-		// pointsClockwiseRight = new ArrayList<PtsCoord>();
-		// pointsClockwiseDown = new ArrayList<PtsCoord>();
-		// pointsClockwiseLeft = new ArrayList<PtsCoord>();
 
-		// initLogicBoard();
-	}
 
-	// public boolean markContour(int y, int x, int[][] board, String userType)
-	// {
-	//
-	// this.first_point_y = y;
-	// this.first_point_x = x;
-	// this.board = board;
-	//
-	// pointsClockwiseUp.add(new PtsCoord(y, x));
-	// pointsClockwiseRight.add(new PtsCoord(y, x));
-	// pointsClockwiseDown.add(new PtsCoord(y, x));
-	// pointsClockwiseLeft.add(new PtsCoord(y, x));
-	//
-	// setPointValues(userType);
-	// System.out.println(!isPointInContour(y, x));
-	// if (!isPointInContour(y, x)) {
-	//
-	// aroundPointsSet = getAllPointsAroundFirstPoint();
-	// aroundContourPointsSet = getAllContourPointsAroundFirstPoint();
-	// System.out.println(isPointValueInSet(aroundPointsSet,
-	// userPointUnmarked));
-	// if (isPointValueInSet(aroundPointsSet, userPointUnmarked)) {
-	// Iterator<Integer> it = aroundPointsSet.iterator();
-	// while (it.hasNext())
-	// System.out.println(it.next());
-	// for (int i = 0; i < 4; i++) {
-	//
-	// if (i == 0)
-	// moveClockwise(y, x, new PtsCoord(y - 1, x),
-	// pointsClockwiseUp);
-	// else if (i == 1)
-	// moveClockwise(y, x, new PtsCoord(y, x + 1),
-	// pointsClockwiseLeft);
-	// else if (i == 2)
-	// moveClockwise(y, x, new PtsCoord(y + 1, x),
-	// pointsClockwiseDown);
-	// else if (i == 3)
-	// moveClockwise(y, x, new PtsCoord(y, x - 1),
-	// pointsClockwiseRight);
-	//
-	// }
-	//
-	// // TODO if (isContourEmpty(pointsClockwiseUp));
-	//
-	// } else {
-	// return false;
-	// }
-	//
-	// } else {
-	// return false;
-	// }
-	//
-	// System.out.println("UP");
-	// for (int i = 0; i < pointsClockwiseUp.size(); i++) {
-	// System.out.println(pointsClockwiseUp.get(i));
-	// }
-	//
-	// pointsClockwiseUp.clear();
-	// pointsClockwiseLeft.clear();
-	// pointsClockwiseRight.clear();
-	// pointsClockwiseDown.clear();
-	//
-	// return true;
-	// }
-	//
-
-	// private boolean isContourPointAround(int y, int x) {
-	//
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y - 1][x - 1]))
-	// return true;
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y - 1][x]))
-	// return true;
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y - 1][x + 1]))
-	// return true;
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y][x + 1]))
-	// return true;
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y + 1][x + 1]))
-	// return true;
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y + 1][x]))
-	// return true;
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y + 1][x - 1]))
-	// return true;
-	// if (isPointValueInSet(aroundContourPointsSet, logicBoard[y][x - 1]))
-	// return true;
-	//
-	// return false;
-	// }
-
-	//
-	// private boolean isPointInContour(int y, int x) {
-	//
-	// if (logicBoard[y][x] == Pts.POINT_IN_CONTOUR) {
-	// return true;
-	// }
-	//
-	// return false;
-	// }
-
-	// TODO private boolean isContourEmpty(List<PtsCoord> contourList) {
-	//
-	// }
-
-	// private Set<Integer> getAllPointsAroundFirstPoint() {
-	//
-	// Set<Integer> aroundPointsList = new HashSet<Integer>();
-	//
-	// aroundPointsList.add(board[first_point_y - 1][first_point_x - 1]);
-	//
-	// return aroundPointsList;
-	// }
-
-	// private Set<Integer> getAllContourPointsAroundFirstPoint() {
-	//
-	// Set<Integer> aroundPointsList = new HashSet<Integer>();
-	//
-	// if (logicBoard[first_point_y - 1][first_point_x - 1] != -1) {
-	// aroundPointsList
-	// .add(logicBoard[first_point_y - 1][first_point_x - 1]);
-	// }
-	//
-	// return aroundPointsList;
-	//
-	// }
-
-	// private boolean isPointValueInSet(Set<Integer> aroundPoints, int
-	// pointValue) {
-	//
-	// Iterator<Integer> iterator = aroundPoints.iterator();
-	//
-	// while (iterator.hasNext()) {
-	// int value = iterator.next();
-	// if (value == pointValue)
-	// return true;
-	// }
-	//
-	// return false;
-	// }
-	//
-	// private boolean isPointInList(List<PtsCoord> list, int y, int x) {
-	//
-	// for (int i = 0; i < list.size(); i++) {
-	// if (list.get(i).getY() == y && list.get(i).getX() == x)
-	// return true;
-	// }
-	//
-	// return false;
-	// }
-
-	// private void setPointValues(String userType) {
-	//
-	// if (userType.equals(PtsResources.getProperty("user.type.server"))) {
-	// userPointUnmarked = Pts.SERVER_UNMARKED_POINT;
-	// userPointMarked = Pts.SERVER_MARKED_POINT;
-	// rivalPointMarked = Pts.CLIENT_MARKED_POINT;
-	// rivalPointUnmarked = Pts.CLIENT_UNMARKED_POINT;
-	// } else if (userType
-	// .equals(PtsResources.getProperty("user.type.client"))) {
-	// userPointUnmarked = Pts.CLIENT_UNMARKED_POINT;
-	// userPointMarked = Pts.CLIENT_MARKED_POINT;
-	// rivalPointMarked = Pts.SERVER_MARKED_POINT;
-	// rivalPointUnmarked = Pts.SERVER_UNMARKED_POINT;
-	// } else {
-	// logger.error(PtsResources
-	// .getProperty("error.user_type.don't_exist") + userType);
-	// }
-	// }
-
-	public List<List<PtsCoord>> markContours(int[][] board, int[][] logicBoard,
+	public static List<List<PtsCoord>> markContours(int[][] board, int[][] logicBoard,
 			int y, int x, int pointsValue) {
 
 		int[][] commonBoard = new int[Pts.Y_LENGTH][Pts.X_LENGTH];
 		iterationIndex = 0;
+		unmarkedPointsNearContour.clear();
 
 		int rivalPointsValue = 0;
 		List<List<PtsCoord>> listOfContours = new ArrayList<List<PtsCoord>>();
@@ -254,7 +81,7 @@ public class PtsContourMarker {
 		resultContours = getDifferentContours(board, listOfContours,
 				rivalPointsValue);
 
-		initCommonBoard(commonBoard, board, pointsValue);
+		initCommonBoard(commonBoard, unmarkedPointsNearContour, board, pointsValue);
 		System.out.println("init common. contours!!!!!!!!!!!");
 		commonContours = getContours(commonBoard, y, x, pointsValue);
 		System.out.println("before different. contours!!!!!!!!!!! = "
@@ -263,8 +90,9 @@ public class PtsContourMarker {
 				rivalPointsValue);
 		commonContours = getDifferentContours(commonBoard, commonContours,
 				rivalPointsValue);
-
+		System.out.println("biggest contour!!!!!!!!!!! = " + biggestContour);
 		System.out.println("common contours!!!!!!!!!!! = " + commonContours);
+		System.out.println("resultContours  " + resultContours);
 
 		if (resultContours != null) {
 			writeContoursFieldsInLogicBoard(logicBoard, board, resultContours,
@@ -304,19 +132,22 @@ public class PtsContourMarker {
 			List<List<PtsCoord>> connectList = connectContoursList(
 					commonContours, resultContours, board, rivalPointsValue);
 
+
 			markFieldsInsideContourAsUnusable(board, biggestContour,
 					pointsValue, rivalPointsValue);
 
 			return connectList;
 		}
-
+		
+		System.out.println("Contours are null");
 		if (commonContours == null && resultContours == null) {
 
 			if (logicBoard[y][x] - 90 > 0) {
 
 				List<List<PtsCoord>> readyContour = new ArrayList<List<PtsCoord>>();
 				PtsContour contour = contourMap.get(logicBoard[y][x]);
-
+				System.out.println("logic board" + logicBoard[y][x]);
+				System.out.println("here1 contour ready = " + contourMap.get(logicBoard[y][x]));
 				if (logicBoard[y][x] - 190 > 0) {
 					if (pointsValue == Pts.SERVER_UNMARKED_POINT) {
 						board[y][x] = pointsValue * 10;
@@ -334,6 +165,7 @@ public class PtsContourMarker {
 								logicBoard, pointsValue);
 					}
 				}
+				System.out.println("here2");
 
 				if (logicBoard[y][x] - 90 > 0) {
 
@@ -356,7 +188,7 @@ public class PtsContourMarker {
 				}
 				// rewriteBoardsIfPointHitsInContour(y, x, commonBoard,
 				// logicBoard, contour, pointsValue, rivalPointsValue);
-
+				System.out.println("here3");
 				contourMap.remove(logicBoard[y][x]);
 
 				return readyContour;
@@ -368,7 +200,7 @@ public class PtsContourMarker {
 		return null;
 	}
 
-	private List<PtsCoord> getTheBiggestContour(int[][] board,
+	private static List<PtsCoord> getTheBiggestContour(int[][] board,
 			List<List<PtsCoord>> contours, int rivalPointsValue) {
 
 		int contour_id = 0;
@@ -390,7 +222,7 @@ public class PtsContourMarker {
 		return null;
 	}
 
-	private void markFieldsInsideContourAsUnusable(int[][] board,
+	private static void markFieldsInsideContourAsUnusable(int[][] board,
 			List<PtsCoord> biggestContour, int pointsValue, int rivalPointsValue) {
 
 		if (biggestContour != null) {
@@ -406,7 +238,7 @@ public class PtsContourMarker {
 		}
 	}
 
-	public List<PtsCoord> getContour(int[][] board, int y, int x,
+	public static List<PtsCoord> getContour(int[][] board, int y, int x,
 			int pointsValue, PtsCoord beginPoint) {
 
 		first_point_y = y;
@@ -464,7 +296,7 @@ public class PtsContourMarker {
 //
 //	}
 
-	private void rewriteLogicBoardIfPointHitsInContour(PtsContour contour,
+	private static void rewriteLogicBoardIfPointHitsInContour(PtsContour contour,
 			int y, int x, int[][] logicBoard, int pointsValue) {
 
 		List<PtsCoord> contourFields = contour.getContourFields();
@@ -478,7 +310,7 @@ public class PtsContourMarker {
 
 	}
 
-	private List<List<PtsCoord>> connectContoursList(
+	private static List<List<PtsCoord>> connectContoursList(
 			List<List<PtsCoord>> firstContoursList,
 			List<List<PtsCoord>> secondContoursList, int[][] board,
 			int rivalPointsValue) {
@@ -505,7 +337,7 @@ public class PtsContourMarker {
 
 	}
 
-	private List<List<PtsCoord>> getContours(int[][] commonBoard, int y, int x,
+	private static List<List<PtsCoord>> getContours(int[][] commonBoard, int y, int x,
 			int pointsValue) {
 
 		List<List<PtsCoord>> contoursList = new ArrayList<List<PtsCoord>>();
@@ -531,7 +363,7 @@ public class PtsContourMarker {
 		return contoursList;
 	}
 
-	private void removeDefinedContours(List<List<PtsCoord>> contoursList,
+	private static void removeDefinedContours(List<List<PtsCoord>> contoursList,
 			int[][] board, int[][] logicBoard, int rivalPointsValue) {
 
 		for (int i = contoursList.size() - 1; i >= 0; i--) {
@@ -556,7 +388,7 @@ public class PtsContourMarker {
 		}
 	}
 
-	private void writeContoursFieldsInLogicBoard(int[][] logicBoard,
+	private static void writeContoursFieldsInLogicBoard(int[][] logicBoard,
 			int[][] board, List<List<PtsCoord>> contoursList, int pointsValue,
 			int rivalPointsValue) {
 
@@ -583,6 +415,9 @@ public class PtsContourMarker {
 				}
 				if (emptyField) {
 					emptyField = false;
+					System.out.println("put in MAP " + getContourId(pointsValue));
+					System.out.println("PointsList " + pointsList);
+					System.out.println("contourFields" + contourFields);
 					contourMap.put(getContourId(pointsValue), new PtsContour(
 							pointsList, contourFields));
 					incrementContourId(pointsValue);
@@ -630,22 +465,27 @@ public class PtsContourMarker {
 		}
 	}
 
-	private void initCommonBoard(int[][] commonBoard, int[][] board,
+	private static void initCommonBoard(int[][] commonBoard, List<PtsCoord> unmarkedPoints, int[][] board,
 			int pointsValue) {
 
 		for (int i = 0; i < Pts.Y_LENGTH; i++) {
 
 			for (int j = 0; j < Pts.X_LENGTH; j++) {
 
-				if (board[i][j] == pointsValue
-						|| board[i][j] == (pointsValue * 10 + pointsValue))
+				if (board[i][j] == (pointsValue * 10 + pointsValue))
 					commonBoard[i][j] = pointsValue;
 
 			}
 		}
+		
+		for (int i = 0; i < unmarkedPoints.size(); i++) {
+			
+			PtsCoord coord = unmarkedPoints.get(i);
+			commonBoard[coord.getY()][coord.getX()] = board[coord.getY()][coord.getX()];
+		}
 	}
 
-	private int getContourId(int pointsValue) {
+	private static int getContourId(int pointsValue) {
 
 		if (pointsValue == 1)
 			return contourIdServer;
@@ -653,7 +493,7 @@ public class PtsContourMarker {
 			return contourIdClient;
 	}
 
-	private void incrementContourId(int pointsValue) {
+	private static void incrementContourId(int pointsValue) {
 
 		if (pointsValue == 1)
 			contourIdServer++;
@@ -661,7 +501,7 @@ public class PtsContourMarker {
 			contourIdClient++;
 	}
 
-	private int getUnusablePointValue(int pointsValue) {
+	private static int getUnusablePointValue(int pointsValue) {
 
 		if (pointsValue == Pts.SERVER_MARKED_POINT
 				|| pointsValue == Pts.SERVER_UNMARKED_POINT) {
@@ -671,7 +511,7 @@ public class PtsContourMarker {
 		}
 	}
 
-	private void writeReadyContourPointsInBoard(int[][] board,
+	private static void writeReadyContourPointsInBoard(int[][] board,
 			PtsContour contour, int pointsValue) {
 
 		List<PtsCoord> contourPoints = contour.getContourPoints();
@@ -694,7 +534,7 @@ public class PtsContourMarker {
 		}
 	}
 
-	private void writeContourInBoard(int[][] board, int[][] logicBoard,
+	private static void writeContourInBoard(int[][] board, int[][] logicBoard,
 			List<PtsCoord> contourPoints, int pointsValue, int rivalPointsValue) {
 
 		List<PtsCoord> fieldsInsideContours = getFieldsInsideContour(board,
@@ -719,7 +559,7 @@ public class PtsContourMarker {
 		}
 	}
 
-	private List<List<PtsCoord>> getDifferentContours(int[][] board,
+	private static List<List<PtsCoord>> getDifferentContours(int[][] board,
 			List<List<PtsCoord>> listOfContours, int rivalPointsValue) {
 
 		int min_points_count;
@@ -769,7 +609,7 @@ public class PtsContourMarker {
 		return minContours;
 	}
 
-	private boolean isContourWithSameFields(int[][] board,
+	private static boolean isContourWithSameFields(int[][] board,
 			List<PtsCoord> firstContour, List<PtsCoord> secondContour,
 			int rivalPointsValue) {
 
@@ -792,15 +632,33 @@ public class PtsContourMarker {
 		return result;
 	}
 
-	private void moveClockwise(int[][] board, PtsCoord point, int pointsValue,
+	private static void moveClockwise(int[][] board, PtsCoord point, int pointsValue,
 			List<PtsCoord> contourPoints, PtsCoord beginPoint) {
 
+		addUniquePointsToList(point, unmarkedPointsNearContour);
 		int iterationIndex = getIterationClockwiseIndex(beginPoint, point);
 		iterateClockwise(board, point, pointsValue, contourPoints,
 				iterationIndex);
 	}
+	
+	private static void addUniquePointsToList(PtsCoord point, List<PtsCoord> list) {
+		if (!isPointInList(point, list))
+			list.add(point);
+		return;
+	}
+	
+	private static boolean isPointInList(PtsCoord point, List<PtsCoord> list) {
+		
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).equals(point)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
-	private int getIterationClockwiseIndex(PtsCoord iterationPoint,
+	private static int getIterationClockwiseIndex(PtsCoord iterationPoint,
 			PtsCoord point) {
 
 		if (point.getY() - 1 == iterationPoint.getY()
@@ -834,7 +692,7 @@ public class PtsContourMarker {
 		return 0;
 	}
 
-	private void iterateClockwise(int[][] board, PtsCoord point,
+	private static void iterateClockwise(int[][] board, PtsCoord point,
 			int pointsValue, List<PtsCoord> contourPoints, int iterationIndex) {
 
 		PtsCoord currentPtsCoord = getIterationPtsCoords(iterationIndex, point);
@@ -933,7 +791,7 @@ public class PtsContourMarker {
 
 	}
 
-	private PtsCoord getIterationPtsCoords(int iteration, PtsCoord pointPtsCoord) {
+	private static PtsCoord getIterationPtsCoords(int iteration, PtsCoord pointPtsCoord) {
 
 		if (iteration == 1) {
 			return new PtsCoord(pointPtsCoord.getY() - 1,
@@ -976,7 +834,7 @@ public class PtsContourMarker {
 		return new PtsCoord(-1, -1);
 	}
 
-	private boolean checkAllConditionsClockwise(int[][] board,
+	private static boolean checkAllConditionsClockwise(int[][] board,
 			PtsCoord pointPtsCoord, List<PtsCoord> pointsInContour,
 			int pointsValue) {
 
@@ -992,7 +850,7 @@ public class PtsContourMarker {
 		return false;
 	}
 
-	private void nextIterationClockwise(int[][] board, PtsCoord point,
+	private static void nextIterationClockwise(int[][] board, PtsCoord point,
 			int pointsValue, List<PtsCoord> contourPoints) {
 
 		System.out.println("iteration:" + iterationIndex++);
@@ -1002,7 +860,7 @@ public class PtsContourMarker {
 		return;
 	}
 
-	private boolean isPointAlreadyDefinedClockwise(int y, int x,
+	private static boolean isPointAlreadyDefinedClockwise(int y, int x,
 			List<PtsCoord> pointsInContour) {
 
 		for (int i = 1; i < pointsInContour.size(); i++) {
@@ -1013,7 +871,7 @@ public class PtsContourMarker {
 		return false;
 	}
 
-	private boolean isEndPointClockwise(int y, int x) {
+	private static boolean isEndPointClockwise(int y, int x) {
 
 		if (y == first_point_y && x == first_point_x) {
 			clockwiseCounturFound = true;
@@ -1023,7 +881,7 @@ public class PtsContourMarker {
 		return false;
 	}
 
-	private int incrementIterationIndex(int iterationIndex) {
+	private static int incrementIterationIndex(int iterationIndex) {
 
 		iterationIndex++;
 		if (iterationIndex == 9) {
@@ -1033,7 +891,7 @@ public class PtsContourMarker {
 		return iterationIndex;
 	}
 
-	private boolean isRivalpointInsideContours(int[][] board,
+	private static boolean isRivalpointInsideContours(int[][] board,
 			List<PtsCoord> contourPoints, int rivalPointsValue) {
 
 		List<PtsCoord> fieldsInsideContour = getFieldsInsideContour(board,
@@ -1049,7 +907,7 @@ public class PtsContourMarker {
 		return false;
 	}
 
-	private List<PtsCoord> getFieldsInsideContour(int[][] board,
+	private static List<PtsCoord> getFieldsInsideContour(int[][] board,
 			List<PtsCoord> contourPoints, int rivalPointsValue) {
 
 		List<PtsCoord> fieldsInsideContour = new ArrayList<PtsCoord>();
@@ -1073,7 +931,7 @@ public class PtsContourMarker {
 		return fieldsInsideContour;
 	}
 
-	private List<PtsCoord> getCoordinatesInsideXVectors(int[][] board,
+	private static List<PtsCoord> getCoordinatesInsideXVectors(int[][] board,
 			List<PtsCoord> contourPoints, int rivalPointsValue) {
 
 		Set<Integer> y_set = new HashSet<Integer>();
@@ -1111,7 +969,7 @@ public class PtsContourMarker {
 
 	}
 
-	private List<PtsCoord> getCoordinatesInsideYVectors(int[][] board,
+	private static List<PtsCoord> getCoordinatesInsideYVectors(int[][] board,
 			List<PtsCoord> contourPoints, int rivalPointsValue) {
 
 		Set<Integer> x_set = new HashSet<Integer>();

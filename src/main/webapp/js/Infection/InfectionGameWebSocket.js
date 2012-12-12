@@ -107,7 +107,6 @@ socket.onmessage = function(event) {
 	switch (msg.type) {
 
 	case "clientConnect":
-		alert("clientconnect");
 		userType = $('#infgame_table').attr('userType');
 		$('#infplayer_label_1 > label').text(msg.serverName);
 		$('#infplayer_label_2 > label').text(msg.clientName);
@@ -225,7 +224,6 @@ socket.onmessage = function(event) {
 				"type" : "winner",
 				"userId" : userId,
 			};
-			alert(message);
 			socket.send(JSON.stringify(message));
 			winnerPage();
 
