@@ -8,6 +8,7 @@ import epam.ph.sg.dao.UserDAO;
 import epam.ph.sg.models.User;
 import epam.ph.sg.models.infection.INFStatistics;
 import epam.ph.sg.models.points.PtsStatistics;
+import epam.ph.sg.models.reversy.ReversyStatistic;
 import epam.ph.sg.models.sb.SBStatistics;
 import epam.ph.sg.models.xo.XOStatistics;
 
@@ -23,6 +24,7 @@ public class UserUtils {
 		if (user != null) {
 			XOStatistics.insert(user.getId());
 			SBStatistics.insert(user.getId());
+			ReversyStatistic.insert(user.getId());
 			PtsStatistics.insert(user.getId());
 			INFStatistics.insert(user.getId());
 			UserAddInfoUtils.insert(user.getId());

@@ -23,6 +23,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="sbStatisticsDAOimpl" class="epam.ph.sg.dao.impl.SBStatisticsDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+	
+	<bean id="reversyStatisticDAOimpl" class="epam.ph.sg.dao.impl.ReversyStatisticDAOimpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
 
 	<bean id="infStatisticsDAOimpl" class="epam.ph.sg.dao.impl.INFStatisticsDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />

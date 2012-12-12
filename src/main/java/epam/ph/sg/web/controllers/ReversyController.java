@@ -21,6 +21,7 @@ import epam.ph.sg.models.User;
 import epam.ph.sg.models.reversy.ReversyGame;
 import epam.ph.sg.models.reversy.ReversyGameList;
 import epam.ph.sg.models.reversy.ReversyPlayer;
+import epam.ph.sg.models.reversy.ReversyStatistic;
 import epam.ph.sg.models.reversy.ReversyVinDefData;
 
 @Controller
@@ -143,9 +144,12 @@ public class ReversyController {
 	public @ResponseBody String reversyEnd(String player1, Integer xs, String player2, Integer os, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
 		log.debug("/end.html");
+//		ReversyStatistic.
+		
 		ReversyVinDefData data = new ReversyVinDefData(player1, player2, xs, os);
 		session.setAttribute("ReversyVinDefData", data);
 		session.removeAttribute("ReversyGame");
+		log.debug(data);
 		return boundle.getString("answer.possitive");
 	}
 	
