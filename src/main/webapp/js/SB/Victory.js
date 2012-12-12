@@ -22,6 +22,9 @@ $(document).ready(function() {
 });
 
 function startbsound() {
-	bsound.volume=0.9;
-	bsound.play();
+	if(bsoundFlag)
+	{
+		bsound.volume=0.9;
+		bsound.play();
+	}
 }
