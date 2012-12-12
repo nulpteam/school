@@ -8,6 +8,8 @@
 	<div class="TabButton" id="TabBomb" onclick="tabGoTo('MSGame.html')"></div>
 	<div class="TabButton" id="TabFlip" onclick="tabGoTo('PenguinsGame.html')"></div>
 	<!-- <div class="TabButton" id="TabPenguins" onclick="tabGoTo('PenguinsGame.html')"></div> -->
+	<div class="TabButton" id="Tab15-puzzle" onclick="tabGoTo('PuzzleGame.html')"></div>
+	
 <!-- 	<button onclick=tabGoTo(chatLink);>Chat</button> -->
 <!-- 	<button onclick=tabGoTo(sudokuLink);>Sudoku</button> -->
 <!-- 	<button onclick="tabGoTo('FlipperGame.html');">Flipper</button> -->

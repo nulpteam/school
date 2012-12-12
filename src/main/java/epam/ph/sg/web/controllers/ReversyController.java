@@ -21,7 +21,9 @@ import epam.ph.sg.models.User;
 import epam.ph.sg.models.reversy.ReversyGame;
 import epam.ph.sg.models.reversy.ReversyGameList;
 import epam.ph.sg.models.reversy.ReversyPlayer;
+import epam.ph.sg.models.reversy.ReversyStatistic;
 import epam.ph.sg.models.reversy.ReversyVinDefData;
+import epam.ph.sg.models.sb.SBStatistics;
 
 @Controller
 public class ReversyController {
@@ -143,9 +145,40 @@ public class ReversyController {
 	public @ResponseBody String reversyEnd(String player1, Integer xs, String player2, Integer os, HttpSession session) {
 		log.debug(boundle.getString("message.hello"));
 		log.debug("/end.html");
+		int userId = ((User)session.getAttribute("User")).getId();
+		String userName = ((User)session.getAttribute("User")).getName();
+		if(userName.equals(player1))
+		{
+			if(xs>os)
+			{
+				ReversyStatistic.win(userId);
+			}else if(xs<os)
+			{
+				ReversyStatistic.lose(userId);
+			}
+			else
+			{
+				ReversyStatistic.nichija(userId);
+			}
+		}
+		if(userName.equals(player2))
+		{
+			if(os>xs)
+			{
+				ReversyStatistic.win(userId);
+			}else if(os<xs)
+			{
+				ReversyStatistic.lose(userId);
+			}
+			else
+			{
+				ReversyStatistic.nichija(userId);
+			}
+		}
 		ReversyVinDefData data = new ReversyVinDefData(player1, player2, xs, os);
 		session.setAttribute("ReversyVinDefData", data);
 		session.removeAttribute("ReversyGame");
+		log.debug(data);
 		return boundle.getString("answer.possitive");
 	}
 	

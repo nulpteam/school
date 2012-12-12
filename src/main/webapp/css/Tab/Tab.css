@@ -85,6 +85,12 @@
 	background-image: url('../../images/Tab/saper_2.png');
 	background-size: cover;
 }
+
+#Tab15-puzzle {
+	background-image: url('../../images/Tab/15-puzzle.png');
+	background-size: cover;
+}
+
 #TabChat:hover {
 	background-image: url('../../images/Tab/chat_1.png');
 	background-size: cover;
@@ -99,5 +105,9 @@
 }
 #TabBomb:hover {
 	background-image: url('../../images/Tab/saper_1.png');
+	background-size: cover;
+}
+#Tab15-puzzle:hover {
+	background-image: url('../../images/Tab/15-puzzle_hover.png');
 	background-size: cover;
 }
