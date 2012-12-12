@@ -29,27 +29,36 @@ public class ReversyStatisticDAOimpl implements ReversyStatisticDAO {
 
 	@Override
 	public void insert(int id) {
-		String sql = "insert into `sgdb`.`reversystatistics`(id) values(" + id + ")";
+		String sql = "insert into `sgdb`.`reversystatistic`(id) values(" + id + ")";
 		jdbcTemplate.execute(sql);
 	}
 
 	@Override
 	public void win(int id) {
-		String sql = "update `sgdb` . `reversystatistics` set wins=wins+1 where id="
+		String sql = "update `sgdb` . `reversystatistic` set wins=wins+1 where id="
 				+ id;
 		jdbcTemplate.execute(sql);
 	}
 
 	@Override
 	public void lose(int id) {
-		String sql = "update `sgdb` . `reversystatistics` set losses=losses+1 where id="
+		String sql = "update `sgdb` . `reversystatistic` set losses=losses+1 where id="
 				+ id;
 		jdbcTemplate.execute(sql);
 	}
-
+	
+	@Override
+	public void nichija(int id) {
+		String sql = "update `sgdb` . `reversystatistic` set nichija=nichija+1 where id="
+				+ id;
+		jdbcTemplate.execute(sql);
+//		sql = "update `sgdb` . `reversystatistic` set nichija=nichija+1 where id="
+//				+ idp2;
+//		jdbcTemplate.execute(sql);
+	}
 	@Override
 	public ReversyStatistic getUserStatistics(int id) {
-		String sql = "select wins, losses from `sgdb`.`reversystatistics` where id="
+		String sql = "select wins, losses from `sgdb`.`reversystatistic` where id="
 				+ id;
 		ReversyStatistic stat = jdbcTemplate.query(sql,
 				new ResultSetExtractor<ReversyStatistic>() {
@@ -73,7 +82,7 @@ public class ReversyStatisticDAOimpl implements ReversyStatisticDAO {
 	@Override
 	public List<ReversyStatistic> getAllStatistics() {
 		String sql = "select name, wins, losses from `sgdb`.`users` join "
-				+ "`sgdb`.`sbstatistics` on users.id = sbstatistics.id;";
+				+ "`sgdb`.`reversystatistic` on users.id = reversystatistic.id;";
 
 		List<ReversyStatistic> list = jdbcTemplate.query(sql,
 				new RowMapper<ReversyStatistic>() {

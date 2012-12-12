@@ -75,6 +75,25 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `sgdb`.`reversystatistic`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sgdb`.`reversystatistic` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `Wins` INT(11) NOT NULL DEFAULT '0' ,
+  `Losses` INT(11) NOT NULL DEFAULT '0' ,
+  `nichija` INT(11) NOT NULL DEFAULT '0',
+  INDEX `id_idx` (`id` ASC) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  CONSTRAINT `reversy_stat_id`
+    FOREIGN KEY (`id` )
+    REFERENCES `sgdb`.`users` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8;
+
 
 -- -----------------------------------------------------
 -- Table `sgdb`.`useraddinfo`

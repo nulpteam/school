@@ -32,7 +32,10 @@ public class ReversyStatistic {
 	public static void lose(int id) {
 		dao.lose(id);
 	}
-
+	
+	public static void nichija(int id) {
+		dao.nichija(id);
+	}
 	public static ReversyStatistic getUserStatistics(int id) {
 		return dao.getUserStatistics(id);
 	}

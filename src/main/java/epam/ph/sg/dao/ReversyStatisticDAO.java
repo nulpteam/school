@@ -14,4 +14,5 @@ public interface ReversyStatisticDAO {
 	void lose(int id);
 	ReversyStatistic getUserStatistics(int id);
 	List<ReversyStatistic> getAllStatistics();
+	void nichija(int id);
 }
