@@ -8,13 +8,14 @@
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/Reversy/Reversy_main.js" type="text/javascript"></script>
 
+	
+	
 	<div class=reversyNavigation>
 		<div class="reversyToHome" onclick="goTo('Menu.html');"></div>
 		<div class="reversyToMenu" onclick="goTo('ReversyMenu.html');"></div>
 		<div class="reversyToChamps" onclick="goTo('ReversyChamps.html');"></div>
 	</div>
-	<div id="menuAnimation">
-	</div>
+	<div id="menuAnimation"></div>
 	<div class=reversyGameMenu>
 	
 		<div class="reversyMButtons">
