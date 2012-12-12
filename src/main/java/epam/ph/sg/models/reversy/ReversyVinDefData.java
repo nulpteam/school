@@ -35,4 +35,8 @@ public class ReversyVinDefData {
 	public void setCount2(Integer count2) {
 		this.count2 = count2;
 	}
+	public String toString()
+	{
+		return "player1 = "+getPlayer1()+" player2 = "+getPlayer2()+" count1 = "+getCount1()+"count2 = "+getCount2();
+	}
 }
