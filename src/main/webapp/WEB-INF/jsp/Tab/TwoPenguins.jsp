@@ -6,6 +6,8 @@
 	<script src="js/Tab/TwoPenguins.js" type="text/javascript"></script>
 	<script type="text/javascript"></script>
 	<div id="penguins">
+	<div id="penguinScore"><label>1000</label></div>
+	
 		<table id="penguinsTable" align="center" cellpadding="0"
 			cellspacing="0">
 
@@ -19,5 +21,6 @@
 			</c:forEach>
 
 		</table>
+		<div id="penguinScoreMessage"><label></label></div>
 	</div>
 </div>

@@ -1,55 +1,74 @@
 $(document).ready(function() {
-	alert("load");
 	board = createBoard();
 	refreshGameBox();
 	drawBoard();
+	
+	
 });
 
 var board;
-var twoFlipped = false;
-var oneFlipped = false;
-var firstFlippedValue = 0;
-var secondFlippedValue = 0;
-var firstFlippedX = 0;
-var firstFlippedY = 0;
-var secondFlippedX = 0;
-var secondFlippedY = 0;
-var firstFindValue = 0; 
-var firstFindX = 0;
-var firstFindY = 0; 
-var secondFindValue = 0; 
-var secondFindX = 0;
-var secondFindY = 0; 
+var currentValue;
+var currentX;
+var currentY;
+var previousValue = 0;
+var previousX;
+var previousY;
+var twoDifCards = false;
+
+var firstToFlipBackX;
+var firstToFlipBackY;
+
+var secondToFlipBackX;
+var secondToFlipBackY;
+var score = 1000;
+var compareCounter = 0;
 function send(td) {
 
+	
+	
 	i = parseX(td.id);
 	j = parseY(td.id);
 
+	currentValue = board[i][j];
+	currentX = i;
+	currentY = j;
+
+	flip(currentX, currentY);
+    
+	setScore();
 	
-
-	if (twoFlipped == true) {
-		$('#X' + firstFlippedX + 'Y' + firstFlippedY + ' > img').attr('src',
-				'images/Tab/twoPenguins/penguinCard.png');
-		$('#X' + secondFlippedX + 'Y' + secondFlippedY + ' > img').attr('src',
-				'images/Tab/twoPenguins/penguinCard.png');
+	if (twoDifCards == true) {
+		flipBack(firstToFlipBackX, firstToFlipBackY);
+		flipBack(secondToFlipBackX, secondToFlipBackY);
+		previousValue = 0;
+		twoDifCards = false;
 	}
-	if (oneFlipped == true) {
-		flip(i, j);
-		if (board[i][j] == board[firstFlippedX][firstFlippedY]) {
-			
-		} else {
-			secondFlippedValue = board[i][j];
-			secondFlippedX = i;
-			secondFlippedY = j;
-			twoFlipped = true;
-		}
 
+	if (previousValue == 0) {
+		previousValue = currentValue;
+		previousX = currentX;
+		previousY = currentY;
 	} else {
-		flip(i, j);
-		firstFlippedValue = board[i][j];
-		firstFlippedX = i;
-		firstFlippedY = j;
-		oneFlipped = true;
+		if (currentValue == previousValue) {
+			resetBuffer();
+			incScore();
+			setScore();
+			compareCounter++;
+			if (compareCounter ==6){
+				endGame();
+			}
+			//setTimeout(setEmptyField(currentX, currentY,previousX,previousY),8000);
+		} else {
+			twoDifCards = true;
+			firstToFlipBackX = previousX;
+			firstToFlipBackY = previousY;
+
+			secondToFlipBackX = currentX;
+			secondToFlipBackY = currentY;
+			decScore();
+			setScore();
+			//setTimeout(flipCard(currentX, currentY,previousX,previousY),8000);
+		}
 	}
 
 }
@@ -120,4 +139,46 @@ function flip(i, j) {
 		$('#X' + i + 'Y' + j + ' > img').attr('src',
 				'images/Tab/twoPenguins/penguin7.png');
 	}
+}
+
+function flipBack(i, j) {
+	$('#X' + i + 'Y' + j + ' > img').attr('src',
+			'images/Tab/twoPenguins/penguinCard.png');
+}
+
+function resetBuffer(){
+	previousX = 25;
+	previousY = 25;
+
+	currentX = 25;
+	currentY = 25;
+}
+
+function decScore(){
+	score = score - 10;
+}
+
+function incScore(){
+	score = score + 100;
+}
+
+function setScore(){
+	$('#penguinScore > label').text(score);
+}
+
+function setEmptyField(i,j,i2,j2){
+	$('#X' + i + 'Y' + j + ' > img').attr('src',
+	'images/Tab/twoPenguins/emptyCard.png');
+	$('#X' + i2 + 'Y' + j2 + ' > img').attr('src',
+	'images/Tab/twoPenguins/emptyCard.png');
+}
+
+function flipCard(i,j,i2,j2){
+	flipBack(i, j);
+	flipBack(i2, j2);
+}
+
+function endGame(){
+	$('#penguinScoreMessage > label').text("YOUR SCORE: "+score);
+	$('#penguinScoreMessage').css("visibility","visible");
 }
