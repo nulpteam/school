@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.utils.UserCheck;
+import epam.ph.sg.utils.UserUtils;
 
 @Controller
 public class LoginController {
@@ -27,7 +27,7 @@ public class LoginController {
 	boolean login(@RequestParam("user_name") String name,
 			@RequestParam("password") String pass, HttpServletRequest request,
 			HttpSession session) {
-		User user = UserCheck.check(name, pass);
+		User user = UserUtils.getUser(name, pass);
 		if (user != null) {
 			session.setAttribute("user", user);
 			log.debug(user.getName() + " object added to session");

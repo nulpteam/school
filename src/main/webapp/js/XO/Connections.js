@@ -34,6 +34,13 @@ function waitPageHomeButton() {
 	});
 }
 
+function waitPageRefreshButton() {
+	wpSocket.close();
+	$.post('XOClear.html', function(response) {
+		goTo('CurrentPos.html');
+	});
+}
+
 function waitPageBackButton() {
 	wpSocket.close();
 	$.post('XOClear.html', function(response) {

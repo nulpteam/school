@@ -24,7 +24,7 @@ public class UserAddInfoUtils {
 	}
 
 	public static boolean changeName(int id, String name) {
-		if (UserCheck.isUserExist(name) == true) {
+		if (UserUtils.isUserExist(name) == true) {
 			return false;
 		} else {
 			dao.changeName(id, name);

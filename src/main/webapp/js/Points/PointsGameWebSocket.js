@@ -87,6 +87,7 @@ $(document)
 
 					socket.onclose = function() {
 						ptsTimerStop();
+						
 						console.log("socket.onclose");
 					};
 
@@ -629,12 +630,12 @@ function ptsTimerStart(clockTime) {
 		
 		moveTime -= 1;
 		
-		var time = {
-				"type" : "time",
-				"gameId" : gameId,
-				"moveTime" : moveTime 
-			};
-		socket.send(JSON.stringify(time));
+//		var time = {
+//				"type" : "time",
+//				"gameId" : gameId,
+//				"moveTime" : moveTime 
+//			};
+//		socket.send(JSON.stringify(time));
 	}
 
 }
@@ -642,10 +643,10 @@ function ptsTimerStart(clockTime) {
 function ptsTimerStop() {
 	clearInterval(ptstimerTime);
 	$('#pts_timer').css('visibility', 'hidden');
-	var time = {
-			"type" : "time",
-			"gameId" : gameId,
-			"moveTime" : MINUTE 
-		};
-	socket.send(JSON.stringify(time));
+//	var time = {
+//			"type" : "time",
+//			"gameId" : gameId,
+//			"moveTime" : MINUTE 
+//		};
+//	socket.send(JSON.stringify(time));
 }

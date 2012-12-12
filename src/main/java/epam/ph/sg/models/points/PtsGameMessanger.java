@@ -9,13 +9,11 @@ import org.eclipse.jetty.websocket.WebSocket.Connection;
 public class PtsGameMessanger {
 
 	private PtsJsonParser jsonParser;
-	private PtsContourMarker contourMarker;
 	private static Logger logger;
 
 	public PtsGameMessanger() {
 
 		jsonParser = new PtsJsonParser();
-		contourMarker = new PtsContourMarker();
 		logger = Logger.getLogger(PtsGameMessanger.class);
 	}
 
@@ -129,10 +127,11 @@ public class PtsGameMessanger {
 						clientMessage.getCoords());
 				game.getServer().setLock(true);
 				game.getClient().setLock(false);
-				List<List<PtsCoord>> contoursList = contourMarker.markContours(
+				List<List<PtsCoord>> contoursList = PtsContourMarker.markContours(
 						game.getGameTable(), game.getLogicBoard().getBoard(), game
 								.getBoard().getLastY(), game.getBoard()
 								.getLastX(), Pts.SERVER_UNMARKED_POINT);
+				System.out.println(contoursList);
 				if (contoursList != null && contoursList.size() >= 1) {
 					game.getBoard().addContours(
 							contoursList,
@@ -167,7 +166,7 @@ public class PtsGameMessanger {
 						clientMessage.getCoords());
 				game.getClient().setLock(true);
 				game.getServer().setLock(false);
-				List<List<PtsCoord>> contoursList = contourMarker.markContours(
+				List<List<PtsCoord>> contoursList = PtsContourMarker.markContours(
 						game.getGameTable(), game.getLogicBoard().getBoard(), game
 								.getBoard().getLastY(), game.getBoard()
 								.getLastX(), Pts.CLIENT_UNMARKED_POINT);

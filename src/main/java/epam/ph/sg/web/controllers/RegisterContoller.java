@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import epam.ph.sg.models.User;
-import epam.ph.sg.utils.UserCheck;
-import epam.ph.sg.utils.UserReg;
+import epam.ph.sg.utils.UserUtils;
 
 @Controller
 public class RegisterContoller {
@@ -31,13 +30,16 @@ public class RegisterContoller {
 	boolean register(@RequestParam("user_name") String name,
 			@RequestParam("password") String pass, HttpServletRequest request,
 			Model model, HttpSession session) {
-		if (UserCheck.isUserExist(name) == true) {
+		if (UserUtils.isUserExist(name) == true) {
 			return false;
 		} else {
-			UserReg.register(name, pass);
-			User user = UserCheck.check(name, pass);
-			session.setAttribute("user", user);
-			return true;
+			User user = UserUtils.insert(name, pass);
+			if (user != null) {
+				session.setAttribute("user", user);
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 }

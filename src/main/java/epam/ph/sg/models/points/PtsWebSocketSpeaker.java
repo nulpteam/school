@@ -8,10 +8,12 @@ public class PtsWebSocketSpeaker implements WebSocket.OnTextMessage {
 	private Logger logger;
 	private Connection conn;
 	private PtsJsonParser jsonParser;
+	private PtsGameMessanger gameMessanger;
 
 	public PtsWebSocketSpeaker() {
 		logger = Logger.getLogger(PtsWebSocketSpeaker.class);
 		jsonParser = new PtsJsonParser();
+		gameMessanger = new PtsGameMessanger();
 	}
 
 	@Override
@@ -22,6 +24,7 @@ public class PtsWebSocketSpeaker implements WebSocket.OnTextMessage {
 	@Override
 	public void onOpen(Connection conn) {
 		logger.debug(PtsResources.getProperty("socket.onopen") + conn);
+		conn.setMaxIdleTime(1800000);
 		this.conn = conn;
 
 	}
@@ -34,7 +37,7 @@ public class PtsWebSocketSpeaker implements WebSocket.OnTextMessage {
 
 		PtsClientMessage clientMessage = jsonParser.parseJsonMessage(json);
 		PtsGame game = PtsGameMap.getGames().get(clientMessage.getGameId());
-		PtsGameMessanger gameMessanger = new PtsGameMessanger();
+		
 
 		if (clientMessage.getType().equals(
 				PtsResources.getProperty("user.message.type.user_info"))) {
