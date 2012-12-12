@@ -1,0 +1,32 @@
+#puzzle {
+	background-image: url('../../images/Tab/puzzle/background.png');
+	background-repeat: no-repeat;
+	height: 430px;
+	width: 270px;
+	position: absolute;
+}
+
+#puzzleTable td {
+	width: 56px;
+	height: 51px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+
+.puzzleNumber {
+	background-image: url('../../images/Tab/puzzle/number_background.png');
+	background-repeat: no-repeat;
+}
+
+.puzzleNumber:hover {
+	background-image: url('../../images/Tab/puzzle/number_background_hover.png');
+	background-repeat: no-repeat;
+}
+
+#puzzleTable{
+	position: absolute;
+	margin: 117px 33px;
+	widht: 265px;
+	height: 204px;
+}
