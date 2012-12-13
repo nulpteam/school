@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 function puzGetpuzBoard() {
 
-	$.get("PuzzleGetpBoard.html", function(response) {
+	$.get("PuzzleGetBoard.html", function(response) {
 
 		for (var i = 0; i < NUMBERS_COUNT; i++) {
 			puzBoard[i] = response[i];
