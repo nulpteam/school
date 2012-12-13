@@ -53,7 +53,7 @@ function gameOver(winnerId) {
 	timerStop();
 	if (winnerId == myId) {
 		$('#xoGame #outText p').text(msgWin);
-		$('#xoGame #win').show();
+		// $('#xoGame #win').show();
 	} else {
 		$('#xoGame #outText p').text(msgLose);
 	}
@@ -99,7 +99,7 @@ function opTurn() {
 }
 
 var timerInterval;
-var timerTime = 15;
+var timerTime = 30;
 function timerStart() {
 	clearInterval(timerInterval);
 	timerInterval = setInterval(timer, 1000);
@@ -118,7 +118,7 @@ function timerStart() {
 function timerStop() {
 	clearInterval(timerInterval);
 	$('#xoGame #timer').text('');
-	timerTime = 15;
+	timerTime = 30;
 }
 
 function setImg(box) {
@@ -149,42 +149,22 @@ function statHide(id) {
 	$('#xoGame #' + id).hide();
 }
 
-function gameHomeButton() {
+var exitUrl;
+function gameExitConfirm(url) {
+	exitUrl = url;
 	if (end == true) {
-		xoSocket.close();
-		clearInterval(timerInterval);
-		$.post('XOClear.html', function(response) {
-			goTo('Menu.html');
-		});
+		gameExit('XOClear.html');
 	} else {
-		var bool = confirm(msgExit);
-		if (bool == true) {
-			xoSocket.close();
-			clearInterval(timerInterval);
-			$.post('XOPlayerOut.html', function(response) {
-				goTo('Menu.html');
-			});
-		}
+		$('#xoGame #player_out').show();
 	}
 }
 
-function gameBackButton() {
-	if (end == true) {
-		xoSocket.close();
-		clearInterval(timerInterval);
-		$.post('XOClear.html', function(response) {
-			goTo('XOMenu.html');
-		});
-	} else {
-		var bool = confirm(msgExit);
-		if (bool == true) {
-			xoSocket.close();
-			clearInterval(timerInterval);
-			$.post('XOPlayerOut.html', function(response) {
-				goTo('XOMenu.html');
-			});
-		}
-	}
+function gameExit(url) {
+	xoSocket.close();
+	clearInterval(timerInterval);
+	$.post(url, function(response) {
+		goTo(exitUrl);
+	});
 }
 
 function gameRefreshButton() {
