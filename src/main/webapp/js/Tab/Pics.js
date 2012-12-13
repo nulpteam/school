@@ -11,7 +11,7 @@ $(document).ready(function() {
  p =[];
 
 function showPic(t)
-{//console.log(t);
+{
 	if($(t).attr("lock")!=1)
 	{
 		$(t).hide(0);
@@ -21,28 +21,24 @@ function showPic(t)
 		if(p[0]===undefined)
 		{
 			p[0] = t.id;
-			//console.log("e pershyj elementy masyvu");
 		}
 		else	if((p[0]!=undefined) && (p[1]==undefined))
 		{
 			p[1] = t.id;
-			//console.log("e druhyj elementy masyvu");
 		}
 		console.log(p[0]+" sss "+p[1]);
 		
 		if(p[0]!=undefined && p[1]!=undefined)
 			{
-			//console.log("e dva elementy masyvu");
 				if(p[0]!=p[1])
 				{ 
 					console.log(p[0]);
 					console.log(p[1]);
-					//alert("nerivni");
 					x = p[0];
 					y = p[1];
 					setTimeout(function() {
 						none(x, y);
-					},750);
+					},500);
 				}
 				else
 				{
@@ -52,8 +48,6 @@ function showPic(t)
 				}
 				p[0] = undefined;
 				p[1] = undefined;
-				//console.log("vudalennya masyvu");
-				//console.log(p[0]+" after "+p[1]);
 			}
 	}
 }
