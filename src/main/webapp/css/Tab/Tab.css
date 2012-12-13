@@ -121,3 +121,17 @@
 	background-image: url('../../images/Tab/15-puzzle_hover.png');
 	background-size: cover;
 }
+#HanoiGame {
+	background-image: url('../../images/Tab/hanoi/hanoi_1.png');
+}
+
+#HanoiGame:hover {
+	background: url('../../images/Tab/hanoi/hanoi_2.png');
+}
+#BrainGame {
+	background-image: url('../../images/Tab/brain/brain_1.png');
+}
+
+#BrainGame:hover {
+	background: url('../../images/Tab/brain/brain_2.png');
+}

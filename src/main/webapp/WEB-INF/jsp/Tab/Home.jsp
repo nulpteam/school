@@ -9,4 +9,6 @@
 	<div class="TabButton" id="TabFlip" onclick="tabGoTo('PenguinsGame.html')"></div>
 	<!-- <div class="TabButton" id="TabPenguins" onclick="tabGoTo('PenguinsGame.html')"></div> -->
 	<div class="TabButton" id="Tab15-puzzle" onclick="tabGoTo('PuzzleGame.html')"></div>
+	<div class="TabButton" id="HanoiGame" onclick="tabGoTo('Hanoi.html')"></div>
+	<div class="TabButton" id="BrainGame" onclick="tabGoTo('Brain.html')"></div>
 </div>

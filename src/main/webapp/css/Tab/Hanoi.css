@@ -1,0 +1,148 @@
+#hanoi {
+	background-image: url('../../images/Tab/hanoi/background.jpg');
+	background-repeat: no-repeat;
+}
+
+#hanoi #cont {
+	height: 300px;
+	width: 270px;
+	position: absolute;
+	margin: 70px 0px;
+}
+
+#hanoi #gameTable {
+	border-spacing: 0px;
+	position: relative;
+	top: 105px;
+}
+#hanoi #gameTable .peg {
+	background-image: url("../../images/Tab/hanoi/peg.gif");
+	background-size: contain;
+}
+#hanoi #gameTable .base {
+	background-image: url("../../images/Tab/hanoi/base.gif");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#hanoi #gameTable .disk1 {
+	background-image: url("../../images/Tab/hanoi/disk1.gif");
+	background-size: contain;
+}
+#hanoi #gameTable .disk2 {
+	background-image: url("../../images/Tab/hanoi/disk2.gif");
+	background-size: contain;
+}
+#hanoi #gameTable .disk3 {
+	background-image: url("../../images/Tab/hanoi/disk3.gif");
+	background-size: contain;
+}
+#hanoi #gameTable .disk4 {
+	background-image: url("../../images/Tab/hanoi/disk4.gif");
+	background-size: contain;
+}
+#hanoi #gameTable .disk5 {
+	background-image: url("../../images/Tab/hanoi/disk5.gif");
+	background-size: contain;
+}
+#hanoi #gameTable .disk6 {
+	background-image: url("../../images/Tab/hanoi/disk6.gif");
+	background-size: contain;
+}
+#hanoi #gameTable .disk7 {
+	background-image: url("../../images/Tab/hanoi/disk7.gif");
+	background-size: contain;
+}
+#hanoi #gameTable td {
+	height: 12px;
+	width: 80px;
+	padding-left: 10px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#hanoi #gameTable div {
+	height: 12px;
+	width: 61px;
+}
+#hanoibest {
+	position: relative;
+	left: 54px;
+	top: -50px;
+}
+#hanoimoves {
+	position: relative;
+	top: 185px;
+	left: 126px;
+}
+#hanoihome {
+	position: relative;
+	top: 140px;
+	left: 90px;
+	background-image: url("../../images/Tab/hanoi/hanoiHome_1.png");
+	height: 72px;
+	width: 82px;
+}
+#hanoihome:hover {
+	background-image: url("../../images/Tab/hanoi/hanoiHome_2.png");
+}
+#hanoi3 {
+	margin: 3px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi3_1.png");
+	height: 72px;
+	width: 82px;
+}
+#hanoi3:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi3_2.png");
+}
+#hanoi4 {
+	margin: 3px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi4_1.png");
+	height: 72px;
+	width: 82px;
+}
+#hanoi4:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi4_2.png");
+}
+#hanoi5 {
+	margin: 3px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi5_1.png");
+	height: 72px;
+	width: 82px;
+}
+#hanoi5:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi5_2.png");
+}
+#hanoi6 {
+	margin: 3px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi6_1.png");
+	height: 72px;
+	width: 82px;
+}
+#hanoi6:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi6_2.png");
+}
+#hanoi7 {
+	margin: 3px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi7_1.png");
+	height: 72px;
+	width: 82px;
+}
+#hanoi7:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi7_2.png");
+}
+
+#hanoimessage {
+	position: relative;
+	top: -35px;
+	left: 20px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #19009E;
+}
