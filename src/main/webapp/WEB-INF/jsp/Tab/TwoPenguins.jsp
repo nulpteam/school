@@ -15,7 +15,7 @@
 				<tr>
 					<c:forEach begin="0" end="2" step="1" varStatus="j">
 						<td class="penguinCard" id="X${j.count-1}Y${i.count-1}"
-							onClick=send(this)><img src="aa"></td>
+							onClick=send(this)><img src=""></td>
 					</c:forEach>
 				</tr>
 			</c:forEach>
