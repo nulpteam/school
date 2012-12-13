@@ -18,7 +18,7 @@ public class PtsGameInfoMessage {
 	private String userTypeActiveMenu;
 	private int lastX;
 	private int lastY;
-	private int moveTime;
+	private String timerState;
 	private List<List<Integer>> lastContours;
 	private List<List<Integer>> matrix;
 	private List<List<Integer>> contoursServer;
@@ -43,7 +43,6 @@ public class PtsGameInfoMessage {
 		activePointsMenu = false;
 		lastX = -1;
 		lastY = -1;
-		moveTime = 60;
 	}
 	
 	public String getUserTypeActiveMenu() {
@@ -62,12 +61,12 @@ public class PtsGameInfoMessage {
 		this.activeMainMenu = activeMainMenu;
 	}
 	
-	public int getMoveTime() {
-		return moveTime;
+	public String getTimerState() {
+		return timerState;
 	}
 
-	public void setMoveTime(int moveTime) {
-		this.moveTime = moveTime;
+	public void setTimerState(String timerState) {
+		this.timerState = timerState;
 	}
 
 	public boolean isActivePointsMenu() {

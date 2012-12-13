@@ -105,18 +105,6 @@ public class PtsBoard {
 		return clientScore;
 	}
 
-	
-	//TODO delete this method
-	public void printBoard() {
-		
-		for (int i = 0 ; i< Pts.Y_LENGTH; i++) {
-			for (int j = 0 ; j< Pts.X_LENGTH; j++) {
-				System.out.printf("%3s", board[i][j]);
-			}
-			System.out.println();
-		}
-	}
-
 	public void setServerScore(int serverScore) {
 		this.serverScore = serverScore;
 	}

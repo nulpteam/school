@@ -82,7 +82,7 @@
 
 #pts_rules {
 	position: absolute;
-	margin: 160px 87px;
+	margin: 100px 87px;
 	width: 420px;
 	height: 460px;
 }
@@ -160,7 +160,7 @@
 .pts_rules {
 	text-align: left;
 	width: 400px;
-	height: 50px;
+	height: 80px;
 }
 
 #pts_timer {

@@ -21,7 +21,6 @@ public class PuzzleUtils {
 
 		for (int i = 0; i < 16; i++) {
 			board.add(getRandomUniqueNumber(board));
-			System.out.println(board.get(i));
 		}
 
 		return board;

@@ -15,7 +15,9 @@ public class PtsGame {
 	private boolean surrenderPointsMenuActive;
 	private String userTypeActiveMenu;
 	private boolean setTimer;
-	private int moveTime;
+	private String timerState;
+	private PtsTimer timer;
+	private boolean activeTimer;
 
 	public PtsGame() {
 		board = new PtsBoard();
@@ -26,7 +28,25 @@ public class PtsGame {
 		surrenderMainMenuActive = false;
 		surrenderPointsMenuActive = false;
 		setTimer = true;
-		moveTime = 60;
+		timer = new PtsTimer();
+		timerState = "60";
+		activeTimer = false;
+	}
+
+	public void startTimer() {
+		activeTimer = true;
+		timer.startTimer(this);
+	}
+
+	public void stopTimer() {
+		activeTimer = false;
+		this.timerState = "60";
+		timer.stopTimer();
+	}
+
+	public void stopRefreshTimer() {
+		activeTimer = false;
+		timer.stopTimer();
 	}
 
 	public boolean setServer(PtsPlayer server) {
@@ -53,6 +73,28 @@ public class PtsGame {
 		return client;
 	}
 
+	public boolean isActiveTimer(String userType) {
+		if (activeTimer) {
+			if (userType.equals(PtsResources.getProperty("user.type.server")))
+				return !server.isLock();
+			else {
+				return !client.isLock();
+			}
+		} else
+			return false;
+	}
+
+	public String getTimerState() {
+		return timerState;
+	}
+
+	public void setTimerState(String timerState) {
+		this.timerState = timerState;
+		if (timerState.equals("0"))
+			this.stopTimer();
+		timerState = "60";
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -65,18 +107,8 @@ public class PtsGame {
 		return board;
 	}
 
-	
-	public int getMoveTime() {
-		return moveTime;
-	}
-
 	public void setBoard(PtsBoard board) {
 		this.board = board;
-	}
-
-	public void setMoveTime(int moveTime) {
-		this.moveTime = moveTime;
-		System.out.println("MOVE TIME");
 	}
 
 	public PtsBoard getLogicBoard() {

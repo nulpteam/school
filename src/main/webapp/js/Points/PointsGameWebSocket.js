@@ -85,15 +85,8 @@ $(document)
 
 					};
 
-					socket.onclose = function() {
-						ptsTimerStop();
-						
-						console.log("socket.onclose");
-					};
-
+					
 					socket.onmessage = function(event) {
-
-						console.log(event.data);
 
 						var msg = JSON.parse(event.data);
 
@@ -163,7 +156,6 @@ $(document)
 								lock = msg.clientLock;
 							}
 
-							console.log(userType + msg.userTypeActiveMenu);
 							if (userType == msg.userTypeActiveMenu) {
 								isHomeMenuActive = msg.activeMainMenu;
 								isPointsMenuActive = msg.activePointsMenu;
@@ -217,7 +209,7 @@ $(document)
 							} else {
 								if ($('#pts_player_label_2 > label').text() != ""
 										&& waitForClient == false)
-									ptsTimerStart(msg.moveTime - 1);
+									ptsTimerStart(msg.timerState);
 							}
 							
 							putPoints();
@@ -232,7 +224,6 @@ $(document)
 							break;
 
 						case "contour":
-							console.log(msg);
 
 							var usType = msg.userType;
 
@@ -270,6 +261,14 @@ $(document)
 
 				});
 
+
+socket.onclose = function() {
+
+	ptsTimerStop();
+
+};
+
+
 function initializeBoard(matrix) {
 	for ( var i = 0; i < matrix.length; i++) {
 
@@ -282,7 +281,7 @@ function initializeBoard(matrix) {
 				board[i][j] = matrix[i][j];
 		}
 	}
-	console.log("BOARD!!!!!!!!!!!!!!!!!" + board);
+
 }
 
 function putPoints() {
@@ -314,10 +313,9 @@ function createMatrix() {
 function putPoint(td_point) {
 
 	if (lock == true) {
-		// TODO
 		return;
 	}
-	console.log(waitForClient);
+
 	if (waitForClient == true) {
 
 		return;
@@ -325,7 +323,7 @@ function putPoint(td_point) {
 
 		var x = parseX(td_point.id);
 		var y = parseY(td_point.id);
-		console.log(board[y][x]);
+
 		ptsTimerStop();
 		if (board[y][x] == 0) {
 			if (userType == "server") {
@@ -350,6 +348,14 @@ function putPoint(td_point) {
 					"coords" : td_point.id
 				};
 				var sendCoords = JSON.stringify(coords);
+				
+				var time = {
+						"type" : "time",
+						"gameId" : gameId,
+						"timerState" : "stop" 
+					};
+				socket.send(JSON.stringify(time));
+				
 				socket.send(sendCoords);
 				lock = true;
 			} else {
@@ -571,6 +577,12 @@ function surrenderYes() {
 	});
 
 	ptsTimerStop();
+	var time = {
+			"type" : "time",
+			"gameId" : gameId,
+			"timerState" : "stop" 
+		};
+	socket.send(JSON.stringify(time));
 
 	if (isPointsMenuActive) {
 
@@ -605,6 +617,12 @@ function surrenderNo() {
 
 function ptsTimerStart(clockTime) {
 
+	var time = {
+			"type" : "time",
+			"gameId" : gameId,
+			"timerState" : "start" 
+		};
+	socket.send(JSON.stringify(time));
 	ptstimerTime = setInterval(pts_timer, 1000);
 	moveTime = clockTime;
 
@@ -630,12 +648,6 @@ function ptsTimerStart(clockTime) {
 		
 		moveTime -= 1;
 		
-//		var time = {
-//				"type" : "time",
-//				"gameId" : gameId,
-//				"moveTime" : moveTime 
-//			};
-//		socket.send(JSON.stringify(time));
 	}
 
 }
@@ -643,10 +655,5 @@ function ptsTimerStart(clockTime) {
 function ptsTimerStop() {
 	clearInterval(ptstimerTime);
 	$('#pts_timer').css('visibility', 'hidden');
-//	var time = {
-//			"type" : "time",
-//			"gameId" : gameId,
-//			"moveTime" : MINUTE 
-//		};
-//	socket.send(JSON.stringify(time));
+
 }

@@ -18,5 +18,5 @@
 
 	<div class="homeButton" onclick="goTo('Menu.html')"></div>
 	<div class="backButton" onClick="goTo('Points.html')"></div>
-	<div class="ptsRefreshButton" onclick="goTo('PointsConnectList.html')"></div>
+	<div class="ptsRefreshButton" onclick="goTo('PointsRules.html')"></div>
 </div>
