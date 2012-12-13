@@ -90,7 +90,7 @@ public class InfGameBoard {
 						message.setClientScore(countClientScore(board));
 						if (isNoEmptyFieldsLeft(board)
 								|| isNoServerChipsLeft(board)
-								|| isNoClientChipsLeft(board)) {
+								|| isNoClientChipsLeft(board) ) {
 							if (countServerScore(board) > countClientScore(board)) {
 								message.setType("serverWin");
 							} else {
@@ -107,7 +107,7 @@ public class InfGameBoard {
 					message.setClientScore(countClientScore(board));
 					if (isNoEmptyFieldsLeft(board)
 							|| isNoServerChipsLeft(board)
-							|| isNoClientChipsLeft(board)) {
+							|| isNoClientChipsLeft(board) ) {
 						if (countServerScore(board) > countClientScore(board)) {
 							message.setType("serverWin");
 						} else {
@@ -135,7 +135,7 @@ public class InfGameBoard {
 						message.setClientScore(countClientScore(board));
 						if (isNoEmptyFieldsLeft(board)
 								|| isNoServerChipsLeft(board)
-								|| isNoClientChipsLeft(board)) {
+								|| isNoClientChipsLeft(board) ) {
 							if (countServerScore(board) > countClientScore(board)) {
 								message.setType("serverWin");
 							} else {
@@ -152,7 +152,7 @@ public class InfGameBoard {
 					message.setClientScore(countClientScore(board));
 					if (isNoEmptyFieldsLeft(board)
 							|| isNoServerChipsLeft(board)
-							|| isNoClientChipsLeft(board)) {
+							|| isNoClientChipsLeft(board) ) {
 						if (countServerScore(board) > countClientScore(board)) {
 							message.setType("serverWin");
 						} else {
@@ -360,6 +360,52 @@ public class InfGameBoard {
 			}
 		}
 		return board;
+	}
+
+	private static boolean isNoMovesLeft(int[][] board, InfClientMessage message) {
+		
+		boolean flagServer = false;
+		boolean flagClient = false;
+		for (int i = 0; i <= 7; i++) {
+			for (int j = 0; j <= 7; j++) {
+				if (board[i][j] == 2) {
+					for (int a = 0; a <= 7; a++) {
+						for (int b = 0; b <= 7; b++) {
+							if (((a >= i - 2) & ( a <= i + 2))
+									& ((b >= j - 2) & (b <= j + 2))) {
+								if (board[i][j] == 0) {
+									flagClient = true;
+								}
+
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i <= 7; i++) {
+			for (int j = 0; j <= 7; j++) {
+				if (board[i][j] == 1) {
+					for (int a = 0; a <= 7; a++) {
+						for (int b = 0; b <= 7; b++) {
+							if (((a >= i - 2) & ( a <= i + 2))
+									& ((b >= j - 2) & (b <= j + 2))) {
+								if (board[i][j] == 0) {
+									flagServer = true;
+								}
+
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		if ((flagServer == false)||(flagClient == false)){
+			return true;
+		}
+		return false;
 	}
 
 }
