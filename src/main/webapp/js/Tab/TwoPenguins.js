@@ -26,6 +26,9 @@ var lastFindFY = 0;
 
 var lastFindSX = 0;
 var lastFindSY = 0;
+var lockX = 25;
+var lockY = 25;
+var lockValue = 0;
 var twoSame = false;
 function send(td) {
 
@@ -36,58 +39,68 @@ function send(td) {
 	currentX = i;
 	currentY = j;
 
-	flip(currentX, currentY);
+	getFieldID(currentX, currentY);
 
-	setScore();
+	if (getFieldID(currentX, currentY) != getFieldID(lockX, lockY)) {
 
-	if (twoSame == true) {
-				
-		$('#X' + lastFindFX + 'Y' + lastFindFY).css("visibility", "hidden");
-		$('#X' + lastFindSX + 'Y' + lastFindSY).css("visibility", "hidden");
-		twoSame = false;
-	}
+		flip(currentX, currentY);
 
-	if (twoDifCards == true) {
-		flipBack(firstToFlipBackX, firstToFlipBackY);
-		flipBack(secondToFlipBackX, secondToFlipBackY);
-		previousValue = 0;
-		twoDifCards = false;
-	}
+		setScore();
 
-	if (previousValue == 0) {
-		previousValue = currentValue;
-		previousX = currentX;
-		previousY = currentY;
-	} else {
-		if (currentValue == previousValue) {
+		if (twoSame == true) {
 
-			
-			incScore();
-			setScore();
-			compareCounter++;
-			lastFindFX = currentX;
-			lastFindFY = currentY;
-			lastFindSX = previousX;
-			lastFindSY = previousY;
-			resetBuffer();
-			if (compareCounter == 6) {
-				endGame();
-				compareCounter = 0;
-			}
-			twoSame = true;
-
-		} else {
-			twoDifCards = true;
-			firstToFlipBackX = previousX;
-			firstToFlipBackY = previousY;
-
-			secondToFlipBackX = currentX;
-			secondToFlipBackY = currentY;
-			decScore();
-			setScore();
-			// setTimeout(flipCard(currentX,
-			// currentY,previousX,previousY),8000);
+			$('#X' + lastFindFX + 'Y' + lastFindFY).css("visibility", "hidden");
+			$('#X' + lastFindSX + 'Y' + lastFindSY).css("visibility", "hidden");
+			twoSame = false;
 		}
+
+		if (twoDifCards == true) {
+			flipBack(firstToFlipBackX, firstToFlipBackY);
+			flipBack(secondToFlipBackX, secondToFlipBackY);
+			previousValue = 0;
+			twoDifCards = false;
+		}
+
+		if (previousValue == 0) {
+			previousValue = currentValue;
+			previousX = currentX;
+			previousY = currentY;
+			lockX = previousX;
+			lockY = previousY;
+			lockValue = previousValue;
+		} else {
+			if (currentValue == previousValue) {
+
+				incScore();
+				setScore();
+				compareCounter++;
+				lastFindFX = currentX;
+				lastFindFY = currentY;
+				lastFindSX = previousX;
+				lastFindSY = previousY;
+				resetBuffer();
+				if (compareCounter == 6) {
+					endGame();
+					compareCounter = 0;
+				}
+				twoSame = true;
+
+			} else {
+				twoDifCards = true;
+				firstToFlipBackX = previousX;
+				firstToFlipBackY = previousY;
+
+				secondToFlipBackX = currentX;
+				secondToFlipBackY = currentY;
+				decScore();
+				setScore();
+				// setTimeout(flipCard(currentX,
+				// currentY,previousX,previousY),8000);
+			}
+		}
+
+	} else {
+
 	}
 
 }
@@ -202,4 +215,11 @@ function flipCard(i, j, i2, j2) {
 function endGame() {
 	$('#penguinScoreMessage > label').text("YOUR SCORE: " + score);
 	$('#penguinScoreMessage').css("visibility", "visible");
+}
+
+function getFieldID(x, y) {
+	var field = "";
+	field = field + x;
+	field = field + y;
+	return field;
 }
