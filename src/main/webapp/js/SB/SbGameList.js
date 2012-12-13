@@ -15,7 +15,7 @@ function connect(ID) {
 				if (response === "OK") {
 					goTo("BsGame.html");
 				} else {
-					goTo("index.html");
+					goTo("BsConectGame.html");
 				}
 		}
 	);

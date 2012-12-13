@@ -132,26 +132,30 @@ public class SBMenuController {
 	String SbGameSelected(@RequestParam("gameID") int gameID,
 			HttpSession session, Model model) {
 		log.debug("*/*/*/*/*/*/*/*  GAME ID =" + gameID + "  /*/*/*/*/*/*/*/");
-		Game selectedGame = GamesList.getGameListBS().get(gameID);
-		Client client = new Client();
-		BSPlayer player = new BSPlayer();
-		BSBoard board = new BSBoard();
-		player.setName(((User) session.getAttribute("user")).getName());
-		client.setPlayer(player);
-		client.setGameBoard(board);
-		selectedGame.setClient(client);
-
-		ActiveGames.getGame(gameID).setClient(client);
-		try {
-			ActiveGames.getGame(gameID).getServer().getConn()
-					.sendMessage("connected");
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(GamesList.getGameListBS().get(gameID)==null)
+		{
+			return "NULL";
 		}
-		session.setAttribute("Game", selectedGame);
-		session.setAttribute("ConnectionType", "client");
-		GamesList.removeGameFromListBS(gameID);
-
+			Game selectedGame = GamesList.getGameListBS().get(gameID);
+			Client client = new Client();
+			BSPlayer player = new BSPlayer();
+			BSBoard board = new BSBoard();
+			player.setName(((User) session.getAttribute("user")).getName());
+			client.setPlayer(player);
+			client.setGameBoard(board);
+			selectedGame.setClient(client);
+			
+			ActiveGames.getGame(gameID).setClient(client);
+			try {
+				ActiveGames.getGame(gameID).getServer().getConn()
+						.sendMessage("connected");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("Game", selectedGame);
+			session.setAttribute("ConnectionType", "client");
+			GamesList.removeGameFromListBS(gameID);
+		
 		log.debug("---  START ---");
 		log.debug("--- " + selectedGame + "  ---");
 		log.debug("--- STOP  ---");
