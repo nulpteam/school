@@ -1187,7 +1187,9 @@ function closeAndgoTo(url)
 		}
 	if(bsoundFlag)
 	{
-		bsound.stop();
+		console.log(bsound);
+		console.log(bsoundFlag);
+		bsound.pause();
 	}
 	goTo(url);
 }

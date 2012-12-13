@@ -1,4 +1,5 @@
 /*author BogdanGutey*/
+var p;
 $(document).ready(function() {
 	
 	initPics();
@@ -7,7 +8,7 @@ $(document).ready(function() {
 		}
 		setTimeout(second_passed, 3000);
 });
- var p =[];
+ p =[];
 
 function showPic(t)
 {//console.log(t);
@@ -34,12 +35,14 @@ function showPic(t)
 			//console.log("e dva elementy masyvu");
 				if(p[0]!=p[1])
 				{ 
-					//console.log(p[0]);
-					//console.log(p[1]);
-					alert("nerivni");
-					
-						$("#pics #"+p[0]).fadeOut(0).delay(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0).delay(0);
-						$("#pics #"+p[1]).fadeOut(0).delay(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0).delay(0);		
+					console.log(p[0]);
+					console.log(p[1]);
+					//alert("nerivni");
+					x = p[0];
+					y = p[1];
+					setTimeout(function() {
+						none(x, y);
+					},750);
 				}
 				else
 				{
@@ -54,7 +57,8 @@ function showPic(t)
 			}
 	}
 }
-
+function v()
+{}
 function initPics()
 {	var p = getRandPicsIds();
 	var i=0;
@@ -114,4 +118,9 @@ function getRandArray()
 	     myArray[j] = tempi;
 	   }
 	  return myArray;
+}
+function none(a, b) {
+	console.log("none ", a, b);
+	$("#pics #"+a).fadeOut(0).delay(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0).delay(0);
+	$("#pics #"+b).fadeOut(0).delay(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0).delay(0);
 }
