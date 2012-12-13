@@ -1,40 +1,40 @@
-var board = [];
+var puzBoard = [];
 var emptyIdX = "3";
 var emptyIdY = "3";
-var puzzleBoardId = createPuzzleBoard();
-var lock = false;
+var puzzlepuzBoardId = createPuzzlepuzBoard();
+var puzLock = false;
 var NUMBERS_COUNT = 16;
 
 
 
 $(document).ready(function() {
 
-	board.length = NUMBERS_COUNT;
-	puzGetBoard();
+	puzBoard.length = NUMBERS_COUNT;
+	puzGetpuzBoard();
 	puzGetEndGameState();
 });
 
-function puzGetBoard() {
+function puzGetpuzBoard() {
 
-	$.get("PuzzleGetBoard.html", function(response) {
+	$.get("PuzzleGetpuzBoard.html", function(response) {
 
 		for (var i = 0; i < NUMBERS_COUNT; i++) {
-			board[i] = response[i];
+			puzBoard[i] = response[i];
 		}
 
-		for ( var i = 0; i < puzzleBoardId.length; i++) {
-			for ( var j = 0; j < puzzleBoardId[i].length; j++) {
-				puzzleBoardId[i][j] = board[(j + 1 + (4 * (i))) - 1];
+		for ( var i = 0; i < puzzlepuzBoardId.length; i++) {
+			for ( var j = 0; j < puzzlepuzBoardId[i].length; j++) {
+				puzzlepuzBoardId[i][j] = puzBoard[(j + 1 + (4 * (i))) - 1];
 			}
 		}
 
-		for ( var i = 0; i < puzzleBoardId.length; i++) {
-			for ( var j = 0; j < puzzleBoardId[i].length; j++) {
-				if (puzzleBoardId[i][j] != 0) {
+		for ( var i = 0; i < puzzlepuzBoardId.length; i++) {
+			for ( var j = 0; j < puzzlepuzBoardId[i].length; j++) {
+				if (puzzlepuzBoardId[i][j] != 0) {
 					$('#PX' + i + 'PY' + j + '> img').attr(
 							'src',
 							'images/Tab/puzzle/number_'
-									+ board[(j + 1 + (4 * (i))) - 1] + '.png');
+									+ puzBoard[(j + 1 + (4 * (i))) - 1] + '.png');
 				} else {
 					emptyIdX = i;
 					emptyIdY = j;
@@ -52,8 +52,8 @@ function puzGetEndGameState() {
 	
 	$.get("PuzzleGetEndGameState.html", function(response) {
 		
-		lock = response;
-		if (lock == true) {
+		puzLock = response;
+		if (puzLock == true) {
 			$('#puz_winner > img').attr('src',
 			'images/Tab/puzzle/puzzle_winner.gif');
 		}
@@ -63,7 +63,7 @@ function puzGetEndGameState() {
 
 function makeMove(id) {
 	
-	if (!lock) {
+	if (!puzLock) {
 
 		var xCoord = puzParseX(id);
 		var yCoord = puzParseY(id);
@@ -78,7 +78,7 @@ function makeMove(id) {
 			$('#PX' + xCoord + 'PY' + yCoord + ' > img').attr('src', "images/Points/square.png");
 			$('#PX' + emptyIdX + 'PY' + emptyIdY + ' > img').attr(
 					'src',
-					'images/Tab/puzzle/number_' + puzzleBoardId[xCoord][yCoord]
+					'images/Tab/puzzle/number_' + puzzlepuzBoardId[xCoord][yCoord]
 							+ '.png');
 			$('#PX' + emptyIdX + 'PY' + emptyIdY)
 					.css(
@@ -89,27 +89,27 @@ function makeMove(id) {
 									+ location.port
 									+ '/School/images/Tab/puzzle/number_background.png)');
 
-			var temp = puzzleBoardId[emptyIdX][emptyIdY];
-			puzzleBoardId[emptyIdX][emptyIdY] = puzzleBoardId[xCoord][yCoord];
-			puzzleBoardId[xCoord][yCoord] = temp;
+			var temp = puzzlepuzBoardId[emptyIdX][emptyIdY];
+			puzzlepuzBoardId[emptyIdX][emptyIdY] = puzzlepuzBoardId[xCoord][yCoord];
+			puzzlepuzBoardId[xCoord][yCoord] = temp;
 			
 			
 			var numberOld = (parseInt(emptyIdY) + 1 + (4 * parseInt(emptyIdX))) - 1;
 			var numberNew = (parseInt(yCoord) + 1 + (4 * parseInt(xCoord))) - 1;
 			
-			temp = board[numberNew];
-			board[numberNew] = board[numberOld];
-			board[numberOld] = temp;
-			board.length = NUMBERS_COUNT;
+			temp = puzBoard[numberNew];
+			puzBoard[numberNew] = puzBoard[numberOld];
+			puzBoard[numberOld] = temp;
+			puzBoard.length = NUMBERS_COUNT;
 
 			emptyIdX = xCoord;
 			emptyIdY = yCoord;
 			
-			$.post("PuzzleSaveBoard.html",{board : JSON.stringify(board)}, function(response) {
+			$.post("PuzzleSavepuzBoard.html",{puzBoard : JSON.stringify(puzBoard)}, function(response) {
 			});
 
 			if (isEndOfGame()) {
-				lock = true;
+				puzLock = true;
 				$('#puz_winner > img').attr('src',
 						'images/Tab/puzzle/puzzle_winner.gif');
 				$.get("PuzzleEndGame.html", function(response) {
@@ -124,10 +124,10 @@ function makeMove(id) {
 
 function isEndOfGame() {
 
-	for ( var i = 0; i < puzzleBoardId.length; i++) {
-		for ( var j = 0; j < puzzleBoardId[i].length; j++) {
+	for ( var i = 0; i < puzzlepuzBoardId.length; i++) {
+		for ( var j = 0; j < puzzlepuzBoardId[i].length; j++) {
 			if (i != 3 || j != 3) {
-				if (puzzleBoardId[j][i] != (j + 1 + (4 * (i)))) {
+				if (puzzlepuzBoardId[j][i] != (j + 1 + (4 * (i)))) {
 					return false;
 				}
 			}
@@ -138,15 +138,15 @@ function isEndOfGame() {
 
 }
 
-function createPuzzleBoard() {
-	var board = new Array();
+function createPuzzlepuzBoard() {
+	var puzBoard = new Array();
 	for ( var i = 0; i < 4; i++) {
-		board[i] = new Array();
+		puzBoard[i] = new Array();
 		for ( var j = 0; j < 4; j++) {
-			board[i][j] = 0;
+			puzBoard[i][j] = 0;
 		}
 	}
-	return board;
+	return puzBoard;
 }
 
 function puzParseX(strPoint) {
