@@ -13,8 +13,8 @@
 		});
 	</script>
 
-	<div class="homeButton" onclick=gameHomeButton();></div>
-	<div class="backButton" onclick=gameBackButton();></div>
+	<div class="homeButton" onclick="gameExitConfirm('Menu.html');"></div>
+	<div class="backButton" onclick="gameExitConfirm('XOMenu.html');"></div>
 	<div class="refreshButton" onclick=gameRefreshButton();></div>
 
 	<div id="myName" class="namespace" onclick=statShow(this.id);>
@@ -64,8 +64,14 @@
 	<div id="outText" class="title">
 		<p align="center"></p>
 	</div>
-	<div id="win">
-		<img src="images/XO/win.png">
+	<div id="player_out" class="message">
+		<p id="msg_text">${langPack['XO_exit_msg']}</p>
+		<div class="button2" onclick="gameExit('XOPlayerOut.html');">
+			<p class="buttonText">${langPack['Pts_yes']}</p>
+		</div>
+		<div class="button2" onclick="$('#xoGame #player_out').hide();">
+			<p class="buttonText">${langPack['Pts_no']}</p>
+		</div>
 	</div>
 	<div id="border"></div>
 	<div id="field">

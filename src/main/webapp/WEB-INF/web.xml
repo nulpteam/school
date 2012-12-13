@@ -73,6 +73,10 @@
 		<url-pattern>/Sudoku.html</url-pattern>
 		<url-pattern>/FlipperGame.html</url-pattern>
 		<url-pattern>/MSGame.html</url-pattern>
+		<url-pattern>/PuzzleGame.html</url-pattern>
+		<url-pattern>/MSGame.html</url-pattern>
+		<url-pattern>/PenguinsGame.html</url-pattern>
+		
 	</filter-mapping>
 	<error-page>
         <error-code>404</error-code>

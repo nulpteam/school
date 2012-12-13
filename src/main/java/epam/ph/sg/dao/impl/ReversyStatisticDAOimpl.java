@@ -58,7 +58,7 @@ public class ReversyStatisticDAOimpl implements ReversyStatisticDAO {
 	}
 	@Override
 	public ReversyStatistic getUserStatistics(int id) {
-		String sql = "select wins, losses from `sgdb`.`reversystatistic` where id="
+		String sql = "select wins, losses, nichija from `sgdb`.`reversystatistic` where id="
 				+ id;
 		ReversyStatistic stat = jdbcTemplate.query(sql,
 				new ResultSetExtractor<ReversyStatistic>() {
@@ -71,6 +71,8 @@ public class ReversyStatisticDAOimpl implements ReversyStatisticDAO {
 							stat = new ReversyStatistic();
 							stat.setWins(rs.getInt(1));
 							stat.setLosses(rs.getInt(2));
+							stat.setNichija(rs.getInt(3));
+							
 						}
 						return stat;
 					}
@@ -81,7 +83,7 @@ public class ReversyStatisticDAOimpl implements ReversyStatisticDAO {
 
 	@Override
 	public List<ReversyStatistic> getAllStatistics() {
-		String sql = "select name, wins, losses from `sgdb`.`users` join "
+		String sql = "select name, wins, losses, nichija from `sgdb`.`users` join "
 				+ "`sgdb`.`reversystatistic` on users.id = reversystatistic.id;";
 
 		List<ReversyStatistic> list = jdbcTemplate.query(sql,
@@ -94,6 +96,7 @@ public class ReversyStatisticDAOimpl implements ReversyStatisticDAO {
 						stat.setName(rs.getString(1));
 						stat.setWins(rs.getInt(2));
 						stat.setLosses(rs.getInt(3));
+						stat.setNichija(rs.getInt(4));
 						return stat;
 					}
 

@@ -1,0 +1,107 @@
+#brain {
+	background-image: url('../../images/Tab/hanoi/background.jpg');
+	background-repeat: no-repeat;
+}
+
+#brain #cont {
+	height: 300px;
+	width: 270px;
+	position: absolute;
+	margin: 70px 0px;
+}
+
+#brain #gameTable {
+	border-spacing: 0px;
+	position: relative;
+	top: 0px;
+	left: 20px;
+}
+#brain #gameTable .ask {
+	height: 100px;
+	width: 220px;
+	background-color: yellow;
+	color: blue;
+	font-size: 12px;
+	font-weight: bold;
+}
+#brain #gameTable .answer {
+	height: 25px;
+	width: 100px;
+	background-color: blue;
+	margin-left: 60px;
+	margin-top: 5px;
+	text-align: center;
+	color: yellowGreen;
+}
+#brainhome {
+	position: relative;
+	top: -5px;
+	left: 40px;
+	background-image: url("../../images/Tab/hanoi/hanoiHome_1.png");
+	height: 72px;
+	width: 82px;
+	float: left;
+}
+#brainhome:hover {
+	background-image: url("../../images/Tab/hanoi/hanoiHome_2.png");
+}
+#brainnext {
+	position: relative;
+	top: -5px;
+	left: 132px;
+	background-image: url("../../images/Tab/brain/next_1.png");
+	height: 72px;
+	width: 82px;
+}
+#brainnext:hover {
+	background-image: url("../../images/Tab/brain/next_2.png");
+}
+#brain1 {
+	margin: 25px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi3_1.png");
+	height: 72px;
+	width: 82px;
+}
+#brain1:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi3_2.png");
+}
+#brain2 {
+	margin: 25px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi4_1.png");
+	height: 72px;
+	width: 82px;
+}
+#brain2:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi4_2.png");
+}
+#brain3 {
+	margin: 25px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi5_1.png");
+	height: 72px;
+	width: 82px;
+}
+#brain3:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi5_2.png");
+}
+#brain4 {
+	margin: 25px;
+	float: left;
+	background-image: url("../../images/Tab/hanoi/hanoi6_1.png");
+	height: 72px;
+	width: 82px;
+}
+#brain4:hover {
+	background-image: url("../../images/Tab/hanoi/hanoi6_2.png");
+}
+
+#brainmessage {
+	position: relative;
+	top: -290px;
+	left: 0px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #19009E;
+}

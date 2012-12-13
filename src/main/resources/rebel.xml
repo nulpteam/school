@@ -2,9 +2,10 @@
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
 
 	<classpath>
-		<dir name="C:/Users/Bobik/git/school/target/classes"/>
-<!-- 		<dir name="C:/Users/Bobik/git/school/target/test-classes"/> -->
-		<dir name="C:/Users/Bobik/git/school/src/main/resources"/>
+		<dir name="C:/Users/Bobik/git/school/target/classes">
+		</dir>
+		<dir name="C:/Users/Bobik/git/school/target/test-classes">
+		</dir>
 	</classpath>
 
 	<web>
@@ -12,10 +13,6 @@
 			<dir name="C:/Users/Bobik/git/school/src/main/webapp">
 			</dir>
 		</link>
-<!-- 		<link target="/WEB-INF/classes"> -->
-<!-- 		    <dir name="C:/Users/Bobik/git/school/src/main/resources"> -->
-<!-- 			</dir> -->
-<!-- 		</link> -->
 	</web>
 
 </application>

@@ -37,7 +37,7 @@
 }
 
 #tab #bar #back {
-	background-image: url('../../images/Tab/back.png');
+	background-image: url('../../images/Tab/back_sprite.png');
 	background-repeat: no-repeat;
 	height: 30px;
 	width: 135px;
@@ -46,7 +46,7 @@
 }
 
 #tab #bar #back:hover {
-	background-image: url('../../images/Tab/backOver.png');
+	background: url('../../images/Tab/back_sprite.png') bottom;
 }
 
 #tab #bar #clock {
@@ -64,25 +64,46 @@
  *
  */
 .TabButton {
-    float: left;
-    height: 74px;
-    margin: 5px;
-    width: 80px;
+	float: left;
+	height: 74px;
+	margin: 4px;
+	width: 81px;
 }
+
+#TabFlipper {
+	background-image: url('../../images/Tab/flipper_sprite.png');
+}
+
+#TabFlipper:hover {
+	background: url('../../images/Tab/flipper_sprite.png') bottom;
+}
+
 #TabChat {
-	background-image: url('../../images/Tab/chat_2.png');
-	background-size: cover;
+	background-image: url('../../images/Tab/chat_sprite.png');
 }
+
+#TabChat:hover {
+	background: url('../../images/Tab/chat_sprite.png') bottom;
+}
+
 #TabSudo {
-	background-image: url('../../images/Tab/sudoku_2.png');
-	background-size: cover;
+	background-image: url('../../images/Tab/sudoku_sprite.png');
 }
+
+#TabSudo:hover {
+	background: url('../../images/Tab/sudoku_sprite.png') bottom;
+}
+
+#TabBomb {
+	background-image: url('../../images/Tab/saper_sprite.png');
+}
+
+#TabBomb:hover {
+	background: url('../../images/Tab/saper_sprite.png') bottom;
+}
+
 #TabFlip {
 	background-image: url('../../images/Tab/flipper_2.png');
-	background-size: cover;
-}
-#TabBomb {
-	background-image: url('../../images/Tab/saper_2.png');
 	background-size: cover;
 }
 
@@ -91,23 +112,26 @@
 	background-size: cover;
 }
 
-#TabChat:hover {
-	background-image: url('../../images/Tab/chat_1.png');
-	background-size: cover;
-}
-#TabSudo:hover {
-	background-image: url('../../images/Tab/sudoku_1.png');
-	background-size: cover;
-}
 #TabFlip:hover {
 	background-image: url('../../images/Tab/flipper_1.png');
 	background-size: cover;
 }
-#TabBomb:hover {
-	background-image: url('../../images/Tab/saper_1.png');
-	background-size: cover;
-}
+
 #Tab15-puzzle:hover {
 	background-image: url('../../images/Tab/15-puzzle_hover.png');
 	background-size: cover;
+}
+#HanoiGame {
+	background-image: url('../../images/Tab/hanoi/hanoi_1.png');
+}
+
+#HanoiGame:hover {
+	background: url('../../images/Tab/hanoi/hanoi_2.png');
+}
+#BrainGame {
+	background-image: url('../../images/Tab/brain/brain_1.png');
+}
+
+#BrainGame:hover {
+	background: url('../../images/Tab/brain/brain_2.png');
 }

@@ -1,6 +1,12 @@
 body {
 	background-image: url('../images/parta2.jpg');
 	background-repeat: repeat;
+	cursor: default;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 
 .page {
@@ -40,11 +46,6 @@ body {
 	color: #5B2FCE;
 	float: left;
 	margin-left: 5px;
-	-moz-user-select: none;
-	-o-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
 }
 
 @font-face {

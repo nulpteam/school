@@ -11,35 +11,8 @@ var img01 = null, img02 = null, img03 = null, img04 = null, img05 = null,
 	img06y = null, img07y = null, img08y = null, img09y = null, img10y = null;
 
 $(document).ready(function() {
+	//var ctrl = false;
 	
-	
-	
-//	getValues();
-	var ctrl = false;
-	
-//	$(document).keydown(function(e) {
-//		if (ctrl && (e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 61 || e.keyCode == 173)) {
-//			return false;
-//		}
-////		if (e.keyCode == 17) {
-////			ctrl = true;
-////			var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
-////			if (document.attachEvent) {
-////				document.attachEvent("on" + mousewheelevt, function(e){
-////					return false;
-////				});
-////				} else if (document.addEventListener) {
-////					document.addEventListener(mousewheelevt, function(e){return false;}, false);
-////				}
-////		}
-//	});
-
-//	$(document).keyup(function(e) {
-//		if (e.keyCode == 17) {
-//			ctrl = false;
-//		}
-//	});
-
 	userAgent = navigator.userAgent;
 	bsound = new Audio;
 	if (userAgent.indexOf("Chrome") != -1) {
@@ -66,23 +39,21 @@ function chSound() {
 	if (id == "s_on") {
 		s_off = '<img id="s_off" src="images/SB/s_off.png" onclick="chSound();">';
 		$('.sound').html(s_off);
+		bsoundFlag=false;
 		stopbsound();
 	} else if (id == "s_off") {
 		s_on = '<img id="s_on" src="images/SB/s_on.png" onclick="chSound();">';
 		$('.sound').html(s_on);
 		startbsound();
+		bsoundFlag=true;
 	}
 }
 
 // Перевертає корабель якщо корабель не в полі бою
 function rotate(obj) {
-	//console.log(obj);
 	id = $(obj).attr('id');
-	//console.log(id);
-	//infield = $(obj)[0].classList[1] === "infield";
-	//console.log(infield);
-	isDisabled = $(obj/* '#' + id */).draggable('option', 'disabled');
-	if (!isDisabled /*&& !infield*/) {
+	isDisabled = $(obj).draggable('option', 'disabled');
+	if (!isDisabled) {
 		var c = $(obj).attr("class");
 		orientation = c[0];
 		newOrientation = 'H';
@@ -102,7 +73,6 @@ function rotate(obj) {
 		// Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
 		// протележна до disableDroppables()
 		enableDroppables(unlockDroppableInfo);
-
 		var c = $(obj).attr("class");
 		orientation = c[0];
 		newOrientation = 'H';
@@ -139,10 +109,6 @@ function getM() {
 }
 
 // Створює обєкт
-/**
- * t= тип корабля r = горизонтальне/вертикальне положення x\y = координати
- * положення корабля на полі Доробити положення горизонтальне/вертикальне
- */
 function parseCoords(coords, ui) {
 	if (ui.draggable.context.className != undefined) {
 		var x, y, type;
@@ -160,19 +126,12 @@ function parseCoords(coords, ui) {
 		};
 		return co;
 	}
-	;
 }
 
-/**
- * Зберігає положення корабля в матрицю Доробити положення
- * горизонтальне/вертикальне
- * 
- */
 function saveCoords(saveCoordenates) {
 	// Деактивовуємо дроппабли в які вже встановлено кораблик
 	disableDroppables(saveCoordenates);
-	// зберігає
-
+	
 	M[saveCoordenates.x][saveCoordenates.y] = saveCoordenates.t + "1";
 
 	if (saveCoordenates.t > 1) {
@@ -242,7 +201,6 @@ function saveCoords(saveCoordenates) {
 	sendM();
 }
 
-//
 function bbb(t, event) {
 	if ((event.ctrlKey == 1)
 			&& ((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0)) {
@@ -303,9 +261,7 @@ function bbb(t, event) {
 	}
 }
 
-// Ф-ія має розблоковувати всі заблоковіні дропабли навколо корабля
-// +встановлювати в матриці 00 на місце де був розташований корабель
-// протележна до disableDroppables()
+
 function enableDroppables(unlockDroppableInfo) {
 	var x0 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1) / 20) - 7 - 1;
 	x1 = parseInt((parseInt(unlockDroppableInfo.leftPx) - 1) / 20) - 7 + 1;
@@ -429,7 +385,6 @@ function enableDroppables(unlockDroppableInfo) {
 			}
 		}
 		if (unlockDroppableInfo.sheepId == "sheep_4") {
-			// remove class "sheep"
 			$("#X" + x2 + "_Y" + y2).attr("sheep", false);
 			M[x2][y2] = "00";
 			$("#X" + x2 + "_Y" + y1).attr("sheep", false);
@@ -561,10 +516,6 @@ function disableDroppables(obj) {
 	;
 }
 
-/**
- * Відсилає матрицю на сервер
- * 
- */
 function sendM() {
 	if (((sheepCount.sheep1 + sheepCount.sheep2 + sheepCount.sheep3 + sheepCount.sheep4) <= 0)
 			&& flag == true) {
@@ -693,30 +644,32 @@ function loose() {
 }
 
 function playShootSound(miss) {
-
-	if (miss == "demage") {
-		if (userAgent.indexOf("Chrome") != -1) {
-			sound = new Audio;
-			sound.src = "sound/Shoot01.mp3";
-			sound.play();
-		}
-
-		if (userAgent.indexOf("Firefox") != -1) {
-			sound = new Audio;
-			sound.src = "sound/Shoot01.wav";
-			sound.play();
-		}
-	} else if (miss == "miss") {
-		if (userAgent.indexOf("Chrome") != -1) {
-			sound = new Audio;
-			sound.src = "sound/miss.mp3";
-			sound.play();
-		}
-
-		if (userAgent.indexOf("Firefox") != -1) {
-			sound = new Audio;
-			sound.src = "sound/miss.wav";
-			sound.play();
+if(bsoundFlag)
+	{
+		if (miss == "demage") {
+			if (userAgent.indexOf("Chrome") != -1) {
+				sound = new Audio;
+				sound.src = "sound/Shoot01.mp3";
+				sound.play();
+			}
+	
+			if (userAgent.indexOf("Firefox") != -1) {
+				sound = new Audio;
+				sound.src = "sound/Shoot01.wav";
+				sound.play();
+			}
+		} else if (miss == "miss") {
+			if (userAgent.indexOf("Chrome") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.mp3";
+				sound.play();
+			}
+	
+			if (userAgent.indexOf("Firefox") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.wav";
+				sound.play();
+			}
 		}
 	}
 }
@@ -724,7 +677,6 @@ function playShootSound(miss) {
 
 
 function fire(point) {
-	// playShootSound();
 	p = $(point).attr('id');
 	c = $(point).attr('id');
 	p = p[1] + '' + p[4];
@@ -972,7 +924,6 @@ function fire(point) {
 			}
 		}
 		sendMess();
-		// $(point).html(html);
 	}});
 }
 
@@ -1234,43 +1185,9 @@ function closeAndgoTo(url)
 		{
 			socket.close();
 		}
+	if(bsoundFlag)
+	{
+		bsound.stop();
+	}
 	goTo(url);
 }
-
-
-/*
- * 
- * 
- * 
- * 
- */
-
-//$(window).resize(function() {
-//	getScale();
-//	console.log(this.size);
-//});
-
-//var sw = screen.width;
-//var sh = screen.height;
-//var iw = window.innerWidth;
-//var ih = window.innerHeight;
-//function getValues(){
-//  sw = screen.width;
-//  sh = screen.height;
-//  iw = window.innerWidth;
-//  ih = window.innerHeight;
-//  
-//  console.log(sw, sh, iw, ih);
-//  
-//}
-//function getScale() {
-//  if (Math.round(window.innerWidth*100/iw) !=     Math.round(window.innerHeight*100/ih)){
-//    //зум не изменился, поменялись размеры окна
-//    getValues(); //обновим значения ширины и высоты
-//  }
-//  else {
-//    //изменился уровень зума
-//    scale = Math.round(iw/window.innerWidth * 100);
-//    console.log(scale);
-//  }
-//}

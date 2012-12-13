@@ -6,12 +6,7 @@
 var store = null, str1 = null, str2 = null, str3 = null, i = 10;
 
 $(function() {
-
-	// матриця розташування кораблів(XY) координати
-//	var Mat = createMatrix();
 		createMatrix();
-//	console.log(Mat);
-
 	// кораблі
 	$("#sheep_1").draggable({
 		revert : "invalid",

@@ -17,7 +17,7 @@ import epam.ph.sg.utils.UserUtils;
 public class LoginController {
 	private static Logger log = Logger.getLogger(LoginController.class);
 
-	@RequestMapping(value = "/Login.html")
+	@RequestMapping(value = "/LoginPage.html")
 	public String loginpage() {
 		return "Login";
 	}

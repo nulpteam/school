@@ -31,7 +31,6 @@
 				<div class="BSGo" onClick="start('${ConnectionType}');" style="visibility: hidden;"></div>
 		<div class=clear></div>
 		<div  class="ammo">
-			<!-- Кораблі для розставляння на полі-->
 			<div class="sheep_cont">
 				<img id="sheep_4" class="H" src="images/SB/04.png" alt="4" ondblclick="rotate(this);" />
 					<div class="clear"></div>

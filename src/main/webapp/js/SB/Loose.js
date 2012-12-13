@@ -17,11 +17,14 @@ $(document).ready(function() {
 	{
 		bsound.src = "sound/Loose.wav";
 	}
-	bsound.loop=true;
+	bsound.loop=false;
 	startbsound();
 });
 
 function startbsound() {
-	bsound.volume=0.9;
-	bsound.play();
+	if(bsoundFlag)
+	{
+		bsound.volume=0.9;
+		bsound.play();
+	}
 }

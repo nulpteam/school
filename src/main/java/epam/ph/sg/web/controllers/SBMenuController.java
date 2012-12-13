@@ -38,8 +38,7 @@ import epam.ph.sg.models.sb.Server;
 public class SBMenuController {
 	private static Logger log = Logger.getLogger(SBMenuController.class);
 
-	// debug
-	@RequestMapping(value = "/Sb.html"/* , method = RequestMethod.POST */)
+	@RequestMapping(value = "/Sb.html")
 	public String SbMenu(Model model, HttpSession session) {
 		SbJSLoader sbJSLoader = new SbJSLoader();
 
@@ -47,12 +46,11 @@ public class SBMenuController {
 		sbJSLoader.addScript("SB/SB_coords");
 		log.debug("-------------------Added JavaScriptss-------------------");
 		session.setAttribute("sbJSLoader", sbJSLoader);
-		// session.setAttribute("currentPos", "Sb.html");
-//		session.setAttribute("currentPos", "Sb.html");
+
 		if (session.getAttribute("Game") == null) {
 			return "SB/SbMenu";
 		} else {
-			
+
 			Game g = (Game) session.getAttribute("Game");
 			String connType = (String) session.getAttribute("ConnectionType");
 			sbJSLoader.addScript("SB/jquery-ui-1.9.0");
@@ -106,13 +104,10 @@ public class SBMenuController {
 			session.setAttribute("ConnectionType", "server");
 
 		}
-		// model.addAttribute("connectionType", "server");
 		System.out.println("YOU HAVE BS-GAME");
 		return "SB/Sb";
 	}
 
-	// Підєднання до одного з існуючих серверів
-	// Список ігор
 	@RequestMapping(value = { "/BsConectGame.html" }, method = RequestMethod.POST)
 	public String SbMenuConnection(HttpSession session, Model model) {
 		if (session.getAttribute("Game") != null) {
@@ -148,14 +143,13 @@ public class SBMenuController {
 
 		ActiveGames.getGame(gameID).setClient(client);
 		try {
-			ActiveGames.getGame(gameID).getServer().getConn().sendMessage("connected");
+			ActiveGames.getGame(gameID).getServer().getConn()
+					.sendMessage("connected");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		session.setAttribute("Game", selectedGame);
 		session.setAttribute("ConnectionType", "client");
-		// Видаляєм гру до якої підєднався клієнт з мапи ігр що очікують на
-		// клієнта
 		GamesList.removeGameFromListBS(gameID);
 
 		log.debug("---  START ---");
@@ -193,53 +187,47 @@ public class SBMenuController {
 	public String Victory(Model model, HttpSession session) {
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
 		int gameId = ((Game) session.getAttribute("Game")).getId();
-		SBStatistics.win(((User)session.getAttribute("user")).getId());
-		log.debug("-//--//--//user id="+((User)session.getAttribute("user")).getId());
+		SBStatistics.win(((User) session.getAttribute("user")).getId());
+		log.debug("-//--//--//user id="
+				+ ((User) session.getAttribute("user")).getId());
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
 		session.removeAttribute("mess");
 		sbJSLoader.removeScript("js/SB/WebSocket.js");
-		// ActiveGames.removeGame(gameId);
 		GamesList.removeGameFromListBS(gameId);
-		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Victory";
 	}
 
 	@RequestMapping(value = "/Loose.html", method = RequestMethod.POST)
 	public String Loose(Model model, HttpSession session) {
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
-		SBStatistics.lose(((User)session.getAttribute("user")).getId());
+		SBStatistics.lose(((User) session.getAttribute("user")).getId());
 		session.removeAttribute("Game");
 		session.removeAttribute("Sheeps");
 		session.removeAttribute("ConnectionType");
 		session.removeAttribute("mess");
 		sbJSLoader.removeScript("js/SB/WebSocket.js");
-		//session.setAttribute("currentPos", "Menu.html");
 		return "SB/Loose";
 	}
-	
+
 	@RequestMapping(value = "/SbStop.html", method = RequestMethod.POST)
 	public String StopSbGame(@RequestParam("connType") String connType,
 			Model model, HttpSession session) {
 		SbJSLoader sbJSLoader = (SbJSLoader) session.getAttribute("sbJSLoader");
-		SBStatistics.lose(((User)session.getAttribute("user")).getId());
-		Game g = (Game)session.getAttribute("Game");
+		SBStatistics.lose(((User) session.getAttribute("user")).getId());
+		Game g = (Game) session.getAttribute("Game");
 		int gameId = g.getId();
-		if(connType.equalsIgnoreCase("server") && g.getClient()!=null)
-		{
-			log.debug("+*+*+*+*+*+*===server+client="+ g.getClient());
-			if(g.getClient().getConn()!=null)
-			{
+		if (connType.equalsIgnoreCase("server") && g.getClient() != null) {
+			log.debug("+*+*+*+*+*+*===server+client=" + g.getClient());
+			if (g.getClient().getConn() != null) {
 				try {
 					g.getClient().getConn().sendMessage("kill");
 				} catch (IOException e) {
 					log.debug("no connection on client side");
 				}
 			}
-		}
-		else if(connType.equalsIgnoreCase("client") && g.getServer()!=null)
-		{
+		} else if (connType.equalsIgnoreCase("client") && g.getServer() != null) {
 			log.debug("+*+*+*+*+*+*===client");
 			try {
 				g.getServer().getConn().sendMessage("kill");
@@ -255,12 +243,11 @@ public class SBMenuController {
 		sbJSLoader.removeScript("js/SB/WebSocket.js");
 		return "SB/SbMenu";
 	}
-	
-	
+
 	@RequestMapping(value = "/SbKill.html", method = RequestMethod.POST)
 	public String killSbGame(@RequestParam("connType") String connType,
 			Model model, HttpSession session) {
-		Game g = (Game)session.getAttribute("Game");
+		Game g = (Game) session.getAttribute("Game");
 		int gameId = g.getId();
 		GamesList.removeGameFromListBS(gameId);
 		session.removeAttribute("Game");
@@ -291,6 +278,7 @@ public class SBMenuController {
 		}
 		return "SB/Statistics";
 	}
+
 	@RequestMapping(value = "/rules.html", method = RequestMethod.POST)
 	public String rules(Model model, HttpSession session) {
 		return "SB/Rules";

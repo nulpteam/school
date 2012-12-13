@@ -28,7 +28,7 @@ public class XOGame {
 			@Override
 			public void run() {
 				try {
-					sleep(17000);
+					sleep(32000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

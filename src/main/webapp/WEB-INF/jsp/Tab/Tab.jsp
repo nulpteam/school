@@ -5,8 +5,11 @@
 <link href="css/Tab/Chat.css" type="text/css" rel="stylesheet">
 <link href="css/Tab/Sudoku.css" type="text/css" rel="stylesheet">
 <link href="css/Tab/Flipper.css" type="text/css" rel="stylesheet">
+<link href="css/Tab/Puzzle.css" type="text/css" rel="stylesheet">
 <link href="css/Tab/MineSweeper.css" type="text/css" rel="stylesheet">
 <link href="css/Tab/TwoPenguins.css" type="text/css" rel="stylesheet">
+<link href="css/Tab/Hanoi.css" type="text/css" rel="stylesheet">
+<link href="css/Tab/Brain.css" type="text/css" rel="stylesheet">
 
 <script src="js/Tab/Tab.js" type="text/javascript"></script>
 <script type="text/javascript">

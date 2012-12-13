@@ -8,6 +8,7 @@ function waitClient() {
 	};
 	wpSocket.onmessage = function(event) {
 		$.post('XOGameStarted.html', function() {
+			wpSocket.close();
 			goTo('XOGame.html');
 		});
 	};
@@ -27,23 +28,9 @@ function connect(id) {
 	}
 }
 
-function waitPageHomeButton() {
+function waitPageExit(url) {
 	wpSocket.close();
 	$.post('XOClear.html', function(response) {
-		goTo('Menu.html');
-	});
-}
-
-function waitPageRefreshButton() {
-	wpSocket.close();
-	$.post('XOClear.html', function(response) {
-		goTo('CurrentPos.html');
-	});
-}
-
-function waitPageBackButton() {
-	wpSocket.close();
-	$.post('XOClear.html', function(response) {
-		goTo('XOMenu.html');
+		goTo(url);
 	});
 }
