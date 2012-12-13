@@ -30,7 +30,7 @@ public class PtsTimer {
 			public void run() {
 				
 				game.setTimerState(new Integer(time--).toString());
-				System.out.println("TIMER = " + time);
+
 			}
 		}, 0, DELAY);
 	}

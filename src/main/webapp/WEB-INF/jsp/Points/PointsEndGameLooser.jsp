@@ -8,10 +8,10 @@
 	<div id="pts_body">
 		<div id="pts_bg_end_ofGame">
 			<div id="pts_player1_score">
-				<label>${langPack['Pts_score']}</label>
+				<label>${langPack['Pts_score']} ${ptsGame.board.serverScore}</label>
 			</div>
 			<div id="pts_player2_score">
-				<label>${langPack['Pts_score']}e}</label>
+				<label>${langPack['Pts_score']} ${ptsGame.board.clientScore}</label>
 			</div>
 			<div id="pts_player_label_1">
 				<img class="pts_player_div_elements"
