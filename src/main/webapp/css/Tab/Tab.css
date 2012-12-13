@@ -135,3 +135,12 @@
 #BrainGame:hover {
 	background: url('../../images/Tab/brain/brain_2.png');
 }
+
+
+#PicsGame {
+	background: url('../../images/Tab/picsGame/picsGame.png');
+}
+
+#PicsGame:hover {
+	background: url('../../images/Tab/picsGame/picsGameH.png');
+}

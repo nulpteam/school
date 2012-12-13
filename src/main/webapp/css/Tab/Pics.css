@@ -1,22 +1,17 @@
 #pics_game {
 	background: url("../../images/Tab/picsGame/picsbackground.png")
-		no-repeat;
-/* 	border: 1px solid red; */ 
+		no-repeat; 
 	width: 270px;
 	height: 430px;
-	border: 1px solid red;
+	border: 1px solid black;
 }
 
 #picsTable {
-/* 	border: 1px solid green; */
 	width: 230px;
 	height: 350px;
 	margin-top: 40PX;
 }
-#picsTable td
-{
-/* 	border:1px dotted black; */
-}
+
 .picsCell img
 {
 	margin-left: 2px;
