@@ -20,5 +20,9 @@
 			</c:forEach>
 
 		</table>
+		
+		<div id="puz_winner">
+			<img src="">
+		</div>
 	</div>
 </div>

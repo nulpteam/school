@@ -13,16 +13,19 @@
 	text-align: center;
 }
 
+#puz_winner {
+	position: absolute;
+	margin: 360px 113px;
+	widht: 60px;
+	height: 60px;
+}
+
 
 .puzzleNumber {
 	background-image: url('../../images/Tab/puzzle/number_background.png');
 	background-repeat: no-repeat;
 }
 
-.puzzleNumber:hover {
-	background-image: url('../../images/Tab/puzzle/number_background_hover.png');
-	background-repeat: no-repeat;
-}
 
 #puzzleTable{
 	position: absolute;

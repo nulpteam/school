@@ -18,6 +18,8 @@ function tabBackButton() {
 	if(chatSocket != null) {
 		chatSocket.close();
 	}
+	$.get("PuzzleExit.html", function(response) {
+	});
 	tabGoTo(homeLink);
 }
 
