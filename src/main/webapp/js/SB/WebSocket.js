@@ -37,6 +37,7 @@ $(document)
 					};
 					socket.onclose = function() {
 					socketFlag=false;
+					bsound.stop();
 					};
 					socket.onmessage = function(event) {
 						if (event.data == "ready") {

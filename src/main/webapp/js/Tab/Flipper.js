@@ -23,7 +23,9 @@ function send(elem) {
 function getStatus() {
 	$.post("FlipperStatus.html", function(resp) {
 		if (resp.gameOver == true) {
-			$('#flipper #msgOut p').text(msgLose);
+			$('#flipper #msgOut p').text(msgWin);
+			$('#flipper #reset').hide();
+			$('#flipper #newGame').css({marginLeft: '75px'});
 			gameOver.play();
 			lock = true;
 		} else if (resp.nextLevel == true) {

@@ -15,9 +15,9 @@
 	<div id="outText" class="title">
 		<p align="center"></p>
 	</div>
-	<div class="homeButton" onclick=waitPageHomeButton();></div>
-	<div class="backButton" onclick=waitPageBackButton();></div>
-	<div class="refreshButton" onclick=waitPageRefreshButton();></div>
+	<div class="homeButton" onclick="waitPageExit('Menu.html');"></div>
+	<div class="backButton" onclick="waitPageExit('XOMenu.html');"></div>
+	<div class="refreshButton" onclick="waitPageExit('CurrentPos.html');"></div>
 	<div id="startButton" align="center">
 		<div class="button" onclick=startButtonClick();>
 			<p class="buttonText">Start Game</p>

@@ -39,11 +39,13 @@ function chSound() {
 	if (id == "s_on") {
 		s_off = '<img id="s_off" src="images/SB/s_off.png" onclick="chSound();">';
 		$('.sound').html(s_off);
+		bsoundFlag=false;
 		stopbsound();
 	} else if (id == "s_off") {
 		s_on = '<img id="s_on" src="images/SB/s_on.png" onclick="chSound();">';
 		$('.sound').html(s_on);
 		startbsound();
+		bsoundFlag=true;
 	}
 }
 
@@ -642,30 +644,32 @@ function loose() {
 }
 
 function playShootSound(miss) {
-
-	if (miss == "demage") {
-		if (userAgent.indexOf("Chrome") != -1) {
-			sound = new Audio;
-			sound.src = "sound/Shoot01.mp3";
-			sound.play();
-		}
-
-		if (userAgent.indexOf("Firefox") != -1) {
-			sound = new Audio;
-			sound.src = "sound/Shoot01.wav";
-			sound.play();
-		}
-	} else if (miss == "miss") {
-		if (userAgent.indexOf("Chrome") != -1) {
-			sound = new Audio;
-			sound.src = "sound/miss.mp3";
-			sound.play();
-		}
-
-		if (userAgent.indexOf("Firefox") != -1) {
-			sound = new Audio;
-			sound.src = "sound/miss.wav";
-			sound.play();
+if(bsoundFlag)
+	{
+		if (miss == "demage") {
+			if (userAgent.indexOf("Chrome") != -1) {
+				sound = new Audio;
+				sound.src = "sound/Shoot01.mp3";
+				sound.play();
+			}
+	
+			if (userAgent.indexOf("Firefox") != -1) {
+				sound = new Audio;
+				sound.src = "sound/Shoot01.wav";
+				sound.play();
+			}
+		} else if (miss == "miss") {
+			if (userAgent.indexOf("Chrome") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.mp3";
+				sound.play();
+			}
+	
+			if (userAgent.indexOf("Firefox") != -1) {
+				sound = new Audio;
+				sound.src = "sound/miss.wav";
+				sound.play();
+			}
 		}
 	}
 }
@@ -1181,5 +1185,9 @@ function closeAndgoTo(url)
 		{
 			socket.close();
 		}
+	if(bsoundFlag)
+	{
+		bsound.stop();
+	}
 	goTo(url);
 }

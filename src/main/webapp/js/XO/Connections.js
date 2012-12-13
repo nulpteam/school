@@ -28,23 +28,9 @@ function connect(id) {
 	}
 }
 
-function waitPageHomeButton() {
+function waitPageExit(url) {
 	wpSocket.close();
 	$.post('XOClear.html', function(response) {
-		goTo('Menu.html');
-	});
-}
-
-function waitPageRefreshButton() {
-	wpSocket.close();
-	$.post('XOClear.html', function(response) {
-		goTo('CurrentPos.html');
-	});
-}
-
-function waitPageBackButton() {
-	wpSocket.close();
-	$.post('XOClear.html', function(response) {
-		goTo('XOMenu.html');
+		goTo(url);
 	});
 }

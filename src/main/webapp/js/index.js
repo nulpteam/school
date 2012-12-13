@@ -1,3 +1,4 @@
+var bsoundFlag = true;
 $(document).ready(function() {
 	WEB_SOCKET_SWF_LOCATION = "js/WebSocket/WebSocketMain.swf";
 	WEB_SOCKET_DEBUG = true;
