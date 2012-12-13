@@ -4,7 +4,7 @@ function start1() {
 	game = 1;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -13,7 +13,7 @@ function start2() {
 	game = 2;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -22,7 +22,7 @@ function start3() {
 	game = 3;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -31,7 +31,7 @@ function startAll() {
 	game = 4;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -164,7 +164,7 @@ function init() {
 	a[9][5] = "A";
 	
 	a[10] = new Array();
-	a[10][0] = "Яким буде результат операції: 81 - 72 - 32 - 70?";
+	a[10][0] = "Яким буде результат операції:<br>81 - 72 - 32 - 70?";
 	a[10][1] = "-113";
 	a[10][2] = "-93";
 	a[10][3] = "-91";
