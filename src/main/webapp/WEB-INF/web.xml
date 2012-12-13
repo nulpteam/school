@@ -76,6 +76,7 @@
 		<url-pattern>/PuzzleGame.html</url-pattern>
 		<url-pattern>/MSGame.html</url-pattern>
 		<url-pattern>/PenguinsGame.html</url-pattern>
+		<url-pattern>/PicsGame.html</url-pattern>
 		
 	</filter-mapping>
 	<error-page>
