@@ -26,6 +26,7 @@ var lastFindFY = 0;
 
 var lastFindSX = 0;
 var lastFindSY = 0;
+var twoSame = false;
 function send(td) {
 
 	i = parseX(td.id);
@@ -39,49 +40,55 @@ function send(td) {
 
 	setScore();
 
-	
+	if (twoSame == true) {
+				
+		$('#X' + lastFindFX + 'Y' + lastFindFY).css("visibility", "hidden");
+		$('#X' + lastFindSX + 'Y' + lastFindSY).css("visibility", "hidden");
+		twoSame = false;
+	}
 
-		if (twoDifCards == true) {
-			flipBack(firstToFlipBackX, firstToFlipBackY);
-			flipBack(secondToFlipBackX, secondToFlipBackY);
-			previousValue = 0;
-			twoDifCards = false;
-		}
+	if (twoDifCards == true) {
+		flipBack(firstToFlipBackX, firstToFlipBackY);
+		flipBack(secondToFlipBackX, secondToFlipBackY);
+		previousValue = 0;
+		twoDifCards = false;
+	}
 
-		if (previousValue == 0) {
-			previousValue = currentValue;
-			previousX = currentX;
-			previousY = currentY;
-		} else {
-			if (currentValue == previousValue) {
-				resetBuffer();
-				incScore();
-				setScore();
-				compareCounter++;
-				lastFindFX = currentX;
-				lastFindFY = currentY;
-				lastFindSX = previousX;
-				lastFindSY = previousY;
-				if (compareCounter == 6) {
-					endGame();
-					compareCounter = 0;
-				}
-				// setTimeout(setEmptyField(currentX,
-				// currentY,previousX,previousY),8000);
-			} else {
-				twoDifCards = true;
-				firstToFlipBackX = previousX;
-				firstToFlipBackY = previousY;
+	if (previousValue == 0) {
+		previousValue = currentValue;
+		previousX = currentX;
+		previousY = currentY;
+	} else {
+		if (currentValue == previousValue) {
 
-				secondToFlipBackX = currentX;
-				secondToFlipBackY = currentY;
-				decScore();
-				setScore();
-				// setTimeout(flipCard(currentX,
-				// currentY,previousX,previousY),8000);
+			
+			incScore();
+			setScore();
+			compareCounter++;
+			lastFindFX = currentX;
+			lastFindFY = currentY;
+			lastFindSX = previousX;
+			lastFindSY = previousY;
+			resetBuffer();
+			if (compareCounter == 6) {
+				endGame();
+				compareCounter = 0;
 			}
+			twoSame = true;
+
+		} else {
+			twoDifCards = true;
+			firstToFlipBackX = previousX;
+			firstToFlipBackY = previousY;
+
+			secondToFlipBackX = currentX;
+			secondToFlipBackY = currentY;
+			decScore();
+			setScore();
+			// setTimeout(flipCard(currentX,
+			// currentY,previousX,previousY),8000);
 		}
-	
+	}
 
 }
 
@@ -178,11 +185,13 @@ function setScore() {
 	$('#penguinScore > label').text(score);
 }
 
-function setEmptyField(i, j, i2, j2) {
-	$('#X' + i + 'Y' + j + ' > img').attr('src',
+function setEmptyField(i, i2, j, j2) {
+
+	$('#X' + i + 'Y' + i2 + ' > img').attr('src',
 			'images/Tab/twoPenguins/emptyCard.png');
-	$('#X' + i2 + 'Y' + j2 + ' > img').attr('src',
+	$('#X' + j + 'Y' + j2 + ' > img').attr('src',
 			'images/Tab/twoPenguins/emptyCard.png');
+
 }
 
 function flipCard(i, j, i2, j2) {
