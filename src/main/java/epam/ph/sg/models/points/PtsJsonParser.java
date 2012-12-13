@@ -74,40 +74,4 @@ public String convertGameInfoMessageToJson(PtsGameInfoMessage message) {
 		return jsonValue;
 	}
 	
-	/**Можливо знадобиться
-	 * TODO
-	 */
-//	public String parseJsonMessageType(String json) {
-//
-//		Pattern typePattern = Pattern.compile("(?<=type\":\")\\w*");
-//		Matcher matcher = typePattern.matcher(json);
-//		if (matcher.find()) {
-//			return matcher.group();
-//		}
-//		return "undefined";
-//	}
-
-	// Зробити фекторі патерн, якщо буде декілька типів
-	// повідомлень з клієнта і заімплементити всі класи
-	// які будуть відповідати типам повідомлень від інтерефейсу
-	// в якому буде метод, що буде виконувати дії з тим типом
-	// togo меседжу
-	// public String parseObjectToJsonString(Object object) {
-	//
-	// String jsonValue = "none";
-	//
-	// try {
-	//
-	// jsonValue = mapper.writeValueAsString(object);
-	//
-//	 } catch (JsonGenerationException e) {
-//	 logger.error(e.getMessage());
-//	 } catch (JsonMappingException e) {
-//	 logger.error(e.getMessage());
-//	 } catch (IOException e) {
-//	 logger.error(e.getMessage());
-//	 }
-//	//
-	// return jsonValue;
-	// }
 }

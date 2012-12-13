@@ -20,7 +20,6 @@ function puzGetBoard() {
 
 		for (var i = 0; i < NUMBERS_COUNT; i++) {
 			board[i] = response[i];
-			console.log(board[i] + " -----> " + i);
 		}
 
 		for ( var i = 0; i < puzzleBoardId.length; i++) {
@@ -58,7 +57,7 @@ function puzGetEndGameState() {
 			$('#puz_winner > img').attr('src',
 			'images/Tab/puzzle/puzzle_winner.gif');
 		}
-		console.log(lock);
+
 	});
 }
 
@@ -98,14 +97,10 @@ function makeMove(id) {
 			var numberOld = (parseInt(emptyIdY) + 1 + (4 * parseInt(emptyIdX))) - 1;
 			var numberNew = (parseInt(yCoord) + 1 + (4 * parseInt(xCoord))) - 1;
 			
-			console.log("board[" + numberOld + "]" + "=========" + board[numberOld]);
-			console.log("board[" + numberNew + "]" + "=========" + board[numberNew]);
 			temp = board[numberNew];
 			board[numberNew] = board[numberOld];
 			board[numberOld] = temp;
 			board.length = NUMBERS_COUNT;
-			
-			console.log(board.length);
 
 			emptyIdX = xCoord;
 			emptyIdY = yCoord;

@@ -19,6 +19,7 @@ public class PtsWebSocketSpeaker implements WebSocket.OnTextMessage {
 	@Override
 	public void onClose(int arg0, String arg1) {
 		logger.debug(PtsResources.getProperty("socket.onclose"));
+		
 	}
 
 	@Override
@@ -31,7 +32,6 @@ public class PtsWebSocketSpeaker implements WebSocket.OnTextMessage {
 
 	@Override
 	public void onMessage(String json) {
-		System.out.println(json);
 		logger.debug(PtsResources.getProperty("socket.onmessage"));
 		logger.debug(json);
 

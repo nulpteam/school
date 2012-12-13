@@ -36,7 +36,7 @@ public class PtsGameMessanger {
 			message.setUserTypeActiveMenu(game.getUserTypeActiveMenu());
 			message.setLastX(game.getBoard().getLastX());
 			message.setLastY(game.getBoard().getLastY());
-			message.setMoveTime(game.getMoveTime());
+			message.setTimerState(game.getTimerState());
 			if (clientMessage.getUserType().equals(
 					PtsResources.getProperty("user.type.server"))) {
 				message.setUserType(PtsResources
@@ -65,7 +65,11 @@ public class PtsGameMessanger {
 		if (clientMessage.getType().equals(
 				PtsResources.getProperty("user.message.type.time"))) {
 
-			game.setMoveTime(clientMessage.getMoveTime());
+			if (clientMessage.getTimerState().equals("start"))
+				game.startTimer();
+			else 
+				game.stopTimer();
+			
 		}
 
 		if (clientMessage.getType().equals(
@@ -131,7 +135,7 @@ public class PtsGameMessanger {
 						game.getGameTable(), game.getLogicBoard().getBoard(), game
 								.getBoard().getLastY(), game.getBoard()
 								.getLastX(), Pts.SERVER_UNMARKED_POINT);
-				System.out.println(contoursList);
+				
 				if (contoursList != null && contoursList.size() >= 1) {
 					game.getBoard().addContours(
 							contoursList,
@@ -147,8 +151,6 @@ public class PtsGameMessanger {
 					sendGameInfo(message, game.getServer().getConn());
 					sendGameInfo(message, game.getClient().getConn());
 				}
-				game.getLogicBoard().printBoard();
-				game.getBoard().printBoard();
 
 				PtsClientMessage message = new PtsClientMessage();
 				message.setType(PtsResources
@@ -185,8 +187,6 @@ public class PtsGameMessanger {
 					sendGameInfo(message, game.getServer().getConn());
 					sendGameInfo(message, game.getClient().getConn());
 				}
-				game.getBoard().printBoard();
-				game.getLogicBoard().printBoard();
 
 				PtsClientMessage message = new PtsClientMessage();
 				message.setType(PtsResources
