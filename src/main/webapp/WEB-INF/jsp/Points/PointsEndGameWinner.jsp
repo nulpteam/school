@@ -27,7 +27,7 @@
 				<label>${langPack['Pts_winner']}</label>
 			</div>
 			<div id="winner_gif">
-				<img src="images/Points/winner.gif">
+				<img src="images/Points/winner.png">
 			</div>
 			
 			<div class="homeButton" onclick=goToMainMenu()></div>
