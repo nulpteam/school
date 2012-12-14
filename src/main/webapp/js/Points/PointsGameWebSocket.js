@@ -324,7 +324,7 @@ function putPoint(td_point) {
 		var x = parseX(td_point.id);
 		var y = parseY(td_point.id);
 
-		ptsTimerStop();
+	
 		if (board[y][x] == 0) {
 			if (userType == "server") {
 				$('#' + td_point.id + ' > img').attr('src',
@@ -337,6 +337,7 @@ function putPoint(td_point) {
 			}
 
 			$('#wait > img').css('visibility', "visible");
+			ptsTimerStop();
 
 			drawLastPointPointer(y, x);
 
