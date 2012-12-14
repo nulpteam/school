@@ -7,6 +7,7 @@
 	<div id="pts_bg_game_list">
 		<script src="js/jquery.js" type="text/javascript"></script>
 		<script src="js/Points/PointsMenu.js" type="text/javascript"></script>
+		
 		<div id="pts_servers_div">
 			<c:forEach var="gameServer" items="${pointsGameServersMap}" varStatus="i">
 			<div id="${gameServer.key}" class="pts_server_div" onclick=connect(this.id)>

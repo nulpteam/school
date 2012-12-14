@@ -55,7 +55,7 @@ function puzGetEndGameState() {
 		puzLock = response;
 		if (puzLock == true) {
 			$('#puz_winner > img').attr('src',
-			'images/Tab/puzzle/puzzle_winner.gif');
+			'images/Tab/puzzle/puzzle_winner.png');
 		}
 
 	});
@@ -111,7 +111,7 @@ function makeMove(id) {
 			if (isEndOfGame()) {
 				puzLock = true;
 				$('#puz_winner > img').attr('src',
-						'images/Tab/puzzle/puzzle_winner.gif');
+						'images/Tab/puzzle/puzzle_winner.png');
 				$.get("PuzzleEndGame.html", function(response) {
 				});
 			}

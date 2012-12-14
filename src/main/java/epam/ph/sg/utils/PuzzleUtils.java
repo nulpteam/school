@@ -23,6 +23,7 @@ public class PuzzleUtils {
 			board.add(getRandomUniqueNumber(board));
 		}
 
+
 		return board;
 
 	}

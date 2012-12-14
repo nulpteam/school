@@ -12,7 +12,7 @@
 }
 
 #pts_bg_game_list {
-	background-image: url('../../images/Points/game_list_background.png');
+	background-image: url('../../images/Points/game_list_background1.png');
 	width: 605px;
 	height: 705px;
 	margin: 0px 0px;
@@ -86,6 +86,7 @@
 	width: 420px;
 	height: 460px;
 }
+
 
 #pts_game_table {
 	position: absolute;
