@@ -198,9 +198,9 @@ function checkEnd() {
 		best = $("#hanoibest").html();
 		moves = $("#hanoimoves").html();
 		if (best != moves) {
-			$("#hanoimessage").html("You result is " + moves + " moves,<br>absolute result is " + best + " moves!");
+			$("#hanoimessage").html("Ви перемістили вежу за  " + moves + " ходів,<br>можете спробуйте пройти за " + best + " кроків!");
 		} else {
-			$("#hanoimessage").html("You result is " + moves + " moves,<br>its absolute result congratulations!");
+			$("#hanoimessage").html("Ви пройшли за " + moves + " переміщень,<br>це абсолютний результат, вітаємо!");
 		}
 		for ( var i = 0; i < 3; i++) {
 			for ( var int = 0; int < 9; int++) {
