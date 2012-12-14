@@ -4,7 +4,7 @@ function start1() {
 	game = 1;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -13,7 +13,7 @@ function start2() {
 	game = 2;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -22,7 +22,7 @@ function start3() {
 	game = 3;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -31,7 +31,7 @@ function startAll() {
 	game = 4;
 	$("#brainMenu").css("display", "none");
 	$("#gameTable").css("display", "inline");
-	$("#brainhome").css("display", "block");
+	$("#brainhome").css("display", "none");
 	$("#brainnext").css("display", "block");
 	init();
 	nextQuestion();
@@ -148,7 +148,7 @@ function init() {
 	a[7][5] = "B";
 	
 	a[8] = new Array();
-	a[8][0] = "Знайдіть найбільший спільний дільник чисел: 672, 2, 6, 26.";
+	a[8][0] = "Знайдіть найбільший спільний дільник чисел: 672, 84, 196, 56.";
 	a[8][1] = "14";
 	a[8][2] = "2";
 	a[8][3] = "6";
@@ -164,7 +164,7 @@ function init() {
 	a[9][5] = "A";
 	
 	a[10] = new Array();
-	a[10][0] = "Яким буде результат операції: 81 - 72 - 32 - 70?";
+	a[10][0] = "Яким буде результат операції:<br>81 - 72 - 32 - 70?";
 	a[10][1] = "-113";
 	a[10][2] = "-93";
 	a[10][3] = "-91";

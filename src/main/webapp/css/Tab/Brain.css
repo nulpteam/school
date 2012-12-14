@@ -19,10 +19,11 @@
 #brain #gameTable .ask {
 	height: 100px;
 	width: 220px;
-	background-color: yellow;
+	background-color: #BE6E23;
 	color: blue;
 	font-size: 12px;
 	font-weight: bold;
+text-align: center;
 }
 #brain #gameTable .answer {
 	height: 25px;
@@ -33,6 +34,10 @@
 	text-align: center;
 	color: yellowGreen;
 }
+#brain #gameTable .answer:hover {
+	background-color: yellowGreen;
+	color: blue;
+}
 #brainhome {
 	position: relative;
 	top: -5px;
@@ -41,6 +46,7 @@
 	height: 72px;
 	width: 82px;
 	float: left;
+	display: none;
 }
 #brainhome:hover {
 	background-image: url("../../images/Tab/hanoi/hanoiHome_2.png");

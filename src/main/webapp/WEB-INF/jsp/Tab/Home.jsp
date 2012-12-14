@@ -11,5 +11,5 @@
 	<div class="TabButton" id="Tab15-puzzle" onclick="tabGoTo('PuzzleGame.html')"></div>
 	<div class="TabButton" id="HanoiGame" onclick="tabGoTo('Hanoi.html')"></div>
 	<div class="TabButton" id="BrainGame" onclick="tabGoTo('Brain.html')"></div>
-	<div class="TabButton" id="BrainGame" onclick="tabGoTo('Pics.html')"></div>
+	<div class="TabButton" id="PicsGame" onclick="tabGoTo('Pics.html')"></div>
 </div>

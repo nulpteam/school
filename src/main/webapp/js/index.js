@@ -37,7 +37,7 @@ function refreshButtonClick() {
 	goTo('CurrentPos.html');
 }
 
-function language(node) {
+function changeLanguage(node) {
 	var lang = node.id;
 	$.post("chLang.html", {
 		lang : lang
