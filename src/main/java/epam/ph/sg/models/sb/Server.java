@@ -44,6 +44,6 @@ public class Server {
 	}
 
 	public String toString() {
-		return player + "\n" + gameBoard+"\nStarted="+started;
+		return player + "\n" + gameBoard+"\nStarted="+started+"\nconn="+conn;
 	}
 }

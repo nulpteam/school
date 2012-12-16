@@ -1,4 +1,7 @@
-/*author BogdanGutey*/
+/**
+ * @author BogdanGutey
+ * 
+ */
 var p;
 $(document).ready(function() {
 	
@@ -115,6 +118,6 @@ function getRandArray()
 }
 function none(a, b) {
 	console.log("none ", a, b);
-	$("#pics #"+a).fadeOut(0).delay(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0).delay(0);
-	$("#pics #"+b).fadeOut(0).delay(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0).delay(0);
+	$("#pics #"+a).fadeOut(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0);
+	$("#pics #"+b).fadeOut(0).attr("src","images/Tab/picsGame/ramka.png").fadeIn(0);
 }

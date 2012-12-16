@@ -63,6 +63,7 @@ $(document)
 						} else {
 							var msg = JSON.parse(event.data);
 							if (msg.sheep == "00") {
+								playShootSound("miss");
 								$("#sb_game_1 #" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
 								$("#sb_game_1 #" + msg.point).attr("class", "cant_be.png");
 								sendMess();
@@ -71,7 +72,9 @@ $(document)
 								lock = connectionType;
 							}
 							if (msg.sheep != "00") {
-								$("#sb_game_1 #" + msg.point).css("background-image", "url('images/SB/cant_be.png')");
+								playShootSound("demage");
+								rand = Math.floor((Math.random() * 5) + 1);
+								$("#sb_game_1 #" + msg.point).css("background-image", "url('images/SB/firePoint" + rand + ".png')");/*SB/cant_be.png')*/
 								$("#sb_game_1 #" + msg.point).attr("class", "cant_be.png");
 								myDamagedSheeps++;
 								sendMess();
